@@ -1,0 +1,84 @@
+﻿<Chicken_ViewModel:HomeViewModel xmlns:Chicken_ViewModel="clr-namespace:Chicken.ViewModel" xmlns:Chicken_Model="clr-namespace:Chicken.Model" xmlns:System="clr-namespace:System;assembly=mscorlib" Header="Home">
+	<Chicken_ViewModel:HomeViewModel.HomeTimeLineTweets>
+		<Chicken_Model:Tweet Source="Aenean curabitur aliquam sed" Text="first tweet">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="first user" ProfileImage="SampleData/profileimage.png"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="via source" Text="source text">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="second user" ProfileImage="SampleData/profileimage.png"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Nunc dignissim etiam" Text="Facilisi second tweet">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Faucibus lorem parturient nullam" ProfileImage="Habitant amet"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Facilisis vestibulum inceptos interdum" Text="Sed vivamus ante morbi">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Nulla proin aliquam" ProfileImage="Vestibulum lobortis"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Arcu adipiscing" Text="Aliquet augue nascetur fermentum sem">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Pharetra aptent fringilla" ProfileImage="Habitasse parturient hendrerit sit vestibulum"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Auctor placerat" Text="Dolor fames">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Congue vestibulum" ProfileImage="Cursus adipiscing felis vel ipsum"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Diam himenaeos" Text="Justo parturient dictum pulvinar imperdiet">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Eget nam elit" ProfileImage="Sed vestibulum lacus sagittis"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Senectus lectus" Text="Libero dis vestibulum sociosqu">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Enim ligula" ProfileImage="Lorem adipiscing suscipit parturient magna"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Blandit torquent malesuada" Text="Vestibulum erat massa metus">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Ultrices eros morbi commodo neque" ProfileImage="Est nibh conubia"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+		<Chicken_Model:Tweet Source="Vestibulum vehicula" Text="Netus volutpat hac maecenas">
+			<Chicken_Model:Tweet.Id>
+				<System:Int64/>
+			</Chicken_Model:Tweet.Id>
+			<Chicken_Model:Tweet.User>
+				<Chicken_Model:User Name="Praesent litora adipiscing" ProfileImage="Penatibus luctus nulla leo accumsan"/>
+			</Chicken_Model:Tweet.User>
+		</Chicken_Model:Tweet>
+	</Chicken_ViewModel:HomeViewModel.HomeTimeLineTweets>
+</Chicken_ViewModel:HomeViewModel>
