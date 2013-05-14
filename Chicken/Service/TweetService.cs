@@ -28,7 +28,7 @@ namespace Chicken.Service
 
         public List<Tweet> GetMentionTweets()
         {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline.json", UriKind.Relative));
+            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
             StreamReader streamReader = new StreamReader(reader.Stream);
             string output = streamReader.ReadToEnd();
             var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);

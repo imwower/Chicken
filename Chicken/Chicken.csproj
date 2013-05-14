@@ -76,6 +76,7 @@
     <Compile Include="Service\TweetService.cs" />
     <Compile Include="Service\TweetServiceManger.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MentionsViewModel.cs" />
     <Compile Include="ViewModel\NotificationObject.cs" />
     <Compile Include="ViewModel\TweetViewModel.cs" />

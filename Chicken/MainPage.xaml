@@ -74,8 +74,8 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot" Title="pivot" Grid.Row="0">
             <!--Home Pivot-->
-            <controls:PivotItem x:Name="HomePivot"  Header="{Binding Path=Header}">
-                <Grid x:Name="ContentPanel" Grid.Row="2">
+            <controls:PivotItem  Header="Home">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="12" />
@@ -86,8 +86,16 @@
                 </Grid>
             </controls:PivotItem>
             <!--Mentions Pivot-->
-            <controls:PivotItem x:Name="MentionsPivot" Header="Mentions">
-                <Grid/>
+            <controls:PivotItem Header="Mentions">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="12" />
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="MentionsListBoxControl" ItemsSource="{Binding Path= MentionTweets}" ItemTemplate="{StaticResource TweetTemplate}">
+                    </ListBox>
+                    <ProgressBar Visibility="{Binding Path= IsLoading, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}" IsIndeterminate="True" Grid.Row="1" />
+                </Grid>
             </controls:PivotItem>
         </controls:Pivot>
     </Grid>
