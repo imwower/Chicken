@@ -72,7 +72,7 @@
     </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot" Title="pivot" Grid.Row="0">
+        <controls:Pivot x:Name="MainPivot" Title="chicken" Grid.Row="0">
             <!--Home Pivot-->
             <controls:PivotItem  Header="Home">
                 <Grid>
