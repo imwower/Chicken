@@ -57,7 +57,7 @@ namespace Chicken.ViewModel
             }
         }
 
-        private T FindVisualElement<T>(DependencyObject container) where T : DependencyObject
+        public static T FindVisualElement<T>(DependencyObject container) where T : DependencyObject
         {
             var childQueue = new Queue<DependencyObject>();
             childQueue.Enqueue(container);
@@ -78,7 +78,7 @@ namespace Chicken.ViewModel
             return null;
         }
 
-        private VisualStateGroup FindVisualState(FrameworkElement element, string name)
+        public static VisualStateGroup FindVisualState(FrameworkElement element, string name)
         {
             if (element == null)
             {
@@ -101,12 +101,15 @@ namespace Chicken.ViewModel
             switch (visualState)
             {
                 case "Scrolling":
-                    IsLoading = true;
+                    if (this.scrollViewer.ExtentHeight - this.scrollViewer.VerticalOffset <= this.scrollViewer.ViewportHeight * 1.1)
+                    {
+                        IsLoading = true;
+                    }
                     break;
                 case "NotScrolling":
                     if (this.scrollViewer.ExtentHeight - this.scrollViewer.VerticalOffset <= this.scrollViewer.ViewportHeight * 1.1)
                     {
-                        HandleVisualStatueChangedEvent(sender, e);
+                        HandleVisualStatueChangedPullUpEvent(sender, e);
                     }
                     IsLoading = false;
                     break;
@@ -117,6 +120,6 @@ namespace Chicken.ViewModel
         }
 
         public delegate void VisualStateChangedHandler(object sender, VisualStateChangedEventArgs e);
-        public VisualStateChangedHandler HandleVisualStatueChangedEvent;
+        public VisualStateChangedHandler HandleVisualStatueChangedPullUpEvent;
     }
 }

@@ -25,14 +25,11 @@
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
+        <Style x:Name="HyperLinkText" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+        </Style>
         <Style x:Name="HyperLinkTextSmall" TargetType="HyperlinkButton">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="VerticalAlignment" Value="Bottom" />
-        </Style>
-        <Style x:Name="HyperLinkTextSmallLeftBottom" TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}">
-            <Setter Property="HorizontalAlignment" Value="Left" />
-            <Setter Property="VerticalAlignment" Value="Bottom" />
         </Style>
         <!--styles-->
 
@@ -45,8 +42,9 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Grid Grid.Row="3" Grid.Column="2" Margin="4" Width="380">
+                <Grid Grid.Row="4" Grid.Column="2" Margin="4" Width="380">
                     <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -57,12 +55,17 @@
                     </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
-                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
+                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkText}" />
                     </Grid.Resources>
+                    <!--user name-->
                     <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding UserViewModel.Name}" />
+                    <!--text-->
                     <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Text}" Style="{StaticResource TextContent}" />
+                    <!--date-->
                     <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CreatedDate}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                    <HyperlinkButton Grid.Row="3" Grid.Column="1" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Text="retweet count" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                    <!--via-->
+                    <HyperlinkButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" Style="{StaticResource HyperLinkTextSmall}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                 </Grid>
             </StackPanel>
         </DataTemplate>

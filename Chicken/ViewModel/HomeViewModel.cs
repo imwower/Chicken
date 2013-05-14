@@ -40,7 +40,7 @@ namespace Chicken.ViewModel
         #endregion
 
         #region services
-        public ITweetService TweetService = new TweetService();
+        public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
         public HomeViewModel(DependencyObject container)
@@ -48,7 +48,7 @@ namespace Chicken.ViewModel
         {
             Header = "Home";
             GetHomeLineTweets();
-            HandleVisualStatueChangedEvent += VisualStateGroup_CurrentStateChanged;
+            HandleVisualStatueChangedPullUpEvent += HandleVisualStatueChangedPullUp;
         }
 
         public void GetHomeLineTweets()
@@ -71,7 +71,7 @@ namespace Chicken.ViewModel
             }
         }
 
-        public void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        public void HandleVisualStatueChangedPullUp(object sender, VisualStateChangedEventArgs e)
         {
             AppendOldTweets();
         }

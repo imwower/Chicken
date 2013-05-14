@@ -26,7 +26,6 @@ D:\code\gitHub\Chicken\Chicken\Bin\Debug\Chicken.pdb
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\AppManifest.xaml
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\Chicken.xap
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\Microsoft.Phone.Controls.dll
-D:\code\gitHub\Chicken\Chicken\Bin\Debug\Microsoft.Phone.Controls.Toolkit.dll
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\Newtonsoft.Json.dll
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\Microsoft.Phone.Controls.xml
 D:\code\gitHub\Chicken\Chicken\Bin\Debug\Microsoft.Phone.Controls.Toolkit.pdb

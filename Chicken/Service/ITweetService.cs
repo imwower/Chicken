@@ -9,5 +9,6 @@ namespace Chicken.Service
     public interface ITweetService
     {
         List<Tweet> GetHomeLineTweets();
+        List<Tweet> GetMentionTweets();
     }
 }

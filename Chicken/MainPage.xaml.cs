@@ -37,6 +37,8 @@ namespace Chicken
                         case 0:
                             pivotItem.DataContext = new HomeViewModel(this.HomeListBoxControl);
                             break;
+                        case 1:
+                            pivotItem.DataContext = new MentionsViewModel
                         default:
                             break;
                     }
