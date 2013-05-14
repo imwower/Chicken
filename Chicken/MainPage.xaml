@@ -16,6 +16,26 @@
     shell:SystemTray.IsVisible="True">
     <phone:PhoneApplicationPage.Resources>
         <local:ConvertVisibility x:Name="VisibilityConverter" />
+
+        <!--styles-->
+        <Style x:Name="TextSmall" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+        </Style>
+        <Style x:Name="TextContent" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style x:Name="HyperLinkTextSmall" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <Style x:Name="HyperLinkTextSmallLeftBottom" TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}">
+            <Setter Property="HorizontalAlignment" Value="Left" />
+            <Setter Property="VerticalAlignment" Value="Bottom" />
+        </Style>
+        <!--styles-->
+
         <DataTemplate x:Key="TweetTemplate">
             <StackPanel Orientation="Horizontal" Margin="0,4,0,4">
                 <Button Width="64" Height="64" Margin="2,2,2,2"  HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -25,7 +45,6 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-
                 <Grid Grid.Row="3" Grid.Column="2" Margin="4" Width="380">
                     <Grid.RowDefinitions>
                         <RowDefinition></RowDefinition>
@@ -36,10 +55,14 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding UserViewModel.Name}" Style="{StaticResource PhoneTextSmallStyle}"/>
-                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Text}" TextWrapping="Wrap" FontSize="{StaticResource PhoneFontSizeMedium}"/>
-                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CreatedDate}" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                    <HyperlinkButton Grid.Row="3" Grid.Column="1" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" FontSize="15" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
+                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
+                    </Grid.Resources>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding UserViewModel.Name}" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding Text}" Style="{StaticResource TextContent}" />
+                    <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding CreatedDate}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                    <HyperlinkButton Grid.Row="3" Grid.Column="1" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                 </Grid>
             </StackPanel>
         </DataTemplate>

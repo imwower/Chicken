@@ -1,15 +1,17 @@
-﻿<xapCache source="D:\code\gitHub\Chicken\Chicken\Bin\Debug\Chicken.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2013/5/12 星期日 3:14:22">
-  <file source="D:\code\gitHub\Chicken\Chicken\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="2013/5/10 星期五 14:50:24" />
-  <file source="D:\code\gitHub\Chicken\Chicken\Background.png" archivePath="Background.png" lastWriteTime="2013/5/12 星期日 3:04:26" />
-  <file source="D:\code\gitHub\Chicken\Chicken\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="2013/5/12 星期日 3:06:20" />
-  <file source="D:\code\gitHub\Chicken\Chicken\obj\Debug\Chicken.dll" archivePath="Chicken.dll" lastWriteTime="2013/5/12 星期日 3:14:20" />
-  <file source="C:\Program Files\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="2011/8/29 星期一 22:49:08" />
-  <file source="C:\Program Files\Microsoft SDKs\Windows Phone\v7.1\Toolkit\Aug11\Bin\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="2011/8/12 星期五 18:19:16" />
-  <file source="D:\code\gitHub\Chicken\Chicken\libs\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="2013/4/25 星期四 15:39:42" />
-  <file source="D:\code\gitHub\Chicken\Chicken\SampleData\hometimeline.json" archivePath="SampleData\hometimeline.json" lastWriteTime="2013/5/10 星期五 16:14:51" />
-  <file source="D:\code\gitHub\Chicken\Chicken\SampleData\hometimeline1.json" archivePath="SampleData\hometimeline1.json" lastWriteTime="2013/5/12 星期日 2:03:41" />
-  <file source="D:\code\gitHub\Chicken\Chicken\libs\Newtonsoft.Json.dll" archivePath="libs\Newtonsoft.Json.dll" lastWriteTime="2013/4/25 星期四 15:39:42" />
-  <file source="D:\code\gitHub\Chicken\Chicken\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="2013/5/12 星期日 3:13:07" />
-  <file source="D:\code\gitHub\Chicken\Chicken\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="2013/5/12 星期日 2:46:42" />
-  <file source="D:\code\gitHub\Chicken\Chicken\Bin\Debug\SampleData\hometimeline.json" archivePath="SampleData\hometimeline.json" lastWriteTime="2013/5/10 星期五 16:14:51" />
+﻿<xapCache source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\Chicken.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="2013/5/14 17:53:10">
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Background.png" archivePath="Background.png" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\obj\Debug\Chicken.dll" archivePath="Chicken.dll" lastWriteTime="2013/5/14 17:53:09" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="2011/8/29 22:49:08" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\libs\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\SampleData\hometimeline.json" archivePath="SampleData\hometimeline.json" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\SampleData\hometimeline1.json" archivePath="SampleData\hometimeline1.json" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\libs\Newtonsoft.Json.dll" archivePath="libs\Newtonsoft.Json.dll" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="2013/5/14 14:43:09" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\SampleData\hometimeline.json" archivePath="SampleData\hometimeline.json" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="2013/5/12 3:18:36" />
+  <file source="C:\Users\peter\Desktop\Chicken-master\Chicken\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="2013/5/12 3:18:36" />
 </xapCache>
