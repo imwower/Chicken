@@ -17,7 +17,7 @@ namespace Chicken.Service
 {
     public class TweetService : ITweetService
     {
-        public List<Tweet> GetHomeLineTweets()
+        public List<Tweet> GetNewTweets()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline.json", UriKind.Relative));
             StreamReader streamReader = new StreamReader(reader.Stream);
@@ -26,12 +26,16 @@ namespace Chicken.Service
             return tweets;
         }
 
-        public List<Tweet> GetMentionTweets()
+        public List<Tweet> GetOldTweets()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
             StreamReader streamReader = new StreamReader(reader.Stream);
             string output = streamReader.ReadToEnd();
             var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
+            for (int i = 0; i < tweets.Count; i++)
+            {
+                tweets[i].Text = i + "";
+            }
             return tweets;
         }
     }

@@ -3,10 +3,108 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"       
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone">
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:local ="clr-namespace:Chicken.ViewModel"
+    xmlns:ctrls ="clr-namespace:Chicken.Controls">
 
     <!--应用程序资源-->
     <Application.Resources>
+        <local:ConvertVisibility x:Key="VisibilityConverter" />
+
+        <!--styles-->
+        <Style x:Name="TextSmall" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+        <Style x:Name="TextContent" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style x:Name="HyperLinkText" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+        </Style>
+        <Style x:Name="HyperLinkTextSmall" TargetType="HyperlinkButton">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+        </Style>
+        <!--styles-->
+
+        <DataTemplate x:Key="TweetTemplate">
+            <Grid Width="460">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="68" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Width="64" Height="64" Margin="2"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="{Binding UserViewModel.ProfileImage}"  />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Grid Grid.Column="1" Margin="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
+                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkText}" />
+                    </Grid.Resources>
+                    <!--user name-->
+                    <TextBlock Grid.Row="0" Text="{Binding UserViewModel.Name}" />
+                    <!--text-->
+                    <TextBlock Grid.Row="1" Text="{Binding Text}" Style="{StaticResource TextContent}" />
+                    <!--date-->
+                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+                    <TextBlock Grid.Row="2" Text="retweet count" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                    <!--via-->
+                    <HyperlinkButton Grid.Row="3" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" Style="{StaticResource HyperLinkTextSmall}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
+        <Style x:Key="AutoListBox" TargetType="ListBox" >
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ScrollViewer x:Name="ScrollViewer" ManipulationMode="Control">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Name="PivotHeaderTemplate">
+            <TextBlock Text="{Binding Path=Header}" />
+        </DataTemplate>
+
+        <!--Pivot Item-->
+        <DataTemplate x:Key="PivotItemTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="12" />
+                </Grid.RowDefinitions>
+                <ctrls:TopPanel Grid.Row="0" />
+                <ListBox Grid.Row="1" ItemsSource="{Binding Path= TweetList}" ItemTemplate="{StaticResource TweetTemplate}" Style="{StaticResource AutoListBox}" />
+                <ProgressBar Grid.Row="2" Visibility="{Binding Path= IsLoading, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}" IsIndeterminate="True" />
+            </Grid>
+        </DataTemplate>
+
+
+
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

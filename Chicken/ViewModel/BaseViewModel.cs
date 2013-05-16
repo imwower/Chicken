@@ -9,13 +9,17 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Chicken.Controls;
 
 namespace Chicken.ViewModel
 {
-    public class BaseViewModel : NotificationObject
+    public abstract class BaseViewModel : NotificationObject
     {
         ScrollViewer scrollViewer;
-        VisualStateGroup visualStateGroup;
+
+        #region properties
+
         private string header;
         public string Header
         {
@@ -43,83 +47,61 @@ namespace Chicken.ViewModel
             }
         }
 
-        public BaseViewModel(DependencyObject container)
+        private ObservableCollection<TweetViewModel> tweetList = new ObservableCollection<TweetViewModel>();
+        public ObservableCollection<TweetViewModel> TweetList
         {
-            scrollViewer = FindVisualElement<ScrollViewer>(container);
+            get
+            {
+                return tweetList;
+            }
+            set
+            {
+                if (value != tweetList)
+                {
+                    tweetList = value;
+                    RaisePropertyChanged("TweetList");
+                }
+            }
+        }
+
+        #endregion
+
+        public BaseViewModel()
+        {
+            TweetList = new ObservableCollection<TweetViewModel>();
+        }
+
+        public ICommand TextBlock_LayoutUpdatedCommand
+        {
+            get
+            {
+                return new DelegateCommand(TextBlock_LayoutUpdated);
+            }
+        }
+
+        public virtual void GetNewTweets()
+        { }
+
+        private void TextBlock_LayoutUpdated(object sender)
+        {
+            scrollViewer = Utils.FindVisualElement<ScrollViewer>(sender as DependencyObject);
             if (scrollViewer != null)
             {
-                FrameworkElement element = VisualTreeHelper.GetChild(scrollViewer, 0) as FrameworkElement;
-                if (element != null)
-                {
-                    visualStateGroup = FindVisualState(element, "ScrollStates");
-                    visualStateGroup.CurrentStateChanged += VisualStateChanged;
-                }
+                scrollViewer.MouseMove += new MouseEventHandler(scrollViewer_MouseMove);
+                scrollViewer.MouseLeftButtonUp += new MouseButtonEventHandler(scrollViewer_MouseLeftButtonUp);
             }
         }
 
-        public static T FindVisualElement<T>(DependencyObject container) where T : DependencyObject
+        private void scrollViewer_MouseMove(object sender, MouseEventArgs e)
         {
-            var childQueue = new Queue<DependencyObject>();
-            childQueue.Enqueue(container);
-            while (childQueue.Count > 0)
-            {
-                var current = childQueue.Dequeue();
-                T result = current as T;
-                if (result != null && result != container)
-                {
-                    return result;
-                }
-                int childCount = VisualTreeHelper.GetChildrenCount(current);
-                for (int childIndex = 0; childIndex < childCount; childIndex++)
-                {
-                    childQueue.Enqueue(VisualTreeHelper.GetChild(current, childIndex));
-                }
-            }
-            return null;
+            UIElement scrollContent = (UIElement)scrollViewer.Content;
+            CompositeTransform ct = scrollContent.RenderTransform as CompositeTransform;
+
         }
 
-        public static VisualStateGroup FindVisualState(FrameworkElement element, string name)
+        private void scrollViewer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (element == null)
-            {
-                return null;
-            }
-            var groups = VisualStateManager.GetVisualStateGroups(element);
-            foreach (VisualStateGroup group in groups)
-            {
-                if (group.Name == name)
-                {
-                    return group;
-                }
-            }
-            return null;
+            //ctf.TranslateY = Height = 0;
         }
-
-        public void VisualStateChanged(object sender, VisualStateChangedEventArgs e)
-        {
-            var visualState = e.NewState.Name;
-            switch (visualState)
-            {
-                case "Scrolling":
-                    if (this.scrollViewer.ExtentHeight - this.scrollViewer.VerticalOffset <= this.scrollViewer.ViewportHeight * 1.1)
-                    {
-                        IsLoading = true;
-                    }
-                    break;
-                case "NotScrolling":
-                    if (this.scrollViewer.ExtentHeight - this.scrollViewer.VerticalOffset <= this.scrollViewer.ViewportHeight * 1.1)
-                    {
-                        HandleVisualStatueChangedPullUpEvent(sender, e);
-                    }
-                    IsLoading = false;
-                    break;
-                default:
-                    IsLoading = false;
-                    break;
-            }
-        }
-
-        public delegate void VisualStateChangedHandler(object sender, VisualStateChangedEventArgs e);
-        public VisualStateChangedHandler HandleVisualStatueChangedPullUpEvent;
     }
 }

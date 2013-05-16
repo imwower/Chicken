@@ -8,6 +8,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Chicken.ViewModel
 {
@@ -26,18 +28,25 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("Header");
             }
         }
-        private BaseViewModel homeViewModel;
-        public BaseViewModel HomeViewModel
+
+        private ObservableCollection<BaseViewModel> pivotList;
+        public ObservableCollection<BaseViewModel> PivotList
         {
             get
             {
-                return homeViewModel;
+                return pivotList;
             }
             set
             {
-                homeViewModel = value;
-                RaisePropertyChanged("HomeViewModel");
+                pivotList = value;
+                RaisePropertyChanged("PivotList");
             }
+        }
+
+        public MainViewModel()
+        {
+            PivotList = new ObservableCollection<BaseViewModel>();
+            PivotList.Add(new HomeViewModel());
         }
     }
 }

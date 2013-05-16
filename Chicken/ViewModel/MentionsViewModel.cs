@@ -40,31 +40,31 @@ namespace Chicken.ViewModel
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
-        public MentionsViewModel(DependencyObject container)
-            : base(container)
-        {
-            Header = "Mentions";
-            GetMentionTweets();
-            HandleVisualStatueChangedPullUpEvent += HandleVisualStatueChangedPullUp;
-        }
+        //public MentionsViewModel(DependencyObject container)
+        //    : base(container)
+        //{
+        //    Header = "Mentions";
+        //    GetMentionTweets();
+        //    HandleVisualStatueChangedPullUpEvent += HandleVisualStatueChangedPullUp;
+        //}
 
-        public void GetMentionTweets()
-        {
-            var tweets = TweetService.GetMentionTweets();
-            var tweetViewModels = new ObservableCollection<TweetViewModel>();
-            foreach (var tweet in tweets)
-            {
-                tweetViewModels.Add(new TweetViewModel(tweet));
-            }
-            this.mentionTweets = tweetViewModels;
-        }
+        //public void GetOldTweets()
+        //{
+        //    var tweets = TweetService.GetOldTweets();
+        //    var tweetViewModels = new ObservableCollection<TweetViewModel>();
+        //    foreach (var tweet in tweets)
+        //    {
+        //        tweetViewModels.Add(new TweetViewModel(tweet));
+        //    }
+        //    this.mentionTweets = tweetViewModels;
+        //}
 
         public void AppendOldTweets()
         {
-            var tweets = TweetService.GetMentionTweets();
+            var tweets = TweetService.GetOldTweets();
             foreach (var tweet in tweets)
             {
-                this.MentionTweets.Add(new TweetViewModel(tweet));
+                this.MentionTweets.Insert(0, new TweetViewModel(tweet));
             }
         }
 

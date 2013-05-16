@@ -16,9 +16,12 @@ namespace Chicken
 {
     public partial class MainPage : PhoneApplicationPage
     {
+        MainViewModel mainViewModel;
         public MainPage()
         {
             InitializeComponent();
+            mainViewModel = new MainViewModel();
+            this.MainPivot.DataContext = mainViewModel;
             this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
         }
 
@@ -26,22 +29,15 @@ namespace Chicken
         {
             Dispatcher.BeginInvoke(() =>
                 {
-                    var pivotItem = this.MainPivot.SelectedItem as PivotItem;
-                    var baseViewModel = pivotItem.DataContext as BaseViewModel;
-                    if (baseViewModel != null)
+                    var selectedIndex = MainPivot.SelectedIndex;
+                    if (mainViewModel.PivotList[selectedIndex] == null)
                     {
-                        return;
-                    }
-                    switch (this.MainPivot.SelectedIndex)
-                    {
-                        case 0:
-                            pivotItem.DataContext = new HomeViewModel(this.HomeListBoxControl);
-                            break;
-                        case 1:
-                            pivotItem.DataContext = new MentionsViewModel(this.MentionsListBoxControl);
-                            break;
-                        default:
-                            break;
+                        switch (selectedIndex)
+                        {
+                            case 0:
+                                mainViewModel.PivotList.Insert(0, new HomeViewModel());
+                                break;
+                        }
                     }
                 });
         }

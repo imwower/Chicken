@@ -18,62 +18,34 @@ namespace Chicken.ViewModel
 {
     public class HomeViewModel : BaseViewModel
     {
-        #region properties
-
-        private ObservableCollection<TweetViewModel> homeTimeLineTweets = new ObservableCollection<TweetViewModel>();
-        public ObservableCollection<TweetViewModel> HomeTimeLineTweets
-        {
-            get
-            {
-                return homeTimeLineTweets;
-            }
-            set
-            {
-                if (value != homeTimeLineTweets)
-                {
-                    homeTimeLineTweets = value;
-                    RaisePropertyChanged("HomeTimeLineTweets");
-                }
-            }
-        }
-
-        #endregion
-
         #region services
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
-        public HomeViewModel(DependencyObject container)
-            : base(container)
+        public HomeViewModel()
+            : base()
         {
             Header = "Home";
-            GetHomeLineTweets();
-            HandleVisualStatueChangedPullUpEvent += HandleVisualStatueChangedPullUp;
+            GetNewTweets();
         }
 
-        public void GetHomeLineTweets()
+        public override void GetNewTweets()
         {
-            var tweets = TweetService.GetHomeLineTweets();
-            var tweetViewModels = new ObservableCollection<TweetViewModel>();
+            var tweets = TweetService.GetNewTweets();
+            tweets.Reverse();
             foreach (var tweet in tweets)
             {
-                tweetViewModels.Add(new TweetViewModel(tweet));
-            }
-            this.homeTimeLineTweets = tweetViewModels;
-        }
-
-        public void AppendOldTweets()
-        {
-            var tweets = TweetService.GetHomeLineTweets();
-            foreach (var tweet in tweets)
-            {
-                this.HomeTimeLineTweets.Add(new TweetViewModel(tweet));
+                TweetList.Insert(0, new TweetViewModel(tweet));
             }
         }
 
-        public void HandleVisualStatueChangedPullUp(object sender, VisualStateChangedEventArgs e)
+        public void GetOldTweets()
         {
-            AppendOldTweets();
+            var tweets = TweetService.GetNewTweets();
+            foreach (var tweet in tweets)
+            {
+                TweetList.Add(new TweetViewModel(tweet));
+            }
         }
     }
 }
