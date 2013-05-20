@@ -30,6 +30,8 @@ namespace Chicken.Model
 
     public class User
     {
+        [JsonProperty("id")]
+        public int Id { get; set; }
         public string Name { get; set; }
 
         [JsonProperty("profile_image_url")]

@@ -90,6 +90,14 @@ namespace Chicken.ViewModel
                 return new DelegateCommand(LoadDispatcher);
             }
         }
+
+        public ICommand ClickCommand
+        {
+            get
+            {
+                return new DelegateCommand(ClickDispatcher);
+            }
+        }
         #endregion
 
         #region dispatcher
@@ -121,6 +129,19 @@ namespace Chicken.ViewModel
                             IsLoading = false;
                         });
                 }, null, 1000, -1);
+        }
+
+        /// <summary>
+        /// sender is User's Id
+        /// </summary>
+        /// <param name="sender">int</param>
+        private void ClickDispatcher(object sender)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
+                {
+                    Load();
+                });
         }
         #endregion
 

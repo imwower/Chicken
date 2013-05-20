@@ -91,6 +91,14 @@ namespace Chicken.ViewModel
             }
         }
 
+        public int Id
+        {
+            get
+            {
+                return user.Id;
+            }
+        }
+
         public string ProfileImage
         {
             get
