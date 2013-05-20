@@ -26,20 +26,20 @@ namespace Chicken.ViewModel
             : base()
         {
             Header = "Home";
-            GetNewTweets();
         }
 
-        public override void GetNewTweets()
+        public override void Refresh()
         {
             var tweets = TweetService.GetNewTweets();
             tweets.Reverse();
             foreach (var tweet in tweets)
             {
+                tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
         }
 
-        public void GetOldTweets()
+        public override void Load()
         {
             var tweets = TweetService.GetNewTweets();
             foreach (var tweet in tweets)

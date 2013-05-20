@@ -25,6 +25,10 @@ namespace Chicken.ViewModel
         {
             this.ExecuteAction = executeAction;
         }
+        public DelegateCommand(Action<object, EventArgs> executeAction)
+        {
+            this.ExecuteAction = (obj) => executeAction(obj, null);
+        }
 
         public bool CanExecute(object parameter)
         {

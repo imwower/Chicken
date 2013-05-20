@@ -10,5 +10,8 @@ namespace Chicken.Service
     {
         List<Tweet> GetNewTweets();
         List<Tweet> GetOldTweets();
+
+        List<Tweet> GetNewMentions();
+        List<Tweet> GetOldMentions();
     }
 }

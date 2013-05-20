@@ -30,14 +30,9 @@ namespace Chicken
             Dispatcher.BeginInvoke(() =>
                 {
                     var selectedIndex = MainPivot.SelectedIndex;
-                    if (mainViewModel.PivotList[selectedIndex] == null)
+                    if (mainViewModel.PivotList[selectedIndex].TweetList.Count == 0)
                     {
-                        switch (selectedIndex)
-                        {
-                            case 0:
-                                mainViewModel.PivotList.Insert(0, new HomeViewModel());
-                                break;
-                        }
+                        mainViewModel.PivotList[selectedIndex].Refresh();
                     }
                 });
         }

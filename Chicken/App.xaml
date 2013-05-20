@@ -13,6 +13,53 @@
         <local:ConvertVisibility x:Key="VisibilityConverter" />
 
         <!--styles-->
+        <Style TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="ScrollStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.5"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Scrolling">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="NotScrolling">
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="VerticalCompression">
+                                    <VisualState x:Name="NoVerticalCompression"/>
+                                    <VisualState x:Name="CompressionTop"/>
+                                    <VisualState x:Name="CompressionBottom"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="HorizontalCompression">
+                                    <VisualState x:Name="NoHorizontalCompression"/>
+                                    <VisualState x:Name="CompressionLeft"/>
+                                    <VisualState x:Name="CompressionRight"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <ScrollContentPresenter x:Name="ScrollContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                <ScrollBar x:Name="VerticalScrollBar" IsHitTestVisible="False" Height="Auto" Width="5" HorizontalAlignment="Right" VerticalAlignment="Stretch" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{TemplateBinding VerticalOffset}" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" />
+                                <ScrollBar x:Name="HorizontalScrollBar" IsHitTestVisible="False" Width="Auto" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Value="{TemplateBinding HorizontalOffset}" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Name="TextSmall" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
@@ -72,19 +119,6 @@
             </Grid>
         </DataTemplate>
 
-        <Style x:Key="AutoListBox" TargetType="ListBox" >
-            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListBox">
-                        <ScrollViewer x:Name="ScrollViewer" ManipulationMode="Control">
-                            <ItemsPresenter />
-                        </ScrollViewer>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <DataTemplate x:Name="PivotHeaderTemplate">
             <TextBlock Text="{Binding Path=Header}" />
         </DataTemplate>
@@ -93,20 +127,27 @@
         <DataTemplate x:Key="PivotItemTemplate">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="auto" />
                     <RowDefinition Height="*" />
                     <RowDefinition Height="12" />
                 </Grid.RowDefinitions>
-                <ctrls:TopPanel Grid.Row="0" />
-                <ListBox Grid.Row="1" ItemsSource="{Binding Path= TweetList}" ItemTemplate="{StaticResource TweetTemplate}" Style="{StaticResource AutoListBox}" />
-                <ProgressBar Grid.Row="2" Visibility="{Binding Path= IsLoading, Mode=TwoWay, Converter={StaticResource VisibilityConverter}}" IsIndeterminate="True" />
+                <ctrls:AutoListBox Grid.Row="0"
+                                   ItemsSource="{Binding Path= TweetList}"
+                         ItemTemplate="{StaticResource TweetTemplate}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="VerticalCompressionTopHandler">
+                            <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                            <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ctrls:AutoListBox>
+                <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource VisibilityConverter}}" />
             </Grid>
         </DataTemplate>
-
-
-
+        
     </Application.Resources>
-
+    
     <Application.ApplicationLifetimeObjects>
         <!--处理应用程序的生存期事件所需的对象-->
         <shell:PhoneApplicationService 

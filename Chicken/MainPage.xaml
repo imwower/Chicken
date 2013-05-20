@@ -21,7 +21,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="chicken"
                         HeaderTemplate="{StaticResource PivotHeaderTemplate}"
-                       ItemTemplate="{StaticResource PivotItemTemplate}"
+                        ItemTemplate="{StaticResource PivotItemTemplate}"
                         ItemsSource="{Binding PivotList}">
         </controls:Pivot>
     </Grid>

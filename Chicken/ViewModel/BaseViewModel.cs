@@ -11,12 +11,15 @@ using System.Windows.Shapes;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Chicken.Controls;
+using System.Threading;
 
 namespace Chicken.ViewModel
 {
     public abstract class BaseViewModel : NotificationObject
     {
-        ScrollViewer scrollViewer;
+        #region private properties
+        Timer timer;
+        #endregion
 
         #region properties
 
@@ -71,37 +74,64 @@ namespace Chicken.ViewModel
             TweetList = new ObservableCollection<TweetViewModel>();
         }
 
-        public ICommand TextBlock_LayoutUpdatedCommand
+        #region binding Command
+        public ICommand RefreshCommand
         {
             get
             {
-                return new DelegateCommand(TextBlock_LayoutUpdated);
+                return new DelegateCommand(RefreshDispatcher);
             }
         }
 
-        public virtual void GetNewTweets()
-        { }
-
-        private void TextBlock_LayoutUpdated(object sender)
+        public ICommand LoadCommand
         {
-            scrollViewer = Utils.FindVisualElement<ScrollViewer>(sender as DependencyObject);
-            if (scrollViewer != null)
+            get
             {
-                scrollViewer.MouseMove += new MouseEventHandler(scrollViewer_MouseMove);
-                scrollViewer.MouseLeftButtonUp += new MouseButtonEventHandler(scrollViewer_MouseLeftButtonUp);
+                return new DelegateCommand(LoadDispatcher);
             }
         }
+        #endregion
 
-        private void scrollViewer_MouseMove(object sender, MouseEventArgs e)
+        #region dispatcher
+        private void RefreshDispatcher()
         {
-            UIElement scrollContent = (UIElement)scrollViewer.Content;
-            CompositeTransform ct = scrollContent.RenderTransform as CompositeTransform;
-
+            IsLoading = true;
+            timer = new Timer(
+                (obj) =>
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            Refresh();
+                            IsLoading = false;
+                        });
+                }, null, 1000, -1);
         }
 
-        private void scrollViewer_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void LoadDispatcher()
         {
-            //ctf.TranslateY = Height = 0;
+            IsLoading = true;
+            timer = new Timer(
+                (obj) =>
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            Load();
+                            IsLoading = false;
+                        });
+                }, null, 1000, -1);
         }
+        #endregion
+
+        #region virtual method
+        public virtual void Refresh()
+        {
+        }
+
+        public virtual void Load()
+        {
+        }
+        #endregion
     }
 }

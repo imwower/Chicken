@@ -45,8 +45,12 @@ namespace Chicken.ViewModel
 
         public MainViewModel()
         {
-            PivotList = new ObservableCollection<BaseViewModel>();
-            PivotList.Add(new HomeViewModel());
+            var baseViewModelList = new List<BaseViewModel>
+            {
+                new HomeViewModel(),
+                new MentionsViewModel(),
+            };
+            PivotList = new ObservableCollection<BaseViewModel>(baseViewModelList);
         }
     }
 }
