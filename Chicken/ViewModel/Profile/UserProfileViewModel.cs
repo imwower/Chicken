@@ -49,7 +49,15 @@ namespace Chicken.ViewModel.Profile
         {
             get
             {
-                return userProfile.ProfileImage;
+                return userProfile.ProfileImage.Replace("_normal", "");
+            }
+        }
+
+        public string UserProfileBannerImage
+        {
+            get
+            {
+                return userProfile.UserProfileBannerImage + "/web";
             }
         }
 

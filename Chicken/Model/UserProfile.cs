@@ -25,6 +25,9 @@ namespace Chicken.Model
         [JsonProperty("profile_image_url")]
         public string ProfileImage { get; set; }
 
+        [JsonProperty("profile_banner_url")]
+        public string UserProfileBannerImage { get; set; }
+
         public string Description { get; set; }
 
         public string Location { get; set; }
