@@ -17,50 +17,75 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--枢轴控件-->
-        <controls:Pivot x:Name="MainPivot" Title="Profile">
-            <controls:PivotItem Header="Profile">
+        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=Title}">
+            <controls:PivotItem x:Name="ProfilePivotItem" Header="{Binding Path=Header}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="124" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="36" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.Resources>
-                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextNormal}">
-                            <Setter Property="HorizontalAlignment" Value="Center" />
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextMedium}">
+                            <Setter Property="TextAlignment" Value="Center" />
                             <Setter Property="Margin" Value="2" />
                         </Style>
                     </Grid.Resources>
+                    <!--Profile Image-->
                     <Image Grid.Row="0" Source="{Binding UserProfileViewModel.ProfileImage}"
                            Width="120" Height="120" />
+                    <!--Name-->
                     <TextBlock Grid.Row="1" Text="{Binding UserProfileViewModel.Name}" />
+                    <!--Screen Name-->
                     <TextBlock Grid.Row="2" Text="{Binding UserProfileViewModel.ScreenName}" />
-                    <StackPanel Grid.Row="3" Orientation="Horizontal">
-                        <TextBlock Text="{Binding UserProfileViewModel.Location}" />
-                    </StackPanel>
-                    <ScrollViewer Grid.Row="3" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <!--Location-->
+                    <TextBlock Grid.Row="3" Text="{Binding UserProfileViewModel.Location}" />
+                    <!--Url-->
+                    <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
+                                     NavigateUri="{Binding Path=UserProfileViewModel.Url}"
+                                     TargetName="_blank">
+                    </HyperlinkButton>
+                    <!--Description-->
+                    <ScrollViewer Grid.Row="5" HorizontalScrollBarVisibility="Disabled">
                         <ScrollViewer.Content>
                             <TextBlock Text="{Binding UserProfileViewModel.Description}" Style="{StaticResource TextContentNormalCenter}" />
                         </ScrollViewer.Content>
                     </ScrollViewer>
-                    <StackPanel Grid.Row="4" Orientation="Horizontal">
+                    <!--Tweets, Following, Followers, Buttons-->
+                    <StackPanel Grid.Row="6" Orientation="Horizontal"
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom">
                         <TextBlock>
-                            <Run>
-                                Tweets
-                            </Run>
-                            <Run>
+                            Tweets
+                            <LineBreak />
                                 900
-                            </Run>
                         </TextBlock>
-                        <TextBlock Text="Following 900" />
-                        <TextBlock Text="Followers 900" />
-                        <TextBlock Text="Following" HorizontalAlignment="Right" />
+                        <TextBlock>
+                            Favourites
+                            <LineBreak />
+                            233
+                        </TextBlock>
+                        <TextBlock>
+                            Following
+                            <LineBreak />
+                                9009
+                        </TextBlock>
+                        <TextBlock>
+                            Followers
+                            <LineBreak />
+                                900
+                        </TextBlock>
+
                     </StackPanel>
 
                 </Grid>
+
+
+
+
             </controls:PivotItem>
             <controls:PivotItem Header="Tweets">
                 <Grid/>

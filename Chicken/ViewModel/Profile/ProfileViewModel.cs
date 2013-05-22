@@ -11,45 +11,44 @@ using System.Windows.Shapes;
 using System.Windows.Navigation;
 using Chicken.Service;
 using Microsoft.Phone.Controls;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModel : NavigationViewModelBase
     {
-        UserProfileViewModel userProfileViewModel;
-        public UserProfileViewModel UserProfileViewModel
-        {
-            get
-            {
-                return userProfileViewModel;
-            }
-            set
-            {
-                userProfileViewModel = value;
-                RaisePropertyChanged("UserProfileViewModel");
-            }
-        }
-
         #region services
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
+        #region properties
+        string userId;
+        #endregion
+
         public ProfileViewModel()
         {
-
+            var baseViewModelList = new List<ViewModelBase>
+            {
+                new ProfilePivotViewModel(),
+            };
+            this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string id = NavigationContext.QueryString["id"];
-            var userProfile = TweetService.GetUserProfile(id);
-            this.UserProfileViewModel = new UserProfileViewModel(userProfile);
-
+            userId = NavigationContext.QueryString["id"];
         }
 
         public void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
- 
+            var pivot = sender as Pivot;
+            int index = pivot.SelectedIndex;
+            if (!PivotItems[index].IsLoaded)
+            {
+                (PivotItems[index] as ProfileViewModelBase).UserId = userId;
+                PivotItems[index].Refresh();
+            }
         }
     }
 }

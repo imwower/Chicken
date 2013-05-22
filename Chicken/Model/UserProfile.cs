@@ -15,7 +15,7 @@ namespace Chicken.Model
     public class UserProfile
     {
         [JsonProperty("id")]
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Name { get; set; }
 
@@ -26,5 +26,9 @@ namespace Chicken.Model
         public string ProfileImage { get; set; }
 
         public string Description { get; set; }
+
+        public string Location { get; set; }
+
+        public string Url { get; set; }
     }
 }

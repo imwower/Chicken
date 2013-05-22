@@ -76,6 +76,7 @@
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="ViewModel\Profile\ProfilePivotViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>

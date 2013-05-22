@@ -25,6 +25,9 @@ namespace Chicken.View
             InitializeComponent();
             profileViewModel = new ProfileViewModel();
             this.MainPivot.DataContext = profileViewModel;
+            this.ProfilePivotItem.DataContext = profileViewModel.PivotItems[0];
+            //this.
+
             this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
         }
 

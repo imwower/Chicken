@@ -20,7 +20,7 @@
     </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="chicken"
+        <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="{Binding Path=Title}"
                       HeaderTemplate="{StaticResource PivotHeaderTemplate}">
             <ctrls:HomePivotItem x:Name="HomePivotItem" Header="{Binding Path=Header}" ListBoxItems="{Binding Path=TweetList}" />
             <ctrls:HomePivotItem x:Name="MentionsPivotItem" Header="{Binding Path=Header}" ListBoxItems="{Binding Path=TweetList}" />

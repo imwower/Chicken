@@ -77,11 +77,17 @@ namespace Chicken.ViewModel.Home
         /// <param name="sender">int</param>
         private void ClickDispatcher(object sender)
         {
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
+            IsLoading = true;
+            timer = new Timer(
+                (obj) =>
                 {
-                    NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + sender);
-                });
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + sender);
+                            IsLoading = false;
+                        });
+                }, null, 300, -1);
         }
         #endregion
 

@@ -12,7 +12,7 @@ using Chicken.Model;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class UserProfileViewModel : NotificationObject
+    public class UserProfileViewModel
     {
         UserProfile userProfile;
 
@@ -37,7 +37,7 @@ namespace Chicken.ViewModel.Profile
             }
         }
 
-        public int Id
+        public string Id
         {
             get
             {
@@ -58,6 +58,22 @@ namespace Chicken.ViewModel.Profile
             get
             {
                 return userProfile.Description;
+            }
+        }
+
+        public string Location
+        {
+            get
+            {
+                return userProfile.Location;
+            }
+        }
+
+        public string Url
+        {
+            get
+            {
+                return userProfile.Url;
             }
         }
     }

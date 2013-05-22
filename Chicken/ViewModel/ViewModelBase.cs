@@ -90,6 +90,7 @@ namespace Chicken.ViewModel
         #region virtual method
         public virtual void Refresh()
         {
+            IsLoaded = true;
         }
         #endregion
     }

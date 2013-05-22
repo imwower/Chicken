@@ -68,20 +68,68 @@
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
+        <Style x:Name="TextMedium" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+
+        <!--Content default is Medium-->
         <Style x:Name="TextContent" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
-        <Style x:Name="TextContentNormalCenter" TargetType="TextBlock">
+        <!--Content Normal-->
+        <Style x:Name="TextContentNormal" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
             <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
-        <Style x:Name="HyperLinkText" TargetType="HyperlinkButton">
+        <!--Content Normal Center-->
+        <Style x:Name="TextContentNormalCenter" TargetType="TextBlock" BasedOn="{StaticResource TextContentNormal}">
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+        <!--HyperLink Text default-->
+        <Style x:Name="HyperLinkText" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="TextDecorations" Value="Underline" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
-        <Style x:Name="HyperLinkTextSmall" TargetType="HyperlinkButton">
+        <!--HyperLink Text small-->
+        <Style x:Name="HyperLinkTextSmall" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+            <Setter Property="Foreground" Value="Gray" />
+            <Setter Property="TextAlignment" Value="Right" />
+        </Style>
+        <!--HyperLink Button default style-->
+        <Style TargetType="HyperlinkButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="HyperlinkButton">
+                        <ContentPresenter Content="{TemplateBinding Content}">
+                            <ContentPresenter.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Style="{StaticResource HyperLinkText}" />
+                                </DataTemplate>
+                            </ContentPresenter.ContentTemplate>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Name="HyperLinkSmall" TargetType="HyperlinkButton">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="HyperlinkButton">
+                        <ContentPresenter Content="{TemplateBinding Content}">
+                            <ContentPresenter.ContentTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Style="{StaticResource HyperLinkTextSmall}" />
+                                </DataTemplate>
+                            </ContentPresenter.ContentTemplate>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
         <!--styles-->
 
@@ -128,10 +176,14 @@
                     <!--text-->
                     <TextBlock Grid.Row="1" Text="{Binding Text}" Style="{StaticResource TextContent}" />
                     <!--date-->
-                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
-                    <TextBlock Grid.Row="2" Text="retweet count" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="2" Text="retweet count" HorizontalAlignment="Right" />
                     <!--via-->
-                    <HyperlinkButton Grid.Row="3" Content="{Binding Path=Source}" NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank" Style="{StaticResource HyperLinkTextSmall}" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                    <HyperlinkButton Grid.Row="3" Content="{Binding Path=Source}"
+                                     NavigateUri="{Binding Path=SourceUrl}"
+                                     TargetName="_blank"
+                                     Style="{StaticResource HyperLinkSmall}"
+                                     HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
                 </Grid>
             </Grid>
         </DataTemplate>

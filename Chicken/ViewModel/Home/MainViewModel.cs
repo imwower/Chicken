@@ -16,42 +16,14 @@ namespace Chicken.ViewModel.Home
 {
     public class MainViewModel : NavigationViewModelBase
     {
-        private string header;
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-            set
-            {
-                header = value;
-                RaisePropertyChanged("Header");
-            }
-        }
-
-        private ObservableCollection<HomeViewModelBase> pivotItems;
-        public ObservableCollection<HomeViewModelBase> PivotItems
-        {
-            get
-            {
-                return pivotItems;
-            }
-            set
-            {
-                pivotItems = value;
-                RaisePropertyChanged("PivotItems");
-            }
-        }
-
         public MainViewModel()
         {
-            var baseViewModelList = new List<HomeViewModelBase>
+            var baseViewModelList = new List<ViewModelBase>
             {
                 new HomeViewModel(),
                 new MentionsViewModel(),
             };
-            PivotItems = new ObservableCollection<HomeViewModelBase>(baseViewModelList);
+            PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
         public void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
@@ -61,7 +33,6 @@ namespace Chicken.ViewModel.Home
             if (!PivotItems[index].IsLoaded)
             {
                 PivotItems[index].Refresh();
-                PivotItems[index].IsLoaded = true;
             }
         }
     }

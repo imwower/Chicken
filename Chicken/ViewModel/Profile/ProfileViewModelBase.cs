@@ -8,39 +8,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class ProfileViewModelBase : NotificationObject
+    public class ProfileViewModelBase : ViewModelBase
     {
-        private string header;
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-            set
-            {
-                header = value;
-                RaisePropertyChanged("Header");
-            }
-        }
+        #region properties
+        public string UserId;
+        #endregion
 
-        private bool isLoading;
-        public bool IsLoading
-        {
-            get
-            {
-                return isLoading;
-            }
-            set
-            {
-                isLoading = value;
-                RaisePropertyChanged("IsLoading");
-            }
-        }
-
+        #region binding Command
         //public ICommand RefreshCommand
         //{
         //    get
@@ -48,5 +26,29 @@ namespace Chicken.ViewModel.Profile
         //        return new DelegateCommand(RefreshDispatcher);
         //    }
         //}
+        #endregion
+
+        #region dispatcher
+        //private void RefreshDispatcher(object parameter)
+        //{
+        //    IsLoading = true;
+        //    timer = new Timer(
+        //        (obj) =>
+        //        {
+        //            Deployment.Current.Dispatcher.BeginInvoke(
+        //                () =>
+        //                {
+        //                    Refresh(parameter as string);
+        //                    IsLoading = false;
+        //                });
+        //        }, null, 1000, -1);
+        //}
+        #endregion
+
+        #region virtual method
+        //public virtual void Refresh(string userId)
+        //{
+        //}
+        #endregion
     }
 }
