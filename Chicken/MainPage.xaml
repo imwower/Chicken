@@ -6,8 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
-    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:local ="clr-namespace:Chicken.ViewModel"
+    xmlns:ctrls ="clr-namespace:Chicken.Controls"
     x:Class="Chicken.MainPage"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -20,9 +21,9 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="chicken"
-                        HeaderTemplate="{StaticResource PivotHeaderTemplate}"
-                        ItemTemplate="{StaticResource PivotItemTemplate}"
-                        ItemsSource="{Binding PivotList}">
+                      HeaderTemplate="{StaticResource PivotHeaderTemplate}">
+            <ctrls:HomePivotItem x:Name="HomePivotItem" Header="{Binding Path=Header}" ListBoxItems="{Binding Path=TweetList}" />
+            <ctrls:HomePivotItem x:Name="MentionsPivotItem" Header="{Binding Path=Header}" ListBoxItems="{Binding Path=TweetList}" />
         </controls:Pivot>
     </Grid>
 </phone:PhoneApplicationPage>

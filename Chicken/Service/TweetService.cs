@@ -39,7 +39,6 @@ namespace Chicken.Service
             return tweets;
         }
 
-
         public List<Tweet> GetNewMentions()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/mentions.json", UriKind.Relative));
@@ -56,6 +55,16 @@ namespace Chicken.Service
         public List<Tweet> GetOldMentions()
         {
             return GetNewMentions();
+        }
+
+        public UserProfile GetUserProfile(string id)
+        {
+            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/userProfile.json", UriKind.Relative));
+            StreamReader streamReader = new StreamReader(reader.Stream);
+            string output = streamReader.ReadToEnd();
+            var userProfile = JsonConvert.DeserializeObject<UserProfile>(output);
+            userProfile.ScreenName = "@" + userProfile.ScreenName;
+            return userProfile;
         }
     }
 }

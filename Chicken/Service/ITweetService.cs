@@ -13,5 +13,7 @@ namespace Chicken.Service
 
         List<Tweet> GetNewMentions();
         List<Tweet> GetOldMentions();
+
+        UserProfile GetUserProfile(string id);
     }
 }

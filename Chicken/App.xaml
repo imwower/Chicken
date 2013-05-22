@@ -64,9 +64,18 @@
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
+        <Style x:Name="TextNormal" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
         <Style x:Name="TextContent" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <Style x:Name="TextContentNormalCenter" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
         <Style x:Name="HyperLinkText" TargetType="HyperlinkButton">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
@@ -90,13 +99,13 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction
-                                Command="{Binding DataContext.ClickCommand, ElementName=autoListBox}"
-                                CommandParameter="{Binding UserViewModel.Id}" />
+                                Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
+                                CommandParameter="{Binding User.Id}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                     <Button.Template>
                         <ControlTemplate>
-                            <Image Source="{Binding UserViewModel.ProfileImage}"  />
+                            <Image Source="{Binding User.ProfileImage}"  />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -115,7 +124,7 @@
                         <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkText}" />
                     </Grid.Resources>
                     <!--user name-->
-                    <TextBlock Grid.Row="0" Text="{Binding UserViewModel.Name}" />
+                    <TextBlock Grid.Row="0" Text="{Binding User.Name}" />
                     <!--text-->
                     <TextBlock Grid.Row="1" Text="{Binding Text}" Style="{StaticResource TextContent}" />
                     <!--date-->
@@ -128,31 +137,41 @@
         </DataTemplate>
 
         <DataTemplate x:Name="PivotHeaderTemplate">
-            <TextBlock Text="{Binding Path=Header}" />
+            <TextBlock Text="{Binding}" />
         </DataTemplate>
 
         <!--Pivot Item-->
-        <DataTemplate x:Key="PivotItemTemplate">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="12" />
-                </Grid.RowDefinitions>
-                <ctrls:AutoListBox Grid.Row="0" x:Name="autoListBox"
-                                   ItemsSource="{Binding Path= TweetList}"
-                         ItemTemplate="{StaticResource TweetTemplate}">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="VerticalCompressionTopHandler">
-                            <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
-                        </i:EventTrigger>
-                        <i:EventTrigger EventName="VerticalCompressionBottomHandler">
-                            <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                </ctrls:AutoListBox>
-                <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource VisibilityConverter}}" />
-            </Grid>
-        </DataTemplate>
+        <!--Home Pivot Item Style-->
+        <Style TargetType="ctrls:HomePivotItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ctrls:HomePivotItem">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="12" />
+                            </Grid.RowDefinitions>
+                            <ctrls:AutoListBox Grid.Row="0" x:Name="AutoListBox"
+                                               ItemsSource="{TemplateBinding ListBoxItems}"
+                                               ItemTemplate="{StaticResource TweetTemplate}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="VerticalCompressionTopHandler">
+                                        <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                                        <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ctrls:AutoListBox>
+                            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource VisibilityConverter}}" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+
 
     </Application.Resources>
 
