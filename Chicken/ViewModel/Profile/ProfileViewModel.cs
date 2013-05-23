@@ -31,6 +31,7 @@ namespace Chicken.ViewModel.Profile
             var baseViewModelList = new List<ViewModelBase>
             {
                 new ProfilePivotViewModel(),
+                new UserTweetsViewModel(),
             };
             this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
@@ -48,6 +49,7 @@ namespace Chicken.ViewModel.Profile
             {
                 (PivotItems[index] as ProfileViewModelBase).UserId = userId;
                 PivotItems[index].Refresh();
+                PivotItems[index].IsLoaded = true;
             }
         }
     }

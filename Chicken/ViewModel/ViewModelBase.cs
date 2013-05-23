@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Threading;
+using Chicken.Service;
 
 namespace Chicken.ViewModel
 {
@@ -68,6 +69,22 @@ namespace Chicken.ViewModel
                 return new DelegateCommand(RefreshDispatcher);
             }
         }
+
+        public ICommand LoadCommand
+        {
+            get
+            {
+                return new DelegateCommand(LoadDispatcher);
+            }
+        }
+
+        public ICommand ClickCommand
+        {
+            get
+            {
+                return new DelegateCommand(ClickDispatcher);
+            }
+        }
         #endregion
 
         #region dispatcher
@@ -85,12 +102,50 @@ namespace Chicken.ViewModel
                         });
                 }, null, 1000, -1);
         }
+
+        private void LoadDispatcher()
+        {
+            IsLoading = true;
+            timer = new Timer(
+                (obj) =>
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            Load();
+                            IsLoading = false;
+                        });
+                }, null, 1000, -1);
+        }
+
+        private void ClickDispatcher(object sender)
+        {
+            IsLoading = true;
+            timer = new Timer(
+                (obj) =>
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            Click(sender);
+                            IsLoading = false;
+                        });
+                }, null, 300, -1);
+        }
         #endregion
 
         #region virtual method
         public virtual void Refresh()
         {
-            IsLoaded = true;
+        }
+
+        public virtual void Load()
+        {
+        }
+
+        public virtual void Click(object parameter)
+        {
+            NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + parameter);
         }
         #endregion
     }

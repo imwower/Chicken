@@ -15,40 +15,16 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModelBase : ViewModelBase
     {
         #region properties
-        public string UserId;
+        public string UserId { get; set; }
         #endregion
 
         #region binding Command
-        //public ICommand RefreshCommand
-        //{
-        //    get
-        //    {
-        //        return new DelegateCommand(RefreshDispatcher);
-        //    }
-        //}
         #endregion
 
         #region dispatcher
-        //private void RefreshDispatcher(object parameter)
-        //{
-        //    IsLoading = true;
-        //    timer = new Timer(
-        //        (obj) =>
-        //        {
-        //            Deployment.Current.Dispatcher.BeginInvoke(
-        //                () =>
-        //                {
-        //                    Refresh(parameter as string);
-        //                    IsLoading = false;
-        //                });
-        //        }, null, 1000, -1);
-        //}
         #endregion
 
         #region virtual method
-        //public virtual void Refresh(string userId)
-        //{
-        //}
         #endregion
     }
 }

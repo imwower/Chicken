@@ -22,6 +22,7 @@ namespace Chicken.ViewModel.Home
             {
                 new HomeViewModel(),
                 new MentionsViewModel(),
+                new DMsPivotViewModel(),
             };
             PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
@@ -33,6 +34,7 @@ namespace Chicken.ViewModel.Home
             if (!PivotItems[index].IsLoaded)
             {
                 PivotItems[index].Refresh();
+                PivotItems[index].IsLoaded = true;
             }
         }
     }

@@ -29,6 +29,7 @@ namespace Chicken
             this.MainPivot.DataContext = mainViewModel;
             this.HomePivotItem.DataContext = mainViewModel.PivotItems[0];
             this.MentionsPivotItem.DataContext = mainViewModel.PivotItems[1];
+            this.DMsPivotItem.DataContext = mainViewModel.PivotItems[2];
         }
 
         void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)

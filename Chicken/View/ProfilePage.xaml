@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:ctrls ="clr-namespace:Chicken.Controls"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
@@ -21,7 +22,6 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextMedium}">
@@ -44,13 +44,13 @@
                         </Grid.Background>
                         <!--Profile Image-->
                         <Image Grid.Row="0" Source="{Binding UserProfileViewModel.ProfileImage}"
-                           Width="120" Height="120" Margin="0,-40,0,0">
+                           Width="124" Height="124" Margin="0,-40,0,0">
                             <Image.Clip>
-                                <RectangleGeometry Rect="0,0,120,120" RadiusX="6" RadiusY="6" />
+                                <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                             </Image.Clip>
                         </Image>
                         <!--Name-->
-                        <TextBlock Grid.Row="1" Text="{Binding UserProfileViewModel.Name}" />
+                        <TextBlock Grid.Row="1" Margin="0,-10,0,0" Text="{Binding UserProfileViewModel.Name}" />
                         <!--Screen Name-->
                         <TextBlock Grid.Row="2" Text="{Binding UserProfileViewModel.ScreenName}" />
                         <!--Location-->
@@ -58,7 +58,7 @@
                         <!--Url-->
                         <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
                                      NavigateUri="{Binding Path=UserProfileViewModel.Url}"
-                                     TargetName="_blank" Style="{StaticResource HyperLinkNoUnderline}">
+                                     TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                         </HyperlinkButton>
                         <!--Tweets, Following, Followers, Buttons-->
                         <Grid Grid.Row="5" HorizontalAlignment="Stretch">
@@ -85,37 +85,36 @@
                                 <TextBlock >
                             233
                             <LineBreak />
-                        <Run Text="FAVOURITES" />
+                        <Run Text="FOLLOWING" />
                                 </TextBlock>
                             </Border>
                             <Border Grid.Column="2" BorderBrush="Silver" BorderThickness="0,1,1,1">
                                 <TextBlock >
                             9009  
                             <LineBreak />
-                           <Run Text="FOLLOWING" />
+                           <Run Text="FOLLOWERS" />
                                 </TextBlock>
                             </Border>
                             <Border Grid.Column="3" BorderBrush="Silver" BorderThickness="0,1,1,1">
                                 <TextBlock >
                            900  
                             <LineBreak />
-                               FOLLOWERS
+                               FAVOURITES
                                 </TextBlock>
                             </Border>
                         </Grid>
                     </Grid>
                     <!--Description-->
-                    <ScrollViewer Grid.Row="6" VerticalAlignment="Bottom" HorizontalScrollBarVisibility="Disabled">
+                    <ScrollViewer Grid.Row="1" VerticalContentAlignment="Stretch"
+                                  VerticalAlignment="Center" HorizontalScrollBarVisibility="Disabled">
                         <ScrollViewer.Content>
                             <TextBlock Text="{Binding UserProfileViewModel.Description}" Style="{StaticResource TextContentCenter}" />
                         </ScrollViewer.Content>
                     </ScrollViewer>
                 </Grid>
-
             </controls:PivotItem>
-            <controls:PivotItem Header="Tweets">
-                <Grid/>
-            </controls:PivotItem>
+            <ctrls:HomePivotItem x:Name="UserTweetsPivotItem" Header="{Binding Path=Header}" 
+                                 ListBoxItems="{Binding Path=TweetList}" />
             <controls:PivotItem Header="Following">
                 <Grid/>
             </controls:PivotItem>

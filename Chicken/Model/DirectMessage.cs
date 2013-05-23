@@ -9,22 +9,18 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
-using Chicken.Common;
 
 namespace Chicken.Model
 {
-    public class Tweet
-    {
-        public User User { get; set; }
+    public class DirectMessage
+    {  
+        public string Id { get; set; }
 
         public string Text { get; set; }
 
+        public User Sender { get; set; }
+
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
-
-        [JsonProperty("source")]
-        public string Source { get; set; }
-
-        public string Id { get; set; }
     }
 }

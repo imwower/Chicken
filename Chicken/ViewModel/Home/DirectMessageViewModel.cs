@@ -8,15 +8,14 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
-using Chicken.Model;
 using Chicken.Common;
-using System.Diagnostics;
+using Chicken.Model;
 
 namespace Chicken.ViewModel.Home
 {
-    public class TweetViewModel
+    public class DirectMessageViewModel
     {
-        private Tweet tweet;
+        private DirectMessage directMessage;
 
         private UserViewModel user;
         public UserViewModel User
@@ -27,17 +26,17 @@ namespace Chicken.ViewModel.Home
             }
         }
 
-        public TweetViewModel(Tweet tweet)
+        public DirectMessageViewModel(DirectMessage directMessage)
         {
-            this.tweet = tweet;
-            this.user = new UserViewModel(tweet.User);
+            this.directMessage = directMessage;
+            this.user = new UserViewModel(directMessage.Sender);
         }
 
         public string Id
         {
             get
             {
-                return tweet.Id;
+                return directMessage.Id;
             }
         }
 
@@ -45,7 +44,7 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
-                return tweet.Text;
+                return directMessage.Text;
             }
         }
 
@@ -53,23 +52,7 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
-                return tweet.CreatedDate.ParseToDateTime();
-            }
-        }
-
-        public string Source
-        {
-            get
-            {
-                return tweet.Source.ParseToSource();
-            }
-        }
-
-        public Uri SourceUrl
-        {
-            get
-            {
-                return new Uri(tweet.Source.ParseToSourceUrl(), UriKind.Absolute);
+                return directMessage.CreatedDate.ParseToDateTime();
             }
         }
     }

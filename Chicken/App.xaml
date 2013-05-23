@@ -42,13 +42,14 @@
         </Style>
 
         <!--HyperLink Text without underline-->
-        <Style x:Name="HyperLinkTextNoUnderline" TargetType="TextBlock">
+        <Style x:Name="HyperLinkTextNoUnderlineCenter" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="Foreground" Value="#F9F9F9" />
+            <Setter Property="TextAlignment" Value="Center" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
         <!--HyperLink Text default-->
-        <Style x:Name="HyperLinkText" TargetType="TextBlock" BasedOn="{StaticResource HyperLinkTextNoUnderline}">
+        <Style x:Name="HyperLinkText" TargetType="TextBlock" BasedOn="{StaticResource HyperLinkTextNoUnderlineCenter}">
             <Setter Property="TextDecorations" Value="Underline" />
         </Style>
         <!--HyperLink Text small-->
@@ -73,14 +74,14 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <Style x:Name="HyperLinkNoUnderline" TargetType="HyperlinkButton">
+        <Style x:Name="HyperLinkNoUnderlineCenter" TargetType="HyperlinkButton">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="HyperlinkButton">
                         <ContentPresenter Content="{TemplateBinding Content}">
                             <ContentPresenter.ContentTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding}" Style="{StaticResource HyperLinkTextNoUnderline}" />
+                                    <TextBlock Text="{Binding}" Style="{StaticResource HyperLinkTextNoUnderlineCenter}" />
                                 </DataTemplate>
                             </ContentPresenter.ContentTemplate>
                         </ContentPresenter>

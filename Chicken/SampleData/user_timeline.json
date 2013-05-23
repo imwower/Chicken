@@ -1,0 +1,400 @@
+﻿[
+    {
+        "created_at": "Wed May 22 16:15:13 +0000 2013", 
+        "id": 337240239670190100, 
+        "id_str": "337240239670190080", 
+        "text": "我一直这么想的。。→_→", 
+        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 158678846, 
+            "id_str": "158678846", 
+            "name": "别怪姐姐黑", 
+            "screen_name": "heejunjin", 
+            "location": "魔都", 
+            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
+            "url": "http://heejunjin.blogspot.com/", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://heejunjin.blogspot.com/", 
+                            "expanded_url": null, 
+                            "indices": [
+                                0, 
+                                30
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 9471, 
+            "friends_count": 1032, 
+            "listed_count": 207, 
+            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
+            "favourites_count": 96, 
+            "utc_offset": 28800, 
+            "time_zone": "Hong Kong", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 108584, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
+            "profile_link_color": "005C99", 
+            "profile_sidebar_border_color": "F07AC1", 
+            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed May 22 16:13:42 +0000 2013", 
+        "id": 337239860001783800, 
+        "id_str": "337239860001783809", 
+        "text": "怕毛，没人fo你！ RT @AshleyKit: 那个谁在发推，我不敢转推。。怕看到tl又讨论。。。。blablabla", 
+        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 337239743337205760, 
+        "in_reply_to_status_id_str": "337239743337205761", 
+        "in_reply_to_user_id": 115855802, 
+        "in_reply_to_user_id_str": "115855802", 
+        "in_reply_to_screen_name": "AshleyKit", 
+        "user": {
+            "id": 158678846, 
+            "id_str": "158678846", 
+            "name": "别怪姐姐黑", 
+            "screen_name": "heejunjin", 
+            "location": "魔都", 
+            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
+            "url": "http://heejunjin.blogspot.com/", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://heejunjin.blogspot.com/", 
+                            "expanded_url": null, 
+                            "indices": [
+                                0, 
+                                30
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 9471, 
+            "friends_count": 1032, 
+            "listed_count": 207, 
+            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
+            "favourites_count": 96, 
+            "utc_offset": 28800, 
+            "time_zone": "Hong Kong", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 108584, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
+            "profile_link_color": "005C99", 
+            "profile_sidebar_border_color": "F07AC1", 
+            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "AshleyKit", 
+                    "name": "Ashley", 
+                    "id": 115855802, 
+                    "id_str": "115855802", 
+                    "indices": [
+                        13, 
+                        23
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed May 22 16:07:44 +0000 2013", 
+        "id": 337238358642270200, 
+        "id_str": "337238358642270208", 
+        "text": "我有list。。 RT @aibubu7: 推特真是好地方啊。。能包容姑娘们的各种 #作 ，顺便征集 #作友联盟 <(￣ˇ￣)/", 
+        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 337238127544520700, 
+        "in_reply_to_status_id_str": "337238127544520705", 
+        "in_reply_to_user_id": 303090240, 
+        "in_reply_to_user_id_str": "303090240", 
+        "in_reply_to_screen_name": "aibubu7", 
+        "user": {
+            "id": 158678846, 
+            "id_str": "158678846", 
+            "name": "别怪姐姐黑", 
+            "screen_name": "heejunjin", 
+            "location": "魔都", 
+            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
+            "url": "http://heejunjin.blogspot.com/", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://heejunjin.blogspot.com/", 
+                            "expanded_url": null, 
+                            "indices": [
+                                0, 
+                                30
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 9471, 
+            "friends_count": 1032, 
+            "listed_count": 207, 
+            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
+            "favourites_count": 96, 
+            "utc_offset": 28800, 
+            "time_zone": "Hong Kong", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 108584, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
+            "profile_link_color": "005C99", 
+            "profile_sidebar_border_color": "F07AC1", 
+            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "作", 
+                    "indices": [
+                        42, 
+                        44
+                    ]
+                }, 
+                {
+                    "text": "作友联盟", 
+                    "indices": [
+                        51, 
+                        56
+                    ]
+                }
+            ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "aibubu7", 
+                    "name": "呆呆妹", 
+                    "id": 303090240, 
+                    "id_str": "303090240", 
+                    "indices": [
+                        12, 
+                        20
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed May 22 16:07:05 +0000 2013", 
+        "id": 337238193680289800, 
+        "id_str": "337238193680289792", 
+        "text": "@Lamiauu @gomixo 噗。。就是这个点！", 
+        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 337237830604554240, 
+        "in_reply_to_status_id_str": "337237830604554243", 
+        "in_reply_to_user_id": 115961597, 
+        "in_reply_to_user_id_str": "115961597", 
+        "in_reply_to_screen_name": "Lamiauu", 
+        "user": {
+            "id": 158678846, 
+            "id_str": "158678846", 
+            "name": "别怪姐姐黑", 
+            "screen_name": "heejunjin", 
+            "location": "魔都", 
+            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
+            "url": "http://heejunjin.blogspot.com/", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://heejunjin.blogspot.com/", 
+                            "expanded_url": null, 
+                            "indices": [
+                                0, 
+                                30
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 9471, 
+            "friends_count": 1032, 
+            "listed_count": 207, 
+            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
+            "favourites_count": 96, 
+            "utc_offset": 28800, 
+            "time_zone": "Hong Kong", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 108584, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
+            "profile_link_color": "005C99", 
+            "profile_sidebar_border_color": "F07AC1", 
+            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Lamiauu", 
+                    "name": "纋寳 Lamia", 
+                    "id": 115961597, 
+                    "id_str": "115961597", 
+                    "indices": [
+                        0, 
+                        8
+                    ]
+                }, 
+                {
+                    "screen_name": "gomixo", 
+                    "name": "喵兔｜鱼丸&粗面", 
+                    "id": 46080891, 
+                    "id_str": "46080891", 
+                    "indices": [
+                        9, 
+                        16
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }
+]

@@ -38,63 +38,12 @@ namespace Chicken.ViewModel.Home
         public HomeViewModelBase() { }
 
         #region binding Command
-        public ICommand LoadCommand
-        {
-            get
-            {
-                return new DelegateCommand(LoadDispatcher);
-            }
-        }
-
-        public ICommand ClickCommand
-        {
-            get
-            {
-                return new DelegateCommand(ClickDispatcher);
-            }
-        }
         #endregion
 
         #region dispatcher
-        private void LoadDispatcher()
-        {
-            IsLoading = true;
-            timer = new Timer(
-                (obj) =>
-                {
-                    Deployment.Current.Dispatcher.BeginInvoke(
-                        () =>
-                        {
-                            Load();
-                            IsLoading = false;
-                        });
-                }, null, 1000, -1);
-        }
-
-        /// <summary>
-        /// sender is User's Id
-        /// </summary>
-        /// <param name="sender">int</param>
-        private void ClickDispatcher(object sender)
-        {
-            IsLoading = true;
-            timer = new Timer(
-                (obj) =>
-                {
-                    Deployment.Current.Dispatcher.BeginInvoke(
-                        () =>
-                        {
-                            NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + sender);
-                            IsLoading = false;
-                        });
-                }, null, 300, -1);
-        }
         #endregion
 
         #region virtual method
-        public virtual void Load()
-        {
-        }
         #endregion
     }
 }
