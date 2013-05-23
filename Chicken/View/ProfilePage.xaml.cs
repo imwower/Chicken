@@ -13,6 +13,7 @@ using Microsoft.Phone.Controls;
 using System.Windows.Navigation;
 using Chicken.ViewModel;
 using Chicken.ViewModel.Profile;
+using Chicken.Common;
 
 namespace Chicken.View
 {

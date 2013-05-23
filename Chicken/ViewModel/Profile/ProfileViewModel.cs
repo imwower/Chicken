@@ -13,11 +13,26 @@ using Chicken.Service;
 using Microsoft.Phone.Controls;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using Chicken.Common;
 
 namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModel : NavigationViewModelBase
     {
+        private int selectedIndex = 1;
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+                RaisePropertyChanged("SelectedIndex");
+            }
+        }
+
         #region services
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
@@ -38,7 +53,7 @@ namespace Chicken.ViewModel.Profile
 
         public override void OnNavigatedTo(NavigationEventArgs e)
         {
-            userId = NavigationContext.QueryString["id"];
+            userId = NavigationContext.QueryString[TwitterHelper.USER_ID];
         }
 
         public void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)

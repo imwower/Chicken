@@ -23,7 +23,7 @@ namespace Chicken.Service
             string url = TwitterHelper.GenerateUrlParams(TwitterHelper.STATUSES_HOMETIMELINE);
             HandleWebRequest<T>(url, callBack);
         }
-        
+
         public List<Tweet> GetOldTweets()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
@@ -105,7 +105,7 @@ namespace Chicken.Service
             {
                 parameters = new Dictionary<string, object>();
             }
-            parameters.Add("user_id", userId);
+            parameters.Add(TwitterHelper.USER_ID, userId);
             string url = TwitterHelper.GenerateUrlParams(TwitterHelper.USERS_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }

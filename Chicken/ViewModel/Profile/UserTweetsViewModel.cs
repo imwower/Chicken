@@ -11,6 +11,8 @@ using System.Windows.Shapes;
 using Chicken.Service;
 using System.Collections.ObjectModel;
 using Chicken.ViewModel.Home;
+using System.Collections.Generic;
+using Chicken.Common;
 
 namespace Chicken.ViewModel.Profile
 {
@@ -52,6 +54,16 @@ namespace Chicken.ViewModel.Profile
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
             base.Refreshed();
+        }
+
+        public override void Click(object parameter)
+        {
+            IsLoading = false;
+            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            parameters.Add(TwitterHelper.USER_ID, parameter);
+            parameters.Add("MainPivot." + TwitterHelper.PIVOTITEMSELECTEDINDEX, 0);
+            string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
+            TwitterHelper.NavigateTo(uri);
         }
     }
 }

@@ -154,8 +154,6 @@ namespace Chicken.ViewModel
 
         public virtual void Click(object parameter)
         {
-            IsLoading = false;
-            NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + parameter);
         }
         #endregion
     }
