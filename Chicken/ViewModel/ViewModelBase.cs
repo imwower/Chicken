@@ -44,17 +44,17 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("IsLoading");
             }
         }
-        private bool isLoaded;
-        public bool IsLoaded
+        private bool isInited;
+        public bool IsInited
         {
             get
             {
-                return isLoaded;
+                return isInited;
             }
             set
             {
-                isLoaded = value;
-                RaisePropertyChanged("IsLoaded");
+                isInited = value;
+                RaisePropertyChanged("IsInited");
             }
         }
         #endregion
@@ -98,7 +98,6 @@ namespace Chicken.ViewModel
                         () =>
                         {
                             Refresh();
-                            IsLoading = false;
                         });
                 }, null, 1000, -1);
         }
@@ -113,7 +112,6 @@ namespace Chicken.ViewModel
                         () =>
                         {
                             Load();
-                            IsLoading = false;
                         });
                 }, null, 1000, -1);
         }
@@ -128,7 +126,6 @@ namespace Chicken.ViewModel
                         () =>
                         {
                             Click(sender);
-                            IsLoading = false;
                         });
                 }, null, 300, -1);
         }
@@ -137,14 +134,27 @@ namespace Chicken.ViewModel
         #region virtual method
         public virtual void Refresh()
         {
+
+        }
+
+        public virtual void Refreshed()
+        {
+            IsLoading = false;
+            IsInited = true;
         }
 
         public virtual void Load()
         {
         }
 
+        public virtual void Loaded()
+        {
+            IsLoading = false;
+        }
+
         public virtual void Click(object parameter)
         {
+            IsLoading = false;
             NavigationService.NavigateTo(NavigationService.ProfilePage, "?id=" + parameter);
         }
         #endregion

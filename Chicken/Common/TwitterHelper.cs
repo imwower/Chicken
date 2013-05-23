@@ -10,11 +10,22 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Text;
+using System.Collections.Generic;
 
 namespace Chicken.Common
 {
+    public enum HttpMethodType
+    {
+        GET = 0,
+        POST = 1,
+    }
+
     public static class TwitterHelper
     {
+        static string api = "https://wxt2005.org/tapi/o/W699Q6/";
+        const string USERS = "users/show.json?";
+
         public static string ParseToDateTime(this string date)
         {
             var year = date.Substring(25, 5);
@@ -42,6 +53,12 @@ namespace Chicken.Common
             string result = reg.Match(source).Groups["link"].Value;
             Debug.WriteLine(result);
             return result;
+        }
+
+        public static string GenerateUrlParams(IDictionary<string, object> parameters = null)
+        {
+            StringBuilder sb = new StringBuilder();
+            return sb.ToString();
         }
     }
 }

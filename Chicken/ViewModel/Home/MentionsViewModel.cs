@@ -34,6 +34,7 @@ namespace Chicken.ViewModel.Home
                 tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
+            base.Refreshed();
         }
 
         public override void Load()
@@ -43,6 +44,7 @@ namespace Chicken.ViewModel.Home
             {
                 TweetList.Add(new TweetViewModel(tweet));
             }
+            base.Loaded();
         }
     }
 }

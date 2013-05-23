@@ -14,12 +14,12 @@ namespace Chicken.Service
 {
     public class TweetServiceManger
     {
-        private static ITweetService tweetService = new TweetService();
+        //private static ITweetService tweetService = new TweetService();
         public static ITweetService TweetService
         {
             get
             {
-                return tweetService;
+                return new TweetService();
             }
         }
     }

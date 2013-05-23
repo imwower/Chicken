@@ -31,10 +31,10 @@ namespace Chicken.ViewModel.Home
         {
             var pivot = sender as Pivot;
             int index = pivot.SelectedIndex;
-            if (!PivotItems[index].IsLoaded)
+            if (!PivotItems[index].IsInited)
             {
                 PivotItems[index].Refresh();
-                PivotItems[index].IsLoaded = true;
+                PivotItems[index].IsInited = true;
             }
         }
     }

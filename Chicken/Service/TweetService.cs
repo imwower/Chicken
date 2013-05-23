@@ -12,21 +12,24 @@ using Chicken.Model;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.IO;
+using Chicken.Common;
 
 namespace Chicken.Service
 {
     public class TweetService : ITweetService
     {
-        string api = "https://wxt2005.org/tapi/o/W699Q6/";
+        static string api = "https://wxt2005.org/tapi/o/W699Q6/";
+        static string users = "users/show.json?";
 
-        public List<Tweet> GetNewTweets()
+        public List<Tweet> GetLastedTweets()
         {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            return tweets;
+            
         }
+        public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public List<Tweet> GetOldTweets()
         {
@@ -57,53 +60,6 @@ namespace Chicken.Service
         public List<Tweet> GetOldMentions()
         {
             return GetNewMentions();
-        }
-
-        public UserProfile GetUserProfile(string userId)
-        {
-            //https://wxt2005.org/tapi/o/W699Q6/users/show.json?user_id=158678846
-            //var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/userProfile.json", UriKind.Relative));
-            //StreamReader streamReader = new StreamReader(reader.Stream);
-            //string output = streamReader.ReadToEnd();
-            //var userProfile = JsonConvert.DeserializeObject<UserProfile>(output);
-            //userProfile.ScreenName = "@" + userProfile.ScreenName;
-            //return userProfile;
-
-            //var request = (HttpWebRequest)WebRequest.Create("https://wxt2005.org/tapi/o/W699Q6/statuses/show.json?id=210462857140252672");
-            //request.Method = "GET";
-            //request.ContentType = "application/x-www-form-urlencoded";
-            //string result = string.Empty;
-            //var response = request.GetResponse();
-
-            //using (var streamReader = new StreamReader(response.GetResponseStream()))
-            //{
-            //    result = streamReader.ReadToEnd();
-            //}
-            //var tweet = JsonConvert.DeserializeObject<Tweet>(result);
-            //var request = (HttpWebRequest)WebRequest.Create(api + "/users/show.json?user_id=" + userId);
-            //request.Method = "GET";
-            //request.ContentType = "application/x-www-form-urlencoded";
-            //string result = string.Empty;
-            //var response = request.EndGetResponse();
-            //using (var streamReader = new StreamReader(response.GetResponseStream()))
-            //{
-            //    result = streamReader.ReadToEnd();
-            //}
-            WebClient webClient = new WebClient();
-            UserProfile userProfile = null;
-            webClient.OpenReadAsync(new Uri(api + "/users/show.json?user_id=" + userId, UriKind.Absolute));
-            webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(OpenReadCompleted);
-            return userProfile;
-        }
-
-        void OpenReadCompleted(object sender, OpenReadCompletedEventArgs e)
-        {
-            //using (StreamReader reader = new StreamReader(e.Result))
-            //{
-            //    string output = reader.ReadToEnd();
-            //    userProfile = JsonConvert.DeserializeObject<UserProfile>(output);
-            //    userProfile.ScreenName = "@" + userProfile.ScreenName;
-            //}
         }
 
         public List<Tweet> GetUserTweets(string userId)
@@ -149,5 +105,45 @@ namespace Chicken.Service
         {
             return GetDirectMessages();
         }
+
+        public void GetUserProfile<T>(string userId, Action<T> callBack)
+        {
+            string parameters = users + "user_id=" + userId;
+            HandleWebRequest<T>(parameters, callBack);
+        }
+
+        private void HandleWebRequest<T>(string url, Action<T> callBack, HttpMethodType method = HttpMethodType.GET)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(api + url);
+            request.Method = method.ToString();
+            request.BeginGetResponse(
+                (result) =>
+                {
+                    HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
+                    var response = requestResult.EndGetResponse(result);
+                    T output = default(T);
+                    using (var reader = new JsonTextReader(new StreamReader(response.GetResponseStream())))
+                    {
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        output = jsonSerializer.Deserialize<T>(reader);
+                    }
+                    if (callBack != null)
+                    {
+                        Deployment.Current.Dispatcher.BeginInvoke(
+                            () =>
+                            {
+                                callBack(output);
+                            });
+                    }
+                    request = null;
+                    requestResult = null;
+                    response.Close();
+                    response.Dispose();
+                    response = null;
+                },
+              request);
+        }
+
+
     }
 }

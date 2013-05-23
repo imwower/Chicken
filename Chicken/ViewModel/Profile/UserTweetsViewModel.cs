@@ -51,6 +51,7 @@ namespace Chicken.ViewModel.Profile
                 tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
+            base.Refreshed();
         }
     }
 }

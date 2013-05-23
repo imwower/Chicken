@@ -42,19 +42,11 @@ namespace Chicken.ViewModel.Profile
 
         public override void Refresh()
         {
-            //var userProfile = TweetService.GetUserProfile(UserId);
-            WebClient webClient = new WebClient();
-            webClient.OpenReadAsync(new Uri("https://wxt2005.org/tapi/o/W699Q6//users/show.json?user_id=" + UserId, UriKind.Absolute));
-            webClient.OpenReadCompleted += new OpenReadCompletedEventHandler(
-                (obj, e) =>
+            TweetService.GetUserProfile<UserProfile>(UserId,
+                obj =>
                 {
-                    using (StreamReader reader = new StreamReader(e.Result))
-                    {
-                        string output = reader.ReadToEnd();
-                        var userProfile = JsonConvert.DeserializeObject<UserProfile>(output);
-                        userProfile.ScreenName = "@" + userProfile.ScreenName;
-                        this.UserProfileViewModel = new Profile.UserProfileViewModel(userProfile);
-                    }
+                    this.UserProfileViewModel = new Profile.UserProfileViewModel(obj);
+                    base.Refreshed();
                 });
         }
     }

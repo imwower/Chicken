@@ -45,11 +45,12 @@ namespace Chicken.ViewModel.Profile
         {
             var pivot = sender as Pivot;
             int index = pivot.SelectedIndex;
-            if (!PivotItems[index].IsLoaded)
+            if (!PivotItems[index].IsInited)
             {
+                PivotItems[index].IsLoading = true;
                 (PivotItems[index] as ProfileViewModelBase).UserId = userId;
                 PivotItems[index].Refresh();
-                PivotItems[index].IsLoaded = true;
+                PivotItems[index].IsInited = true;
             }
         }
     }

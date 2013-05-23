@@ -46,6 +46,7 @@ namespace Chicken.ViewModel.Home
             {
                 DMList.Add(new DirectMessageViewModel(message));
             }
+            base.Refreshed();
         }
     }
 }

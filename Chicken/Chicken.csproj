@@ -77,6 +77,7 @@
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="Service\MockedService.cs" />
     <Compile Include="ViewModel\Home\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\Profile\ProfilePivotViewModel.cs" />
