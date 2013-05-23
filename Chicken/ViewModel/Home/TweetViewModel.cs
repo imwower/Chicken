@@ -61,6 +61,10 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
+                if (tweet.Source.Length == 3 && tweet.Source.Equals("web"))
+                {
+                    return "web";
+                }
                 return tweet.Source.ParseToSource();
             }
         }
@@ -69,6 +73,10 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
+                if (tweet.Source.Length == 3 && tweet.Source.Equals("web"))
+                {
+                    return new Uri("https://github.com/", UriKind.Absolute);
+                }
                 return new Uri(tweet.Source.ParseToSourceUrl(), UriKind.Absolute);
             }
         }

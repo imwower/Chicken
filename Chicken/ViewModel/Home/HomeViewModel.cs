@@ -30,24 +30,30 @@ namespace Chicken.ViewModel.Home
 
         public override void Refresh()
         {
-            var tweets = TweetService.GetLastedTweets();
-            tweets.Reverse();
-            foreach (var tweet in tweets)
-            {
-                tweet.Text = TweetList.Count + tweet.Text;
-                TweetList.Insert(0, new TweetViewModel(tweet));
-            }
-            base.Refreshed();
+            TweetService.GetLastedTweets<List<Tweet>>(
+                tweets =>
+                {
+                    tweets.Reverse();
+                    foreach (var tweet in tweets)
+                    {
+                        tweet.Text = TweetList.Count + tweet.Text;
+                        TweetList.Insert(0, new TweetViewModel(tweet));
+                    }
+                    base.Refreshed();
+                });
         }
 
         public override void Load()
         {
-            var tweets = TweetService.GetLastedTweets();
-            foreach (var tweet in tweets)
-            {
-                TweetList.Add(new TweetViewModel(tweet));
-            }
-            base.Loaded();
+            TweetService.GetLastedTweets<List<Tweet>>(
+                tweets =>
+                {
+                    foreach (var tweet in tweets)
+                    {
+                        TweetList.Add(new TweetViewModel(tweet));
+                    }
+                    base.Loaded();
+                });
         }
     }
 }

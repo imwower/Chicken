@@ -9,18 +9,18 @@ namespace Chicken.Service
     public interface ITweetService
     {
         void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
-        //List<Tweet> GetOldTweets();
+        List<Tweet> GetOldTweets();
 
-        //List<Tweet> GetNewMentions();
-        //List<Tweet> GetOldMentions();
+        List<Tweet> GetNewMentions();
+        List<Tweet> GetOldMentions();
 
-        //List<DirectMessage> GetDirectMessages();
-        //List<DirectMessage> GetOldDirectMessages();
+        List<DirectMessage> GetDirectMessages();
+        List<DirectMessage> GetOldDirectMessages();
 
-        void GetUserProfile<T>(string userId, Action<T> callBack);
+        void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
-        //List<Tweet> GetUserTweets(string userId);
-        //List<Tweet> GetUserOldTweets(string userId);
+        List<Tweet> GetUserTweets(string userId);
+        List<Tweet> GetUserOldTweets(string userId);
 
     }
 }

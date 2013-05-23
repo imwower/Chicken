@@ -57,6 +57,7 @@
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="Foreground" Value="Gray" />
             <Setter Property="TextAlignment" Value="Right" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
         <!--HyperLink Button default style-->
         <Style TargetType="HyperlinkButton">

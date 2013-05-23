@@ -43,11 +43,6 @@ namespace Chicken
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //if (mainViewModel != null)
-            //{
-            //    mainViewModel.NavigationContext = NavigationContext;
-            //    mainViewModel.OnNavigatedTo(e);
-            //}
         }
     }
 }

@@ -15,16 +15,22 @@ using System.Collections.Generic;
 
 namespace Chicken.Common
 {
-    public enum HttpMethodType
-    {
-        GET = 0,
-        POST = 1,
-    }
-
     public static class TwitterHelper
     {
-        static string api = "https://wxt2005.org/tapi/o/W699Q6/";
-        const string USERS = "users/show.json?";
+        public static string API = "https://wxt2005.org/tapi/o/W699Q6/";
+
+        public const string STATUSES_HOMETIMELINE = "statuses/home_timeline.json";
+        public const string USERS_SHOW = "users/show.json";
+        //
+        public const string HTTPGET = "GET";
+        public const string HTTPOST = "POST";
+        //
+        public static string DATETIMEFORMAT = "yyyy-MM-dd  HH:mm:ss";
+        //
+        const string SOURCEPATTERN = @".*>(?<url>[\s\S]+?)</a>";
+        static Regex SourceRegex = new Regex(SOURCEPATTERN);
+        const string SOURCEURLPATTERN = @"<a href=\""(?<link>[^\s>]+)\""";
+        static Regex SourceUrlRegex = new Regex(SOURCEURLPATTERN);
 
         public static string ParseToDateTime(this string date)
         {
@@ -34,30 +40,35 @@ namespace Chicken.Common
             var time = date.Substring(11, 9).Trim();
 
             var dateTime = string.Format("{0}/{1}/{2} {3}", month, day, year, time);
-            var result = DateTime.Parse(dateTime).ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss");
+            var result = DateTime.Parse(dateTime).ToLocalTime().ToString(DATETIMEFORMAT);
             return result;
         }
 
         public static string ParseToSource(this string source)
         {
-            string pattern = @".*>(?<url>[\s\S]+?)</a>";
-            Regex reg = new Regex(pattern);
-            string result = reg.Match(source).Groups["url"].Value;
+            string result = SourceRegex.Match(source).Groups["url"].Value;
             return result;
         }
 
         public static string ParseToSourceUrl(this string source)
         {
-            string pattern = @"<a href=\""(?<link>[^\s>]+)\""";
-            Regex reg = new Regex(pattern);
-            string result = reg.Match(source).Groups["link"].Value;
-            Debug.WriteLine(result);
+            string result = SourceUrlRegex.Match(source).Groups["link"].Value;
             return result;
         }
 
-        public static string GenerateUrlParams(IDictionary<string, object> parameters = null)
+        public static string GenerateUrlParams(string action, IDictionary<string, object> parameters = null)
         {
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new StringBuilder(API).Append(action);
+            if (parameters == null || parameters.Count == 0)
+            {
+                return sb.ToString();
+            }
+            sb.Append("?");
+            foreach (var item in parameters)
+            {
+                sb.Append(item.Key).Append("=").Append(HttpUtility.UrlEncode(item.Value.ToString())).Append("&");
+            }
+            sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
     }

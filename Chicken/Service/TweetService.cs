@@ -18,19 +18,12 @@ namespace Chicken.Service
 {
     public class TweetService : ITweetService
     {
-        static string api = "https://wxt2005.org/tapi/o/W699Q6/";
-        static string users = "users/show.json?";
-
-        public List<Tweet> GetLastedTweets()
-        {
-            
-        }
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            throw new NotImplementedException();
+            string url = TwitterHelper.GenerateUrlParams(TwitterHelper.STATUSES_HOMETIMELINE);
+            HandleWebRequest<T>(url, callBack);
         }
-
-
+        
         public List<Tweet> GetOldTweets()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
@@ -106,15 +99,20 @@ namespace Chicken.Service
             return GetDirectMessages();
         }
 
-        public void GetUserProfile<T>(string userId, Action<T> callBack)
+        public void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string parameters = users + "user_id=" + userId;
-            HandleWebRequest<T>(parameters, callBack);
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>();
+            }
+            parameters.Add("user_id", userId);
+            string url = TwitterHelper.GenerateUrlParams(TwitterHelper.USERS_SHOW, parameters);
+            HandleWebRequest<T>(url, callBack);
         }
 
-        private void HandleWebRequest<T>(string url, Action<T> callBack, HttpMethodType method = HttpMethodType.GET)
+        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(api + url);
+            HttpWebRequest request = WebRequest.CreateHttp(url);
             request.Method = method.ToString();
             request.BeginGetResponse(
                 (result) =>
@@ -143,7 +141,5 @@ namespace Chicken.Service
                 },
               request);
         }
-
-
     }
 }
