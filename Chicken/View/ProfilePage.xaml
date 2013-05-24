@@ -125,9 +125,10 @@
                                  Header="{Binding Path=Header}" 
                                  ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
                                  ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <controls:PivotItem Header="Followers">
-                <Grid/>
-            </controls:PivotItem>
+            <ctrls:HomePivotItem x:Name="UserFollowersPivotItem"
+                                 Header="{Binding Path=Header}" 
+                                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
+                                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <controls:PivotItem Header="Gallery">
                 <Grid/>
             </controls:PivotItem>

@@ -1,19 +1,8 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
+﻿using Chicken.Model;
 using Chicken.Service;
-using System.IO;
-using Newtonsoft.Json;
-using Chicken.Model;
+using Chicken.ViewModel.Profile.Base;
 
-namespace Chicken.ViewModel.Profile
+namespace Chicken.ViewModel.Profile.VM
 {
     public class ProfilePivotViewModel : ProfileViewModelBase
     {

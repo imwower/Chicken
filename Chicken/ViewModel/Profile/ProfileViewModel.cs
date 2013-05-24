@@ -1,19 +1,8 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Windows.Navigation;
-using Chicken.Service;
-using Microsoft.Phone.Controls;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
 using Chicken.Common;
+using Chicken.Service;
+using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
 {

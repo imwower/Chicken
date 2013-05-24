@@ -79,18 +79,19 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Service\MockedService.cs" />
-    <Compile Include="ViewModel\Home\DirectMessageViewModel.cs" />
-    <Compile Include="ViewModel\Home\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
+    <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
-    <Compile Include="ViewModel\Profile\FriendProfileViewModel.cs" />
-    <Compile Include="ViewModel\Profile\ProfilePivotViewModel.cs" />
-    <Compile Include="ViewModel\Profile\UserFollowingViewModel.cs" />
-    <Compile Include="ViewModel\Profile\UserTweetsViewModel.cs" />
+    <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
+    <Compile Include="ViewModel\Profile\Base\FriendProfileViewModel.cs" />
+    <Compile Include="ViewModel\Profile\VM\ProfilePivotViewModel.cs" />
+    <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
+    <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\Home\UserViewModel.cs" />
+    <Compile Include="ViewModel\Home\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Content Include="SampleData\errors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -102,16 +103,16 @@
     <Compile Include="Service\TweetService.cs" />
     <Compile Include="Service\TweetServiceManger.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
-    <Compile Include="ViewModel\Home\HomeViewModel.cs" />
+    <Compile Include="ViewModel\Home\VM\HomeViewModel.cs" />
     <Compile Include="ViewModel\Home\MainViewModel.cs" />
-    <Compile Include="ViewModel\Home\MentionsViewModel.cs" />
+    <Compile Include="ViewModel\Home\VM\MentionsViewModel.cs" />
     <Compile Include="ViewModel\NotificationObject.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModelBase.cs" />
-    <Compile Include="ViewModel\Home\TweetViewModel.cs" />
+    <Compile Include="ViewModel\Home\Base\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="ViewModel\ConvertVisibility.cs" />
-    <Compile Include="ViewModel\Profile\UserProfileDetailViewModel.cs" />
+    <Compile Include="ViewModel\Profile\Base\UserProfileDetailViewModel.cs" />
     <Content Include="SampleData\user_timeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
