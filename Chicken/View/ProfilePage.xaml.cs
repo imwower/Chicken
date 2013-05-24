@@ -43,8 +43,8 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            profileViewModel.NavigationContext = NavigationContext;
-            profileViewModel.OnNavigatedTo(e);
+            string userId = NavigationContext.QueryString[TwitterHelper.USER_ID];
+            profileViewModel.OnNavigatedTo(userId);
         }
     }
 }
