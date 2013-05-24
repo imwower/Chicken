@@ -51,7 +51,17 @@ namespace Chicken.ViewModel.Profile
 
         public override void Click(object parameter)
         {
-            SelectedIndex = 0;
+            if (UserId==parameter.ToString())
+            {
+                SelectedIndex = 0;
+            }
+            else
+            {
+                Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+                parameters.Add(TwitterHelper.USER_ID, parameter);
+                string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
+                TwitterHelper.NavigateTo(uri);
+            }
         }
 
         public void OnNavigatedTo(string userId)

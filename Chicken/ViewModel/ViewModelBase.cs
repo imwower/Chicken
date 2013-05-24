@@ -76,13 +76,6 @@ namespace Chicken.ViewModel
             }
         }
 
-        //public ICommand ClickCommand
-        //{
-        //    get
-        //    {
-        //        return new DelegateCommand(ClickDispatcher);
-        //    }
-        //}
         #endregion
 
         #region dispatcher
@@ -105,16 +98,6 @@ namespace Chicken.ViewModel
                     Load();
                 });
         }
-
-        //private void ClickDispatcher(object sender)
-        //{
-        //    IsLoading = true;
-        //    Deployment.Current.Dispatcher.BeginInvoke(
-        //        () =>
-        //        {
-        //            Click(sender);
-        //        });
-        //}
         #endregion
 
         #region virtual method
@@ -137,10 +120,6 @@ namespace Chicken.ViewModel
         {
             IsLoading = false;
         }
-
-        //public virtual void Click(object parameter)
-        //{
-        //}
         #endregion
     }
 }
