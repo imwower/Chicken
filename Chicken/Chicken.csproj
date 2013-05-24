@@ -80,6 +80,7 @@
     <Compile Include="Service\MockedService.cs" />
     <Compile Include="ViewModel\Home\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\ProfilePivotViewModel.cs" />
     <Compile Include="ViewModel\Profile\UserTweetsViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
@@ -101,7 +102,6 @@
     <Compile Include="ViewModel\Home\HomeViewModel.cs" />
     <Compile Include="ViewModel\Home\MainViewModel.cs" />
     <Compile Include="ViewModel\Home\MentionsViewModel.cs" />
-    <Compile Include="ViewModel\NavigationViewModelBase.cs" />
     <Compile Include="ViewModel\NotificationObject.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModelBase.cs" />
