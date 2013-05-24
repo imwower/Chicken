@@ -85,6 +85,7 @@
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfilePivotViewModel.cs" />
+    <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">

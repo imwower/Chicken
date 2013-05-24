@@ -1,23 +1,36 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.IO;
-using Newtonsoft.Json;
 using System.Collections.Generic;
-using Chicken.Model;
+using System.IO;
+using System.Windows;
 using Chicken.Common;
+using Chicken.Model;
+using Newtonsoft.Json;
 
 namespace Chicken.Service
 {
     public class MockedService : ITweetService
     {
+        #region private method
+        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
+        {
+            var streamInfo = Application.GetResourceStream(new Uri(url, UriKind.Relative));
+            var result = default(T);
+            using (var reader = new JsonTextReader(new StreamReader(streamInfo.Stream)))
+            {
+                var jsonSerializer = new JsonSerializer();
+                result = jsonSerializer.Deserialize<T>(reader);
+            }
+            if (callBack != null)
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(
+                    () =>
+                    {
+                        callBack(result);
+                    });
+            }
+        }
+        #endregion
+
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/hometimeline.json";
@@ -99,29 +112,11 @@ namespace Chicken.Service
             return GetDirectMessages();
         }
 
+        #region profile page
         public void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/userProfile.json";
             HandleWebRequest<T>(url, callBack);
-        }
-
-        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
-        {
-            var streamInfo = Application.GetResourceStream(new Uri(url, UriKind.Relative));
-            var result = default(T);
-            using (var reader = new JsonTextReader(new StreamReader(streamInfo.Stream)))
-            {
-                var jsonSerializer = new JsonSerializer();
-                result = jsonSerializer.Deserialize<T>(reader);
-            }
-            if (callBack != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(
-                    () =>
-                    {
-                        callBack(result);
-                    });
-            }
         }
         
         public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
@@ -129,5 +124,11 @@ namespace Chicken.Service
             string url = "SampleData/friends_list.json";
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
     }
 }
