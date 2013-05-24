@@ -45,13 +45,14 @@ namespace Chicken.ViewModel.Profile
             {
                 new ProfilePivotViewModel(),
                 new UserTweetsViewModel(),
+                new UserFollowingViewModel(),
             };
             this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
         public override void Click(object parameter)
         {
-            if (UserId==parameter.ToString())
+            if (UserId == parameter.ToString())
             {
                 SelectedIndex = 0;
             }
@@ -69,16 +70,12 @@ namespace Chicken.ViewModel.Profile
             UserId = userId;
         }
 
-        public void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
+        public void MainPivot_LoadedPivotItem()
         {
-            var pivot = sender as Pivot;
-            int index = pivot.SelectedIndex;
-            if (!PivotItems[index].IsInited)
+            if (!PivotItems[SelectedIndex].IsInited)
             {
-                PivotItems[index].IsLoading = true;
-                (PivotItems[index] as ProfileViewModelBase).UserId = userId;
-                PivotItems[index].Refresh();
-                PivotItems[index].IsInited = true;
+                (PivotItems[SelectedIndex] as ProfileViewModelBase).UserId = userId;
+                PivotItems[SelectedIndex].Refresh();
             }
         }
     }

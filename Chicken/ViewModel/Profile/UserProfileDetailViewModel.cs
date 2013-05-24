@@ -10,39 +10,29 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Chicken.Model;
 
-namespace Chicken.ViewModel.Home
+namespace Chicken.ViewModel.Profile
 {
-    public class UserViewModel
+    public class UserProfileDetailViewModel : FriendProfileViewModel
     {
-        private User user;
+        public UserProfileDetailViewModel(UserProfile userProfile)
+            : base(userProfile)
+        { }
 
-        public UserViewModel(User user)
-        {
-            this.user = user;
-        }
-
-        public string Name
+        public new string ProfileImage
         {
             get
             {
-                return user.Name;
+                return UserProfile.ProfileImage.Replace("_normal", "");
             }
         }
 
-        public string Id
+        public string UserProfileBannerImage
         {
             get
             {
-                return user.Id;
+                return UserProfile.UserProfileBannerImage + "/web";
             }
         }
 
-        public string ProfileImage
-        {
-            get
-            {
-                return user.ProfileImage;
-            }
-        }
     }
 }

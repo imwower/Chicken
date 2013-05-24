@@ -123,5 +123,11 @@ namespace Chicken.Service
                     });
             }
         }
+        
+        public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/friends_list.json";
+            HandleWebRequest<T>(url, callBack);
+        }
     }
 }

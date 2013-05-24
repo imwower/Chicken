@@ -42,12 +42,11 @@ namespace Chicken.ViewModel.Home
         }
         #endregion
 
-        public void MainPivot_LoadedPivotItem(int selectedIndex)
+        public void MainPivot_LoadedPivotItem()
         {
-            if (!PivotItems[selectedIndex].IsInited)
+            if (!PivotItems[SelectedIndex].IsInited)
             {
-                PivotItems[selectedIndex].Refresh();
-                PivotItems[selectedIndex].IsInited = true;
+                PivotItems[SelectedIndex].Refresh();
             }
         }
     }

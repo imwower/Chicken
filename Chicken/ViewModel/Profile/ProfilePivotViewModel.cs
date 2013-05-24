@@ -17,8 +17,9 @@ namespace Chicken.ViewModel.Profile
 {
     public class ProfilePivotViewModel : ProfileViewModelBase
     {
-        UserProfileViewModel userProfileViewModel;
-        public UserProfileViewModel UserProfileViewModel
+        #region properties
+        private UserProfileDetailViewModel userProfileViewModel;
+        public UserProfileDetailViewModel UserProfileViewModel
         {
             get
             {
@@ -30,9 +31,6 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("UserProfileViewModel");
             }
         }
-
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
         public ProfilePivotViewModel()
@@ -42,10 +40,11 @@ namespace Chicken.ViewModel.Profile
 
         public override void Refresh()
         {
+            base.Refresh();
             TweetService.GetUserProfile<UserProfile>(UserId,
                 obj =>
                 {
-                    this.UserProfileViewModel = new Profile.UserProfileViewModel(obj);
+                    this.UserProfileViewModel = new UserProfileDetailViewModel(obj);
                     base.Refreshed();
                 });
         }

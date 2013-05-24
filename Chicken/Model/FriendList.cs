@@ -8,18 +8,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Chicken.Model
 {
-    public class User
+    public class FriendList
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
+        [JsonProperty("users")]
+        public List<UserProfile> Users { get; set; }
 
-        public string Name { get; set; }
+        [JsonProperty("next_cursor")]
+        public string NextCursor { get; set; }
 
-        [JsonProperty("profile_image_url")]
-        public string ProfileImage { get; set; }
+        [JsonProperty("previous_cursor")]
+        public string PreviousCursor { get; set; }
     }
 }

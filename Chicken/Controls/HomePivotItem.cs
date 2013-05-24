@@ -23,5 +23,14 @@ namespace Chicken.Controls
             get { return (IEnumerable)GetValue(ListBoxItemsProperty); }
             set { SetValue(ListBoxItemsProperty, value); }
         }
+
+        public static readonly DependencyProperty ListBoxItemTemplateProperty =
+            DependencyProperty.Register("ListBoxItemTemplate", typeof(DataTemplate), typeof(HomePivotItem), null);
+
+        public DataTemplate ListBoxItemTemplate
+        {
+            get { return (DataTemplate)GetValue(ListBoxItemTemplateProperty); }
+            set { SetValue(ListBoxItemTemplateProperty, value); }
+        }
     }
 }

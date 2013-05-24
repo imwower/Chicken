@@ -103,7 +103,7 @@ namespace Chicken.ViewModel
         #region virtual method
         public virtual void Refresh()
         {
-
+            IsLoading = true;
         }
 
         public virtual void Refreshed()
@@ -114,6 +114,7 @@ namespace Chicken.ViewModel
 
         public virtual void Load()
         {
+            IsLoading = true;
         }
 
         public virtual void Loaded()

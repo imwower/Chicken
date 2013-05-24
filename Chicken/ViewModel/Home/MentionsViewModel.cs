@@ -23,6 +23,7 @@ namespace Chicken.ViewModel.Home
 
         public override void Refresh()
         {
+            base.Refresh();
             var tweets = TweetService.GetNewMentions();
             tweets.Reverse();
             foreach (var tweet in tweets)
@@ -35,6 +36,7 @@ namespace Chicken.ViewModel.Home
 
         public override void Load()
         {
+            base.Load();
             var tweets = TweetService.GetOldMentions();
             foreach (var tweet in tweets)
             {

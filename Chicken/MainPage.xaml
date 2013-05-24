@@ -21,19 +21,23 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="{Binding Path=Title}"
-                      HeaderTemplate="{StaticResource PivotHeaderTemplate}">
+                      HeaderTemplate="{StaticResource PivotHeaderTemplate}"
+                        SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}">
             <!--Home-->
             <ctrls:HomePivotItem x:Name="HomePivotItem"
                                  Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=TweetList}" />
+                                 ListBoxItems="{Binding Path=TweetList}"
+                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--Mentions-->
             <ctrls:HomePivotItem x:Name="MentionsPivotItem"
                                  Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=TweetList}" />
+                                 ListBoxItems="{Binding Path=TweetList}"
+                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--DMs-->
             <ctrls:HomePivotItem x:Name="DMsPivotItem"
                                  Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=DMList}" />
+                                 ListBoxItems="{Binding Path=DMList}"
+                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
         </controls:Pivot>
     </Grid>
 </phone:PhoneApplicationPage>

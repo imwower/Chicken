@@ -34,11 +34,10 @@ namespace Chicken
 
         void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
-            int index = (sender as Pivot).SelectedIndex;
-            Dispatcher.BeginInvoke(() =>
-                {
-                    mainViewModel.MainPivot_LoadedPivotItem(index);
-                });
+            //Dispatcher.BeginInvoke(() =>
+            //    {
+                    mainViewModel.MainPivot_LoadedPivotItem();
+                //});
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

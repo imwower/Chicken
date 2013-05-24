@@ -16,7 +16,7 @@ using Chicken.Common;
 
 namespace Chicken.Service
 {
-    public class TweetService : ITweetService
+    public class TweetService // : ITweetService
     {
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {

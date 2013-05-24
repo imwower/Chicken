@@ -12,18 +12,10 @@ using Newtonsoft.Json;
 
 namespace Chicken.Model
 {
-    public class UserProfile
+    public class UserProfile : User
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
-        public string Name { get; set; }
-
         [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
-
-        [JsonProperty("profile_image_url")]
-        public string ProfileImage { get; set; }
 
         [JsonProperty("profile_banner_url")]
         public string UserProfileBannerImage { get; set; }
@@ -33,5 +25,17 @@ namespace Chicken.Model
         public string Location { get; set; }
 
         public string Url { get; set; }
+
+        [JsonProperty("statuses_count")]
+        public string TweetsCount { get; set; }
+
+        [JsonProperty("friends_count")]
+        public string FollowingCount { get; set; }
+
+        [JsonProperty("followers_count")]
+        public string FollowersCount { get; set; }
+
+        [JsonProperty("favourites_count")]
+        public string FavouritesCount { get; set; }
     }
 }

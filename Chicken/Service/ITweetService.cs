@@ -22,5 +22,8 @@ namespace Chicken.Service
         List<Tweet> GetUserTweets(string userId);
         List<Tweet> GetUserOldTweets(string userId);
 
+        //following
+        void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+
     }
 }

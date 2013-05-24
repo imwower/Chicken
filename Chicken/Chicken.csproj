@@ -74,6 +74,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\DirectMessage.cs" />
+    <Compile Include="Model\FriendList.cs" />
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
@@ -81,7 +82,9 @@
     <Compile Include="ViewModel\Home\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
+    <Compile Include="ViewModel\Profile\FriendProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\ProfilePivotViewModel.cs" />
+    <Compile Include="ViewModel\Profile\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\UserTweetsViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -108,7 +111,7 @@
     <Compile Include="ViewModel\Home\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="ViewModel\ConvertVisibility.cs" />
-    <Compile Include="ViewModel\Profile\UserProfileViewModel.cs" />
+    <Compile Include="ViewModel\Profile\UserProfileDetailViewModel.cs" />
     <Content Include="SampleData\user_timeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -140,6 +143,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleData\direct_messages.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\friends_list.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

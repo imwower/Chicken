@@ -16,6 +16,7 @@
         <Style x:Name="TextSmall" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
+            <Setter Property="Foreground" Value="Silver" />
         </Style>
         <Style x:Name="TextNormal" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
@@ -160,15 +161,12 @@
         <!--styles-->
 
         <DataTemplate x:Key="TweetTemplate">
-            <Grid Width="456">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
+            <Grid Width="456" Margin="0,4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="68" />
                     <ColumnDefinition Width="*"  />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="64" Height="64" Margin="2"
+                <Button Grid.Column="0" Width="64" Height="64" Margin="0,0,2,0"
                         HorizontalAlignment="Left" VerticalAlignment="Top">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
@@ -183,7 +181,7 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
-                <Grid Grid.Column="1" Margin="2">
+                <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
@@ -211,6 +209,51 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="FriendTemplate">
+            <Grid Margin="0,4">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="88" />
+                    <ColumnDefinition Width="*"  />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Width="84" Height="84" Margin="0,0,2,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Click">
+                            <i:InvokeCommandAction
+                                Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
+                                CommandParameter="{Binding Id}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="{Binding ProfileImage}"  />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                            <Setter Property="TextAlignment" Value="Left" />
+                        </Style>
+                    </Grid.Resources>
+                    <!--user name-->
+                    <TextBlock Grid.Row="0" Text="{Binding Name}" />
+                    <!--screen name-->
+                    <TextBlock Grid.Row="1" Text="{Binding ScreenName}" />
+                    <!--description-->
+                    <TextBlock Grid.Row="2" Text="{Binding Description}" Style="{StaticResource TextContentNormal}" />
+                </Grid>
+            </Grid>
+        </DataTemplate>
+
         <DataTemplate x:Name="PivotHeaderTemplate">
             <TextBlock Text="{Binding}" />
         </DataTemplate>
@@ -228,7 +271,7 @@
                             </Grid.RowDefinitions>
                             <ctrls:AutoListBox Grid.Row="0" x:Name="AutoListBox"
                                                ItemsSource="{TemplateBinding ListBoxItems}"
-                                               ItemTemplate="{StaticResource TweetTemplate}">
+                                               ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="VerticalCompressionTopHandler">
                                         <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />

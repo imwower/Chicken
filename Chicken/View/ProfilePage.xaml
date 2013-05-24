@@ -8,7 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -117,11 +117,14 @@
                     <ProgressBar Grid.Row="2" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource VisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
-            <ctrls:HomePivotItem x:Name="UserTweetsPivotItem" Header="{Binding Path=Header}" 
-                                 ListBoxItems="{Binding Path=TweetList}" />
-            <controls:PivotItem Header="Following">
-                <Grid/>
-            </controls:PivotItem>
+            <ctrls:HomePivotItem x:Name="UserTweetsPivotItem"
+                                 Header="{Binding Path=Header}" 
+                                 ListBoxItems="{Binding Path=TweetList}"
+                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+            <ctrls:HomePivotItem x:Name="UserFollowingPivotItem"
+                                 Header="{Binding Path=Header}" 
+                                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
+                                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <controls:PivotItem Header="Followers">
                 <Grid/>
             </controls:PivotItem>
@@ -132,7 +135,7 @@
     </Grid>
 
     <!--演示 ApplicationBar 用法的示例代码-->
-    <phone:PhoneApplicationPage.ApplicationBar>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="按钮 1"/>
             <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="按钮 2"/>
@@ -141,6 +144,6 @@
                 <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
 
 </phone:PhoneApplicationPage>

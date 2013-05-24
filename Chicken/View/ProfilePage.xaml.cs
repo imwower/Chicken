@@ -28,16 +28,14 @@ namespace Chicken.View
             this.MainPivot.DataContext = profileViewModel;
             this.ProfilePivotItem.DataContext = profileViewModel.PivotItems[0];
             this.UserTweetsPivotItem.DataContext = profileViewModel.PivotItems[1];
+            this.UserFollowingPivotItem.DataContext = profileViewModel.PivotItems[2];
 
             this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
         }
 
         private void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
-            Dispatcher.BeginInvoke(() =>
-            {
-                profileViewModel.MainPivot_LoadedPivotItem(sender, e);
-            });
+            profileViewModel.MainPivot_LoadedPivotItem();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

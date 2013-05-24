@@ -34,10 +34,6 @@ namespace Chicken.ViewModel.Profile
         }
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
-        #endregion
-
         public UserTweetsViewModel()
         {
             Header = "Tweets";
@@ -46,6 +42,7 @@ namespace Chicken.ViewModel.Profile
 
         public override void Refresh()
         {
+            base.Refresh();
             var tweets = TweetService.GetUserTweets(UserId);
             tweets.Reverse();
             foreach (var tweet in tweets)
