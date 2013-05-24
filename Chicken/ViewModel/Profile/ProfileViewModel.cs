@@ -17,28 +17,26 @@ using Chicken.Common;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class ProfileViewModel : NavigationViewModelBase
+    public class ProfileViewModel : PivotViewModelBase
     {
-        private int selectedIndex = 1;
-        public int SelectedIndex
-        {
-            get
-            {
-                return selectedIndex;
-            }
-            set
-            {
-                selectedIndex = value;
-                RaisePropertyChanged("SelectedIndex");
-            }
-        }
-
         #region services
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
         #region properties
-        string userId;
+        private string userId;
+        public string UserId
+        {
+            get
+            {
+                return userId;
+            }
+            set
+            {
+                userId = value;
+                RaisePropertyChanged("UserId");
+            }
+        }
         #endregion
 
         public ProfileViewModel()
@@ -51,9 +49,14 @@ namespace Chicken.ViewModel.Profile
             this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
-        public override void OnNavigatedTo(NavigationEventArgs e)
+        public override void Click(object parameter)
         {
-            userId = NavigationContext.QueryString[TwitterHelper.USER_ID];
+            SelectedIndex = 0;
+        }
+
+        public void OnNavigatedTo(string userId)
+        {
+            UserId = userId;
         }
 
         public void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)

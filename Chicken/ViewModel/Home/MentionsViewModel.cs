@@ -15,10 +15,6 @@ namespace Chicken.ViewModel.Home
 {
     public class MentionsViewModel : HomeViewModelBase
     {
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
-        #endregion
-
         public MentionsViewModel()
         {
             Header = "Mentions";

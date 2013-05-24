@@ -36,27 +36,47 @@ namespace Chicken.ViewModel.Home
         }
         #endregion
 
+        #region services
+        public ITweetService TweetService = TweetServiceManger.TweetService;
+        #endregion
+
         public HomeViewModelBase() { }
 
-        #region binding Command
-        #endregion
+        //#region binding Command
+        //public ICommand ClickCommand
+        //{
+        //    get
+        //    {
+        //        return new DelegateCommand(ClickDispatcher);
+        //    }
+        //}
+        //#endregion
 
-        #region dispatcher
-        #endregion
+        //#region dispatcher
+        //private void ClickDispatcher(object sender)
+        //{
+        //    IsLoading = true;
+        //    Deployment.Current.Dispatcher.BeginInvoke(
+        //        () =>
+        //        {
+        //            Click(sender);
+        //        });
+        //}
+        //#endregion
 
-        #region virtual method
-        /// <summary>
-        /// navigate to profile page
-        /// </summary>
-        /// <param name="parameter">user id</param>
-        public override void Click(object parameter)
-        {
-            IsLoading = false;
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
-            parameters.Add(TwitterHelper.USER_ID, parameter);
-            string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
-            TwitterHelper.NavigateTo(uri);
-        }
-        #endregion
+        //#region virtual method
+        ///// <summary>
+        ///// navigate to profile page
+        ///// </summary>
+        ///// <param name="parameter">user id</param>
+        //public virtual void Click(object parameter)
+        //{
+        //    IsLoading = false;
+        //    Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+        //    parameters.Add(TwitterHelper.USER_ID, parameter);
+        //    string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
+        //    TwitterHelper.NavigateTo(uri);
+        //}
+        //#endregion
     }
 }

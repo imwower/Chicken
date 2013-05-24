@@ -18,10 +18,6 @@ namespace Chicken.ViewModel.Home
 {
     public class HomeViewModel : HomeViewModelBase
     {
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
-        #endregion
-
         public HomeViewModel()
         {
             Header = "Home";

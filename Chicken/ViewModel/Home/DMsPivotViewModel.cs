@@ -29,10 +29,6 @@ namespace Chicken.ViewModel.Home
             }
         }
 
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
-        #endregion
-
         public DMsPivotViewModel()
         {
             Header = "Messages";

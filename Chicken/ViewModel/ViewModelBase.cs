@@ -15,8 +15,6 @@ namespace Chicken.ViewModel
 {
     public class ViewModelBase : NotificationObject
     {
-        public Timer timer;
-
         #region properties
         private string header;
         public string Header
@@ -78,57 +76,45 @@ namespace Chicken.ViewModel
             }
         }
 
-        public ICommand ClickCommand
-        {
-            get
-            {
-                return new DelegateCommand(ClickDispatcher);
-            }
-        }
+        //public ICommand ClickCommand
+        //{
+        //    get
+        //    {
+        //        return new DelegateCommand(ClickDispatcher);
+        //    }
+        //}
         #endregion
 
         #region dispatcher
         private void RefreshDispatcher()
         {
             IsLoading = true;
-            timer = new Timer(
-                (obj) =>
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
                 {
-                    Deployment.Current.Dispatcher.BeginInvoke(
-                        () =>
-                        {
-                            Refresh();
-                        });
-                }, null, 1000, -1);
+                    Refresh();
+                });
         }
 
         private void LoadDispatcher()
         {
             IsLoading = true;
-            timer = new Timer(
-                (obj) =>
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
                 {
-                    Deployment.Current.Dispatcher.BeginInvoke(
-                        () =>
-                        {
-                            Load();
-                        });
-                }, null, 1000, -1);
+                    Load();
+                });
         }
 
-        private void ClickDispatcher(object sender)
-        {
-            IsLoading = true;
-            timer = new Timer(
-                (obj) =>
-                {
-                    Deployment.Current.Dispatcher.BeginInvoke(
-                        () =>
-                        {
-                            Click(sender);
-                        });
-                }, null, 300, -1);
-        }
+        //private void ClickDispatcher(object sender)
+        //{
+        //    IsLoading = true;
+        //    Deployment.Current.Dispatcher.BeginInvoke(
+        //        () =>
+        //        {
+        //            Click(sender);
+        //        });
+        //}
         #endregion
 
         #region virtual method
@@ -152,9 +138,9 @@ namespace Chicken.ViewModel
             IsLoading = false;
         }
 
-        public virtual void Click(object parameter)
-        {
-        }
+        //public virtual void Click(object parameter)
+        //{
+        //}
         #endregion
     }
 }

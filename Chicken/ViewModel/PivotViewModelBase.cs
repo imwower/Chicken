@@ -13,8 +13,9 @@ using System.Collections.ObjectModel;
 
 namespace Chicken.ViewModel
 {
-    public class NavigationViewModelBase : NotificationObject
+    public class PivotViewModelBase : NotificationObject
     {
+        #region properties
         private string title = "Chicken";
         public string Title
         {
@@ -26,6 +27,20 @@ namespace Chicken.ViewModel
             {
                 title = value;
                 RaisePropertyChanged("Title");
+            }
+        }
+
+        private int selectedIndex;
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+                RaisePropertyChanged("SelectedIndex");
             }
         }
 
@@ -42,12 +57,33 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("PivotItems");
             }
         }
+        #endregion
 
-        public NavigationContext NavigationContext { get; set; }
-
-        public virtual void OnNavigatedTo(NavigationEventArgs e)
+        #region binding Command
+        public ICommand ClickCommand
         {
-
+            get
+            {
+                return new DelegateCommand(ClickDispatcher);
+            }
         }
+        #endregion
+
+        #region dispatcher
+        private void ClickDispatcher(object sender)
+        {
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
+                {
+                    Click(sender);
+                });
+        }
+        #endregion
+
+        #region virtual method
+        public virtual void Click(object parameter)
+        {
+        }
+        #endregion
     }
 }

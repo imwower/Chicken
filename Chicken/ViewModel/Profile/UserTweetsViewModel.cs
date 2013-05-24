@@ -56,12 +56,11 @@ namespace Chicken.ViewModel.Profile
             base.Refreshed();
         }
 
-        public override void Click(object parameter)
+        public void Click(object parameter)
         {
             IsLoading = false;
             Dictionary<string, object> parameters = new Dictionary<string, object>(1);
             parameters.Add(TwitterHelper.USER_ID, parameter);
-            parameters.Add("MainPivot." + TwitterHelper.PIVOTITEMSELECTEDINDEX, 0);
             string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
             TwitterHelper.NavigateTo(uri);
         }
