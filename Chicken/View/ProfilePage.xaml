@@ -16,7 +16,9 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=Title}" SelectedIndex="{Binding SelectedIndex}" >
+        <controls:Pivot x:Name="MainPivot"
+                        Title="{Binding Path=Title}"
+                        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" >
             <controls:PivotItem x:Name="ProfilePivotItem" Header="{Binding Path=Header}">
                 <Grid>
                     <Grid.RowDefinitions>

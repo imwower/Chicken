@@ -173,7 +173,7 @@
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Click">
                             <i:InvokeCommandAction
-                                Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
+                                Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
                                 CommandParameter="{Binding User.Id}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
