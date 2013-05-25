@@ -66,6 +66,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Const.cs" />
     <Compile Include="Common\TwitterHelper.cs" />
     <Compile Include="Controls\AutoListBox.cs" />
     <Compile Include="Controls\HomePivotItem.cs" />
@@ -80,13 +81,15 @@
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
-    <Compile Include="Service\MockedService.cs" />
+    <Compile Include="Service\NavigationServiceManager.cs" />
+    <Compile Include="Service\Interface\INavigationService.cs" />
+    <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendProfileViewModel.cs" />
-    <Compile Include="ViewModel\Profile\VM\ProfilePivotViewModel.cs" />
+    <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
@@ -145,8 +148,8 @@
     <Content Include="SampleData\userProfile.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Compile Include="Service\ITweetService.cs" />
-    <Compile Include="Service\TweetService.cs" />
+    <Compile Include="Service\Interface\ITweetService.cs" />
+    <Compile Include="Service\Implementation\TweetService.cs" />
     <Compile Include="Service\TweetServiceManger.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\Home\VM\HomeViewModel.cs" />

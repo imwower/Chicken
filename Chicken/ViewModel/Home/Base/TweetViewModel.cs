@@ -47,7 +47,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return tweet.CreatedDate.ParseToDateTime();
+                return TwitterHelper.ParseToDateTime(tweet.CreatedDate);
             }
         }
 
@@ -71,11 +71,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                if (tweet.Source.Length == 3 && tweet.Source.Equals("web"))
-                {
-                    return "web";
-                }
-                return tweet.Source.ParseToSource();
+                return TwitterHelper.ParseToSource(tweet.Source);
             }
         }
 
@@ -83,11 +79,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                if (tweet.Source.Length == 3 && tweet.Source.Equals("web"))
-                {
-                    return new Uri("https://github.com/", UriKind.Absolute);
-                }
-                return new Uri(tweet.Source.ParseToSourceUrl(), UriKind.Absolute);
+                return new Uri(TwitterHelper.ParseToSourceUrl(tweet.Source), UriKind.Absolute);
             }
         }
 

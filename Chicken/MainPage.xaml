@@ -21,8 +21,7 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="{Binding Path=Title}"
-                      HeaderTemplate="{StaticResource PivotHeaderTemplate}"
-                        SelectedIndex="{Binding Path=SelectedIndex, Mode=TwoWay}">
+                      HeaderTemplate="{StaticResource PivotHeaderTemplate}">
             <!--Home-->
             <ctrls:HomePivotItem x:Name="HomePivotItem"
                                  Header="{Binding Path=Header}"

@@ -178,7 +178,7 @@
                 <Button Grid.Column="0"
                         Width="64" Height="64" Margin="0,0,2,0"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
-                        Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
+                        Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
                         CommandParameter="{Binding User.Id}">
                     <Button.Template>
                         <ControlTemplate>
@@ -271,14 +271,11 @@
 
         <DataTemplate x:Key="FriendTemplate">
             <Button Margin="0,4"
-                    Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
+                    Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
                     CommandParameter="{Binding Id}">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition />
-                            </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="88" />
                                 <ColumnDefinition Width="*"  />

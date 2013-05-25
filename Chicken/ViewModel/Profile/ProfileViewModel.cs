@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Service;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
@@ -32,7 +33,7 @@ namespace Chicken.ViewModel.Profile
         {
             var baseViewModelList = new List<ViewModelBase>
             {
-                new ProfilePivotViewModel(),
+                new ProfileDetailViewModel(),
                 new UserTweetsViewModel(),
                 new UserFollowingViewModel(),
                 new UserFollowersViewModel(),
@@ -41,32 +42,17 @@ namespace Chicken.ViewModel.Profile
             this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
-        public override void Click(object parameter)
-        {
-            if (UserId == parameter.ToString())
-            {
-                SelectedIndex = 0;
-            }
-            else
-            {
-                Dictionary<string, object> parameters = new Dictionary<string, object>(1);
-                parameters.Add(TwitterHelper.USER_ID, parameter);
-                string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
-                TwitterHelper.NavigateTo(uri);
-            }
-        }
-
         public void OnNavigatedTo(string userId)
         {
             UserId = userId;
         }
 
-        public void MainPivot_LoadedPivotItem()
+        public void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            if (!PivotItems[SelectedIndex].IsInited)
+            if (!PivotItems[selectedIndex].IsInited)
             {
-                (PivotItems[SelectedIndex] as ProfileViewModelBase).UserId = userId;
-                PivotItems[SelectedIndex].Refresh();
+                (PivotItems[selectedIndex] as ProfileViewModelBase).UserId = userId;
+                PivotItems[selectedIndex].Refresh();
             }
         }
     }

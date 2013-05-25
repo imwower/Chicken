@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile;
 using Microsoft.Phone.Controls;
 
 namespace Chicken.View
 {
-    public partial class ProfilePage : PhoneApplicationPage
+    public partial class ProfilePage : PhoneApplicationPage, INavigationService
     {
         ProfileViewModel profileViewModel;
 
@@ -26,14 +28,23 @@ namespace Chicken.View
 
         private void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
-            profileViewModel.MainPivot_LoadedPivotItem();
+            int selectedIndex = (sender as Pivot).SelectedIndex;
+            Dispatcher.BeginInvoke(() =>
+                {
+                    profileViewModel.MainPivot_LoadedPivotItem(selectedIndex);
+                });
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string userId = NavigationContext.QueryString[TwitterHelper.USER_ID];
+            string userId = NavigationContext.QueryString[Const.USER_ID];
             profileViewModel.OnNavigatedTo(userId);
+        }
+
+        public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
+        {
+            this.MainPivot.SelectedIndex = selectedIndex;
         }
     }
 }

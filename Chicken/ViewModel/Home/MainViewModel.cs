@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.ViewModel.Home.VM;
+using Chicken.Service;
 
 namespace Chicken.ViewModel.Home
 {
@@ -18,25 +19,11 @@ namespace Chicken.ViewModel.Home
             PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }
 
-        #region virtual method
-        /// <summary>
-        /// navigate to profile page
-        /// </summary>
-        /// <param name="parameter">user id</param>
-        public override void Click(object parameter)
+        public void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
-            parameters.Add(TwitterHelper.USER_ID, parameter);
-            string uri = TwitterHelper.GenerateRelativeUri(TwitterHelper.ProfilePage, parameters);
-            TwitterHelper.NavigateTo(uri);
-        }
-        #endregion
-
-        public void MainPivot_LoadedPivotItem()
-        {
-            if (!PivotItems[SelectedIndex].IsInited)
+            if (!PivotItems[selectedIndex].IsInited)
             {
-                PivotItems[SelectedIndex].Refresh();
+                PivotItems[selectedIndex].Refresh();
             }
         }
     }

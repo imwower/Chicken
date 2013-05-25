@@ -17,8 +17,7 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
-                        Title="{Binding Path=Title}"
-                        SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" >
+                        Title="{Binding Path=Title}">
             <controls:PivotItem x:Name="ProfilePivotItem" Header="{Binding Path=Header}">
                 <Grid>
                     <Grid.RowDefinitions>

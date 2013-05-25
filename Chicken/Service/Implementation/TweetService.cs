@@ -1,42 +1,52 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net;
 using System.Windows;
 using Chicken.Common;
 using Chicken.Model;
+using Chicken.Service.Interface;
 using Newtonsoft.Json;
 
-namespace Chicken.Service
+namespace Chicken.Service.Implementation
 {
-    public class MockedService : ITweetService
+    public class TweetService  : ITweetService
     {
-        #region properties
-        private static JsonSerializer jsonSerializer = new JsonSerializer();
-        #endregion
-
-        #region private method
-        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
+        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {
-            var streamInfo = Application.GetResourceStream(new Uri(url, UriKind.Relative));
-            var result = default(T);
-            using (var reader = new JsonTextReader(new StreamReader(streamInfo.Stream)))
-            {
-                result = jsonSerializer.Deserialize<T>(reader);
-            }
-            if (callBack != null)
-            {
-                Deployment.Current.Dispatcher.BeginInvoke(
-                    () =>
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            request.Method = method.ToString();
+            request.BeginGetResponse(
+                (result) =>
+                {
+                    HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
+                    var response = requestResult.EndGetResponse(result);
+                    T output = default(T);
+                    using (var reader = new JsonTextReader(new StreamReader(response.GetResponseStream())))
                     {
-                        callBack(result);
-                    });
-            }
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        output = jsonSerializer.Deserialize<T>(reader);
+                    }
+                    if (callBack != null)
+                    {
+                        Deployment.Current.Dispatcher.BeginInvoke(
+                            () =>
+                            {
+                                callBack(output);
+                            });
+                    }
+                    request = null;
+                    requestResult = null;
+                    response.Close();
+                    response.Dispose();
+                    response = null;
+                },
+              request);
         }
-        #endregion
 
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/hometimeline.json";
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE);
             HandleWebRequest<T>(url, callBack);
         }
 
@@ -115,24 +125,25 @@ namespace Chicken.Service
             return GetDirectMessages();
         }
 
-        #region profile page
         public void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/userProfile.json";
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>();
+            }
+            parameters.Add(Const.USER_ID, userId);
+            string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }
 
         public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/friends_list.json";
-            HandleWebRequest<T>(url, callBack);
+            //throw new NotImplementedException();
         }
 
         public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/followers.json";
-            HandleWebRequest<T>(url, callBack);
+            //throw new NotImplementedException();
         }
-        #endregion
     }
 }

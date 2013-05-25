@@ -1,5 +1,8 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Chicken.Common;
 using Chicken.Service;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Home
@@ -27,5 +30,16 @@ namespace Chicken.ViewModel.Home
         #endregion
 
         public HomeViewModelBase() { }
+
+        /// <summary>
+        /// navigate to profile detail page
+        /// </summary>
+        /// <param name="parameter">user id</param>
+        public override void Click(object parameter)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            parameters.Add(Const.USER_ID, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
+        }
     }
 }

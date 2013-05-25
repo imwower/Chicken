@@ -42,7 +42,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return directMessage.CreatedDate.ParseToDateTime();
+                return TwitterHelper.ParseToDateTime(directMessage.CreatedDate);
             }
         }
     }

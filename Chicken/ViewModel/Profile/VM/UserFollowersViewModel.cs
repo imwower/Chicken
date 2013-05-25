@@ -15,7 +15,7 @@ namespace Chicken.ViewModel.Profile.VM
         {
             base.Refresh();
             TweetService.GetFollowersLists<FriendList>(
-                (result) =>
+                result =>
                 {
                     FriendList.Refresh(result);
                 });

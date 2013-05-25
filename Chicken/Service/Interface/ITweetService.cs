@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Chicken.Model;
 
-namespace Chicken.Service
+namespace Chicken.Service.Interface
 {
     public interface ITweetService
     {

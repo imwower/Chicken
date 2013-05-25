@@ -19,23 +19,6 @@ namespace Chicken.Common
     public static class TwitterHelper
     {
         #region const
-        static PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
-        #region api
-        public static string API = "https://wxt2005.org/tapi/o/W699Q6/";
-
-        //api
-        public const string STATUSES_HOMETIMELINE = "statuses/home_timeline.json";
-        public const string USERS_SHOW = "users/show.json";
-        //param
-        public const string USER_ID = "user_id";
-        #endregion
-        #region page name
-        public const string ProfilePage = "/View/ProfilePage.xaml";
-        #endregion
-        #region const
-        public const string HTTPGET = "GET";
-        public const string HTTPOST = "POST";
-        //
         public static string DATETIMEFORMAT = "yyyy-MM-dd  HH:mm:ss";
         //
         const string SOURCEPATTERN = @".*>(?<url>[\s\S]+?)</a>";
@@ -43,11 +26,14 @@ namespace Chicken.Common
         const string SOURCEURLPATTERN = @"<a href=\""(?<link>[^\s>]+)\""";
         static Regex SourceUrlRegex = new Regex(SOURCEURLPATTERN);
         #endregion
-        #endregion
 
         #region parse tweet string
         public static string ParseToDateTime(this string date)
         {
+            if (string.IsNullOrEmpty(date))
+            {
+                return string.Empty;
+            }
             var year = date.Substring(25, 5);
             var month = date.Substring(4, 3);
             var day = date.Substring(8, 2);
@@ -60,13 +46,29 @@ namespace Chicken.Common
 
         public static string ParseToSource(this string source)
         {
+            if (string.IsNullOrEmpty(source))
+            {
+                return Const.DefaultSource;
+            }
             string result = SourceRegex.Match(source).Groups["url"].Value;
+            if (string.IsNullOrEmpty(result))
+            {
+                return source;
+            }
             return result;
         }
 
         public static string ParseToSourceUrl(this string source)
         {
+            if (string.IsNullOrEmpty(source))
+            {
+                return Const.DefaultSourceUrl;
+            }
             string result = SourceUrlRegex.Match(source).Groups["link"].Value;
+            if (string.IsNullOrEmpty(result))
+            {
+                return Const.DefaultSourceUrl;
+            }
             return result;
         }
         #endregion
@@ -74,7 +76,7 @@ namespace Chicken.Common
         #region generate url
         public static string GenerateUrlParams(string action, IDictionary<string, object> parameters = null)
         {
-            StringBuilder sb = new StringBuilder(API).Append(action);
+            StringBuilder sb = new StringBuilder(Const.API).Append(action);
             if (parameters == null || parameters.Count == 0)
             {
                 return sb.ToString();
@@ -112,15 +114,15 @@ namespace Chicken.Common
         #endregion
 
         #region navigation service
-        public static void NavigateTo(Uri uri)
-        {
-            frame.Navigate(uri);
-        }
+        //public static void NavigateTo(Uri uri)
+        //{
+        //    frame.Navigate(uri);
+        //}
 
-        public static void NavigateTo(string uri)
-        {
-            frame.Navigate(new Uri(uri, UriKind.Relative));
-        }
+        //public static void NavigateTo(string uri)
+        //{
+        //    frame.Navigate(new Uri(uri, UriKind.Relative));
+        //}
         #endregion
     }
 }

@@ -4,7 +4,7 @@ using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
-    public class ProfilePivotViewModel : ProfileViewModelBase
+    public class ProfileDetailViewModel : ProfileViewModelBase
     {
         #region properties
         private UserProfileDetailViewModel userProfileViewModel;
@@ -22,7 +22,7 @@ namespace Chicken.ViewModel.Profile.VM
         }
         #endregion
 
-        public ProfilePivotViewModel()
+        public ProfileDetailViewModel()
         {
             Header = "Profile";
         }
