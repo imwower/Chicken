@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using System.Diagnostics;
-using System.Text;
 using System.Collections.Generic;
-using Microsoft.Phone.Controls;
+using System.Net;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Chicken.Common
 {
@@ -111,18 +101,6 @@ namespace Chicken.Common
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
-        #endregion
-
-        #region navigation service
-        //public static void NavigateTo(Uri uri)
-        //{
-        //    frame.Navigate(uri);
-        //}
-
-        //public static void NavigateTo(string uri)
-        //{
-        //    frame.Navigate(new Uri(uri, UriKind.Relative));
-        //}
         #endregion
     }
 }

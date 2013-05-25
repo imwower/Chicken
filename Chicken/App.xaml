@@ -285,8 +285,8 @@
                            HorizontalAlignment="Left" VerticalAlignment="Top" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <RowDefinition />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.Resources>

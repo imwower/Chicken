@@ -40,7 +40,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.ProfileImage;
+                return UserProfile.ProfileImage.Replace("normal", "bigger");
             }
         }
 

@@ -23,6 +23,5 @@ namespace Chicken.ViewModel.Profile.Base
                 return UserProfile.UserProfileBannerImage + "/web";
             }
         }
-
     }
 }
