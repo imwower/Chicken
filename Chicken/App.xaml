@@ -5,11 +5,11 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-    xmlns:local ="clr-namespace:Chicken.ViewModel"
     xmlns:ctrls ="clr-namespace:Chicken.Controls">
 
     <Application.Resources>
-        <local:ConvertVisibility x:Key="VisibilityConverter" />
+        <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
@@ -163,7 +163,7 @@
             <Setter Property="Width" Value="18" />
             <Setter Property="Height" Value="14" />
             <Setter Property="Margin" Value="2" />
-            <Setter Property="Fill" Value="{StaticResource PhoneContrastBackgroundColor}" />
+            <Setter Property="Fill" Value="{StaticResource PhoneAccentColor}" />
         </Style>
         <!--styles-->
 
@@ -174,7 +174,9 @@
                     <ColumnDefinition Width="68" />
                     <ColumnDefinition Width="*"  />
                 </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="64" Height="64" Margin="0,0,2,0"
+                <!--avatar-->
+                <Button Grid.Column="0"
+                        Width="64" Height="64" Margin="0,0,2,0"
                         HorizontalAlignment="Left" VerticalAlignment="Top"
                         Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
                         CommandParameter="{Binding User.Id}">
@@ -184,62 +186,86 @@
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
+                <!--content-->
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
-                        <RowDefinition />
                     </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
                         <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
                     </Grid.Resources>
                     <!--user name-->
-                    <TextBlock Text="{Binding User.Name}"
-                               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
-                    <!--text-->
-                    <TextBlock Text="{Binding Text}"
-                               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
-                               Style="{StaticResource TextContent}"
-                               HorizontalAlignment="Stretch" TextAlignment="Left" />
-                    <!--date-->
-                    <TextBlock Text="{Binding CreatedDate}"
-                               Grid.Row="2" Grid.Column="0"
-                               HorizontalAlignment="Left" />
-                    <!--image retweet count etc-->
-                    <StackPanel
-                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
-                        <StackPanel.Resources>
-                            <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
-                                <Setter Property="Opacity" Value="0.4" />
-                            </Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Opacity" Value="0.4" />
-                            </Style>
-                        </StackPanel.Resources>
-                        <!--media-->
-                        <Rectangle Visibility="{Binding IsRetweeted,Converter={StaticResource VisibilityConverter}}">
-                            <Rectangle.OpacityMask>
-                                <ImageBrush ImageSource="Images/light/media.png" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                        <TextBlock Text="RT" />
-                        <Image Source="/Images/dark/favourite.png" />
-                        <TextBlock Text="90" />
-                    </StackPanel>
+                    <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
+                    <Button Grid.Row="1">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--text-->
+                                    <TextBlock Text="{Binding Text}" Grid.Row="0"
+                                               Style="{StaticResource TextContent}"
+                                               HorizontalAlignment="Stretch" TextAlignment="Left" />
+                                    <Grid Grid.Row="1" Opacity="0.8" HorizontalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                                <Setter Property="TextAlignment" Value="Left" />
+                                            </Style>
+                                        </Grid.Resources>
+                                        <!--date-->
+                                        <TextBlock Text="{Binding CreatedDate}" Grid.Row="0" />
+                                        <!--media retweet count etc-->
+                                        <StackPanel Grid.Row="1"
+                                                    HorizontalAlignment="Right" Orientation="Horizontal">
+                                            <StackPanel.Resources>
+                                                <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                                </Style>
+                                            </StackPanel.Resources>
+                                            <!--media-->
+                                            <Rectangle Visibility="{Binding IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="Images/dark/media.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!--conversation-->
+                                            <Rectangle Visibility="{Binding InReplayToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="Images/dark/conversation.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!--location-->
+                                            <Rectangle Visibility="{Binding Geo,Converter={StaticResource StringToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="Images/dark/location.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!--retweet-->
+                                            <Rectangle Visibility="{Binding RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="Images/dark/retweet.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                     <!--via-->
-                    <HyperlinkButton Content="{Binding Path=Source}"
-                                     Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
-                                     NavigateUri="{Binding Path=SourceUrl}"
-                                     TargetName="_blank"
-                                     Style="{StaticResource HyperLinkSmall}"
-                                     HorizontalAlignment="Right"/>
+                    <HyperlinkButton Content="{Binding Path=Source}" Grid.Row="2"
+                                     NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank"
+                                     Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
                 </Grid>
+                <!--content end-->
             </Grid>
         </DataTemplate>
 
@@ -311,7 +337,7 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </ctrls:AutoListBox>
-                            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource VisibilityConverter}}" />
+                            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

@@ -4,6 +4,10 @@ using Chicken.Model;
 
 namespace Chicken.ViewModel.Home.Base
 {
+    /// <summary>
+    /// tweet view model is the summary of tweet
+    /// use tweet detail view model for more info
+    /// </summary>
     public class TweetViewModel
     {
         private Tweet tweet;
@@ -55,6 +59,13 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public string RetweetCount
+        {
+            get
+            {
+                return tweet.RetweetCount;
+            }
+        }
 
         public string Source
         {
@@ -77,6 +88,22 @@ namespace Chicken.ViewModel.Home.Base
                     return new Uri("https://github.com/", UriKind.Absolute);
                 }
                 return new Uri(tweet.Source.ParseToSourceUrl(), UriKind.Absolute);
+            }
+        }
+
+        public string InReplayToTweetId
+        {
+            get
+            {
+                return tweet.InReplayToTweetId;
+            }
+        }
+
+        public string Geo
+        {
+            get
+            {
+                return tweet.Geo;
             }
         }
     }

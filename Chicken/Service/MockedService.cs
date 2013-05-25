@@ -10,6 +10,10 @@ namespace Chicken.Service
 {
     public class MockedService : ITweetService
     {
+        #region properties
+        private static JsonSerializer jsonSerializer = new JsonSerializer();
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
         {
@@ -17,7 +21,6 @@ namespace Chicken.Service
             var result = default(T);
             using (var reader = new JsonTextReader(new StreamReader(streamInfo.Stream)))
             {
-                var jsonSerializer = new JsonSerializer();
                 result = jsonSerializer.Deserialize<T>(reader);
             }
             if (callBack != null)
