@@ -117,7 +117,7 @@ namespace Chicken.Service.Implementation
         }
 
         #region profile page
-        public void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/userProfile.json";
             HandleWebRequest<T>(url, callBack);

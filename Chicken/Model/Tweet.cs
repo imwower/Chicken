@@ -10,6 +10,7 @@ namespace Chicken.Model
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
 
+        [JsonProperty("id_str")]
         public string Id { get; set; }
 
         public string Text { get; set; }

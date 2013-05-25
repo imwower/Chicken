@@ -125,7 +125,7 @@ namespace Chicken.Service.Implementation
             return GetDirectMessages();
         }
 
-        public void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             if (parameters == null || parameters.Count == 0)
             {

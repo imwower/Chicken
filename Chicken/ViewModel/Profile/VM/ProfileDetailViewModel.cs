@@ -30,7 +30,7 @@ namespace Chicken.ViewModel.Profile.VM
         public override void Refresh()
         {
             base.Refresh();
-            TweetService.GetUserProfile<UserProfile>(UserId,
+            TweetService.GetUserProfileDetail<UserProfile>(UserId,
                 obj =>
                 {
                     this.UserProfileViewModel = new UserProfileDetailViewModel(obj);

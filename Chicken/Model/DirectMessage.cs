@@ -3,7 +3,8 @@
 namespace Chicken.Model
 {
     public class DirectMessage
-    {  
+    {
+        [JsonProperty("id_str")]
         public string Id { get; set; }
 
         public string Text { get; set; }

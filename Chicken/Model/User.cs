@@ -4,7 +4,7 @@ namespace Chicken.Model
 {
     public class User
     {
-        [JsonProperty("id")]
+        [JsonProperty("id_str")]
         public string Id { get; set; }
 
         public string Name { get; set; }

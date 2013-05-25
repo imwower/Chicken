@@ -17,12 +17,13 @@ namespace Chicken.Service.Interface
         List<DirectMessage> GetDirectMessages();
         List<DirectMessage> GetOldDirectMessages();
 
-        void GetUserProfile<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+
 
         List<Tweet> GetUserTweets(string userId);
         List<Tweet> GetUserOldTweets(string userId);
 
         #region profile page
+        void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
         /// <summary>
         /// get a profile summary list of sepecific user's following
         /// </summary>
