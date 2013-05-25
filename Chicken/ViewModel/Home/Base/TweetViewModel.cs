@@ -47,6 +47,15 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public bool IncludeMedia
+        {
+            get
+            {
+                return tweet.Entities != null && tweet.Entities.Media != null;
+            }
+        }
+
+
         public string Source
         {
             get

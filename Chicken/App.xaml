@@ -157,9 +157,18 @@
             </Setter>
         </Style>
 
+        <!--media and retweet icon-->
+        <Style x:Name="RetweetRectangleSmall" TargetType="Rectangle">
+            <Setter Property="Stretch" Value="Fill" />
+            <Setter Property="Width" Value="18" />
+            <Setter Property="Height" Value="14" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="Fill" Value="{StaticResource PhoneContrastBackgroundColor}" />
+        </Style>
         <!--styles-->
 
         <DataTemplate x:Key="TweetTemplate">
+            <!--grid must set width, it is a bug-->
             <Grid Width="456" Margin="0,4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="68" />
@@ -182,37 +191,50 @@
                         <RowDefinition />
                         <RowDefinition />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
                         <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
                     </Grid.Resources>
                     <!--user name-->
-                    <TextBlock Grid.Row="0" Text="{Binding User.Name}" />
+                    <TextBlock Text="{Binding User.Name}"
+                               Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" />
                     <!--text-->
-                    <TextBlock Grid.Row="1" Text="{Binding Text}"
+                    <TextBlock Text="{Binding Text}"
+                               Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
                                Style="{StaticResource TextContent}"
                                HorizontalAlignment="Stretch" TextAlignment="Left" />
                     <!--date-->
-                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}"
+                    <TextBlock Text="{Binding CreatedDate}"
+                               Grid.Row="2" Grid.Column="0"
                                HorizontalAlignment="Left" />
                     <!--image retweet count etc-->
-                    <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                    <StackPanel
+                        Grid.Row="2" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
                         <StackPanel.Resources>
-                            <Style TargetType="Image">
-                                <Setter Property="Width" Value="20" />
-                                <Setter Property="Height" Value="16" />
-                                <Setter Property="Margin" Value="2" />
-                                <Setter Property="Opacity" Value="0.8" />
-                                <Setter Property="OpacityMask" Value="Blue" />
+                            <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                <Setter Property="Opacity" Value="0.4" />
+                            </Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Opacity" Value="0.4" />
                             </Style>
                         </StackPanel.Resources>
-                        <Image Source="/Images/dark/media.png" />
+                        <!--media-->
+                        <Rectangle Visibility="{Binding IsRetweeted,Converter={StaticResource VisibilityConverter}}">
+                            <Rectangle.OpacityMask>
+                                <ImageBrush ImageSource="Images/light/media.png" />
+                            </Rectangle.OpacityMask>
+                        </Rectangle>
                         <TextBlock Text="RT" />
                         <Image Source="/Images/dark/favourite.png" />
                         <TextBlock Text="90" />
                     </StackPanel>
                     <!--via-->
-                    <HyperlinkButton Grid.Row="3" Content="{Binding Path=Source}"
+                    <HyperlinkButton Content="{Binding Path=Source}"
+                                     Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
                                      NavigateUri="{Binding Path=SourceUrl}"
                                      TargetName="_blank"
                                      Style="{StaticResource HyperLinkSmall}"
