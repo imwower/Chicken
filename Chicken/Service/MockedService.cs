@@ -118,7 +118,7 @@ namespace Chicken.Service
             string url = "SampleData/userProfile.json";
             HandleWebRequest<T>(url, callBack);
         }
-        
+
         public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/friends_list.json";
@@ -127,7 +127,8 @@ namespace Chicken.Service
 
         public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            throw new NotImplementedException();
+            string url = "SampleData/followers.json";
+            HandleWebRequest<T>(url, callBack);
         }
         #endregion
     }

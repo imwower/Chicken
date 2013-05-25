@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using Chicken.Common;
-using Chicken.Service;
+﻿using System.Collections.ObjectModel;
 using Chicken.ViewModel.Home.Base;
+using Chicken.Common;
+using System.Collections.Generic;
 
 namespace Chicken.ViewModel.Profile.VM
 {
-    public class UserTweetsViewModel : ProfileViewModelBase
+    public class UserFavouritesViewModel : ProfileViewModelBase
     {
         #region properties
         private ObservableCollection<TweetViewModel> tweetList;
@@ -24,9 +23,9 @@ namespace Chicken.ViewModel.Profile.VM
         }
         #endregion
 
-        public UserTweetsViewModel()
+        public UserFavouritesViewModel()
         {
-            Header = "Tweets";
+            Header = "Favourites";
             TweetList = new ObservableCollection<TweetViewModel>();
         }
 

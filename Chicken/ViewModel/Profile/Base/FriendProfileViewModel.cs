@@ -92,7 +92,7 @@ namespace Chicken.ViewModel.Profile.Base
             }
         }
 
-        public string FavourtiesCount
+        public string FavouritesCount
         {
             get
             {

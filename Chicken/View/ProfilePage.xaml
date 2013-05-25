@@ -76,33 +76,36 @@
                                     <Setter Property="TextAlignment" Value="Left" />
                                     <Setter Property="Foreground" Value="#009999" />
                                 </Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="BorderBrush" Value="Silver" />
+                                </Style>
                             </Grid.Resources>
-                            <Border Grid.Column="0" BorderBrush="Silver" BorderThickness="1,1,1,1">
+                            <Border Grid.Column="0" BorderThickness="1,1,1,1">
                                 <TextBlock>
-                           <Run Text="{Binding TweetCount}" />
-                            <LineBreak />
-                             <Run Text="TWEETS" />
+                                    <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
+                                    <LineBreak />
+                                    <Run Text="TWEETS" />
                                 </TextBlock>
                             </Border>
-                            <Border Grid.Column="1" BorderBrush="Silver" BorderThickness="0,1,1,1">
+                            <Border Grid.Column="1" BorderThickness="0,1,1,1">
                                 <TextBlock >
-                            233
-                            <LineBreak />
-                        <Run Text="FOLLOWING" />
+                                    <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
+                                    <LineBreak />
+                                    <Run Text="FOLLOWING" />
                                 </TextBlock>
                             </Border>
-                            <Border Grid.Column="2" BorderBrush="Silver" BorderThickness="0,1,1,1">
+                            <Border Grid.Column="2" BorderThickness="0,1,1,1">
                                 <TextBlock >
-                            9009  
-                            <LineBreak />
-                           <Run Text="FOLLOWERS" />
+                                    <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
+                                    <LineBreak />
+                                    <Run Text="FOLLOWERS" />
                                 </TextBlock>
                             </Border>
-                            <Border Grid.Column="3" BorderBrush="Silver" BorderThickness="0,1,1,1">
+                            <Border Grid.Column="3" BorderThickness="0,1,1,1">
                                 <TextBlock >
-                           900  
-                            <LineBreak />
-                               FAVOURITES
+                                    <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
+                                    <LineBreak />
+                                    <Run Text="FAVOURITES" />
                                 </TextBlock>
                             </Border>
                         </Grid>
@@ -129,9 +132,10 @@
                                  Header="{Binding Path=Header}" 
                                  ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
                                  ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <controls:PivotItem Header="Gallery">
-                <Grid/>
-            </controls:PivotItem>
+            <ctrls:HomePivotItem x:Name="UserFavouritesPivotItem"
+                                 Header="{Binding Path=Header}" 
+                                 ListBoxItems="{Binding Path=TweetList}"
+                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
         </controls:Pivot>
     </Grid>
 

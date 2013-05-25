@@ -16,8 +16,40 @@ using Chicken.Common;
 
 namespace Chicken.Service
 {
-    public class TweetService // : ITweetService
+    public class TweetService  : ITweetService
     {
+        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            request.Method = method.ToString();
+            request.BeginGetResponse(
+                (result) =>
+                {
+                    HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
+                    var response = requestResult.EndGetResponse(result);
+                    T output = default(T);
+                    using (var reader = new JsonTextReader(new StreamReader(response.GetResponseStream())))
+                    {
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        output = jsonSerializer.Deserialize<T>(reader);
+                    }
+                    if (callBack != null)
+                    {
+                        Deployment.Current.Dispatcher.BeginInvoke(
+                            () =>
+                            {
+                                callBack(output);
+                            });
+                    }
+                    request = null;
+                    requestResult = null;
+                    response.Close();
+                    response.Dispose();
+                    response = null;
+                },
+              request);
+        }
+
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = TwitterHelper.GenerateUrlParams(TwitterHelper.STATUSES_HOMETIMELINE);
@@ -110,36 +142,14 @@ namespace Chicken.Service
             HandleWebRequest<T>(url, callBack);
         }
 
-        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = TwitterHelper.HTTPGET)
+        public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            HttpWebRequest request = WebRequest.CreateHttp(url);
-            request.Method = method.ToString();
-            request.BeginGetResponse(
-                (result) =>
-                {
-                    HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
-                    var response = requestResult.EndGetResponse(result);
-                    T output = default(T);
-                    using (var reader = new JsonTextReader(new StreamReader(response.GetResponseStream())))
-                    {
-                        JsonSerializer jsonSerializer = new JsonSerializer();
-                        output = jsonSerializer.Deserialize<T>(reader);
-                    }
-                    if (callBack != null)
-                    {
-                        Deployment.Current.Dispatcher.BeginInvoke(
-                            () =>
-                            {
-                                callBack(output);
-                            });
-                    }
-                    request = null;
-                    requestResult = null;
-                    response.Close();
-                    response.Dispose();
-                    response = null;
-                },
-              request);
+            //throw new NotImplementedException();
+        }
+
+        public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            //throw new NotImplementedException();
         }
     }
 }

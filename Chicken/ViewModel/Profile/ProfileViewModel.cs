@@ -35,6 +35,8 @@ namespace Chicken.ViewModel.Profile
                 new ProfilePivotViewModel(),
                 new UserTweetsViewModel(),
                 new UserFollowingViewModel(),
+                new UserFollowersViewModel(),
+                new UserFavouritesViewModel(),
             };
             this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
         }

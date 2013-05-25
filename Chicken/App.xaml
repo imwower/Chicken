@@ -8,7 +8,6 @@
     xmlns:local ="clr-namespace:Chicken.ViewModel"
     xmlns:ctrls ="clr-namespace:Chicken.Controls">
 
-    <!--应用程序资源-->
     <Application.Resources>
         <local:ConvertVisibility x:Key="VisibilityConverter" />
 
@@ -167,17 +166,12 @@
                     <ColumnDefinition Width="*"  />
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0" Width="64" Height="64" Margin="0,0,2,0"
-                        HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction
-                                Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
-                                CommandParameter="{Binding User.Id}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
+                        CommandParameter="{Binding User.Id}">
                     <Button.Template>
                         <ControlTemplate>
-                            <Image Source="{Binding User.ProfileImage}"  />
+                            <Image Source="{Binding User.ProfileImage}" />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -190,68 +184,82 @@
                     </Grid.RowDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
-                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkText}" />
+                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
                     </Grid.Resources>
                     <!--user name-->
                     <TextBlock Grid.Row="0" Text="{Binding User.Name}" />
                     <!--text-->
-                    <TextBlock Grid.Row="1" Text="{Binding Text}" Style="{StaticResource TextContent}" HorizontalAlignment="Stretch" />
+                    <TextBlock Grid.Row="1" Text="{Binding Text}"
+                               Style="{StaticResource TextContent}"
+                               HorizontalAlignment="Stretch" TextAlignment="Left" />
                     <!--date-->
-                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}" HorizontalAlignment="Left" />
-                    <TextBlock Grid.Row="2" Text="retweet count" HorizontalAlignment="Right" />
+                    <TextBlock Grid.Row="2" Text="{Binding CreatedDate}"
+                               HorizontalAlignment="Left" />
+                    <!--image retweet count etc-->
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Horizontal">
+                        <StackPanel.Resources>
+                            <Style TargetType="Image">
+                                <Setter Property="Width" Value="20" />
+                                <Setter Property="Height" Value="16" />
+                                <Setter Property="Margin" Value="2" />
+                                <Setter Property="Opacity" Value="0.8" />
+                                <Setter Property="OpacityMask" Value="Blue" />
+                            </Style>
+                        </StackPanel.Resources>
+                        <Image Source="/Images/dark/media.png" />
+                        <TextBlock Text="RT" />
+                        <Image Source="/Images/dark/favourite.png" />
+                        <TextBlock Text="90" />
+                    </StackPanel>
                     <!--via-->
                     <HyperlinkButton Grid.Row="3" Content="{Binding Path=Source}"
                                      NavigateUri="{Binding Path=SourceUrl}"
                                      TargetName="_blank"
                                      Style="{StaticResource HyperLinkSmall}"
-                                     HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+                                     HorizontalAlignment="Right"/>
                 </Grid>
             </Grid>
         </DataTemplate>
 
         <DataTemplate x:Key="FriendTemplate">
-            <Grid Margin="0,4">
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="88" />
-                    <ColumnDefinition Width="*"  />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Width="84" Height="84" Margin="0,0,2,0"
-                        HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <i:Interaction.Triggers>
-                        <i:EventTrigger EventName="Click">
-                            <i:InvokeCommandAction
-                                Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
-                                CommandParameter="{Binding Id}" />
-                        </i:EventTrigger>
-                    </i:Interaction.Triggers>
-                    <Button.Template>
-                        <ControlTemplate>
-                            <Image Source="{Binding ProfileImage}"  />
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                            <Setter Property="TextAlignment" Value="Left" />
-                        </Style>
-                    </Grid.Resources>
-                    <!--user name-->
-                    <TextBlock Grid.Row="0" Text="{Binding Name}" />
-                    <!--screen name-->
-                    <TextBlock Grid.Row="1" Text="{Binding ScreenName}" />
-                    <!--description-->
-                    <TextBlock Grid.Row="2" Text="{Binding Description}" Style="{StaticResource TextContentNormal}" />
-                </Grid>
-            </Grid>
+            <Button Margin="0,4"
+                    Command="{Binding DataContext.ClickCommand, ElementName=MainPivot}"
+                    CommandParameter="{Binding Id}">
+                <Button.Template>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="88" />
+                                <ColumnDefinition Width="*"  />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding ProfileImage}"
+                           Grid.Column="0" Width="84" Height="84" Margin="0,0,2,0"
+                           HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                        <Setter Property="TextAlignment" Value="Left" />
+                                    </Style>
+                                </Grid.Resources>
+                                <!--user name-->
+                                <TextBlock Grid.Row="0" Text="{Binding Name}" />
+                                <!--screen name-->
+                                <TextBlock Grid.Row="1" Text="{Binding ScreenName}" />
+                                <!--description-->
+                                <TextBlock Grid.Row="2" Text="{Binding Description}" Style="{StaticResource TextContentNormal}" />
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
         </DataTemplate>
 
         <DataTemplate x:Name="PivotHeaderTemplate">

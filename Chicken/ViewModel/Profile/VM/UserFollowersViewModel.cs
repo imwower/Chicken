@@ -14,7 +14,7 @@ namespace Chicken.ViewModel.Profile.VM
         public override void Refresh()
         {
             base.Refresh();
-            TweetService.GetFollowingLists<FriendList>(
+            TweetService.GetFollowersLists<FriendList>(
                 (result) =>
                 {
                     FriendList.Refresh(result);

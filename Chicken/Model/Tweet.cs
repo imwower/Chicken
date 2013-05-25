@@ -10,6 +10,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Newtonsoft.Json;
 using Chicken.Common;
+using Chicken.Model.Entity;
 
 namespace Chicken.Model
 {
@@ -17,14 +18,28 @@ namespace Chicken.Model
     {
         public User User { get; set; }
 
-        public string Text { get; set; }
-
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
+
+        public string Id { get; set; }
+
+        public string Text { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
 
-        public string Id { get; set; }
+        [JsonProperty("retweet_count")]
+        public string RetweetCount { get; set; }
+
+        [JsonProperty("favorite_count")]
+        public string FavouriteCount { get; set; }
+
+        public Entities Entities { get; set; }
+
+        [JsonProperty("favorited")]
+        public bool Favourited { get; set; }
+
+        [JsonProperty("retweeted")]
+        public bool Retweeted { get; set; }
     }
 }
