@@ -20,23 +20,26 @@
     </phone:PhoneApplicationPage.Resources>
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot Grid.Row="0" x:Name="MainPivot" Title="{Binding Path=Title}"
-                      HeaderTemplate="{StaticResource PivotHeaderTemplate}">
+        <controls:Pivot Grid.Row="0"
+                        x:Name="MainPivot" Title="{Binding Path=Title}">
             <!--Home-->
-            <ctrls:HomePivotItem x:Name="HomePivotItem"
+            <ctrls:HomePivotItem
+                                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                                  Header="{Binding Path=Header}"
                                  ListBoxItems="{Binding Path=TweetList}"
                                  ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--Mentions-->
-            <ctrls:HomePivotItem x:Name="MentionsPivotItem"
+            <ctrls:HomePivotItem
+                                 DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
                                  Header="{Binding Path=Header}"
                                  ListBoxItems="{Binding Path=TweetList}"
                                  ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--DMs-->
-            <ctrls:HomePivotItem x:Name="DMsPivotItem"
+            <ctrls:HomePivotItem
+                                 DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
                                  Header="{Binding Path=Header}"
                                  ListBoxItems="{Binding Path=DMList}"
-                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+                                 ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
         </controls:Pivot>
     </Grid>
 </phone:PhoneApplicationPage>

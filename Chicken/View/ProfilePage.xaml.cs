@@ -17,12 +17,6 @@ namespace Chicken.View
             InitializeComponent();
             profileViewModel = new ProfileViewModel();
             this.MainPivot.DataContext = profileViewModel;
-            this.ProfilePivotItem.DataContext = profileViewModel.PivotItems[0];
-            this.UserTweetsPivotItem.DataContext = profileViewModel.PivotItems[1];
-            this.UserFollowingPivotItem.DataContext = profileViewModel.PivotItems[2];
-            this.UserFollowersPivotItem.DataContext = profileViewModel.PivotItems[3];
-            this.UserFavouritesPivotItem.DataContext = profileViewModel.PivotItems[4];
-
             this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
         }
 

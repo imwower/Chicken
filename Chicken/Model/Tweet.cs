@@ -1,5 +1,6 @@
 ﻿using Chicken.Model.Entity;
 using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Chicken.Model
 {
@@ -24,6 +25,7 @@ namespace Chicken.Model
         [JsonProperty("favorite_count")]
         public string FavouriteCount { get; set; }
 
+        [JsonProperty("entities")]
         public Entities Entities { get; set; }
 
         [JsonProperty("favorited")]
@@ -38,7 +40,7 @@ namespace Chicken.Model
         [JsonProperty("in_reply_to_user_id")]
         public string InReplayToUserId { get; set; }
 
-        [JsonProperty("geo")]
-        public string Geo { get; set; }
+        [JsonProperty("coordinates")]
+        public Coordinates Coordinates { get; set; }
     }
 }

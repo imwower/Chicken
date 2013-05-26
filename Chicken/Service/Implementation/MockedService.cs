@@ -20,9 +20,10 @@ namespace Chicken.Service.Implementation
         {
             var streamInfo = Application.GetResourceStream(new Uri(url, UriKind.Relative));
             var result = default(T);
-            using (var reader = new JsonTextReader(new StreamReader(streamInfo.Stream)))
+            using (var reader = new StreamReader(streamInfo.Stream))
             {
-                result = jsonSerializer.Deserialize<T>(reader);
+                string s = reader.ReadToEnd();
+                result = JsonConvert.DeserializeObject<T>(s);
             }
             if (callBack != null)
             {

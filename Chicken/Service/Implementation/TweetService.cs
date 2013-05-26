@@ -8,10 +8,13 @@ using Chicken.Model;
 using Chicken.Service.Interface;
 using Newtonsoft.Json;
 
+
 namespace Chicken.Service.Implementation
 {
-    public class TweetService  : ITweetService
+    public class TweetService : ITweetService
     {
+        static JsonSerializer JsonSerializer = new JsonSerializer();
+
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {
             HttpWebRequest request = WebRequest.CreateHttp(url);
@@ -22,31 +25,66 @@ namespace Chicken.Service.Implementation
                     HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
                     var response = requestResult.EndGetResponse(result);
                     T output = default(T);
-                    using (var reader = new JsonTextReader(new StreamReader(response.GetResponseStream())))
+                    var streamReader = new StreamReader(response.GetResponseStream());
+                    try
                     {
-                        JsonSerializer jsonSerializer = new JsonSerializer();
-                        output = jsonSerializer.Deserialize<T>(reader);
+#if DEBUG
+                        string responseString = streamReader.ReadToEnd();
+                        Console.WriteLine("response string : " + responseString);
+                        output = JsonConvert.DeserializeObject<T>(responseString);
+#else
+                        using (var reader = new JsonTextReader(streamReader))
+                        {
+                            output = JsonSerializer.Deserialize<T>(reader);
+                        }
+#endif
                     }
-                    if (callBack != null)
+                    catch (Exception e)
                     {
-                        Deployment.Current.Dispatcher.BeginInvoke(
-                            () =>
-                            {
-                                callBack(output);
-                            });
+#if DEBUG
+                        Console.WriteLine("deserialize error : " + e.ToString());
+#endif
                     }
-                    request = null;
-                    requestResult = null;
-                    response.Close();
-                    response.Dispose();
-                    response = null;
+                    finally
+                    {
+                        if (callBack != null)
+                        {
+                            Deployment.Current.Dispatcher.BeginInvoke(
+                                () =>
+                                {
+                                    callBack(output);
+                                });
+                        }
+                        if (streamReader != null)
+                        {
+                            streamReader.DiscardBufferedData();
+                            streamReader.Close();
+                            streamReader.Dispose();
+                            streamReader = null;
+                        }
+                        request = null;
+                        requestResult = null;
+                        if (response != null)
+                        {
+                            response.Close();
+                            response.Dispose();
+                            response = null;
+                        }
+                    }
                 },
               request);
         }
 
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE);
+#if DEBUG
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>(1);
+                parameters.Add("count", "2");
+            }
+#endif
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
 

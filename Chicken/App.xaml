@@ -211,7 +211,7 @@
                                     <TextBlock Text="{Binding Text}" Grid.Row="0"
                                                Style="{StaticResource TextContent}"
                                                HorizontalAlignment="Stretch" TextAlignment="Left" />
-                                    <Grid Grid.Row="1" Opacity="0.8" HorizontalAlignment="Stretch">
+                                    <Grid Grid.Row="1" Opacity="0.6" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />
                                         </Grid.RowDefinitions>
@@ -243,7 +243,7 @@
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                             <!--location-->
-                                            <Rectangle Visibility="{Binding Geo,Converter={StaticResource StringToVisibilityConverter}}">
+                                            <Rectangle Visibility="{Binding IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
                                                     <ImageBrush ImageSource="Images/dark/location.png" />
                                                 </Rectangle.OpacityMask>
@@ -264,6 +264,72 @@
                     <HyperlinkButton Content="{Binding Path=Source}" Grid.Row="2"
                                      NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank"
                                      Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
+                </Grid>
+                <!--content end-->
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DirectMessageTemplate">
+            <!--grid must set width, it is a bug-->
+            <Grid Width="456" Margin="0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="68" />
+                    <ColumnDefinition Width="*"  />
+                </Grid.ColumnDefinitions>
+                <!--avatar-->
+                <Button Grid.Column="0"
+                        Width="64" Height="64" Margin="0,0,2,0"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
+                        CommandParameter="{Binding User.Id}">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Image Source="{Binding User.ProfileImage}" />
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <!--content-->
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
+                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
+                    </Grid.Resources>
+                    <!--user name-->
+                    <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
+                    <Button Grid.Row="1">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <!--text-->
+                                    <TextBlock Text="{Binding Text}" Grid.Row="0"
+                                               Style="{StaticResource TextContent}"
+                                               HorizontalAlignment="Stretch" TextAlignment="Left" />
+                                    <Grid Grid.Row="1" Opacity="0.6" HorizontalAlignment="Stretch">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                                <Setter Property="HorizontalAlignment" Value="Left" />
+                                                <Setter Property="TextAlignment" Value="Left" />
+                                            </Style>
+                                        </Grid.Resources>
+                                        <!--date-->
+                                        <TextBlock Text="{Binding CreatedDate}" Grid.Row="0" />
+                                    </Grid>
+                                </Grid>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </Grid>
                 <!--content end-->
             </Grid>
@@ -307,10 +373,6 @@
             </Button>
         </DataTemplate>
 
-        <DataTemplate x:Name="PivotHeaderTemplate">
-            <TextBlock Text="{Binding}" />
-        </DataTemplate>
-
         <!--Pivot Item-->
         <!--Home Pivot Item Style-->
         <Style TargetType="ctrls:HomePivotItem">
@@ -320,7 +382,7 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*" />
-                                <RowDefinition Height="12" />
+                                <RowDefinition Height="10" />
                             </Grid.RowDefinitions>
                             <ctrls:AutoListBox Grid.Row="0" x:Name="AutoListBox"
                                                ItemsSource="{TemplateBinding ListBoxItems}"
@@ -334,7 +396,8 @@
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
                             </ctrls:AutoListBox>
-                            <ProgressBar Grid.Row="1" IsIndeterminate="True" Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <ProgressBar Grid.Row="1" IsIndeterminate="True"
+                                         Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

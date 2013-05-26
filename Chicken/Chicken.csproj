@@ -75,7 +75,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\DirectMessage.cs" />
+    <Compile Include="Model\Entity\Coordinates.cs" />
     <Compile Include="Model\Entity\Entities.cs" />
+    <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
     <Compile Include="Model\FriendList.cs" />
     <Compile Include="Model\Tweet.cs" />

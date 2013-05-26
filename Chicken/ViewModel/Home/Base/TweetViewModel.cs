@@ -55,7 +55,8 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return tweet.Entities != null && tweet.Entities.Media != null;
+                return tweet.Entities != null &&
+                    tweet.Entities.Medias != null;
             }
         }
 
@@ -91,11 +92,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public string Geo
+        public bool IncludeCoordinates
         {
             get
             {
-                return tweet.Geo;
+                return tweet.Coordinates != null;
             }
         }
     }

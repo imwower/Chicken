@@ -18,7 +18,9 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
                         Title="{Binding Path=Title}">
-            <controls:PivotItem x:Name="ProfilePivotItem" Header="{Binding Path=Header}">
+            <controls:PivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding Path=Header}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -124,22 +126,26 @@
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
-            <ctrls:HomePivotItem x:Name="UserTweetsPivotItem"
-                                 Header="{Binding Path=Header}" 
-                                 ListBoxItems="{Binding Path=TweetList}"
-                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
-            <ctrls:HomePivotItem x:Name="UserFollowingPivotItem"
-                                 Header="{Binding Path=Header}" 
-                                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
-                                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <ctrls:HomePivotItem x:Name="UserFollowersPivotItem"
-                                 Header="{Binding Path=Header}" 
-                                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
-                                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <ctrls:HomePivotItem x:Name="UserFavouritesPivotItem"
-                                 Header="{Binding Path=Header}" 
-                                 ListBoxItems="{Binding Path=TweetList}"
-                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+            <ctrls:HomePivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=TweetList}"
+                ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+            <ctrls:HomePivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
+                ListBoxItemTemplate="{StaticResource FriendTemplate}" />
+            <ctrls:HomePivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[3],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
+                ListBoxItemTemplate="{StaticResource FriendTemplate}" />
+            <ctrls:HomePivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[4],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=TweetList}"
+                ListBoxItemTemplate="{StaticResource TweetTemplate}" />
         </controls:Pivot>
     </Grid>
 

@@ -1,49 +1,159 @@
 [
     {
-        "created_at": "Fri May 10 08:09:50 +0000 2013", 
-        "id": 332769436656365600, 
-        "id_str": "332769436656365569", 
-        "text": null, 
-        "source": "<a href=\"http://hotot.org\" rel=\"nofollow\">Hotot for Chrome</a>", 
+        "created_at": "Sun May 26 06:15:54 +0000 2013", 
+        "id": 338538966951292900, 
+        "id_str": "338538966951292928", 
+        "text": "@mudewucifang 我跟你正好相反啊啊啊", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 332769257664438300, 
-        "in_reply_to_status_id_str": "332769257664438272", 
-        "in_reply_to_user_id": 1068059544, 
-        "in_reply_to_user_id_str": "1068059544", 
-        "in_reply_to_screen_name": "016_610", 
+        "in_reply_to_status_id": 338536702144557060, 
+        "in_reply_to_status_id_str": "338536702144557056", 
+        "in_reply_to_user_id": 18112744, 
+        "in_reply_to_user_id_str": "18112744", 
+        "in_reply_to_screen_name": "mudewucifang", 
         "user": {
-            "id": 50678626, 
-            "id_str": "50678626", 
-            "name": "蛋布丁", 
-            "screen_name": "heartboy3", 
-            "location": "Shanghai", 
-            "description": "You are my precious. I'll find you.", 
-            "url": null, 
+            "id": 31418313, 
+            "id_str": "31418313", 
+            "name": "元宝妹妹", 
+            "screen_name": "k_kica", 
+            "location": "Beijing,China", 
+            "description": "兼职日本原单小店，有空来耍耍~~~", 
+            "url": "http://t.co/9p8YrtFzYR", 
             "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/9p8YrtFzYR", 
+                            "expanded_url": "http://ybmm123.taobao.com", 
+                            "display_url": "ybmm123.taobao.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": true, 
+            "followers_count": 4297, 
+            "friends_count": 1079, 
+            "listed_count": 131, 
+            "created_at": "Wed Apr 15 14:23:37 +0000 2009", 
+            "favourites_count": 109, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 65068, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3538489993/2a7888da3932299d7ccdadd5c32f3a67_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3538489993/2a7888da3932299d7ccdadd5c32f3a67_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/31418313/1361150652", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "mudewucifang", 
+                    "name": "来自吃冰激凌没够儿星球的让•仁佳•囧囧娃", 
+                    "id": 18112744, 
+                    "id_str": "18112744", 
+                    "indices": [
+                        0, 
+                        13
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:41 +0000 2013", 
+        "id": 338538915508142100, 
+        "id_str": "338538915508142080", 
+        "text": "@mudewucifang 真没有啊真没有~~", 
+        "source": "<a href=\"http://levelupstudio.com/plume\" rel=\"nofollow\">Plume for Android</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338537799357693950, 
+        "in_reply_to_status_id_str": "338537799357693953", 
+        "in_reply_to_user_id": 18112744, 
+        "in_reply_to_user_id_str": "18112744", 
+        "in_reply_to_screen_name": "mudewucifang", 
+        "user": {
+            "id": 36973250, 
+            "id_str": "36973250", 
+            "name": "馋懒宅二毒舌猥琐一脸代码抠脚小汉法号恶犬", 
+            "screen_name": "Fatal1tyV", 
+            "location": "帝都", 
+            "description": "子承父业程序猿 万能北漂男青年，流氓小叔伪正太 半吊金属吉他男，厨房打杂刷锅洗碗 师太 @foursoil 窖养恶犬，歪楼嘴炮技能满点 邪恶脑补功力强悍，二十年专黑文艺小清新，一辈子爱毁卢瑟装逼犯，民斗基友果粉勿扰 不喜想UN想B请便", 
+            "url": "http://t.co/qB0TSmKBjd", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/qB0TSmKBjd", 
+                            "expanded_url": "http://www.fatal1tyv.com", 
+                            "display_url": "fatal1tyv.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 919, 
-            "friends_count": 285, 
-            "listed_count": 32, 
-            "created_at": "Thu Jun 25 15:38:59 +0000 2009", 
-            "favourites_count": 1447, 
+            "followers_count": 3209, 
+            "friends_count": 592, 
+            "listed_count": 84, 
+            "created_at": "Fri May 01 15:58:51 +0000 2009", 
+            "favourites_count": 69, 
             "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": false, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 48343, 
-            "lang": "zh-cn", 
+            "statuses_count": 86085, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
             "profile_background_color": "1A1B1F", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/213389425/twitter_backup.jpg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/213389425/twitter_backup.jpg", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme9/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme9/bg.gif", 
             "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3637865111/c3f122c99ad738f51653023f20f9fae3_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3637865111/c3f122c99ad738f51653023f20f9fae3_normal.jpeg", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/1592479886/QQ__20111017180210_normal.jpg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/1592479886/QQ__20111017180210_normal.jpg", 
             "profile_link_color": "2FC2EF", 
             "profile_sidebar_border_color": "181A1E", 
             "profile_sidebar_fill_color": "252429", 
@@ -67,23 +177,13 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "016_610", 
-                    "name": "大仁", 
-                    "id": 1068059544, 
-                    "id_str": "1068059544", 
+                    "screen_name": "mudewucifang", 
+                    "name": "来自吃冰激凌没够儿星球的让•仁佳•囧囧娃", 
+                    "id": 18112744, 
+                    "id_str": "18112744", 
                     "indices": [
                         0, 
-                        8
-                    ]
-                }, 
-                {
-                    "screen_name": "Lamiauu", 
-                    "name": "纋寳 Lamia", 
-                    "id": 115961597, 
-                    "id_str": "115961597", 
-                    "indices": [
-                        9, 
-                        17
+                        13
                     ]
                 }
             ]
@@ -93,192 +193,11 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:49 +0000 2013", 
-        "id": 332769431761600500, 
-        "id_str": "332769431761600512", 
-        "text": "中午吃了3斤龙虾，到现在手上还有味道。", 
-        "source": "<a href=\"https://lovetui.info/\" rel=\"nofollow\">爱·推</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 59100731, 
-            "id_str": "59100731", 
-            "name": "飛 魚o0O™", 
-            "screen_name": "hanfeiyu", 
-            "location": "上海-南京", 
-            "description": "热爱电影尤好各类Cult片、米兰球迷、大吃货美食控、各种美女爱好者！
-我行我素的自由主义者、喜一个人独行、不狂热社会运动份子、准兲朝不和谐因素！
-人格分裂中期……", 
-            "url": "http://weibo.com/owokao", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://weibo.com/owokao", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                23
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1232, 
-            "friends_count": 639, 
-            "listed_count": 28, 
-            "created_at": "Wed Jul 22 11:26:01 +0000 2009", 
-            "favourites_count": 26, 
-            "utc_offset": 28800, 
-            "time_zone": "Beijing", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 29479, 
-            "lang": "zh-cn", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "642D8B", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme10/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme10/bg.gif", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/2195417911/Myself_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/2195417911/Myself_normal.jpg", 
-            "profile_link_color": "FF0000", 
-            "profile_sidebar_border_color": "65B0DA", 
-            "profile_sidebar_fill_color": "7AC3EE", 
-            "profile_text_color": "3D1957", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [ ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:48 +0000 2013", 
-        "id": 332769428414550000, 
-        "id_str": "332769428414550016", 
-        "text": "為了不殺之恩。室友遞的農夫山泉也不能喝。 RT @fewspider: 仔细想想那水挺不卫生的，以后多喝矿泉水", 
-        "source": "<a href=\"http://mobileways.de/gravity\" rel=\"nofollow\">Gravity</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 164326025, 
-            "id_str": "164326025", 
-            "name": "TIN", 
-            "screen_name": "Tin_Tse", 
-            "location": "ÜT: 23.0607505,113.6789761", 
-            "description": "生命滿希望  前路由我創", 
-            "url": "http://www.twitter.com", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://www.twitter.com", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1590, 
-            "friends_count": 559, 
-            "listed_count": 54, 
-            "created_at": "Thu Jul 08 16:06:26 +0000 2010", 
-            "favourites_count": 33, 
-            "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 199557, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/1160444681/20071261048480_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/1160444681/20071261048480_normal.jpg", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "fewspider", 
-                    "name": "蒲公英の生活", 
-                    "id": 343387566, 
-                    "id_str": "343387566", 
-                    "indices": [
-                        24, 
-                        34
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:45 +0000 2013", 
-        "id": 332769413524758500, 
-        "id_str": "332769413524758528", 
-        "text": "我要不要收拾一下东西。。→_→", 
-        "source": "<a href=\"http://zh.wikipedia.org/wiki/%E8%B2%A7%E4%B9%B3#ACG.E6.96.87.E5.8C.96\" rel=\"nofollow\">推倒不宜</a>", 
+        "created_at": "Sun May 26 06:15:40 +0000 2013", 
+        "id": 338538909170548740, 
+        "id_str": "338538909170548736", 
+        "text": "我妈真心狠。。一言不和就让我滚下她的小毛驴自己走去目的地。。还说我一定认识路。。没处说理啊。。唉。。", 
+        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -292,16 +211,17 @@
             "screen_name": "heejunjin", 
             "location": "魔都", 
             "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
-            "url": "http://heejunjin.blogspot.com/", 
+            "url": "http://t.co/PIH4g9UWUG", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://heejunjin.blogspot.com/", 
-                            "expanded_url": null, 
+                            "url": "http://t.co/PIH4g9UWUG", 
+                            "expanded_url": "http://heejunjin.blogspot.com/", 
+                            "display_url": "heejunjin.blogspot.com", 
                             "indices": [
                                 0, 
-                                30
+                                22
                             ]
                         }
                     ]
@@ -311,16 +231,16 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 9077, 
-            "friends_count": 1029, 
-            "listed_count": 206, 
+            "followers_count": 9569, 
+            "friends_count": 1033, 
+            "listed_count": 209, 
             "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
-            "favourites_count": 91, 
+            "favourites_count": 97, 
             "utc_offset": 28800, 
             "time_zone": "Hong Kong", 
             "geo_enabled": false, 
             "verified": false, 
-            "statuses_count": 107643, 
+            "statuses_count": 108840, 
             "lang": "zh-tw", 
             "contributors_enabled": false, 
             "is_translator": false, 
@@ -330,7 +250,7 @@
             "profile_background_tile": true, 
             "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
             "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_banner_url": "https://si0.twimg.com/profile_banners/158678846/1356183624", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
             "profile_link_color": "005C99", 
             "profile_sidebar_border_color": "F07AC1", 
             "profile_sidebar_fill_color": "FFFFFF", 
@@ -359,11 +279,11 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:35 +0000 2013", 
-        "id": 332769371078402050, 
-        "id_str": "332769371078402048", 
-        "text": "公司秘书姐姐好像忘记了我司网速一直不快的这个事实", 
-        "source": "<a href=\"http://hotot.org\" rel=\"nofollow\">Hotot for Chrome</a>", 
+        "created_at": "Sun May 26 06:15:39 +0000 2013", 
+        "id": 338538907648024600, 
+        "id_str": "338538907648024576", 
+        "text": "I'm at 海馨酒吧 [pic]: http://4sq.com/14QjSHC", 
+        "source": "<a href=\"http://foursquare.com\" rel=\"nofollow\">foursquare</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -371,22 +291,23 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 7231672, 
-            "id_str": "7231672", 
-            "name": "barcalan", 
-            "screen_name": "barcalan", 
-            "location": "", 
-            "description": "IT,Microsoft,智能手机，爱老婆，爱女儿，爱生活，但不爱拉芳", 
-            "url": "http://barcalan.wordpress.com", 
+            "id": 126024025, 
+            "id_str": "126024025", 
+            "name": "米粒", 
+            "screen_name": "mille_yin", 
+            "location": "Shenzhen", 
+            "description": "©民國72年生人 ©產品&項目經理 ©設計師 ©iOS&Android開發者 ©軟件漢化&美劇翻譯志願者 ©CCNP ©世界公民 ©文學控 ©古典控 ©歷史控 ©完美主義 ©強迫症 ©自然神論者", 
+            "url": "http://t.co/SSHAk2WXKZ", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://barcalan.wordpress.com", 
-                            "expanded_url": null, 
+                            "url": "http://t.co/SSHAk2WXKZ", 
+                            "expanded_url": "http://mille.us", 
+                            "display_url": "mille.us", 
                             "indices": [
                                 0, 
-                                29
+                                22
                             ]
                         }
                     ]
@@ -396,101 +317,29 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 932, 
-            "friends_count": 813, 
-            "listed_count": 37, 
-            "created_at": "Tue Jul 03 15:59:22 +0000 2007", 
-            "favourites_count": 390, 
+            "followers_count": 801, 
+            "friends_count": 410, 
+            "listed_count": 15, 
+            "created_at": "Wed Mar 24 16:05:46 +0000 2010", 
+            "favourites_count": 26, 
             "utc_offset": 28800, 
             "time_zone": "Beijing", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 44636, 
+            "statuses_count": 9241, 
             "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "642D8B", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme10/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme10/bg.gif", 
+            "profile_background_color": "ACDED6", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/747863305/ec459bc00da6468286a8938307238382.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/747863305/ec459bc00da6468286a8938307238382.jpeg", 
             "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/1378238549/web_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/1378238549/web_normal.jpg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/7231672/1350124639", 
-            "profile_link_color": "FF0000", 
-            "profile_sidebar_border_color": "65B0DA", 
-            "profile_sidebar_fill_color": "7AC3EE", 
-            "profile_text_color": "3D1957", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [ ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:30 +0000 2013", 
-        "id": 332769351356792800, 
-        "id_str": "332769351356792833", 
-        "text": "擦都要到家了api超限了你大爷的…", 
-        "source": "<a href=\"http://google.com\" rel=\"nofollow\">免费API来自@hanryi943</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 229724527, 
-            "id_str": "229724527", 
-            "name": "Neil_2.2↖(^ω^)↗元気MAX", 
-            "screen_name": "neil_alpha", 
-            "location": "旧都", 
-            "description": "出生于查理二世加冕333年后的旧都/无论twitter新浪还是人人都是著名没人理/渣渣学校的渣渣/高数线代电路蛋疼中/立志成为时差党但是希望渺茫/生活推学习推以及操蛋推/欢迎求fo…就是这样…以上", 
-            "url": null, 
-            "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 243, 
-            "friends_count": 170, 
-            "listed_count": 7, 
-            "created_at": "Thu Dec 23 04:47:02 +0000 2010", 
-            "favourites_count": 14, 
-            "utc_offset": -32400, 
-            "time_zone": "Alaska", 
-            "geo_enabled": false, 
-            "verified": false, 
-            "statuses_count": 21846, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3281361463/9a778c5afebdc301d8e0e84ac90d601d_normal.png", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3281361463/9a778c5afebdc301d8e0e84ac90d601d_normal.png", 
-            "profile_link_color": "009999", 
-            "profile_sidebar_border_color": "EEEEEE", 
-            "profile_sidebar_fill_color": "EFEFEF", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3622000074/76674dd89ca01a6e6c533b5c132217bf_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3622000074/76674dd89ca01a6e6c533b5c132217bf_normal.png", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/126024025/1356531825", 
+            "profile_link_color": "038543", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "F6F6F6", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -499,6 +348,114 @@
             "follow_request_sent": null, 
             "notifications": null
         }, 
+        "geo": {
+            "type": "Point", 
+            "coordinates": [
+                22.099451, 
+                114.030844
+            ]
+        }, 
+        "coordinates": {
+            "type": "Point", 
+            "coordinates": [
+                114.030844, 
+                22.099451
+            ]
+        }, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [
+                {
+                    "url": "http://4sq.com/14QjSHC", 
+                    "expanded_url": "http://4sq.com/14QjSHC", 
+                    "display_url": "4sq.com/14QjSHC", 
+                    "indices": [
+                        19, 
+                        41
+                    ]
+                }
+            ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "possibly_sensitive": true, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:37 +0000 2013", 
+        "id": 338538898756096000, 
+        "id_str": "338538898756096000", 
+        "text": "@simpleblue 那你会特别失望，按照我的性格就是我花钱了你们闭嘴。完全按照我喜好装修。", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338443003372920800, 
+        "in_reply_to_status_id_str": "338443003372920833", 
+        "in_reply_to_user_id": 11449942, 
+        "in_reply_to_user_id_str": "11449942", 
+        "in_reply_to_screen_name": "simpleblue", 
+        "user": {
+            "id": 12434422, 
+            "id_str": "12434422", 
+            "name": "Cherry Cheng", 
+            "screen_name": "imcherry", 
+            "location": "BeiJing/帝都", 
+            "description": "阅读精力有限，fo的人较少。时尚圈子打混。小忧伤是双鱼姑娘的本性但不是必须。相信爱情和希望。热爱手绘。本子控。Moleskine控。 特别声明：没有经过我同意不要把我的推转发到国内任何一家微博产品上和网站上去。感谢各位。", 
+            "url": "http://t.co/V9jSeZlHGS", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/V9jSeZlHGS", 
+                            "expanded_url": "http://imcherry.me", 
+                            "display_url": "imcherry.me", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 4729, 
+            "friends_count": 131, 
+            "listed_count": 146, 
+            "created_at": "Sat Jan 19 16:07:21 +0000 2008", 
+            "favourites_count": 429, 
+            "utc_offset": -25200, 
+            "time_zone": "Arizona", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 47050, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "1A1B1F", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/187153828/____-cherry.jpg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/187153828/____-cherry.jpg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3611260184/0235ab1038df7b438b5b0cd4fad7f6b2_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3611260184/0235ab1038df7b438b5b0cd4fad7f6b2_normal.jpeg", 
+            "profile_link_color": "2FC2EF", 
+            "profile_sidebar_border_color": "181A1E", 
+            "profile_sidebar_fill_color": "252429", 
+            "profile_text_color": "666666", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
         "geo": null, 
         "coordinates": null, 
         "place": null, 
@@ -509,18 +466,29 @@
             "hashtags": [ ], 
             "symbols": [ ], 
             "urls": [ ], 
-            "user_mentions": [ ]
+            "user_mentions": [
+                {
+                    "screen_name": "simpleblue", 
+                    "name": "2", 
+                    "id": 11449942, 
+                    "id_str": "11449942", 
+                    "indices": [
+                        0, 
+                        11
+                    ]
+                }
+            ]
         }, 
         "favorited": false, 
         "retweeted": false, 
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:27 +0000 2013", 
-        "id": 332769336697704450, 
-        "id_str": "332769336697704448", 
-        "text": "我果然是贫困 RT @rbttt: 中国标准人均年收入低于2300元人民币为贫困。【党国这标准比我的下限还低", 
-        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "created_at": "Sun May 26 06:15:37 +0000 2013", 
+        "id": 338538895715205100, 
+        "id_str": "338538895715205120", 
+        "text": "还好有辫子。。。RT @seiyagg: 披头散发疯子状么 RT @pannyic:  风中凌乱挨恩姬", 
+        "source": "<a href=\"http://shellcmd.tk\" rel=\"nofollow\">永失我爱</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -528,12 +496,12 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 198838149, 
-            "id_str": "198838149", 
-            "name": "师父痴呆", 
-            "screen_name": "Timy_127", 
-            "location": "Xi'an,china", 
-            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。5.2拍婚纱8.31结婚", 
+            "id": 43540045, 
+            "id_str": "43540045", 
+            "name": "叛逆客you yu中", 
+            "screen_name": "pannyic", 
+            "location": "上海", 
+            "description": "我不吸烟，我不喝酒，人参不完整，大步向前走", 
             "url": null, 
             "entities": {
                 "description": {
@@ -541,16 +509,262 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 2542, 
-            "friends_count": 679, 
-            "listed_count": 59, 
-            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
-            "favourites_count": 34, 
+            "followers_count": 599, 
+            "friends_count": 446, 
+            "listed_count": 13, 
+            "created_at": "Sat May 30 15:07:38 +0000 2009", 
+            "favourites_count": 586, 
             "utc_offset": -18000, 
             "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 63246, 
+            "statuses_count": 26023, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "352726", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme5/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme5/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3635830558/804b10c7c9e7baea7092cc5a7a822587_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3635830558/804b10c7c9e7baea7092cc5a7a822587_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/43540045/1362227207", 
+            "profile_link_color": "D02B55", 
+            "profile_sidebar_border_color": "829D5E", 
+            "profile_sidebar_fill_color": "99CC33", 
+            "profile_text_color": "3E4415", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "seiyagg", 
+                    "name": "皮皮大王", 
+                    "id": 137240910, 
+                    "id_str": "137240910", 
+                    "indices": [
+                        11, 
+                        19
+                    ]
+                }, 
+                {
+                    "screen_name": "pannyic", 
+                    "name": "叛逆客you yu中", 
+                    "id": 43540045, 
+                    "id_str": "43540045", 
+                    "indices": [
+                        33, 
+                        41
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:22 +0000 2013", 
+        "id": 338538834029600800, 
+        "id_str": "338538834029600768", 
+        "text": "中间某个大大的id。。。 #HTML5WordCloud https://pbs.twimg.com/media/BLK7RqGCYAAi2vJ.png", 
+        "source": "web", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 438994953, 
+            "id_str": "438994953", 
+            "name": "黒", 
+            "screen_name": "kuroikk", 
+            "location": "", 
+            "description": "雄/原则上是直的/时差预定/English Preferred/ACGM
+Minecraft/KerbalSpaceProgram
+Steam & Origin ID: kuroikk
+
+[For Auld Lang Syne]
+
+BioVersion: 10.2.0525", 
+            "url": "http://t.co/kdycRKNJsS", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/kdycRKNJsS", 
+                            "expanded_url": "http://about.me/kuroikk", 
+                            "display_url": "about.me/kuroikk", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 446, 
+            "friends_count": 130, 
+            "listed_count": 19, 
+            "created_at": "Sat Dec 17 07:32:28 +0000 2011", 
+            "favourites_count": 0, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 52628, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "7D7D7D", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/634656926/0xngz3k181gd2xct9sw5.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/634656926/0xngz3k181gd2xct9sw5.jpeg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3694293564/aa479bbc1b12fcfb9dd4ddde921d291b_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3694293564/aa479bbc1b12fcfb9dd4ddde921d291b_normal.png", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/438994953/1367461976", 
+            "profile_link_color": "2FC2EF", 
+            "profile_sidebar_border_color": "181A1E", 
+            "profile_sidebar_fill_color": "252429", 
+            "profile_text_color": "666666", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "HTML5WordCloud", 
+                    "indices": [
+                        13, 
+                        28
+                    ]
+                }
+            ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ], 
+            "media": [
+                {
+                    "id": 338538834037989400, 
+                    "id_str": "338538834037989376", 
+                    "indices": [
+                        29, 
+                        76
+                    ], 
+                    "media_url": "http://pbs.twimg.com/media/BLK7RqGCYAAi2vJ.png", 
+                    "media_url_https": "https://pbs.twimg.com/media/BLK7RqGCYAAi2vJ.png", 
+                    "url": "https://pbs.twimg.com/media/BLK7RqGCYAAi2vJ.png", 
+                    "display_url": "pic.twitter.com/9liL26WMuG", 
+                    "expanded_url": "http://twitter.com/kuroikk/status/338538834029600768/photo/1", 
+                    "type": "photo", 
+                    "sizes": {
+                        "large": {
+                            "w": 1024, 
+                            "h": 817, 
+                            "resize": "fit"
+                        }, 
+                        "thumb": {
+                            "w": 150, 
+                            "h": 150, 
+                            "resize": "crop"
+                        }, 
+                        "medium": {
+                            "w": 600, 
+                            "h": 479, 
+                            "resize": "fit"
+                        }, 
+                        "small": {
+                            "w": 340, 
+                            "h": 271, 
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "possibly_sensitive": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:22 +0000 2013", 
+        "id": 338538832561598460, 
+        "id_str": "338538832561598464", 
+        "text": "太爽了！负重40磅箭步蹲150米、硬拉80磅3组！", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 31418313, 
+            "id_str": "31418313", 
+            "name": "元宝妹妹", 
+            "screen_name": "k_kica", 
+            "location": "Beijing,China", 
+            "description": "兼职日本原单小店，有空来耍耍~~~", 
+            "url": "http://t.co/9p8YrtFzYR", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/9p8YrtFzYR", 
+                            "expanded_url": "http://ybmm123.taobao.com", 
+                            "display_url": "ybmm123.taobao.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": true, 
+            "followers_count": 4297, 
+            "friends_count": 1079, 
+            "listed_count": 131, 
+            "created_at": "Wed Apr 15 14:23:37 +0000 2009", 
+            "favourites_count": 109, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 65068, 
             "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
@@ -558,8 +772,9 @@
             "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
             "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
             "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3538489993/2a7888da3932299d7ccdadd5c32f3a67_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3538489993/2a7888da3932299d7ccdadd5c32f3a67_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/31418313/1361150652", 
             "profile_link_color": "0084B4", 
             "profile_sidebar_border_color": "BDDCAD", 
             "profile_sidebar_fill_color": "DDFFCC", 
@@ -581,15 +796,110 @@
             "hashtags": [ ], 
             "symbols": [ ], 
             "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:16 +0000 2013", 
+        "id": 338538808083623940, 
+        "id_str": "338538808083623936", 
+        "text": "→_→壕爆了 RT @jackbilldarren: 电信每个月169的套餐我才用了5毛  简直太浪费了", 
+        "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338538678177652740, 
+        "in_reply_to_status_id_str": "338538678177652737", 
+        "in_reply_to_user_id": 118043424, 
+        "in_reply_to_user_id_str": "118043424", 
+        "in_reply_to_screen_name": "jackbilldarren", 
+        "user": {
+            "id": 117054654, 
+            "id_str": "117054654", 
+            "name": "杰西兔", 
+            "screen_name": "jessetoo", 
+            "location": "Kaffa", 
+            "description": "小众〡手艺人〡业余作家〡季节迷失者〡忆工坊间名流〡不文艺会死星人〡罗曼蒂克的艺术家〡碎片文字记忆创始人〡环游世界明信片邮递员 Work @MedicalCollege Like #CornerHiking Google+:http://t.co/yzX5Ka6OQr 由于工作繁忙，不再接受口腔专业知识问询！", 
+            "url": "http://chiun.me", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://chiun.me", 
+                            "expanded_url": null, 
+                            "indices": [
+                                0, 
+                                15
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/yzX5Ka6OQr", 
+                            "expanded_url": "http://gplus.to/jessetoo", 
+                            "display_url": "gplus.to/jessetoo", 
+                            "indices": [
+                                111, 
+                                133
+                            ]
+                        }
+                    ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 3592, 
+            "friends_count": 184, 
+            "listed_count": 96, 
+            "created_at": "Wed Feb 24 11:41:55 +0000 2010", 
+            "favourites_count": 0, 
+            "utc_offset": -28800, 
+            "time_zone": "Pacific Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 58463, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "EBEBEB", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/631977611/70bb1hc7xofcje2e6s51.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/631977611/70bb1hc7xofcje2e6s51.jpeg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3510387308/f20b131200ba17b15ca251a2e55e9e82_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3510387308/f20b131200ba17b15ca251a2e55e9e82_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/117054654/1368497091", 
+            "profile_link_color": "990000", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "F3F3F3", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "rbttt", 
-                    "name": "荔枝", 
-                    "id": 342543972, 
-                    "id_str": "342543972", 
+                    "screen_name": "jackbilldarren", 
+                    "name": "布加迪", 
+                    "id": 118043424, 
+                    "id_str": "118043424", 
                     "indices": [
                         10, 
-                        16
+                        25
                     ]
                 }
             ]
@@ -599,11 +909,11 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:12 +0000 2013", 
-        "id": 332769276576546800, 
-        "id_str": "332769276576546816", 
-        "text": "要揉 RT @SCARLETT_MBQ: 胸口痛……从昨天到今天都24个小时了还不好。", 
-        "source": "<a href=\"http://item.taobao.com/item.htm?id=20295140642&27969361\" rel=\"nofollow\">看长城内外</a>", 
+        "created_at": "Sun May 26 06:15:09 +0000 2013", 
+        "id": 338538779897888800, 
+        "id_str": "338538779897888770", 
+        "text": "干什么？干什么？干什么？？ 洗澡澡啊 May 25, 2013 at 11:15PM", 
+        "source": "<a href=\"http://ifttt.com\" rel=\"nofollow\">IFTTT</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -611,164 +921,170 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 242807196, 
-            "id_str": "242807196", 
-            "name": "已经跑不快了的小猪快跑", 
-            "screen_name": "andypiglet", 
-            "location": "26.886535,112.674149", 
-            "description": "话唠一枚（现在唠不起）、大三、上推两年了、手机控技术白、有个好妹妹 小猪猪 @Jazcof 欢迎大家fo我，没有回fo的请告诉我，谢谢啦…（淡推中…）", 
-            "url": null, 
+            "id": 210709240, 
+            "id_str": "210709240", 
+            "name": "伦子", 
+            "screen_name": "lunziiii", 
+            "location": "", 
+            "description": "希望～在前方～希望在前方|2个月内|魔都人|双子|85后|@walkcn 's fiancée|茶叶茶|会游泳(握拳|戒泡面|吃货不解释|不(许)赖床|qx目前躁动|第一次遇见斯斯文文，熟了以后就不知道是哪个神经病院放出来的|不吃零食,请喂肉！|回fo不定时|没办法去西藏|回fo请@勿害羞", 
+            "url": "http://t.co/shTKMDQiNP", 
             "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1316, 
-            "friends_count": 483, 
-            "listed_count": 25, 
-            "created_at": "Tue Jan 25 17:00:38 +0000 2011", 
-            "favourites_count": 191, 
-            "utc_offset": -18000, 
-            "time_zone": "Eastern Time (US & Canada)", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 76007, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3286688613/c6ad31fc5a329b13a62829caf4a06c7a_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3286688613/c6ad31fc5a329b13a62829caf4a06c7a_normal.jpeg", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "SCARLETT_MBQ", 
-                    "name": "葭月@Artemis的守护", 
-                    "id": 141285033, 
-                    "id_str": "141285033", 
-                    "indices": [
-                        6, 
-                        19
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:08 +0000 2013", 
-        "id": 332769257664438300, 
-        "id_str": "332769257664438272", 
-        "text": "@heartboy3 @Lamiauu 不是寂寞不寂寞的问题啊 是有摩擦不解决损伤会更大 人都是会胡思乱想的", 
-        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Tweetbot for Mac</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 332768932605874200, 
-        "in_reply_to_status_id_str": "332768932605874176", 
-        "in_reply_to_user_id": 50678626, 
-        "in_reply_to_user_id_str": "50678626", 
-        "in_reply_to_screen_name": "heartboy3", 
-        "user": {
-            "id": 1068059544, 
-            "id_str": "1068059544", 
-            "name": "大仁", 
-            "screen_name": "016_610", 
-            "location": "北上七度", 
-            "description": "真 大叔 ｜ 梦想人
-二不是病 是生活态度
-要B请别客气", 
-            "url": null, 
-            "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 205, 
-            "friends_count": 217, 
-            "listed_count": 7, 
-            "created_at": "Mon Jan 07 11:20:59 +0000 2013", 
-            "favourites_count": 0, 
-            "utc_offset": null, 
-            "time_zone": null, 
-            "geo_enabled": false, 
-            "verified": false, 
-            "statuses_count": 18762, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3634257028/425ee0baaa5aa9a4838a1824d51fd40e_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3634257028/425ee0baaa5aa9a4838a1824d51fd40e_normal.jpeg", 
-            "profile_banner_url": "https://si0.twimg.com/profile_banners/1068059544/1357558381", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "heartboy3", 
-                    "name": "蛋布丁", 
-                    "id": 50678626, 
-                    "id_str": "50678626", 
-                    "indices": [
-                        0, 
-                        10
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/shTKMDQiNP", 
+                            "expanded_url": "http://lunziiii.blogspot.com", 
+                            "display_url": "lunziiii.blogspot.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
                     ]
                 }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 1161, 
+            "friends_count": 435, 
+            "listed_count": 28, 
+            "created_at": "Mon Nov 01 04:20:36 +0000 2010", 
+            "favourites_count": 69, 
+            "utc_offset": -28800, 
+            "time_zone": "Pacific Time (US & Canada)", 
+            "geo_enabled": false, 
+            "verified": false, 
+            "statuses_count": 21355, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "E9FFF7", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/685753413/f308fcfcad0e00735acb8b0588373262.png", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/685753413/f308fcfcad0e00735acb8b0588373262.png", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3683570656/43f0d34ec2242b3551c4379574290dfb_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3683570656/43f0d34ec2242b3551c4379574290dfb_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/210709240/1368577570", 
+            "profile_link_color": "AEE8AE", 
+            "profile_sidebar_border_color": "720321", 
+            "profile_sidebar_fill_color": "E47D78", 
+            "profile_text_color": "72E3B8", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:08 +0000 2013", 
+        "id": 338538777561690100, 
+        "id_str": "338538777561690114", 
+        "text": "@Micaiah_Yin steamcomrnunity 啊哈，它没有多语言支持", 
+        "source": "<a href=\"http://hotot.org\" rel=\"nofollow\">Hotot for Chrome</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338538320810356740, 
+        "in_reply_to_status_id_str": "338538320810356736", 
+        "in_reply_to_user_id": 122318745, 
+        "in_reply_to_user_id_str": "122318745", 
+        "in_reply_to_screen_name": "Micaiah_Yin", 
+        "user": {
+            "id": 155314155, 
+            "id_str": "155314155", 
+            "name": "光源(Langschwertkämpf)", 
+            "screen_name": "Deorumlux", 
+            "location": "光域", 
+            "description": "Available on Steam, EA Origin and Uplay.
+Follow my link and you will find me.
+dixitque Deus fiat lux et facta est lux.", 
+            "url": "https://t.co/8qeoCW1iGE", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "https://t.co/8qeoCW1iGE", 
+                            "expanded_url": "https://deuslux.org/", 
+                            "display_url": "deuslux.org", 
+                            "indices": [
+                                0, 
+                                23
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 901, 
+            "friends_count": 357, 
+            "listed_count": 55, 
+            "created_at": "Sun Jun 13 19:53:59 +0000 2010", 
+            "favourites_count": 201, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 68666, 
+            "lang": "zh-cn", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "000000", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/737063804/8a809922c9219de2e949af4d3cbb9a81.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/737063804/8a809922c9219de2e949af4d3cbb9a81.jpeg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3579256819/833b60048e1a33a931bf4afe1a3971cd_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3579256819/833b60048e1a33a931bf4afe1a3971cd_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/155314155/1348676185", 
+            "profile_link_color": "FF0000", 
+            "profile_sidebar_border_color": "000000", 
+            "profile_sidebar_fill_color": "DAECF4", 
+            "profile_text_color": "663B12", 
+            "profile_use_background_image": false, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
                 {
-                    "screen_name": "Lamiauu", 
-                    "name": "纋寳 Lamia", 
-                    "id": 115961597, 
-                    "id_str": "115961597", 
+                    "screen_name": "Micaiah_Yin", 
+                    "name": "唯一的小滴@想提起劲", 
+                    "id": 122318745, 
+                    "id_str": "122318745", 
                     "indices": [
-                        11, 
-                        19
+                        0, 
+                        12
                     ]
                 }
             ]
@@ -778,17 +1094,421 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:07 +0000 2013", 
-        "id": 332769252643856400, 
-        "id_str": "332769252643856384", 
-        "text": "@dbpacific 土豪", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Sun May 26 06:15:08 +0000 2013", 
+        "id": 338538772188774400, 
+        "id_str": "338538772188774400", 
+        "text": "https://pbs.twimg.com/media/BLK7ODtCQAARCGv.jpg", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Tweetbot for Mac</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 332769181244219400, 
-        "in_reply_to_status_id_str": "332769181244219393", 
-        "in_reply_to_user_id": 156992444, 
-        "in_reply_to_user_id_str": "156992444", 
-        "in_reply_to_screen_name": "dbpacific", 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 265793303, 
+            "id_str": "265793303", 
+            "name": "兔子的汉堡", 
+            "screen_name": "hanryi943", 
+            "location": "菲尼克斯，亚利桑那，美国", 
+            "description": "|恋爱中| 91年 大王是我女朋友 男 沈阳人 陈绮贞脑残粉 WOWer 反对去广告 育有报时机器人@cntimebot 手机控 MacBook Pro 三太子 Galaxy S2 iPhone4 iPad mini Galaxy Tab 2 7.0 各种电脑手机疑难杂症请@ 有妹子需要免费VPN或者API请带自爆@", 
+            "url": "http://t.co/28w5A8E4Va", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/28w5A8E4Va", 
+                            "expanded_url": "http://hanryi943.com", 
+                            "display_url": "hanryi943.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 359, 
+            "friends_count": 144, 
+            "listed_count": 7, 
+            "created_at": "Mon Mar 14 04:32:12 +0000 2011", 
+            "favourites_count": 0, 
+            "utc_offset": -25200, 
+            "time_zone": "Mountain Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 21920, 
+            "lang": "zh-cn", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3425630886/529d19229b8343735d7c45240ae45a01_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3425630886/529d19229b8343735d7c45240ae45a01_normal.png", 
+            "profile_link_color": "009999", 
+            "profile_sidebar_border_color": "000000", 
+            "profile_sidebar_fill_color": "EFEFEF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ], 
+            "media": [
+                {
+                    "id": 338538772192968700, 
+                    "id_str": "338538772192968704", 
+                    "indices": [
+                        0, 
+                        47
+                    ], 
+                    "media_url": "http://pbs.twimg.com/media/BLK7ODtCQAARCGv.jpg", 
+                    "media_url_https": "https://pbs.twimg.com/media/BLK7ODtCQAARCGv.jpg", 
+                    "url": "https://pbs.twimg.com/media/BLK7ODtCQAARCGv.jpg", 
+                    "display_url": "pic.twitter.com/OFt2Ro0Mjt", 
+                    "expanded_url": "http://twitter.com/hanryi943/status/338538772188774400/photo/1", 
+                    "type": "photo", 
+                    "sizes": {
+                        "medium": {
+                            "w": 600, 
+                            "h": 450, 
+                            "resize": "fit"
+                        }, 
+                        "large": {
+                            "w": 1024, 
+                            "h": 768, 
+                            "resize": "fit"
+                        }, 
+                        "thumb": {
+                            "w": 150, 
+                            "h": 150, 
+                            "resize": "crop"
+                        }, 
+                        "small": {
+                            "w": 340, 
+                            "h": 255, 
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "possibly_sensitive": false, 
+        "lang": "und"
+    }, 
+    {
+        "created_at": "Sun May 26 06:15:05 +0000 2013", 
+        "id": 338538762395078660, 
+        "id_str": "338538762395078656", 
+        "text": "@kDolphin 笑死了，哈哈哈", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Tweetbot for Mac</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338538590474747900, 
+        "in_reply_to_status_id_str": "338538590474747906", 
+        "in_reply_to_user_id": 6088162, 
+        "in_reply_to_user_id_str": "6088162", 
+        "in_reply_to_screen_name": "kDolphin", 
+        "user": {
+            "id": 54487927, 
+            "id_str": "54487927", 
+            "name": "zieglar", 
+            "screen_name": "zieglar", 
+            "location": "Shanghai", 
+            "description": "性格怪僻，不定期抽风，人生的分水岭", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 607, 
+            "friends_count": 147, 
+            "listed_count": 39, 
+            "created_at": "Tue Jul 07 08:13:11 +0000 2009", 
+            "favourites_count": 102, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 66274, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "ACDED6", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/397337839/wallpaper-21522.jpg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/397337839/wallpaper-21522.jpg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/1742986285/eightbit-1cf98061-2607-460a-b8e6-cb8f2c83f4ca_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/1742986285/eightbit-1cf98061-2607-460a-b8e6-cb8f2c83f4ca_normal.png", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/54487927/1358070537", 
+            "profile_link_color": "038543", 
+            "profile_sidebar_border_color": "EEEEEE", 
+            "profile_sidebar_fill_color": "F6F6F6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "kDolphin", 
+                    "name": "kDolphin", 
+                    "id": 6088162, 
+                    "id_str": "6088162", 
+                    "indices": [
+                        0, 
+                        9
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:14:59 +0000 2013", 
+        "id": 338538736486871040, 
+        "id_str": "338538736486871040", 
+        "text": "@jinamber 耶~！", 
+        "source": "<a href=\"https://twi2pdf.com/t/\" rel=\"nofollow\">軌迹</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 338518894463569900, 
+        "in_reply_to_status_id_str": "338518894463569921", 
+        "in_reply_to_user_id": 51708102, 
+        "in_reply_to_user_id_str": "51708102", 
+        "in_reply_to_screen_name": "jinamber", 
+        "user": {
+            "id": 122569517, 
+            "id_str": "122569517", 
+            "name": "32号禁令@換行狂魔奇行種", 
+            "screen_name": "32ndban", 
+            "location": "杭州市区", 
+            "description": "谁都不相信的话活着比较轻松", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 117, 
+            "friends_count": 155, 
+            "listed_count": 4, 
+            "created_at": "Sat Mar 13 04:37:39 +0000 2010", 
+            "favourites_count": 155, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 10147, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "57E3F2", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/754235409/fba8fa6ca43f258f999ac2548aac0217.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/754235409/fba8fa6ca43f258f999ac2548aac0217.jpeg", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3233953004/c15f7d2aa0cee311095c98ef843072c6_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3233953004/c15f7d2aa0cee311095c98ef843072c6_normal.png", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/122569517/1353139540", 
+            "profile_link_color": "E1ED32", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "7AC3EE", 
+            "profile_text_color": "3D1957", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "jinamber", 
+                    "name": "阿津", 
+                    "id": 51708102, 
+                    "id_str": "51708102", 
+                    "indices": [
+                        0, 
+                        9
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Sun May 26 06:14:55 +0000 2013", 
+        "id": 338538720481390600, 
+        "id_str": "338538720481390592", 
+        "text": "死壕！ RT @jackbilldarren: 电信每个月169的套餐我才用了5毛  简直太浪费了", 
+        "source": "<a href=\"http://hotot.org\" rel=\"nofollow\">Hotot for Chrome</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 126993999, 
+            "id_str": "126993999", 
+            "name": "家穷人丑身高169的土肥丸賢治", 
+            "screen_name": "takayama8", 
+            "location": "武漢・仙台", 
+            "description": "非专业九零后
+非专业天秤座
+非专业留学生
+非专业时差党
+非专业代购党
+非专业水果粉
+非专业土肥圆
+非专业话痨党
+非专业怪蜀黍
+非专业御宅族
+非专业御姐控
+非专业游戏控
+非专业音乐控
+非专业日剧控
+非专业发烧友
+非专业分析湿
+非专业贱股家", 
+            "url": "http://t.co/PvPtZaOVGW", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/PvPtZaOVGW", 
+                            "expanded_url": "http://facebook.com/takayama8", 
+                            "display_url": "facebook.com/takayama8", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 1605, 
+            "friends_count": 660, 
+            "listed_count": 89, 
+            "created_at": "Sat Mar 27 17:43:11 +0000 2010", 
+            "favourites_count": 41, 
+            "utc_offset": 32400, 
+            "time_zone": "Tokyo", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 93537, 
+            "lang": "ja", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "0099B9", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme4/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme4/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/2921991324/4ed67a030f9c7de09c1449d5f5fa40d1_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/2921991324/4ed67a030f9c7de09c1449d5f5fa40d1_normal.jpeg", 
+            "profile_link_color": "0099B9", 
+            "profile_sidebar_border_color": "5ED4DC", 
+            "profile_sidebar_fill_color": "95E8EC", 
+            "profile_text_color": "3C3940", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "jackbilldarren", 
+                    "name": "布加迪", 
+                    "id": 118043424, 
+                    "id_str": "118043424", 
+                    "indices": [
+                        7, 
+                        22
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:14:45 +0000 2013", 
+        "id": 338538678177652740, 
+        "id_str": "338538678177652737", 
+        "text": "电信每个月169的套餐我才用了5毛  简直太浪费了", 
+        "source": "<a href=\"http://bit.ly/UDldit\" rel=\"nofollow\">Saezuri</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
         "user": {
             "id": 118043424, 
             "id_str": "118043424", 
@@ -803,16 +1523,16 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 3535, 
-            "friends_count": 632, 
-            "listed_count": 125, 
+            "followers_count": 3632, 
+            "friends_count": 637, 
+            "listed_count": 123, 
             "created_at": "Sat Feb 27 12:15:44 +0000 2010", 
-            "favourites_count": 353, 
+            "favourites_count": 364, 
             "utc_offset": 28800, 
             "time_zone": "Hong Kong", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 289195, 
+            "statuses_count": 292293, 
             "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
@@ -844,345 +1564,17 @@
             "hashtags": [ ], 
             "symbols": [ ], 
             "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "dbpacific", 
-                    "name": "跑步青云", 
-                    "id": 156992444, 
-                    "id_str": "156992444", 
-                    "indices": [
-                        0, 
-                        10
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:05 +0000 2013", 
-        "id": 332769247799423000, 
-        "id_str": "332769247799422978", 
-        "text": "@guyii @kgreload @netptu 电热企业没卖电的来钱", 
-        "source": "<a href=\"http://hotot.org\" rel=\"nofollow\">Hotot for Chrome</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 332768015072522240, 
-        "in_reply_to_status_id_str": "332768015072522240", 
-        "in_reply_to_user_id": 23412044, 
-        "in_reply_to_user_id_str": "23412044", 
-        "in_reply_to_screen_name": "guyii", 
-        "user": {
-            "id": 7231672, 
-            "id_str": "7231672", 
-            "name": "barcalan", 
-            "screen_name": "barcalan", 
-            "location": "", 
-            "description": "IT,Microsoft,智能手机，爱老婆，爱女儿，爱生活，但不爱拉芳", 
-            "url": "http://barcalan.wordpress.com", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://barcalan.wordpress.com", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                29
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 932, 
-            "friends_count": 813, 
-            "listed_count": 37, 
-            "created_at": "Tue Jul 03 15:59:22 +0000 2007", 
-            "favourites_count": 390, 
-            "utc_offset": 28800, 
-            "time_zone": "Beijing", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 44636, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "642D8B", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme10/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme10/bg.gif", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/1378238549/web_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/1378238549/web_normal.jpg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/7231672/1350124639", 
-            "profile_link_color": "FF0000", 
-            "profile_sidebar_border_color": "65B0DA", 
-            "profile_sidebar_fill_color": "7AC3EE", 
-            "profile_text_color": "3D1957", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "guyii", 
-                    "name": "何可乐者 土肥圆", 
-                    "id": 23412044, 
-                    "id_str": "23412044", 
-                    "indices": [
-                        0, 
-                        6
-                    ]
-                }, 
-                {
-                    "screen_name": "kgreload", 
-                    "name": "千斤(KG)", 
-                    "id": 165636072, 
-                    "id_str": "165636072", 
-                    "indices": [
-                        7, 
-                        16
-                    ]
-                }, 
-                {
-                    "screen_name": "netptu", 
-                    "name": "Tim", 
-                    "id": 105776395, 
-                    "id_str": "105776395", 
-                    "indices": [
-                        17, 
-                        24
-                    ]
-                }
-            ]
+            "user_mentions": [ ]
         }, 
         "favorited": false, 
         "retweeted": false, 
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:09:03 +0000 2013", 
-        "id": 332769236801953800, 
-        "id_str": "332769236801953794", 
-        "text": "RT @andytn: \"北京向菲下最后通牒 三天不交凶手否则中国动手-军事(1)-CHN强国网-中国军事门户网站\" ( http://bit.ly/18xWHo4 )", 
-        "source": "<a href=\"http://itunes.apple.com/us/app/twitter/id409789998?mt=12\" rel=\"nofollow\">Twitter for Mac</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 35741583, 
-            "id_str": "35741583", 
-            "name": "Anson Chen ", 
-            "screen_name": "AnsonChen", 
-            "location": "高譚市隔壁", 
-            "description": "苦逼魔術師安森", 
-            "url": "http://magicanson.com", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://magicanson.com", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                21
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1518, 
-            "friends_count": 536, 
-            "listed_count": 81, 
-            "created_at": "Mon Apr 27 13:33:29 +0000 2009", 
-            "favourites_count": 2671, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 64943, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "EDECE9", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme3/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme3/bg.gif", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/2557140250/732B6802-4C06-425F-AC0B-69117D81426E_normal", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/2557140250/732B6802-4C06-425F-AC0B-69117D81426E_normal", 
-            "profile_link_color": "088253", 
-            "profile_sidebar_border_color": "D3D2CF", 
-            "profile_sidebar_fill_color": "E3E2DE", 
-            "profile_text_color": "634047", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Fri May 10 08:07:24 +0000 2013", 
-            "id": 332768822606045200, 
-            "id_str": "332768822606045184", 
-            "text": "\"北京向菲下最后通牒 三天不交凶手否则中国动手-军事(1)-CHN强国网-中国军事门户网站\" ( http://bit.ly/18xWHo4 )", 
-            "source": "<a href=\"http://twitthat.com/\" rel=\"nofollow\">twitthat</a>", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 5958502, 
-                "id_str": "5958502", 
-                "name": "無敵小恩恩", 
-                "screen_name": "andytn", 
-                "location": "Taipei,Taiwan", 
-                "description": "潛水人，溜冰者，旅行家，漫畫讀者，資深打字員，流量詐騙師。", 
-                "url": "http://blog.andytn.tw", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://blog.andytn.tw", 
-                                "expanded_url": null, 
-                                "indices": [
-                                    0, 
-                                    21
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 4117, 
-                "friends_count": 386, 
-                "listed_count": 152, 
-                "created_at": "Fri May 11 11:29:29 +0000 2007", 
-                "favourites_count": 3640, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": false, 
-                "verified": false, 
-                "statuses_count": 71007, 
-                "lang": "zh-tw", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "131516", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/687459771/d3b8e4c90fe4c805b84031da257eba6c.jpeg", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/687459771/d3b8e4c90fe4c805b84031da257eba6c.jpeg", 
-                "profile_background_tile": false, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3073425189/aae5bdeb7090d729cd9d9a40bdd69c62_normal.jpeg", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3073425189/aae5bdeb7090d729cd9d9a40bdd69c62_normal.jpeg", 
-                "profile_link_color": "009999", 
-                "profile_sidebar_border_color": "FFFFFF", 
-                "profile_sidebar_fill_color": "DAECF4", 
-                "profile_text_color": "663B12", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": null, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [
-                    {
-                        "url": "http://bit.ly/18xWHo4", 
-                        "expanded_url": "http://bit.ly/18xWHo4", 
-                        "display_url": "bit.ly/18xWHo4", 
-                        "indices": [
-                            49, 
-                            70
-                        ]
-                    }
-                ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "possibly_sensitive": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [
-                {
-                    "url": "http://bit.ly/18xWHo4", 
-                    "expanded_url": "http://bit.ly/18xWHo4", 
-                    "display_url": "bit.ly/18xWHo4", 
-                    "indices": [
-                        61, 
-                        82
-                    ]
-                }
-            ], 
-            "user_mentions": [
-                {
-                    "screen_name": "andytn", 
-                    "name": "無敵小恩恩", 
-                    "id": 5958502, 
-                    "id_str": "5958502", 
-                    "indices": [
-                        3, 
-                        10
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "possibly_sensitive": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:09:02 +0000 2013", 
-        "id": 332769234503491600, 
-        "id_str": "332769234503491585", 
-        "text": "求种 RT @xohen 下载了网上流传的「爱看豆全站打包」，解压删除无关文件后2.91GB, 共1203个文件。", 
+        "created_at": "Sun May 26 06:14:42 +0000 2013", 
+        "id": 338538666056089600, 
+        "id_str": "338538666056089600", 
+        "text": "Chrome 里的 Hangouts 窗口，打字打了一般按错了，想按ESC，结果Hangouts窗口就没了一刚", 
         "source": "<a href=\"http://chrome.google.com/extensions/detail/aicelmgbddfgmpieedjiggifabdpcnln\" rel=\"nofollow\">FaWave</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
@@ -1191,200 +1583,20 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 17697704, 
-            "id_str": "17697704", 
-            "name": "不小刚", 
-            "screen_name": "freesisx", 
-            "location": "北京 朝阳", 
-            "description": "遇见女神我就舔，遇见公知我就黑。家有贱猫429，开门，钻被窝，打杯子，躲猫猫样样精通。移动互联网从业者。", 
-            "url": "http://freesisx.com", 
+            "id": 19810896, 
+            "id_str": "19810896", 
+            "name": "Linglong Xu", 
+            "screen_name": "coolxll", 
+            "location": "Shanghai,China", 
+            "description": "SJTU F06 EE ||ICBC SDC Shanghai ||Nokia Fans ||Longing for love ||有事@ 我，GTalk/DM/EMail 找我更快一些 ||@coolxllTalk for @, @coolxll_gr 4 sharing", 
+            "url": "http://t.co/78UxqyJzJL", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://freesisx.com", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                19
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 2341, 
-            "friends_count": 624, 
-            "listed_count": 43, 
-            "created_at": "Fri Nov 28 03:28:09 +0000 2008", 
-            "favourites_count": 338, 
-            "utc_offset": 28800, 
-            "time_zone": "Beijing", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 17574, 
-            "lang": "zh-cn", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "0099B9", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/17415471/bugbg.gif.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/17415471/bugbg.gif.png", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3344109243/8e565a3581b93e75bbb693e1fa61df1c_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3344109243/8e565a3581b93e75bbb693e1fa61df1c_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/17697704/1353644153", 
-            "profile_link_color": "0099B9", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "95E8EC", 
-            "profile_text_color": "3C3940", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "xohen", 
-                    "name": "科恩", 
-                    "id": 59668247, 
-                    "id_str": "59668247", 
-                    "indices": [
-                        6, 
-                        12
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:56 +0000 2013", 
-        "id": 332769209685782500, 
-        "id_str": "332769209685782529", 
-        "text": "之前的讨论中我想表达的是，你无法直接通过memory中的数据来判断他的类型，memory中没有额外的数据去描述数据的类型。很抱歉使用了错误的表述。", 
-        "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 87102087, 
-            "id_str": "87102087", 
-            "name": "Elias Wang", 
-            "screen_name": "elecalion", 
-            "location": "China", 
-            "description": "人类, 混乱中立, 魔法师, 二次元, C, Verilog, Python, 经验主义, 个人主义, 别扭, 喜欢Vim & 志方あきこ & KOKIA, 爱好睡觉 & 剑道 & 红茶, 痛恨GFW;", 
-            "url": "http://about.me/elecalion", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://about.me/elecalion", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                25
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 297, 
-            "friends_count": 184, 
-            "listed_count": 23, 
-            "created_at": "Tue Nov 03 03:48:35 +0000 2009", 
-            "favourites_count": 109, 
-            "utc_offset": 28800, 
-            "time_zone": "Beijing", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 5614, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "D5DEE5", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/102290988/twi_side.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/102290988/twi_side.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3387494873/b170217827705dc48cfbea715b42af6e_normal.png", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3387494873/b170217827705dc48cfbea715b42af6e_normal.png", 
-            "profile_link_color": "0068B7", 
-            "profile_sidebar_border_color": "DDDCD6", 
-            "profile_sidebar_fill_color": "F3F3F2", 
-            "profile_text_color": "181519", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [ ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:56 +0000 2013", 
-        "id": 332769207831896060, 
-        "id_str": "332769207831896064", 
-        "text": "啥人值得上 之 推友版本", 
-        "source": "<a href=\"http://item.taobao.com/item.htm?id=20295140642&27969361\" rel=\"nofollow\">看长城内外</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 107361252, 
-            "id_str": "107361252", 
-            "name": "雪中晴天", 
-            "screen_name": "SnHine", 
-            "location": "晴时多云偶尔有雨", 
-            "description": "吃饭睡觉打巨魔的懒笨馋凶矮胖圆", 
-            "url": "http://t.co/DMWXe42rMi", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/DMWXe42rMi", 
-                            "expanded_url": "http://about.me/snhine", 
-                            "display_url": "about.me/snhine", 
+                            "url": "http://t.co/78UxqyJzJL", 
+                            "expanded_url": "http://coolxll.me", 
+                            "display_url": "coolxll.me", 
                             "indices": [
                                 0, 
                                 22
@@ -1397,394 +1609,25 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 6472, 
-            "friends_count": 1039, 
-            "listed_count": 144, 
-            "created_at": "Fri Jan 22 09:24:43 +0000 2010", 
-            "favourites_count": 137, 
-            "utc_offset": -28800, 
-            "time_zone": "Pacific Time (US & Canada)", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 137737, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/494766534/dy_1333523260.jpg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/494766534/dy_1333523260.jpg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/2507070138/profile_normal.png", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/2507070138/profile_normal.png", 
-            "profile_banner_url": "https://si0.twimg.com/profile_banners/107361252/1361960573", 
-            "profile_link_color": "009999", 
-            "profile_sidebar_border_color": "EEEEEE", 
-            "profile_sidebar_fill_color": "EFEFEF", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [ ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:55 +0000 2013", 
-        "id": 332769202274447360, 
-        "id_str": "332769202274447360", 
-        "text": "別以年紀做借口 RT @neil_alpha: @Tin_Tse @Pangcong →_→现在年轻人有几个会五笔？大叔你老了～", 
-        "source": "<a href=\"http://mobileways.de/gravity\" rel=\"nofollow\">Gravity</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 164326025, 
-            "id_str": "164326025", 
-            "name": "TIN", 
-            "screen_name": "Tin_Tse", 
-            "location": "ÜT: 23.0607505,113.6789761", 
-            "description": "生命滿希望  前路由我創", 
-            "url": "http://www.twitter.com", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://www.twitter.com", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1590, 
-            "friends_count": 559, 
-            "listed_count": 54, 
-            "created_at": "Thu Jul 08 16:06:26 +0000 2010", 
-            "favourites_count": 33, 
-            "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 199557, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/1160444681/20071261048480_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/1160444681/20071261048480_normal.jpg", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "neil_alpha", 
-                    "name": "Neil_2.2↖(^ω^)↗元気MAX", 
-                    "id": 229724527, 
-                    "id_str": "229724527", 
-                    "indices": [
-                        11, 
-                        22
-                    ]
-                }, 
-                {
-                    "screen_name": "Tin_Tse", 
-                    "name": "TIN", 
-                    "id": 164326025, 
-                    "id_str": "164326025", 
-                    "indices": [
-                        24, 
-                        32
-                    ]
-                }, 
-                {
-                    "screen_name": "Pangcong", 
-                    "name": "别开枪是我", 
-                    "id": 133276994, 
-                    "id_str": "133276994", 
-                    "indices": [
-                        33, 
-                        42
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:52 +0000 2013", 
-        "id": 332769192283631600, 
-        "id_str": "332769192283631616", 
-        "text": "哭哭 RT @SnHine: 原来是兑换了 http://instagram.com/p/ZH7ALFTCz1/", 
-        "source": "<a href=\"http://item.taobao.com/item.htm?id=20295140642&27969361\" rel=\"nofollow\">看长城内外</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 242807196, 
-            "id_str": "242807196", 
-            "name": "已经跑不快了的小猪快跑", 
-            "screen_name": "andypiglet", 
-            "location": "26.886535,112.674149", 
-            "description": "话唠一枚（现在唠不起）、大三、上推两年了、手机控技术白、有个好妹妹 小猪猪 @Jazcof 欢迎大家fo我，没有回fo的请告诉我，谢谢啦…（淡推中…）", 
-            "url": null, 
-            "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 1316, 
-            "friends_count": 483, 
-            "listed_count": 25, 
-            "created_at": "Tue Jan 25 17:00:38 +0000 2011", 
-            "favourites_count": 191, 
-            "utc_offset": -18000, 
-            "time_zone": "Eastern Time (US & Canada)", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 76007, 
-            "lang": "en", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3286688613/c6ad31fc5a329b13a62829caf4a06c7a_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3286688613/c6ad31fc5a329b13a62829caf4a06c7a_normal.jpeg", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [
-                {
-                    "url": "http://instagram.com/p/ZH7ALFTCz1/", 
-                    "expanded_url": "http://instagram.com/p/ZH7ALFTCz1/", 
-                    "display_url": "instagram.com/p/ZH7ALFTCz1/", 
-                    "indices": [
-                        22, 
-                        56
-                    ]
-                }
-            ], 
-            "user_mentions": [
-                {
-                    "screen_name": "SnHine", 
-                    "name": "雪中晴天", 
-                    "id": 107361252, 
-                    "id_str": "107361252", 
-                    "indices": [
-                        6, 
-                        13
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "possibly_sensitive": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:50 +0000 2013", 
-        "id": 332769181244219400, 
-        "id_str": "332769181244219393", 
-        "text": "@jackbilldarren 3k", 
-        "source": "<a href=\"http://levelupstudio.com/plume\" rel=\"nofollow\">Plume for Android</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 332769000234827800, 
-        "in_reply_to_status_id_str": "332769000234827776", 
-        "in_reply_to_user_id": 118043424, 
-        "in_reply_to_user_id_str": "118043424", 
-        "in_reply_to_screen_name": "jackbilldarren", 
-        "user": {
-            "id": 156992444, 
-            "id_str": "156992444", 
-            "name": "跑步青云", 
-            "screen_name": "dbpacific", 
-            "location": "四川.shang hai", 
-            "description": "非上海本地淫 ≫ 80后大叔 ≫ 单身de巨蟹 ≫ 182 ≫ 爱体育、爱美食、爱美女 ≫ 梦回历史长河，江湖任我逍遥≫向往纯粹生活，却是世俗中人 ≫ 全心全意为人民服务＞欢迎求交往求fo ，需回fo请@wo", 
-            "url": null, 
-            "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 836, 
-            "friends_count": 551, 
-            "listed_count": 20, 
-            "created_at": "Fri Jun 18 14:32:13 +0000 2010", 
-            "favourites_count": 117, 
+            "followers_count": 2323, 
+            "friends_count": 378, 
+            "listed_count": 86, 
+            "created_at": "Sat Jan 31 10:13:04 +0000 2009", 
+            "favourites_count": 468, 
             "utc_offset": 28800, 
             "time_zone": "Beijing", 
-            "geo_enabled": false, 
+            "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 31082, 
+            "statuses_count": 10010, 
             "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/1267355147/image_normal.jpg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/1267355147/image_normal.jpg", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": true, 
-            "default_profile_image": false, 
-            "following": true, 
-            "follow_request_sent": null, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "jackbilldarren", 
-                    "name": "布加迪", 
-                    "id": 118043424, 
-                    "id_str": "118043424", 
-                    "indices": [
-                        0, 
-                        15
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "und"
-    }, 
-    {
-        "created_at": "Fri May 10 08:08:43 +0000 2013", 
-        "id": 332769151816986600, 
-        "id_str": "332769151816986624", 
-        "text": "中枪RT @Tin_Tse IQ低。 RT @neil_alpha: @Tin_Tse @Pangcong 我也不会五笔→_→", 
-        "source": "<a href=\"http://www.tweetdeck.com\" rel=\"nofollow\">TweetDeck</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 88992502, 
-            "id_str": "88992502", 
-            "name": "唔卯你好唔卯再见", 
-            "screen_name": "effy_fi", 
-            "location": "乡下", 
-            "description": "( → →) 正宗土肥圆兼矮穷丑一枚(← ← ) 
-PS:我是精神病患者
-⊙辈分是阿姨级
-☆不晓得怎么活到现在的", 
-            "url": null, 
-            "entities": {
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": true, 
-            "followers_count": 892, 
-            "friends_count": 971, 
-            "listed_count": 25, 
-            "created_at": "Tue Nov 10 18:46:05 +0000 2009", 
-            "favourites_count": 1, 
-            "utc_offset": 28800, 
-            "time_zone": "Beijing", 
-            "geo_enabled": false, 
-            "verified": false, 
-            "statuses_count": 37781, 
-            "lang": "zh-cn", 
-            "contributors_enabled": false, 
-            "is_translator": true, 
             "profile_background_color": "1A1B1F", 
             "profile_background_image_url": "http://a0.twimg.com/images/themes/theme9/bg.gif", 
             "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme9/bg.gif", 
             "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3419470469/9eab0fc902e796c783e63f990a7eb42d_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3419470469/9eab0fc902e796c783e63f990a7eb42d_normal.jpeg", 
-            "profile_banner_url": "https://si0.twimg.com/profile_banners/88992502/1364138073", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/409430000/avatar_normal.jpg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/409430000/avatar_normal.jpg", 
             "profile_link_color": "2FC2EF", 
             "profile_sidebar_border_color": "181A1E", 
             "profile_sidebar_fill_color": "252429", 
@@ -1806,89 +1649,42 @@ PS:我是精神病患者
             "hashtags": [ ], 
             "symbols": [ ], 
             "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Tin_Tse", 
-                    "name": "TIN", 
-                    "id": 164326025, 
-                    "id_str": "164326025", 
-                    "indices": [
-                        5, 
-                        13
-                    ]
-                }, 
-                {
-                    "screen_name": "neil_alpha", 
-                    "name": "Neil_2.2↖(^ω^)↗元気MAX", 
-                    "id": 229724527, 
-                    "id_str": "229724527", 
-                    "indices": [
-                        22, 
-                        33
-                    ]
-                }, 
-                {
-                    "screen_name": "Tin_Tse", 
-                    "name": "TIN", 
-                    "id": 164326025, 
-                    "id_str": "164326025", 
-                    "indices": [
-                        35, 
-                        43
-                    ]
-                }, 
-                {
-                    "screen_name": "Pangcong", 
-                    "name": "别开枪是我", 
-                    "id": 133276994, 
-                    "id_str": "133276994", 
-                    "indices": [
-                        44, 
-                        53
-                    ]
-                }
-            ]
+            "user_mentions": [ ]
         }, 
         "favorited": false, 
         "retweeted": false, 
         "lang": "zh"
     }, 
     {
-        "created_at": "Fri May 10 08:08:38 +0000 2013", 
-        "id": 332769134578380800, 
-        "id_str": "332769134578380800", 
-        "text": "E 
-		M 
-		A
-		
-		
-		
-		 
-		C S Bram Moolenaar 的签名真是。。。", 
+        "created_at": "Sun May 26 06:14:42 +0000 2013", 
+        "id": 338538665045270500, 
+        "id_str": "338538665045270528", 
+        "text": "@neil_alpha 为啥要分享呢 网上有的是", 
         "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Tweetbot for Mac</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
+        "in_reply_to_status_id": 338538535252553700, 
+        "in_reply_to_status_id_str": "338538535252553728", 
+        "in_reply_to_user_id": 229724527, 
+        "in_reply_to_user_id_str": "229724527", 
+        "in_reply_to_screen_name": "neil_alpha", 
         "user": {
-            "id": 6888252, 
-            "id_str": "6888252", 
-            "name": "哦啦啦啦", 
-            "screen_name": "o_lll", 
-            "location": "Tokyo", 
-            "description": "Minimalist", 
-            "url": "http://lhzhang.com", 
+            "id": 265793303, 
+            "id_str": "265793303", 
+            "name": "兔子的汉堡", 
+            "screen_name": "hanryi943", 
+            "location": "菲尼克斯，亚利桑那，美国", 
+            "description": "|恋爱中| 91年 大王是我女朋友 男 沈阳人 陈绮贞脑残粉 WOWer 反对去广告 育有报时机器人@cntimebot 手机控 MacBook Pro 三太子 Galaxy S2 iPhone4 iPad mini Galaxy Tab 2 7.0 各种电脑手机疑难杂症请@ 有妹子需要免费VPN或者API请带自爆@", 
+            "url": "http://t.co/28w5A8E4Va", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://lhzhang.com", 
-                            "expanded_url": null, 
+                            "url": "http://t.co/28w5A8E4Va", 
+                            "expanded_url": "http://hanryi943.com", 
+                            "display_url": "hanryi943.com", 
                             "indices": [
                                 0, 
-                                18
+                                22
                             ]
                         }
                     ]
@@ -1898,32 +1694,31 @@ PS:我是精神病患者
                 }
             }, 
             "protected": false, 
-            "followers_count": 1211, 
-            "friends_count": 219, 
-            "listed_count": 92, 
-            "created_at": "Mon Jun 18 10:35:04 +0000 2007", 
-            "favourites_count": 52, 
-            "utc_offset": 32400, 
-            "time_zone": "Tokyo", 
-            "geo_enabled": false, 
+            "followers_count": 359, 
+            "friends_count": 144, 
+            "listed_count": 7, 
+            "created_at": "Mon Mar 14 04:32:12 +0000 2011", 
+            "favourites_count": 0, 
+            "utc_offset": -25200, 
+            "time_zone": "Mountain Time (US & Canada)", 
+            "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 74668, 
-            "lang": "en", 
+            "statuses_count": 21920, 
+            "lang": "zh-cn", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-            "profile_background_tile": false, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/2636977554/d87c50042d04d05260e23c2163be24a6_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/2636977554/d87c50042d04d05260e23c2163be24a6_normal.jpeg", 
-            "profile_banner_url": "https://si0.twimg.com/profile_banners/6888252/1347984070", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "C0DEED", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3425630886/529d19229b8343735d7c45240ae45a01_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3425630886/529d19229b8343735d7c45240ae45a01_normal.png", 
+            "profile_link_color": "009999", 
+            "profile_sidebar_border_color": "000000", 
+            "profile_sidebar_fill_color": "EFEFEF", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
-            "default_profile": true, 
+            "default_profile": false, 
             "default_profile_image": false, 
             "following": true, 
             "follow_request_sent": null, 
@@ -1939,7 +1734,235 @@ PS:我是精神病患者
             "hashtags": [ ], 
             "symbols": [ ], 
             "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "neil_alpha", 
+                    "name": "Neil_2.3.6学霸技能启动", 
+                    "id": 229724527, 
+                    "id_str": "229724527", 
+                    "indices": [
+                        0, 
+                        11
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Sun May 26 06:14:40 +0000 2013", 
+        "id": 338538658334388200, 
+        "id_str": "338538658334388224", 
+        "text": "I'm at 85度C (上海市) http://4sq.com/14QjHMk", 
+        "source": "<a href=\"http://foursquare.com\" rel=\"nofollow\">foursquare</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 22897818, 
+            "id_str": "22897818", 
+            "name": "皆是虚妄", 
+            "screen_name": "love_w4ever", 
+            "location": "天鹅座X1", 
+            "description": "一个欧米伽不一致的人：我痛恨每一个人！
+强烈反对中医，为你的身心健康考虑，请中医粉不要fo。INTJ。
+认为法轮功与土共一样恶劣，慎fo。
+严重政治不正确系。
+GPG keyid: 3A74EB79", 
+            "url": "http://t.co/nqGvkL2X1h", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/nqGvkL2X1h", 
+                            "expanded_url": "http://hqwxyz.wordpress.com", 
+                            "display_url": "hqwxyz.wordpress.com", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 4761, 
+            "friends_count": 1597, 
+            "listed_count": 129, 
+            "created_at": "Thu Mar 05 08:32:54 +0000 2009", 
+            "favourites_count": 1185, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 80441, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "0099B9", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme4/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme4/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3029048562/00ca57be42dea50d125092f11ed7a7ed_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3029048562/00ca57be42dea50d125092f11ed7a7ed_normal.png", 
+            "profile_link_color": "0099B9", 
+            "profile_sidebar_border_color": "5ED4DC", 
+            "profile_sidebar_fill_color": "95E8EC", 
+            "profile_text_color": "3C3940", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": {
+            "type": "Point", 
+            "coordinates": [
+                31.26296153, 
+                121.58766747
+            ]
+        }, 
+        "coordinates": {
+            "type": "Point", 
+            "coordinates": [
+                121.58766747, 
+                31.26296153
+            ]
+        }, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [
+                {
+                    "url": "http://4sq.com/14QjHMk", 
+                    "expanded_url": "http://4sq.com/14QjHMk", 
+                    "display_url": "4sq.com/14QjHMk", 
+                    "indices": [
+                        18, 
+                        40
+                    ]
+                }
+            ], 
             "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "possibly_sensitive": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Sun May 26 06:14:38 +0000 2013", 
+        "id": 338538648674893800, 
+        "id_str": "338538648674893824", 
+        "text": "这也敢买？！ RT @365hope:  淘宝网上有一家店铺出售 U 盘免运费：128G 40元；256G 53元。超低价格买超高储存量的货，不可思议！#太疯狂了", 
+        "source": "<a href=\"https://lovetui.info/\" rel=\"nofollow\">爱·推</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 134100426, 
+            "id_str": "134100426", 
+            "name": "一步", 
+            "screen_name": "1stpklosr2me", 
+            "location": "35.052621,118.329344", 
+            "description": "天朝屁民;资深屌丝;翻墙分子;搬砖工人;典型八零后;非典型愤青;...", 
+            "url": "http://t.co/9vuojDMB", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/9vuojDMB", 
+                            "expanded_url": "http://weibo.com/1stpklosr2me", 
+                            "display_url": "weibo.com/1stpklosr2me", 
+                            "indices": [
+                                0, 
+                                20
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 448, 
+            "friends_count": 259, 
+            "listed_count": 9, 
+            "created_at": "Sat Apr 17 13:05:37 +0000 2010", 
+            "favourites_count": 156, 
+            "utc_offset": 28800, 
+            "time_zone": "Beijing", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 21687, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "131516", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/321355895/twilk_background_4e5b884e2c724.jpg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/321355895/twilk_background_4e5b884e2c724.jpg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/1585937024/logojack_normal.png", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/1585937024/logojack_normal.png", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/134100426/1365037946", 
+            "profile_link_color": "009999", 
+            "profile_sidebar_border_color": "EEEEEE", 
+            "profile_sidebar_fill_color": "EFEFEF", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": true, 
+            "follow_request_sent": null, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "太疯狂了", 
+                    "indices": [
+                        76, 
+                        81
+                    ]
+                }
+            ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "365hope", 
+                    "name": "天天希望", 
+                    "id": 10058982, 
+                    "id_str": "10058982", 
+                    "indices": [
+                        10, 
+                        18
+                    ]
+                }
+            ]
         }, 
         "favorited": false, 
         "retweeted": false, 

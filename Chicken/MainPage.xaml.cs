@@ -14,13 +14,9 @@ namespace Chicken
         public MainPage()
         {
             InitializeComponent();
-            this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
-
             mainViewModel = new MainViewModel();
             this.MainPivot.DataContext = mainViewModel;
-            this.HomePivotItem.DataContext = mainViewModel.PivotItems[0];
-            this.MentionsPivotItem.DataContext = mainViewModel.PivotItems[1];
-            this.DMsPivotItem.DataContext = mainViewModel.PivotItems[2];
+            this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
         }
 
         void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
