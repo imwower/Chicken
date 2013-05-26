@@ -28,7 +28,12 @@ namespace Chicken.Service.Implementation
                     var streamReader = new StreamReader(response.GetResponseStream());
                     try
                     {
-#if DEBUG
+#if HTTP
+                        using (var reader = new JsonTextReader(streamReader))
+                        {
+                            output = JsonSerializer.Deserialize<T>(reader);
+                        }
+#elif DEBUG
                         string responseString = streamReader.ReadToEnd();
                         Console.WriteLine("response string : " + responseString);
                         output = JsonConvert.DeserializeObject<T>(responseString);

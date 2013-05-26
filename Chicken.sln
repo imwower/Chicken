@@ -6,12 +6,16 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		HTTP|Any CPU = HTTP|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.HTTP|Any CPU.ActiveCfg = HTTP|Any CPU
+		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.HTTP|Any CPU.Build.0 = HTTP|Any CPU
+		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.HTTP|Any CPU.Deploy.0 = HTTP|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.Deploy.0 = Release|Any CPU

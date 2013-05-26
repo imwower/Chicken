@@ -9,8 +9,13 @@ namespace Chicken.Service
         {
             get
             {
-                //return new TweetService();
+#if HTTP
+                return new TweetService();
+#elif DEBUG
                 return new MockedService();
+#else
+                return new TweetService();
+#endif
             }
         }
     }
