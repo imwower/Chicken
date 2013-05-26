@@ -62,7 +62,6 @@ namespace Chicken.Service.Implementation
                         }
                         if (streamReader != null)
                         {
-                            streamReader.DiscardBufferedData();
                             streamReader.Close();
                             streamReader.Dispose();
                             streamReader = null;
