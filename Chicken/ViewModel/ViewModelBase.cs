@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System;
 
 namespace Chicken.ViewModel
 {
@@ -54,7 +55,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(RefreshDispatcher);
+                return new DelegateCommand(() => Dispatcher(Refresh));
             }
         }
 
@@ -62,7 +63,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(LoadDispatcher);
+                return new DelegateCommand(() => Dispatcher(Load));
             }
         }
 
@@ -70,39 +71,46 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(ClickDispatcher);
+                return new DelegateCommand(o => Dispatcher(Click, o));
+            }
+        }
+
+        public ICommand ItemClickCommand
+        {
+            get
+            {
+                return new DelegateCommand(o => Dispatcher<object>(ItemClick, o));
             }
         }
 
         #endregion
 
         #region dispatcher
-        private void RefreshDispatcher()
+        private void Dispatcher(Action action)
         {
+            if (action == null)
+            {
+                return;
+            }
             IsLoading = true;
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    Refresh();
+                    action();
                 });
         }
 
-        private void LoadDispatcher()
+        private void Dispatcher<T>(Action<T> action, T parameter)
         {
-            IsLoading = true;
+            if (action == null)
+            {
+                return;
+            }
+            //IsLoading = true;
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    Load();
-                });
-        }
-
-        private void ClickDispatcher(object sender)
-        {
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    Click(sender);
+                    action(parameter);
                 });
         }
         #endregion
@@ -110,7 +118,6 @@ namespace Chicken.ViewModel
         #region virtual method
         public virtual void Refresh()
         {
-            IsLoading = true;
         }
 
         public virtual void Refreshed()
@@ -121,7 +128,6 @@ namespace Chicken.ViewModel
 
         public virtual void Load()
         {
-            IsLoading = true;
         }
 
         public virtual void Loaded()
@@ -130,6 +136,10 @@ namespace Chicken.ViewModel
         }
 
         public virtual void Click(object parameter)
+        {
+        }
+
+        public virtual void ItemClick(object parameter)
         {
         }
         #endregion

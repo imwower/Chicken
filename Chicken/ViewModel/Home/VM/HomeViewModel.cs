@@ -16,7 +16,6 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
-            base.Refresh();
             TweetService.GetLastedTweets<List<Tweet>>(
                 tweets =>
                 {
@@ -31,7 +30,6 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Load()
         {
-            base.Load();
             TweetService.GetLastedTweets<List<Tweet>>(
                 tweets =>
                 {

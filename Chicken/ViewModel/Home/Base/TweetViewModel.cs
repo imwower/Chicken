@@ -1,13 +1,10 @@
 ﻿using System;
 using Chicken.Common;
 using Chicken.Model;
+using Chicken.Model.Entity;
 
 namespace Chicken.ViewModel.Home.Base
 {
-    /// <summary>
-    /// tweet view model is the summary of tweet
-    /// use tweet detail view model for more info
-    /// </summary>
     public class TweetViewModel
     {
         private Tweet tweet;
@@ -60,6 +57,30 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public Entities Entities
+        {
+            get
+            {
+                return tweet.Entities;
+            }
+        }
+
+        public bool Retweeted
+        {
+            get
+            {
+                return tweet.Retweeted;
+            }
+        }
+
+        public bool Favourited
+        {
+            get
+            {
+                return tweet.Favourited;
+            }
+        }
+
         public string RetweetCount
         {
             get
@@ -97,6 +118,14 @@ namespace Chicken.ViewModel.Home.Base
             get
             {
                 return tweet.Coordinates != null;
+            }
+        }
+
+        public Coordinates Coordinates
+        {
+            get
+            {
+                return tweet.Coordinates;
             }
         }
     }

@@ -31,6 +31,7 @@ namespace Chicken.ViewModel.Profile
 
         public ProfileViewModel()
         {
+            Title = "Profile";
             var baseViewModelList = new List<ViewModelBase>
             {
                 new ProfileDetailViewModel(),

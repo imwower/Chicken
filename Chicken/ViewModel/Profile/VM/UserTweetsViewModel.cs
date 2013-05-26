@@ -32,7 +32,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
-            base.Refresh();
+            //base.Refresh();
             var tweets = TweetService.GetUserTweets(UserId);
             tweets.Reverse();
             foreach (var tweet in tweets)

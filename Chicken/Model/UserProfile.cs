@@ -4,9 +4,6 @@ namespace Chicken.Model
 {
     public class UserProfile : User
     {
-        [JsonProperty("screen_name")]
-        public string ScreenName { get; set; }
-
         [JsonProperty("profile_banner_url")]
         public string UserProfileBannerImage { get; set; }
 

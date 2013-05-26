@@ -199,7 +199,9 @@
                     </Grid.Resources>
                     <!--user name-->
                     <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
-                    <Button Grid.Row="1">
+                    <Button Grid.Row="1"
+                            Command="{Binding DataContext.ItemClickCommand, ElementName=AutoListBox}"
+                            CommandParameter="{Binding Path=Id}">
                         <Button.Template>
                             <ControlTemplate>
                                 <Grid>
@@ -224,34 +226,34 @@
                                         <!--date-->
                                         <TextBlock Text="{Binding CreatedDate}" Grid.Row="0" />
                                         <!--media retweet count etc-->
-                                        <StackPanel Grid.Row="1"
+                                        <StackPanel Grid.Row="0"
                                                     HorizontalAlignment="Right" Orientation="Horizontal">
                                             <StackPanel.Resources>
                                                 <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
                                                 </Style>
                                             </StackPanel.Resources>
-                                            <!--media-->
-                                            <Rectangle Visibility="{Binding IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/media.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
                                             <!--conversation-->
                                             <Rectangle Visibility="{Binding InReplayToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
                                                     <ImageBrush ImageSource="Images/dark/conversation.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
-                                            <!--location-->
-                                            <Rectangle Visibility="{Binding IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <!--media-->
+                                            <Rectangle Visibility="{Binding IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/location.png" />
+                                                    <ImageBrush ImageSource="Images/dark/media.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                             <!--retweet-->
                                             <Rectangle Visibility="{Binding RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
                                                     <ImageBrush ImageSource="Images/dark/retweet.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!--location-->
+                                            <Rectangle Visibility="{Binding IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="Images/dark/location.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                         </StackPanel>

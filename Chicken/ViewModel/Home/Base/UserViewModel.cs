@@ -19,6 +19,14 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public string ScreenName
+        {
+            get
+            {
+                return user.ScreenName;
+            }
+        }
+
         public string Id
         {
             get

@@ -15,6 +15,7 @@ namespace Chicken.Service.Implementation
     {
         static JsonSerializer JsonSerializer = new JsonSerializer();
 
+        #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {
             HttpWebRequest request = WebRequest.CreateHttp(url);
@@ -79,6 +80,17 @@ namespace Chicken.Service.Implementation
               request);
         }
 
+        private IDictionary<string, object> GetDic(IDictionary<string, object> parameters = null)
+        {
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>();
+            }
+            return parameters;
+        }
+        #endregion
+
+        #region MyRegion
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
 #if DEBUG
@@ -166,13 +178,12 @@ namespace Chicken.Service.Implementation
         {
             return GetDirectMessages();
         }
+        #endregion
 
+        #region profile page
         public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            if (parameters == null || parameters.Count == 0)
-            {
-                parameters = new Dictionary<string, object>();
-            }
+            parameters = GetDic(parameters);
             parameters.Add(Const.USER_ID, userId);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
@@ -186,6 +197,15 @@ namespace Chicken.Service.Implementation
         public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             //throw new NotImplementedException();
+        }
+        #endregion
+
+        public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = GetDic(parameters);
+            parameters.Add(Const.ID, id);
+            string url = TwitterHelper.GenerateRelativeUri(Const.StatusPage, parameters);
+            HandleWebRequest<T>(url, callBack);
         }
     }
 }

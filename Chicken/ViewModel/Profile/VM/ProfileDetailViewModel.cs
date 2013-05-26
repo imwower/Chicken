@@ -29,7 +29,6 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
-            base.Refresh();
             TweetService.GetUserProfileDetail<UserProfile>(UserId,
                 obj =>
                 {

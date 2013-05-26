@@ -41,5 +41,9 @@ namespace Chicken.Service.Interface
         void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
+        #region status page
+        void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null);
+        #endregion
+
     }
 }

@@ -111,12 +111,22 @@
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
+    <Compile Include="ViewModel\Status\StatusViewModel.cs" />
+    <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusConversationViewModel.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusFavourite.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusMediaViewModel.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusRetweetViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\Home\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\StatusPage.xaml.cs">
+      <DependentUpon>StatusPage.xaml</DependentUpon>
+    </Compile>
     <Content Include="Images\dark\conversation.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -193,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\StatusPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

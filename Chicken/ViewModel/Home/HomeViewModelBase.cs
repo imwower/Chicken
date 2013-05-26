@@ -41,5 +41,12 @@ namespace Chicken.ViewModel.Home
             parameters.Add(Const.USER_ID, parameter);
             NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
         }
+
+        public override void ItemClick(object parameter)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            parameters.Add(Const.ID, parameter);
+            NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+        }
     }
 }

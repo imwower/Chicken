@@ -14,7 +14,7 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
-            base.Refresh();
+            //base.Refresh();
             var tweets = TweetService.GetNewMentions();
             tweets.Reverse();
             foreach (var tweet in tweets)
