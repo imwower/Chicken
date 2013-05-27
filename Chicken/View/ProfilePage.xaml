@@ -77,50 +77,43 @@
                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
                                     <!--Tweets, Following, Followers, Favourites-->
-                                    <Grid Grid.Row="5" HorizontalAlignment="Stretch">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                            <ColumnDefinition />
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.Resources>
-                                            <Style TargetType="TextBlock">
-                                                <Setter Property="TextAlignment" Value="Left" />
-                                                <Setter Property="Foreground" Value="#009999" />
-                                            </Style>
-                                            <Style TargetType="Border" BasedOn="{StaticResource RetweetCountBorder}">
-                                            </Style>
-                                        </Grid.Resources>
-                                        <Border Grid.Column="0">
-                                            <TextBlock>
-                                                <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
-                                                <LineBreak />
-                                                <Run Text="TWEETS" />
+                                    <Border Grid.Row="5"
+                                            Style="{StaticResource RetweetCountBorder}">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                                <ColumnDefinition />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.Resources>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="TextAlignment" Value="Left" />
+                                                    <Setter Property="Foreground" Value="#009999" />
+                                                </Style>
+                                            </Grid.Resources>
+                                            <TextBlock Grid.Column="0">
+                                            <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
+                                            <LineBreak />
+                                            <Run Text="TWEETS" />
                                             </TextBlock>
-                                        </Border>
-                                        <Border Grid.Column="1">
-                                            <TextBlock >
-                                                <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
-                                                <LineBreak />
-                                                <Run Text="FOLLOWING" />
+                                            <TextBlock Grid.Column="1">
+                                            <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
+                                            <LineBreak />
+                                            <Run Text="FOLLOWING" />
                                             </TextBlock>
-                                        </Border>
-                                        <Border Grid.Column="2">
-                                            <TextBlock >
-                                                <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
-                                                <LineBreak />
-                                                <Run Text="FOLLOWERS" />
+                                            <TextBlock Grid.Column="2">
+                                            <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
+                                            <LineBreak />
+                                            <Run Text="FOLLOWERS" />
                                             </TextBlock>
-                                        </Border>
-                                        <Border Grid.Column="3">
-                                            <TextBlock >
-                                                <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
-                                                <LineBreak />
-                                                <Run Text="FAVOURITES" />
+                                            <TextBlock Grid.Column="3">
+                                            <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
+                                            <LineBreak />
+                                            <Run Text="FAVOURITES" />
                                             </TextBlock>
-                                        </Border>
-                                    </Grid>
+                                        </Grid>
+                                    </Border>
                                 </Grid>
                                 <!--description-->
                                 <TextBlock Text="{Binding UserProfileViewModel.Description}" Grid.Row="2"

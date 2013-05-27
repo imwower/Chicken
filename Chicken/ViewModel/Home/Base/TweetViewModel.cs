@@ -2,26 +2,40 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
+using Chicken.ViewModel.Status.Base;
 
 namespace Chicken.ViewModel.Home.Base
 {
     public class TweetViewModel
     {
         private Tweet tweet;
-
         private UserViewModel user;
+        private EntitiesViewModel entitiesViewModel;
+        private CoordinatesViewModel coordinatesViewModel;
+
+        public TweetViewModel(Tweet tweet)
+        {
+            this.tweet = tweet;
+            if (tweet.User != null)
+            {
+                this.user = new UserViewModel(tweet.User);
+            }
+            if (tweet.Entities != null)
+            {
+                this.entitiesViewModel = new EntitiesViewModel(tweet.Entities);
+            }
+            if (tweet.Coordinates != null)
+            {
+                this.coordinatesViewModel = new CoordinatesViewModel(tweet.Coordinates);
+            }
+        }
+
         public UserViewModel User
         {
             get
             {
                 return user;
             }
-        }
-
-        public TweetViewModel(Tweet tweet)
-        {
-            this.tweet = tweet;
-            this.user = new UserViewModel(tweet.User);
         }
 
         public string Id
@@ -52,16 +66,17 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return tweet.Entities != null &&
-                    tweet.Entities.Medias != null;
+                return entitiesViewModel != null
+                    && entitiesViewModel.MediasViewModel != null
+                    && entitiesViewModel.MediasViewModel.Count != 0;
             }
         }
 
-        public Entities Entities
+        public EntitiesViewModel EntitiesViewModel
         {
             get
             {
-                return tweet.Entities;
+                return entitiesViewModel;
             }
         }
 
@@ -125,15 +140,15 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return tweet.Coordinates != null;
+                return coordinatesViewModel != null;
             }
         }
 
-        public Coordinates Coordinates
+        public CoordinatesViewModel CoordinatesViewModel
         {
             get
             {
-                return tweet.Coordinates;
+                return coordinatesViewModel;
             }
         }
     }

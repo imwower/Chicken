@@ -40,6 +40,8 @@
                                 <RowDefinition />
                                 <RowDefinition />
                                 <RowDefinition />
+                                <RowDefinition />
+                                <RowDefinition />
                             </Grid.RowDefinitions>
                             <!--profile summary-->
                             <Button Grid.Row="0"
@@ -129,44 +131,54 @@
                                    HorizontalAlignment="Stretch" TextAlignment="Left" />
                             </Grid>
                             <!--retweet count, favourite count, location-->
-                            <StackPanel Grid.Row="2" Orientation="Horizontal"
-                                HorizontalAlignment="Left" Opacity="0.4">
-                                <StackPanel.Resources>
-                                    <Style TargetType="TextBlock">
-                                        <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
-                                        <Setter Property="TextAlignment" Value="Left" />
-                                        <Setter Property="Foreground" Value="#009999" />
-                                    </Style>
-                                    <Style TargetType="Border" BasedOn="{StaticResource RetweetCountBorder}">
-                                    </Style>
-                                </StackPanel.Resources>
-                                <Border
-                            Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
-                                    <TextBlock>
+                            <Border Grid.Row="2"
+                                    Style="{StaticResource RetweetCountBorder}">
+                                <StackPanel  Orientation="Horizontal"
+                                HorizontalAlignment="Left">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+                                            <Setter Property="TextAlignment" Value="Left" />
+                                            <Setter Property="Foreground" Value="#009999" />
+                                        </Style>
+                                        <Style TargetType="Border" BasedOn="{StaticResource RetweetCountBorder}">
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <Border
+                                    Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                        <TextBlock>
                                 <Run Text="{Binding TweetViewModel.RetweetCount}" />
                                 <LineBreak />
                                 <Run Text="RETWEET" />
-                                    </TextBlock>
-                                </Border>
-                                <Border
-                            Visibility="{Binding TweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
-                                    <TextBlock>
+                                        </TextBlock>
+                                    </Border>
+                                    <Border
+                                    Visibility="{Binding TweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                        <TextBlock>
                                 <Run Text="{Binding TweetViewModel.FavouriteCount}" />
                                 <LineBreak />
                                 <Run Text="FAVOURITE" />
-                                    </TextBlock>
-                                </Border>
-                                <Border
-                            Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                    <TextBlock>
-                                <Run Text="{Binding TweetViewModel.Coordinates}" />
+                                        </TextBlock>
+                                    </Border>
+                                    <Border
+                                    Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <TextBlock>
+                                <Run Text="{Binding TweetViewModel.CoordinatesViewModel}" />
                                 <LineBreak />
                                 <Run Text="LOCATION" />
-                                    </TextBlock>
-                                </Border>
-                            </StackPanel>
+                                        </TextBlock>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
                             <!--media-->
+                            <StackPanel Grid.Row="3" Margin="0,4,0,0"
+                                        Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}"
+                                        HorizontalAlignment="Center">
+                                <Image Source="{Binding TweetViewModel.EntitiesViewModel.MediasViewModel[0].MediaUrlThumb}" />
+                            </StackPanel>
                             <!--conversation-->
+                            <StackPanel Grid.Row="4">
+                            </StackPanel>
                         </Grid>
                     </ScrollViewer>
                     <ProgressBar Grid.Row="1" IsIndeterminate="True"

@@ -10,7 +10,7 @@
     <Application.Resources>
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
-        <ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />
+        <!--<ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />-->
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
@@ -39,8 +39,10 @@
         </Style>
 
         <Style x:Name="RetweetCountBorder" TargetType="Border">
+            <Setter Property="Opacity" Value="0.6" />
             <Setter Property="BorderBrush" Value="Silver" />
-            <Setter Property="BorderThickness" Value="1,1,1,1" />
+            <Setter Property="BorderThickness" Value="0,1,0,1" />
+            <Setter Property="Margin" Value="0,4,0,0" />
         </Style>
 
         <!--Content default is Medium-->

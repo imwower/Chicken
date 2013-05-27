@@ -111,6 +111,10 @@
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
+    <Compile Include="ViewModel\Status\Base\CoordinatesViewModel.cs" />
+    <Compile Include="ViewModel\Status\Base\EntitiesViewModel.cs" />
+    <Compile Include="ViewModel\Status\Base\HashTagViewModel.cs" />
+    <Compile Include="ViewModel\Status\Base\MediaViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusConversationViewModel.cs" />

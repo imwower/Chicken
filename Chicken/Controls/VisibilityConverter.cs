@@ -48,24 +48,24 @@ namespace Chicken.Controls
         }
     }
 
-    public class BooleanToFillConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            if (value == null)
-            {
-                return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
-            }
-            bool b = (bool)value;
-            return
-                (b == true) ?
-            (Brush)Application.Current.Resources["PhoneAccentBrush"]
-            : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
-        }
+    //public class BooleanToFillConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        if (value == null)
+    //        {
+    //            return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
+    //        }
+    //        bool b = (bool)value;
+    //        return
+    //            (b == true) ?
+    //        (Brush)Application.Current.Resources["PhoneAccentBrush"]
+    //        : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
+    //    }
 
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-    }
+    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }
