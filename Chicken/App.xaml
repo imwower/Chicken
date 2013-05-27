@@ -10,6 +10,7 @@
     <Application.Resources>
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
@@ -24,6 +25,11 @@
         <Style x:Name="TextMedium" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+
+        <Style x:Name="TweetScreenName" TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+            <Setter Property="FontFamily" Value="Segoe WP Bold" />
+            <Setter Property="Opacity" Value="0.6" />
         </Style>
 
         <!--Content default is Medium-->
@@ -163,7 +169,6 @@
             <Setter Property="Width" Value="18" />
             <Setter Property="Height" Value="14" />
             <Setter Property="Margin" Value="2" />
-            <Setter Property="Fill" Value="{StaticResource PhoneAccentColor}" />
         </Style>
         <!--styles-->
 
@@ -192,6 +197,7 @@
                         <RowDefinition />
                         <RowDefinition />
                         <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
                     <Grid.Resources>
                         <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
@@ -199,7 +205,9 @@
                     </Grid.Resources>
                     <!--user name-->
                     <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
-                    <Button Grid.Row="1"
+                    <TextBlock Text="{Binding User.ScreenName}" Grid.Row="1"
+                               Style="{StaticResource TweetScreenName}" />
+                    <Button Grid.Row="2"
                             Command="{Binding DataContext.ItemClickCommand, ElementName=AutoListBox}"
                             CommandParameter="{Binding Path=Id}">
                         <Button.Template>
@@ -230,30 +238,31 @@
                                                     HorizontalAlignment="Right" Orientation="Horizontal">
                                             <StackPanel.Resources>
                                                 <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                                    <Setter Property="Fill" Value="{StaticResource PhoneForegroundBrush}" />
                                                 </Style>
                                             </StackPanel.Resources>
                                             <!--conversation-->
                                             <Rectangle Visibility="{Binding InReplayToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/conversation.png" />
+                                                    <ImageBrush ImageSource="/Images/dark/conversation.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                             <!--media-->
                                             <Rectangle Visibility="{Binding IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/media.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                            <!--retweet-->
-                                            <Rectangle Visibility="{Binding RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/retweet.png" />
+                                                    <ImageBrush ImageSource="/Images/dark/media.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                             <!--location-->
                                             <Rectangle Visibility="{Binding IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="Images/dark/location.png" />
+                                                    <ImageBrush ImageSource="/Images/dark/location.png" />
+                                                </Rectangle.OpacityMask>
+                                            </Rectangle>
+                                            <!--retweet-->
+                                            <Rectangle Visibility="{Binding RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                                <Rectangle.OpacityMask>
+                                                    <ImageBrush ImageSource="/Images/dark/retweet.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                         </StackPanel>
@@ -263,7 +272,7 @@
                         </Button.Template>
                     </Button>
                     <!--via-->
-                    <HyperlinkButton Content="{Binding Path=Source}" Grid.Row="2"
+                    <HyperlinkButton Content="{Binding Path=Source}" Grid.Row="3"
                                      NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank"
                                      Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
                 </Grid>

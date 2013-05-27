@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Chicken.Controls
 {
@@ -39,6 +40,27 @@ namespace Chicken.Controls
             {
                 return Visibility.Visible;
             }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class BooleanToFillConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null)
+            {
+                return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
+            }
+            bool b = (bool)value;
+            return
+                (b == true) ?
+            (Brush)Application.Current.Resources["PhoneAccentBrush"]
+            : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
