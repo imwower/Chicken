@@ -77,7 +77,7 @@
                                      NavigateUri="{Binding Path=UserProfileViewModel.Url}"
                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
-                                    <!--Tweets, Following, Followers, Buttons-->
+                                    <!--Tweets, Following, Followers, Favourites-->
                                     <Grid Grid.Row="5" HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition />
@@ -96,30 +96,30 @@
                                         </Grid.Resources>
                                         <Border Grid.Column="0" BorderThickness="1,1,1,1">
                                             <TextBlock>
-                                    <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
-                                    <LineBreak />
-                                    <Run Text="TWEETS" />
+                                                <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
+                                                <LineBreak />
+                                                <Run Text="TWEETS" />
                                             </TextBlock>
                                         </Border>
                                         <Border Grid.Column="1" BorderThickness="0,1,1,1">
                                             <TextBlock >
-                                    <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
-                                    <LineBreak />
-                                    <Run Text="FOLLOWING" />
+                                                <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
+                                                <LineBreak />
+                                                <Run Text="FOLLOWING" />
                                             </TextBlock>
                                         </Border>
                                         <Border Grid.Column="2" BorderThickness="0,1,1,1">
                                             <TextBlock >
-                                    <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
-                                    <LineBreak />
-                                    <Run Text="FOLLOWERS" />
+                                                <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
+                                                <LineBreak />
+                                                <Run Text="FOLLOWERS" />
                                             </TextBlock>
                                         </Border>
                                         <Border Grid.Column="3" BorderThickness="0,1,1,1">
                                             <TextBlock >
-                                    <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
-                                    <LineBreak />
-                                    <Run Text="FAVOURITES" />
+                                                <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
+                                                <LineBreak />
+                                                <Run Text="FAVOURITES" />
                                             </TextBlock>
                                         </Border>
                                     </Grid>
