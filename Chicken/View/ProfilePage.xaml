@@ -21,9 +21,8 @@
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
-                <Grid>
+                <Grid Margin="0,-40,0,0">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
@@ -33,96 +32,105 @@
                             <Setter Property="Margin" Value="2" />
                         </Style>
                     </Grid.Resources>
-                    <Grid Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="124" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.Background>
-                            <ImageBrush ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}"
-                                       Stretch="Fill"  />
-                        </Grid.Background>
-                        <!--Profile Image-->
-                        <Image Grid.Row="0" Source="{Binding UserProfileViewModel.ProfileImage}"
-                           Width="124" Height="124" Margin="0,-40,0,0" Stretch="Fill">
-                            <Image.Clip>
-                                <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                            </Image.Clip>
-                        </Image>
-                        <!--Name-->
-                        <TextBlock Text="{Binding UserProfileViewModel.Name}"
+                    <!--Description-->
+                    <ScrollViewer Grid.Row="0" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
+                               HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="1">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="124" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.Background>
+                                        <ImageBrush ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" Stretch="Fill"  />
+                                    </Grid.Background>
+                                    <!--Profile Image-->
+                                    <Image Grid.Row="0"
+                               Source="{Binding UserProfileViewModel.ProfileImage}"
+                                           Width="124" Height="124" Margin="0,-40,0,0" Stretch="Fill">
+                                        <Image.Clip>
+                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                        </Image.Clip>
+                                    </Image>
+                                    <!--Name-->
+                                    <TextBlock Text="{Binding UserProfileViewModel.Name}"
                                    FontSize="{StaticResource PhoneFontSizeMediumLarge}"
                                    FontFamily="{StaticResource PhoneFontFamilySemiBold}"
                             Grid.Row="1" Margin="0,-10,0,0"
                              />
-                        <!--Screen Name-->
-                        <TextBlock Grid.Row="2" Text="{Binding UserProfileViewModel.ScreenName}" />
-                        <!--Location-->
-                        <TextBlock Grid.Row="3" Text="{Binding UserProfileViewModel.Location}" />
-                        <!--Url-->
-                        <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
+                                    <!--Screen Name-->
+                                    <TextBlock Grid.Row="2" Text="{Binding UserProfileViewModel.ScreenName}" />
+                                    <!--Location-->
+                                    <TextBlock Grid.Row="3" Text="{Binding UserProfileViewModel.Location}" />
+                                    <!--Url-->
+                                    <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
                                      NavigateUri="{Binding Path=UserProfileViewModel.Url}"
                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
-                        </HyperlinkButton>
-                        <!--Tweets, Following, Followers, Buttons-->
-                        <Grid Grid.Row="5" HorizontalAlignment="Stretch">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                                <ColumnDefinition />
-                            </Grid.ColumnDefinitions>
-                            <Grid.Resources>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="TextAlignment" Value="Left" />
-                                    <Setter Property="Foreground" Value="#009999" />
-                                </Style>
-                                <Style TargetType="Border">
-                                    <Setter Property="BorderBrush" Value="Silver" />
-                                </Style>
-                            </Grid.Resources>
-                            <Border Grid.Column="0" BorderThickness="1,1,1,1">
-                                <TextBlock>
+                                    </HyperlinkButton>
+                                    <!--Tweets, Following, Followers, Buttons-->
+                                    <Grid Grid.Row="5" HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Left" />
+                                                <Setter Property="Foreground" Value="#009999" />
+                                            </Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="BorderBrush" Value="Silver" />
+                                            </Style>
+                                        </Grid.Resources>
+                                        <Border Grid.Column="0" BorderThickness="1,1,1,1">
+                                            <TextBlock>
                                     <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
                                     <LineBreak />
                                     <Run Text="TWEETS" />
-                                </TextBlock>
-                            </Border>
-                            <Border Grid.Column="1" BorderThickness="0,1,1,1">
-                                <TextBlock >
+                                            </TextBlock>
+                                        </Border>
+                                        <Border Grid.Column="1" BorderThickness="0,1,1,1">
+                                            <TextBlock >
                                     <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
                                     <LineBreak />
                                     <Run Text="FOLLOWING" />
-                                </TextBlock>
-                            </Border>
-                            <Border Grid.Column="2" BorderThickness="0,1,1,1">
-                                <TextBlock >
+                                            </TextBlock>
+                                        </Border>
+                                        <Border Grid.Column="2" BorderThickness="0,1,1,1">
+                                            <TextBlock >
                                     <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
                                     <LineBreak />
                                     <Run Text="FOLLOWERS" />
-                                </TextBlock>
-                            </Border>
-                            <Border Grid.Column="3" BorderThickness="0,1,1,1">
-                                <TextBlock >
+                                            </TextBlock>
+                                        </Border>
+                                        <Border Grid.Column="3" BorderThickness="0,1,1,1">
+                                            <TextBlock >
                                     <Run Text="{Binding UserProfileViewModel.FavouritesCount}" />
                                     <LineBreak />
                                     <Run Text="FAVOURITES" />
-                                </TextBlock>
-                            </Border>
-                        </Grid>
-                    </Grid>
-                    <!--Description-->
-                    <ScrollViewer Grid.Row="1" VerticalContentAlignment="Center" VerticalAlignment="Center"
-                                   HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                        <ScrollViewer.Content>
-                            <TextBlock Text="{Binding UserProfileViewModel.Description}" Style="{StaticResource TextContentCenter}" />
+                                            </TextBlock>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                                <!--description-->
+                                <TextBlock Text="{Binding UserProfileViewModel.Description}" Grid.Row="2"
+                                                           Style="{StaticResource TextContentCenter}" />
+                            </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>
-                    <ProgressBar Grid.Row="2" IsIndeterminate="True"
+                    <ProgressBar Grid.Row="1" IsIndeterminate="True"
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>

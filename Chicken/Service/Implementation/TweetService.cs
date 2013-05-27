@@ -204,7 +204,7 @@ namespace Chicken.Service.Implementation
         {
             parameters = GetDic(parameters);
             parameters.Add(Const.ID, id);
-            string url = TwitterHelper.GenerateRelativeUri(Const.StatusPage, parameters);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }
     }
