@@ -47,8 +47,7 @@
                                     </Grid.ColumnDefinitions>
                                     <!--profile image-->
                                     <Image Source="{Binding Path=TweetViewModel.User.ProfileImage}"
-                                           Grid.Column="0" Width="84" Height="84" Margin="0,0,2,0"
-                                           HorizontalAlignment="Left" VerticalAlignment="Top" />
+                                           Grid.Column="0" Style="{StaticResource ProfileImageNormal}" />
                                     <!--name, screen name-->
                                     <Grid Grid.Column="1">
                                         <Grid.RowDefinitions>
