@@ -45,6 +45,10 @@
             <Setter Property="Margin" Value="0,4,0,0" />
         </Style>
 
+        <SolidColorBrush x:Key="RetweetCountTextColorBrush">
+            <Color>#009999</Color>
+        </SolidColorBrush>
+
         <!--Content default is Medium-->
         <Style x:Name="TextContent" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />

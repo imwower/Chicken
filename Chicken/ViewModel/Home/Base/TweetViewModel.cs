@@ -151,5 +151,15 @@ namespace Chicken.ViewModel.Home.Base
                 return coordinatesViewModel;
             }
         }
+
+        public bool NeedShowRetweetIcons
+        {
+            get
+            {
+                return RetweetCount != "0" ||
+                    FavouriteCount != "0" ||
+                    coordinatesViewModel != null;
+            }
+        }
     }
 }

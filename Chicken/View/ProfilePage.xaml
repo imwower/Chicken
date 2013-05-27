@@ -89,7 +89,7 @@
                                             <Grid.Resources>
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="TextAlignment" Value="Left" />
-                                                    <Setter Property="Foreground" Value="#009999" />
+                                                    <Setter Property="Foreground" Value="{StaticResource RetweetCountTextColorBrush}" />
                                                 </Style>
                                             </Grid.Resources>
                                             <TextBlock Grid.Column="0">

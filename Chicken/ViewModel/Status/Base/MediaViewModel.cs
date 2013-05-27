@@ -42,5 +42,13 @@ namespace Chicken.ViewModel.Status.Base
                 return media.MediaUrl + ":thumb";
             }
         }
+
+        public string MediaUrlSmall
+        {
+            get
+            {
+                return media.MediaUrl + ":small";
+            }
+        }
     }
 }
