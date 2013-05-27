@@ -1,57 +1,40 @@
 ﻿{
-    "id": 514378421, 
-    "id_str": "514378421", 
-    "name": "逗逼不二", 
-    "screen_name": "HondaJOJO", 
-    "location": "成都", 
-    "description": "来高唱
-胖次！呼啦呼啦。
-欧派！卜妞卜妞。
-我们是冷眼改变内心的追寻！
-嘢！", 
-    "url": "http://t.co/ncVqey4lcU", 
+    "id": 129763574, 
+    "id_str": "129763574", 
+    "name": "煞笔蕉", 
+    "screen_name": "0soun0", 
+    "location": "天朝 伪都", 
+    "description": "我可是个大煞笔 快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我快b了我", 
+    "url": null, 
     "entities": {
-        "url": {
-            "urls": [
-                {
-                    "url": "http://t.co/ncVqey4lcU", 
-                    "expanded_url": "http://soundcloud.com/hondajojo/lolicon", 
-                    "display_url": "soundcloud.com/hondajojo/loli…", 
-                    "indices": [
-                        0, 
-                        22
-                    ]
-                }
-            ]
-        }, 
         "description": {
             "urls": [ ]
         }
     }, 
     "protected": false, 
-    "followers_count": 2834, 
-    "friends_count": 455, 
-    "listed_count": 117, 
-    "created_at": "Sun Mar 04 14:07:29 +0000 2012", 
-    "favourites_count": 46, 
-    "utc_offset": -36000, 
-    "time_zone": "Hawaii", 
-    "geo_enabled": false, 
+    "followers_count": 693, 
+    "friends_count": 556, 
+    "listed_count": 25, 
+    "created_at": "Mon Apr 05 09:45:04 +0000 2010", 
+    "favourites_count": 188, 
+    "utc_offset": -32400, 
+    "time_zone": "Alaska", 
+    "geo_enabled": true, 
     "verified": false, 
-    "statuses_count": 190370, 
-    "lang": "zh-cn", 
+    "statuses_count": 27096, 
+    "lang": "en", 
     "status": {
-        "created_at": "Sun May 26 12:28:58 +0000 2013", 
-        "id": 338632853464182800, 
-        "id_str": "338632853464182785", 
-        "text": "@0soun0 肯定更丑 到时候不要说你认识我", 
-        "source": "<a href=\"http://www.fujiya-peko.co.jp/\" rel=\"nofollow\">吃了金克拉，月推产量一万八</a>", 
+        "created_at": "Mon May 27 11:56:14 +0000 2013", 
+        "id": 338987003603480600, 
+        "id_str": "338987003603480576", 
+        "text": "@kuroikk   粒粒皆辛苦。。不能浪费食物（大口咀嚼", 
+        "source": "<a href=\"http://www.crypton.co.jp/mp/pages/prod/vocaloid/cv01.jsp\" rel=\"nofollow\">Twittеr for Miku</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 338619626827169800, 
-        "in_reply_to_status_id_str": "338619626827169795", 
-        "in_reply_to_user_id": 129763574, 
-        "in_reply_to_user_id_str": "129763574", 
-        "in_reply_to_screen_name": "0soun0", 
+        "in_reply_to_status_id": 338986814025117700, 
+        "in_reply_to_status_id_str": "338986814025117696", 
+        "in_reply_to_user_id": 438994953, 
+        "in_reply_to_user_id_str": "438994953", 
+        "in_reply_to_screen_name": "kuroikk", 
         "geo": null, 
         "coordinates": null, 
         "place": null, 
@@ -64,13 +47,13 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "0soun0", 
-                    "name": "蕉", 
-                    "id": 129763574, 
-                    "id_str": "129763574", 
+                    "screen_name": "kuroikk", 
+                    "name": "黒", 
+                    "id": 438994953, 
+                    "id_str": "438994953", 
                     "indices": [
                         0, 
-                        7
+                        8
                     ]
                 }
             ]
@@ -81,17 +64,17 @@
     }, 
     "contributors_enabled": false, 
     "is_translator": false, 
-    "profile_background_color": "FFFFFF", 
-    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/812674131/f35d337736ee199a95f1fd7781d5f536.jpeg", 
-    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/812674131/f35d337736ee199a95f1fd7781d5f536.jpeg", 
-    "profile_background_tile": false, 
-    "profile_image_url": "http://a0.twimg.com/profile_images/3654505646/5bfe1bef508ddda1e61f8b40a3053532_normal.jpeg", 
-    "profile_image_url_https": "https://si0.twimg.com/profile_images/3654505646/5bfe1bef508ddda1e61f8b40a3053532_normal.jpeg", 
-    "profile_banner_url": "https://pbs.twimg.com/profile_banners/514378421/1357298592", 
-    "profile_link_color": "000000", 
-    "profile_sidebar_border_color": "FFFFFF", 
-    "profile_sidebar_fill_color": "DDEEF6", 
-    "profile_text_color": "333333", 
+    "profile_background_color": "352726", 
+    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/394003069/1112221A337-4.jpg", 
+    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/394003069/1112221A337-4.jpg", 
+    "profile_background_tile": true, 
+    "profile_image_url": "http://a0.twimg.com/profile_images/3183845493/bee50731039cad44fdcede1fd101b429_normal.png", 
+    "profile_image_url_https": "https://si0.twimg.com/profile_images/3183845493/bee50731039cad44fdcede1fd101b429_normal.png", 
+    "profile_banner_url": "https://pbs.twimg.com/profile_banners/129763574/1352870130", 
+    "profile_link_color": "D02B55", 
+    "profile_sidebar_border_color": "829D5E", 
+    "profile_sidebar_fill_color": "99CC33", 
+    "profile_text_color": "3E4415", 
     "profile_use_background_image": true, 
     "default_profile": false, 
     "default_profile_image": false, 

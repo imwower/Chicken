@@ -68,7 +68,13 @@
         "notifications": false
     }, 
     "geo": null, 
-    "coordinates": null, 
+    "coordinates": {
+            "type": "Point", 
+            "coordinates": [
+                114.030844, 
+                22.099451
+            ]
+        }, 
     "place": null, 
     "contributors": [
         14927800

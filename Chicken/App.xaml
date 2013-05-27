@@ -28,8 +28,19 @@
         </Style>
 
         <Style x:Name="TweetScreenName" TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-            <Setter Property="FontFamily" Value="Segoe WP Bold" />
+            <Setter Property="FontFamily" Value="Segoe WP Semibold" />
             <Setter Property="Opacity" Value="0.6" />
+        </Style>
+
+        <Style x:Name="ProfileScreenName" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Segoe WP Semibold" />
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+            <Setter Property="TextTrimming" Value="WordEllipsis" />
+        </Style>
+
+        <Style x:Name="RetweetCountBorder" TargetType="Border">
+            <Setter Property="BorderBrush" Value="Silver" />
+            <Setter Property="BorderThickness" Value="1,1,1,1" />
         </Style>
 
         <!--Content default is Medium-->
@@ -173,7 +184,7 @@
 
         <!--profile image-->
         <Style x:Name="ProfileImage" TargetType="Image">
-            <Setter Property="Margin" Value="0,2,2,0" />
+            <Setter Property="Margin" Value="0,2,4,0" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
@@ -234,7 +245,7 @@
                                     <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
                                     <!--screen name-->
                                     <TextBlock Text="{Binding User.ScreenName}" Grid.Row="1"
-                               Style="{StaticResource TweetScreenName}" />
+                                               Style="{StaticResource TweetScreenName}" />
                                     <!--text-->
                                     <TextBlock Text="{Binding Text}" Grid.Row="2"
                                                Style="{StaticResource TextContentNormal}"
@@ -307,13 +318,12 @@
                 </Grid.ColumnDefinitions>
                 <!--avatar-->
                 <Button Grid.Column="0"
-                        Width="64" Height="64" Margin="0,0,2,0"
-                        HorizontalAlignment="Left" VerticalAlignment="Top"
                         Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
                         CommandParameter="{Binding User.Id}">
                     <Button.Template>
                         <ControlTemplate>
-                            <Image Source="{Binding User.ProfileImage}" />
+                            <Image Source="{Binding User.ProfileImage}"
+                                   Style="{StaticResource ProfileImageSmall}"/>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -375,9 +385,8 @@
                                 <ColumnDefinition Width="88" />
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding ProfileImage}"
-                           Grid.Column="0" Width="84" Height="84" Margin="0,0,2,0"
-                           HorizontalAlignment="Left" VerticalAlignment="Top" />
+                            <Image Source="{Binding ProfileImage}" Grid.Column="0"
+                                   Style="{StaticResource ProfileImageNormal}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />

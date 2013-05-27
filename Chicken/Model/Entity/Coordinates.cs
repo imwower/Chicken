@@ -10,5 +10,10 @@ namespace Chicken.Model.Entity
 
         [JsonProperty("coordinates")]
         public double[] Points { get; set; }
+
+        public override string ToString()
+        {
+            return (int)Points[0] + ", " + (int)Points[1];
+        }
     }
 }

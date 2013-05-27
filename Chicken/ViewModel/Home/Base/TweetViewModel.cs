@@ -89,6 +89,14 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public string FavouriteCount
+        {
+            get
+            {
+                return tweet.FavouriteCount;
+            }
+        }
+
         public string Source
         {
             get
