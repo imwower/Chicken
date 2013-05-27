@@ -35,7 +35,7 @@ namespace Chicken.Model
         public bool Retweeted { get; set; }
 
         [JsonProperty("in_reply_to_status_id")]
-        public string InReplayToTweetId { get; set; }
+        public string InReplyToTweetId { get; set; }
 
         [JsonProperty("in_reply_to_user_id")]
         public string InReplayToUserId { get; set; }

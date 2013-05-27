@@ -10,11 +10,13 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Chicken.ViewModel.Home.Base;
 using Chicken.Model;
+using System.Collections.ObjectModel;
 
 namespace Chicken.ViewModel.Status.VM
 {
     public class StatusDetailViewModel : StatusViewModelBase
     {
+        #region properties
         private TweetViewModel tweetViewModel;
         public TweetViewModel TweetViewModel
         {
@@ -29,6 +31,21 @@ namespace Chicken.ViewModel.Status.VM
             }
         }
 
+        private ObservableCollection<TweetViewModel> conversationList;
+        public ObservableCollection<TweetViewModel> ConversationList
+        {
+            get
+            {
+                return conversationList;
+            }
+            set
+            {
+                conversationList = value;
+                RaisePropertyChanged("ConversationList");
+            }
+        }
+        #endregion
+
         public StatusDetailViewModel()
         {
             Header = "Detail";
@@ -39,9 +56,25 @@ namespace Chicken.ViewModel.Status.VM
             TweetService.GetStatusDetail<Tweet>(StatusId,
                 tweet =>
                 {
-                    this.TweetViewModel = new TweetViewModel(tweet);
+                    if (tweet != null)
+                    {
+                        this.TweetViewModel = new TweetViewModel(tweet);
+                        if (this.tweetViewModel.InReplyToTweetId != null)
+                        {
+                            Load();
+                        }
+                    }
                     base.Refreshed();
                 });
+        }
+
+        public override void Load()
+        {
+            if (this.ConversationList == null)
+            {
+                this.ConversationList = new ObservableCollection<TweetViewModel>();
+            }
+            base.Loaded();
         }
 
         public override void Click(object parameter)

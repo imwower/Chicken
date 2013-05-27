@@ -277,7 +277,7 @@
                                                 </Style>
                                             </StackPanel.Resources>
                                             <!--conversation-->
-                                            <Rectangle Visibility="{Binding InReplayToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
+                                            <Rectangle Visibility="{Binding InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
                                                     <ImageBrush ImageSource="/Images/dark/conversation.png" />
                                                 </Rectangle.OpacityMask>

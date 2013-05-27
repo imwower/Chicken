@@ -128,11 +128,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public string InReplayToTweetId
+        public string InReplyToTweetId
         {
             get
             {
-                return tweet.InReplayToTweetId;
+                return tweet.InReplyToTweetId;
             }
         }
 
