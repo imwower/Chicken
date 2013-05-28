@@ -161,6 +161,7 @@
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <StackPanel.Resources>
                                             <Style TargetType="TextBlock">
+                                                <Setter Property="Margin" Value="2,0" />
                                                 <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
                                                 <Setter Property="TextAlignment" Value="Left" />
                                                 <Setter Property="Foreground" Value="{StaticResource RetweetCountTextColorBrush}" />
@@ -175,7 +176,12 @@
                                             </TextBlock>
                                         </Border>
                                         <Border
-                                            Visibility="{Binding RetweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                                Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Image Source="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
+                                                   Stretch="Fill" Style="{StaticResource ProfileImageIcon}" />
+                                        </Border>
+                                        <Border
+                                            Visibility="{Binding TweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
                                             <TextBlock>
                                             <Run Text="{Binding RetweetViewModel.FavouriteCount}" />
                                             <LineBreak />

@@ -56,7 +56,8 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region status page
-        void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
+
         #endregion
 
     }

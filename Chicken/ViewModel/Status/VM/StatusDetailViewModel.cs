@@ -50,21 +50,20 @@ namespace Chicken.ViewModel.Status.VM
             GetResult<Retweet>(StatusId,
                 retweet =>
                 {
-                    this.RetweetViewModel = new RetweetViewModel(retweet);
-                    LoadConversation(retweet.InReplyToTweetId);
+                    this.TweetViewModel = new TweetViewModel(tweet);
+                    LoadConversation(tweet.InReplyToTweetId);
                     base.Refresh();
                 });
         }
 
         public override void Load()
         {
-            if (string.IsNullOrEmpty(this.retweetViewModel.InReplyToTweetId))
+            if (!string.IsNullOrEmpty(this.retweetViewModel.InReplyToTweetId))
             {
-                base.Load();
-                return;
+                var tweet = this.ConversationList[this.ConversationList.Count - 1];
+                LoadConversation(tweet.InReplyToTweetId);
             }
-            var tweet = this.ConversationList[this.ConversationList.Count - 1];
-            LoadConversation(tweet.InReplyToTweetId);
+            base.Load();
         }
 
         /// <summary>

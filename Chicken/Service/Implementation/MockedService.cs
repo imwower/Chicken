@@ -87,10 +87,6 @@ namespace Chicken.Service.Implementation
             StreamReader streamReader = new StreamReader(reader.Stream);
             string output = streamReader.ReadToEnd();
             var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            foreach (var tweet in tweets)
-            {
-                tweet.Text = tweets.Count + "User Tweet";
-            }
             return tweets;
         }
 
@@ -159,7 +155,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region status page
-        public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/tweet.json";
             HandleWebRequest<T>(url, callBack);

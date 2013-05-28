@@ -193,6 +193,12 @@
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
+        <!--profile image icon-->
+        <Style x:Name="ProfileImageIcon" TargetType="Image">
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
+        </Style>
         <!--profile image small-->
         <Style x:Name="ProfileImageSmall" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
             <Setter Property="Width" Value="64" />
