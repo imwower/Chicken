@@ -79,10 +79,6 @@ namespace Chicken.Service.Implementation
             StreamReader streamReader = new StreamReader(reader.Stream);
             string output = streamReader.ReadToEnd();
             var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            foreach (var tweet in tweets)
-            {
-                tweet.Text = tweets.Count + "User Tweet";
-            }
             return tweets;
         }
 

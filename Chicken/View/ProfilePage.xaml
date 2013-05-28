@@ -91,6 +91,7 @@
                                             </Grid.ColumnDefinitions>
                                             <Grid.Resources>
                                                 <Style TargetType="TextBlock">
+                                                    <Setter Property="Margin" Value="2,0" />
                                                     <Setter Property="TextAlignment" Value="Left" />
                                                     <Setter Property="Foreground" Value="{StaticResource RetweetCountTextColorBrush}" />
                                                 </Style>
