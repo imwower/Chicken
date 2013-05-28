@@ -104,7 +104,6 @@
     <Compile Include="Service\Interface\INavigationService.cs" />
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
-    <Compile Include="ViewModel\Home\Base\RetweetViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />

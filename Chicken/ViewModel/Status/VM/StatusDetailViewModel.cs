@@ -11,17 +11,17 @@ namespace Chicken.ViewModel.Status.VM
     public class StatusDetailViewModel : StatusViewModelBase
     {
         #region properties
-        private RetweetViewModel retweetViewModel;
-        public RetweetViewModel RetweetViewModel
+        private TweetViewModel tweetViewModel;
+        public TweetViewModel TweetViewModel
         {
             get
             {
-                return retweetViewModel;
+                return tweetViewModel;
             }
             set
             {
-                retweetViewModel = value;
-                RaisePropertyChanged("RetweetViewModel");
+                tweetViewModel = value;
+                RaisePropertyChanged("TweetViewModel");
             }
         }
 
@@ -47,8 +47,8 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Refresh()
         {
-            GetResult<Retweet>(StatusId,
-                retweet =>
+            GetResult<Tweet>(StatusId,
+                tweet =>
                 {
                     this.TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
@@ -58,7 +58,7 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Load()
         {
-            if (!string.IsNullOrEmpty(this.retweetViewModel.InReplyToTweetId))
+            if (!string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
             {
                 var tweet = this.ConversationList[this.ConversationList.Count - 1];
                 LoadConversation(tweet.InReplyToTweetId);

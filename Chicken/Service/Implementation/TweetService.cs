@@ -261,7 +261,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region Status Page
-        public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = GetDic(parameters);
             parameters.Add(Const.ID, statusId);

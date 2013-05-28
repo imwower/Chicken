@@ -45,7 +45,7 @@ namespace Chicken.Service.Implementation
 
         public void GetOldTweets<T>(string maxId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/hometimeline1.json";
+            string url = "SampleData/hometimeline.json";
             HandleWebRequest<T>(url, callBack);
         }
 

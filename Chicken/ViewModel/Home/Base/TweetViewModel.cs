@@ -1,7 +1,6 @@
 ﻿using System;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.Model.Entity;
 using Chicken.ViewModel.Status.Base;
 
 namespace Chicken.ViewModel.Home.Base
@@ -23,7 +22,7 @@ namespace Chicken.ViewModel.Home.Base
             }
             else
             {
-                this.tweet = tweet;
+                this.tweet = tweet as TweetBase;
             }
 
             if (this.tweet.User != null)
