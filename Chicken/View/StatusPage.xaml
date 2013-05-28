@@ -5,6 +5,7 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrls="clr-namespace:Chicken.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -186,6 +187,28 @@
                                         HorizontalAlignment="Left">
                             </StackPanel>
                             <StackPanel Grid.Row="4">
+                                <ctrls:AutoListBox ItemsSource="{Binding ConversationList}"
+                                                   ItemTemplate="{StaticResource TweetTemplate}">
+                                    <ctrls:AutoListBox.ItemContainerStyle>
+                                        <Style TargetType="ListBoxItem">
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate>
+                                                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                        </Style>
+                                    </ctrls:AutoListBox.ItemContainerStyle>
+                                    <i:Interaction.Triggers>
+                                        <!--<i:EventTrigger EventName="VerticalCompressionTopHandler">
+                                            <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
+                                        </i:EventTrigger>-->
+                                        <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                                            <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ctrls:AutoListBox>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>

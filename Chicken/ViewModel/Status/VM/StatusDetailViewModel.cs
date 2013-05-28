@@ -53,28 +53,53 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Refresh()
         {
-            TweetService.GetStatusDetail<Tweet>(StatusId,
+            GetResult<Tweet>(StatusId,
                 tweet =>
                 {
-                    if (tweet != null)
-                    {
-                        this.TweetViewModel = new TweetViewModel(tweet);
-                        if (this.tweetViewModel.InReplyToTweetId != null)
-                        {
-                            Load();
-                        }
-                    }
+                    this.TweetViewModel = new TweetViewModel(tweet);
+                    LoadConversation(tweet.InReplyToTweetId);
                     base.Refreshed();
                 });
         }
 
         public override void Load()
         {
+            if(string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
+            {
+                return;
+            }
+            var tweet = this.ConversationList[this.ConversationList.Count-1];
+            LoadConversation(tweet.InReplyToTweetId);
+            base.Loaded();
+        }
+
+        private void LoadConversation(string statusId)
+        {
+            if (string.IsNullOrEmpty(statusId))
+            {
+                return;
+            }
             if (this.ConversationList == null)
             {
                 this.ConversationList = new ObservableCollection<TweetViewModel>();
             }
-            base.Loaded();
+            GetResult<Tweet>(statusId,
+                tweet =>
+                {
+                    this.ConversationList.Add(new TweetViewModel(tweet));
+                });
+        }
+
+        private void GetResult<T>(string statusId, Action<T> action)
+        {
+            TweetService.GetStatusDetail<T>(statusId,
+                tweet =>
+                {
+                    if (tweet != null && action != null)
+                    {
+                        action(tweet);
+                    }
+                });
         }
 
         public override void Click(object parameter)
