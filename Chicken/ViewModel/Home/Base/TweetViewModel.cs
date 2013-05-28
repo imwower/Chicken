@@ -8,51 +8,25 @@ namespace Chicken.ViewModel.Home.Base
 {
     public class TweetViewModel
     {
-        private TweetBase tweet;
-        private TweetBase originalTweet;
+        private Tweet tweet;
         private UserViewModel user;
         private EntitiesViewModel entitiesViewModel;
         private CoordinatesViewModel coordinatesViewModel;
 
         public TweetViewModel(Tweet tweet)
         {
-            if (tweet.RetweetStatus != null)
+            this.tweet = tweet;
+            if (tweet.User != null)
             {
-                this.originalTweet = tweet as TweetBase;
-                this.tweet = tweet.RetweetStatus;
+                this.user = new UserViewModel(tweet.User);
             }
-            else
+            if (tweet.Entities != null)
             {
-                this.tweet = tweet;
+                this.entitiesViewModel = new EntitiesViewModel(tweet.Entities);
             }
-
-            if (this.tweet.User != null)
+            if (tweet.Coordinates != null)
             {
-                this.user = new UserViewModel(this.tweet.User);
-            }
-            if (this.tweet.Entities != null)
-            {
-                this.entitiesViewModel = new EntitiesViewModel(this.tweet.Entities);
-            }
-            if (this.tweet.Coordinates != null)
-            {
-                this.coordinatesViewModel = new CoordinatesViewModel(this.tweet.Coordinates);
-            }
-        }
-
-        public bool IncludeRetweet
-        {
-            get
-            {
-                return this.originalTweet != null;
-            }
-        }
-
-        public TweetBase OriginalTweet
-        {
-            get
-            {
-                return originalTweet;
+                this.coordinatesViewModel = new CoordinatesViewModel(tweet.Coordinates);
             }
         }
 
