@@ -1,10 +1,10 @@
 ﻿[
     {
-        "created_at": "Wed May 22 16:15:13 +0000 2013", 
-        "id": 337240239670190100, 
-        "id_str": "337240239670190080", 
-        "text": "我一直这么想的。。→_→", 
-        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "created_at": "Tue May 28 17:25:19 +0000 2013", 
+        "id": 339432209729585150, 
+        "id_str": "339432209729585153", 
+        "text": "RT @Kaitobark: 高雄中油: 屬正常能量釋放 請大家不要過度緊張", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -12,22 +12,23 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 158678846, 
-            "id_str": "158678846", 
-            "name": "别怪姐姐黑", 
-            "screen_name": "heejunjin", 
-            "location": "魔都", 
-            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
-            "url": "http://heejunjin.blogspot.com/", 
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://heejunjin.blogspot.com/", 
-                            "expanded_url": null, 
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
                             "indices": [
                                 0, 
-                                30
+                                22
                             ]
                         }
                     ]
@@ -37,29 +38,1091 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 9471, 
-            "friends_count": 1032, 
-            "listed_count": 207, 
-            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
-            "favourites_count": 96, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
             "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": false, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 108584, 
+            "statuses_count": 55329, 
             "lang": "zh-tw", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
             "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
-            "profile_link_color": "005C99", 
-            "profile_sidebar_border_color": "F07AC1", 
-            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 17:12:51 +0000 2013", 
+            "id": 339429072100810750, 
+            "id_str": "339429072100810752", 
+            "text": "高雄中油: 屬正常能量釋放 請大家不要過度緊張", 
+            "source": "web", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 369272921, 
+                "id_str": "369272921", 
+                "name": "MicroHardor ", 
+                "screen_name": "Kaitobark", 
+                "location": "Taiwan", 
+                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
+                "url": "http://t.co/tbojMLHhkt", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/tbojMLHhkt", 
+                                "expanded_url": "http://about.me/jksung", 
+                                "display_url": "about.me/jksung", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 63, 
+                "friends_count": 210, 
+                "listed_count": 0, 
+                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
+                "favourites_count": 100, 
+                "utc_offset": 28800, 
+                "time_zone": "Beijing", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 1518, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "283B3D", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
+                "profile_link_color": "FF3300", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "A0C5C7", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Kaitobark", 
+                    "name": "MicroHardor ", 
+                    "id": 369272921, 
+                    "id_str": "369272921", 
+                    "indices": [
+                        3, 
+                        13
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 17:24:54 +0000 2013", 
+        "id": 339432102951006200, 
+        "id_str": "339432102951006208", 
+        "text": "RT @Kaitobark: 聽說我們學校資管系進了一台3D打印機 #我都不知道我學校這麼有閒錢", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 17:07:34 +0000 2013", 
+            "id": 339427740346363900, 
+            "id_str": "339427740346363905", 
+            "text": "聽說我們學校資管系進了一台3D打印機 #我都不知道我學校這麼有閒錢", 
+            "source": "web", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 369272921, 
+                "id_str": "369272921", 
+                "name": "MicroHardor ", 
+                "screen_name": "Kaitobark", 
+                "location": "Taiwan", 
+                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
+                "url": "http://t.co/tbojMLHhkt", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/tbojMLHhkt", 
+                                "expanded_url": "http://about.me/jksung", 
+                                "display_url": "about.me/jksung", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 63, 
+                "friends_count": 210, 
+                "listed_count": 0, 
+                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
+                "favourites_count": 100, 
+                "utc_offset": 28800, 
+                "time_zone": "Beijing", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 1518, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "283B3D", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
+                "profile_link_color": "FF3300", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "A0C5C7", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "我都不知道我學校這麼有閒錢", 
+                        "indices": [
+                            19, 
+                            33
+                        ]
+                    }
+                ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "我都不知道我學校這麼有閒錢", 
+                    "indices": [
+                        34, 
+                        48
+                    ]
+                }
+            ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Kaitobark", 
+                    "name": "MicroHardor ", 
+                    "id": 369272921, 
+                    "id_str": "369272921", 
+                    "indices": [
+                        3, 
+                        13
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 17:24:39 +0000 2013", 
+        "id": 339432041579941900, 
+        "id_str": "339432041579941888", 
+        "text": "RT @stalinone: 三重有人賣現宰雞肉，為了避免台北市民吃非法屠宰的雞肉，即日起忠孝中興台北重陽等橋樑禁止通行 #fuckyea", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 16:52:28 +0000 2013", 
+            "id": 339423940688617500, 
+            "id_str": "339423940688617474", 
+            "text": "三重有人賣現宰雞肉，為了避免台北市民吃非法屠宰的雞肉，即日起忠孝中興台北重陽等橋樑禁止通行 #fuckyea", 
+            "source": "<a href=\"http://www.metrotwit.com/\" rel=\"nofollow\">MetroTwit</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 7129292, 
+                "id_str": "7129292", 
+                "name": "Stalin Chen", 
+                "screen_name": "stalinone", 
+                "location": "", 
+                "description": "", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 184, 
+                "friends_count": 133, 
+                "listed_count": 10, 
+                "created_at": "Thu Jun 28 11:56:14 +0000 2007", 
+                "favourites_count": 317, 
+                "utc_offset": 28800, 
+                "time_zone": "Taipei", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 7932, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "CD0000", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/1392162/01166_crimsondawn_1280x800.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/1392162/01166_crimsondawn_1280x800.jpg", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/368912758/1_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/368912758/1_normal.png", 
+                "profile_link_color": "0000FF", 
+                "profile_sidebar_border_color": "87BC44", 
+                "profile_sidebar_fill_color": "E0FF91", 
+                "profile_text_color": "000000", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 3, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "fuckyea", 
+                        "indices": [
+                            46, 
+                            54
+                        ]
+                    }
+                ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 3, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [
+                {
+                    "text": "fuckyea", 
+                    "indices": [
+                        61, 
+                        69
+                    ]
+                }
+            ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "stalinone", 
+                    "name": "Stalin Chen", 
+                    "id": 7129292, 
+                    "id_str": "7129292", 
+                    "indices": [
+                        3, 
+                        13
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:56:18 +0000 2013", 
+        "id": 339424906330652700, 
+        "id_str": "339424906330652672", 
+        "text": "@sntc06 =______=", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339424856716242940, 
+        "in_reply_to_status_id_str": "339424856716242945", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        0, 
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "vi"
+    }, 
+    {
+        "created_at": "Tue May 28 16:55:41 +0000 2013", 
+        "id": 339424749530800100, 
+        "id_str": "339424749530800128", 
+        "text": "@sntc06 不然你買30阿 兩千有找", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339424521272565760, 
+        "in_reply_to_status_id_str": "339424521272565762", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        0, 
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:53:23 +0000 2013", 
+        "id": 339424173602508800, 
+        "id_str": "339424173602508800", 
+        "text": "@sntc06 61公升 但是現在用量變大覺得不夠 等有錢想換88 還是到時便宜給你？XD", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339423913777967100, 
+        "in_reply_to_status_id_str": "339423913777967105", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        0, 
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:52:19 +0000 2013", 
+        "id": 339423902650466300, 
+        "id_str": "339423902650466305", 
+        "text": "@Rexlemon114 @hirakujira 準備牆", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339423713957146600, 
+        "in_reply_to_status_id_str": "339423713957146624", 
+        "in_reply_to_user_id": 438935795, 
+        "in_reply_to_user_id_str": "438935795", 
+        "in_reply_to_screen_name": "Rexlemon114", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Rexlemon114", 
+                    "name": "RexLemon", 
+                    "id": 438935795, 
+                    "id_str": "438935795", 
+                    "indices": [
+                        0, 
+                        12
+                    ]
+                }, 
+                {
+                    "screen_name": "hirakujira", 
+                    "name": "Hiraku", 
+                    "id": 25838548, 
+                    "id_str": "25838548", 
+                    "indices": [
+                        13, 
+                        24
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Tue May 28 16:50:13 +0000 2013", 
+        "id": 339423376248553500, 
+        "id_str": "339423376248553473", 
+        "text": "@Sam_Fisher518 www", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339423294036000800, 
+        "in_reply_to_status_id_str": "339423294036000768", 
+        "in_reply_to_user_id": 386404657, 
+        "in_reply_to_user_id_str": "386404657", 
+        "in_reply_to_screen_name": "Sam_Fisher518", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Sam_Fisher518", 
+                    "name": "Sam Fisher", 
+                    "id": 386404657, 
+                    "id_str": "386404657", 
+                    "indices": [
+                        0, 
+                        14
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "und"
+    }, 
+    {
+        "created_at": "Tue May 28 16:50:07 +0000 2013", 
+        "id": 339423350260629500, 
+        "id_str": "339423350260629504", 
+        "text": "誰有缺人阿QAQ 暑假求打工拉", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -85,34 +1148,35 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Wed May 22 16:13:42 +0000 2013", 
-        "id": 337239860001783800, 
-        "id_str": "337239860001783809", 
-        "text": "怕毛，没人fo你！ RT @AshleyKit: 那个谁在发推，我不敢转推。。怕看到tl又讨论。。。。blablabla", 
-        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
+        "created_at": "Tue May 28 16:49:32 +0000 2013", 
+        "id": 339423202994421760, 
+        "id_str": "339423202994421761", 
+        "text": "@sntc06 可以換1DX(?)", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 337239743337205760, 
-        "in_reply_to_status_id_str": "337239743337205761", 
-        "in_reply_to_user_id": 115855802, 
-        "in_reply_to_user_id_str": "115855802", 
-        "in_reply_to_screen_name": "AshleyKit", 
+        "in_reply_to_status_id": 339422698310623200, 
+        "in_reply_to_status_id_str": "339422698310623232", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
         "user": {
-            "id": 158678846, 
-            "id_str": "158678846", 
-            "name": "别怪姐姐黑", 
-            "screen_name": "heejunjin", 
-            "location": "魔都", 
-            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
-            "url": "http://heejunjin.blogspot.com/", 
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
             "entities": {
                 "url": {
                     "urls": [
                         {
-                            "url": "http://heejunjin.blogspot.com/", 
-                            "expanded_url": null, 
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
                             "indices": [
                                 0, 
-                                30
+                                22
                             ]
                         }
                     ]
@@ -122,29 +1186,29 @@
                 }
             }, 
             "protected": false, 
-            "followers_count": 9471, 
-            "friends_count": 1032, 
-            "listed_count": 207, 
-            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
-            "favourites_count": 96, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
             "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": false, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 108584, 
+            "statuses_count": 55329, 
             "lang": "zh-tw", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
             "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
-            "profile_link_color": "005C99", 
-            "profile_sidebar_border_color": "F07AC1", 
-            "profile_sidebar_fill_color": "FFFFFF", 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -165,230 +1229,1412 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "AshleyKit", 
-                    "name": "Ashley", 
-                    "id": 115855802, 
-                    "id_str": "115855802", 
-                    "indices": [
-                        13, 
-                        23
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Wed May 22 16:07:44 +0000 2013", 
-        "id": 337238358642270200, 
-        "id_str": "337238358642270208", 
-        "text": "我有list。。 RT @aibubu7: 推特真是好地方啊。。能包容姑娘们的各种 #作 ，顺便征集 #作友联盟 <(￣ˇ￣)/", 
-        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 337238127544520700, 
-        "in_reply_to_status_id_str": "337238127544520705", 
-        "in_reply_to_user_id": 303090240, 
-        "in_reply_to_user_id_str": "303090240", 
-        "in_reply_to_screen_name": "aibubu7", 
-        "user": {
-            "id": 158678846, 
-            "id_str": "158678846", 
-            "name": "别怪姐姐黑", 
-            "screen_name": "heejunjin", 
-            "location": "魔都", 
-            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
-            "url": "http://heejunjin.blogspot.com/", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://heejunjin.blogspot.com/", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                30
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 9471, 
-            "friends_count": 1032, 
-            "listed_count": 207, 
-            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
-            "favourites_count": 96, 
-            "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": false, 
-            "verified": false, 
-            "statuses_count": 108584, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
-            "profile_link_color": "005C99", 
-            "profile_sidebar_border_color": "F07AC1", 
-            "profile_sidebar_fill_color": "FFFFFF", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [
-                {
-                    "text": "作", 
-                    "indices": [
-                        42, 
-                        44
-                    ]
-                }, 
-                {
-                    "text": "作友联盟", 
-                    "indices": [
-                        51, 
-                        56
-                    ]
-                }
-            ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "aibubu7", 
-                    "name": "呆呆妹", 
-                    "id": 303090240, 
-                    "id_str": "303090240", 
-                    "indices": [
-                        12, 
-                        20
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Wed May 22 16:07:05 +0000 2013", 
-        "id": 337238193680289800, 
-        "id_str": "337238193680289792", 
-        "text": "@Lamiauu @gomixo 噗。。就是这个点！", 
-        "source": "<a href=\"http://bbsimg.shangdu.com/imgcache/216/1306214286.gif\" rel=\"nofollow\">怪姐姐好棒好棒滴！</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 337237830604554240, 
-        "in_reply_to_status_id_str": "337237830604554243", 
-        "in_reply_to_user_id": 115961597, 
-        "in_reply_to_user_id_str": "115961597", 
-        "in_reply_to_screen_name": "Lamiauu", 
-        "user": {
-            "id": 158678846, 
-            "id_str": "158678846", 
-            "name": "别怪姐姐黑", 
-            "screen_name": "heejunjin", 
-            "location": "魔都", 
-            "description": "♡被 @super_toby 圈养（不受法律保护的自愿关系）。♠万物非我所属，但皆为我所用。♥因为达不到我要的完美，所以对人事物才从不要求。♣萍水相逢的人多了，才有了江湖。♦人生最大的难题，就是2B还是不2B。▷秒懂帝 ▷基の无下限生活吐槽宠物人形哲理科普推。186手机号已转他人，请勿扰。", 
-            "url": "http://heejunjin.blogspot.com/", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://heejunjin.blogspot.com/", 
-                            "expanded_url": null, 
-                            "indices": [
-                                0, 
-                                30
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 9471, 
-            "friends_count": 1032, 
-            "listed_count": 207, 
-            "created_at": "Wed Jun 23 09:19:14 +0000 2010", 
-            "favourites_count": 96, 
-            "utc_offset": 28800, 
-            "time_zone": "Hong Kong", 
-            "geo_enabled": false, 
-            "verified": false, 
-            "statuses_count": 108584, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "131516", 
-            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3071657474/f86290b9cc8633090f0d20fbdf06cc32_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/158678846/1356183624", 
-            "profile_link_color": "005C99", 
-            "profile_sidebar_border_color": "F07AC1", 
-            "profile_sidebar_fill_color": "FFFFFF", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Lamiauu", 
-                    "name": "纋寳 Lamia", 
-                    "id": 115961597, 
-                    "id_str": "115961597", 
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
                     "indices": [
                         0, 
-                        8
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Tue May 28 16:49:10 +0000 2013", 
+        "id": 339423110438719500, 
+        "id_str": "339423110438719488", 
+        "text": "RT @wenli: 所以說了，比起 Taipei Free，我們更需要 TPIMAGE 。（問題發言）", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
                     ]
                 }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 16:47:10 +0000 2013", 
+            "id": 339422607130624000, 
+            "id_str": "339422607130624000", 
+            "text": "所以說了，比起 Taipei Free，我們更需要 TPIMAGE 。（問題發言）", 
+            "source": "web", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 691123, 
+                "id_str": "691123", 
+                "name": "神楽坂雯麗", 
+                "screen_name": "wenli", 
+                "location": "Taichung, Taiwan｜台中、台湾", 
+                "description": "女装子修業中｜いわゆる男の娘｜東方｜コスプレ｜虹｜小説「基因設計師 Gene Mapper」中文版譯者｜これからおこる可能性のひとつを空想してみるのと同じ感触で過去は幻想にまぎれる。 彼女のひだり目の中にわずかな傷をみつけたのは、いま一瞬のここではない。", 
+                "url": "http://t.co/t80njVPT0D", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/t80njVPT0D", 
+                                "expanded_url": "http://kagurazaka.idv.tw/", 
+                                "display_url": "kagurazaka.idv.tw", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 5543, 
+                "friends_count": 4039, 
+                "listed_count": 232, 
+                "created_at": "Wed Jan 24 03:32:49 +0000 2007", 
+                "favourites_count": 1201, 
+                "utc_offset": 28800, 
+                "time_zone": "Taipei", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 19575, 
+                "lang": "ja", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "FCEBB6", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/712912274/65f252152773a127d1d77880885adb3d.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/712912274/65f252152773a127d1d77880885adb3d.png", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3592691904/4f6412347593af6b5007b9e961ba38ff_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3592691904/4f6412347593af6b5007b9e961ba38ff_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/691123/1369729048", 
+                "profile_link_color": "CE7834", 
+                "profile_sidebar_border_color": "F0A830", 
+                "profile_sidebar_fill_color": "78C0A8", 
+                "profile_text_color": "5E412F", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
                 {
-                    "screen_name": "gomixo", 
-                    "name": "喵兔｜鱼丸&粗面", 
-                    "id": 46080891, 
-                    "id_str": "46080891", 
+                    "screen_name": "wenli", 
+                    "name": "神楽坂雯麗", 
+                    "id": 691123, 
+                    "id_str": "691123", 
                     "indices": [
-                        9, 
-                        16
+                        3, 
+                        9
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:48:56 +0000 2013", 
+        "id": 339423053501050900, 
+        "id_str": "339423053501050880", 
+        "text": "@Sam_Fisher518 飯阿....(XX?", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339422107295420400, 
+        "in_reply_to_status_id_str": "339422107295420416", 
+        "in_reply_to_user_id": 386404657, 
+        "in_reply_to_user_id_str": "386404657", 
+        "in_reply_to_screen_name": "Sam_Fisher518", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Sam_Fisher518", 
+                    "name": "Sam Fisher", 
+                    "id": 386404657, 
+                    "id_str": "386404657", 
+                    "indices": [
+                        0, 
+                        14
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Tue May 28 16:48:27 +0000 2013", 
+        "id": 339422932361170940, 
+        "id_str": "339422932361170944", 
+        "text": "@sntc06 ok XD 話說幹麻不買收藏家....我都買了很久了 超好用", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339422698310623200, 
+        "in_reply_to_status_id_str": "339422698310623232", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        0, 
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:47:03 +0000 2013", 
+        "id": 339422578349330400, 
+        "id_str": "339422578349330433", 
+        "text": "@sntc06 準備跳槽？", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339261515544793100, 
+        "in_reply_to_status_id_str": "339261515544793088", 
+        "in_reply_to_user_id": 14197594, 
+        "in_reply_to_user_id_str": "14197594", 
+        "in_reply_to_screen_name": "sntc06", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        0, 
+                        7
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Tue May 28 16:46:45 +0000 2013", 
+        "id": 339422504856727550, 
+        "id_str": "339422504856727553", 
+        "text": "RT @sntc06: 18-55 真的是個超熱門的焦段，Sony a58 看起來也不錯", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 06:07:03 +0000 2013", 
+            "id": 339261515544793100, 
+            "id_str": "339261515544793088", 
+            "text": "18-55 真的是個超熱門的焦段，Sony a58 看起來也不錯", 
+            "source": "<a href=\"http://janetter.net/\" rel=\"nofollow\">Janetter</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 14197594, 
+                "id_str": "14197594", 
+                "name": "Edward T.", 
+                "screen_name": "sntc06", 
+                "location": "Chungli,Taiwan", 
+                "description": "半死不活的大四生。
+本人的推非常沒有營養，追蹤前請考慮，本人不負擔任何您時間軸所發生之問題，不追蹤不傷感情～", 
+                "url": "http://t.co/XBMKP3yngs", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/XBMKP3yngs", 
+                                "expanded_url": "http://blog.snowtec.org/", 
+                                "display_url": "blog.snowtec.org", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 346, 
+                "friends_count": 376, 
+                "listed_count": 13, 
+                "created_at": "Sat Mar 22 15:56:47 +0000 2008", 
+                "favourites_count": 216, 
+                "utc_offset": 28800, 
+                "time_zone": "Taipei", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 13719, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "131516", 
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/2878978530/e461f7578de897e5a8229578819d6a6c_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/2878978530/e461f7578de897e5a8229578819d6a6c_normal.png", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/14197594/1358883113", 
+                "profile_link_color": "009999", 
+                "profile_sidebar_border_color": "EEEEEE", 
+                "profile_sidebar_fill_color": "EFEFEF", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "sntc06", 
+                    "name": "Edward T.", 
+                    "id": 14197594, 
+                    "id_str": "14197594", 
+                    "indices": [
+                        3, 
+                        10
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:46:21 +0000 2013", 
+        "id": 339422401844617200, 
+        "id_str": "339422401844617216", 
+        "text": "RT @yorkxin: 「根據我以前在電視台對口前新聞局還有勞委會的經驗，[...] 說出「PPS跟土豆」不會封的時候，就知道他對於要不要處理智財權問題並不在意，只是想要多一個政策工具來處理目前「不知道原因」的事情」 - C_Chat - PTT http://t.co/gB…", 
+        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 16:31:32 +0000 2013", 
+            "id": 339418675033546750, 
+            "id_str": "339418675033546756", 
+            "text": "「根據我以前在電視台對口前新聞局還有勞委會的經驗，[...] 說出「PPS跟土豆」不會封的時候，就知道他對於要不要處理智財權問題並不在意，只是想要多一個政策工具來處理目前「不知道原因」的事情」 - C_Chat - PTT http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 17082341, 
+                "id_str": "17082341", 
+                "name": "Yu-Cheng Chuang", 
+                "screen_name": "yorkxin", 
+                "location": "Taipei, Taiwan", 
+                "description": "Web Developer / Rails
+
+(a.k.a chitsaou)", 
+                "url": "http://t.co/0U3p7p5sVr", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/0U3p7p5sVr", 
+                                "expanded_url": "http://blog.yorkxin.org", 
+                                "display_url": "blog.yorkxin.org", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 511, 
+                "friends_count": 277, 
+                "listed_count": 28, 
+                "created_at": "Fri Oct 31 08:41:23 +0000 2008", 
+                "favourites_count": 920, 
+                "utc_offset": 28800, 
+                "time_zone": "Taipei", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 13082, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "022330", 
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme15/bg.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme15/bg.png", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/1643842791/octo-yaci_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/1643842791/octo-yaci_normal.png", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "A8C7F7", 
+                "profile_sidebar_fill_color": "C0DFEC", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 7, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
+                        "expanded_url": "http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
+                        "display_url": "ptt.cc/bbs/C_Chat/M.1…", 
+                        "indices": [
+                            112, 
+                            164
+                        ]
+                    }
+                ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 7, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "yorkxin", 
+                    "name": "Yu-Cheng Chuang", 
+                    "id": 17082341, 
+                    "id_str": "17082341", 
+                    "indices": [
+                        3, 
+                        11
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:31:02 +0000 2013", 
+        "id": 339418549082787840, 
+        "id_str": "339418549082787840", 
+        "text": "RT @Kaitobark: 是不是全台灣最笨的人都去做政府官員了", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 16:29:22 +0000 2013", 
+            "id": 339418129442693100, 
+            "id_str": "339418129442693120", 
+            "text": "是不是全台灣最笨的人都去做政府官員了", 
+            "source": "web", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 369272921, 
+                "id_str": "369272921", 
+                "name": "MicroHardor ", 
+                "screen_name": "Kaitobark", 
+                "location": "Taiwan", 
+                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
+                "url": "http://t.co/tbojMLHhkt", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/tbojMLHhkt", 
+                                "expanded_url": "http://about.me/jksung", 
+                                "display_url": "about.me/jksung", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 63, 
+                "friends_count": 210, 
+                "listed_count": 0, 
+                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
+                "favourites_count": 100, 
+                "utc_offset": 28800, 
+                "time_zone": "Beijing", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 1518, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "283B3D", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
+                "profile_link_color": "FF3300", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "A0C5C7", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 1, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Kaitobark", 
+                    "name": "MicroHardor ", 
+                    "id": 369272921, 
+                    "id_str": "369272921", 
+                    "indices": [
+                        3, 
+                        13
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:01:27 +0000 2013", 
+        "id": 339411102519668740, 
+        "id_str": "339411102519668736", 
+        "text": "@_yuhsuan 真的（Twitter網路傳遞No.1", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339410869115043840, 
+        "in_reply_to_status_id_str": "339410869115043840", 
+        "in_reply_to_user_id": 216113461, 
+        "in_reply_to_user_id_str": "216113461", 
+        "in_reply_to_screen_name": "_yuhsuan", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "_yuhsuan", 
+                    "name": "Yuhsuan Chen", 
+                    "id": 216113461, 
+                    "id_str": "216113461", 
+                    "indices": [
+                        0, 
+                        9
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:01:06 +0000 2013", 
+        "id": 339411014858719200, 
+        "id_str": "339411014858719232", 
+        "text": "RT @_yuhsuan: facebook 上完全沒有人在討論什麼 GFW 的事，再度證明推特的一句話：『因為什麼都不知道，所以過得特別快樂。』", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweeted_status": {
+            "created_at": "Tue May 28 16:00:31 +0000 2013", 
+            "id": 339410869115043840, 
+            "id_str": "339410869115043840", 
+            "text": "facebook 上完全沒有人在討論什麼 GFW 的事，再度證明推特的一句話：『因為什麼都不知道，所以過得特別快樂。』", 
+            "source": "web", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 216113461, 
+                "id_str": "216113461", 
+                "name": "Yuhsuan Chen", 
+                "screen_name": "_yuhsuan", 
+                "location": "New Taipei City", 
+                "description": "我是歪左邊的紳士♥", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 79, 
+                "friends_count": 30, 
+                "listed_count": 0, 
+                "created_at": "Mon Nov 15 20:48:54 +0000 2010", 
+                "favourites_count": 49, 
+                "utc_offset": 28800, 
+                "time_zone": "Taipei", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 5263, 
+                "lang": "zh-tw", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3542268706/d9fa01fedc6029aa05e84962055f28f2_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3542268706/d9fa01fedc6029aa05e84962055f28f2_normal.png", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": false, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": null, 
+                "follow_request_sent": false, 
+                "notifications": null
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 10, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [ ], 
+                "user_mentions": [ ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "lang": "zh"
+        }, 
+        "retweet_count": 10, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "_yuhsuan", 
+                    "name": "Yuhsuan Chen", 
+                    "id": 216113461, 
+                    "id_str": "216113461", 
+                    "indices": [
+                        3, 
+                        12
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Tue May 28 16:00:04 +0000 2013", 
+        "id": 339410755411648500, 
+        "id_str": "339410755411648514", 
+        "text": "@_yuhsuan （我有時也要翻啊ＸＤ", 
+        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 339409529374654460, 
+        "in_reply_to_status_id_str": "339409529374654464", 
+        "in_reply_to_user_id": 216113461, 
+        "in_reply_to_user_id_str": "216113461", 
+        "in_reply_to_screen_name": "_yuhsuan", 
+        "user": {
+            "id": 160476012, 
+            "id_str": "160476012", 
+            "name": "神楽坂宇軒", 
+            "screen_name": "russel053", 
+            "location": "NewTaipei,Taiwan", 
+            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
+            "url": "http://t.co/wnorCShYKc", 
+            "entities": {
+                "url": {
+                    "urls": [
+                        {
+                            "url": "http://t.co/wnorCShYKc", 
+                            "expanded_url": "http://www.facebook.com/russel053", 
+                            "display_url": "facebook.com/russel053", 
+                            "indices": [
+                                0, 
+                                22
+                            ]
+                        }
+                    ]
+                }, 
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 564, 
+            "friends_count": 367, 
+            "listed_count": 29, 
+            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
+            "favourites_count": 2, 
+            "utc_offset": 28800, 
+            "time_zone": "Taipei", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 55329, 
+            "lang": "zh-tw", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "C0DEED", 
+            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
+            "profile_background_tile": true, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
+            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "FFFFFF", 
+            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "_yuhsuan", 
+                    "name": "Yuhsuan Chen", 
+                    "id": 216113461, 
+                    "id_str": "216113461", 
+                    "indices": [
+                        0, 
+                        9
                     ]
                 }
             ]
