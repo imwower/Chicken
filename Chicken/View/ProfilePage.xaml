@@ -33,10 +33,13 @@
                         </Style>
                     </Grid.Resources>
                     <!--Description-->
-                    <ScrollViewer Grid.Row="0" VerticalContentAlignment="Stretch" VerticalAlignment="Stretch"
-                               HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalContentAlignment="Stretch"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto">
                         <ScrollViewer.Content>
-                            <Grid>
+                            <Grid VerticalAlignment="Stretch">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="40" />
                                     <RowDefinition />

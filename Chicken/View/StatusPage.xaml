@@ -54,6 +54,7 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                     <RowDefinition />
+                                    <RowDefinition />
                                 </Grid.RowDefinitions>
                                 <!--profile summary-->
                                 <Button Grid.Row="0"
@@ -148,8 +149,13 @@
                                                Style="{StaticResource TextContent}" Margin="4"
                                                HorizontalAlignment="Stretch" TextAlignment="Left" />
                                 </Grid>
+                                <!--via-->
+                                <HyperlinkButton Grid.Row="2" Margin="4"
+                                                 Content="{Binding Path=TweetViewModel.Source}"
+                                                 NavigateUri="{Binding Path=TweetViewModel.SourceUrl}" TargetName="_blank"
+                                                 Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
                                 <!--retweet count, favourite count, location-->
-                                <Border Grid.Row="2"
+                                <Border Grid.Row="3"
                                         Style="{StaticResource RetweetCountBorder}" BorderThickness="0,1,0,0"
                                         Visibility="{Binding TweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -187,13 +193,13 @@
                                     </StackPanel>
                                 </Border>
                                 <!--media-->
-                                <StackPanel  Grid.Row="3" Margin="4" HorizontalAlignment="Stretch"
+                                <StackPanel  Grid.Row="4" Margin="4" HorizontalAlignment="Stretch"
                                              Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Image Stretch="Fill"
                                     Source="{Binding TweetViewModel.EntitiesViewModel.MediasViewModel[0].MediaUrlSmall}" />
                                 </StackPanel>
                                 <!--conversation-->
-                                <Grid Grid.Row="4" Margin="4" HorizontalAlignment="Stretch"
+                                <Grid Grid.Row="5" Margin="4" HorizontalAlignment="Stretch"
                                       Visibility="{Binding TweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1" />

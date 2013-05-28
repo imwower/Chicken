@@ -1,16 +1,10 @@
 ﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Chicken.ViewModel.Home.Base;
-using Chicken.Model;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Chicken.Common;
+using Chicken.Model;
+using Chicken.Service;
+using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Status.VM
 {
@@ -64,15 +58,34 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Load()
         {
-            if(string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
+            if (string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
             {
                 return;
             }
-            var tweet = this.ConversationList[this.ConversationList.Count-1];
+            var tweet = this.ConversationList[this.ConversationList.Count - 1];
             LoadConversation(tweet.InReplyToTweetId);
             base.Loaded();
         }
 
+        /// <summary>
+        /// navigate to profile detail page
+        /// </summary>
+        /// <param name="parameter">user id</param>
+        public override void Click(object parameter)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            parameters.Add(Const.USER_ID, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
+        }
+
+        public override void ItemClick(object parameter)
+        {
+            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            parameters.Add(Const.ID, parameter);
+            NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+        }
+
+        #region private method
         private void LoadConversation(string statusId)
         {
             if (string.IsNullOrEmpty(statusId))
@@ -101,15 +114,6 @@ namespace Chicken.ViewModel.Status.VM
                     }
                 });
         }
-
-        public override void Click(object parameter)
-        {
-            base.Click(parameter);
-        }
-
-        public override void ItemClick(object parameter)
-        {
-            base.ItemClick(parameter);
-        }
+        #endregion
     }
 }
