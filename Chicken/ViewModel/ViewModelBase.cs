@@ -91,11 +91,11 @@ namespace Chicken.ViewModel
             if (action == null)
             {
                 return;
-            }
-            IsLoading = true;
+            }            
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
+                    IsLoading = true;
                     action();
                 });
         }
@@ -106,10 +106,10 @@ namespace Chicken.ViewModel
             {
                 return;
             }
-            //IsLoading = true;
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
+                    IsLoading = true;
                     action(parameter);
                 });
         }
@@ -118,19 +118,11 @@ namespace Chicken.ViewModel
         #region virtual method
         public virtual void Refresh()
         {
-        }
-
-        public virtual void Refreshed()
-        {
             IsLoading = false;
             IsInited = true;
         }
-
+        
         public virtual void Load()
-        {
-        }
-
-        public virtual void Loaded()
         {
             IsLoading = false;
         }

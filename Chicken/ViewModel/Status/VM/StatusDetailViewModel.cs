@@ -25,6 +25,20 @@ namespace Chicken.ViewModel.Status.VM
             }
         }
 
+        private TweetViewModel retweetViewModel;
+        public TweetViewModel RetweetViewModel
+        {
+            get
+            {
+                return retweetViewModel;
+            }
+            set
+            {
+                retweetViewModel = value;
+                RaisePropertyChanged("RetweetViewModel");
+            }
+        }
+
         private ObservableCollection<TweetViewModel> conversationList;
         public ObservableCollection<TweetViewModel> ConversationList
         {
@@ -52,7 +66,7 @@ namespace Chicken.ViewModel.Status.VM
                 {
                     this.TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
-                    base.Refreshed();
+                    base.Refresh();
                 });
         }
 
@@ -64,7 +78,7 @@ namespace Chicken.ViewModel.Status.VM
             }
             var tweet = this.ConversationList[this.ConversationList.Count - 1];
             LoadConversation(tweet.InReplyToTweetId);
-            base.Loaded();
+            base.Load();
         }
 
         /// <summary>
@@ -90,6 +104,7 @@ namespace Chicken.ViewModel.Status.VM
         {
             if (string.IsNullOrEmpty(statusId))
             {
+                base.Load();
                 return;
             }
             if (this.ConversationList == null)

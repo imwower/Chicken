@@ -24,7 +24,7 @@ namespace Chicken.ViewModel.Home.VM
                     {
                         TweetList.Insert(0, new TweetViewModel(tweet));
                     }
-                    base.Refreshed();
+                    base.Refresh();
                 });
         }
 
@@ -37,7 +37,7 @@ namespace Chicken.ViewModel.Home.VM
                     {
                         TweetList.Add(new TweetViewModel(tweet));
                     }
-                    base.Loaded();
+                    base.Load();
                 });
         }
     }

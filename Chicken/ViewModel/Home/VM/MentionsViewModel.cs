@@ -22,7 +22,7 @@ namespace Chicken.ViewModel.Home.VM
                 tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
-            base.Refreshed();
+            base.Refresh();
         }
 
         public override void Load()
@@ -33,7 +33,7 @@ namespace Chicken.ViewModel.Home.VM
             {
                 TweetList.Add(new TweetViewModel(tweet));
             }
-            base.Loaded();
+            base.Load();
         }
     }
 }

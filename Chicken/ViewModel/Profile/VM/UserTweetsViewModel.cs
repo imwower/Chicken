@@ -40,7 +40,7 @@ namespace Chicken.ViewModel.Profile.VM
                 tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
-            base.Refreshed();
+            base.Refresh();
         }
     }
 }
