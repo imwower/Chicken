@@ -106,5 +106,10 @@ namespace Chicken.ViewModel.Status.VM
         {
             base.Click(parameter);
         }
+
+        public override void ItemClick(object parameter)
+        {
+            base.ItemClick(parameter);
+        }
     }
 }

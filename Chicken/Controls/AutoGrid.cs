@@ -6,7 +6,7 @@ using System.Windows.Media;
 
 namespace Chicken.Controls
 {
-    public class AutoListBox : ListBox
+    public class AutoGrid : Grid
     {
         bool alreadyHookedScrollEvents = false;
         ScrollBar scrollBar;
@@ -15,7 +15,7 @@ namespace Chicken.Controls
         public event EventHandler<EventArgs> VerticalCompressionTopHandler;
         public event EventHandler<EventArgs> VerticalCompressionBottomHandler;
 
-        public AutoListBox()
+        public AutoGrid()
         {
             this.Loaded += new RoutedEventHandler(AutoListBox_Loaded);
         }

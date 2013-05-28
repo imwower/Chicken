@@ -427,20 +427,7 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="10" />
                             </Grid.RowDefinitions>
-                            <ctrls:AutoListBox Grid.Row="0" x:Name="AutoListBox"
-                                               ItemsSource="{TemplateBinding ListBoxItems}"
-                                               ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
-                                <ctrls:AutoListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate>
-                                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </ctrls:AutoListBox.ItemContainerStyle>
+                            <ctrls:AutoGrid Grid.Row="0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="VerticalCompressionTopHandler">
                                         <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
@@ -449,7 +436,30 @@
                                         <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
                                     </i:EventTrigger>
                                 </i:Interaction.Triggers>
-                            </ctrls:AutoListBox>
+                                <ctrls:AutoGrid.RowDefinitions>
+                                    <RowDefinition />
+                                </ctrls:AutoGrid.RowDefinitions>
+                                <ScrollViewer Grid.Row="0"
+                                              HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <ListBox x:Name="AutoListBox"
+                                             VerticalAlignment="Top"
+                                             ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                             ItemsSource="{TemplateBinding ListBoxItems}"
+                                             ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
+                                        <ListBox.ItemContainerStyle>
+                                            <Style TargetType="ListBoxItem">
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate>
+                                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListBox.ItemContainerStyle>
+                                    </ListBox>
+                                </ScrollViewer>
+                            </ctrls:AutoGrid>
                             <ProgressBar Grid.Row="1" IsIndeterminate="True"
                                          Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </Grid>

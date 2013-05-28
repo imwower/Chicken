@@ -85,6 +85,7 @@
     <Compile Include="Common\TwitterHelper.cs" />
     <Compile Include="Controls\AutoListBox.cs" />
     <Compile Include="Controls\AutoScrollViewer.cs" />
+    <Compile Include="Controls\AutoGrid.cs" />
     <Compile Include="Controls\HomePivotItem.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="MainPage.xaml.cs">
