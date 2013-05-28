@@ -200,10 +200,10 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
-        public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = GetDic(parameters);
-            parameters.Add(Const.ID, id);
+            parameters.Add(Const.ID, statusId);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }

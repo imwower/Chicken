@@ -95,7 +95,9 @@
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
     <Compile Include="Model\FriendList.cs" />
+    <Compile Include="Model\Retweet.cs" />
     <Compile Include="Model\Tweet.cs" />
+    <Compile Include="Model\TweetBase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Service\NavigationServiceManager.cs" />

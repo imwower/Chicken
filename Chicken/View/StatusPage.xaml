@@ -176,8 +176,8 @@
                                             </TextBlock>
                                         </Border>
                                         <Border
-                                            Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
-                                            <Image Source="{Binding RetweetViewModel.User.ProfileImage}"
+                                            Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Image Source="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
                                                    Stretch="Fill" Style="{StaticResource ProfileImageIcon}" />
                                         </Border>
                                         <Border

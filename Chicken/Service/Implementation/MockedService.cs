@@ -134,7 +134,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region status page
-        public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/tweet.json";
             HandleWebRequest<T>(url, callBack);
