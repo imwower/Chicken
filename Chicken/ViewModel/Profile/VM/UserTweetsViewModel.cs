@@ -32,7 +32,6 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
-            //base.Refresh();
             var tweets = TweetService.GetUserTweets(UserId);
             tweets.Reverse();
             foreach (var tweet in tweets)
@@ -40,7 +39,7 @@ namespace Chicken.ViewModel.Profile.VM
                 tweet.Text = TweetList.Count + tweet.Text;
                 TweetList.Insert(0, new TweetViewModel(tweet));
             }
-            base.Refreshed();
+            base.Refresh();
         }
     }
 }

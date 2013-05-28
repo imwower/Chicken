@@ -11,17 +11,17 @@ namespace Chicken.ViewModel.Status.VM
     public class StatusDetailViewModel : StatusViewModelBase
     {
         #region properties
-        private TweetViewModel tweetViewModel;
-        public TweetViewModel TweetViewModel
+        private RetweetViewModel retweetViewModel;
+        public RetweetViewModel RetweetViewModel
         {
             get
             {
-                return tweetViewModel;
+                return retweetViewModel;
             }
             set
             {
-                tweetViewModel = value;
-                RaisePropertyChanged("TweetViewModel");
+                retweetViewModel = value;
+                RaisePropertyChanged("RetweetViewModel");
             }
         }
 
@@ -47,24 +47,24 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Refresh()
         {
-            GetResult<Tweet>(StatusId,
-                tweet =>
+            GetResult<Retweet>(StatusId,
+                retweet =>
                 {
-                    this.TweetViewModel = new TweetViewModel(tweet);
-                    LoadConversation(tweet.InReplyToTweetId);
-                    base.Refreshed();
+                    this.RetweetViewModel = new RetweetViewModel(retweet);
+                    LoadConversation(retweet.InReplyToTweetId);
+                    base.Refresh();
                 });
         }
 
         public override void Load()
         {
-            if (string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
+            if (string.IsNullOrEmpty(this.retweetViewModel.InReplyToTweetId))
             {
+                base.Load();
                 return;
             }
             var tweet = this.ConversationList[this.ConversationList.Count - 1];
             LoadConversation(tweet.InReplyToTweetId);
-            base.Loaded();
         }
 
         /// <summary>
@@ -90,6 +90,7 @@ namespace Chicken.ViewModel.Status.VM
         {
             if (string.IsNullOrEmpty(statusId))
             {
+                base.Load();
                 return;
             }
             if (this.ConversationList == null)
@@ -100,6 +101,7 @@ namespace Chicken.ViewModel.Status.VM
                 tweet =>
                 {
                     this.ConversationList.Add(new TweetViewModel(tweet));
+                    base.Load();
                 });
         }
 

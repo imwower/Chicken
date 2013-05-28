@@ -13,7 +13,9 @@ namespace Chicken.Service.Implementation
 {
     public class TweetService : ITweetService
     {
+        #region properties
         static JsonSerializer JsonSerializer = new JsonSerializer();
+        #endregion
 
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
@@ -80,6 +82,12 @@ namespace Chicken.Service.Implementation
               request);
         }
 
+        /// <summary>
+        /// if parameters is null, return new instance
+        /// else just return
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         private IDictionary<string, object> GetDic(IDictionary<string, object> parameters = null)
         {
             if (parameters == null || parameters.Count == 0)
@@ -88,21 +96,51 @@ namespace Chicken.Service.Implementation
             }
             return parameters;
         }
+
         #endregion
 
-        #region MyRegion
+        #region Home Page
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-#if DEBUG
             if (parameters == null || parameters.Count == 0)
             {
                 parameters = new Dictionary<string, object>(1);
-                parameters.Add("count", "2");
             }
-#endif
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetOldTweets<T>(string maxId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            if (string.IsNullOrEmpty(maxId))
+            {
+                GetLastedTweets<T>(callBack, parameters);
+            }
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>(2);
+            }
+            parameters.Add(Const.MAX_ID, maxId);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_PLUS_ONE);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>(1);
+            }
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_MENTIONS_TIMELINE, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
+        #region MyRegion
+
 
         public List<Tweet> GetOldTweets()
         {
@@ -189,6 +227,28 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = GetDic(parameters);
+            parameters.Add(Const.USER_ID, userId);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetUserOldTweets<T>(string userId, string maxId, Action<T> callBack, IDictionary<string, object> paramaters = null)
+        {
+            if (string.IsNullOrEmpty(maxId))
+            {
+                GetUserTweets<T>(userId, callBack, paramaters);
+            }
+            paramaters = GetDic(paramaters);
+            paramaters.Add(Const.USER_ID, userId);
+            paramaters.Add(Const.COUNT, Const.DEFAULT_COUNT_PLUS_ONE);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, paramaters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
         public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             //throw new NotImplementedException();
@@ -200,6 +260,7 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region Status Page
         public void GetStatusDetail<T>(string id, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = GetDic(parameters);
@@ -207,5 +268,8 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }
+        #endregion
+
+
     }
 }

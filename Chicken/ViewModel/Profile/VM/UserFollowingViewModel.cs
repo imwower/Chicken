@@ -19,7 +19,7 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     FriendList.Refresh(result);
                 });
-            base.Refreshed();
+            base.Refresh();
         }
     }
 }

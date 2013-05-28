@@ -59,7 +59,7 @@
                                 <!--profile summary-->
                                 <Button Grid.Row="0"
                                         Command="{Binding Path=ClickCommand}"
-                                        CommandParameter="{Binding Path=TweetViewModel.User.Id}">
+                                        CommandParameter="{Binding Path=RetweetViewModel.User.Id}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Grid>
@@ -68,7 +68,7 @@
                                                     <ColumnDefinition Width="*"  />
                                                 </Grid.ColumnDefinitions>
                                                 <!--profile image-->
-                                                <Image Source="{Binding Path=TweetViewModel.User.ProfileImage}"
+                                                <Image Source="{Binding Path=RetweetViewModel.User.ProfileImage}"
                                                        Grid.Column="0" Style="{StaticResource ProfileImageNormal}" />
                                                 <!--name, screen name-->
                                                 <Grid Grid.Column="1">
@@ -78,10 +78,10 @@
                                                         <RowDefinition />
                                                     </Grid.RowDefinitions>
                                                     <!--user name-->
-                                                    <TextBlock Grid.Row="0" Text="{Binding TweetViewModel.User.Name}"
+                                                    <TextBlock Grid.Row="0" Text="{Binding RetweetViewModel.User.Name}"
                                                    Style="{StaticResource TextNormal}" />
                                                     <!--screen name-->
-                                                    <TextBlock Grid.Row="1" Text="{Binding TweetViewModel.User.ScreenName}"
+                                                    <TextBlock Grid.Row="1" Text="{Binding RetweetViewModel.User.ScreenName}"
                                                    Style="{StaticResource TweetScreenName}" />
                                                     <!--tweet created date, media icon, etc-->
                                                     <Grid Grid.Row="2" Opacity="0.6" HorizontalAlignment="Stretch">
@@ -95,7 +95,7 @@
                                                             </Style>
                                                         </Grid.Resources>
                                                         <!--date-->
-                                                        <TextBlock Text="{Binding TweetViewModel.CreatedDate}" Grid.Row="0" />
+                                                        <TextBlock Text="{Binding RetweetViewModel.CreatedDate}" Grid.Row="0" />
                                                         <!--media retweet count etc-->
                                                         <StackPanel Grid.Row="0"
                                                                     HorizontalAlignment="Right" Orientation="Horizontal">
@@ -105,33 +105,33 @@
                                                                 </Style>
                                                             </StackPanel.Resources>
                                                             <!--conversation-->
-                                                            <Rectangle Visibility="{Binding TweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
+                                                            <Rectangle Visibility="{Binding RetweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="/Images/dark/conversation.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                             <!--media-->
-                                                            <Rectangle Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            <Rectangle Visibility="{Binding RetweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="/Images/dark/media.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                             <!--location-->
-                                                            <Rectangle Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                            <Rectangle Visibility="{Binding RetweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="/Images/dark/location.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                             <!--retweeted by me-->
                                                             <Rectangle
-                                                                Visibility="{Binding TweetViewModel.Retweeted,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                Visibility="{Binding RetweetViewModel.Retweeted,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="/Images/dark/retweet.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                             <!--favourite by me-->
                                                             <Rectangle
-                                                                Visibility="{Binding TweetViewModel.Favourited,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                Visibility="{Binding RetweetViewModel.Favourited,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
                                                                     <ImageBrush ImageSource="/Images/dark/favourite.png" />
                                                                 </Rectangle.OpacityMask>
@@ -145,19 +145,19 @@
                                 </Button>
                                 <!--content-->
                                 <Grid Grid.Row="1" Margin="4">
-                                    <TextBlock Text="{Binding TweetViewModel.Text}" Grid.Row="1"
+                                    <TextBlock Text="{Binding RetweetViewModel.Text}" Grid.Row="1"
                                                Style="{StaticResource TextContent}" Margin="4"
                                                HorizontalAlignment="Stretch" TextAlignment="Left" />
                                 </Grid>
                                 <!--via-->
                                 <HyperlinkButton Grid.Row="2" Margin="4"
-                                                 Content="{Binding Path=TweetViewModel.Source}"
-                                                 NavigateUri="{Binding Path=TweetViewModel.SourceUrl}" TargetName="_blank"
+                                                 Content="{Binding Path=RetweetViewModel.Source}"
+                                                 NavigateUri="{Binding Path=RetweetViewModel.SourceUrl}" TargetName="_blank"
                                                  Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
                                 <!--retweet count, favourite count, location-->
                                 <Border Grid.Row="3"
                                         Style="{StaticResource RetweetCountBorder}" BorderThickness="0,1,0,0"
-                                        Visibility="{Binding TweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Visibility="{Binding RetweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                         <StackPanel.Resources>
                                             <Style TargetType="TextBlock">
@@ -167,25 +167,25 @@
                                             </Style>
                                         </StackPanel.Resources>
                                         <Border
-                                            Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                            Visibility="{Binding RetweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
                                             <TextBlock>
-                                            <Run Text="{Binding TweetViewModel.RetweetCount}" />
+                                            <Run Text="{Binding RetweetViewModel.RetweetCount}" />
                                             <LineBreak />
                                             <Run Text="RETWEET" />
                                             </TextBlock>
                                         </Border>
                                         <Border
-                                            Visibility="{Binding TweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                            Visibility="{Binding RetweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
                                             <TextBlock>
-                                            <Run Text="{Binding TweetViewModel.FavouriteCount}" />
+                                            <Run Text="{Binding RetweetViewModel.FavouriteCount}" />
                                             <LineBreak />
                                             <Run Text="FAVOURITE" />
                                             </TextBlock>
                                         </Border>
                                         <Border
-                                            Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding RetweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <TextBlock>
-                                            <Run Text="{Binding TweetViewModel.CoordinatesViewModel}" />
+                                            <Run Text="{Binding RetweetViewModel.CoordinatesViewModel}" />
                                             <LineBreak />
                                             <Run Text="LOCATION" />
                                             </TextBlock>
@@ -194,13 +194,13 @@
                                 </Border>
                                 <!--media-->
                                 <StackPanel  Grid.Row="4" Margin="4" HorizontalAlignment="Stretch"
-                                             Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                             Visibility="{Binding RetweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                     <Image Stretch="Fill"
-                                    Source="{Binding TweetViewModel.EntitiesViewModel.MediasViewModel[0].MediaUrlSmall}" />
+                                    Source="{Binding RetweetViewModel.EntitiesViewModel.MediasViewModel[0].MediaUrlSmall}" />
                                 </StackPanel>
                                 <!--conversation-->
                                 <Grid Grid.Row="5" Margin="4" HorizontalAlignment="Stretch"
-                                      Visibility="{Binding TweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
+                                      Visibility="{Binding RetweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="1" />
                                         <RowDefinition />

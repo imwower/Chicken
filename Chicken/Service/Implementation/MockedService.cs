@@ -36,25 +36,33 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region Home Page
         public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/hometimeline.json";
             HandleWebRequest<T>(url, callBack);
         }
 
-        public List<Tweet> GetOldTweets()
+        public void GetOldTweets<T>(string maxId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            for (int i = 0; i < tweets.Count; i++)
-            {
-                tweets[i].Text = i + "";
-            }
-            return tweets;
+            string url = "SampleData/hometimeline1.json";
+            HandleWebRequest<T>(url, callBack);
         }
 
+        public void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/mentions.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
+        #region MyRegion
+
+
+        public List<Tweet> GetOldTweets()
+        {
+            throw new NotImplementedException();
+        }
         public List<Tweet> GetNewMentions()
         {
             var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/mentions.json", UriKind.Relative));
@@ -116,11 +124,24 @@ namespace Chicken.Service.Implementation
         {
             return GetDirectMessages();
         }
+        #endregion
 
         #region profile page
         public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/userProfile.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/user_timeline.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetUserOldTweets<T>(string userId, string maxId, Action<T> callBack, IDictionary<string, object> paramaters = null)
+        {
+            string url = "SampleData/user_timeline.json";
             HandleWebRequest<T>(url, callBack);
         }
 
@@ -144,5 +165,7 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
+
+
     }
 }

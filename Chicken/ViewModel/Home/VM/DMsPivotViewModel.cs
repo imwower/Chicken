@@ -33,7 +33,7 @@ namespace Chicken.ViewModel.Home.VM
             {
                 DMList.Add(new DirectMessageViewModel(message));
             }
-            base.Refreshed();
+            base.Refresh();
         }
     }
 }

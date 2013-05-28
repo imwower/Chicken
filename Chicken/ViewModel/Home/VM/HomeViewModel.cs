@@ -24,20 +24,24 @@ namespace Chicken.ViewModel.Home.VM
                     {
                         TweetList.Insert(0, new TweetViewModel(tweet));
                     }
-                    base.Refreshed();
+                    base.Refresh();
                 });
         }
 
         public override void Load()
         {
-            TweetService.GetLastedTweets<List<Tweet>>(
+            string maxId = TweetList[TweetList.Count - 1].Id;
+            TweetService.GetOldTweets<List<Tweet>>(maxId,
                 tweets =>
                 {
                     foreach (var tweet in tweets)
                     {
-                        TweetList.Add(new TweetViewModel(tweet));
+                        if (maxId != tweet.Id)
+                        {
+                            TweetList.Add(new TweetViewModel(tweet));
+                        }
                     }
-                    base.Loaded();
+                    base.Load();
                 });
         }
     }

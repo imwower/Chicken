@@ -4,6 +4,8 @@ namespace Chicken.Common
     public class Const
     {
         public static string API = "https://wxt2005.org/tapi/o/W699Q6/";
+        public static string DEFAULT_COUNT = "5";
+        public static string DEFAULT_COUNT_PLUS_ONE = "6";
 
         #region http method
         public const string HTTPGET = "GET";
@@ -16,13 +18,31 @@ namespace Chicken.Common
         #endregion
 
         #region rest api
-        public const string STATUSES_HOMETIMELINE = "statuses/home_timeline.json";
-        public const string STATUSES_SHOW = "statuses/show.json";
-        public const string USERS_SHOW = "users/show.json";
 
         #region rest api parameters
         public const string ID = "id";
         public const string USER_ID = "user_id";
+        public const string COUNT = "count";
+        public const string SINCE_ID = "since_id";
+        public const string MAX_ID = "max_id";
+        public const string INCLUDE_ENTITIES = "include_entities";
+        public const string DIRECT_MESSAGE_SKIP_STATUS = "skip_status";
+        #endregion
+
+        #region home page
+        public const string STATUSES_HOMETIMELINE = "statuses/home_timeline.json";
+        public const string STATUSES_MENTIONS_TIMELINE = "statuses/mentions_timeline.json";
+        public const string DIRECT_MESSAGES = "direct_messages.json";
+        #endregion
+
+        #region status page
+        public const string STATUSES_SHOW = "statuses/show.json";
+        #endregion
+
+        #region profile page
+        public const string USERS_SHOW = "users/show.json";
+        public const string USER_TIMELINE = "statuses/user_timeline.json";
+
         #endregion
         #endregion
 

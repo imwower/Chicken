@@ -152,6 +152,9 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        /// <summary>
+        ///show retweet count, favourite count and location panel
+        /// </summary>
         public bool NeedShowRetweetIcons
         {
             get
