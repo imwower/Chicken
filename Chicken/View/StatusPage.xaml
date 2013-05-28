@@ -19,9 +19,14 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
                         Title="{Binding Title}">
-            <controls:PivotItem
+            <ctrls:AutoScrollViewerPivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                        <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -198,9 +203,9 @@
                                 </Grid.Resources>
                                 <Rectangle Grid.Row="0" />
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="4,0,0,0">
-                                    <ctrls:AutoListBox ItemsSource="{Binding ConversationList}"
+                                    <ListBox ItemsSource="{Binding ConversationList}" ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                                    ItemTemplate="{StaticResource TweetTemplate}">
-                                        <ctrls:AutoListBox.ItemContainerStyle>
+                                        <ListBox.ItemContainerStyle>
                                             <Style TargetType="ListBoxItem">
                                                 <Setter Property="Template">
                                                     <Setter.Value>
@@ -210,16 +215,16 @@
                                                     </Setter.Value>
                                                 </Setter>
                                             </Style>
-                                        </ctrls:AutoListBox.ItemContainerStyle>
-                                        <i:Interaction.Triggers>
-                                            <!--<i:EventTrigger EventName="VerticalCompressionTopHandler">
+                                        </ListBox.ItemContainerStyle>
+                                        <!--<i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="VerticalCompressionTopHandler">
                                             <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
-                                        </i:EventTrigger>-->
+                                        </i:EventTrigger>
                                             <i:EventTrigger EventName="VerticalCompressionBottomHandler">
                                                 <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
                                             </i:EventTrigger>
-                                        </i:Interaction.Triggers>
-                                    </ctrls:AutoListBox>
+                                        </i:Interaction.Triggers>-->
+                                    </ListBox>
                                 </StackPanel>
                             </Grid>
                         </Grid>
@@ -227,7 +232,7 @@
                     <ProgressBar Grid.Row="1" IsIndeterminate="True"
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
-            </controls:PivotItem>
+            </ctrls:AutoScrollViewerPivotItem>
             <controls:PivotItem
                 Header="Retweet">
             </controls:PivotItem>

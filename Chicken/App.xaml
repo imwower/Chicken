@@ -41,7 +41,6 @@
         <Style x:Name="RetweetCountBorder" TargetType="Border">
             <Setter Property="Opacity" Value="0.6" />
             <Setter Property="BorderBrush" Value="Silver" />
-            <Setter Property="BorderThickness" Value="0,1,0,1" />
             <Setter Property="Margin" Value="0,4,0,0" />
         </Style>
 
