@@ -45,6 +45,7 @@ namespace Chicken.Common
         #region profile page
         public const string USERS_SHOW = "users/show.json";
         public const string USER_TIMELINE = "statuses/user_timeline.json";
+        public const string USER_FAVOURITE = "favorites/list.json";
 
         #endregion
         #endregion

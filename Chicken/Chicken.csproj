@@ -219,6 +219,7 @@
     <Content Include="SampleData\tweet.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="SampleData\user_favourites.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">

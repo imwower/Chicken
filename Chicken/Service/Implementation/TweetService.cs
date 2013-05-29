@@ -228,6 +228,14 @@ namespace Chicken.Service.Implementation
         {
             //throw new NotImplementedException();
         }
+
+        public void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = CheckSinceIdAndMaxId(parameters);
+            parameters.Add(Const.USER_ID, userId);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVOURITE, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
         #endregion
 
         #region Status Page

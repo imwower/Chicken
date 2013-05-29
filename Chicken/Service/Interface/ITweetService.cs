@@ -51,6 +51,8 @@ namespace Chicken.Service.Interface
         /// <param name="callBack"></param>
         /// <param name="parameters"></param>
         void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+
+        void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region status page

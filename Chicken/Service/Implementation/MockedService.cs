@@ -146,6 +146,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/followers.json";
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/user_favourites.json";
+            HandleWebRequest<T>(url, callBack);
+        }
         #endregion
 
         #region status page
