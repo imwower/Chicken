@@ -18,6 +18,7 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot" Title="{Binding Title}">
+            <!--status detail-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
@@ -69,7 +70,7 @@
                                                 </Grid.ColumnDefinitions>
                                                 <!--profile image-->
                                                 <Image Source="{Binding Path=TweetViewModel.User.ProfileImageBigger}"
-                                                       Grid.Column="0" Style="{StaticResource ProfileImageNormal}" />
+                                                       Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
                                                 <!--name, screen name-->
                                                 <Grid Grid.Column="1">
                                                     <Grid.RowDefinitions>
@@ -79,10 +80,10 @@
                                                     </Grid.RowDefinitions>
                                                     <!--user name-->
                                                     <TextBlock Grid.Row="0" Text="{Binding TweetViewModel.User.Name}"
-                                                   Style="{StaticResource TextNormal}" />
+                                                               Style="{StaticResource TextNormal}" />
                                                     <!--screen name-->
                                                     <TextBlock Grid.Row="1" Text="{Binding TweetViewModel.User.ScreenName}"
-                                                   Style="{StaticResource TweetScreenName}" />
+                                                               Style="{StaticResource TweetScreenName}" />
                                                     <!--tweet created date, media icon, etc-->
                                                     <Grid Grid.Row="2" Opacity="0.6" HorizontalAlignment="Stretch">
                                                         <Grid.RowDefinitions>

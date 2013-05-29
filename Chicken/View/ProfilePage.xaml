@@ -60,7 +60,7 @@
                                     </Grid.Background>
                                     <!--Profile Image-->
                                     <Image Grid.Row="0"
-                               Source="{Binding UserProfileViewModel.ProfileImage}"
+                                           Source="{Binding UserProfileViewModel.ProfileImageNormal}"
                                            Width="124" Height="124" Margin="0,-40,0,0" Stretch="Fill">
                                         <Image.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
@@ -140,7 +140,7 @@
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
-                ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
+                ListBoxItems="{Binding Path=UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <!--user followers-->
             <ctrls:HomePivotItem

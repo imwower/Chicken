@@ -31,6 +31,7 @@ namespace Chicken.Common
         public const string MAX_ID = "max_id";
         public const string INCLUDE_ENTITIES = "include_entities";
         public const string DIRECT_MESSAGE_SKIP_STATUS = "skip_status";
+        public const string CURSOR = "cursor";
         #endregion
 
         #region home page
@@ -47,6 +48,8 @@ namespace Chicken.Common
         public const string USERS_SHOW = "users/show.json";
         public const string USER_TIMELINE = "statuses/user_timeline.json";
         public const string USER_FAVOURITE = "favorites/list.json";
+        public const string USER_FOLLOWING_IDS = "friends/ids.json";
+        public const string USERS_LOOKUP = "users/lookup.json";
 
         #endregion
         #endregion

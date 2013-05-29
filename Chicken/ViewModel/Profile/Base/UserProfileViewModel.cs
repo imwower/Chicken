@@ -1,47 +1,17 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Model;
+using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Profile.Base
 {
-    public class FriendProfileViewModel
+    public class UserProfileViewModel : UserViewModel
     {
         public UserProfile UserProfile;
 
-        public FriendProfileViewModel(UserProfile userProfile)
+        public UserProfileViewModel(UserProfile userProfile) :
+            base(userProfile)
         {
             this.UserProfile = userProfile;
-        }
-
-        public string Name
-        {
-            get
-            {
-                return UserProfile.Name;
-            }
-        }
-
-        public string ScreenName
-        {
-            get
-            {
-                return UserProfile.ScreenName;
-            }
-        }
-
-        public string Id
-        {
-            get
-            {
-                return UserProfile.Id;
-            }
-        }
-
-        public string ProfileImage
-        {
-            get
-            {
-                return UserProfile.ProfileImage.Replace("normal", "bigger");
-            }
         }
 
         public string Description
@@ -97,6 +67,22 @@ namespace Chicken.ViewModel.Profile.Base
             get
             {
                 return UserProfile.FavouritesCount;
+            }
+        }
+
+        public string ProfileImageNormal
+        {
+            get
+            {
+                return UserProfile.ProfileImage.Replace("_normal", "");
+            }
+        }
+
+        public string UserProfileBannerImage
+        {
+            get
+            {
+                return UserProfile.UserProfileBannerImage + "/web";
             }
         }
     }

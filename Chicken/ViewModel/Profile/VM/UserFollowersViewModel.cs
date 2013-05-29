@@ -8,18 +8,18 @@ namespace Chicken.ViewModel.Profile.VM
         public UserFollowersViewModel()
         {
             Header = "Followers";
-            FriendList = new FriendListViewModel();
+            //FriendList = new FriendListViewModel();
         }
 
         public override void Refresh()
         {
             //base.Refresh();
-            TweetService.GetFollowersLists<FriendList>(
-                result =>
-                {
-                    FriendList.Refresh(result);
-                });
-            base.Refresh();
+            //TweetService.GetFollowersLists<FriendList>(
+            //    result =>
+            //    {
+            //        FriendList.Refresh(result);
+            //    });
+            //base.Refresh();
         }
     }
 }

@@ -204,8 +204,8 @@
             <Setter Property="Width" Value="64" />
             <Setter Property="Height"  Value="64" />
         </Style>
-        <!--profile image Normal-->
-        <Style x:Name="ProfileImageNormal" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
+        <!--profile image bigger-->
+        <Style x:Name="ProfileImageBigger" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
             <Setter Property="Margin" Value="4" />
             <Setter Property="Width" Value="84" />
             <Setter Property="Height"  Value="84" />
@@ -382,7 +382,7 @@
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding ProfileImage}" Grid.Column="0"
-                                   Style="{StaticResource ProfileImageNormal}" />
+                                   Style="{StaticResource ProfileImageBigger}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />

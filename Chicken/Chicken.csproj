@@ -89,12 +89,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\BulkList.cs" />
     <Compile Include="Model\DirectMessage.cs" />
     <Compile Include="Model\Entity\Coordinates.cs" />
     <Compile Include="Model\Entity\Entities.cs" />
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
-    <Compile Include="Model\FriendList.cs" />
+    <Compile Include="Model\UserIdList.cs" />
     <Compile Include="Model\Retweet.cs" />
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\TweetBase.cs" />
@@ -107,7 +108,7 @@
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
-    <Compile Include="ViewModel\Profile\Base\FriendProfileViewModel.cs" />
+    <Compile Include="ViewModel\Profile\Base\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
@@ -219,6 +220,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="SampleData\user_favourites.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\followingIds.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\lookup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

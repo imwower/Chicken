@@ -135,15 +135,15 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/friends_list.json";
+            string url = "SampleData/followingIds.json";
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/followers.json";
+            string url = "SampleData/lookup.json";
             HandleWebRequest<T>(url, callBack);
         }
 
@@ -161,5 +161,7 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
+
+
     }
 }

@@ -26,32 +26,19 @@ namespace Chicken.Service.Implementation
                 (result) =>
                 {
                     HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
-                    var response = requestResult.EndGetResponse(result);
+                    WebResponse response = null;
+                    response = requestResult.EndGetResponse(result);
                     T output = default(T);
                     var streamReader = new StreamReader(response.GetResponseStream());
                     try
                     {
-#if HTTP
                         using (var reader = new JsonTextReader(streamReader))
                         {
                             output = JsonSerializer.Deserialize<T>(reader);
                         }
-#elif DEBUG
-                        string responseString = streamReader.ReadToEnd();
-                        Console.WriteLine("response string : " + responseString);
-                        output = JsonConvert.DeserializeObject<T>(responseString);
-#else
-                        using (var reader = new JsonTextReader(streamReader))
-                        {
-                            output = JsonSerializer.Deserialize<T>(reader);
-                        }
-#endif
                     }
                     catch (Exception e)
                     {
-#if DEBUG
-                        Console.WriteLine("deserialize error : " + e.ToString());
-#endif
                     }
                     finally
                     {
@@ -219,14 +206,23 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            //throw new NotImplementedException();
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.USER_ID, userId);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_FOLLOWING_IDS, parameters);
+            HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetFollowersLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            //throw new NotImplementedException();
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.USER_ID, userIds);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
+            parameters.Add(Const.INCLUDE_ENTITIES, Const.DEFAULT_VALUE_FALSE);
+            string url = TwitterHelper.GenerateUrlParams(Const.USERS_LOOKUP, parameters);
+            HandleWebRequest<T>(url, callBack);
         }
 
         public void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
@@ -247,5 +243,6 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
+
     }
 }
