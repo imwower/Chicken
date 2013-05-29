@@ -206,6 +206,7 @@
         </Style>
         <!--profile image Normal-->
         <Style x:Name="ProfileImageNormal" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
+            <Setter Property="Margin" Value="2" />
             <Setter Property="Width" Value="84" />
             <Setter Property="Height"  Value="84" />
         </Style>
@@ -321,10 +322,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="DirectMessageTemplate">
-            <!--grid must set width, it is a bug-->
             <Grid Margin="0,4">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="68" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*"  />
                 </Grid.ColumnDefinitions>
                 <!--avatar-->
@@ -339,48 +339,33 @@
                     </Button.Template>
                 </Button>
                 <!--content-->
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition />
-                        <RowDefinition />
-                    </Grid.RowDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
-                        <Style TargetType="HyperlinkButton" BasedOn="{StaticResource HyperLinkTextSmall}" />
-                    </Grid.Resources>
-                    <!--user name-->
-                    <TextBlock Text="{Binding User.Name}" Grid.Row="0" />
-                    <Button Grid.Row="1">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <!--text-->
-                                    <TextBlock Text="{Binding Text}" Grid.Row="0"
-                                               Style="{StaticResource TextContent}"
-                                               HorizontalAlignment="Stretch" TextAlignment="Left" />
-                                    <Grid Grid.Row="1" Opacity="0.6" HorizontalAlignment="Stretch">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition />
-                                        </Grid.RowDefinitions>
-                                        <Grid.Resources>
-                                            <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                                                <Setter Property="HorizontalAlignment" Value="Left" />
-                                                <Setter Property="TextAlignment" Value="Left" />
-                                            </Style>
-                                        </Grid.Resources>
-                                        <!--date-->
-                                        <TextBlock Text="{Binding CreatedDate}" Grid.Row="0" />
-                                    </Grid>
-                                </Grid>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
+                <Button Grid.Column="1">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}" />
+                                </Grid.Resources>
+                                <!--user name-->
+                                <TextBlock Grid.Row="0" Text="{Binding User.Name}" />
+                                <!--text-->
+                                <TextBlock Grid.Row="1" Text="{Binding Text}"
+                                           Style="{StaticResource TextContent}"
+                                           HorizontalAlignment="Stretch" TextAlignment="Left" />
+                                <!--date-->
+                                <TextBlock Grid.Row="2" Opacity="0.6"
+                                           Text="{Binding CreatedDate}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+                </Button>
                 <!--content end-->
             </Grid>
         </DataTemplate>
@@ -393,7 +378,7 @@
                     <ControlTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="88" />
+                                <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding ProfileImage}" Grid.Column="0"

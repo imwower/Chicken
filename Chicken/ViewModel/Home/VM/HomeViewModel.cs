@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Home.Base;
+using Chicken.Common;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -16,33 +17,60 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
-            TweetService.GetLastedTweets<List<Tweet>>(
+            string sinceId = string.Empty;
+            var parameters = TwitterHelper.GetDictionary();
+            if (TweetList.Count != 0)
+            {
+                sinceId = TweetList[0].Id;
+                parameters.Add(Const.MAX_ID, sinceId);
+            }
+            TweetService.GetTweets<List<Tweet>>(
                 tweets =>
                 {
-                    tweets.Reverse();
-                    foreach (var tweet in tweets)
+                    if (tweets != null && tweets.Count != 0)
                     {
-                        TweetList.Insert(0, new TweetViewModel(tweet));
+                        tweets.Reverse();
+                        if (string.Compare(sinceId, tweets[0].Id) == -1)
+                        {
+                            TweetList.Clear();
+                        }
+                        foreach (var tweet in tweets)
+                        {
+                            if (sinceId != tweet.Id)
+                            {
+                                TweetList.Insert(0, new TweetViewModel(tweet));
+                            }
+                        }
                     }
                     base.Refresh();
-                });
+                }, parameters);
         }
 
         public override void Load()
         {
-            string maxId = TweetList[TweetList.Count - 1].Id;
-            TweetService.GetOldTweets<List<Tweet>>(maxId,
-                tweets =>
-                {
-                    foreach (var tweet in tweets)
+            if (TweetList.Count == 0)
+            {
+                base.Load();
+                return;
+            }
+            else
+            {
+                string maxId = TweetList[TweetList.Count - 1].Id;
+                var parameters = TwitterHelper.GetDictionary();
+                parameters.Add(Const.MAX_ID, maxId);
+                TweetService.GetTweets<List<Tweet>>(
+                    tweets =>
                     {
-                        if (maxId != tweet.Id)
+                        foreach (var tweet in tweets)
                         {
-                            TweetList.Add(new TweetViewModel(tweet));
+                            if (maxId != tweet.Id)
+                            {
+                                TweetList.Add(new TweetViewModel(tweet));
+                            }
                         }
-                    }
-                    base.Load();
-                });
+                        base.Load();
+                    }, parameters);
+            }
         }
     }
 }

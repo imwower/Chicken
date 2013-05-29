@@ -37,13 +37,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region Home Page
-        public void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
-        {
-            string url = "SampleData/hometimeline.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void GetOldTweets<T>(string maxId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/hometimeline.json";
             HandleWebRequest<T>(url, callBack);
@@ -52,6 +46,12 @@ namespace Chicken.Service.Implementation
         public void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/mentions.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/direct_messages.json";
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
@@ -135,12 +135,6 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserOldTweets<T>(string userId, string maxId, Action<T> callBack, IDictionary<string, object> paramaters = null)
-        {
-            string url = "SampleData/user_timeline.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
         public void GetFollowingLists<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/friends_list.json";
@@ -161,7 +155,5 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
-
-
     }
 }

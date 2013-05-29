@@ -9,11 +9,11 @@ namespace Chicken.Service.Interface
     public interface ITweetService
     {
         #region Home Page
-        void GetLastedTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
-
-        void GetOldTweets<T>(string maxId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+
+        void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region MyRegion
@@ -28,15 +28,13 @@ namespace Chicken.Service.Interface
 
 
         List<Tweet> GetUserTweets(string userId);
-        List<Tweet> GetUserOldTweets(string userId); 
+        List<Tweet> GetUserOldTweets(string userId);
         #endregion
 
         #region profile page
         void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
-
-        void GetUserOldTweets<T>(string userId, string maxId, Action<T> callBack, IDictionary<string, object> paramaters = null);
 
         /// <summary>
         /// get a profile summary list of sepecific user's following
