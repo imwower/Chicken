@@ -73,7 +73,10 @@ namespace Chicken.ViewModel.Status.VM
                 var tweet = ConversationList[ConversationList.Count - 1];
                 LoadConversation(tweet.InReplyToTweetId);
             }
-            base.Load();
+            else
+            {
+                base.Load();
+            }
         }
 
         /// <summary>
