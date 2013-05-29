@@ -31,6 +31,11 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (dmList.Count != 0)
@@ -62,6 +67,10 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Load()
         {
+            if (IsLoading)
+            {
+                return;
+            }
             if (dmList.Count == 0)
             {
                 base.Load();
@@ -69,6 +78,7 @@ namespace Chicken.ViewModel.Home.VM
             }
             else
             {
+                IsLoading = true;
                 string maxId = dmList[dmList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);

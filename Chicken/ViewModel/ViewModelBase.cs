@@ -96,7 +96,6 @@ namespace Chicken.ViewModel
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    IsLoading = true;
                     action();
                 });
         }

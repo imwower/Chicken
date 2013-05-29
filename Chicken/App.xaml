@@ -206,7 +206,7 @@
         </Style>
         <!--profile image Normal-->
         <Style x:Name="ProfileImageNormal" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
-            <Setter Property="Margin" Value="2" />
+            <Setter Property="Margin" Value="4" />
             <Setter Property="Width" Value="84" />
             <Setter Property="Height"  Value="84" />
         </Style>

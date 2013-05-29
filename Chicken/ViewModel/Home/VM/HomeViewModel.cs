@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Chicken.Model;
-using Chicken.Service;
-using Chicken.ViewModel.Home.Base;
 using Chicken.Common;
+using Chicken.Model;
+using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -17,6 +16,11 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -48,6 +52,10 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Load()
         {
+            if (IsLoading)
+            {
+                return;
+            }
             if (TweetList.Count == 0)
             {
                 base.Load();
@@ -55,6 +63,7 @@ namespace Chicken.ViewModel.Home.VM
             }
             else
             {
+                IsLoading = true;
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);

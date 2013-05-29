@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Chicken.Common;
 using Chicken.ViewModel.Home.VM;
-using Chicken.Service;
 
 namespace Chicken.ViewModel.Home
 {
