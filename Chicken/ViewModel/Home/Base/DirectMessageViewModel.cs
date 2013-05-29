@@ -6,15 +6,7 @@ namespace Chicken.ViewModel.Home.Base
     public class DirectMessageViewModel
     {
         private DirectMessage directMessage;
-
         private UserViewModel user;
-        public UserViewModel User
-        {
-            get
-            {
-                return user;
-            }
-        }
 
         public DirectMessageViewModel(DirectMessage directMessage)
         {
@@ -43,6 +35,14 @@ namespace Chicken.ViewModel.Home.Base
             get
             {
                 return TwitterHelper.ParseToDateTime(directMessage.CreatedDate);
+            }
+        }
+
+        public UserViewModel User
+        {
+            get
+            {
+                return user;
             }
         }
     }

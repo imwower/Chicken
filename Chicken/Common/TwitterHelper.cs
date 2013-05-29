@@ -102,5 +102,14 @@ namespace Chicken.Common
             return sb.ToString();
         }
         #endregion
+
+        public static IDictionary<string, object> GetDictionary(IDictionary<string, object> parameters = null)
+        {
+            if (parameters == null || parameters.Count == 0)
+            {
+                parameters = new Dictionary<string, object>();
+            }
+            return parameters;
+        }
     }
 }

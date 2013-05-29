@@ -4,8 +4,8 @@ namespace Chicken.Common
     public class Const
     {
         public static string API = "https://wxt2005.org/tapi/o/W699Q6/";
-        public static string DEFAULT_COUNT = "5";
-        public static string DEFAULT_COUNT_PLUS_ONE = "6";
+        public static string DEFAULT_COUNT_VALUE = "5";
+        public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
 
         #region http method
         public const string HTTPGET = "GET";
@@ -18,6 +18,9 @@ namespace Chicken.Common
         #endregion
 
         #region rest api
+
+        public const string DEFAULT_VALUE_TRUE = "true";
+        public const string DEFAULT_VALUE_FALSE = "false";
 
         #region rest api parameters
         public const string ID = "id";

@@ -42,5 +42,13 @@ namespace Chicken.ViewModel.Home.Base
                 return user.ProfileImage;
             }
         }
+
+        public string ProfileImageBigger
+        {
+            get
+            {
+                return user.ProfileImage.Replace("_normal", "_bigger");
+            }
+        }
     }
 }

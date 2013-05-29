@@ -106,7 +106,7 @@ namespace Chicken.Service.Implementation
             {
                 parameters = new Dictionary<string, object>(1);
             }
-            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -122,7 +122,7 @@ namespace Chicken.Service.Implementation
                 parameters = new Dictionary<string, object>(2);
             }
             parameters.Add(Const.MAX_ID, maxId);
-            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_PLUS_ONE);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -133,7 +133,7 @@ namespace Chicken.Service.Implementation
             {
                 parameters = new Dictionary<string, object>(1);
             }
-            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_MENTIONS_TIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -231,7 +231,7 @@ namespace Chicken.Service.Implementation
         {
             parameters = GetDic(parameters);
             parameters.Add(Const.USER_ID, userId);
-            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -244,7 +244,7 @@ namespace Chicken.Service.Implementation
             }
             paramaters = GetDic(paramaters);
             paramaters.Add(Const.USER_ID, userId);
-            paramaters.Add(Const.COUNT, Const.DEFAULT_COUNT_PLUS_ONE);
+            paramaters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
             string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, paramaters);
             HandleWebRequest<T>(url, callBack);
         }

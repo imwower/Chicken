@@ -68,7 +68,7 @@
                                                     <ColumnDefinition Width="*"  />
                                                 </Grid.ColumnDefinitions>
                                                 <!--profile image-->
-                                                <Image Source="{Binding Path=TweetViewModel.User.ProfileImage}"
+                                                <Image Source="{Binding Path=TweetViewModel.User.ProfileImageBigger}"
                                                        Grid.Column="0" Style="{StaticResource ProfileImageNormal}" />
                                                 <!--name, screen name-->
                                                 <Grid Grid.Column="1">
