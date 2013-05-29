@@ -47,6 +47,11 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Refresh()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+            IsLoading = true;
             GetResult<Tweet>(StatusId,
                 tweet =>
                 {
@@ -58,6 +63,11 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Load()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+            IsLoading = true;
             if (!string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
             {
                 var tweet = ConversationList[ConversationList.Count - 1];
@@ -72,6 +82,7 @@ namespace Chicken.ViewModel.Status.VM
         /// <param name="parameter">user id</param>
         public override void Click(object parameter)
         {
+            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, parameter);
             NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
@@ -79,6 +90,7 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void ItemClick(object parameter)
         {
+            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);

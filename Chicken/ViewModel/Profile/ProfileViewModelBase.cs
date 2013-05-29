@@ -44,6 +44,7 @@ namespace Chicken.ViewModel.Profile
 
         public override void Click(object parameter)
         {
+            IsLoading = false;
             if (UserId == parameter.ToString())
             {
                 NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);

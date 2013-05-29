@@ -33,6 +33,11 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
+            if (IsLoading)
+            {
+                return;
+            }
+            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -64,6 +69,10 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Load()
         {
+            if (IsLoading)
+            {
+                return;
+            }
             if (TweetList.Count == 0)
             {
                 base.Load();
@@ -71,6 +80,7 @@ namespace Chicken.ViewModel.Profile.VM
             }
             else
             {
+                IsLoading = true;
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
@@ -91,6 +101,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void ItemClick(object parameter)
         {
+            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);

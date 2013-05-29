@@ -121,7 +121,6 @@
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusFavourite.cs" />
-    <Compile Include="ViewModel\Status\VM\StatusMediaViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetViewModel.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
