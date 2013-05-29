@@ -36,7 +36,7 @@ namespace Chicken.ViewModel.Home.VM
             if (dmList.Count != 0)
             {
                 sinceId = dmList[0].Id;
-                parameters.Add(Const.MAX_ID, sinceId);
+                parameters.Add(Const.SINCE_ID, sinceId);
             }
             TweetService.GetDirectMessages<List<DirectMessage>>(
                messages =>

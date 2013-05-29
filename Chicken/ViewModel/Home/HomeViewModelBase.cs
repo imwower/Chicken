@@ -37,14 +37,14 @@ namespace Chicken.ViewModel.Home
         /// <param name="parameter">user id</param>
         public override void Click(object parameter)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, parameter);
             NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
         }
 
         public override void ItemClick(object parameter)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
         }

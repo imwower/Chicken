@@ -21,7 +21,7 @@ namespace Chicken.ViewModel.Home.VM
             if (TweetList.Count != 0)
             {
                 sinceId = TweetList[0].Id;
-                parameters.Add(Const.MAX_ID, sinceId);
+                parameters.Add(Const.SINCE_ID, sinceId);
             }
             TweetService.GetMentions<List<Tweet>>(
                 tweets =>

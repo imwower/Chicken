@@ -110,7 +110,6 @@ namespace Chicken.ViewModel
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    IsLoading = true;
                     action(parameter);
                 });
         }
@@ -122,7 +121,7 @@ namespace Chicken.ViewModel
             IsLoading = false;
             IsInited = true;
         }
-        
+
         public virtual void Load()
         {
             IsLoading = false;

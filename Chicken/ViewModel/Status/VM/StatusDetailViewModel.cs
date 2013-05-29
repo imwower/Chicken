@@ -50,7 +50,7 @@ namespace Chicken.ViewModel.Status.VM
             GetResult<Tweet>(StatusId,
                 tweet =>
                 {
-                    this.TweetViewModel = new TweetViewModel(tweet);
+                    TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
                     base.Refresh();
                 });
@@ -58,9 +58,9 @@ namespace Chicken.ViewModel.Status.VM
 
         public override void Load()
         {
-            if (!string.IsNullOrEmpty(this.tweetViewModel.InReplyToTweetId))
+            if (!string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
             {
-                var tweet = this.ConversationList[this.ConversationList.Count - 1];
+                var tweet = ConversationList[ConversationList.Count - 1];
                 LoadConversation(tweet.InReplyToTweetId);
             }
             base.Load();
@@ -72,14 +72,14 @@ namespace Chicken.ViewModel.Status.VM
         /// <param name="parameter">user id</param>
         public override void Click(object parameter)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, parameter);
             NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
         }
 
         public override void ItemClick(object parameter)
         {
-            Dictionary<string, object> parameters = new Dictionary<string, object>(1);
+            var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
         }
@@ -92,14 +92,14 @@ namespace Chicken.ViewModel.Status.VM
                 base.Load();
                 return;
             }
-            if (this.ConversationList == null)
+            if (ConversationList == null)
             {
-                this.ConversationList = new ObservableCollection<TweetViewModel>();
+                ConversationList = new ObservableCollection<TweetViewModel>();
             }
             GetResult<Tweet>(statusId,
                 tweet =>
                 {
-                    this.ConversationList.Add(new TweetViewModel(tweet));
+                    ConversationList.Add(new TweetViewModel(tweet));
                     base.Load();
                 });
         }

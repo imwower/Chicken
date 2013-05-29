@@ -119,7 +119,6 @@
     <Compile Include="ViewModel\Status\Base\MediaViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
-    <Compile Include="ViewModel\Status\VM\StatusConversationViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusFavourite.cs" />
     <Compile Include="ViewModel\Status\VM\StatusMediaViewModel.cs" />
