@@ -322,7 +322,7 @@
 
         <DataTemplate x:Key="DirectMessageTemplate">
             <!--grid must set width, it is a bug-->
-            <Grid Width="456" Margin="0,4">
+            <Grid Margin="0,4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="68" />
                     <ColumnDefinition Width="*"  />
