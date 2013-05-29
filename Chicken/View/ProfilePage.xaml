@@ -18,6 +18,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
                         Title="{Binding Path=Title}">
+            <!--profile detail-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
@@ -129,21 +130,25 @@
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
+            <!--user tweets-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+            <!--user following-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
+            <!--user followers-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[3],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=FriendList.FriendProfileList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
+            <!--user favourites-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[4],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"

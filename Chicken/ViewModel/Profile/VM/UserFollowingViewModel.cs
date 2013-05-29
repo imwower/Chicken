@@ -5,6 +5,22 @@ namespace Chicken.ViewModel.Profile.VM
 {
     public class UserFollowingViewModel : ProfileViewModelBase
     {
+        #region properties
+        private FriendListViewModel friendList;
+        public FriendListViewModel FriendList
+        {
+            get
+            {
+                return friendList;
+            }
+            set
+            {
+                friendList = value;
+                RaisePropertyChanged("FriendList");
+            }
+        }
+        #endregion
+
         public UserFollowingViewModel()
         {
             Header = "Following";

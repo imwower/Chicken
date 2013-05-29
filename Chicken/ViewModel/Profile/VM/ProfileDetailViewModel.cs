@@ -29,6 +29,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
+            IsLoading = true;
             TweetService.GetUserProfileDetail<UserProfile>(UserId,
                 obj =>
                 {

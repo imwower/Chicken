@@ -3,7 +3,8 @@ namespace Chicken.Common
 {
     public class Const
     {
-        public static string API = "https://wxt2005.org/tapi/o/W699Q6/";
+        //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
+        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/6X0S1V/";
         public static string DEFAULT_COUNT_VALUE = "5";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
 

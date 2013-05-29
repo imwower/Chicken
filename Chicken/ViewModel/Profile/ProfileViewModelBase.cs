@@ -22,20 +22,6 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("UserId");
             }
         }
-
-        private FriendListViewModel friendList;
-        public FriendListViewModel FriendList
-        {
-            get
-            {
-                return friendList;
-            }
-            set
-            {
-                friendList = value;
-                RaisePropertyChanged("FriendList");
-            }
-        }
         #endregion
 
         #region services
