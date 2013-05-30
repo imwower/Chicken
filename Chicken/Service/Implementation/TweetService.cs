@@ -215,6 +215,15 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.USER_ID, userId);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_FOLLOWER_IDS, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
         public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
@@ -243,6 +252,5 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
-
     }
 }

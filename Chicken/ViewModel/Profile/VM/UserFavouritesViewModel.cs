@@ -9,22 +9,6 @@ namespace Chicken.ViewModel.Profile.VM
 {
     public class UserFavouritesViewModel : ProfileViewModelBase
     {
-        #region properties
-        private ObservableCollection<TweetViewModel> tweetList;
-        public ObservableCollection<TweetViewModel> TweetList
-        {
-            get
-            {
-                return tweetList;
-            }
-            set
-            {
-                tweetList = value;
-                RaisePropertyChanged("TweetList");
-            }
-        }
-        #endregion
-
         public UserFavouritesViewModel()
         {
             Header = "Favourites";

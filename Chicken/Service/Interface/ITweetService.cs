@@ -38,6 +38,8 @@ namespace Chicken.Service.Interface
 
         void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
+        void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+
         void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);

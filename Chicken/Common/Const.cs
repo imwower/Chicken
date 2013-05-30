@@ -49,6 +49,7 @@ namespace Chicken.Common
         public const string USER_TIMELINE = "statuses/user_timeline.json";
         public const string USER_FAVOURITE = "favorites/list.json";
         public const string USER_FOLLOWING_IDS = "friends/ids.json";
+        public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
 
         #endregion

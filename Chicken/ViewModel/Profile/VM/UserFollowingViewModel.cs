@@ -8,24 +8,6 @@ namespace Chicken.ViewModel.Profile.VM
 {
     public class UserFollowingViewModel : ProfileViewModelBase
     {
-        #region properties
-        private string nextCursor = "-1";
-        private string previousCursor;
-        private ObservableCollection<UserProfileViewModel> userList;
-        public ObservableCollection<UserProfileViewModel> UserList
-        {
-            get
-            {
-                return userList;
-            }
-            set
-            {
-                userList = value;
-                RaisePropertyChanged("UserList");
-            }
-        }
-        #endregion
-
         public UserFollowingViewModel()
         {
             Header = "Following";
@@ -62,19 +44,6 @@ namespace Chicken.ViewModel.Profile.VM
                 }, parameters);
         }
 
-        private void RefreshUserProfiles(string userIds)
-        {
-            TweetService.GetUserProfiles<List<UserProfile>>(userIds,
-                userProfiles =>
-                {
-                    userProfiles.Reverse();
-                    foreach (var userProfile in userProfiles)
-                    {
-                        UserList.Insert(0, new UserProfileViewModel(userProfile));
-                    }
-                });
-        }
-
         private void LoadAction()
         {
             if (nextCursor == "0")
@@ -101,18 +70,6 @@ namespace Chicken.ViewModel.Profile.VM
                         LoadUserProfiles(ids);
                     }
                 }, parameters);
-        }
-
-        private void LoadUserProfiles(string userIds)
-        {
-            TweetService.GetUserProfiles<List<UserProfile>>(userIds,
-                userProfiles =>
-                {
-                    foreach (var userProfile in userProfiles)
-                    {
-                        UserList.Add(new UserProfileViewModel(userProfile));
-                    }
-                });
         }
     }
 }
