@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
@@ -43,39 +42,28 @@ namespace Chicken.ViewModel.Status.VM
         public StatusDetailViewModel()
         {
             Header = "Detail";
+            RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
+            ClickHandler = this.ClickAction;
+            ItemClickHandler = this.ItemClickAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             GetResult<Tweet>(StatusId,
                 tweet =>
                 {
                     TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
-                    base.Refreshed();
                 });
         }
 
-        public override void Load()
+        private void LoadAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             if (!string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
             {
                 var tweet = ConversationList[ConversationList.Count - 1];
                 LoadConversation(tweet.InReplyToTweetId);
-            }
-            else
-            {
-                base.Load();
             }
         }
 
@@ -83,17 +71,15 @@ namespace Chicken.ViewModel.Status.VM
         /// navigate to profile detail page
         /// </summary>
         /// <param name="parameter">user id</param>
-        public override void Click(object parameter)
+        private void ClickAction(object parameter)
         {
-            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, parameter);
             NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
         }
 
-        public override void ItemClick(object parameter)
+        private void ItemClickAction(object parameter)
         {
-            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
@@ -104,7 +90,6 @@ namespace Chicken.ViewModel.Status.VM
         {
             if (string.IsNullOrEmpty(statusId))
             {
-                base.Load();
                 return;
             }
             if (ConversationList == null)
@@ -115,7 +100,6 @@ namespace Chicken.ViewModel.Status.VM
                 tweet =>
                 {
                     ConversationList.Add(new TweetViewModel(tweet));
-                    base.Load();
                 });
         }
 

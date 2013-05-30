@@ -9,9 +9,12 @@ namespace Chicken.ViewModel
     public class ViewModelBase : NotificationObject
     {
         #region event handler
-        protected EventHandler RefreshHandler;
-        protected EventHandler LoadHandler;
-        protected EventHandler ClickHandler;
+        protected delegate void LoadEventHandler();
+        protected delegate void ClickEventHandler(object parameter);
+        protected LoadEventHandler RefreshHandler;
+        protected LoadEventHandler LoadHandler;
+        protected ClickEventHandler ClickHandler;
+        protected ClickEventHandler ItemClickHandler;
         #endregion
 
         #region properties
@@ -94,7 +97,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(Worker_ItemClick);
+                return new DelegateCommand(ItemClick);
             }
         }
 
@@ -107,9 +110,9 @@ namespace Chicken.ViewModel
             {
                 return;
             }
+            Thread.Sleep(1000);
             if (worker.IsBusy)
             {
-                Thread.Sleep(1000);
                 return;
             }
             else
@@ -127,9 +130,9 @@ namespace Chicken.ViewModel
             {
                 return;
             }
+            Thread.Sleep(1000);
             if (worker.IsBusy)
             {
-                Thread.Sleep(1000);
                 return;
             }
             else
@@ -141,7 +144,7 @@ namespace Chicken.ViewModel
             }
         }
 
-        private void Click(object parameter)
+        public virtual void Click(object parameter)
         {
             if (ClickHandler == null)
             {
@@ -152,10 +155,23 @@ namespace Chicken.ViewModel
                 worker.CancelAsync();
             }
             IsLoading = false;
-            ClickHandler(parameter, null);
+            ClickHandler(parameter);
+        }
+
+        public virtual void ItemClick(object parameter)
+        {
+            if (ItemClickHandler == null)
+            {
+                return;
+            }
+            if (worker.IsBusy)
+            {
+                worker.CancelAsync();
+            }
+            IsLoading = false;
+            ItemClickHandler(parameter);
         }
         #endregion
-
 
         #region private method
         #region refresh
@@ -170,7 +186,7 @@ namespace Chicken.ViewModel
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    RefreshHandler(sender, e);
+                    RefreshHandler();
                     Refreshed();
                 });
         }
@@ -193,7 +209,7 @@ namespace Chicken.ViewModel
             Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
-                    LoadHandler(sender, e);
+                    LoadHandler();
                     Loaded();
                 });
         }
@@ -203,87 +219,18 @@ namespace Chicken.ViewModel
             worker.DoWork -= DoLoad;
         }
         #endregion
-
-
         #endregion
 
-
-
-
-
-
-        #region click
-
-        #endregion
-
-        #region item click
-        private void Worker_ItemClick(object parameter)
-        {
-            if (worker.IsBusy)
-            {
-                worker.CancelAsync();
-            }
-            Thread.Sleep(1000);
-            IsLoading = false;
-            Dispatcher(ItemClick, parameter);
-        }
-        #endregion
-
-        #region dispatcher
-        private static void Dispatcher(Action action)
-        {
-            if (action == null)
-            {
-                return;
-            }
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    action();
-                });
-        }
-
-        private static void Dispatcher<T>(Action<T> action, T parameter)
-        {
-            if (action == null)
-            {
-                return;
-            }
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    action(parameter);
-                });
-        }
-        #endregion
-
-
-        #region virtual method
-        //public virtual void Refresh()
-        //{
-        //}
-
-        public virtual void Refreshed()
+        #region
+        private void Refreshed()
         {
             IsLoading = false;
             IsInited = true;
         }
 
-        //public virtual void Load()
-        //{
-        //}
-
-        public virtual void Loaded()
+        private void Loaded()
         {
             IsLoading = false;
-        }
-
-        //public virtual void Click(object parameter)
-        //{
-        //}
-
-        public virtual void ItemClick(object parameter)
-        {
         }
         #endregion
     }

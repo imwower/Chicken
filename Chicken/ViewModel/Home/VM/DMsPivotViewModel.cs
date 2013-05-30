@@ -26,15 +26,12 @@ namespace Chicken.ViewModel.Home.VM
         {
             Header = "Messages";
             DMList = new ObservableCollection<DirectMessageViewModel>();
+            RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (dmList.Count != 0)
@@ -60,24 +57,17 @@ namespace Chicken.ViewModel.Home.VM
                            }
                        }
                    }
-                   base.Refreshed();
                }, parameters);
         }
 
-        public override void Load()
+        private void LoadAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
             if (dmList.Count == 0)
             {
-                base.Load();
                 return;
             }
             else
             {
-                IsLoading = true;
                 string maxId = dmList[dmList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
@@ -91,7 +81,6 @@ namespace Chicken.ViewModel.Home.VM
                                 DMList.Add(new DirectMessageViewModel(message));
                             }
                         }
-                        base.Load();
                     }, parameters);
             }
         }

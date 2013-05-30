@@ -1,9 +1,9 @@
-﻿using System.Collections.ObjectModel;
-using Chicken.ViewModel.Home.Base;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Chicken.Common;
-using System.Collections.Generic;
 using Chicken.Model;
 using Chicken.Service;
+using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -29,15 +29,13 @@ namespace Chicken.ViewModel.Profile.VM
         {
             Header = "Favourites";
             TweetList = new ObservableCollection<TweetViewModel>();
+            RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
+            ItemClickHandler = this.ItemClickAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -63,24 +61,17 @@ namespace Chicken.ViewModel.Profile.VM
                             }
                         }
                     }
-                    base.Refreshed();
                 }, parameters);
         }
 
-        public override void Load()
+        private void LoadAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
             if (TweetList.Count == 0)
             {
-                base.Load();
                 return;
             }
             else
             {
-                IsLoading = true;
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
@@ -94,14 +85,12 @@ namespace Chicken.ViewModel.Profile.VM
                                 TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
-                        base.Load();
                     }, parameters);
             }
         }
 
-        public override void ItemClick(object parameter)
+        private void ItemClickAction(object parameter)
         {
-            IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);

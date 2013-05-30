@@ -39,7 +39,7 @@ namespace Chicken.ViewModel.Home
         /// navigate to profile detail page
         /// </summary>
         /// <param name="parameter">user id</param>
-        private void ClickAction(object parameter, EventArgs e)
+        private void ClickAction(object parameter)
         {
             IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();

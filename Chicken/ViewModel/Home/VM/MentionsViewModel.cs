@@ -3,7 +3,6 @@ using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
-using System;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -13,16 +12,12 @@ namespace Chicken.ViewModel.Home.VM
         {
             Header = "Mentions";
             TweetList = new ObservableCollection<TweetViewModel>();
-            LoadHandler = LoadAction;
+            RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -48,20 +43,17 @@ namespace Chicken.ViewModel.Home.VM
                             }
                         }
                     }
-                    base.Refreshed();
                 }, parameters);
         }
 
-        private void LoadAction(object sender, EventArgs e)
+        private void LoadAction()
         {
             if (TweetList.Count == 0)
             {
-                base.Loaded();
                 return;
             }
             else
             {
-                IsLoading = true;
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);

@@ -1,9 +1,8 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Profile.Base;
-using System.Collections.Generic;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -31,15 +30,12 @@ namespace Chicken.ViewModel.Profile.VM
         {
             Header = "Following";
             UserList = new ObservableCollection<UserProfileViewModel>();
+            RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(previousCursor) && previousCursor != "0")
             {
@@ -50,7 +46,6 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null)
                     {
-                        base.Refreshed();
                         return;
                     }
                     else
@@ -73,17 +68,11 @@ namespace Chicken.ViewModel.Profile.VM
                     {
                         UserList.Insert(0, new UserProfileViewModel(userProfile));
                     }
-                    base.Refreshed();
                 });
         }
 
-        public override void Load()
+        private void LoadAction()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(nextCursor) && nextCursor != "0")
             {
@@ -94,7 +83,6 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null)
                     {
-                        base.Load();
                         return;
                     }
                     else
@@ -105,7 +93,6 @@ namespace Chicken.ViewModel.Profile.VM
                         LoadUserProfiles(ids);
                     }
                 }, parameters);
-            base.Load();
         }
 
         private void LoadUserProfiles(string userIds)
@@ -117,7 +104,6 @@ namespace Chicken.ViewModel.Profile.VM
                     {
                         UserList.Add(new UserProfileViewModel(userProfile));
                     }
-                    base.Refreshed();
                 });
         }
     }
