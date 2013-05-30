@@ -46,7 +46,7 @@ namespace Chicken.ViewModel.Home.VM
                             }
                         }
                     }
-                    base.Refresh();
+                    base.Refreshed();
                 }, parameters);
         }
 

@@ -1,9 +1,8 @@
-﻿using System.Collections.ObjectModel;
-using Chicken.Service;
-using Chicken.ViewModel.Home.Base;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
-using System.Collections.Generic;
+using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -61,7 +60,7 @@ namespace Chicken.ViewModel.Home.VM
                            }
                        }
                    }
-                   base.Refresh();
+                   base.Refreshed();
                }, parameters);
         }
 

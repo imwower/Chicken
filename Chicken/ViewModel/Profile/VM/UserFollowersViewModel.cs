@@ -13,13 +13,13 @@ namespace Chicken.ViewModel.Profile.VM
 
         public override void Refresh()
         {
-            //base.Refresh();
+            //base.Refreshed();
             //TweetService.GetFollowersLists<FriendList>(
             //    result =>
             //    {
             //        FriendList.Refresh(result);
             //    });
-            //base.Refresh();
+            //base.Refreshed();
         }
     }
 }

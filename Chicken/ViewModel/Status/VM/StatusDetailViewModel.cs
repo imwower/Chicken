@@ -57,7 +57,7 @@ namespace Chicken.ViewModel.Status.VM
                 {
                     TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
-                    base.Refresh();
+                    base.Refreshed();
                 });
         }
 

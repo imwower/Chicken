@@ -16,11 +16,6 @@ namespace Chicken.ViewModel.Home.VM
 
         public override void Refresh()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            IsLoading = true;
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -34,19 +29,23 @@ namespace Chicken.ViewModel.Home.VM
                     if (tweets != null && tweets.Count != 0)
                     {
                         tweets.Reverse();
+#if HTTP
                         if (string.Compare(sinceId, tweets[0].Id) == -1)
                         {
                             TweetList.Clear();
-                        }
+                        } 
+#endif
                         foreach (var tweet in tweets)
                         {
-                            if (sinceId != tweet.Id)
+#if HTTP
+                            if (sinceId != tweet.Id) 
+#endif
                             {
                                 TweetList.Insert(0, new TweetViewModel(tweet));
                             }
                         }
                     }
-                    base.Refresh();
+                    base.Refreshed();
                 }, parameters);
         }
 

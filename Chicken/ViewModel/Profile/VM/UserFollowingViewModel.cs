@@ -50,7 +50,7 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null)
                     {
-                        base.Refresh();
+                        base.Refreshed();
                         return;
                     }
                     else
@@ -73,7 +73,7 @@ namespace Chicken.ViewModel.Profile.VM
                     {
                         UserList.Insert(0, new UserProfileViewModel(userProfile));
                     }
-                    base.Refresh();
+                    base.Refreshed();
                 });
         }
 
@@ -117,7 +117,7 @@ namespace Chicken.ViewModel.Profile.VM
                     {
                         UserList.Add(new UserProfileViewModel(userProfile));
                     }
-                    base.Refresh();
+                    base.Refreshed();
                 });
         }
     }
