@@ -8,6 +8,12 @@ namespace Chicken.ViewModel
 {
     public class ViewModelBase : NotificationObject
     {
+        #region event handler
+        protected EventHandler RefreshHandler;
+        protected EventHandler LoadHandler;
+        protected EventHandler ClickHandler;
+        #endregion
+
         #region properties
         private string header;
         public string Header
@@ -51,12 +57,11 @@ namespace Chicken.ViewModel
         #endregion
 
         #region private
-        BackgroundWorker worker;
+        BackgroundWorker worker = new BackgroundWorker();
         #endregion
 
         public ViewModelBase()
         {
-            worker = new BackgroundWorker();
             worker.WorkerSupportsCancellation = true;
         }
 
@@ -65,7 +70,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(Worker_Refresh);
+                return new DelegateCommand(Refresh);
             }
         }
 
@@ -73,7 +78,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(Worker_Load);
+                return new DelegateCommand(Load);
             }
         }
 
@@ -81,7 +86,7 @@ namespace Chicken.ViewModel
         {
             get
             {
-                return new DelegateCommand(Worker_Click);
+                return new DelegateCommand(Click);
             }
         }
 
@@ -95,10 +100,13 @@ namespace Chicken.ViewModel
 
         #endregion
 
-        #region worker
-        #region refresh
-        private void Worker_Refresh(object parameter)
+        #region public method
+        public virtual void Refresh()
         {
+            if (RefreshHandler == null)
+            {
+                return;
+            }
             if (worker.IsBusy)
             {
                 Thread.Sleep(1000);
@@ -106,33 +114,19 @@ namespace Chicken.ViewModel
             }
             else
             {
+                IsLoading = true;
                 worker.DoWork += DoRefresh;
                 worker.RunWorkerCompleted += RefreshCompleted;
-                worker.RunWorkerAsync(parameter);
-                IsLoading = true;
+                worker.RunWorkerAsync();
             }
         }
 
-        private void DoRefresh(object sender, DoWorkEventArgs e)
+        public virtual void Load()
         {
-            Thread.Sleep(2000);
-            if (worker.CancellationPending)
+            if (LoadHandler == null)
             {
-                e.Cancel = true;
                 return;
             }
-            Dispatcher(Refresh);
-        }
-
-        private void RefreshCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            worker.DoWork -= DoRefresh;
-        }
-        #endregion
-
-        #region load
-        private void Worker_Load(object parameter)
-        {
             if (worker.IsBusy)
             {
                 Thread.Sleep(1000);
@@ -142,11 +136,52 @@ namespace Chicken.ViewModel
             {
                 worker.DoWork += DoLoad;
                 worker.RunWorkerCompleted += LoadCompleted;
-                worker.RunWorkerAsync(parameter);
+                worker.RunWorkerAsync();
                 IsLoading = true;
             }
         }
 
+        private void Click(object parameter)
+        {
+            if (ClickHandler == null)
+            {
+                return;
+            }
+            if (worker.IsBusy)
+            {
+                worker.CancelAsync();
+            }
+            IsLoading = false;
+            ClickHandler(parameter, null);
+        }
+        #endregion
+
+
+        #region private method
+        #region refresh
+        private void DoRefresh(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(2000);
+            if (worker.CancellationPending)
+            {
+                e.Cancel = true;
+                return;
+            }
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
+                {
+                    RefreshHandler(sender, e);
+                    Refreshed();
+                });
+        }
+
+        private void RefreshCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            worker.DoWork -= DoRefresh;
+        }
+        #endregion
+
+        #region load
         private void DoLoad(object sender, DoWorkEventArgs e)
         {
             Thread.Sleep(2000);
@@ -155,7 +190,12 @@ namespace Chicken.ViewModel
                 e.Cancel = true;
                 return;
             }
-            Dispatcher(Load);
+            Deployment.Current.Dispatcher.BeginInvoke(
+                () =>
+                {
+                    LoadHandler(sender, e);
+                    Loaded();
+                });
         }
 
         private void LoadCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -164,17 +204,16 @@ namespace Chicken.ViewModel
         }
         #endregion
 
+
+        #endregion
+
+
+
+
+
+
         #region click
-        private void Worker_Click(object parameter)
-        {
-            if (worker.IsBusy)
-            {
-                worker.CancelAsync();
-            }
-            Thread.Sleep(1000);
-            IsLoading = false;
-            Dispatcher(Click, parameter);
-        }
+
         #endregion
 
         #region item click
@@ -217,12 +256,12 @@ namespace Chicken.ViewModel
                 });
         }
         #endregion
-        #endregion
+
 
         #region virtual method
-        public virtual void Refresh()
-        {
-        }
+        //public virtual void Refresh()
+        //{
+        //}
 
         public virtual void Refreshed()
         {
@@ -230,18 +269,18 @@ namespace Chicken.ViewModel
             IsInited = true;
         }
 
-        public virtual void Load()
-        {
-        }
+        //public virtual void Load()
+        //{
+        //}
 
         public virtual void Loaded()
         {
             IsLoading = false;
         }
 
-        public virtual void Click(object parameter)
-        {
-        }
+        //public virtual void Click(object parameter)
+        //{
+        //}
 
         public virtual void ItemClick(object parameter)
         {

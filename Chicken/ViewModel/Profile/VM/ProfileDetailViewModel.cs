@@ -1,5 +1,6 @@
 ﻿using Chicken.Model;
 using Chicken.ViewModel.Profile.Base;
+using System;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -24,9 +25,10 @@ namespace Chicken.ViewModel.Profile.VM
         public ProfileDetailViewModel()
         {
             Header = "Profile";
+            RefreshHandler = RefreshAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction(object sender, EventArgs e)
         {
             TweetService.GetUserProfileDetail<UserProfile>(UserId,
                 obj =>

@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
+using System;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -12,6 +13,7 @@ namespace Chicken.ViewModel.Home.VM
         {
             Header = "Mentions";
             TweetList = new ObservableCollection<TweetViewModel>();
+            LoadHandler = LoadAction;
         }
 
         public override void Refresh()
@@ -50,15 +52,11 @@ namespace Chicken.ViewModel.Home.VM
                 }, parameters);
         }
 
-        public override void Load()
+        private void LoadAction(object sender, EventArgs e)
         {
-            if (IsLoading)
-            {
-                return;
-            }
             if (TweetList.Count == 0)
             {
-                base.Load();
+                base.Loaded();
                 return;
             }
             else
@@ -77,7 +75,6 @@ namespace Chicken.ViewModel.Home.VM
                                 TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
-                        base.Load();
                     }, parameters);
             }
         }

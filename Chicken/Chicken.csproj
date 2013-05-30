@@ -123,6 +123,7 @@
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusFavourite.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelWorker.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>

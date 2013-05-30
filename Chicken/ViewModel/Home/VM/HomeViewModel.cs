@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
+using System;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -12,9 +13,10 @@ namespace Chicken.ViewModel.Home.VM
         {
             Header = "Home";
             TweetList = new ObservableCollection<TweetViewModel>();
+            RefreshHandler = RefreshAction;
         }
 
-        public override void Refresh()
+        private void RefreshAction(object sender, EventArgs e)
         {
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
@@ -45,7 +47,7 @@ namespace Chicken.ViewModel.Home.VM
                             }
                         }
                     }
-                    base.Refreshed();
+                    //base.Refreshed();
                 }, parameters);
         }
 

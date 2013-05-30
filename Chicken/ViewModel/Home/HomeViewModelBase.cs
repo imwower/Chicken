@@ -4,6 +4,7 @@ using Chicken.Common;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
+using System;
 
 namespace Chicken.ViewModel.Home
 {
@@ -29,13 +30,16 @@ namespace Chicken.ViewModel.Home
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
-        public HomeViewModelBase() { }
+        public HomeViewModelBase()
+        {
+            ClickHandler = ClickAction;
+        }
 
         /// <summary>
         /// navigate to profile detail page
         /// </summary>
         /// <param name="parameter">user id</param>
-        public override void Click(object parameter)
+        private void ClickAction(object parameter, EventArgs e)
         {
             IsLoading = false;
             var parameters = TwitterHelper.GetDictionary();
