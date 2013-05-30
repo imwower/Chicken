@@ -45,7 +45,10 @@
         </Style>
 
         <SolidColorBrush x:Key="RetweetCountTextColorBrush">
-            <Color>#009999</Color>
+            <!--twitter-->
+            <!--<Color>#009999</Color>-->
+            <!--wp-->
+            <Color>#0A9DCD</Color>
         </SolidColorBrush>
 
         <!--Content default is Medium-->

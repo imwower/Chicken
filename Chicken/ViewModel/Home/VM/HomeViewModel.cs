@@ -31,7 +31,7 @@ namespace Chicken.ViewModel.Home.VM
                     if (tweets != null && tweets.Count != 0)
                     {
                         tweets.Reverse();
-#if HTTP
+#if !DEBUG
                         if (string.Compare(sinceId, tweets[0].Id) == -1)
                         {
                             TweetList.Clear();
@@ -39,7 +39,7 @@ namespace Chicken.ViewModel.Home.VM
 #endif
                         foreach (var tweet in tweets)
                         {
-#if HTTP
+#if !DEBUG
                             if (sinceId != tweet.Id)
 #endif
                             {

@@ -36,8 +36,12 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void RefreshAction()
         {
+            if (previousCursor == "0")
+            {
+                return;
+            }
             var parameters = TwitterHelper.GetDictionary();
-            if (!string.IsNullOrEmpty(previousCursor) && previousCursor != "0")
+            if (!string.IsNullOrEmpty(previousCursor))
             {
                 parameters.Add(Const.CURSOR, previousCursor);
             }
@@ -73,8 +77,12 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void LoadAction()
         {
+            if (nextCursor == "0")
+            {
+                return;
+            }
             var parameters = TwitterHelper.GetDictionary();
-            if (!string.IsNullOrEmpty(nextCursor) && nextCursor != "0")
+            if (!string.IsNullOrEmpty(nextCursor))
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
