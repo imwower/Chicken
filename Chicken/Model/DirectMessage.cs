@@ -2,7 +2,7 @@
 
 namespace Chicken.Model
 {
-    public class DirectMessage
+    public class DirectMessage : ModelBase
     {
         [JsonProperty("id_str")]
         public string Id { get; set; }
@@ -14,4 +14,7 @@ namespace Chicken.Model
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
     }
+
+    public class DirectMessageList<T> : ModelBaseList<T> where T : DirectMessage
+    { }
 }

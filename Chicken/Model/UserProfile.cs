@@ -23,6 +23,9 @@ namespace Chicken.Model
         public string FollowersCount { get; set; }
 
         [JsonProperty("favourites_count")]
-        public string FavouritesCount { get; set; }
+        public string FavoritesCount { get; set; }
     }
+
+    public class UserProfileList<T> : ModelBaseList<T> where T : UserProfile
+    { }
 }

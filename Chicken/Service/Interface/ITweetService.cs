@@ -42,11 +42,13 @@ namespace Chicken.Service.Interface
 
         void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null);
 
-        void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region status page
         void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
+
+        void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         #endregion
 

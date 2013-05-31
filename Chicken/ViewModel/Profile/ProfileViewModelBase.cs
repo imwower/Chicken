@@ -1,11 +1,12 @@
-﻿using Chicken.Service;
-using Chicken.Service.Interface;
-using Chicken.ViewModel.Profile.Base;
-using System.Collections.Generic;
-using Chicken.Common;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
+using Chicken.Common;
 using Chicken.Model;
+using Chicken.Service;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile
 {
@@ -26,7 +27,7 @@ namespace Chicken.ViewModel.Profile
             }
         }
 
-        #region for tweets and favourites pivot
+        #region for tweets and favorites pivot
         private ObservableCollection<TweetViewModel> tweetList;
         public ObservableCollection<TweetViewModel> TweetList
         {
@@ -83,7 +84,7 @@ namespace Chicken.ViewModel.Profile
         #region for following and followers pivot
         protected void RefreshUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<List<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
                 userProfiles =>
                 {
                     userProfiles.Reverse();
@@ -96,7 +97,7 @@ namespace Chicken.ViewModel.Profile
 
         protected void LoadUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<List<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
                 userProfiles =>
                 {
                     foreach (var userProfile in userProfiles)

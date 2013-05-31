@@ -123,7 +123,7 @@
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusFavourite.cs" />
-    <Compile Include="ViewModel\Status\VM\StatusRetweetViewModel.cs" />
+    <Compile Include="ViewModel\Status\VM\StatusRetweetsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelWorker.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
@@ -137,7 +137,7 @@
     <Content Include="Images\dark\conversation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\dark\favourite.png">
+    <Content Include="Images\dark\favorite.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\dark\location.png">

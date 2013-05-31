@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace Chicken.ViewModel.Status.VM
 {
-    public class StatusFavourite
+    public class StatusFavorite
     {
 
     }

@@ -113,11 +113,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public bool Favourited
+        public bool Favorited
         {
             get
             {
-                return tweet.Favourited;
+                return tweet.Favorited;
             }
         }
 
@@ -129,11 +129,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public string FavouriteCount
+        public string FavoriteCount
         {
             get
             {
-                return tweet.FavouriteCount;
+                return tweet.FavoriteCount;
             }
         }
 
@@ -178,14 +178,14 @@ namespace Chicken.ViewModel.Home.Base
         }
 
         /// <summary>
-        ///show retweet count, favourite count and location panel
+        ///show retweet count, favorite count and location panel
         /// </summary>
         public bool NeedShowRetweetIcons
         {
             get
             {
                 return RetweetCount != "0" ||
-                    FavouriteCount != "0" ||
+                    FavoriteCount != "0" ||
                     coordinatesViewModel != null;
             }
         }

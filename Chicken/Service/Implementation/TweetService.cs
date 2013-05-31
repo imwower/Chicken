@@ -247,11 +247,11 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             parameters.Add(Const.USER_ID, userId);
-            string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVOURITE, parameters);
+            string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVORITE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
@@ -262,6 +262,14 @@ namespace Chicken.Service.Implementation
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.ID, statusId);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_SHOW, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.ID, statusId);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_RETWEET_IDS, parameters);
             HandleWebRequest<T>(url, callBack);
         }
         #endregion

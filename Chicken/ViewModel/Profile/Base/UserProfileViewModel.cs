@@ -62,11 +62,11 @@ namespace Chicken.ViewModel.Profile.Base
             }
         }
 
-        public string FavouritesCount
+        public string FavoritesCount
         {
             get
             {
-                return UserProfile.FavouritesCount;
+                return UserProfile.FavoritesCount;
             }
         }
 

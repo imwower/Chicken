@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
@@ -25,19 +25,19 @@ namespace Chicken.ViewModel.Home.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetTweets<List<Tweet>>(
-                tweets =>
+            TweetService.GetTweets<TweetList<Tweet>>(
+                tweetList =>
                 {
-                    if (tweets != null && tweets.Count != 0)
+                    if (tweetList != null && tweetList.Count != 0)
                     {
-                        tweets.Reverse();
+                        tweetList.Reverse();
 #if !DEBUG
-                        if (string.Compare(sinceId, tweets[0].Id) == -1)
+                        if (string.Compare(sinceId, tweetList[0].Id) == -1)
                         {
                             TweetList.Clear();
                         }
 #endif
-                        foreach (var tweet in tweets)
+                        foreach (var tweet in tweetList)
                         {
 #if !DEBUG
                             if (sinceId != tweet.Id)
@@ -61,14 +61,19 @@ namespace Chicken.ViewModel.Home.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetTweets<List<Tweet>>(
-                    tweets =>
+                TweetService.GetTweets<TweetList<Tweet>>(
+                    tweetList =>
                     {
-                        foreach (var tweet in tweets)
+                        if (tweetList != null && tweetList.Count != 0)
                         {
-                            if (maxId != tweet.Id)
+                            foreach (var tweet in tweetList)
                             {
-                                TweetList.Add(new TweetViewModel(tweet));
+#if !DEBUG
+                                if (maxId != tweet.Id) 
+#endif
+                                {
+                                    TweetList.Add(new TweetViewModel(tweet));
+                                }
                             }
                         }
                     }, parameters);

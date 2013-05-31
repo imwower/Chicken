@@ -22,13 +22,13 @@ namespace Chicken.Model
         public string RetweetCount { get; set; }
 
         [JsonProperty("favorite_count")]
-        public string FavouriteCount { get; set; }
+        public string FavoriteCount { get; set; }
 
         [JsonProperty("entities")]
         public Entities Entities { get; set; }
 
         [JsonProperty("favorited")]
-        public bool Favourited { get; set; }
+        public bool Favorited { get; set; }
 
         [JsonProperty("retweeted")]
         public bool Retweeted { get; set; }

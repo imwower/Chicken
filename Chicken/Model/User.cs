@@ -2,7 +2,7 @@
 
 namespace Chicken.Model
 {
-    public class User
+    public class User : ModelBase
     {
         [JsonProperty("id_str")]
         public string Id { get; set; }

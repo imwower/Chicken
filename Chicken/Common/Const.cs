@@ -40,18 +40,17 @@ namespace Chicken.Common
         public const string DIRECT_MESSAGES = "direct_messages.json";
         #endregion
 
-        #region status page
-        public const string STATUSES_SHOW = "statuses/show.json";
-        #endregion
-
         #region profile page
         public const string USERS_SHOW = "users/show.json";
         public const string USER_TIMELINE = "statuses/user_timeline.json";
-        public const string USER_FAVOURITE = "favorites/list.json";
+        public const string USER_FAVORITE = "favorites/list.json";
         public const string USER_FOLLOWING_IDS = "friends/ids.json";
         public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
-
+        #endregion
+        #region status page
+        public const string STATUSES_SHOW = "statuses/show.json";
+        public const string STATUSES_RETWEET_IDS = "statuses/retweeters/ids.json";
         #endregion
         #endregion
 
@@ -74,7 +73,7 @@ namespace Chicken.Common
             ProfileDetail = 0,
             Following = 1,
             Followers = 2,
-            Favourites = 3,
+            Favorites = 3,
         }
         #endregion
     }

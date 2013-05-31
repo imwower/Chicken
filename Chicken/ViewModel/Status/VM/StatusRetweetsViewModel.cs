@@ -3,16 +3,16 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Profile.Base;
 
-namespace Chicken.ViewModel.Profile.VM
+namespace Chicken.ViewModel.Status.VM
 {
-    public class UserFollowersViewModel : ProfileViewModelBase
+    public class StatusRetweetsViewModel : StatusViewModelBase
     {
-        public UserFollowersViewModel()
+        public StatusRetweetsViewModel()
         {
-            Header = "Followers";
+            Header = "Retweets";
             UserList = new ObservableCollection<UserProfileViewModel>();
             RefreshHandler = this.RefreshAction;
-            LoadHandler = this.LoadAction;
+            LoadHandler = LoadAction;
         }
 
         private void RefreshAction()
@@ -26,7 +26,7 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 parameters.Add(Const.CURSOR, previousCursor);
             }
-            TweetService.GetFollowerIds<UserIdList>(UserId,
+            TweetService.GetStatusRetweetIds<UserIdList>(StatusId,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null)
@@ -54,7 +54,7 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
-            TweetService.GetFollowerIds<UserIdList>(UserId,
+            TweetService.GetStatusRetweetIds<UserIdList>(StatusId,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null)

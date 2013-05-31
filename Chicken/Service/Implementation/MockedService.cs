@@ -148,8 +148,8 @@ namespace Chicken.Service.Implementation
 
         public void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            //string url = "SampleData/followingIds.json";
-            string url = "SampleData/errors.json";
+            string url = "SampleData/followingIds.json";
+            //string url = "SampleData/errors.json";
             HandleWebRequest(url, callBack);
         }
 
@@ -159,7 +159,7 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserFavourites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_favourites.json";
             HandleWebRequest<T>(url, callBack);
@@ -172,7 +172,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/tweet.json";
             HandleWebRequest<T>(url, callBack);
         }
-        #endregion
+        public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/followingIds.json";
+            HandleWebRequest(url, callBack);
+        }
 
+        #endregion
     }
 }

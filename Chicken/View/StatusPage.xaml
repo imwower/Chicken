@@ -130,11 +130,11 @@
                                                                     <ImageBrush ImageSource="/Images/dark/retweet.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
-                                                            <!--favourite by me-->
+                                                            <!--favorite by me-->
                                                             <Rectangle
-                                                                Visibility="{Binding TweetViewModel.Favourited,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                Visibility="{Binding TweetViewModel.Favorited,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>
-                                                                    <ImageBrush ImageSource="/Images/dark/favourite.png" />
+                                                                    <ImageBrush ImageSource="/Images/dark/favorite.png" />
                                                                 </Rectangle.OpacityMask>
                                                             </Rectangle>
                                                         </StackPanel>
@@ -155,7 +155,7 @@
                                                  Content="{Binding Path=TweetViewModel.Source}"
                                                  NavigateUri="{Binding Path=TweetViewModel.SourceUrl}" TargetName="_blank"
                                                  Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
-                                <!--retweet count, favourite count, location-->
+                                <!--retweet count, favorite count, location-->
                                 <Border Grid.Row="3"
                                         Style="{StaticResource RetweetCountBorder}" BorderThickness="0,1,0,0"
                                         Visibility="{Binding TweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -173,7 +173,7 @@
                                             <TextBlock>
                                             <Run Text="{Binding TweetViewModel.RetweetCount}" />
                                             <LineBreak />
-                                            <Run Text="RETWEET" />
+                                            <Run Text="RETWEETS" />
                                             </TextBlock>
                                         </Border>
                                         <Border
@@ -182,11 +182,11 @@
                                                    Stretch="Fill" Style="{StaticResource ProfileImageIcon}" />
                                         </Border>
                                         <Border
-                                            Visibility="{Binding TweetViewModel.FavouriteCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                            Visibility="{Binding TweetViewModel.FavoriteCount,Converter={StaticResource StringToVisibilityConverter}}">
                                             <TextBlock>
-                                            <Run Text="{Binding TweetViewModel.FavouriteCount}" />
+                                            <Run Text="{Binding TweetViewModel.FavoriteCount}" />
                                             <LineBreak />
-                                            <Run Text="FAVOURITE" />
+                                            <Run Text="FAVORITES" />
                                             </TextBlock>
                                         </Border>
                                         <Border
@@ -248,11 +248,13 @@
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </ctrls:HomePivotItem>
+            <!--retweeters-->
             <controls:PivotItem
-                Header="Retweet">
+                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding Path=Header}">
             </controls:PivotItem>
             <controls:PivotItem
-                Header="Favourite">
+                Header="Favorites">
             </controls:PivotItem>
         </controls:Pivot>
     </Grid>
