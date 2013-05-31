@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
-using System.Linq;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -45,20 +43,19 @@ namespace Chicken.ViewModel.Home.VM
                {
                    if (messages != null && messages.Count != 0)
                    {
-                       messages.Reverse();
 #if !DEBUG
                        if (string.Compare(sinceId, messages[0].Id) == -1)
                        {
                            DMList.Clear();
-                       } 
+                       }
 #endif
-                       foreach (var message in messages)
+                       for (int i = messages.Count - 1; i >= 0; i--)
                        {
 #if !DEBUG
-                           if (sinceId != message.Id) 
+                           if (sinceId != messages[i].Id)
 #endif
                            {
-                               DMList.Insert(0, new DirectMessageViewModel(message));
+                               DMList.Insert(0, new DirectMessageViewModel(messages[i]));
                            }
                        }
                    }
@@ -82,7 +79,7 @@ namespace Chicken.ViewModel.Home.VM
                         foreach (var message in messages)
                         {
 #if !DEBUG
-                            if (maxId != message.Id) 
+                            if (maxId != message.Id)
 #endif
                             {
                                 DMList.Add(new DirectMessageViewModel(message));

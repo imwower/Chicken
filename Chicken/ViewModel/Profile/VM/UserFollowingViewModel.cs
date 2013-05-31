@@ -30,7 +30,7 @@ namespace Chicken.ViewModel.Profile.VM
             TweetService.GetFollowingIds<UserIdList>(UserId,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null)
+                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
                     {
                         return;
                     }
@@ -58,7 +58,7 @@ namespace Chicken.ViewModel.Profile.VM
             TweetService.GetFollowingIds<UserIdList>(UserId,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null)
+                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
                     {
                         return;
                     }

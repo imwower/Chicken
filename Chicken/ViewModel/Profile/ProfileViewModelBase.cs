@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -87,10 +86,9 @@ namespace Chicken.ViewModel.Profile
             TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
                 userProfiles =>
                 {
-                    userProfiles.Reverse();
-                    foreach (var userProfile in userProfiles)
+                    for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfile));
+                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                 });
         }

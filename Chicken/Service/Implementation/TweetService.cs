@@ -269,6 +269,7 @@ namespace Chicken.Service.Implementation
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.ID, statusId);
+            parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_RETWEET_IDS, parameters);
             HandleWebRequest<T>(url, callBack);
         }

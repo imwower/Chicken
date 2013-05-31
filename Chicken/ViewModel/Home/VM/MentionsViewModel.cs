@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
@@ -31,20 +30,19 @@ namespace Chicken.ViewModel.Home.VM
                 {
                     if (tweets != null && tweets.Count != 0)
                     {
-                        tweets.Reverse();
 #if !DEBUG
                         if (string.Compare(sinceId, tweets[0].Id) == -1)
                         {
                             TweetList.Clear();
                         }
 #endif
-                        foreach (var tweet in tweets)
+                        for (int i = tweets.Count - 1; i >= 0; i--)
                         {
 #if !DEBUG
-                            if (sinceId != tweet.Id) 
+                            if (sinceId != tweets[i].Id)
 #endif
                             {
-                                TweetList.Insert(0, new TweetViewModel(tweet));
+                                TweetList.Insert(0, new TweetViewModel(tweets[i]));
                             }
                         }
                     }
@@ -68,7 +66,7 @@ namespace Chicken.ViewModel.Home.VM
                         foreach (var tweet in tweets)
                         {
 #if !DEBUG
-                            if (maxId != tweet.Id) 
+                            if (maxId != tweet.Id)
 #endif
                             {
                                 TweetList.Add(new TweetViewModel(tweet));

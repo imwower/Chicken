@@ -248,11 +248,12 @@
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </ctrls:HomePivotItem>
-            <!--retweeters-->
-            <controls:PivotItem
+            <!--retweets-->
+            <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding Path=Header}">
-            </controls:PivotItem>
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=UserList}"
+                ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <controls:PivotItem
                 Header="Favorites">
             </controls:PivotItem>

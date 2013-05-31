@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Linq;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
@@ -52,10 +51,9 @@ namespace Chicken.ViewModel.Status
             TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
                 userProfiles =>
                 {
-                    userProfiles.Reverse();
-                    foreach (var userProfile in userProfiles)
+                    for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfile));
+                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                 });
         }
