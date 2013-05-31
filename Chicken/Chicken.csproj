@@ -89,12 +89,13 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\BulkList.cs" />
+    <Compile Include="Model\Cursor.cs" />
     <Compile Include="Model\DirectMessage.cs" />
     <Compile Include="Model\Entity\Coordinates.cs" />
     <Compile Include="Model\Entity\Entities.cs" />
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
+    <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\UserIdList.cs" />
     <Compile Include="Model\Retweet.cs" />
     <Compile Include="Model\Tweet.cs" />

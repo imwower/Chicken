@@ -2,7 +2,7 @@
 
 namespace Chicken.Model
 {
-    public class BulkList
+    public class Cursor : ModelBase
     {
         [JsonProperty("next_cursor_str")]
         public string NextCursor { get; set; }

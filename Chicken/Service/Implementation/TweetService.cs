@@ -14,7 +14,14 @@ namespace Chicken.Service.Implementation
     public class TweetService : ITweetService
     {
         #region properties
-        static JsonSerializer JsonSerializer = new JsonSerializer();
+        #region properties
+        private static JsonSerializerSettings jsonSettings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore
+        };
+        private static JsonSerializer jsonSerializer = JsonSerializer.Create(jsonSettings);
+        #endregion
         #endregion
 
         #region private method
@@ -30,41 +37,47 @@ namespace Chicken.Service.Implementation
                     response = requestResult.EndGetResponse(result);
                     T output = default(T);
                     var streamReader = new StreamReader(response.GetResponseStream());
+#if RELEASE
                     try
                     {
-                        using (var reader = new JsonTextReader(streamReader))
-                        {
-                            output = JsonSerializer.Deserialize<T>(reader);
-                        }
+#endif
+                    using (var reader = new JsonTextReader(streamReader))
+                    {
+                        output = jsonSerializer.Deserialize<T>(reader);
+                    }
+#if RELEASE
                     }
                     catch (Exception e)
                     {
                     }
                     finally
                     {
-                        if (callBack != null)
-                        {
-                            Deployment.Current.Dispatcher.BeginInvoke(
-                                () =>
-                                {
-                                    callBack(output);
-                                });
-                        }
-                        if (streamReader != null)
-                        {
-                            streamReader.Close();
-                            streamReader.Dispose();
-                            streamReader = null;
-                        }
-                        request = null;
-                        requestResult = null;
-                        if (response != null)
-                        {
-                            response.Close();
-                            response.Dispose();
-                            response = null;
-                        }
+#endif
+                    if (callBack != null)
+                    {
+                        Deployment.Current.Dispatcher.BeginInvoke(
+                            () =>
+                            {
+                                callBack(output);
+                            });
                     }
+                    if (streamReader != null)
+                    {
+                        streamReader.Close();
+                        streamReader.Dispose();
+                        streamReader = null;
+                    }
+                    request = null;
+                    requestResult = null;
+                    if (response != null)
+                    {
+                        response.Close();
+                        response.Dispose();
+                        response = null;
+                    }
+#if RELEASE
+                    }
+#endif
                 },
               request);
         }

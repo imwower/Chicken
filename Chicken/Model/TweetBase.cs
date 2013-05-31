@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace Chicken.Model
 {
-    public class TweetBase
+    public class TweetBase : ModelBase
     {
         public User User { get; set; }
 

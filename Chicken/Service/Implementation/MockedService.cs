@@ -13,6 +13,11 @@ namespace Chicken.Service.Implementation
     {
         #region properties
         private static JsonSerializer jsonSerializer = new JsonSerializer();
+        private static JsonSerializerSettings jsonSettings = new JsonSerializerSettings
+        {
+            NullValueHandling = NullValueHandling.Ignore,
+            DefaultValueHandling = DefaultValueHandling.Ignore
+        };
         #endregion
 
         #region private method
@@ -23,7 +28,7 @@ namespace Chicken.Service.Implementation
             using (var reader = new StreamReader(streamInfo.Stream))
             {
                 string s = reader.ReadToEnd();
-                result = JsonConvert.DeserializeObject<T>(s);
+                result = JsonConvert.DeserializeObject<T>(s, jsonSettings);
             }
             if (callBack != null)
             {
@@ -143,8 +148,9 @@ namespace Chicken.Service.Implementation
 
         public void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            string url = "SampleData/followingIds.json";
-            HandleWebRequest<T>(url, callBack);
+            //string url = "SampleData/followingIds.json";
+            string url = "SampleData/errors.json";
+            HandleWebRequest(url, callBack);
         }
 
         public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
