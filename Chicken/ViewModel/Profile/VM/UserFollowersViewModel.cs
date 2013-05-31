@@ -26,7 +26,7 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 parameters.Add(Const.CURSOR, previousCursor);
             }
-            TweetService.GetFollowingIds<UserIdList>(UserId,
+            TweetService.GetFollowerIds<UserIdList>(UserId,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null)
@@ -54,7 +54,7 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
-            TweetService.GetFollowingIds<UserIdList>(UserId,
+            TweetService.GetFollowerIds<UserIdList>(UserId,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null)
