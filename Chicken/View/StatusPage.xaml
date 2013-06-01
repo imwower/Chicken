@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:ctrls="clr-namespace:Chicken.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -257,20 +258,35 @@
             <controls:PivotItem
                 Header="Favorites">
             </controls:PivotItem>
+
+            <i:Interaction.Triggers>
+                <abu:SelectedPivotItemChangedTrigger>
+                    <!--mapping-->
+                    <abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                        <!--status detail-->
+                        <abu:SelectionMapping SourceIndex="0" TargetIndex="0" />
+                    </abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                    <!--items-->
+                    <abu:SwitchAppBarAction>
+                        <abu:AppBar Id="0" Mode="Minimized">
+                            <!--favorite-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
+                                      Command="{Binding Path=AddToFavoriteCommand}" />
+                            <!--retweet-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
+                                      Command="{Binding Path=RetweetCommand}" />
+                            <!--reply-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
+                                      Command="{Binding Path=ReplyCommand}" />
+                            <!--quote-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
+                                      Command="{Binding Path=QuoteCommand}" />
+                        </abu:AppBar>
+                        <!--retweet-->
+                        <!--favorite-->
+                    </abu:SwitchAppBarAction>
+                </abu:SelectedPivotItemChangedTrigger>
+            </i:Interaction.Triggers>
         </controls:Pivot>
     </Grid>
-
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.favorite.png" Text="favorite"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/dark/appbar.retweet.png" Text="retweet"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button3" IconUri="/Images/dark/appbar.reply.png" Text="reply"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button4" IconUri="/Images/dark/appbar.quote.png" Text="quote"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
-                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
 </phone:PhoneApplicationPage>

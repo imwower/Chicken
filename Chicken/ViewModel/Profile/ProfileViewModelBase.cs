@@ -65,7 +65,13 @@ namespace Chicken.ViewModel.Profile
         public ITweetService TweetService = TweetServiceManger.TweetService;
         #endregion
 
-        public override void Click(object parameter)
+        public ProfileViewModelBase()
+        {
+            ClickHandler = this.ClickAction;
+        }
+
+        #region private method
+        private void ClickAction(object parameter)
         {
             if (UserId == parameter.ToString())
             {
@@ -78,6 +84,7 @@ namespace Chicken.ViewModel.Profile
                 NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
             }
         }
+        #endregion
 
         #region protected methods
         #region for following and followers pivot

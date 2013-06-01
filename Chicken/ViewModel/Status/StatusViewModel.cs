@@ -32,6 +32,30 @@ namespace Chicken.ViewModel.Status
                 return new DelegateCommand(AddToFavorite);
             }
         }
+
+        public ICommand RetweetCommand
+        {
+            get
+            {
+                return new DelegateCommand(Retweet);
+            }
+        }
+
+        public ICommand ReplyCommand
+        {
+            get
+            {
+                return new DelegateCommand(Reply);
+            }
+        }
+
+        public ICommand QuoteCommand
+        {
+            get
+            {
+                return new DelegateCommand(Quote);
+            }
+        }
         #endregion
 
         public StatusViewModel()
@@ -57,9 +81,24 @@ namespace Chicken.ViewModel.Status
             (PivotItems[SelectedIndex] as StatusViewModelBase).StatusId = StatusId;
         }
 
-        public virtual void AddToFavorite(object parameter)
+        private void AddToFavorite(object parameter)
         {
             (PivotItems[SelectedIndex] as StatusViewModelBase).AddFavorite(parameter);
+        }
+
+        private void Retweet(object parameter)
+        {
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Retweet(parameter);
+        }
+
+        private void Reply(object parameter)
+        {
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Reply(parameter);
+        }
+
+        private void Quote(object parameter)
+        {
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Quote(parameter);
         }
     }
 }

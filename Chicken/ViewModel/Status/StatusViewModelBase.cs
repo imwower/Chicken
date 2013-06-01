@@ -9,8 +9,10 @@ namespace Chicken.ViewModel.Status
     public class StatusViewModelBase : PivotItemViewModelBase
     {
         #region event handler
-        protected delegate void AddFavoriteEventHandler(object parameter);
-        protected AddFavoriteEventHandler AddFavoriteHandler;
+        protected ClickEventHandler AddFavoriteHandler;
+        protected ClickEventHandler RetweetHandler;
+        protected ClickEventHandler ReplyHandler;
+        protected ClickEventHandler QuoteHandler;
         #endregion
 
         #region properties
@@ -57,6 +59,33 @@ namespace Chicken.ViewModel.Status
                 return;
             }
             AddFavoriteHandler(parameter);
+        }
+
+        public virtual void Retweet(object parameter)
+        {
+            if (RetweetHandler == null)
+            {
+                return;
+            }
+            RetweetHandler(parameter);
+        }
+
+        public virtual void Reply(object parameter)
+        {
+            if (ReplyHandler == null)
+            {
+                return;
+            }
+            ReplyHandler(parameter);
+        }
+
+        public virtual void Quote(object parameter)
+        {
+            if (QuoteHandler == null)
+            {
+                return;
+            }
+            QuoteHandler(parameter);
         }
         #endregion
 

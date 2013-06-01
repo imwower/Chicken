@@ -47,6 +47,8 @@ namespace Chicken.ViewModel.Status.VM
             ClickHandler = this.ClickAction;
             ItemClickHandler = this.ItemClickAction;
             AddFavoriteHandler = this.AddFavoriteAction;
+            RetweetHandler = this.RetweetAction;
+            ReplyHandler = this.ReplyAction;
         }
 
         private void RefreshAction()
@@ -87,6 +89,16 @@ namespace Chicken.ViewModel.Status.VM
         }
 
         private void AddFavoriteAction(object parameter)
+        {
+            //TODO
+        }
+
+        private void RetweetAction(object parameter)
+        {
+            //TODO
+        }
+
+        private void ReplyAction(object parameter)
         {
             //TODO
         }

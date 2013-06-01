@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Chicken.Common;
-using Chicken.Service;
-using Chicken.Service.Interface;
+using System.Windows.Input;
 using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModel : PivotViewModelBase
     {
-        #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
-        #endregion
-
         #region properties
         private string userId;
         public string UserId
@@ -25,6 +19,24 @@ namespace Chicken.ViewModel.Profile
             {
                 userId = value;
                 RaisePropertyChanged("UserId");
+            }
+        }
+        #endregion
+
+        #region binding
+        public ICommand MentionCommand
+        {
+            get
+            {
+                return new DelegateCommand(Mention);
+            }
+        }
+
+        public ICommand MessageCommand
+        {
+            get
+            {
+                return new DelegateCommand(NewMessageAction);
             }
         }
         #endregion
@@ -48,13 +60,20 @@ namespace Chicken.ViewModel.Profile
             UserId = userId;
         }
 
-        public void MainPivot_LoadedPivotItem(int selectedIndex)
+        public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            if (!PivotItems[selectedIndex].IsInited)
-            {
-                (PivotItems[selectedIndex] as ProfileViewModelBase).UserId = userId;
-                PivotItems[selectedIndex].Refresh();
-            }
+            base.MainPivot_LoadedPivotItem(selectedIndex);
+            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserId = userId;
+        }
+
+        private void Mention(object parameter)
+        {
+            //TODO
+        }
+
+        private void NewMessageAction(object parameter)
+        {
+            //TODO
         }
     }
 }

@@ -6,7 +6,9 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -154,18 +156,45 @@
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+
+            <i:Interaction.Triggers>
+                <abu:SelectedPivotItemChangedTrigger>
+                    <!--mapping-->
+                    <abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                        <!--profile detail-->
+                        <abu:SelectionMapping SourceIndex="0" TargetIndex="0" />
+                        <abu:SelectionMapping SourceIndex="1" TargetIndex="1" />
+                        <abu:SelectionMapping SourceIndex="2" TargetIndex="1" />
+                        <abu:SelectionMapping SourceIndex="3" TargetIndex="1" />
+                        <abu:SelectionMapping SourceIndex="4" TargetIndex="1" />
+                    </abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                    <!--items-->
+                    <abu:SwitchAppBarAction>
+                        <abu:AppBar Id="0" Mode="Minimized">
+                            <!--send message-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
+                                      Command="{Binding Path=MessageCommand}" />
+                            <!--at the user-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
+                                      Command="{Binding Path=MentionCommand}" />
+                        </abu:AppBar>
+                        <abu:AppBar Id="1" Mode="Minimized">
+                            <!--refresh-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--top-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
+                                      Command="{Binding Path=TopCommand}" />
+                            <!--bottom-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
+                                      Command="{Binding Path=BottomCommand}" />
+                            <!--at the user-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
+                                      Command="{Binding Path=MentionCommand}" />
+                        </abu:AppBar>
+                    </abu:SwitchAppBarAction>
+                </abu:SelectedPivotItemChangedTrigger>
+            </i:Interaction.Triggers>
         </controls:Pivot>
     </Grid>
-
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/dark/appbar.message.png" Text="message"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
-                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
-            </shell:ApplicationBar.MenuItems>
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
 </phone:PhoneApplicationPage>
