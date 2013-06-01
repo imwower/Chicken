@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Chicken.ViewModel.Status.VM;
 
 namespace Chicken.ViewModel.Status
@@ -23,16 +24,26 @@ namespace Chicken.ViewModel.Status
 
         #endregion
 
+        #region binding
+        public ICommand AddToFavoriteCommand
+        {
+            get
+            {
+                return new DelegateCommand(AddToFavorite);
+            }
+        }
+        #endregion
+
         public StatusViewModel()
         {
             Title = "Status";
-            var baseViewModelList = new List<ViewModelBase>()
+            var baseViewModelList = new List<PivotItemViewModelBase>()
             {
                 new StatusDetailViewModel(),
                 new StatusRetweetsViewModel(),
                 new StatusViewModelBase(),
             };
-            PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
+            PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
         public void OnNavigatedTo(string statusId)
@@ -40,13 +51,15 @@ namespace Chicken.ViewModel.Status
             StatusId = statusId;
         }
 
-        public void MainPivot_LoadedPivotItem(int selectedIndex)
+        public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            if (!PivotItems[selectedIndex].IsInited)
-            {
-                (PivotItems[selectedIndex] as StatusViewModelBase).StatusId = StatusId;
-                PivotItems[selectedIndex].Refresh();
-            }
+            base.MainPivot_LoadedPivotItem(selectedIndex);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).StatusId = StatusId;
+        }
+
+        public virtual void AddToFavorite(object parameter)
+        {
+            (PivotItems[SelectedIndex] as StatusViewModelBase).AddFavorite(parameter);
         }
     }
 }

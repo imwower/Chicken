@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:local ="clr-namespace:Chicken.ViewModel"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
     x:Class="Chicken.MainPage"
@@ -40,19 +41,66 @@
                                  Header="{Binding Path=Header}"
                                  ListBoxItems="{Binding Path=DMList}"
                                  ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
+
+            <i:Interaction.Triggers>
+                <abu:SelectedPivotItemChangedTrigger>
+                    <!--mapping-->
+                    <abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                        <!--home timeline-->
+                        <abu:SelectionMapping SourceIndex="0" TargetIndex="0" />
+                        <!--mentions-->
+                        <abu:SelectionMapping SourceIndex="1" TargetIndex="0" />
+                        <!--DMs-->
+                        <abu:SelectionMapping SourceIndex="2" TargetIndex="1" />
+                    </abu:SelectedPivotItemChangedTrigger.SelectionMappings>
+                    <!--items-->
+                    <abu:SwitchAppBarAction>
+                        <abu:AppBar Id="0" Mode="Minimized">
+                            <!--refresh-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--top-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--bottom-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--top-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"
+                                      Command="{Binding Path=NewTweetCommand}" />
+                        </abu:AppBar>
+                        <!--with dm-->
+                        <abu:AppBar Id="1" Mode="Minimized">
+                            <!--refresh-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--top-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--bottom-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
+                                      Command="{Binding Path=RefreshCommand}" />
+                            <!--top-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
+                                      Command="{Binding Path=NewMessageCommand}" />
+                        </abu:AppBar>
+                    </abu:SwitchAppBarAction>
+                </abu:SelectedPivotItemChangedTrigger>
+            </i:Interaction.Triggers>
         </controls:Pivot>
     </Grid>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.refresh.png" Text="refresh"/>
+    <!--<phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Minimized">
+            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.refresh.png" Text="refresh" />
             <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/dark/appbar.top.png" Text="top"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button3" IconUri="/Images/dark/appbar.buttom.png" Text="buttom"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button3" IconUri="/Images/dark/appbar.bottom.png" Text="bottom"/>
             <shell:ApplicationBarIconButton x:Name="appbar_button4" IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
                 <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>-->
+
 </phone:PhoneApplicationPage>

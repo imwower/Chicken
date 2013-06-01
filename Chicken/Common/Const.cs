@@ -58,6 +58,7 @@ namespace Chicken.Common
         public const string MainPage = "/MainPage.xaml";
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
+        public const string NewTweetPage = "/View/NewTweetPage.xaml";
         #endregion
 
         #region page index enum

@@ -8,7 +8,7 @@ using System;
 
 namespace Chicken.ViewModel.Home
 {
-    public class HomeViewModelBase : ViewModelBase
+    public class HomeViewModelBase : PivotItemViewModelBase
     {
         #region properties
         private ObservableCollection<TweetViewModel> tweetList;

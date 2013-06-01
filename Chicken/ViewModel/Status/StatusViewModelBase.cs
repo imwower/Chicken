@@ -6,8 +6,13 @@ using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Status
 {
-    public class StatusViewModelBase : ViewModelBase
+    public class StatusViewModelBase : PivotItemViewModelBase
     {
+        #region event handler
+        protected delegate void AddFavoriteEventHandler(object parameter);
+        protected AddFavoriteEventHandler AddFavoriteHandler;
+        #endregion
+
         #region properties
         private string statusId;
         public string StatusId
@@ -42,6 +47,17 @@ namespace Chicken.ViewModel.Status
 
         #region services
         public ITweetService TweetService = TweetServiceManger.TweetService;
+        #endregion
+
+        #region public methods
+        public virtual void AddFavorite(object parameter)
+        {
+            if (AddFavoriteHandler == null)
+            {
+                return;
+            }
+            AddFavoriteHandler(parameter);
+        }
         #endregion
 
         #region protected methods

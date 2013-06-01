@@ -9,7 +9,7 @@ using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class ProfileViewModelBase : ViewModelBase
+    public class ProfileViewModelBase : PivotItemViewModelBase
     {
         #region properties
         private string userId;

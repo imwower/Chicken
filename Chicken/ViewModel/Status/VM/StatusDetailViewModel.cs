@@ -46,6 +46,7 @@ namespace Chicken.ViewModel.Status.VM
             LoadHandler = this.LoadAction;
             ClickHandler = this.ClickAction;
             ItemClickHandler = this.ItemClickAction;
+            AddFavoriteHandler = this.AddFavoriteAction;
         }
 
         private void RefreshAction()
@@ -83,6 +84,11 @@ namespace Chicken.ViewModel.Status.VM
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, parameter);
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+        }
+
+        private void AddFavoriteAction(object parameter)
+        {
+            //TODO
         }
 
         #region private method

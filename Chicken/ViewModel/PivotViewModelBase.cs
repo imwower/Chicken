@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 namespace Chicken.ViewModel
 {
-    public class PivotViewModelBase : NotificationObject
+    public class PivotViewModelBase : ViewModelBase
     {
         #region properties
         private string title = "Chicken";
@@ -21,8 +21,21 @@ namespace Chicken.ViewModel
             }
         }
 
-        private ObservableCollection<ViewModelBase> pivotItems;
-        public ObservableCollection<ViewModelBase> PivotItems
+        private int selectedIndex = 0;
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+            }
+        }
+
+        private ObservableCollection<PivotItemViewModelBase> pivotItems;
+        public ObservableCollection<PivotItemViewModelBase> PivotItems
         {
             get
             {
@@ -33,6 +46,29 @@ namespace Chicken.ViewModel
                 pivotItems = value;
                 RaisePropertyChanged("PivotItems");
             }
+        }
+        #endregion
+
+        public PivotViewModelBase()
+        {
+            RefreshHandler = this.RefreshAction;
+        }
+
+        #region public method
+        public virtual void MainPivot_LoadedPivotItem(int selectedIndex)
+        {
+            SelectedIndex = selectedIndex;
+            if (!PivotItems[SelectedIndex].IsInited)
+            {
+                Refresh();
+            }
+        }
+        #endregion
+
+        #region private method
+        private void RefreshAction()
+        {
+            PivotItems[SelectedIndex].Refresh();
         }
         #endregion
     }

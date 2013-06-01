@@ -32,7 +32,7 @@ namespace Chicken.ViewModel.Profile
         public ProfileViewModel()
         {
             Title = "Profile";
-            var baseViewModelList = new List<ViewModelBase>
+            var baseViewModelList = new List<PivotItemViewModelBase>
             {
                 new ProfileDetailViewModel(),
                 new UserTweetsViewModel(),
@@ -40,7 +40,7 @@ namespace Chicken.ViewModel.Profile
                 new UserFollowersViewModel(),
                 new UserFavoritesViewModel(),
             };
-            this.PivotItems = new ObservableCollection<ViewModelBase>(baseViewModelList);
+            this.PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
         public void OnNavigatedTo(string userId)
