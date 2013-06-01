@@ -157,16 +157,15 @@
         </controls:Pivot>
     </Grid>
 
-    <!--演示 ApplicationBar 用法的示例代码-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
+    <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/appbar_button1.png" Text="按钮 1"/>
-            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/appbar_button2.png" Text="按钮 2"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/dark/appbar.message.png" Text="message"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
                 <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

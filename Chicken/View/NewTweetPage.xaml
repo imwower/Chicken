@@ -51,11 +51,13 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <!--tweet-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.check.rest.png" Text="tweet"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="tweet"/>
             <!--add image-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.rest.png" Text="image"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image"/>
             <!--at somebody-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.rest.png" Text="image"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="image"/>
+            <!--emotion-->
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="image"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="菜单项 1"/>
                 <shell:ApplicationBarMenuItem Text="菜单项 2"/>

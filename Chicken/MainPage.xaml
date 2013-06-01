@@ -42,4 +42,17 @@
                                  ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
         </controls:Pivot>
     </Grid>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton x:Name="appbar_button1" IconUri="/Images/dark/appbar.refresh.png" Text="refresh"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button2" IconUri="/Images/dark/appbar.top.png" Text="top"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button3" IconUri="/Images/dark/appbar.buttom.png" Text="buttom"/>
+            <shell:ApplicationBarIconButton x:Name="appbar_button4" IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"/>
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="menuItem1" Text="菜单项 1"/>
+                <shell:ApplicationBarMenuItem x:Name="menuItem2" Text="菜单项 2"/>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>
