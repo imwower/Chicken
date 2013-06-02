@@ -14,23 +14,6 @@ namespace Chicken.View
 {
     public partial class NewTweetPage : PhoneApplicationPage
     {
-        #region dp
-        private const double LandscapeShift = 0d;
-        private double topMargin = -480d;
-        private const double LandscapeShift2 = -328d;
-        private const double Epsilon = 0.00000001d;
-        private const double PortraitShift = -339d;
-        private const double PortraitShift2 = -408d;
-
-        public static readonly DependencyProperty TranslateYProperty =
-            DependencyProperty.Register("TranslateY", typeof(double), typeof(NewTweetPage), new PropertyMetadata(0d, OnRenderXPropertyChanged));
-        public double TranslateY
-        {
-            get { return (double)GetValue(TranslateYProperty); }
-            set { SetValue(TranslateYProperty, value); }
-        }
-        #endregion
-
         private bool isInit;
         private PostNewTweetViewModel newTweetViewModel;
 
@@ -39,7 +22,35 @@ namespace Chicken.View
             InitializeComponent();
             newTweetViewModel = new PostNewTweetViewModel();
             this.DataContext = newTweetViewModel;
-            BindToKeyboardFocus();
+            //
+            PhoneApplicationFrame frame = (App.Current as App).RootFrame;
+            Binding b = new Binding("Y");
+            b.Source = (frame.RenderTransform as TransformGroup).Children[0] as TranslateTransform;
+            SetBinding(RootFrameTransformProperty, b);
+        }
+
+        public static readonly DependencyProperty RootFrameTransformProperty = DependencyProperty.Register(
+            "RootFrameTransform",
+            typeof(double),
+            typeof(NewTweetPage),
+            new PropertyMetadata(OnRootFrameTransformChanged));
+
+       static void OnRootFrameTransformChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
+        {
+            double newvalue = (double)e.NewValue;
+            NewTweetPage page = source as NewTweetPage;
+            if (newvalue < 0.0)
+            {
+                page.LayoutRoot.Margin = new Thickness(0, -newvalue, 0, 0);
+                //page.grid.Height = -newvalue;
+            }
+            else if (newvalue == 0.0)
+            {
+                page.LayoutRoot.Margin = new Thickness(0, 0, 0, 0);
+                //page.grid.Height = 0;
+            }
+
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -61,17 +72,12 @@ namespace Chicken.View
         {
             var exp = this.TextContent.GetBindingExpression(TextBox.TextProperty);
             exp.UpdateSource();
-            int remain = 140 - newTweetViewModel.TweetViewModel.Text.Length;
-            if (remain < 0)
-            {
-                this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
-            }
-            this.TextCounter.Text = remain.ToString();
-            if (this.ScrollView.VerticalOffset < this.ScrollView.ScrollableHeight)
-            {
-                this.ScrollView.ScrollToVerticalOffset(this.ScrollView.ScrollableHeight);
-            }
+            //if (this.ScrollView.VerticalOffset < this.ScrollView.ScrollableHeight)
+            //{
+            //    this.ScrollView.ScrollToVerticalOffset(this.ScrollView.ScrollableHeight);
+            //}
 
+            #region MyRegion
             if (!isInit)
             {
                 switch (newTweetViewModel.TweetViewModel.ActionType)
@@ -88,48 +94,12 @@ namespace Chicken.View
                 this.TextContent.Focus();
                 isInit = true;
             }
-        }
-
-        private static void OnRenderXPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            ((NewTweetPage)d).UpdateTopMargin((double)e.NewValue);
-        }
-
-        private void BindToKeyboardFocus()
-        {
-            PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
-            if (frame != null)
-            {
-                var group = frame.RenderTransform as TransformGroup;
-                if (group != null)
-                {
-                    var translate = group.Children[0] as TranslateTransform;
-                    var translateYBinding = new Binding("Y");
-                    translateYBinding.Source = translate;
-                    SetBinding(TranslateYProperty, translateYBinding);
-                }
-            }
-        }
-
-        private void UpdateTopMargin(double translateY)
-        {
-            if (translateY != topMargin)
-            //if (IsClose(translateY, LandscapeShift) || IsClose(translateY, PortraitShift)
-            //    || IsClose(translateY, LandscapeShift2) || IsClose(translateY, PortraitShift2))
-            {
-                this.LayoutRoot.Margin = new Thickness(0, -topMargin, 0, 0);
-                this.topMargin = translateY;
-            }
-        }
-
-        private bool IsClose(double a, double b)
-        {
-            return Math.Abs(a - b) < Epsilon;
+            #endregion
         }
 
         private void TextContent_LostFocus(object sender, RoutedEventArgs e)
         {
-            this.LayoutRoot.Margin = new Thickness();
+            //this.grid.Height = 0;
         }
     }
 }
