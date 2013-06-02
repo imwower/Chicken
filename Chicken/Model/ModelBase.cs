@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace Chicken.Model
 {
     public class ModelBase
     {
         [JsonProperty("errors")]
-        public IList<ErrorMessage> Errors { get; set; }
+        [DefaultValue(null)]
+        public List<ErrorMessage> Errors { get; set; }
     }
 
     public class ErrorMessage

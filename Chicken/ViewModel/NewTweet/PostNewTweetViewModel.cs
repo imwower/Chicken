@@ -4,6 +4,7 @@ using Chicken.Service.Interface;
 using Chicken.ViewModel.NewTweet.Base;
 using Chicken.Common;
 using Chicken.Model;
+using System.Collections.Generic;
 
 namespace Chicken.ViewModel.NewTweet
 {
@@ -85,6 +86,32 @@ namespace Chicken.ViewModel.NewTweet
             };
         }
 
+        public void NavigateTo(object parameter = null)
+        {
+            if (parameter != null)
+            {
+                var tweet = parameter as NewTweetViewModel;
+                TweetViewModel.ActionType = tweet.ActionType;
+                switch (tweet.ActionType)
+                {
+                    case NewTweetActionType.Quote:
+                        Title = "Quote:";
+                        TweetViewModel.Text = Const.QUOTECHARACTER + " " + tweet.InReplyToUserScreenName + " " + tweet.Text;
+                        TweetViewModel.InReplyToTweetId = tweet.InReplyToTweetId;
+                        break;
+                    case NewTweetActionType.Reply:
+                        Title = "Reply To:";
+                        TweetViewModel.InReplyToTweetId = tweet.InReplyToTweetId;
+                        TweetViewModel.Text = tweet.InReplyToUserScreenName + " ";
+                        break;
+                    case NewTweetActionType.PostNew:
+                    case NewTweetActionType.None:
+                    default:
+                        break;
+                }
+            }
+        }
+
         #region private method
         private void SendAction()
         {
@@ -92,10 +119,14 @@ namespace Chicken.ViewModel.NewTweet
             TweetService.PostNewTweet<Tweet>(tweetViewModel.Text,
                 tweet =>
                 {
-                    var error = tweet as ModelBase;
-                    if (error.Errors != null && error.Errors.Count != 0)
+                    List<ErrorMessage> errors = tweet.Errors;
+                    if (errors != null && errors.Count != 0)
                     {
-
+                        //error;
+                    }
+                    else
+                    {
+                        NavigationServiceManager.NavigateTo(Const.MainPage);
                     }
                 }, parameters);
         }

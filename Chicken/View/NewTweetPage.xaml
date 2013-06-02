@@ -15,7 +15,7 @@
     mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
-    <Grid Background="Transparent">
+    <Grid x:Name="LayoutRoot" Background="Blue" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -26,26 +26,29 @@
             </Style>
         </Grid.Resources>
         <!--title-->
-        <StackPanel Grid.Row="0"
-                    Margin="10">
-            <TextBlock
-                Text="{Binding Path=Title}" />
+        <StackPanel Grid.Row="0" Margin="10" Background="Red">
+            <TextBlock Text="{Binding Path=Title}" />
         </StackPanel>
-        <Grid Grid.Row="1"
-              Margin="25,0">
+        <Grid Grid.Row="1" Margin="25,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="210" />
                 <RowDefinition />
             </Grid.RowDefinitions>
             <!--content-->
-            <TextBox Grid.Row="0" x:Name="TextContent"
-                     Text="{Binding TweetViewModel.Text,Mode=TwoWay}"
-                     Style="{StaticResource TextBoxContent}"
-                     TextChanged="TextContent_TextChanged" />
+            <ScrollViewer x:Name="ScrollView" Grid.Row="0" Background="Green"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                <TextBox Name="TextContent" VerticalAlignment="Stretch" Background="Orange"        
+                         Text="{Binding TweetViewModel.Text,Mode=TwoWay}"
+                         Style="{StaticResource TextBoxContent}"
+                         MaxHeight="210"
+                         AcceptsReturn="True" TextAlignment="Left"
+                         TextChanged="TextContent_TextChanged"
+                         LostFocus="TextContent_LostFocus" />
+            </ScrollViewer>
             <StackPanel x:Name="MenuPanel" Grid.Row="1"
                         Orientation="Horizontal" Opacity="0.6">
                 <!--char counter-->
-                <TextBlock Text="140" />
+                <TextBlock x:Name="TextCounter" />
                 <TextBlock Text=" image" />
                 <TextBlock Text=" location" />
             </StackPanel>

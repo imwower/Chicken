@@ -15,8 +15,8 @@ namespace Chicken.Service.Implementation
         private static JsonSerializer jsonSerializer = new JsonSerializer();
         private static JsonSerializerSettings jsonSettings = new JsonSerializerSettings
         {
-            NullValueHandling = NullValueHandling.Ignore,
-            DefaultValueHandling = DefaultValueHandling.Ignore
+            NullValueHandling = NullValueHandling.Include,
+            DefaultValueHandling = DefaultValueHandling.Populate
         };
         #endregion
 

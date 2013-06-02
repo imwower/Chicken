@@ -81,24 +81,24 @@ namespace Chicken.ViewModel.Status
             (PivotItems[SelectedIndex] as StatusViewModelBase).StatusId = StatusId;
         }
 
-        private void AddToFavorite(object parameter)
+        private void AddToFavorite()
         {
-            (PivotItems[SelectedIndex] as StatusViewModelBase).AddFavorite(parameter);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).AddFavorite();
         }
 
-        private void Retweet(object parameter)
+        private void Retweet()
         {
-            (PivotItems[SelectedIndex] as StatusViewModelBase).Retweet(parameter);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Retweet();
         }
 
-        private void Reply(object parameter)
+        private void Reply()
         {
-            (PivotItems[SelectedIndex] as StatusViewModelBase).Reply(parameter);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Reply();
         }
 
-        private void Quote(object parameter)
+        private void Quote()
         {
-            (PivotItems[SelectedIndex] as StatusViewModelBase).Quote(parameter);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Quote();
         }
     }
 }

@@ -4,6 +4,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.ViewModel.Status.VM
 {
@@ -49,6 +50,7 @@ namespace Chicken.ViewModel.Status.VM
             AddFavoriteHandler = this.AddFavoriteAction;
             RetweetHandler = this.RetweetAction;
             ReplyHandler = this.ReplyAction;
+            QuoteHandler = this.QuoteAction;
         }
 
         private void RefreshAction()
@@ -88,22 +90,39 @@ namespace Chicken.ViewModel.Status.VM
             NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
         }
 
-        private void AddFavoriteAction(object parameter)
+        private void AddFavoriteAction()
         {
             //TODO
         }
 
-        private void RetweetAction(object parameter)
+        private void RetweetAction()
         {
             //TODO
         }
 
-        private void ReplyAction(object parameter)
+        private void ReplyAction()
         {
-            //TODO
+            DoAction(NewTweetActionType.Reply);
+        }
+
+        private void QuoteAction()
+        {
+            DoAction(NewTweetActionType.Quote);
         }
 
         #region private method
+        private void DoAction(NewTweetActionType type)
+        {
+            NewTweetViewModel newTweet = new NewTweetViewModel
+            {
+                ActionType = type,
+                Text = TweetViewModel.Text,
+                InReplyToTweetId = TweetViewModel.Id,
+                InReplyToUserScreenName = TweetViewModel.User.ScreenName,
+            };
+            NavigationServiceManager.NavigateTo(Const.NewTweetPage, newTweet);
+        }
+
         private void LoadConversation(string statusId)
         {
             if (string.IsNullOrEmpty(statusId))

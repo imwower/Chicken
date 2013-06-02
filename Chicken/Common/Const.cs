@@ -6,6 +6,7 @@
         public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/6X0S1V/";
         public static string DEFAULT_COUNT_VALUE = "5";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
+        public static string QUOTECHARACTER = "RT";
 
         #region http method
         public const string HTTPGET = "GET";
@@ -63,6 +64,8 @@
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
+
+        public const string NewTweetParam = "NewTweetParam";
         #endregion
 
         #region page index enum

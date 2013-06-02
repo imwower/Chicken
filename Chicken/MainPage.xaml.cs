@@ -28,10 +28,10 @@ namespace Chicken
                 });
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-        }
+        //protected override void OnNavigatedTo(NavigationEventArgs e)
+        //{
+        //    base.OnNavigatedTo(e);
+        //}
 
         public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
         {

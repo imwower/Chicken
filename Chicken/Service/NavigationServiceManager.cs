@@ -5,6 +5,8 @@ using Chicken.Service.Interface;
 using Microsoft.Phone.Controls;
 using Chicken.Common;
 using System;
+using Chicken.ViewModel.NewTweet.Base;
+using Microsoft.Phone.Shell;
 
 namespace Chicken.Service
 {
@@ -22,6 +24,16 @@ namespace Chicken.Service
             }
             string url = TwitterHelper.GenerateRelativeUri(pageName, parameters);
             Frame.Navigate(new Uri(url, UriKind.Relative));
+        }
+
+        public static void NavigateTo(string pageName, NewTweetViewModel parameter)
+        {
+            if (string.IsNullOrEmpty(pageName))
+            {
+                return;
+            }
+            PhoneApplicationService.Current.State[Const.NewTweetParam] = parameter;
+            Frame.Navigate(new Uri(pageName, UriKind.Relative));
         }
 
         public static void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)

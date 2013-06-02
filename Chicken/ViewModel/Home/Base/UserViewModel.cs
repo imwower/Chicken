@@ -23,7 +23,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return user.ScreenName;
+                return "@" + user.ScreenName;
             }
         }
 

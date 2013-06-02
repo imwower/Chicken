@@ -1,16 +1,14 @@
-﻿using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-
+﻿
 namespace Chicken.ViewModel.NewTweet.Base
 {
+    public enum NewTweetActionType
+    {
+        None =0,
+        PostNew =1,
+        Reply =2,
+        Quote =3,
+    }
+
     public class NewTweetViewModel : NotificationObject
     {
         private string text;
@@ -27,7 +25,8 @@ namespace Chicken.ViewModel.NewTweet.Base
             }
         }
 
+        public NewTweetActionType ActionType { get; set; }
         public string InReplyToTweetId { get; set; }
-        public string InReplyToUserId { get; set; }
+        public string InReplyToUserScreenName { get; set; }
     }
 }
