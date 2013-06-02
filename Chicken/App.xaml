@@ -45,14 +45,17 @@
         </Style>
 
         <SolidColorBrush x:Key="RetweetCountTextColorBrush">
-            <!--twitter-->
-            <!--<Color>#009999</Color>-->
             <!--wp-->
             <Color>#0A9DCD</Color>
         </SolidColorBrush>
 
         <!--Content default is Medium-->
         <Style x:Name="TextContent" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+        </Style>
+        <!--textbox content-->
+        <Style x:Name="TextBoxContent" TargetType="TextBox">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>

@@ -62,7 +62,7 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
+        public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
         public ProfileViewModelBase()

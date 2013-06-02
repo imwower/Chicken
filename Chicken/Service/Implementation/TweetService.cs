@@ -274,5 +274,15 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
+
+        #region new tweet
+        public void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.STATUS, text);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET, parameters);
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
+        #endregion
     }
 }

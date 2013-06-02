@@ -3,7 +3,7 @@ using Chicken.Service.Interface;
 
 namespace Chicken.Service
 {
-    public class TweetServiceManger
+    public class TweetServiceManager
     {
         public static ITweetService TweetService
         {

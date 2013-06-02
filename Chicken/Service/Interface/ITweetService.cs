@@ -52,5 +52,8 @@ namespace Chicken.Service.Interface
 
         #endregion
 
+        #region new tweet
+        void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null);
+        #endregion
     }
 }

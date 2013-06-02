@@ -27,7 +27,7 @@ namespace Chicken.ViewModel.Home
         #endregion
 
         #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
+        public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
         public HomeViewModelBase()

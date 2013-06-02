@@ -179,5 +179,13 @@ namespace Chicken.Service.Implementation
         }
 
         #endregion
+
+        #region new tweet
+        public void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/tweet.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
     }
 }

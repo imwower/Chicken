@@ -6,6 +6,8 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -13,7 +15,7 @@
     mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
-    <Grid x:Name="LayoutRoot" Background="Transparent">
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -24,20 +26,22 @@
             </Style>
         </Grid.Resources>
         <!--title-->
-        <StackPanel x:Name="TitlePanel"
-                    Grid.Row="0" Margin="10">
-            <TextBlock x:Name="ApplicationTitle"
-                       Text="what's happening?" />
+        <StackPanel Grid.Row="0"
+                    Margin="10">
+            <TextBlock
+                Text="{Binding Path=Title}" />
         </StackPanel>
-        <Grid x:Name="MainPanel"
-              Grid.Row="1" Margin="25,0">
+        <Grid Grid.Row="1"
+              Margin="25,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="200"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
             <!--content-->
-            <TextBox Text="Hello World" Grid.Row="0"
-                     TextWrapping="Wrap" />
+            <TextBox Grid.Row="0" x:Name="TextContent"
+                     Text="{Binding TweetViewModel.Text,Mode=TwoWay}"
+                     Style="{StaticResource TextBoxContent}"
+                     TextChanged="TextContent_TextChanged" />
             <StackPanel x:Name="MenuPanel" Grid.Row="1"
                         Orientation="Horizontal" Opacity="0.6">
                 <!--char counter-->
@@ -50,19 +54,21 @@
 
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <!--tweet-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="tweet"/>
+            <!--send-->
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send"/>
             <!--add image-->
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image"/>
             <!--at somebody-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="image"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
             <!--emotion-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="image"/>
-            <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="菜单项 1"/>
-                <shell:ApplicationBarMenuItem Text="菜单项 2"/>
-            </shell:ApplicationBar.MenuItems>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="emotion"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
+    <i:Interaction.Behaviors>
+        <abu:AppBarItemCommand Id="send" Command="{Binding SendCommand}" />
+        <abu:AppBarItemCommand Id="image" Command="{Binding AddImageCommand}" />
+        <abu:AppBarItemCommand Id="mention" Command="{Binding MentionCommand}" />
+        <abu:AppBarItemCommand Id="emotion" Command="{Binding AddEmotionCommand}" />
+    </i:Interaction.Behaviors>
 </phone:PhoneApplicationPage>

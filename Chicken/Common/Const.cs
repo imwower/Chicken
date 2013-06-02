@@ -1,5 +1,4 @@
-﻿
-namespace Chicken.Common
+﻿namespace Chicken.Common
 {
     public class Const
     {
@@ -10,7 +9,7 @@ namespace Chicken.Common
 
         #region http method
         public const string HTTPGET = "GET";
-        public const string HTTPOST = "POST";
+        public const string HTTPPOST = "POST";
         #endregion
 
         #region default source and source url
@@ -19,7 +18,6 @@ namespace Chicken.Common
         #endregion
 
         #region rest api
-
         public const string DEFAULT_VALUE_TRUE = "true";
         public const string DEFAULT_VALUE_FALSE = "false";
 
@@ -32,6 +30,7 @@ namespace Chicken.Common
         public const string INCLUDE_ENTITIES = "include_entities";
         public const string DIRECT_MESSAGE_SKIP_STATUS = "skip_status";
         public const string CURSOR = "cursor";
+        public const string STATUS = "status";
         #endregion
 
         #region home page
@@ -48,9 +47,14 @@ namespace Chicken.Common
         public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
         #endregion
+
         #region status page
         public const string STATUSES_SHOW = "statuses/show.json";
         public const string STATUSES_RETWEET_IDS = "statuses/retweeters/ids.json";
+        #endregion
+
+        #region post new tweet
+        public const string STATUS_POST_NEW_TWEET = "statuses/update.json";
         #endregion
         #endregion
 

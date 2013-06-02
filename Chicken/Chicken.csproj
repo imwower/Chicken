@@ -110,6 +110,8 @@
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\NewTweet\Base\NewTweetViewModel.cs" />
+    <Compile Include="ViewModel\NewTweet\PostNewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
     <Compile Include="ViewModel\Profile\Base\UserProfileViewModel.cs" />

@@ -48,7 +48,7 @@ namespace Chicken.ViewModel.Status
         #endregion
 
         #region services
-        public ITweetService TweetService = TweetServiceManger.TweetService;
+        public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
         #region public methods
