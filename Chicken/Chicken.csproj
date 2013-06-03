@@ -133,6 +133,9 @@
     <Compile Include="View\NewTweetPage.xaml.cs">
       <DependentUpon>NewTweetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PhotoChooserPage.xaml.cs">
+      <DependentUpon>PhotoChooserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewTweetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\PhotoChooserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -26,14 +26,23 @@ namespace Chicken.Service
             Frame.Navigate(new Uri(url, UriKind.Relative));
         }
 
-        public static void NavigateTo(string pageName, NewTweetViewModel parameter)
+        public static void NavigateTo(string pageName, string parameterName, object parameter)
         {
             if (string.IsNullOrEmpty(pageName))
             {
                 return;
             }
-            PhoneApplicationService.Current.State[Const.NewTweetParam] = parameter;
+            PhoneApplicationService.Current.State[parameterName] = parameter;
             Frame.Navigate(new Uri(pageName, UriKind.Relative));
+        }
+
+        public static void NavigateFrom(string pageName, string parameterName, object parameter)
+        {
+            if (string.IsNullOrEmpty(pageName))
+            {
+                return;
+            }
+            PhoneApplicationService.Current.State[parameterName] = parameter;
         }
 
         public static void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)

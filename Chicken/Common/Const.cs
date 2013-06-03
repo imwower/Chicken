@@ -11,6 +11,8 @@
         #region http method
         public const string HTTPGET = "GET";
         public const string HTTPPOST = "POST";
+        public const string BOUNDARY = "-------------CHICKENFORWINDOWSPHONE";
+        public const string NEWLINE = "\r\n";
         #endregion
 
         #region default source and source url
@@ -31,7 +33,9 @@
         public const string INCLUDE_ENTITIES = "include_entities";
         public const string DIRECT_MESSAGE_SKIP_STATUS = "skip_status";
         public const string CURSOR = "cursor";
+
         public const string STATUS = "status";
+        public const string IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
         #endregion
 
         #region home page
@@ -56,6 +60,7 @@
 
         #region post new tweet
         public const string STATUS_POST_NEW_TWEET = "statuses/update.json";
+        public const string STATUS_POST_NEW_TWEET_WITH_MEDIA = "statuses/update_with_media.json";
         #endregion
         #endregion
 
@@ -64,8 +69,10 @@
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
+        public const string PhotoChooserPage = "/View/PhotoChooserPage.xaml";
 
         public const string NewTweetParam = "NewTweetParam";
+        public const string ChosenPhotoStream = "chosenPhotoStream";
         #endregion
 
         #region page index enum

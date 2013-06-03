@@ -7,6 +7,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service.Interface;
 using Newtonsoft.Json;
+using System.Text;
 
 
 namespace Chicken.Service.Implementation
@@ -283,6 +284,76 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET, parameters);
             HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
         }
+
+        public void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            if (mediaStream == null)
+            {
+                PostNewTweet<T>(text, callBack, parameters);
+                return;
+            }
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.STATUS, text);
+            string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET_WITH_MEDIA);
+            HandleWebRequestStream<T>(url, mediaStream, callBack, parameters);
+        }
         #endregion
+
+        private void HandleWebRequestStream<T>(string url, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            HttpWebRequest request = WebRequest.CreateHttp(url);
+            request.Method = Const.HTTPPOST;
+            request.BeginGetRequestStream(
+                result =>
+                {
+                    HttpWebRequest requestStreamResult = result.AsyncState as HttpWebRequest;
+                    Stream outputStream = requestStreamResult.EndGetRequestStream(result);
+                    //
+                    StringBuilder builder = new StringBuilder();
+                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    builder.Append("Content-Type:multipart/form-data;boundary=").Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    //status:
+                    foreach (var param in parameters)
+                    {
+                        builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                        builder.Append("Content-Disposition:form-data;name=\"").Append(param.Key).Append("\"");
+                        builder.Append(param.Value.ToString());
+                    }
+                    string status = builder.ToString();
+                    byte[] statusBytes = Encoding.UTF8.GetBytes(status);
+                    outputStream.Write(statusBytes, 0, status.Length);
+                    builder.Clear();
+                    //media:
+                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    builder.Append("Content-Type:application/octet-stream");
+                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"");
+                    builder.Append("Content-Transfer-Encoding:binary");
+                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    string media = builder.ToString();
+                    byte[] mediaBytes = Encoding.UTF8.GetBytes(media);
+                    outputStream.Write(mediaBytes, 0, media.Length);
+                    builder.Clear();
+                    //file stream:
+                    byte[] buffer = new Byte[checked((uint)Math.Min(4096, (int)mediaStream.Length))];
+                    int bytesRead = 0;
+                    while ((bytesRead = mediaStream.Read(buffer, 0, buffer.Length)) != 0)
+                    {
+                        outputStream.Write(buffer, 0, bytesRead);
+                    }
+                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    string end = builder.ToString();
+                    byte[] endBytes = Encoding.UTF8.GetBytes(end);
+                    outputStream.Write(endBytes, 0, end.Length);
+                    builder.Clear();
+                    //
+                    outputStream.Close();
+                    //
+                    requestStreamResult.BeginGetResponse(
+                        requestResult =>
+                        {
+                            HandleWebRequest<T>(url, callBack);
+                        }, requestStreamResult);
+                }, request);
+        }
     }
 }

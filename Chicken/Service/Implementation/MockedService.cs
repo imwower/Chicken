@@ -187,5 +187,11 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
         #endregion
+
+
+        public void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,10 +1,11 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.NewTweet.Base;
-using Chicken.Common;
-using Chicken.Model;
-using System.Collections.Generic;
+using System.IO;
 
 namespace Chicken.ViewModel.NewTweet
 {
@@ -112,11 +113,30 @@ namespace Chicken.ViewModel.NewTweet
             }
         }
 
+        public void AddPhotoStream(object chosenStream = null)
+        {
+            if (chosenStream == null)
+            {
+                return;
+            }
+            var stream = chosenStream as Stream;
+            tweetViewModel.MediaStream = stream;
+        }
+
         #region private method
         private void SendAction()
         {
+            if (tweetViewModel.Text.Length == 0)
+            {
+                return;
+            }
             var parameters = TwitterHelper.GetDictionary();
-            TweetService.PostNewTweet<Tweet>(tweetViewModel.Text,
+            if (tweetViewModel.ActionType == NewTweetActionType.Quote
+                || tweetViewModel.ActionType == NewTweetActionType.Reply)
+            {
+                parameters.Add(Const.IN_REPLY_TO_STATUS_ID, tweetViewModel.InReplyToTweetId);
+            }
+            TweetService.PostNewTweet<Tweet>(tweetViewModel.Text, tweetViewModel.MediaStream,
                 tweet =>
                 {
                     List<ErrorMessage> errors = tweet.Errors;
@@ -132,7 +152,10 @@ namespace Chicken.ViewModel.NewTweet
         }
 
         private void AddImageAction()
-        { }
+        {
+            NavigationServiceManager.NavigateFrom(Const.NewTweetPage, Const.NewTweetParam, tweetViewModel);
+            NavigationServiceManager.NavigateTo(Const.PhotoChooserPage);
+        }
 
         private void MentionAction()
         { }

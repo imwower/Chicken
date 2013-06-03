@@ -120,7 +120,7 @@ namespace Chicken.ViewModel.Status.VM
                 InReplyToTweetId = TweetViewModel.Id,
                 InReplyToUserScreenName = TweetViewModel.User.ScreenName,
             };
-            NavigationServiceManager.NavigateTo(Const.NewTweetPage, newTweet);
+            NavigationServiceManager.NavigateTo(Const.NewTweetPage, Const.NewTweetParam, newTweet);
         }
 
         private void LoadConversation(string statusId)

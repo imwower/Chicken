@@ -15,31 +15,40 @@
     mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
-    <Grid x:Name="LayoutRoot" Background="Blue" VerticalAlignment="Stretch">
+    <Grid x:Name="LayoutRoot" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="200"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
                 <Setter Property="TextAlignment" Value="Left" />
             </Style>
         </Grid.Resources>
-        <Grid Grid.Row="0" x:Name="grid" Background="red" HorizontalAlignment="Stretch">
-            <TextBlock Text="Title"></TextBlock>
+        <!--title-->
+        <Grid Grid.Row="0">
+            <TextBlock Text="{Binding Path=Title}" />
         </Grid>
-        <ScrollViewer Grid.Row="1" x:Name="ScrollView" Margin="8"
-                      Background="Green" VerticalAlignment="Stretch"
-                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
-            <TextBox Name="TextContent" VerticalAlignment="Stretch" Background="Gray"
+        <!--text-->
+        <ScrollViewer Grid.Row="1" Margin="8,4" VerticalAlignment="Stretch"
+                      VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+            <TextBox Name="TextContent"
                      Text="{Binding TweetViewModel.Text,Mode=TwoWay}"                     
                      Style="{StaticResource TextBoxContent}"
-                     TextAlignment="Left"
+                     TextAlignment="Left" AcceptsReturn="True"
+                     GotFocus="TextContent_GotFocus"
                      TextChanged="TextContent_TextChanged"
-                     LostFocus="TextContent_LostFocus" />
+                     MaxHeight="400" MaxLength="400"/>
         </ScrollViewer>
-
-        
+        <!--menu-->
+        <StackPanel x:Name="MenuPanel" Grid.Row="2"
+                        Orientation="Horizontal" Opacity="0.6">
+            <!--char counter-->
+            <TextBlock x:Name="TextCounter" />
+            <TextBlock Text=" image" />
+            <TextBlock Text=" location" />
+        </StackPanel>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>

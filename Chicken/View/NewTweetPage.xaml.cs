@@ -14,43 +14,18 @@ namespace Chicken.View
 {
     public partial class NewTweetPage : PhoneApplicationPage
     {
+        #region properties
+        private const int maxLength = 400;
+        private const int maxCharLength = 140;
         private bool isInit;
         private PostNewTweetViewModel newTweetViewModel;
+        #endregion
 
         public NewTweetPage()
         {
             InitializeComponent();
             newTweetViewModel = new PostNewTweetViewModel();
             this.DataContext = newTweetViewModel;
-            //
-            PhoneApplicationFrame frame = (App.Current as App).RootFrame;
-            Binding b = new Binding("Y");
-            b.Source = (frame.RenderTransform as TransformGroup).Children[0] as TranslateTransform;
-            SetBinding(RootFrameTransformProperty, b);
-        }
-
-        public static readonly DependencyProperty RootFrameTransformProperty = DependencyProperty.Register(
-            "RootFrameTransform",
-            typeof(double),
-            typeof(NewTweetPage),
-            new PropertyMetadata(OnRootFrameTransformChanged));
-
-       static void OnRootFrameTransformChanged(DependencyObject source, DependencyPropertyChangedEventArgs e)
-        {
-            double newvalue = (double)e.NewValue;
-            NewTweetPage page = source as NewTweetPage;
-            if (newvalue < 0.0)
-            {
-                page.LayoutRoot.Margin = new Thickness(0, -newvalue, 0, 0);
-                //page.grid.Height = -newvalue;
-            }
-            else if (newvalue == 0.0)
-            {
-                page.LayoutRoot.Margin = new Thickness(0, 0, 0, 0);
-                //page.grid.Height = 0;
-            }
-
-
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -58,9 +33,15 @@ namespace Chicken.View
             base.OnNavigatedTo(e);
             if (PhoneApplicationService.Current.State.ContainsKey(Const.NewTweetParam))
             {
-                var newTweet = PhoneApplicationService.Current.State[Const.NewTweetParam];
+                var newTweet = PhoneApplicationService.Current.State[Const.NewTweetPage];
                 newTweetViewModel.NavigateTo(newTweet);
-                PhoneApplicationService.Current.State.Remove(Const.NewTweetParam);
+                PhoneApplicationService.Current.State.Remove(Const.NewTweetPage);
+            }
+            if (PhoneApplicationService.Current.State.ContainsKey(Const.ChosenPhotoStream))
+            {
+                var chosenPhotoStream = PhoneApplicationService.Current.State[Const.ChosenPhotoStream];
+                newTweetViewModel.AddPhotoStream(chosenPhotoStream);
+                PhoneApplicationService.Current.State.Remove(Const.NewTweetPage);
             }
             else
             {
@@ -72,12 +53,15 @@ namespace Chicken.View
         {
             var exp = this.TextContent.GetBindingExpression(TextBox.TextProperty);
             exp.UpdateSource();
-            //if (this.ScrollView.VerticalOffset < this.ScrollView.ScrollableHeight)
-            //{
-            //    this.ScrollView.ScrollToVerticalOffset(this.ScrollView.ScrollableHeight);
-            //}
+            //counter:
+            int remain = maxCharLength - this.TextContent.Text.Length;
+            if (remain < 0)
+            {
+                this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
+            }
+            this.TextCounter.Text = remain.ToString();
 
-            #region MyRegion
+            #region Init
             if (!isInit)
             {
                 switch (newTweetViewModel.TweetViewModel.ActionType)
@@ -86,9 +70,8 @@ namespace Chicken.View
                         this.TextContent.Select(0, 0);
                         break;
                     case NewTweetActionType.Reply:
-                        this.TextContent.Select(this.TextContent.Text.Length, 0);
-                        break;
                     default:
+                        this.TextContent.Select(this.TextContent.Text.Length, 0);
                         break;
                 }
                 this.TextContent.Focus();
@@ -97,9 +80,9 @@ namespace Chicken.View
             #endregion
         }
 
-        private void TextContent_LostFocus(object sender, RoutedEventArgs e)
+        private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
-            //this.grid.Height = 0;
+            (App.Current as App).RootFrame.RenderTransform = new CompositeTransform();
         }
     }
 }

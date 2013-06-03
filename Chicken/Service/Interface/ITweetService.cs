@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using Chicken.Model;
 
 namespace Chicken.Service.Interface
@@ -54,6 +53,7 @@ namespace Chicken.Service.Interface
 
         #region new tweet
         void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
     }
 }

@@ -1,12 +1,13 @@
 ﻿
+using System.IO;
 namespace Chicken.ViewModel.NewTweet.Base
 {
     public enum NewTweetActionType
     {
-        None =0,
-        PostNew =1,
-        Reply =2,
-        Quote =3,
+        None = 0,
+        PostNew = 1,
+        Reply = 2,
+        Quote = 3,
     }
 
     public class NewTweetViewModel : NotificationObject
@@ -28,5 +29,6 @@ namespace Chicken.ViewModel.NewTweet.Base
         public NewTweetActionType ActionType { get; set; }
         public string InReplyToTweetId { get; set; }
         public string InReplyToUserScreenName { get; set; }
+        public Stream MediaStream { get; set; }
     }
 }
