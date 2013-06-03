@@ -32,8 +32,7 @@
                       Background="Green" VerticalAlignment="Stretch"
                       VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
             <TextBox Name="TextContent" VerticalAlignment="Stretch" Background="Gray"
-                     Text="{Binding TweetViewModel.Text,Mode=TwoWay}"
-                     
+                     Text="{Binding TweetViewModel.Text,Mode=TwoWay}"                     
                      Style="{StaticResource TextBoxContent}"
                      TextAlignment="Left"
                      TextChanged="TextContent_TextChanged"
