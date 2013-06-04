@@ -9,7 +9,6 @@ using Chicken.Service.Interface;
 using Newtonsoft.Json;
 using System.Text;
 
-
 namespace Chicken.Service.Implementation
 {
     public class TweetService : ITweetService
@@ -35,18 +34,24 @@ namespace Chicken.Service.Implementation
                 {
                     HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
                     WebResponse response = null;
-                    response = requestResult.EndGetResponse(result);
+                    StreamReader streamReader = StreamReader.Null;
                     T output = default(T);
-                    var streamReader = new StreamReader(response.GetResponseStream());
-#if RELEASE
+#if !RELEASE
+                    response = requestResult.EndGetResponse(result);
+                    streamReader = new StreamReader(response.GetResponseStream());
+                    string s = streamReader.ReadToEnd();
+                    output = JsonConvert.DeserializeObject<T>(s, jsonSettings);
+#else
                     try
                     {
-#endif
-                    using (var reader = new JsonTextReader(streamReader))
-                    {
-                        output = jsonSerializer.Deserialize<T>(reader);
-                    }
-#if RELEASE
+                        response = requestResult.EndGetResponse(result);
+                        using (streamReader = new StreamReader(response.GetResponseStream()))
+                        {
+                            using (var reader = new JsonTextReader(streamReader))
+                            {
+                                output = jsonSerializer.Deserialize<T>(reader);
+                            }
+                        }
                     }
                     catch (Exception e)
                     {
@@ -121,85 +126,6 @@ namespace Chicken.Service.Implementation
             parameters.Add(Const.DIRECT_MESSAGE_SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES, parameters);
             HandleWebRequest<T>(url, callBack);
-        }
-        #endregion
-
-        #region MyRegion
-
-
-        public List<Tweet> GetOldTweets()
-        {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/hometimeline1.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            for (int i = 0; i < tweets.Count; i++)
-            {
-                tweets[i].Text = i + "";
-            }
-            return tweets;
-        }
-
-        public List<Tweet> GetNewMentions()
-        {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/mentions.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            for (int i = 0; i < tweets.Count; i++)
-            {
-                tweets[i].Text = i + " mentions";
-            }
-            return tweets;
-        }
-
-        public List<Tweet> GetOldMentions()
-        {
-            return GetNewMentions();
-        }
-
-        public List<Tweet> GetUserTweets(string userId)
-        {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/user_timeline.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            foreach (var tweet in tweets)
-            {
-                tweet.Text = tweets.Count + "User Tweet";
-            }
-            return tweets;
-        }
-
-        public List<Tweet> GetUserOldTweets(string userId)
-        {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/user_timeline.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var tweets = JsonConvert.DeserializeObject<List<Tweet>>(output);
-            foreach (var tweet in tweets)
-            {
-                tweet.Text = tweets.Count + "User Old Tweet";
-            }
-            return tweets;
-        }
-
-        public List<DirectMessage> GetDirectMessages()
-        {
-            var reader = System.Windows.Application.GetResourceStream(new Uri("SampleData/direct_messages.json", UriKind.Relative));
-            StreamReader streamReader = new StreamReader(reader.Stream);
-            string output = streamReader.ReadToEnd();
-            var messages = JsonConvert.DeserializeObject<List<DirectMessage>>(output);
-            foreach (var message in messages)
-            {
-                message.Text = messages.Count + " message";
-            }
-            return messages;
-        }
-
-        public List<DirectMessage> GetOldDirectMessages()
-        {
-            return GetDirectMessages();
         }
         #endregion
 
@@ -294,7 +220,7 @@ namespace Chicken.Service.Implementation
             }
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.STATUS, text);
-            string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET_WITH_MEDIA);
+            string url = Const.API_IMAGE + Const.STATUS_POST_NEW_TWEET_WITH_MEDIA;
             HandleWebRequestStream<T>(url, mediaStream, callBack, parameters);
         }
         #endregion
@@ -310,35 +236,35 @@ namespace Chicken.Service.Implementation
                     Stream outputStream = requestStreamResult.EndGetRequestStream(result);
                     //
                     StringBuilder builder = new StringBuilder();
-                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     builder.Append("Content-Type:multipart/form-data;boundary=").Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     //status:
                     foreach (var param in parameters)
                     {
                         builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
                         builder.Append("Content-Disposition:form-data;name=\"").Append(param.Key).Append("\"");
-                        builder.Append(param.Value.ToString());
+                        builder.Append(HttpUtility.UrlEncode(param.Value.ToString()));
                     }
+                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     string status = builder.ToString();
                     byte[] statusBytes = Encoding.UTF8.GetBytes(status);
                     outputStream.Write(statusBytes, 0, status.Length);
                     builder.Clear();
                     //media:
-                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
-                    builder.Append("Content-Type:application/octet-stream");
-                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"");
-                    builder.Append("Content-Transfer-Encoding:binary");
-                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    builder.Append("Content-Type:application/octet-stream").Append(Const.NEWLINE);
+                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"").Append(Const.NEWLINE);
+                    builder.Append("Content-Transfer-Encoding:binary").Append(Const.NEWLINE);
                     string media = builder.ToString();
                     byte[] mediaBytes = Encoding.UTF8.GetBytes(media);
                     outputStream.Write(mediaBytes, 0, media.Length);
                     builder.Clear();
                     //file stream:
-                    byte[] buffer = new Byte[checked((uint)Math.Min(4096, (int)mediaStream.Length))];
-                    int bytesRead = 0;
-                    while ((bytesRead = mediaStream.Read(buffer, 0, buffer.Length)) != 0)
+                    byte[] buffer = //new Byte[checked((uint)Math.Min(4096, (int)mediaStream.Length))];
+                        new byte[mediaStream.Length];
+                    outputStream.Write(buffer, 0, (int)mediaStream.Length);
+                    //int bytesRead = 0;
+                    //while ((bytesRead = mediaStream.Read(buffer, 0, buffer.Length)) != 0)
                     {
-                        outputStream.Write(buffer, 0, bytesRead);
+                        //outputStream.Write(buffer, 0, bytesRead);
                     }
                     builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     string end = builder.ToString();
@@ -351,7 +277,7 @@ namespace Chicken.Service.Implementation
                     requestStreamResult.BeginGetResponse(
                         requestResult =>
                         {
-                            HandleWebRequest<T>(url, callBack);
+                            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
                         }, requestStreamResult);
                 }, request);
         }

@@ -6,6 +6,7 @@ using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.NewTweet.Base;
 using System.IO;
+using System.Windows.Controls.Primitives;
 
 namespace Chicken.ViewModel.NewTweet
 {
@@ -46,14 +47,6 @@ namespace Chicken.ViewModel.NewTweet
             get
             {
                 return new DelegateCommand(SendAction);
-            }
-        }
-
-        public ICommand AddImageCommand
-        {
-            get
-            {
-                return new DelegateCommand(AddImageAction);
             }
         }
 
@@ -113,14 +106,14 @@ namespace Chicken.ViewModel.NewTweet
             }
         }
 
-        public void AddPhotoStream(object chosenStream = null)
+        public void AddImageStream(object stream = null)
         {
-            if (chosenStream == null)
+            var s = stream as Stream;
+            if (s == null)
             {
                 return;
             }
-            var stream = chosenStream as Stream;
-            tweetViewModel.MediaStream = stream;
+            tweetViewModel.MediaStream = s;
         }
 
         #region private method
@@ -149,12 +142,6 @@ namespace Chicken.ViewModel.NewTweet
                         NavigationServiceManager.NavigateTo(Const.MainPage);
                     }
                 }, parameters);
-        }
-
-        private void AddImageAction()
-        {
-            NavigationServiceManager.NavigateFrom(Const.NewTweetPage, Const.NewTweetParam, tweetViewModel);
-            NavigationServiceManager.NavigateTo(Const.PhotoChooserPage);
         }
 
         private void MentionAction()

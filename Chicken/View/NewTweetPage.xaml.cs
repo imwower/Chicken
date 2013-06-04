@@ -9,6 +9,10 @@ using Chicken.ViewModel.NewTweet;
 using Chicken.ViewModel.NewTweet.Base;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Controls.Primitives;
+using Chicken.Controls;
+using System.IO;
+using System.ComponentModel;
 
 namespace Chicken.View
 {
@@ -19,13 +23,24 @@ namespace Chicken.View
         private const int maxCharLength = 140;
         private bool isInit;
         private PostNewTweetViewModel newTweetViewModel;
+        private Popup popup;
         #endregion
 
         public NewTweetPage()
         {
             InitializeComponent();
+            this.BackKeyPress += new EventHandler<CancelEventArgs>(NewTweetPage_BackKeyPress);
             newTweetViewModel = new PostNewTweetViewModel();
             this.DataContext = newTweetViewModel;
+        }
+
+        void NewTweetPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (popup != null && popup.IsOpen)
+            {
+                popup.IsOpen = false;
+                e.Cancel = true;
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -33,15 +48,9 @@ namespace Chicken.View
             base.OnNavigatedTo(e);
             if (PhoneApplicationService.Current.State.ContainsKey(Const.NewTweetParam))
             {
-                var newTweet = PhoneApplicationService.Current.State[Const.NewTweetPage];
+                var newTweet = PhoneApplicationService.Current.State[Const.NewTweetParam];
                 newTweetViewModel.NavigateTo(newTweet);
-                PhoneApplicationService.Current.State.Remove(Const.NewTweetPage);
-            }
-            if (PhoneApplicationService.Current.State.ContainsKey(Const.ChosenPhotoStream))
-            {
-                var chosenPhotoStream = PhoneApplicationService.Current.State[Const.ChosenPhotoStream];
-                newTweetViewModel.AddPhotoStream(chosenPhotoStream);
-                PhoneApplicationService.Current.State.Remove(Const.NewTweetPage);
+                PhoneApplicationService.Current.State.Remove(Const.NewTweetParam);
             }
             else
             {
@@ -83,6 +92,23 @@ namespace Chicken.View
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
             (App.Current as App).RootFrame.RenderTransform = new CompositeTransform();
+        }
+
+        private void AddImageButton_Click(object sender, EventArgs e)
+        {
+            popup = new Popup();
+            var photoChooserControl = new PhotoChooserControl();
+            photoChooserControl.AddImageHandler = this.AddImageStream;
+            popup.Child = photoChooserControl;
+            this.IsHitTestVisible = ApplicationBar.IsVisible = false;
+            popup.IsOpen = true;
+        }
+
+        private void AddImageStream(Stream stream)
+        {
+            newTweetViewModel.AddImageStream(stream);
+            popup.IsOpen = false;
+            this.IsHitTestVisible = ApplicationBar.IsVisible = true;
         }
     }
 }

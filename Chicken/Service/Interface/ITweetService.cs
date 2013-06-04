@@ -15,21 +15,6 @@ namespace Chicken.Service.Interface
         void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
-        #region MyRegion
-        List<Tweet> GetOldTweets();
-
-        List<Tweet> GetNewMentions();
-        List<Tweet> GetOldMentions();
-
-        List<DirectMessage> GetDirectMessages();
-        List<DirectMessage> GetOldDirectMessages();
-
-
-
-        List<Tweet> GetUserTweets(string userId);
-        List<Tweet> GetUserOldTweets(string userId);
-        #endregion
-
         #region profile page
         void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 

@@ -36,15 +36,6 @@ namespace Chicken.Service
             Frame.Navigate(new Uri(pageName, UriKind.Relative));
         }
 
-        public static void NavigateFrom(string pageName, string parameterName, object parameter)
-        {
-            if (string.IsNullOrEmpty(pageName))
-            {
-                return;
-            }
-            PhoneApplicationService.Current.State[parameterName] = parameter;
-        }
-
         public static void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
         {
             var navigator = Frame.Content as INavigationService;

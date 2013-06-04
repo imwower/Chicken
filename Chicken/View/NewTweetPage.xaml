@@ -18,8 +18,9 @@
     <Grid x:Name="LayoutRoot" VerticalAlignment="Stretch">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="200"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.Resources>
             <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
@@ -49,6 +50,11 @@
             <TextBlock Text=" image" />
             <TextBlock Text=" location" />
         </StackPanel>
+        <Grid Grid.Row="3" Opacity="0.1">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
+            </Grid.Background>
+        </Grid>
     </Grid>
 
     <phone:PhoneApplicationPage.ApplicationBar>
@@ -56,7 +62,9 @@
             <!--send-->
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send"/>
             <!--add image-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image"
+                                            Click="AddImageButton_Click"
+                                            />
             <!--at somebody-->
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
             <!--emotion-->
@@ -66,7 +74,7 @@
 
     <i:Interaction.Behaviors>
         <abu:AppBarItemCommand Id="send" Command="{Binding SendCommand}" />
-        <abu:AppBarItemCommand Id="image" Command="{Binding AddImageCommand}" />
+        <!--<abu:AppBarItemCommand Id="image" Command="{Binding AddImageCommand}" />-->
         <abu:AppBarItemCommand Id="mention" Command="{Binding MentionCommand}" />
         <abu:AppBarItemCommand Id="emotion" Command="{Binding AddEmotionCommand}" />
     </i:Interaction.Behaviors>
