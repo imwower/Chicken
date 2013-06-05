@@ -61,13 +61,13 @@
                                         <ImageBrush ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" Stretch="Fill"  />
                                     </Grid.Background>
                                     <!--Profile Image-->
-                                    <Image Grid.Row="0"
-                                           Source="{Binding UserProfileViewModel.ProfileImageNormal}"
-                                           Width="124" Height="124" Margin="0,-40,0,0" Stretch="Fill">
-                                        <Image.Clip>
+                                    <ctrls:ImageContainer Grid.Row="0"
+                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}"
+                                                          Width="124" Height="124" Margin="0,-40,0,0">
+                                        <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                                        </Image.Clip>
-                                    </Image>
+                                        </ctrls:ImageContainer.Clip>
+                                    </ctrls:ImageContainer>
                                     <!--Name-->
                                     <TextBlock Text="{Binding UserProfileViewModel.Name}"
                                                Grid.Row="1" Margin="0,-10,0,0" />

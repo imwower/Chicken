@@ -12,7 +12,7 @@ namespace Chicken.Model
         [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
 
-        [JsonProperty("profile_image_url")]
+        [JsonProperty("profile_image_url_https")]
         public string ProfileImage { get; set; }
     }
 }
