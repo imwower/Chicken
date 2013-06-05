@@ -104,9 +104,9 @@ namespace Chicken.View
             popup.IsOpen = true;
         }
 
-        private void AddImageStream(Stream stream)
+        private void AddImageStream(string fileName, Stream stream)
         {
-            newTweetViewModel.AddImageStream(stream);
+            newTweetViewModel.AddImageStream(fileName, stream);
             popup.IsOpen = false;
             this.IsHitTestVisible = ApplicationBar.IsVisible = true;
         }

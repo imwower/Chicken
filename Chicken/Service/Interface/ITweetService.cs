@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Chicken.Model;
+using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.Service.Interface
 {
@@ -39,6 +40,9 @@ namespace Chicken.Service.Interface
         #region new tweet
         void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null);
         void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void PostNewTweet<T>(NewTweetViewModel newTweet, Action<object> callBack);
         #endregion
+
+        void UpdateProfileImage(string base64string);
     }
 }

@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.NewTweet.Base;
-using System.IO;
-using System.Windows.Controls.Primitives;
+using System;
+using System.Linq;
 
 namespace Chicken.ViewModel.NewTweet
 {
@@ -106,14 +107,14 @@ namespace Chicken.ViewModel.NewTweet
             }
         }
 
-        public void AddImageStream(object stream = null)
+        public void AddImageStream(string fileName, Stream stream)
         {
-            var s = stream as Stream;
-            if (s == null)
+            if (stream == null)
             {
                 return;
             }
-            tweetViewModel.MediaStream = s;
+            tweetViewModel.MediaStream = stream;
+            tweetViewModel.FileName = fileName;
         }
 
         #region private method
@@ -123,25 +124,30 @@ namespace Chicken.ViewModel.NewTweet
             {
                 return;
             }
-            var parameters = TwitterHelper.GetDictionary();
-            if (tweetViewModel.ActionType == NewTweetActionType.Quote
-                || tweetViewModel.ActionType == NewTweetActionType.Reply)
+            ////
+            using (MemoryStream stream = new MemoryStream())
             {
-                parameters.Add(Const.IN_REPLY_TO_STATUS_ID, tweetViewModel.InReplyToTweetId);
+                tweetViewModel.MediaStream.Position = 0;
+                tweetViewModel.MediaStream.CopyTo(stream);
+                string base64string = Convert.ToBase64String(stream.ToArray());
+                TweetService.UpdateProfileImage(base64string);
             }
-            TweetService.PostNewTweet<Tweet>(tweetViewModel.Text, tweetViewModel.MediaStream,
-                tweet =>
-                {
-                    List<ErrorMessage> errors = tweet.Errors;
-                    if (errors != null && errors.Count != 0)
-                    {
-                        //error;
-                    }
-                    else
-                    {
-                        NavigationServiceManager.NavigateTo(Const.MainPage);
-                    }
-                }, parameters);
+
+
+            //TweetService.PostNewTweet<Tweet>(tweetViewModel,
+            //    obj =>
+            //    {
+            //        Tweet tweet = obj as Tweet;
+            //        List<ErrorMessage> errors = tweet.Errors;
+            //        if (errors != null && errors.Count != 0)
+            //        {
+            //            //error;
+            //        }
+            //        else
+            //        {
+            //            NavigationServiceManager.NavigateTo(Const.MainPage);
+            //        }
+            //    });
         }
 
         private void MentionAction()

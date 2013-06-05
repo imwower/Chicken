@@ -227,59 +227,125 @@ namespace Chicken.Service.Implementation
 
         private void HandleWebRequestStream<T>(string url, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
+            //url = "http://posttestserver.com/post.php";
             HttpWebRequest request = WebRequest.CreateHttp(url);
             request.Method = Const.HTTPPOST;
+            request.ContentType = "multipart/form-data;boundary=" + Const.BOUNDARY;
             request.BeginGetRequestStream(
-                result =>
+                requestResult =>
                 {
-                    HttpWebRequest requestStreamResult = result.AsyncState as HttpWebRequest;
-                    Stream outputStream = requestStreamResult.EndGetRequestStream(result);
+                    #region builder
+                    HttpWebRequest requestStreamResult = requestResult.AsyncState as HttpWebRequest;
+                    Stream outputStream = requestStreamResult.EndGetRequestStream(requestResult);
                     //
                     StringBuilder builder = new StringBuilder();
-                    builder.Append("Content-Type:multipart/form-data;boundary=").Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     //status:
                     foreach (var param in parameters)
                     {
-                        builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
-                        builder.Append("Content-Disposition:form-data;name=\"").Append(param.Key).Append("\"");
-                        builder.Append(HttpUtility.UrlEncode(param.Value.ToString()));
+                        builder.Append("--").AppendLine(Const.BOUNDARY);
+                        builder.Append("Content-Disposition:form-data;name=\"").Append(param.Key).Append("\"").AppendLine();
+                        builder.AppendLine(HttpUtility.UrlEncode(param.Value.ToString()));
                     }
-                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
                     string status = builder.ToString();
                     byte[] statusBytes = Encoding.UTF8.GetBytes(status);
                     outputStream.Write(statusBytes, 0, status.Length);
                     builder.Clear();
                     //media:
-                    builder.Append("Content-Type:application/octet-stream").Append(Const.NEWLINE);
-                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"").Append(Const.NEWLINE);
-                    builder.Append("Content-Transfer-Encoding:binary").Append(Const.NEWLINE);
+                    builder.Append("--").AppendLine(Const.BOUNDARY);
+                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"").AppendLine();
+                    builder.AppendLine("Content-Type:application/octet-stream");
+                    builder.AppendLine("Content-Transfer-Encoding:binary");
                     string media = builder.ToString();
                     byte[] mediaBytes = Encoding.UTF8.GetBytes(media);
                     outputStream.Write(mediaBytes, 0, media.Length);
                     builder.Clear();
                     //file stream:
-                    byte[] buffer = //new Byte[checked((uint)Math.Min(4096, (int)mediaStream.Length))];
-                        new byte[mediaStream.Length];
-                    outputStream.Write(buffer, 0, (int)mediaStream.Length);
-                    //int bytesRead = 0;
-                    //while ((bytesRead = mediaStream.Read(buffer, 0, buffer.Length)) != 0)
-                    {
-                        //outputStream.Write(buffer, 0, bytesRead);
-                    }
-                    builder.Append(Const.BOUNDARY).Append(Const.NEWLINE);
+                    byte[] buffer = new byte[mediaStream.Length];
+                    mediaStream.Read(buffer, 0, buffer.Length);
+                    outputStream.Write(buffer, 0, buffer.Length);
+                    builder.AppendLine().Append("--").Append(Const.BOUNDARY).AppendLine("--");
                     string end = builder.ToString();
                     byte[] endBytes = Encoding.UTF8.GetBytes(end);
                     outputStream.Write(endBytes, 0, end.Length);
                     builder.Clear();
                     //
                     outputStream.Close();
-                    //
+                    // 
+                    #endregion
                     requestStreamResult.BeginGetResponse(
-                        requestResult =>
+                (result) =>
+                {
+                    #region response
+                    HttpWebRequest responseResult = (HttpWebRequest)result.AsyncState;
+                    WebResponse response = null;
+                    StreamReader streamReader = StreamReader.Null;
+                    T output = default(T);
+#if !RELEASE
+                    response = responseResult.EndGetResponse(result);
+                    streamReader = new StreamReader(response.GetResponseStream());
+                    string s = streamReader.ReadToEnd();
+                    output = JsonConvert.DeserializeObject<T>(s, jsonSettings);
+#else
+                    try
+                    {
+                        response = requestResult.EndGetResponse(result);
+                        using (streamReader = new StreamReader(response.GetResponseStream()))
                         {
-                            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
-                        }, requestStreamResult);
+                            using (var reader = new JsonTextReader(streamReader))
+                            {
+                                output = jsonSerializer.Deserialize<T>(reader);
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                    }
+                    finally
+                    {
+#endif
+                    if (callBack != null)
+                    {
+                        Deployment.Current.Dispatcher.BeginInvoke(
+                            () =>
+                            {
+                                callBack(output);
+                            });
+                    }
+                    if (streamReader != null)
+                    {
+                        streamReader.Close();
+                        streamReader.Dispose();
+                        streamReader = null;
+                    }
+                    request = null;
+                    responseResult = null;
+                    if (response != null)
+                    {
+                        response.Close();
+                        response.Dispose();
+                        response = null;
+                    }
+#if RELEASE
+                    }
+#endif
+                    #endregion
+                },
+              requestStreamResult);
                 }, request);
+        }
+
+
+        public void PostNewTweet<T>(ViewModel.NewTweet.Base.NewTweetViewModel newTweet, Action<object> callBack)
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public void UpdateProfileImage(string base64string)
+        {
+            //string url = Const.API + "account/update_profile_image.json?image=" + base64string;
+            //HandleWebRequest<User>(url,null,Const.HTTPPOST);
         }
     }
 }
+

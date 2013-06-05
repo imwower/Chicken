@@ -11,10 +11,11 @@ namespace Chicken.Controls
         #region private properites
         private PhotoChooserTask photoChooser;
         private Stream chosenPhotoStream = Stream.Null;
+        private string fileName;
         #endregion
 
         #region event handler
-        public delegate void AddImageFinishedEventHandler(Stream stream);
+        public delegate void AddImageFinishedEventHandler(string fileName, Stream stream);
         public AddImageFinishedEventHandler AddImageHandler;
         #endregion
 
@@ -37,6 +38,7 @@ namespace Chicken.Controls
                 BitmapImage source = new BitmapImage();
                 chosenPhotoStream = e.ChosenPhoto;
                 source.SetSource(e.ChosenPhoto);
+                this.fileName = e.OriginalFileName.Substring(e.OriginalFileName.LastIndexOf("\\") + 1);
                 this.PhotoPanel.Source = source;
             }
         }
@@ -47,7 +49,7 @@ namespace Chicken.Controls
             {
                 Dispatcher.BeginInvoke(
                     () =>
-                        AddImageHandler(chosenPhotoStream));
+                        AddImageHandler(fileName, chosenPhotoStream));
             }
         }
     }

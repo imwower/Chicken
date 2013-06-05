@@ -29,6 +29,7 @@ namespace Chicken.ViewModel.NewTweet.Base
         public NewTweetActionType ActionType { get; set; }
         public string InReplyToTweetId { get; set; }
         public string InReplyToUserScreenName { get; set; }
+        public string FileName { get; set; }
         public Stream MediaStream { get; set; }
     }
 }
