@@ -92,11 +92,11 @@ namespace Chicken.ViewModel.NewTweet
                     case NewTweetActionType.Quote:
                         Title = "Quote:";
                         TweetViewModel.Text = Const.QUOTECHARACTER + " " + tweet.InReplyToUserScreenName + " " + tweet.Text;
-                        TweetViewModel.InReplyToTweetId = tweet.InReplyToTweetId;
+                        TweetViewModel.InReplyToStatusId = tweet.InReplyToStatusId;
                         break;
                     case NewTweetActionType.Reply:
                         Title = "Reply To:";
-                        TweetViewModel.InReplyToTweetId = tweet.InReplyToTweetId;
+                        TweetViewModel.InReplyToStatusId = tweet.InReplyToStatusId;
                         TweetViewModel.Text = tweet.InReplyToUserScreenName + " ";
                         break;
                     case NewTweetActionType.PostNew:
@@ -124,30 +124,20 @@ namespace Chicken.ViewModel.NewTweet
             {
                 return;
             }
-            ////
-            using (MemoryStream stream = new MemoryStream())
-            {
-                tweetViewModel.MediaStream.Position = 0;
-                tweetViewModel.MediaStream.CopyTo(stream);
-                string base64string = Convert.ToBase64String(stream.ToArray());
-                TweetService.UpdateProfileImage(base64string);
-            }
-
-
-            //TweetService.PostNewTweet<Tweet>(tweetViewModel,
-            //    obj =>
-            //    {
-            //        Tweet tweet = obj as Tweet;
-            //        List<ErrorMessage> errors = tweet.Errors;
-            //        if (errors != null && errors.Count != 0)
-            //        {
-            //            //error;
-            //        }
-            //        else
-            //        {
-            //            NavigationServiceManager.NavigateTo(Const.MainPage);
-            //        }
-            //    });
+            TweetService.PostNewTweet<Tweet>(tweetViewModel,
+                obj =>
+                {
+                    Tweet tweet = obj as Tweet;
+                    List<ErrorMessage> errors = tweet.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        //error;
+                    }
+                    else
+                    {
+                        NavigationServiceManager.NavigateTo(Const.MainPage);
+                    }
+                });
         }
 
         private void MentionAction()
