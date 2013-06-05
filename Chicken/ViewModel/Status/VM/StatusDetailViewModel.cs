@@ -117,7 +117,7 @@ namespace Chicken.ViewModel.Status.VM
             {
                 ActionType = type,
                 Text = TweetViewModel.Text,
-                InReplyToTweetId = TweetViewModel.Id,
+                InReplyToStatusId = TweetViewModel.Id,
                 InReplyToUserScreenName = TweetViewModel.User.ScreenName,
             };
             NavigationServiceManager.NavigateTo(Const.NewTweetPage, Const.NewTweetParam, newTweet);

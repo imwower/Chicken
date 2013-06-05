@@ -4,10 +4,9 @@ using System.IO;
 using System.Net;
 using System.Windows;
 using Chicken.Common;
-using Chicken.Model;
 using Chicken.Service.Interface;
+using Chicken.ViewModel.NewTweet.Base;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace Chicken.Service.Implementation
 {
@@ -22,87 +21,6 @@ namespace Chicken.Service.Implementation
         };
         private static JsonSerializer jsonSerializer = JsonSerializer.Create(jsonSettings);
         #endregion
-        #endregion
-
-        #region private method
-        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
-        {
-            HttpWebRequest request = WebRequest.CreateHttp(url);
-            request.Method = method.ToString();
-            request.BeginGetResponse(
-                (result) =>
-                {
-                    HttpWebRequest requestResult = (HttpWebRequest)result.AsyncState;
-                    WebResponse response = null;
-                    StreamReader streamReader = StreamReader.Null;
-                    T output = default(T);
-#if !RELEASE
-                    response = requestResult.EndGetResponse(result);
-                    streamReader = new StreamReader(response.GetResponseStream());
-                    string s = streamReader.ReadToEnd();
-                    output = JsonConvert.DeserializeObject<T>(s, jsonSettings);
-#else
-                    try
-                    {
-                        response = requestResult.EndGetResponse(result);
-                        using (streamReader = new StreamReader(response.GetResponseStream()))
-                        {
-                            using (var reader = new JsonTextReader(streamReader))
-                            {
-                                output = jsonSerializer.Deserialize<T>(reader);
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                    finally
-                    {
-#endif
-                    if (callBack != null)
-                    {
-                        Deployment.Current.Dispatcher.BeginInvoke(
-                            () =>
-                            {
-                                callBack(output);
-                            });
-                    }
-                    if (streamReader != null)
-                    {
-                        streamReader.Close();
-                        streamReader.Dispose();
-                        streamReader = null;
-                    }
-                    request = null;
-                    requestResult = null;
-                    if (response != null)
-                    {
-                        response.Close();
-                        response.Dispose();
-                        response = null;
-                    }
-#if RELEASE
-                    }
-#endif
-                },
-              request);
-        }
-
-        public static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)
-        {
-            parameters = TwitterHelper.GetDictionary(parameters);
-            if (parameters.ContainsKey(Const.SINCE_ID) ||
-                parameters.ContainsKey(Const.MAX_ID))
-            {
-                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
-            }
-            else
-            {
-                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
-            }
-            return parameters;
-        }
-
         #endregion
 
         #region Home Page
@@ -203,149 +121,87 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region new tweet
-        public void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void PostNewTweet<T>(NewTweetViewModel newTweet, Action<T> callBack)
         {
-            parameters = TwitterHelper.GetDictionary(parameters);
-            parameters.Add(Const.STATUS, text);
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.STATUS, newTweet.Text);
+            if (!string.IsNullOrEmpty(newTweet.InReplyToStatusId))
+            {
+                parameters.Add(Const.IN_REPLY_TO_STATUS_ID, newTweet.InReplyToStatusId);
+            }
             string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET, parameters);
             HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
         }
-
-        public void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
-        {
-            if (mediaStream == null)
-            {
-                PostNewTweet<T>(text, callBack, parameters);
-                return;
-            }
-            parameters = TwitterHelper.GetDictionary(parameters);
-            parameters.Add(Const.STATUS, text);
-            string url = Const.API_IMAGE + Const.STATUS_POST_NEW_TWEET_WITH_MEDIA;
-            HandleWebRequestStream<T>(url, mediaStream, callBack, parameters);
-        }
         #endregion
 
-        private void HandleWebRequestStream<T>(string url, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null)
+        #region private method
+        private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {
-            //url = "http://posttestserver.com/post.php";
             HttpWebRequest request = WebRequest.CreateHttp(url);
-            request.Method = Const.HTTPPOST;
-            request.ContentType = "multipart/form-data;boundary=" + Const.BOUNDARY;
-            request.BeginGetRequestStream(
-                requestResult =>
+            request.Method = method.ToString();
+            RequestDataObject<T> dto = new RequestDataObject<T>
+            {
+                Request = request,
+                CallBack = callBack,
+            };
+            request.BeginGetResponse(
+                result =>
                 {
-                    #region builder
-                    HttpWebRequest requestStreamResult = requestResult.AsyncState as HttpWebRequest;
-                    Stream outputStream = requestStreamResult.EndGetRequestStream(requestResult);
-                    //
-                    StringBuilder builder = new StringBuilder();
-                    //status:
-                    foreach (var param in parameters)
-                    {
-                        builder.Append("--").AppendLine(Const.BOUNDARY);
-                        builder.Append("Content-Disposition:form-data;name=\"").Append(param.Key).Append("\"").AppendLine();
-                        builder.AppendLine(HttpUtility.UrlEncode(param.Value.ToString()));
-                    }
-                    string status = builder.ToString();
-                    byte[] statusBytes = Encoding.UTF8.GetBytes(status);
-                    outputStream.Write(statusBytes, 0, status.Length);
-                    builder.Clear();
-                    //media:
-                    builder.Append("--").AppendLine(Const.BOUNDARY);
-                    builder.Append("Content-Disposition:form-data;name=\"media[]\";filename=\"media.png\"").AppendLine();
-                    builder.AppendLine("Content-Type:application/octet-stream");
-                    builder.AppendLine("Content-Transfer-Encoding:binary");
-                    string media = builder.ToString();
-                    byte[] mediaBytes = Encoding.UTF8.GetBytes(media);
-                    outputStream.Write(mediaBytes, 0, media.Length);
-                    builder.Clear();
-                    //file stream:
-                    byte[] buffer = new byte[mediaStream.Length];
-                    mediaStream.Read(buffer, 0, buffer.Length);
-                    outputStream.Write(buffer, 0, buffer.Length);
-                    builder.AppendLine().Append("--").Append(Const.BOUNDARY).AppendLine("--");
-                    string end = builder.ToString();
-                    byte[] endBytes = Encoding.UTF8.GetBytes(end);
-                    outputStream.Write(endBytes, 0, end.Length);
-                    builder.Clear();
-                    //
-                    outputStream.Close();
-                    // 
-                    #endregion
-                    requestStreamResult.BeginGetResponse(
-                (result) =>
-                {
-                    #region response
-                    HttpWebRequest responseResult = (HttpWebRequest)result.AsyncState;
-                    WebResponse response = null;
-                    StreamReader streamReader = StreamReader.Null;
-                    T output = default(T);
-#if !RELEASE
-                    response = responseResult.EndGetResponse(result);
-                    streamReader = new StreamReader(response.GetResponseStream());
-                    string s = streamReader.ReadToEnd();
-                    output = JsonConvert.DeserializeObject<T>(s, jsonSettings);
-#else
-                    try
-                    {
-                        response = requestResult.EndGetResponse(result);
-                        using (streamReader = new StreamReader(response.GetResponseStream()))
-                        {
-                            using (var reader = new JsonTextReader(streamReader))
-                            {
-                                output = jsonSerializer.Deserialize<T>(reader);
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                    }
-                    finally
-                    {
-#endif
-                    if (callBack != null)
-                    {
-                        Deployment.Current.Dispatcher.BeginInvoke(
-                            () =>
-                            {
-                                callBack(output);
-                            });
-                    }
-                    if (streamReader != null)
-                    {
-                        streamReader.Close();
-                        streamReader.Dispose();
-                        streamReader = null;
-                    }
-                    request = null;
-                    responseResult = null;
-                    if (response != null)
-                    {
-                        response.Close();
-                        response.Dispose();
-                        response = null;
-                    }
+                    HandleResponse<T>(result);
+                }, dto);
+        }
+
+        private void HandleResponse<T>(IAsyncResult result)
+        {
+            var dto = result.AsyncState as RequestDataObject<T>;
 #if RELEASE
-                    }
+            try
+            { 
 #endif
-                    #endregion
-                },
-              requestStreamResult);
-                }, request);
+            var response = dto.Request.EndGetResponse(result);
+            using (var streamReader = new StreamReader(response.GetResponseStream()))
+            {
+                using (var reader = new JsonTextReader(streamReader))
+                {
+                    dto.Result = jsonSerializer.Deserialize<T>(reader);
+                }
+            }
+#if RELEASE
+		            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {  
+#endif
+            if (dto.CallBack != null)
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(
+                    () =>
+                    {
+                        dto.CallBack(dto.Result);
+                    });
+            }
+#if RELEASE
+		            }  
+#endif
         }
 
-
-        public void PostNewTweet<T>(ViewModel.NewTweet.Base.NewTweetViewModel newTweet, Action<object> callBack)
+        public static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)
         {
-            throw new NotImplementedException();
+            parameters = TwitterHelper.GetDictionary(parameters);
+            if (parameters.ContainsKey(Const.SINCE_ID) ||
+                parameters.ContainsKey(Const.MAX_ID))
+            {
+                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
+            }
+            else
+            {
+                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
+            }
+            return parameters;
         }
-
-
-        public void UpdateProfileImage(string base64string)
-        {
-            //string url = Const.API + "account/update_profile_image.json?image=" + base64string;
-            //HandleWebRequest<User>(url,null,Const.HTTPPOST);
-        }
+        #endregion
     }
 }
 

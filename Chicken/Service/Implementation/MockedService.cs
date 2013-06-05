@@ -100,7 +100,7 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
-        #region prvate method
+        #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack)
         {
             var streamInfo = Application.GetResourceStream(new Uri(url, UriKind.Relative));

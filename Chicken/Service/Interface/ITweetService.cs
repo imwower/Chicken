@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using Chicken.Model;
+using System.Net;
 using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.Service.Interface
@@ -38,11 +37,18 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region new tweet
-        void PostNewTweet<T>(string text, Action<T> callBack, IDictionary<string, object> parameters = null);
-        void PostNewTweet<T>(string text, Stream mediaStream, Action<T> callBack, IDictionary<string, object> parameters = null);
-        void PostNewTweet<T>(NewTweetViewModel newTweet, Action<object> callBack);
+        void PostNewTweet<T>(NewTweetViewModel newTweet, Action<T> callBack);
         #endregion
+    }
 
-        void UpdateProfileImage(string base64string);
+    public class RequestDataObject<T>
+    {
+        public HttpWebRequest Request { get; set; }
+        public Action<T> CallBack { get; set; }
+        public T Result { get; set; }
+        public RequestDataObject()
+        {
+            Result = default(T);
+        }
     }
 }
