@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
@@ -59,17 +60,21 @@ namespace Chicken.ViewModel.Status.VM
                 tweet =>
                 {
                     TweetViewModel = new TweetViewModel(tweet);
-                    LoadConversation(tweet.InReplyToTweetId);
+                    if (string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
+                    {
+                        LoadHandler = null;
+                    }
+                    else
+                    {
+                        LoadConversation(tweet.InReplyToTweetId);
+                    }
                 });
         }
 
         private void LoadAction()
         {
-            if (!string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
-            {
-                var tweet = ConversationList[ConversationList.Count - 1];
-                LoadConversation(tweet.InReplyToTweetId);
-            }
+            var tweet = ConversationList[ConversationList.Count - 1];
+            LoadConversation(tweet.InReplyToTweetId);
         }
 
         /// <summary>
@@ -92,12 +97,35 @@ namespace Chicken.ViewModel.Status.VM
 
         private void AddFavoriteAction()
         {
-            //TODO
+            var action = tweetViewModel.Favorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
+            TweetService.AddToFavorites<Tweet>(StatusId, action,
+                tweet =>
+                {
+                    List<ErrorMessage> errors = tweet.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        //error
+                    }
+                    Refresh();
+                });
         }
 
         private void RetweetAction()
         {
-            //TODO
+            var action = RetweetActionType.Create;
+            if (!tweetViewModel.Retweeted)
+            {
+                TweetService.Retweet<Tweet>(StatusId, action,
+                   tweet =>
+                   {
+                       List<ErrorMessage> errors = tweet.Errors;
+                       if (errors != null && errors.Count != 0)
+                       {
+                           //error
+                       }
+                       Refresh();
+                   });
+            }
         }
 
         private void ReplyAction()

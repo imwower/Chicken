@@ -1,18 +1,17 @@
 ﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Controls;
 using Chicken.ViewModel.NewTweet;
 using Chicken.ViewModel.NewTweet.Base;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
-using System.Windows.Controls.Primitives;
-using Chicken.Controls;
-using System.IO;
-using System.ComponentModel;
 
 namespace Chicken.View
 {
@@ -30,11 +29,18 @@ namespace Chicken.View
         {
             InitializeComponent();
             this.BackKeyPress += new EventHandler<CancelEventArgs>(NewTweetPage_BackKeyPress);
+            this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
             newTweetViewModel = new PostNewTweetViewModel();
             this.DataContext = newTweetViewModel;
         }
 
-        void NewTweetPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
+        #region loaded
+        private void NewTweetPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.TextContent.Focus();
+        }
+
+        private void NewTweetPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (popup != null && popup.IsOpen)
             {
@@ -42,6 +48,7 @@ namespace Chicken.View
                 e.Cancel = true;
             }
         }
+        #endregion
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -58,6 +65,16 @@ namespace Chicken.View
             }
         }
 
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            base.OnNavigatingFrom(e);
+            if (!string.IsNullOrEmpty(newTweetViewModel.TweetViewModel.Text))
+            {
+                PhoneApplicationService.Current.State.Add(Const.NewTweetParam, newTweetViewModel.TweetViewModel);
+            }
+        }
+
+        #region text content
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
             var exp = this.TextContent.GetBindingExpression(TextBox.TextProperty);
@@ -93,7 +110,9 @@ namespace Chicken.View
         {
             (App.Current as App).RootFrame.RenderTransform = new CompositeTransform();
         }
+        #endregion
 
+        #region add image
         private void AddImageButton_Click(object sender, EventArgs e)
         {
             popup = new Popup();
@@ -110,5 +129,6 @@ namespace Chicken.View
             popup.IsOpen = false;
             this.IsHitTestVisible = ApplicationBar.IsVisible = true;
         }
+        #endregion
     }
 }

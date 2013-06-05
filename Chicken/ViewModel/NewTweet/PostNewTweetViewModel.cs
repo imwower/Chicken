@@ -6,8 +6,6 @@ using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.NewTweet.Base;
-using System;
-using System.Linq;
 
 namespace Chicken.ViewModel.NewTweet
 {
@@ -75,10 +73,7 @@ namespace Chicken.ViewModel.NewTweet
         public PostNewTweetViewModel()
         {
             Title = "what's happening?";
-            tweetViewModel = new NewTweetViewModel
-            {
-                Text = "Hello World",
-            };
+            tweetViewModel = new NewTweetViewModel();
         }
 
         public void NavigateTo(object parameter = null)
@@ -102,6 +97,7 @@ namespace Chicken.ViewModel.NewTweet
                     case NewTweetActionType.PostNew:
                     case NewTweetActionType.None:
                     default:
+                        TweetViewModel.Text = tweet.Text;
                         break;
                 }
             }
@@ -125,9 +121,8 @@ namespace Chicken.ViewModel.NewTweet
                 return;
             }
             TweetService.PostNewTweet<Tweet>(tweetViewModel,
-                obj =>
+                tweet =>
                 {
-                    Tweet tweet = obj as Tweet;
                     List<ErrorMessage> errors = tweet.Errors;
                     if (errors != null && errors.Count != 0)
                     {

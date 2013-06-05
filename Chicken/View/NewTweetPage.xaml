@@ -46,7 +46,7 @@
         <StackPanel x:Name="MenuPanel" Grid.Row="2"
                         Orientation="Horizontal" Opacity="0.6">
             <!--char counter-->
-            <TextBlock x:Name="TextCounter" />
+            <TextBlock x:Name="TextCounter" Text="140" />
             <TextBlock Text=" image" />
             <TextBlock Text=" location" />
         </StackPanel>
@@ -62,9 +62,8 @@
             <!--send-->
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send"/>
             <!--add image-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image"
-                                            Click="AddImageButton_Click"
-                                            />
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image" 
+                                            Click="AddImageButton_Click" />
             <!--at somebody-->
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
             <!--emotion-->

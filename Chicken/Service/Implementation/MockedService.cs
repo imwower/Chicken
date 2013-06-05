@@ -85,6 +85,18 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/tweet.json";
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack)
+        {
+            string url = "SampleData/tweet.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack)
+        {
+            string url = "SampleData/tweet.json";
+            HandleWebRequest<T>(url, callBack);
+        }
         public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/followingIds.json";
@@ -120,5 +132,6 @@ namespace Chicken.Service.Implementation
             }
         }
         #endregion
+
     }
 }

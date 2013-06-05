@@ -34,7 +34,6 @@
         public const string INCLUDE_ENTITIES = "include_entities";
         public const string DIRECT_MESSAGE_SKIP_STATUS = "skip_status";
         public const string CURSOR = "cursor";
-
         public const string STATUS = "status";
         public const string IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
         #endregion
@@ -57,6 +56,10 @@
         #region status page
         public const string STATUSES_SHOW = "statuses/show.json";
         public const string STATUSES_RETWEET_IDS = "statuses/retweeters/ids.json";
+        public const string ADD_TO_FAVORITES_CREATE = "favorites/create.json";
+        public const string ADD_TO_FAVORITES_DESTROY = "favorites/destroy.json";
+        public const string RETWEET_CREATE = "statuses/{0}.json";
+
         #endregion
 
         #region post new tweet
@@ -90,5 +93,17 @@
             Favorites = 3,
         }
         #endregion
+    }
+
+    public enum AddToFavoriteActionType
+    {
+        Create = 1,
+        Destroy = 2,
+    }
+
+    public enum RetweetActionType
+    {
+        Create = 1,
+        Destroy = 2,
     }
 }

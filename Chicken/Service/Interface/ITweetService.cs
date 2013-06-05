@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using Chicken.Common;
 using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.Service.Interface
@@ -32,6 +33,10 @@ namespace Chicken.Service.Interface
         #region status page
         void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
+        void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack);
+
+        void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack);
+
         void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         #endregion
@@ -41,11 +46,14 @@ namespace Chicken.Service.Interface
         #endregion
     }
 
+
+
     public class RequestDataObject<T>
     {
         public HttpWebRequest Request { get; set; }
         public Action<T> CallBack { get; set; }
         public T Result { get; set; }
+
         public RequestDataObject()
         {
             Result = default(T);

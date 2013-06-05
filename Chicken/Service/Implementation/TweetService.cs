@@ -110,6 +110,36 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.ID, statusId);
+            string url = string.Empty;
+            switch (action)
+            {
+                case AddToFavoriteActionType.Destroy:
+                    url = TwitterHelper.GenerateUrlParams(Const.ADD_TO_FAVORITES_DESTROY, parameters);
+                    break;
+                case AddToFavoriteActionType.Create:
+                default:
+                    url = TwitterHelper.GenerateUrlParams(Const.ADD_TO_FAVORITES_CREATE, parameters);
+                    break;
+            }
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
+
+        public void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack)
+        {
+            string url = string.Empty;
+            switch (action)
+            {
+                case RetweetActionType.Create:
+                    url = String.Format(Const.RETWEET_CREATE, statusId);
+                    break;
+            }
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
+
         public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
