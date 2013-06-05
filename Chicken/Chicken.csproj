@@ -68,10 +68,23 @@
     <Reference Include="AppBarUtils">
       <HintPath>libs\AppBarUtils.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZLib.Phone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ImageTools">
+      <HintPath>libs\ImageTools.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Controls">
+      <HintPath>libs\ImageTools.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Filtering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ImageTools.IO.Gif">
+      <HintPath>libs\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="PhoneCodeContractsAssemblies, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -88,6 +101,9 @@
     <Compile Include="Common\TwitterHelper.cs" />
     <Compile Include="Controls\AutoGrid.cs" />
     <Compile Include="Controls\HomePivotItem.cs" />
+    <Compile Include="Controls\ImageContainer.xaml.cs">
+      <DependentUpon>ImageContainer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PhotoChooserControl.xaml.cs">
       <DependentUpon>PhotoChooserControl.xaml</DependentUpon>
     </Compile>
@@ -230,6 +246,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="libs\AppBarUtils.dll" />
+    <Content Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
+    <Content Include="libs\ImageTools.Controls.dll" />
+    <Content Include="libs\ImageTools.dll" />
+    <Content Include="libs\ImageTools.Filtering.dll" />
+    <Content Include="libs\ImageTools.IO.Gif.dll" />
+    <Content Include="libs\ImageTools.IO.Png.dll" />
+    <Content Include="libs\ImageTools.Utils.dll" />
+    <Content Include="libs\PhoneCodeContractsAssemblies.dll" />
     <Content Include="SampleData\errors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -259,6 +283,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\ImageContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PhotoChooserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

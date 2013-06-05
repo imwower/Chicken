@@ -5,12 +5,14 @@
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:it="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
     xmlns:ctrls ="clr-namespace:Chicken.Controls">
 
     <Application.Resources>
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
         <!--<ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />-->
+        <it:ImageConverter x:Key="ImageConverter" />
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
@@ -194,24 +196,24 @@
         </Style>
 
         <!--profile image-->
-        <Style x:Name="ProfileImage" TargetType="Image">
+        <Style x:Name="ProfileImage" TargetType="ctrls:ImageContainer">
             <Setter Property="Margin" Value="0,2,4,0" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalAlignment" Value="Top" />
         </Style>
         <!--profile image icon-->
-        <Style x:Name="ProfileImageIcon" TargetType="Image">
+        <Style x:Name="ProfileImageIcon" TargetType="ctrls:ImageContainer">
             <Setter Property="Margin" Value="4" />
             <Setter Property="Width" Value="40" />
             <Setter Property="Height" Value="40" />
         </Style>
         <!--profile image small-->
-        <Style x:Name="ProfileImageSmall" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
+        <Style x:Name="ProfileImageSmall" TargetType="ctrls:ImageContainer" BasedOn="{StaticResource ProfileImage}">
             <Setter Property="Width" Value="64" />
             <Setter Property="Height"  Value="64" />
         </Style>
         <!--profile image bigger-->
-        <Style x:Name="ProfileImageBigger" TargetType="Image" BasedOn="{StaticResource ProfileImage}">
+        <Style x:Name="ProfileImageBigger" TargetType="ctrls:ImageContainer" BasedOn="{StaticResource ProfileImage}">
             <Setter Property="Margin" Value="4" />
             <Setter Property="Width" Value="84" />
             <Setter Property="Height"  Value="84" />
@@ -230,8 +232,8 @@
                         CommandParameter="{Binding User.Id}">
                     <Button.Template>
                         <ControlTemplate>
-                            <Image Source="{Binding Path=User.ProfileImage}"
-                                  Style="{StaticResource ProfileImageSmall}" />
+                            <ctrls:ImageContainer ImageSource="{Binding Path=User.ProfileImage}"
+                                                  Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -339,8 +341,8 @@
                         CommandParameter="{Binding User.Id}">
                     <Button.Template>
                         <ControlTemplate>
-                            <Image Source="{Binding User.ProfileImage}"
-                                   Style="{StaticResource ProfileImageSmall}"/>
+                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}"
+                                                  Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -387,8 +389,8 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
-                            <Image Source="{Binding ProfileImage}" Grid.Column="0"
-                                   Style="{StaticResource ProfileImageBigger}" />
+                            <ctrls:ImageContainer ImageSource="{Binding ProfileImage}"
+                                                  Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />

@@ -70,8 +70,8 @@
                                                     <ColumnDefinition Width="*"  />
                                                 </Grid.ColumnDefinitions>
                                                 <!--profile image-->
-                                                <Image Source="{Binding Path=TweetViewModel.User.ProfileImageBigger}"
-                                                       Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
+                                                <ctrls:ImageContainer ImageSource="{Binding Path=TweetViewModel.User.ProfileImageBigger}"
+                                                                      Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
                                                 <!--name, screen name-->
                                                 <Grid Grid.Column="1">
                                                     <Grid.RowDefinitions>
@@ -179,8 +179,8 @@
                                         </Border>
                                         <Border
                                                 Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <Image Source="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
-                                                   Stretch="Fill" Style="{StaticResource ProfileImageIcon}" />
+                                            <ctrls:ImageContainer ImageSource="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
+                                                                  Style="{StaticResource ProfileImageIcon}" />
                                         </Border>
                                         <Border
                                             Visibility="{Binding TweetViewModel.FavoriteCount,Converter={StaticResource StringToVisibilityConverter}}">

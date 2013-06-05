@@ -1,633 +1,52 @@
 ﻿[
     {
-        "created_at": "Tue May 28 17:25:19 +0000 2013", 
-        "id": 339432209729585150, 
-        "id_str": "339432209729585153", 
-        "text": "RT @Kaitobark: 高雄中油: 屬正常能量釋放 請大家不要過度緊張", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 12:40:20 +0000 2013", 
+        "id": 342259594283851800, 
+        "id_str": "342259594283851776", 
+        "text": "@toby521531 这个可以同步，pc网页也可以使用。我也刚开始用，感觉还不错", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
+        "in_reply_to_status_id": 342258970720878600, 
+        "in_reply_to_status_id_str": "342258970720878592", 
+        "in_reply_to_user_id": 323132023, 
+        "in_reply_to_user_id_str": "323132023", 
+        "in_reply_to_screen_name": "toby521531", 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 17:12:51 +0000 2013", 
-            "id": 339429072100810750, 
-            "id_str": "339429072100810752", 
-            "text": "高雄中油: 屬正常能量釋放 請大家不要過度緊張", 
-            "source": "web", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 369272921, 
-                "id_str": "369272921", 
-                "name": "MicroHardor ", 
-                "screen_name": "Kaitobark", 
-                "location": "Taiwan", 
-                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
-                "url": "http://t.co/tbojMLHhkt", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/tbojMLHhkt", 
-                                "expanded_url": "http://about.me/jksung", 
-                                "display_url": "about.me/jksung", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 63, 
-                "friends_count": 210, 
-                "listed_count": 0, 
-                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
-                "favourites_count": 100, 
-                "utc_offset": 28800, 
-                "time_zone": "Beijing", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 1518, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "283B3D", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_tile": true, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
-                "profile_link_color": "FF3300", 
-                "profile_sidebar_border_color": "FFFFFF", 
-                "profile_sidebar_fill_color": "A0C5C7", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Kaitobark", 
-                    "name": "MicroHardor ", 
-                    "id": 369272921, 
-                    "id_str": "369272921", 
-                    "indices": [
-                        3, 
-                        13
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 17:24:54 +0000 2013", 
-        "id": 339432102951006200, 
-        "id_str": "339432102951006208", 
-        "text": "RT @Kaitobark: 聽說我們學校資管系進了一台3D打印機 #我都不知道我學校這麼有閒錢", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 17:07:34 +0000 2013", 
-            "id": 339427740346363900, 
-            "id_str": "339427740346363905", 
-            "text": "聽說我們學校資管系進了一台3D打印機 #我都不知道我學校這麼有閒錢", 
-            "source": "web", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 369272921, 
-                "id_str": "369272921", 
-                "name": "MicroHardor ", 
-                "screen_name": "Kaitobark", 
-                "location": "Taiwan", 
-                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
-                "url": "http://t.co/tbojMLHhkt", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/tbojMLHhkt", 
-                                "expanded_url": "http://about.me/jksung", 
-                                "display_url": "about.me/jksung", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 63, 
-                "friends_count": 210, 
-                "listed_count": 0, 
-                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
-                "favourites_count": 100, 
-                "utc_offset": 28800, 
-                "time_zone": "Beijing", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 1518, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "283B3D", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_tile": true, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
-                "profile_link_color": "FF3300", 
-                "profile_sidebar_border_color": "FFFFFF", 
-                "profile_sidebar_fill_color": "A0C5C7", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [
-                    {
-                        "text": "我都不知道我學校這麼有閒錢", 
-                        "indices": [
-                            19, 
-                            33
-                        ]
-                    }
-                ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [
-                {
-                    "text": "我都不知道我學校這麼有閒錢", 
-                    "indices": [
-                        34, 
-                        48
-                    ]
-                }
-            ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Kaitobark", 
-                    "name": "MicroHardor ", 
-                    "id": 369272921, 
-                    "id_str": "369272921", 
-                    "indices": [
-                        3, 
-                        13
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 17:24:39 +0000 2013", 
-        "id": 339432041579941900, 
-        "id_str": "339432041579941888", 
-        "text": "RT @stalinone: 三重有人賣現宰雞肉，為了避免台北市民吃非法屠宰的雞肉，即日起忠孝中興台北重陽等橋樑禁止通行 #fuckyea", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 16:52:28 +0000 2013", 
-            "id": 339423940688617500, 
-            "id_str": "339423940688617474", 
-            "text": "三重有人賣現宰雞肉，為了避免台北市民吃非法屠宰的雞肉，即日起忠孝中興台北重陽等橋樑禁止通行 #fuckyea", 
-            "source": "<a href=\"http://www.metrotwit.com/\" rel=\"nofollow\">MetroTwit</a>", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 7129292, 
-                "id_str": "7129292", 
-                "name": "Stalin Chen", 
-                "screen_name": "stalinone", 
-                "location": "", 
-                "description": "", 
-                "url": null, 
-                "entities": {
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 184, 
-                "friends_count": 133, 
-                "listed_count": 10, 
-                "created_at": "Thu Jun 28 11:56:14 +0000 2007", 
-                "favourites_count": 317, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": false, 
-                "verified": false, 
-                "statuses_count": 7932, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "CD0000", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/1392162/01166_crimsondawn_1280x800.jpg", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/1392162/01166_crimsondawn_1280x800.jpg", 
-                "profile_background_tile": false, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/368912758/1_normal.png", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/368912758/1_normal.png", 
-                "profile_link_color": "0000FF", 
-                "profile_sidebar_border_color": "87BC44", 
-                "profile_sidebar_fill_color": "E0FF91", 
-                "profile_text_color": "000000", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 3, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [
-                    {
-                        "text": "fuckyea", 
-                        "indices": [
-                            46, 
-                            54
-                        ]
-                    }
-                ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 3, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [
-                {
-                    "text": "fuckyea", 
-                    "indices": [
-                        61, 
-                        69
-                    ]
-                }
-            ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "stalinone", 
-                    "name": "Stalin Chen", 
-                    "id": 7129292, 
-                    "id_str": "7129292", 
-                    "indices": [
-                        3, 
-                        13
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:56:18 +0000 2013", 
-        "id": 339424906330652700, 
-        "id_str": "339424906330652672", 
-        "text": "@sntc06 =______=", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339424856716242940, 
-        "in_reply_to_status_id_str": "339424856716242945", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -648,314 +67,179 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
+                    "screen_name": "toby521531", 
+                    "name": "Toby Chan", 
+                    "id": 323132023, 
+                    "id_str": "323132023", 
+                    "indices": [
+                        0, 
+                        11
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:35:36 +0000 2013", 
+        "id": 342258403512565760, 
+        "id_str": "342258403512565762", 
+        "text": "@toby521531 免费的，我是安卓", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 342258005888352260, 
+        "in_reply_to_status_id_str": "342258005888352256", 
+        "in_reply_to_user_id": 323132023, 
+        "in_reply_to_user_id_str": "323132023", 
+        "in_reply_to_screen_name": "toby521531", 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "toby521531", 
+                    "name": "Toby Chan", 
+                    "id": 323132023, 
+                    "id_str": "323132023", 
+                    "indices": [
+                        0, 
+                        11
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:31:51 +0000 2013", 
+        "id": 342257456300322800, 
+        "id_str": "342257456300322817", 
+        "text": "@Elvasu 好玩", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 342256794837610500, 
+        "in_reply_to_status_id_str": "342256794837610496", 
+        "in_reply_to_user_id": 37169619, 
+        "in_reply_to_user_id_str": "37169619", 
+        "in_reply_to_screen_name": "Elvasu", 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Elvasu", 
+                    "name": "情歌", 
+                    "id": 37169619, 
+                    "id_str": "37169619", 
                     "indices": [
                         0, 
                         7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "vi"
-    }, 
-    {
-        "created_at": "Tue May 28 16:55:41 +0000 2013", 
-        "id": 339424749530800100, 
-        "id_str": "339424749530800128", 
-        "text": "@sntc06 不然你買30阿 兩千有找", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339424521272565760, 
-        "in_reply_to_status_id_str": "339424521272565762", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
-                    "indices": [
-                        0, 
-                        7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:53:23 +0000 2013", 
-        "id": 339424173602508800, 
-        "id_str": "339424173602508800", 
-        "text": "@sntc06 61公升 但是現在用量變大覺得不夠 等有錢想換88 還是到時便宜給你？XD", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339423913777967100, 
-        "in_reply_to_status_id_str": "339423913777967105", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
-                    "indices": [
-                        0, 
-                        7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:52:19 +0000 2013", 
-        "id": 339423902650466300, 
-        "id_str": "339423902650466305", 
-        "text": "@Rexlemon114 @hirakujira 準備牆", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339423713957146600, 
-        "in_reply_to_status_id_str": "339423713957146624", 
-        "in_reply_to_user_id": 438935795, 
-        "in_reply_to_user_id_str": "438935795", 
-        "in_reply_to_screen_name": "Rexlemon114", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Rexlemon114", 
-                    "name": "RexLemon", 
-                    "id": 438935795, 
-                    "id_str": "438935795", 
-                    "indices": [
-                        0, 
-                        12
-                    ]
-                }, 
-                {
-                    "screen_name": "hirakujira", 
-                    "name": "Hiraku", 
-                    "id": 25838548, 
-                    "id_str": "25838548", 
-                    "indices": [
-                        13, 
-                        24
                     ]
                 }
             ]
@@ -965,67 +249,53 @@
         "lang": "ja"
     }, 
     {
-        "created_at": "Tue May 28 16:50:13 +0000 2013", 
-        "id": 339423376248553500, 
-        "id_str": "339423376248553473", 
-        "text": "@Sam_Fisher518 www", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 12:30:09 +0000 2013", 
+        "id": 342257028686823400, 
+        "id_str": "342257028686823424", 
+        "text": "@toby521531 挖财，可以同步，我们俩人用一个账户", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 339423294036000800, 
-        "in_reply_to_status_id_str": "339423294036000768", 
-        "in_reply_to_user_id": 386404657, 
-        "in_reply_to_user_id_str": "386404657", 
-        "in_reply_to_screen_name": "Sam_Fisher518", 
+        "in_reply_to_status_id": 342256854753218560, 
+        "in_reply_to_status_id_str": "342256854753218561", 
+        "in_reply_to_user_id": 323132023, 
+        "in_reply_to_user_id_str": "323132023", 
+        "in_reply_to_screen_name": "toby521531", 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -1046,27 +316,27 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "Sam_Fisher518", 
-                    "name": "Sam Fisher", 
-                    "id": 386404657, 
-                    "id_str": "386404657", 
+                    "screen_name": "toby521531", 
+                    "name": "Toby Chan", 
+                    "id": 323132023, 
+                    "id_str": "323132023", 
                     "indices": [
                         0, 
-                        14
+                        11
                     ]
                 }
             ]
         }, 
         "favorited": false, 
         "retweeted": false, 
-        "lang": "und"
+        "lang": "zh"
     }, 
     {
-        "created_at": "Tue May 28 16:50:07 +0000 2013", 
-        "id": 339423350260629500, 
-        "id_str": "339423350260629504", 
-        "text": "誰有缺人阿QAQ 暑假求打工拉", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 12:26:59 +0000 2013", 
+        "id": 342256231991345150, 
+        "id_str": "342256231991345153", 
+        "text": "记账剪影，麻麻说我俩是一对活宝o(*////▽////*)q http://nav.cx/1KdJVM hthttps://pbs.twimg.com/media/BL_wOspCAAE_8dL.jpg", 
+        "source": "<a href=\"http://pick.naver.jp/\" rel=\"nofollow\">pick  (pick.naver.jp)</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -1074,55 +344,491 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [
+                {
+                    "url": "http://nav.cx/1KdJVM", 
+                    "expanded_url": "http://nav.cx/1KdJVM", 
+                    "display_url": "nav.cx/1KdJVM", 
+                    "indices": [
+                        31, 
+                        51
+                    ]
+                }
+            ], 
+            "user_mentions": [ ], 
+            "media": [
+                {
+                    "id": 342256231995539460, 
+                    "id_str": "342256231995539457", 
+                    "indices": [
+                        54, 
+                        101
+                    ], 
+                    "media_url": "http://pbs.twimg.com/media/BL_wOspCAAE_8dL.jpg", 
+                    "media_url_https": "https://pbs.twimg.com/media/BL_wOspCAAE_8dL.jpg", 
+                    "url": "https://pbs.twimg.com/media/BL_wOspCAAE_8dL.jpg", 
+                    "display_url": "pic.twitter.com/6bfuX3hmJL", 
+                    "expanded_url": "http://twitter.com/Timy_127/status/342256231991345153/photo/1", 
+                    "type": "photo", 
+                    "sizes": {
+                        "thumb": {
+                            "w": 150, 
+                            "h": 150, 
+                            "resize": "crop"
+                        }, 
+                        "small": {
+                            "w": 340, 
+                            "h": 453, 
+                            "resize": "fit"
+                        }, 
+                        "large": {
+                            "w": 720, 
+                            "h": 960, 
+                            "resize": "fit"
+                        }, 
+                        "medium": {
+                            "w": 600, 
+                            "h": 800, 
+                            "resize": "fit"
+                        }
+                    }
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "possibly_sensitive": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:13:40 +0000 2013", 
+        "id": 342252882839601150, 
+        "id_str": "342252882839601153", 
+        "text": "已受法律保护 RT @Elvasu: 。。。 RT @manyuegu: 几天不见已经直接就称呼老公了⊙▽⊙ RT @Timy_127: 感觉和老公拿挖财用同一个帐号记账太好玩了。", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "Elvasu", 
+                    "name": "情歌", 
+                    "id": 37169619, 
+                    "id_str": "37169619", 
+                    "indices": [
+                        10, 
+                        17
+                    ]
+                }, 
+                {
+                    "screen_name": "manyuegu", 
+                    "name": "红色的满月菇 ", 
+                    "id": 98809768, 
+                    "id_str": "98809768", 
+                    "indices": [
+                        26, 
+                        35
+                    ]
+                }, 
+                {
+                    "screen_name": "Timy_127", 
+                    "name": "师父痴呆", 
+                    "id": 198838149, 
+                    "id_str": "198838149", 
+                    "indices": [
+                        58, 
+                        67
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:12:49 +0000 2013", 
+        "id": 342252668036722700, 
+        "id_str": "342252668036722688", 
+        "text": "不喜欢推送，喜欢手动 RT @manyuegu: ……………………………………… RT @adouf: 手动刷新RT @manyuegu: 你用什么做推送的 我现在连推送都没有… RT @adouf: 用了半天的苹果，才体现出安卓的强大RT @manyuegu: 用了一天的安卓", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "manyuegu", 
+                    "name": "红色的满月菇 ", 
+                    "id": 98809768, 
+                    "id_str": "98809768", 
+                    "indices": [
+                        14, 
+                        23
+                    ]
+                }, 
+                {
+                    "screen_name": "adouf", 
+                    "name": "懒猫&卡尼脑残粉", 
+                    "id": 90152662, 
+                    "id_str": "90152662", 
+                    "indices": [
+                        44, 
+                        50
+                    ]
+                }, 
+                {
+                    "screen_name": "manyuegu", 
+                    "name": "红色的满月菇 ", 
+                    "id": 98809768, 
+                    "id_str": "98809768", 
+                    "indices": [
+                        59, 
+                        68
+                    ]
+                }, 
+                {
+                    "screen_name": "adouf", 
+                    "name": "懒猫&卡尼脑残粉", 
+                    "id": 90152662, 
+                    "id_str": "90152662", 
+                    "indices": [
+                        93, 
+                        99
+                    ]
+                }, 
+                {
+                    "screen_name": "manyuegu", 
+                    "name": "红色的满月菇 ", 
+                    "id": 98809768, 
+                    "id_str": "98809768", 
+                    "indices": [
+                        121, 
+                        130
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:08:28 +0000 2013", 
+        "id": 342251573986078700, 
+        "id_str": "342251573986078721", 
+        "text": "我就粗线下， RT @o_0Il: 粗线（ RT @jessetoo: 基本不靠谱\"@Tin_Tse: 在推上成功找到女朋友的概率應該很低\"", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "o_0Il", 
+                    "name": " 西瓜汉子", 
+                    "id": 126787624, 
+                    "id_str": "126787624", 
+                    "indices": [
+                        10, 
+                        16
+                    ]
+                }, 
+                {
+                    "screen_name": "jessetoo", 
+                    "name": "杰西兔", 
+                    "id": 117054654, 
+                    "id_str": "117054654", 
+                    "indices": [
+                        25, 
+                        34
+                    ]
+                }, 
+                {
+                    "screen_name": "Tin_Tse", 
+                    "name": "TIN", 
+                    "id": 164326025, 
+                    "id_str": "164326025", 
+                    "indices": [
+                        42, 
+                        50
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Wed Jun 05 12:02:11 +0000 2013", 
+        "id": 342249991831711740, 
+        "id_str": "342249991831711744", 
+        "text": "我家楼下的电影发行公司又开始放露天电影了，电影都倒闭拆了好多年了Σ(⊙▽⊙\"a...", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -1148,67 +854,53 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Tue May 28 16:49:32 +0000 2013", 
-        "id": 339423202994421760, 
-        "id_str": "339423202994421761", 
-        "text": "@sntc06 可以換1DX(?)", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 11:55:38 +0000 2013", 
+        "id": 342248341826068500, 
+        "id_str": "342248341826068480", 
+        "text": "为啥我买吹风机没用上 RT @Horus9527: 您的京东账号中有 5.00 元优惠券到账，请注意查收！用京东优惠券购物，享受既划算又放心的购物乐趣！ （ 前两天受姬下单送的券到帐了 有效期好短。。。。 20号就失效", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 339422698310623200, 
-        "in_reply_to_status_id_str": "339422698310623232", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -1229,196 +921,13 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
+                    "screen_name": "Horus9527", 
+                    "name": "师母发呆", 
+                    "id": 108018525, 
+                    "id_str": "108018525", 
                     "indices": [
-                        0, 
-                        7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Tue May 28 16:49:10 +0000 2013", 
-        "id": 339423110438719500, 
-        "id_str": "339423110438719488", 
-        "text": "RT @wenli: 所以說了，比起 Taipei Free，我們更需要 TPIMAGE 。（問題發言）", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 16:47:10 +0000 2013", 
-            "id": 339422607130624000, 
-            "id_str": "339422607130624000", 
-            "text": "所以說了，比起 Taipei Free，我們更需要 TPIMAGE 。（問題發言）", 
-            "source": "web", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 691123, 
-                "id_str": "691123", 
-                "name": "神楽坂雯麗", 
-                "screen_name": "wenli", 
-                "location": "Taichung, Taiwan｜台中、台湾", 
-                "description": "女装子修業中｜いわゆる男の娘｜東方｜コスプレ｜虹｜小説「基因設計師 Gene Mapper」中文版譯者｜これからおこる可能性のひとつを空想してみるのと同じ感触で過去は幻想にまぎれる。 彼女のひだり目の中にわずかな傷をみつけたのは、いま一瞬のここではない。", 
-                "url": "http://t.co/t80njVPT0D", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/t80njVPT0D", 
-                                "expanded_url": "http://kagurazaka.idv.tw/", 
-                                "display_url": "kagurazaka.idv.tw", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 5543, 
-                "friends_count": 4039, 
-                "listed_count": 232, 
-                "created_at": "Wed Jan 24 03:32:49 +0000 2007", 
-                "favourites_count": 1201, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 19575, 
-                "lang": "ja", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "FCEBB6", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/712912274/65f252152773a127d1d77880885adb3d.png", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/712912274/65f252152773a127d1d77880885adb3d.png", 
-                "profile_background_tile": true, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3592691904/4f6412347593af6b5007b9e961ba38ff_normal.jpeg", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3592691904/4f6412347593af6b5007b9e961ba38ff_normal.jpeg", 
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/691123/1369729048", 
-                "profile_link_color": "CE7834", 
-                "profile_sidebar_border_color": "F0A830", 
-                "profile_sidebar_fill_color": "78C0A8", 
-                "profile_text_color": "5E412F", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "wenli", 
-                    "name": "神楽坂雯麗", 
-                    "id": 691123, 
-                    "id_str": "691123", 
-                    "indices": [
-                        3, 
-                        9
+                        14, 
+                        24
                     ]
                 }
             ]
@@ -1428,67 +937,53 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Tue May 28 16:48:56 +0000 2013", 
-        "id": 339423053501050900, 
-        "id_str": "339423053501050880", 
-        "text": "@Sam_Fisher518 飯阿....(XX?", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 11:54:31 +0000 2013", 
+        "id": 342248063676600300, 
+        "id_str": "342248063676600321", 
+        "text": "@Horus9527 你是说磊科么，我第二天没告诉你，看在它高端大气的份上，原谅他吧", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
-        "in_reply_to_status_id": 339422107295420400, 
-        "in_reply_to_status_id_str": "339422107295420416", 
-        "in_reply_to_user_id": 386404657, 
-        "in_reply_to_user_id_str": "386404657", 
-        "in_reply_to_screen_name": "Sam_Fisher518", 
+        "in_reply_to_status_id": 342247617557831700, 
+        "in_reply_to_status_id_str": "342247617557831681", 
+        "in_reply_to_user_id": 108018525, 
+        "in_reply_to_user_id_str": "108018525", 
+        "in_reply_to_screen_name": "Horus9527", 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -1509,390 +1004,12 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "Sam_Fisher518", 
-                    "name": "Sam Fisher", 
-                    "id": 386404657, 
-                    "id_str": "386404657", 
+                    "screen_name": "Horus9527", 
+                    "name": "师母发呆", 
+                    "id": 108018525, 
+                    "id_str": "108018525", 
                     "indices": [
                         0, 
-                        14
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Tue May 28 16:48:27 +0000 2013", 
-        "id": 339422932361170940, 
-        "id_str": "339422932361170944", 
-        "text": "@sntc06 ok XD 話說幹麻不買收藏家....我都買了很久了 超好用", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339422698310623200, 
-        "in_reply_to_status_id_str": "339422698310623232", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
-                    "indices": [
-                        0, 
-                        7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:47:03 +0000 2013", 
-        "id": 339422578349330400, 
-        "id_str": "339422578349330433", 
-        "text": "@sntc06 準備跳槽？", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339261515544793100, 
-        "in_reply_to_status_id_str": "339261515544793088", 
-        "in_reply_to_user_id": 14197594, 
-        "in_reply_to_user_id_str": "14197594", 
-        "in_reply_to_screen_name": "sntc06", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweet_count": 0, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
-                    "indices": [
-                        0, 
-                        7
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "ja"
-    }, 
-    {
-        "created_at": "Tue May 28 16:46:45 +0000 2013", 
-        "id": 339422504856727550, 
-        "id_str": "339422504856727553", 
-        "text": "RT @sntc06: 18-55 真的是個超熱門的焦段，Sony a58 看起來也不錯", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 06:07:03 +0000 2013", 
-            "id": 339261515544793100, 
-            "id_str": "339261515544793088", 
-            "text": "18-55 真的是個超熱門的焦段，Sony a58 看起來也不錯", 
-            "source": "<a href=\"http://janetter.net/\" rel=\"nofollow\">Janetter</a>", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 14197594, 
-                "id_str": "14197594", 
-                "name": "Edward T.", 
-                "screen_name": "sntc06", 
-                "location": "Chungli,Taiwan", 
-                "description": "半死不活的大四生。
-本人的推非常沒有營養，追蹤前請考慮，本人不負擔任何您時間軸所發生之問題，不追蹤不傷感情～", 
-                "url": "http://t.co/XBMKP3yngs", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/XBMKP3yngs", 
-                                "expanded_url": "http://blog.snowtec.org/", 
-                                "display_url": "blog.snowtec.org", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 346, 
-                "friends_count": 376, 
-                "listed_count": 13, 
-                "created_at": "Sat Mar 22 15:56:47 +0000 2008", 
-                "favourites_count": 216, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 13719, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "131516", 
-                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme14/bg.gif", 
-                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme14/bg.gif", 
-                "profile_background_tile": true, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/2878978530/e461f7578de897e5a8229578819d6a6c_normal.png", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/2878978530/e461f7578de897e5a8229578819d6a6c_normal.png", 
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/14197594/1358883113", 
-                "profile_link_color": "009999", 
-                "profile_sidebar_border_color": "EEEEEE", 
-                "profile_sidebar_fill_color": "EFEFEF", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "sntc06", 
-                    "name": "Edward T.", 
-                    "id": 14197594, 
-                    "id_str": "14197594", 
-                    "indices": [
-                        3, 
                         10
                     ]
                 }
@@ -1903,11 +1020,11 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Tue May 28 16:46:21 +0000 2013", 
-        "id": 339422401844617200, 
-        "id_str": "339422401844617216", 
-        "text": "RT @yorkxin: 「根據我以前在電視台對口前新聞局還有勞委會的經驗，[...] 說出「PPS跟土豆」不會封的時候，就知道他對於要不要處理智財權問題並不在意，只是想要多一個政策工具來處理目前「不知道原因」的事情」 - C_Chat - PTT http://t.co/gB…", 
-        "source": "<a href=\"http://tapbots.com/tweetbot\" rel=\"nofollow\">Tweetbot for iOS</a>", 
+        "created_at": "Wed Jun 05 11:48:36 +0000 2013", 
+        "id": 342246573754970100, 
+        "id_str": "342246573754970112", 
+        "text": "你不懂，我爸妈看我俩记账都笑我俩，说我俩是一对活宝 RT @beyond999: 越挖越闹心。RT @Timy_127: 感觉和老公拿挖财用同一个帐号记账太好玩了。”", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -1915,433 +1032,41 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 16:31:32 +0000 2013", 
-            "id": 339418675033546750, 
-            "id_str": "339418675033546756", 
-            "text": "「根據我以前在電視台對口前新聞局還有勞委會的經驗，[...] 說出「PPS跟土豆」不會封的時候，就知道他對於要不要處理智財權問題並不在意，只是想要多一個政策工具來處理目前「不知道原因」的事情」 - C_Chat - PTT http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
-            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 17082341, 
-                "id_str": "17082341", 
-                "name": "Yu-Cheng Chuang", 
-                "screen_name": "yorkxin", 
-                "location": "Taipei, Taiwan", 
-                "description": "Web Developer / Rails
-
-(a.k.a chitsaou)", 
-                "url": "http://t.co/0U3p7p5sVr", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/0U3p7p5sVr", 
-                                "expanded_url": "http://blog.yorkxin.org", 
-                                "display_url": "blog.yorkxin.org", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 511, 
-                "friends_count": 277, 
-                "listed_count": 28, 
-                "created_at": "Fri Oct 31 08:41:23 +0000 2008", 
-                "favourites_count": 920, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 13082, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "022330", 
-                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme15/bg.png", 
-                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme15/bg.png", 
-                "profile_background_tile": false, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/1643842791/octo-yaci_normal.png", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/1643842791/octo-yaci_normal.png", 
-                "profile_link_color": "0084B4", 
-                "profile_sidebar_border_color": "A8C7F7", 
-                "profile_sidebar_fill_color": "C0DFEC", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 7, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [
-                    {
-                        "url": "http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
-                        "expanded_url": "http://www.ptt.cc/bbs/C_Chat/M.1369756359.A.420.html", 
-                        "display_url": "ptt.cc/bbs/C_Chat/M.1…", 
-                        "indices": [
-                            112, 
-                            164
-                        ]
-                    }
-                ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "possibly_sensitive": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 7, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "yorkxin", 
-                    "name": "Yu-Cheng Chuang", 
-                    "id": 17082341, 
-                    "id_str": "17082341", 
-                    "indices": [
-                        3, 
-                        11
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:31:02 +0000 2013", 
-        "id": 339418549082787840, 
-        "id_str": "339418549082787840", 
-        "text": "RT @Kaitobark: 是不是全台灣最笨的人都去做政府官員了", 
-        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": null, 
-        "in_reply_to_status_id_str": null, 
-        "in_reply_to_user_id": null, 
-        "in_reply_to_user_id_str": null, 
-        "in_reply_to_screen_name": null, 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 16:29:22 +0000 2013", 
-            "id": 339418129442693100, 
-            "id_str": "339418129442693120", 
-            "text": "是不是全台灣最笨的人都去做政府官員了", 
-            "source": "web", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 369272921, 
-                "id_str": "369272921", 
-                "name": "MicroHardor ", 
-                "screen_name": "Kaitobark", 
-                "location": "Taiwan", 
-                "description": "商量一下，你來追我，保證不會像我追你那麼難", 
-                "url": "http://t.co/tbojMLHhkt", 
-                "entities": {
-                    "url": {
-                        "urls": [
-                            {
-                                "url": "http://t.co/tbojMLHhkt", 
-                                "expanded_url": "http://about.me/jksung", 
-                                "display_url": "about.me/jksung", 
-                                "indices": [
-                                    0, 
-                                    22
-                                ]
-                            }
-                        ]
-                    }, 
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 63, 
-                "friends_count": 210, 
-                "listed_count": 0, 
-                "created_at": "Wed Sep 07 02:21:38 +0000 2011", 
-                "favourites_count": 100, 
-                "utc_offset": 28800, 
-                "time_zone": "Beijing", 
-                "geo_enabled": true, 
-                "verified": false, 
-                "statuses_count": 1518, 
-                "lang": "en", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "283B3D", 
-                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/820109101/e871503e36a4fd90de8e24e23f289f7b.jpeg", 
-                "profile_background_tile": true, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3681061157/f2125e6b43ece8dadc9699fbbbd4a277_normal.jpeg", 
-                "profile_banner_url": "https://pbs.twimg.com/profile_banners/369272921/1368973102", 
-                "profile_link_color": "FF3300", 
-                "profile_sidebar_border_color": "FFFFFF", 
-                "profile_sidebar_fill_color": "A0C5C7", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": true, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 1, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 1, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "Kaitobark", 
-                    "name": "MicroHardor ", 
-                    "id": 369272921, 
-                    "id_str": "369272921", 
-                    "indices": [
-                        3, 
-                        13
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:01:27 +0000 2013", 
-        "id": 339411102519668740, 
-        "id_str": "339411102519668736", 
-        "text": "@_yuhsuan 真的（Twitter網路傳遞No.1", 
-        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339410869115043840, 
-        "in_reply_to_status_id_str": "339410869115043840", 
-        "in_reply_to_user_id": 216113461, 
-        "in_reply_to_user_id_str": "216113461", 
-        "in_reply_to_screen_name": "_yuhsuan", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -2362,13 +1087,23 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "_yuhsuan", 
-                    "name": "Yuhsuan Chen", 
-                    "id": 216113461, 
-                    "id_str": "216113461", 
+                    "screen_name": "beyond999", 
+                    "name": "风筝遇上风", 
+                    "id": 528714962, 
+                    "id_str": "528714962", 
                     "indices": [
-                        0, 
-                        9
+                        29, 
+                        39
+                    ]
+                }, 
+                {
+                    "screen_name": "Timy_127", 
+                    "name": "师父痴呆", 
+                    "id": 198838149, 
+                    "id_str": "198838149", 
+                    "indices": [
+                        50, 
+                        59
                     ]
                 }
             ]
@@ -2378,11 +1113,11 @@
         "lang": "zh"
     }, 
     {
-        "created_at": "Tue May 28 16:01:06 +0000 2013", 
-        "id": 339411014858719200, 
-        "id_str": "339411014858719232", 
-        "text": "RT @_yuhsuan: facebook 上完全沒有人在討論什麼 GFW 的事，再度證明推特的一句話：『因為什麼都不知道，所以過得特別快樂。』", 
-        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
+        "created_at": "Wed Jun 05 11:44:27 +0000 2013", 
+        "id": 342245527825551360, 
+        "id_str": "342245527825551362", 
+        "text": "你好可爱mua! (*╯3╰) RT @Horus9527: 哟呵呵呵 RT @Timy_127: 感觉和老公拿挖财用同一个帐号记账太好玩了。", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
         "truncated": false, 
         "in_reply_to_status_id": null, 
         "in_reply_to_status_id_str": null, 
@@ -2390,224 +1125,41 @@
         "in_reply_to_user_id_str": null, 
         "in_reply_to_screen_name": null, 
         "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
             "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
                 "description": {
                     "urls": [ ]
                 }
             }, 
             "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
             "geo_enabled": true, 
             "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
+            "statuses_count": 61753, 
+            "lang": "en", 
             "contributors_enabled": false, 
             "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
             "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
-            "profile_text_color": "333333", 
-            "profile_use_background_image": true, 
-            "default_profile": false, 
-            "default_profile_image": false, 
-            "following": null, 
-            "follow_request_sent": false, 
-            "notifications": null
-        }, 
-        "geo": null, 
-        "coordinates": null, 
-        "place": null, 
-        "contributors": null, 
-        "retweeted_status": {
-            "created_at": "Tue May 28 16:00:31 +0000 2013", 
-            "id": 339410869115043840, 
-            "id_str": "339410869115043840", 
-            "text": "facebook 上完全沒有人在討論什麼 GFW 的事，再度證明推特的一句話：『因為什麼都不知道，所以過得特別快樂。』", 
-            "source": "web", 
-            "truncated": false, 
-            "in_reply_to_status_id": null, 
-            "in_reply_to_status_id_str": null, 
-            "in_reply_to_user_id": null, 
-            "in_reply_to_user_id_str": null, 
-            "in_reply_to_screen_name": null, 
-            "user": {
-                "id": 216113461, 
-                "id_str": "216113461", 
-                "name": "Yuhsuan Chen", 
-                "screen_name": "_yuhsuan", 
-                "location": "New Taipei City", 
-                "description": "我是歪左邊的紳士♥", 
-                "url": null, 
-                "entities": {
-                    "description": {
-                        "urls": [ ]
-                    }
-                }, 
-                "protected": false, 
-                "followers_count": 79, 
-                "friends_count": 30, 
-                "listed_count": 0, 
-                "created_at": "Mon Nov 15 20:48:54 +0000 2010", 
-                "favourites_count": 49, 
-                "utc_offset": 28800, 
-                "time_zone": "Taipei", 
-                "geo_enabled": false, 
-                "verified": false, 
-                "statuses_count": 5263, 
-                "lang": "zh-tw", 
-                "contributors_enabled": false, 
-                "is_translator": false, 
-                "profile_background_color": "C0DEED", 
-                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
-                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
-                "profile_background_tile": false, 
-                "profile_image_url": "http://a0.twimg.com/profile_images/3542268706/d9fa01fedc6029aa05e84962055f28f2_normal.png", 
-                "profile_image_url_https": "https://si0.twimg.com/profile_images/3542268706/d9fa01fedc6029aa05e84962055f28f2_normal.png", 
-                "profile_link_color": "0084B4", 
-                "profile_sidebar_border_color": "FFFFFF", 
-                "profile_sidebar_fill_color": "DDEEF6", 
-                "profile_text_color": "333333", 
-                "profile_use_background_image": false, 
-                "default_profile": false, 
-                "default_profile_image": false, 
-                "following": null, 
-                "follow_request_sent": false, 
-                "notifications": null
-            }, 
-            "geo": null, 
-            "coordinates": null, 
-            "place": null, 
-            "contributors": null, 
-            "retweet_count": 10, 
-            "favorite_count": 0, 
-            "entities": {
-                "hashtags": [ ], 
-                "symbols": [ ], 
-                "urls": [ ], 
-                "user_mentions": [ ]
-            }, 
-            "favorited": false, 
-            "retweeted": false, 
-            "lang": "zh"
-        }, 
-        "retweet_count": 10, 
-        "favorite_count": 0, 
-        "entities": {
-            "hashtags": [ ], 
-            "symbols": [ ], 
-            "urls": [ ], 
-            "user_mentions": [
-                {
-                    "screen_name": "_yuhsuan", 
-                    "name": "Yuhsuan Chen", 
-                    "id": 216113461, 
-                    "id_str": "216113461", 
-                    "indices": [
-                        3, 
-                        12
-                    ]
-                }
-            ]
-        }, 
-        "favorited": false, 
-        "retweeted": false, 
-        "lang": "zh"
-    }, 
-    {
-        "created_at": "Tue May 28 16:00:04 +0000 2013", 
-        "id": 339410755411648500, 
-        "id_str": "339410755411648514", 
-        "text": "@_yuhsuan （我有時也要翻啊ＸＤ", 
-        "source": "<a href=\"http://tapbots.com/software/tweetbot/mac\" rel=\"nofollow\">Twееtbot for Mac</a>", 
-        "truncated": false, 
-        "in_reply_to_status_id": 339409529374654460, 
-        "in_reply_to_status_id_str": "339409529374654464", 
-        "in_reply_to_user_id": 216113461, 
-        "in_reply_to_user_id_str": "216113461", 
-        "in_reply_to_screen_name": "_yuhsuan", 
-        "user": {
-            "id": 160476012, 
-            "id_str": "160476012", 
-            "name": "神楽坂宇軒", 
-            "screen_name": "russel053", 
-            "location": "NewTaipei,Taiwan", 
-            "description": "|Apple Genius|3C滔客線上雜誌總副編輯|男の娘|@wenli,@hirakujira,@conanshang|", 
-            "url": "http://t.co/wnorCShYKc", 
-            "entities": {
-                "url": {
-                    "urls": [
-                        {
-                            "url": "http://t.co/wnorCShYKc", 
-                            "expanded_url": "http://www.facebook.com/russel053", 
-                            "display_url": "facebook.com/russel053", 
-                            "indices": [
-                                0, 
-                                22
-                            ]
-                        }
-                    ]
-                }, 
-                "description": {
-                    "urls": [ ]
-                }
-            }, 
-            "protected": false, 
-            "followers_count": 564, 
-            "friends_count": 367, 
-            "listed_count": 29, 
-            "created_at": "Mon Jun 28 08:07:34 +0000 2010", 
-            "favourites_count": 2, 
-            "utc_offset": 28800, 
-            "time_zone": "Taipei", 
-            "geo_enabled": true, 
-            "verified": false, 
-            "statuses_count": 55329, 
-            "lang": "zh-tw", 
-            "contributors_enabled": false, 
-            "is_translator": false, 
-            "profile_background_color": "C0DEED", 
-            "profile_background_image_url": "http://a0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/759309704/d9f48d1effb8ce154043d7db216c8113.jpeg", 
-            "profile_background_tile": true, 
-            "profile_image_url": "http://a0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_image_url_https": "https://si0.twimg.com/profile_images/3085876768/fbe2ea212029f5781f6945fde7435fc0_normal.jpeg", 
-            "profile_banner_url": "https://pbs.twimg.com/profile_banners/160476012/1357729400", 
-            "profile_link_color": "0084B4", 
-            "profile_sidebar_border_color": "FFFFFF", 
-            "profile_sidebar_fill_color": "DDEEF6", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
             "profile_text_color": "333333", 
             "profile_use_background_image": true, 
             "default_profile": false, 
@@ -2628,13 +1180,590 @@
             "urls": [ ], 
             "user_mentions": [
                 {
-                    "screen_name": "_yuhsuan", 
-                    "name": "Yuhsuan Chen", 
-                    "id": 216113461, 
-                    "id_str": "216113461", 
+                    "screen_name": "Horus9527", 
+                    "name": "师母发呆", 
+                    "id": 108018525, 
+                    "id_str": "108018525", 
+                    "indices": [
+                        19, 
+                        29
+                    ]
+                }, 
+                {
+                    "screen_name": "Timy_127", 
+                    "name": "师父痴呆", 
+                    "id": 198838149, 
+                    "id_str": "198838149", 
+                    "indices": [
+                        39, 
+                        48
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 11:43:19 +0000 2013", 
+        "id": 342245246182256640, 
+        "id_str": "342245246182256640", 
+        "text": "搞笑了，我妈说我们村党委要求所以为拆迁离婚的党员明天去复婚。我呵呵呵呵呵", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 11:42:06 +0000 2013", 
+        "id": 342244936881692700, 
+        "id_str": "342244936881692672", 
+        "text": "感觉和老公拿挖财用同一个帐号记账太好玩了。", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 11:41:34 +0000 2013", 
+        "id": 342244803624448000, 
+        "id_str": "342244803624448000", 
+        "text": "你来西安吃吃各种臊子面 RT @adouf: @kumame_ 刚刚吃的素臊子面！尼玛太好吃了！好想不停吃！吃死算！", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "adouf", 
+                    "name": "懒猫&卡尼脑残粉", 
+                    "id": 90152662, 
+                    "id_str": "90152662", 
+                    "indices": [
+                        15, 
+                        21
+                    ]
+                }, 
+                {
+                    "screen_name": "kumame_", 
+                    "name": "就是Kani啦(・´ｪ`・)", 
+                    "id": 1310401388, 
+                    "id_str": "1310401388", 
+                    "indices": [
+                        23, 
+                        31
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 10:17:17 +0000 2013", 
+        "id": 342223592416739300, 
+        "id_str": "342223592416739328", 
+        "text": "那男的是新来的，问我，这是男更啊，我说我一直用男更 RT @vching1: 興奮了嗎？“@Timy_127: 我一直用的男更衣室，刚刚去换衣服，直接刷卡推门进了，尼玛有个男的在里面换裤子”", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "vching1", 
+                    "name": "蛋蛋（大推しさしはらりの）", 
+                    "id": 18383857, 
+                    "id_str": "18383857", 
+                    "indices": [
+                        29, 
+                        37
+                    ]
+                }, 
+                {
+                    "screen_name": "Timy_127", 
+                    "name": "师父痴呆", 
+                    "id": 198838149, 
+                    "id_str": "198838149", 
+                    "indices": [
+                        45, 
+                        54
+                    ]
+                }
+            ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "ja"
+    }, 
+    {
+        "created_at": "Wed Jun 05 09:56:05 +0000 2013", 
+        "id": 342218257157218300, 
+        "id_str": "342218257157218304", 
+        "text": "我一直用的男更衣室，刚刚去换衣服，直接刷卡推门进了，尼玛有个男的在里面换裤子", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 09:11:08 +0000 2013", 
+        "id": 342206946423738400, 
+        "id_str": "342206946423738368", 
+        "text": "涂指甲等干的结果往往是千年道行毁于一旦，胜败乃兵家常事，大侠请重新来过。。。。。。。。via@rbttt", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": null, 
+        "in_reply_to_status_id_str": null, 
+        "in_reply_to_user_id": null, 
+        "in_reply_to_user_id_str": null, 
+        "in_reply_to_screen_name": null, 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [ ]
+        }, 
+        "favorited": false, 
+        "retweeted": false, 
+        "lang": "zh"
+    }, 
+    {
+        "created_at": "Wed Jun 05 08:52:26 +0000 2013", 
+        "id": 342202241802989600, 
+        "id_str": "342202241802989568", 
+        "text": "@azmonden @wiott 我以为薇薇在黑土肥圆，就说怎么没看明白", 
+        "source": "<a href=\"https://www.google.com\" rel=\"nofollow\">恋爱时光</a>", 
+        "truncated": false, 
+        "in_reply_to_status_id": 342201346499432450, 
+        "in_reply_to_status_id_str": "342201346499432448", 
+        "in_reply_to_user_id": 42356442, 
+        "in_reply_to_user_id_str": "42356442", 
+        "in_reply_to_screen_name": "azmonden", 
+        "user": {
+            "id": 198838149, 
+            "id_str": "198838149", 
+            "name": "师父痴呆", 
+            "screen_name": "Timy_127", 
+            "location": "Xi'an,china", 
+            "description": "时光妹子变态版v2.5 ，傻呆呆的傻大姐，不喜欢选择，节操在心里，相信爱情，立志做@horus9527的好老婆。时光教主，乡村女神，师呆家族，时光教与兔纸国永结同好。为抵制汇通快递而奋斗终身。已领证8.31结婚", 
+            "url": null, 
+            "entities": {
+                "description": {
+                    "urls": [ ]
+                }
+            }, 
+            "protected": false, 
+            "followers_count": 2657, 
+            "friends_count": 682, 
+            "listed_count": 59, 
+            "created_at": "Tue Oct 05 11:31:36 +0000 2010", 
+            "favourites_count": 35, 
+            "utc_offset": -18000, 
+            "time_zone": "Eastern Time (US & Canada)", 
+            "geo_enabled": true, 
+            "verified": false, 
+            "statuses_count": 61753, 
+            "lang": "en", 
+            "contributors_enabled": false, 
+            "is_translator": false, 
+            "profile_background_color": "9AE4E8", 
+            "profile_background_image_url": "http://a0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme16/bg.gif", 
+            "profile_background_tile": false, 
+            "profile_image_url": "http://a0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_image_url_https": "https://si0.twimg.com/profile_images/3023108405/4489345563f34d92b39e6726df5b608e_normal.gif", 
+            "profile_link_color": "0084B4", 
+            "profile_sidebar_border_color": "BDDCAD", 
+            "profile_sidebar_fill_color": "DDFFCC", 
+            "profile_text_color": "333333", 
+            "profile_use_background_image": true, 
+            "default_profile": false, 
+            "default_profile_image": false, 
+            "following": null, 
+            "follow_request_sent": false, 
+            "notifications": null
+        }, 
+        "geo": null, 
+        "coordinates": null, 
+        "place": null, 
+        "contributors": null, 
+        "retweet_count": 0, 
+        "favorite_count": 0, 
+        "entities": {
+            "hashtags": [ ], 
+            "symbols": [ ], 
+            "urls": [ ], 
+            "user_mentions": [
+                {
+                    "screen_name": "azmonden", 
+                    "name": "小牧", 
+                    "id": 42356442, 
+                    "id_str": "42356442", 
                     "indices": [
                         0, 
                         9
+                    ]
+                }, 
+                {
+                    "screen_name": "wiott", 
+                    "name": "wei", 
+                    "id": 60827642, 
+                    "id_str": "60827642", 
+                    "indices": [
+                        10, 
+                        16
                     ]
                 }
             ]

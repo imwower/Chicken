@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Chicken.Controls.ImageContainer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:it="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="480" d:DesignWidth="480" x:Name="Container">
+
+    <Grid Background="Blue" x:Name="grid"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <it:AnimatedImage x:Name="GifImage"
+                          Source="{Binding Path=ImageSource, ElementName=Container, Converter={StaticResource ImageConverter}}" />
+        <Image x:Name="PngImage"
+               Source="{Binding Path=ImageSource, ElementName=Container}" />
+    </Grid>
+</UserControl>

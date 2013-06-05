@@ -134,7 +134,7 @@ namespace Chicken.Service.Implementation
             switch (action)
             {
                 case RetweetActionType.Create:
-                    url = String.Format(Const.RETWEET_CREATE, statusId);
+                    url = String.Format(Const.RETWEET_CREATE, Const.API, statusId);
                     break;
             }
             HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
