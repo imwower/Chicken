@@ -116,4 +116,11 @@
         Create = 1,
         Destroy = 2,
     }
+
+    public enum ScrollTo
+    {
+        None = 0,
+        Top = 1,
+        Bottom = 2,
+    }
 }

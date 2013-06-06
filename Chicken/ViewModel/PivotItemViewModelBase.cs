@@ -3,6 +3,7 @@ using System.Windows.Input;
 using System;
 using System.ComponentModel;
 using System.Threading;
+using Chicken.Common;
 
 namespace Chicken.ViewModel
 {
@@ -13,6 +14,7 @@ namespace Chicken.ViewModel
         protected delegate void ClickEventHandler(object parameter);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
+        //protected LoadEventHandler ScrollToTopHandler;
         protected ClickEventHandler ClickHandler;
         protected ClickEventHandler ItemClickHandler;
         #endregion
@@ -57,6 +59,19 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("IsInited");
             }
         }
+        private ScrollTo scrollTo;
+        public ScrollTo ScrollTo
+        {
+            get
+            {
+                return scrollTo;
+            }
+            set
+            {
+                scrollTo = value;
+                RaisePropertyChanged("ScrollTo");
+            }
+        }
         #endregion
 
         #region private
@@ -82,6 +97,22 @@ namespace Chicken.ViewModel
             get
             {
                 return new DelegateCommand(Load);
+            }
+        }
+
+        public ICommand TopCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToTop);
+            }
+        }
+
+        public ICommand BottomCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToBottom);
             }
         }
 
@@ -142,6 +173,16 @@ namespace Chicken.ViewModel
                 worker.RunWorkerAsync();
                 IsLoading = true;
             }
+        }
+
+        public virtual void ScrollToTop()
+        {
+            ScrollTo = Common.ScrollTo.Top;
+        }
+
+        public virtual void ScrollToBottom()
+        {
+            ScrollTo = Common.ScrollTo.Bottom;
         }
 
         public virtual void Click(object parameter)

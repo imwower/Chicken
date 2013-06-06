@@ -426,7 +426,7 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="10" />
                             </Grid.RowDefinitions>
-                            <ctrls:AutoGrid Grid.Row="0">
+                            <ctrls:AutoGrid Grid.Row="0" ScrollTo="{Binding Path=ScrollTo}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="VerticalCompressionTopHandler">
                                         <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />

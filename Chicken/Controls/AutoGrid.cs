@@ -3,17 +3,62 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
+using Chicken.Common;
 
 namespace Chicken.Controls
 {
     public class AutoGrid : Grid
     {
+        public static readonly DependencyProperty ScrollToProperty =
+        DependencyProperty.Register("ScrollTo", typeof(ScrollTo), typeof(AutoGrid), new PropertyMetadata(ScrollToPropertyChanged));
+
+        public ScrollTo ScrollTo
+        {
+            get
+            {
+                return (ScrollTo)GetValue(ScrollToProperty);
+            }
+            set
+            {
+                SetValue(ScrollToProperty, value);
+            }
+        }
+
+        private static void ScrollToPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var autoGrid = sender as AutoGrid;
+            if (autoGrid != null && autoGrid.scrollViewer != null)
+            {
+                var newValue = (ScrollTo)e.NewValue;
+                var oldValue = (ScrollTo)e.OldValue;
+                if (newValue == oldValue)
+                {
+                    return;
+                }
+                switch (newValue)
+                {
+                    case ScrollTo.Top:
+                        autoGrid.scrollViewer.ScrollToVerticalOffset(0);
+                        break;
+                    case ScrollTo.Bottom:
+                        autoGrid.scrollViewer.ScrollToVerticalOffset(autoGrid.scrollViewer.ScrollableHeight);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        #region properties
         bool alreadyHookedScrollEvents = false;
         ScrollBar scrollBar;
         ScrollViewer scrollViewer;
+        #endregion
 
+        #region event
         public event EventHandler<EventArgs> VerticalCompressionTopHandler;
         public event EventHandler<EventArgs> VerticalCompressionBottomHandler;
+        #endregion
 
         public AutoGrid()
         {

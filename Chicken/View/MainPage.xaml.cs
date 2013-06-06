@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home;
 using Microsoft.Phone.Controls;

@@ -9,6 +9,8 @@ namespace Chicken.ViewModel
         protected delegate void ClickEventHandler(object parameter);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
+        protected LoadEventHandler ScrollToTopHandler;
+        protected LoadEventHandler ScrollToBottomHandler;
         #endregion
 
         public ViewModelBase()
@@ -31,6 +33,22 @@ namespace Chicken.ViewModel
                 return new DelegateCommand(Load);
             }
         }
+
+        public ICommand TopCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToTop);
+            }
+        }
+
+        public ICommand BottomCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToBottom);
+            }
+        }
         #endregion
 
         #region public method
@@ -50,6 +68,24 @@ namespace Chicken.ViewModel
                 return;
             }
             LoadHandler();
+        }
+
+        public virtual void ScrollToTop()
+        {
+            if (ScrollToTopHandler == null)
+            {
+                return;
+            }
+            ScrollToTopHandler();
+        }
+
+        public virtual void ScrollToBottom()
+        {
+            if (ScrollToBottomHandler == null)
+            {
+                return;
+            }
+            ScrollToBottomHandler();
         }
         #endregion
     }

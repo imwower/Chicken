@@ -52,6 +52,8 @@ namespace Chicken.ViewModel
         public PivotViewModelBase()
         {
             RefreshHandler = this.RefreshAction;
+            ScrollToTopHandler = this.ScrollToTopAction;
+            ScrollToBottomHandler = this.ScrollToBottomAction;
         }
 
         #region public method
@@ -69,6 +71,16 @@ namespace Chicken.ViewModel
         private void RefreshAction()
         {
             PivotItems[SelectedIndex].Refresh();
+        }
+
+        private void ScrollToTopAction()
+        {
+            PivotItems[SelectedIndex].ScrollToTop();
+        }
+
+        private void ScrollToBottomAction()
+        {
+            PivotItems[SelectedIndex].ScrollToBottom();
         }
         #endregion
     }

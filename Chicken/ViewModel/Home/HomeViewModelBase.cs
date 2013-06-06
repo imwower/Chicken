@@ -33,21 +33,16 @@ namespace Chicken.ViewModel.Home
         public HomeViewModelBase()
         {
             ClickHandler = ClickAction;
+            ItemClickHandler = this.ItemClickAction;
         }
 
-        /// <summary>
-        /// navigate to profile detail page
-        /// </summary>
-        /// <param name="parameter">user id</param>
         private void ClickAction(object parameter)
         {
-            IsLoading = false;
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
         }
 
-        public override void ItemClick(object parameter)
+        private void ItemClickAction(object parameter)
         {
-            IsLoading = false;
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
         }
     }
