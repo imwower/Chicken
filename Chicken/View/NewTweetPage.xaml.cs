@@ -45,6 +45,7 @@ namespace Chicken.View
             if (popup != null && popup.IsOpen)
             {
                 popup.IsOpen = false;
+                this.IsHitTestVisible = ApplicationBar.IsVisible = true;
                 e.Cancel = true;
             }
         }
@@ -70,6 +71,12 @@ namespace Chicken.View
             base.OnNavigatingFrom(e);
             if (!string.IsNullOrEmpty(newTweetViewModel.TweetViewModel.Text))
             {
+                if (newTweetViewModel.TweetViewModel.MediaStream != null)
+                {
+                    newTweetViewModel.TweetViewModel.MediaStream.Close();
+                    newTweetViewModel.TweetViewModel.MediaStream.Dispose();
+                    newTweetViewModel.TweetViewModel.MediaStream = null;
+                }
                 PhoneApplicationService.Current.State.Add(Const.NewTweetParam, newTweetViewModel.TweetViewModel);
             }
         }

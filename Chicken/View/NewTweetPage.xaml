@@ -50,10 +50,8 @@
             <TextBlock Text=" image" />
             <TextBlock Text=" location" />
         </StackPanel>
-        <Grid Grid.Row="3" Opacity="0.1">
-            <Grid.Background>
-                <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
-            </Grid.Background>
+        <Grid Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Image Source="/Images/dark/cat.png" Stretch="None" />
         </Grid>
     </Grid>
 

@@ -21,9 +21,9 @@
         <StackPanel Grid.Row="0" Margin="10">
             <TextBlock x:Name="PageTitle" />
         </StackPanel>
-        <Grid Grid.Row="1" Margin="10"
-              VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="1" Margin="10">
             <Image x:Name="PhotoPanel" />
+            <Image x:Name="PlaceHold" Source="/Images/dark/cat.png" Stretch="None" />
         </Grid>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal" HorizontalAlignment="Center">

@@ -35,6 +35,7 @@ namespace Chicken.Controls
         {
             if (e.TaskResult == TaskResult.OK)
             {
+                this.PlaceHold.Visibility = System.Windows.Visibility.Collapsed;
                 BitmapImage source = new BitmapImage();
                 chosenPhotoStream = e.ChosenPhoto;
                 source.SetSource(e.ChosenPhoto);

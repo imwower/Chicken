@@ -1,5 +1,5 @@
-﻿
-using System.IO;
+﻿using System.IO;
+
 namespace Chicken.ViewModel.NewTweet.Base
 {
     public enum NewTweetActionType

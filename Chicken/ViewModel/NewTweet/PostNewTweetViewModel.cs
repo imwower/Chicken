@@ -116,7 +116,7 @@ namespace Chicken.ViewModel.NewTweet
         #region private method
         private void SendAction()
         {
-            if (tweetViewModel.Text.Length == 0)
+            if (string.IsNullOrEmpty(tweetViewModel.Text))
             {
                 return;
             }
