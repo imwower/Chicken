@@ -59,6 +59,7 @@ namespace Chicken.ViewModel.Home.VM
                            }
                        }
                    }
+                   base.Refreshed();
                }, parameters);
         }
 
@@ -66,6 +67,7 @@ namespace Chicken.ViewModel.Home.VM
         {
             if (dmList.Count == 0)
             {
+                base.Loaded();
                 return;
             }
             else
@@ -85,6 +87,7 @@ namespace Chicken.ViewModel.Home.VM
                                 DMList.Add(new DirectMessageViewModel(message));
                             }
                         }
+                        base.Loaded();
                     }, parameters);
             }
         }

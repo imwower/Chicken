@@ -44,8 +44,7 @@ namespace Chicken.View
         {
             if (popup != null && popup.IsOpen)
             {
-                popup.IsOpen = false;
-                this.IsHitTestVisible = ApplicationBar.IsVisible = true;
+                ClosePopup(true);
                 e.Cancel = true;
             }
         }
@@ -119,16 +118,26 @@ namespace Chicken.View
             popup = new Popup();
             var photoChooserControl = new PhotoChooserControl();
             photoChooserControl.AddImageHandler = this.AddImageStream;
+            photoChooserControl.CancelAddImageHandler = this.CancelAddImage;
             popup.Child = photoChooserControl;
-            this.IsHitTestVisible = ApplicationBar.IsVisible = false;
-            popup.IsOpen = true;
+            ClosePopup(false);
         }
 
         private void AddImageStream(string fileName, Stream stream)
         {
-            newTweetViewModel.AddImageStream(fileName, stream);
-            popup.IsOpen = false;
-            this.IsHitTestVisible = ApplicationBar.IsVisible = true;
+            newTweetViewModel.TweetModel.FileName = fileName;
+            ClosePopup(true);
+        }
+
+        private void CancelAddImage()
+        {
+            ClosePopup(true);
+        }
+
+        private void ClosePopup(bool close)
+        {
+            this.IsHitTestVisible = ApplicationBar.IsVisible = close;
+            popup.IsOpen = !close;
         }
         #endregion
     }

@@ -47,6 +47,7 @@ namespace Chicken.ViewModel.Profile.VM
                             }
                         }
                     }
+                    base.Refreshed();
                 }, parameters);
         }
 
@@ -54,6 +55,7 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (TweetList.Count == 0)
             {
+                base.Loaded();
                 return;
             }
             else
@@ -73,6 +75,7 @@ namespace Chicken.ViewModel.Profile.VM
                                 TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
+                        base.Loaded();
                     }, parameters);
             }
         }

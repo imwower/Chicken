@@ -75,14 +75,6 @@ namespace Chicken.ViewModel.NewTweet
             tweetModel = new NewTweetModel();
         }
 
-        public void AddImageStream(string fileName, Stream stream)
-        {
-            if (stream == null)
-            {
-                return;
-            }
-        }
-
         #region private method
         private void SendAction()
         {

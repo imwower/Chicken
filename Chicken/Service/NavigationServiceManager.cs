@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Chicken.Common;
@@ -11,7 +10,7 @@ namespace Chicken.Service
     public class NavigationServiceManager
     {
         #region properties
-        static PhoneApplicationFrame Frame = Application.Current.RootVisual as PhoneApplicationFrame;
+        private static PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
         #endregion
 
         public static void NavigateTo(Const.PageNameEnum pageName, object parameter = null)
@@ -23,16 +22,16 @@ namespace Chicken.Service
             switch (pageName)
             {
                 case Const.PageNameEnum.MainPage:
-                    Frame.Navigate(new Uri(Const.MainPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.MainPage, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.ProfilePage:
-                    Frame.Navigate(new Uri(Const.ProfilePage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.ProfilePage, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.StatusPage:
-                    Frame.Navigate(new Uri(Const.StatusPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.StatusPage, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.NewTweetPage:
-                    Frame.Navigate(new Uri(Const.NewTweetPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.NewTweetPage, UriKind.Relative));
                     break;
                 default:
                     break;
@@ -41,8 +40,16 @@ namespace Chicken.Service
 
         public static void ChangeSelectedIndex(int selectedIndex)
         {
-            var navigator = Frame.Content as INavigationService;
+            var navigator = frame.Content as INavigationService;
             navigator.ChangeSelectedIndex(selectedIndex);
+        }
+
+        public static void NavigateBack()
+        {
+            if (frame.CanGoBack)
+            {
+                frame.GoBack();
+            }
         }
     }
 }

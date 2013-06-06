@@ -95,6 +95,7 @@ namespace Chicken.ViewModel.Profile
                     {
                         UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
+                    base.Refreshed();
                 });
         }
 
@@ -107,6 +108,7 @@ namespace Chicken.ViewModel.Profile
                     {
                         UserList.Add(new UserProfileViewModel(userProfile));
                     }
+                    base.Loaded();
                 });
         }
         #endregion

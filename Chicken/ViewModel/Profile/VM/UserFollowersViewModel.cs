@@ -19,6 +19,7 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (previousCursor == "0")
             {
+                base.Refreshed();
                 return;
             }
             var parameters = TwitterHelper.GetDictionary();
@@ -31,6 +32,7 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
                     {
+                        base.Refreshed();
                         return;
                     }
                     else
@@ -47,6 +49,7 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (nextCursor == "0")
             {
+                base.Loaded();
                 return;
             }
             var parameters = TwitterHelper.GetDictionary();
@@ -59,6 +62,7 @@ namespace Chicken.ViewModel.Profile.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
                     {
+                        base.Loaded();
                         return;
                     }
                     else

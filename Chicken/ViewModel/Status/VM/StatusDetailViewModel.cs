@@ -60,6 +60,7 @@ namespace Chicken.ViewModel.Status.VM
                 {
                     TweetViewModel = new TweetViewModel(tweet);
                     LoadConversation(tweet.InReplyToTweetId);
+                    IsInited = true;
                 });
         }
 
@@ -69,10 +70,6 @@ namespace Chicken.ViewModel.Status.VM
             LoadConversation(tweet.InReplyToTweetId);
         }
 
-        /// <summary>
-        /// navigate to profile detail page
-        /// </summary>
-        /// <param name="parameter">user id</param>
         private void ClickAction(object parameter)
         {
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
@@ -129,6 +126,10 @@ namespace Chicken.ViewModel.Status.VM
         #region private method
         private void DoAction(NewTweetActionType type)
         {
+            if (IsLoading)
+            {
+                return;
+            }
             NewTweetModel newTweet = new NewTweetModel
             {
                 ActionType = (int)type,
@@ -150,6 +151,7 @@ namespace Chicken.ViewModel.Status.VM
                 default:
                     break;
             }
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
         }
 
@@ -158,6 +160,7 @@ namespace Chicken.ViewModel.Status.VM
             if (string.IsNullOrEmpty(statusId))
             {
                 LoadHandler = null;
+                base.Loaded();
                 return;
             }
             if (ConversationList == null)
@@ -168,6 +171,7 @@ namespace Chicken.ViewModel.Status.VM
                 tweet =>
                 {
                     ConversationList.Add(new TweetViewModel(tweet));
+                    base.Loaded();
                 });
         }
 

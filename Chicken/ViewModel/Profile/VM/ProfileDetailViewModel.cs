@@ -33,6 +33,7 @@ namespace Chicken.ViewModel.Profile.VM
                 obj =>
                 {
                     this.UserProfileViewModel = new UserProfileViewModel(obj);
+                    base.Refreshed();
                 });
         }
     }

@@ -15,6 +15,8 @@ namespace Chicken.Controls
         #endregion
 
         #region event handler
+        public delegate void CancelAddImageEventHandler();
+        public CancelAddImageEventHandler CancelAddImageHandler;
         public delegate void AddImageFinishedEventHandler(string fileName, Stream stream);
         public AddImageFinishedEventHandler AddImageHandler;
         #endregion
@@ -35,12 +37,19 @@ namespace Chicken.Controls
         {
             if (e.TaskResult == TaskResult.OK)
             {
-                this.PlaceHold.Visibility = System.Windows.Visibility.Collapsed;
+                this.grid.Children.Remove(this.PlaceHold);
                 BitmapImage source = new BitmapImage();
                 chosenPhotoStream = e.ChosenPhoto;
                 source.SetSource(e.ChosenPhoto);
-                this.fileName = e.OriginalFileName.Substring(e.OriginalFileName.LastIndexOf("\\") + 1);
                 this.PhotoPanel.Source = source;
+                this.fileName = e.OriginalFileName.Substring(e.OriginalFileName.LastIndexOf("\\") + 1);
+            }
+            else
+            {
+                if (CancelAddImageHandler != null)
+                {
+                    CancelAddImageHandler();
+                }
             }
         }
 
@@ -52,6 +61,12 @@ namespace Chicken.Controls
                     () =>
                         AddImageHandler(fileName, chosenPhotoStream));
             }
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            this.fileName = string.Empty;
+            photoChooser.Show();
         }
     }
 }

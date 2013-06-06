@@ -14,7 +14,6 @@ namespace Chicken.ViewModel
         protected delegate void ClickEventHandler(object parameter);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
-        //protected LoadEventHandler ScrollToTopHandler;
         protected ClickEventHandler ClickHandler;
         protected ClickEventHandler ItemClickHandler;
         #endregion
@@ -168,10 +167,10 @@ namespace Chicken.ViewModel
             }
             else
             {
+                IsLoading = true;
                 worker.DoWork += DoLoad;
                 worker.RunWorkerCompleted += LoadCompleted;
                 worker.RunWorkerAsync();
-                IsLoading = true;
             }
         }
 
@@ -228,7 +227,6 @@ namespace Chicken.ViewModel
                 () =>
                 {
                     RefreshHandler();
-                    Refreshed();
                 });
         }
 
@@ -251,7 +249,6 @@ namespace Chicken.ViewModel
                 () =>
                 {
                     LoadHandler();
-                    Loaded();
                 });
         }
 
@@ -263,13 +260,13 @@ namespace Chicken.ViewModel
         #endregion
 
         #region
-        private void Refreshed()
+        protected void Refreshed()
         {
             IsLoading = false;
             IsInited = true;
         }
 
-        private void Loaded()
+        protected void Loaded()
         {
             IsLoading = false;
         }

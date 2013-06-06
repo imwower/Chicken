@@ -10,25 +10,24 @@
     d:DesignHeight="480" d:DesignWidth="480">
 
     <Grid x:Name="LayoutRoot"
-          Background="{StaticResource PhoneBackgroundBrush}"
-          VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+          Background="{StaticResource PhoneBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <!--title-->
         <StackPanel Grid.Row="0" Margin="10">
             <TextBlock x:Name="PageTitle" />
         </StackPanel>
-        <Grid Grid.Row="1" Margin="10">
+        <Grid x:Name="grid" Grid.Row="1" Margin="10">
             <Image x:Name="PhotoPanel" />
             <Image x:Name="PlaceHold" Source="/Images/dark/cat.png" Stretch="None" />
         </Grid>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="OK" Click="OkButton_Click" />
-            <Button Content="Reset" />
+            <Button Content="Reset" Click="ResetButton_Click" />
         </StackPanel>
     </Grid>
 </UserControl>
