@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile;
 using Microsoft.Phone.Controls;
-using Chicken.Service;
 
 namespace Chicken.View
 {
@@ -43,7 +42,7 @@ namespace Chicken.View
             IsolatedStorageService.CreateObject(Const.PageNameEnum.ProfilePage, profileViewModel.UserId);
         }
 
-        public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
+        public void ChangeSelectedIndex(int selectedIndex)
         {
             this.MainPivot.SelectedIndex = selectedIndex;
         }

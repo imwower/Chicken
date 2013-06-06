@@ -39,10 +39,10 @@ namespace Chicken.Service
             }
         }
 
-        public static void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
+        public static void ChangeSelectedIndex(int selectedIndex)
         {
             var navigator = Frame.Content as INavigationService;
-            navigator.ChangeSelectedIndex(selectedIndex, parameters);
+            navigator.ChangeSelectedIndex(selectedIndex);
         }
     }
 }

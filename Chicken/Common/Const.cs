@@ -69,7 +69,7 @@
         #endregion
 
         #region page name
-        public const string MainPage = "/MainPage.xaml";
+        public const string MainPage = "/View/MainPage.xaml";
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";

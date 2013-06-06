@@ -31,14 +31,14 @@ namespace Chicken.Controls
                 if (newValue.LastIndexOf(".gif", StringComparison.OrdinalIgnoreCase) != -1)
                 {
                     this.GifImage.Visibility = Visibility.Visible;
-                    this.PngImage.Visibility = Visibility.Collapsed;
+                    this.grid.Children.Remove(this.PngImage);
                     ImageTools.ExtendedImage image = new ImageTools.ExtendedImage();
                     image.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
                     this.GifImage.Source = image;
                 }
                 else
                 {
-                    this.GifImage.Visibility = Visibility.Collapsed;
+                    this.grid.Children.Remove(this.GifImage);
                     this.PngImage.Visibility = Visibility.Visible;
                     BitmapImage image = new BitmapImage(new Uri(newValue, UriKind.RelativeOrAbsolute));
                     this.PngImage.Source = image;

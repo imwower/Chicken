@@ -85,7 +85,7 @@ namespace Chicken.View
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            if (!string.IsNullOrEmpty(this.TextContent.Text))
+            if (!string.IsNullOrEmpty(newTweetViewModel.TweetModel.Text))
             {
                 IsolatedStorageService.CreateObject(Const.PageNameEnum.NewTweetPage, newTweetViewModel.TweetModel);
             }

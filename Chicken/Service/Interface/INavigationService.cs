@@ -4,6 +4,6 @@ namespace Chicken.Service.Interface
 {
     public interface INavigationService
     {
-        void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null);
+        void ChangeSelectedIndex(int selectedIndex);
     }
 }

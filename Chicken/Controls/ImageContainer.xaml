@@ -10,7 +10,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480" x:Name="Container">
 
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid x:Name="grid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <it:AnimatedImage x:Name="GifImage"
                           Source="{Binding Path=ImageSource, ElementName=Container, Converter={StaticResource ImageConverter}}" />
         <Image x:Name="PngImage"

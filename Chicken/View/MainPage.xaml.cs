@@ -27,12 +27,7 @@ namespace Chicken.View
             });
         }
 
-        //protected override void OnNavigatedTo(NavigationEventArgs e)
-        //{
-        //    base.OnNavigatedTo(e);
-        //}
-
-        public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
+        public void ChangeSelectedIndex(int selectedIndex)
         {
             this.MainPivot.SelectedIndex = selectedIndex;
         }

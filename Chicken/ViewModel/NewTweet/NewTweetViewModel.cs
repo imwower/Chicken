@@ -100,6 +100,7 @@ namespace Chicken.ViewModel.NewTweet
                     }
                     else
                     {
+                        tweetModel.Text = string.Empty;
                         NavigationServiceManager.NavigateTo(Const.PageNameEnum.MainPage);
                     }
                 });
