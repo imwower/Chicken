@@ -10,7 +10,7 @@
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:local ="clr-namespace:Chicken.ViewModel"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
-    x:Class="Chicken.MainPage"
+    x:Class="Chicken.View.MainPage"
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"

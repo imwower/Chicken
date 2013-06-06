@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using Chicken.Common;
 using Chicken.Service.Interface;
 using Microsoft.Phone.Controls;
-using Chicken.Common;
-using System;
-using Chicken.ViewModel.NewTweet.Base;
-using Microsoft.Phone.Shell;
 
 namespace Chicken.Service
 {
@@ -16,24 +14,29 @@ namespace Chicken.Service
         static PhoneApplicationFrame Frame = Application.Current.RootVisual as PhoneApplicationFrame;
         #endregion
 
-        public static void NavigateTo(string pageName, IDictionary<string, object> parameters = null)
+        public static void NavigateTo(Const.PageNameEnum pageName, object parameter = null)
         {
-            if (string.IsNullOrEmpty(pageName))
+            if (parameter != null)
             {
-                return;
+                IsolatedStorageService.CreateObject(pageName, parameter);
             }
-            string url = TwitterHelper.GenerateRelativeUri(pageName, parameters);
-            Frame.Navigate(new Uri(url, UriKind.Relative));
-        }
-
-        public static void NavigateTo(string pageName, string parameterName, object parameter)
-        {
-            if (string.IsNullOrEmpty(pageName))
+            switch (pageName)
             {
-                return;
+                case Const.PageNameEnum.MainPage:
+                    Frame.Navigate(new Uri(Const.MainPage, UriKind.Relative));
+                    break;
+                case Const.PageNameEnum.ProfilePage:
+                    Frame.Navigate(new Uri(Const.ProfilePage, UriKind.Relative));
+                    break;
+                case Const.PageNameEnum.StatusPage:
+                    Frame.Navigate(new Uri(Const.StatusPage, UriKind.Relative));
+                    break;
+                case Const.PageNameEnum.NewTweetPage:
+                    Frame.Navigate(new Uri(Const.NewTweetPage, UriKind.Relative));
+                    break;
+                default:
+                    break;
             }
-            PhoneApplicationService.Current.State[parameterName] = parameter;
-            Frame.Navigate(new Uri(pageName, UriKind.Relative));
         }
 
         public static void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)

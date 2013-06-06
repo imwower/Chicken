@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Chicken.ViewModel.Home.VM;
-using Chicken.Service;
 using Chicken.Common;
+using Chicken.Service;
+using Chicken.ViewModel.Home.VM;
 
 namespace Chicken.ViewModel.Home
 {
@@ -41,7 +41,7 @@ namespace Chicken.ViewModel.Home
 
         private void NewTweet()
         {
-            NavigationServiceManager.NavigateTo(Const.NewTweetPage);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage);
         }
 
         private void NewMessage()

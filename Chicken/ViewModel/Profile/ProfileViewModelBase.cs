@@ -79,9 +79,7 @@ namespace Chicken.ViewModel.Profile
             }
             else
             {
-                Dictionary<string, object> parameters = new Dictionary<string, object>(1);
-                parameters.Add(Const.USER_ID, parameter);
-                NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
+                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
             }
         }
         #endregion

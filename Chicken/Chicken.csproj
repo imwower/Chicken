@@ -108,9 +108,6 @@
       <DependentUpon>PhotoChooserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Utils.cs" />
-    <Compile Include="MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Model\Cursor.cs" />
     <Compile Include="Model\DirectMessage.cs" />
     <Compile Include="Model\Entity\Coordinates.cs" />
@@ -118,19 +115,20 @@
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
     <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\NewTweetModel.cs" />
     <Compile Include="Model\UserIdList.cs" />
     <Compile Include="Model\Retweet.cs" />
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\TweetBase.cs" />
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="Service\IsolatedStorageService.cs" />
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
-    <Compile Include="ViewModel\NewTweet\Base\NewTweetViewModel.cs" />
-    <Compile Include="ViewModel\NewTweet\PostNewTweetViewModel.cs" />
+    <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
     <Compile Include="ViewModel\Profile\Base\UserProfileViewModel.cs" />
@@ -149,6 +147,9 @@
     <Compile Include="ViewModel\Status\VM\StatusFavoritesViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\NewTweetPage.xaml.cs">
       <DependentUpon>NewTweetPage.xaml</DependentUpon>
     </Compile>
@@ -291,7 +292,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainPage.xaml">
+    <Page Include="View\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -355,7 +356,9 @@
     </Content>
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ViewModel\NewTweet\Base\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

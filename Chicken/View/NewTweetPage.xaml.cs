@@ -8,8 +8,9 @@ using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
 using Chicken.Controls;
+using Chicken.Model;
+using Chicken.Service;
 using Chicken.ViewModel.NewTweet;
-using Chicken.ViewModel.NewTweet.Base;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -20,8 +21,7 @@ namespace Chicken.View
         #region properties
         private const int maxLength = 400;
         private const int maxCharLength = 140;
-        private bool isInit;
-        private PostNewTweetViewModel newTweetViewModel;
+        private NewTweetViewModel newTweetViewModel;
         private Popup popup;
         #endregion
 
@@ -30,7 +30,7 @@ namespace Chicken.View
             InitializeComponent();
             this.BackKeyPress += new EventHandler<CancelEventArgs>(NewTweetPage_BackKeyPress);
             this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
-            newTweetViewModel = new PostNewTweetViewModel();
+            newTweetViewModel = new NewTweetViewModel();
             this.DataContext = newTweetViewModel;
         }
 
@@ -54,63 +54,57 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            if (PhoneApplicationService.Current.State.ContainsKey(Const.NewTweetParam))
+            var tweet = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.PageNameEnum.NewTweetPage);
+            if (tweet != null)
             {
-                var newTweet = PhoneApplicationService.Current.State[Const.NewTweetParam];
-                newTweetViewModel.NavigateTo(newTweet);
-                PhoneApplicationService.Current.State.Remove(Const.NewTweetParam);
-            }
-            else
-            {
-                newTweetViewModel.NavigateTo();
+                newTweetViewModel.TweetModel.ActionType = tweet.ActionType;
+                switch ((NewTweetActionType)tweet.ActionType)
+                {
+                    case NewTweetActionType.Quote:
+                        newTweetViewModel.Title = "Quote:";
+                        this.TextContent.Text = tweet.Text;
+                        newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
+                        this.TextContent.Select(0, 0);
+                        break;
+                    case NewTweetActionType.Reply:
+                        newTweetViewModel.Title = "Reply To: " + tweet.InReplyToUserScreenName;
+                        this.TextContent.Text = tweet.Text;
+                        newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
+                        this.TextContent.Select(this.TextContent.Text.Length, 0);
+                        break;
+                    case NewTweetActionType.PostNew:
+                    case NewTweetActionType.None:
+                    default:
+                        this.TextContent.Text = tweet.Text;
+                        this.TextContent.Select(this.TextContent.Text.Length, 0);
+                        break;
+                }
             }
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
             base.OnNavigatingFrom(e);
-            if (!string.IsNullOrEmpty(newTweetViewModel.TweetViewModel.Text))
+            if (!string.IsNullOrEmpty(this.TextContent.Text))
             {
-                if (newTweetViewModel.TweetViewModel.MediaStream != null)
-                {
-                    newTweetViewModel.TweetViewModel.MediaStream.Close();
-                    newTweetViewModel.TweetViewModel.MediaStream.Dispose();
-                    newTweetViewModel.TweetViewModel.MediaStream = null;
-                }
-                PhoneApplicationService.Current.State.Add(Const.NewTweetParam, newTweetViewModel.TweetViewModel);
+                IsolatedStorageService.CreateObject(Const.PageNameEnum.NewTweetPage, newTweetViewModel.TweetModel);
             }
         }
 
         #region text content
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var exp = this.TextContent.GetBindingExpression(TextBox.TextProperty);
-            exp.UpdateSource();
             //counter:
             int remain = maxCharLength - this.TextContent.Text.Length;
             if (remain < 0)
             {
                 this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
             }
-            this.TextCounter.Text = remain.ToString();
-
-            #region Init
-            if (!isInit)
+            else
             {
-                switch (newTweetViewModel.TweetViewModel.ActionType)
-                {
-                    case NewTweetActionType.Quote:
-                        this.TextContent.Select(0, 0);
-                        break;
-                    case NewTweetActionType.Reply:
-                    default:
-                        this.TextContent.Select(this.TextContent.Text.Length, 0);
-                        break;
-                }
-                this.TextContent.Focus();
-                isInit = true;
+                this.newTweetViewModel.TweetModel.Text = this.TextContent.Text;
             }
-            #endregion
+            this.TextCounter.Text = remain.ToString();
         }
 
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)

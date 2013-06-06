@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Navigation;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home;
 using Microsoft.Phone.Controls;
 
-namespace Chicken
+namespace Chicken.View
 {
     public partial class MainPage : PhoneApplicationPage, INavigationService
     {
@@ -23,9 +22,9 @@ namespace Chicken
         {
             int selectedIndex = (sender as Pivot).SelectedIndex;
             Dispatcher.BeginInvoke(() =>
-                {
-                    mainViewModel.MainPivot_LoadedPivotItem(selectedIndex);
-                });
+            {
+                mainViewModel.MainPivot_LoadedPivotItem(selectedIndex);
+            });
         }
 
         //protected override void OnNavigatedTo(NavigationEventArgs e)

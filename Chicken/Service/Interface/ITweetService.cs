@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Net;
 using Chicken.Common;
-using Chicken.ViewModel.NewTweet.Base;
+using Chicken.Model;
 
 namespace Chicken.Service.Interface
 {
@@ -42,7 +42,7 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region new tweet
-        void PostNewTweet<T>(NewTweetViewModel newTweet, Action<T> callBack);
+        void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack);
         #endregion
     }
 

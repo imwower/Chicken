@@ -79,9 +79,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void ItemClickAction(object parameter)
         {
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.ID, parameter);
-            NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
         }
     }
 }

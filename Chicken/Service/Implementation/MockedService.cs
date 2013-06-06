@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.NewTweet.Base;
 using Newtonsoft.Json;
 
 namespace Chicken.Service.Implementation
@@ -105,7 +105,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region new tweet
-        public void PostNewTweet<T>(NewTweetViewModel newTweet, Action<T> callBack)
+        public void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack)
         {
             string url = "SampleData/tweet.json";
             HandleWebRequest(url, callBack);

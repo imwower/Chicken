@@ -74,7 +74,17 @@
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
 
-        public const string NewTweetParam = "NewTweetParam";
+        //public const string NewTweetParam = "NewTweetParam";
+        #endregion
+
+        #region page name enum
+        public enum PageNameEnum
+        {
+            MainPage = 0,
+            ProfilePage = 1,
+            StatusPage = 2,
+            NewTweetPage = 3,
+        }
         #endregion
 
         #region page index enum

@@ -5,11 +5,10 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.ViewModel.NewTweet
 {
-    public class PostNewTweetViewModel : NotificationObject
+    public class NewTweetViewModel : NotificationObject
     {
         #region properties
         private string title;
@@ -25,17 +24,17 @@ namespace Chicken.ViewModel.NewTweet
                 RaisePropertyChanged("Title");
             }
         }
-        private NewTweetViewModel tweetViewModel;
-        public NewTweetViewModel TweetViewModel
+        private NewTweetModel tweetModel;
+        public NewTweetModel TweetModel
         {
             get
             {
-                return tweetViewModel;
+                return tweetModel;
             }
             set
             {
-                tweetViewModel = value;
-                RaisePropertyChanged("TweetViewModel");
+                tweetModel = value;
+                RaisePropertyChanged("TweetModel");
             }
         }
         #endregion
@@ -70,37 +69,10 @@ namespace Chicken.ViewModel.NewTweet
         private ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
-        public PostNewTweetViewModel()
+        public NewTweetViewModel()
         {
             Title = "what's happening?";
-            tweetViewModel = new NewTweetViewModel();
-        }
-
-        public void NavigateTo(object parameter = null)
-        {
-            if (parameter != null)
-            {
-                var tweet = parameter as NewTweetViewModel;
-                TweetViewModel.ActionType = tweet.ActionType;
-                switch (tweet.ActionType)
-                {
-                    case NewTweetActionType.Quote:
-                        Title = "Quote:";
-                        TweetViewModel.Text = Const.QUOTECHARACTER + " " + tweet.InReplyToUserScreenName + " " + tweet.Text;
-                        TweetViewModel.InReplyToStatusId = tweet.InReplyToStatusId;
-                        break;
-                    case NewTweetActionType.Reply:
-                        Title = "Reply To:";
-                        TweetViewModel.InReplyToStatusId = tweet.InReplyToStatusId;
-                        TweetViewModel.Text = tweet.InReplyToUserScreenName + " ";
-                        break;
-                    case NewTweetActionType.PostNew:
-                    case NewTweetActionType.None:
-                    default:
-                        TweetViewModel.Text = tweet.Text;
-                        break;
-                }
-            }
+            tweetModel = new NewTweetModel();
         }
 
         public void AddImageStream(string fileName, Stream stream)
@@ -109,18 +81,16 @@ namespace Chicken.ViewModel.NewTweet
             {
                 return;
             }
-            tweetViewModel.MediaStream = stream;
-            tweetViewModel.FileName = fileName;
         }
 
         #region private method
         private void SendAction()
         {
-            if (string.IsNullOrEmpty(tweetViewModel.Text))
+            if (string.IsNullOrEmpty(tweetModel.Text))
             {
                 return;
             }
-            TweetService.PostNewTweet<Tweet>(tweetViewModel,
+            TweetService.PostNewTweet<Tweet>(tweetModel,
                 tweet =>
                 {
                     List<ErrorMessage> errors = tweet.Errors;
@@ -130,7 +100,7 @@ namespace Chicken.ViewModel.NewTweet
                     }
                     else
                     {
-                        NavigationServiceManager.NavigateTo(Const.MainPage);
+                        NavigationServiceManager.NavigateTo(Const.PageNameEnum.MainPage);
                     }
                 });
         }

@@ -42,17 +42,13 @@ namespace Chicken.ViewModel.Home
         private void ClickAction(object parameter)
         {
             IsLoading = false;
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.USER_ID, parameter);
-            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
         }
 
         public override void ItemClick(object parameter)
         {
             IsLoading = false;
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.ID, parameter);
-            NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
         }
     }
 }

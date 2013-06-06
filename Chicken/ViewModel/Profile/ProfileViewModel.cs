@@ -55,15 +55,10 @@ namespace Chicken.ViewModel.Profile
             this.PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
-        public void OnNavigatedTo(string userId)
-        {
-            UserId = userId;
-        }
-
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
+            (PivotItems[selectedIndex] as ProfileViewModelBase).UserId = userId;
             base.MainPivot_LoadedPivotItem(selectedIndex);
-            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserId = userId;
         }
 
         private void Mention(object parameter)

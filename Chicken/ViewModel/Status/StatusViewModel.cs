@@ -70,15 +70,10 @@ namespace Chicken.ViewModel.Status
             PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
-        public void OnNavigatedTo(string statusId)
-        {
-            StatusId = statusId;
-        }
-
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
+            (PivotItems[selectedIndex] as StatusViewModelBase).StatusId = StatusId;
             base.MainPivot_LoadedPivotItem(selectedIndex);
-            (PivotItems[SelectedIndex] as StatusViewModelBase).StatusId = StatusId;
         }
 
         private void AddToFavorite()

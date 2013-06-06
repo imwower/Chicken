@@ -5,7 +5,6 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Home.Base;
-using Chicken.ViewModel.NewTweet.Base;
 
 namespace Chicken.ViewModel.Status.VM
 {
@@ -60,14 +59,7 @@ namespace Chicken.ViewModel.Status.VM
                 tweet =>
                 {
                     TweetViewModel = new TweetViewModel(tweet);
-                    if (string.IsNullOrEmpty(tweetViewModel.InReplyToTweetId))
-                    {
-                        LoadHandler = null;
-                    }
-                    else
-                    {
-                        LoadConversation(tweet.InReplyToTweetId);
-                    }
+                    LoadConversation(tweet.InReplyToTweetId);
                 });
         }
 
@@ -83,16 +75,12 @@ namespace Chicken.ViewModel.Status.VM
         /// <param name="parameter">user id</param>
         private void ClickAction(object parameter)
         {
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.USER_ID, parameter);
-            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameters);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.ID, parameter);
-            NavigationServiceManager.NavigateTo(Const.StatusPage, parameters);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
         }
 
         private void AddFavoriteAction()
@@ -141,20 +129,35 @@ namespace Chicken.ViewModel.Status.VM
         #region private method
         private void DoAction(NewTweetActionType type)
         {
-            NewTweetViewModel newTweet = new NewTweetViewModel
+            NewTweetModel newTweet = new NewTweetModel
             {
-                ActionType = type,
-                Text = TweetViewModel.Text,
-                InReplyToStatusId = TweetViewModel.Id,
-                InReplyToUserScreenName = TweetViewModel.User.ScreenName,
+                ActionType = (int)type,
             };
-            NavigationServiceManager.NavigateTo(Const.NewTweetPage, Const.NewTweetParam, newTweet);
+            switch (type)
+            {
+                case NewTweetActionType.Quote:
+                    newTweet.Text = Const.QUOTECHARACTER + " " + tweetViewModel.User.ScreenName + " " + tweetViewModel.Text;
+                    newTweet.InReplyToStatusId = tweetViewModel.Id;
+                    newTweet.InReplyToUserScreenName = tweetViewModel.User.ScreenName;
+                    break;
+                case NewTweetActionType.Reply:
+                    newTweet.Text = tweetViewModel.User.ScreenName + " ";
+                    newTweet.InReplyToStatusId = tweetViewModel.Id;
+                    newTweet.InReplyToUserScreenName = tweetViewModel.User.ScreenName;
+                    break;
+                case NewTweetActionType.PostNew:
+                case NewTweetActionType.None:
+                default:
+                    break;
+            }
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
         }
 
         private void LoadConversation(string statusId)
         {
             if (string.IsNullOrEmpty(statusId))
             {
+                LoadHandler = null;
                 return;
             }
             if (ConversationList == null)

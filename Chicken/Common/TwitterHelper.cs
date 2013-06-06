@@ -79,28 +79,6 @@ namespace Chicken.Common
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
-
-        /// <summary>
-        /// for NavigationService
-        /// </summary>
-        /// <param name="pageName"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public static string GenerateRelativeUri(string pageName, IDictionary<string, object> parameters = null)
-        {
-            StringBuilder sb = new StringBuilder(pageName);
-            if (parameters == null || parameters.Count == 0)
-            {
-                return sb.ToString();
-            }
-            sb.Append("?");
-            foreach (var item in parameters)
-            {
-                sb.Append(item.Key).Append("=").Append(item.Value.ToString()).Append("&");
-            }
-            sb.Remove(sb.Length - 1, 1);
-            return sb.ToString();
-        }
         #endregion
 
         public static IDictionary<string, object> GetDictionary(IDictionary<string, object> parameters = null)

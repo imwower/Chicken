@@ -35,7 +35,6 @@
         <ScrollViewer Grid.Row="1" Margin="8,4" VerticalAlignment="Stretch"
                       VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
             <TextBox Name="TextContent"
-                     Text="{Binding TweetViewModel.Text,Mode=TwoWay}"                     
                      Style="{StaticResource TextBoxContent}"
                      TextAlignment="Left" AcceptsReturn="True"
                      GotFocus="TextContent_GotFocus"

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Navigation;
+using Chicken.Common;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Status;
 using Microsoft.Phone.Controls;
-using Chicken.Common;
+using Chicken.Service;
 
 namespace Chicken.View
 {
@@ -32,8 +33,14 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string statusId = NavigationContext.QueryString[Const.ID];
-            statusViewModel.OnNavigatedTo(statusId);
+            string statusId = IsolatedStorageService.GetAndDeleteObject<string>(Const.PageNameEnum.StatusPage);
+            statusViewModel.StatusId = statusId;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            IsolatedStorageService.CreateObject(Const.PageNameEnum.StatusPage, statusViewModel.StatusId);
         }
 
         public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)

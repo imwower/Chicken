@@ -5,6 +5,7 @@ using Chicken.Common;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile;
 using Microsoft.Phone.Controls;
+using Chicken.Service;
 
 namespace Chicken.View
 {
@@ -32,8 +33,14 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string userId = NavigationContext.QueryString[Const.USER_ID];
-            profileViewModel.OnNavigatedTo(userId);
+            string userId = IsolatedStorageService.GetAndDeleteObject<string>(Const.PageNameEnum.ProfilePage);
+            profileViewModel.UserId = userId;
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            IsolatedStorageService.CreateObject(Const.PageNameEnum.ProfilePage, profileViewModel.UserId);
         }
 
         public void ChangeSelectedIndex(int selectedIndex, IDictionary<string, object> parameters = null)
