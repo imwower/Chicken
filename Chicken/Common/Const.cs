@@ -58,7 +58,7 @@
         public const string STATUSES_RETWEET_IDS = "statuses/retweeters/ids.json";
         public const string ADD_TO_FAVORITES_CREATE = "favorites/create.json";
         public const string ADD_TO_FAVORITES_DESTROY = "favorites/destroy.json";
-        public const string RETWEET_CREATE = "{0}statuses/{1}.json";
+        public const string RETWEET_CREATE = "{0}statuses/retweet/{1}.json";
 
         #endregion
 

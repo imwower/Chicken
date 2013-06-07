@@ -60,14 +60,59 @@
                                     <Grid.Background>
                                         <ImageBrush ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" Stretch="Fill"  />
                                     </Grid.Background>
-                                    <!--Profile Image-->
-                                    <ctrls:ImageContainer Grid.Row="0"
-                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}"
-                                                          Width="124" Height="124" Margin="0,-40,0,0">
-                                        <ctrls:ImageContainer.Clip>
-                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                                        </ctrls:ImageContainer.Clip>
-                                    </ctrls:ImageContainer>
+                                    <Grid Grid.Row="0" Margin="0,-40,0,0" HorizontalAlignment="Center">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="124" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.Resources>
+                                            <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                                <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
+                                                <Setter Property="Opacity" Value="0.6" />
+                                                <Setter Property="Margin" Value="2,0,2,20" />
+                                                <Setter Property="VerticalAlignment" Value="Bottom" />
+                                            </Style>
+                                        </Grid.Resources>
+                                        <!--Profile Image-->
+                                        <ctrls:ImageContainer Grid.Column="2"
+                                                              Width="124" Height="124"
+                                                              ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}">
+                                            <ctrls:ImageContainer.Clip>
+                                                <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                            </ctrls:ImageContainer.Clip>
+                                        </ctrls:ImageContainer>
+                                        <!--private-->
+                                        <Rectangle Grid.Column="0"
+                                            Visibility="{Binding UserProfileViewModel.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/private.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--global-->
+                                        <Rectangle Grid.Column="1"
+                                                   Visibility="{Binding UserProfileViewModel.IsGlobal,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/global.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--following-->
+                                        <Rectangle Grid.Column="3"
+                                                    Visibility="{Binding UserProfileViewModel.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/following.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--follows you-->
+                                        <Rectangle Grid.Column="4"
+                                                   Visibility="{Binding UserProfileViewModel.FollowYou,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/follows.you.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Grid>
                                     <!--Name-->
                                     <TextBlock Text="{Binding UserProfileViewModel.Name}"
                                                Grid.Row="1" Margin="0,-10,0,0" />

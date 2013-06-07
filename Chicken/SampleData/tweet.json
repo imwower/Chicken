@@ -147,8 +147,8 @@ Tpも吹きます。吹奏楽、Jazz、クラシック、アニソンなんで�
             "urls": [ ], 
             "user_mentions": [ ]
         }, 
-        "favorited": false, 
-        "retweeted": false, 
+        "favorited": true, 
+        "retweeted": true, 
         "lang": "ja"
     }, 
     "retweet_count": 962, 

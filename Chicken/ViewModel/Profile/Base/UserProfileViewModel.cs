@@ -1,24 +1,27 @@
-﻿using System.Collections.ObjectModel;
-using Chicken.Model;
+﻿using Chicken.Model;
 using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.ViewModel.Profile.Base
 {
     public class UserProfileViewModel : UserViewModel
     {
-        public UserProfile UserProfile;
+        protected UserProfile userProfile;
 
         public UserProfileViewModel(UserProfile userProfile) :
             base(userProfile)
         {
-            this.UserProfile = userProfile;
+            this.userProfile = userProfile;
         }
 
         public string Description
         {
             get
             {
-                return UserProfile.Description;
+                if (!string.IsNullOrEmpty(userProfile.Description) && userProfile.Description.Length > 60)
+                {
+                    return userProfile.Description.Substring(0, 60) + "...";
+                }
+                return userProfile.Description;
             }
         }
 
@@ -26,7 +29,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.Location;
+                return userProfile.Location;
             }
         }
 
@@ -34,7 +37,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.Url;
+                return userProfile.Url;
             }
         }
 
@@ -42,7 +45,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.TweetsCount;
+                return userProfile.TweetsCount;
             }
         }
 
@@ -50,7 +53,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.FollowingCount;
+                return userProfile.FollowingCount;
             }
         }
 
@@ -58,7 +61,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.FollowersCount;
+                return userProfile.FollowersCount;
             }
         }
 
@@ -66,7 +69,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.FavoritesCount;
+                return userProfile.FavoritesCount;
             }
         }
 
@@ -74,7 +77,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.ProfileImage.Replace("_normal", "");
+                return userProfile.ProfileImage.Replace("_normal", "");
             }
         }
 
@@ -82,7 +85,7 @@ namespace Chicken.ViewModel.Profile.Base
         {
             get
             {
-                return UserProfile.UserProfileBannerImage + "/web";
+                return userProfile.UserProfileBannerImage + "/web";
             }
         }
     }

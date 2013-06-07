@@ -53,10 +53,5 @@ namespace Chicken.Service.Interface
         public HttpWebRequest Request { get; set; }
         public Action<T> CallBack { get; set; }
         public T Result { get; set; }
-
-        public RequestDataObject()
-        {
-            Result = default(T);
-        }
     }
 }

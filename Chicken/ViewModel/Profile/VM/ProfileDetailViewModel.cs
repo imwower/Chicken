@@ -6,8 +6,8 @@ namespace Chicken.ViewModel.Profile.VM
     public class ProfileDetailViewModel : ProfileViewModelBase
     {
         #region properties
-        private UserProfileViewModel userProfileViewModel;
-        public UserProfileViewModel UserProfileViewModel
+        private UserProfileDetailViewModel userProfileViewModel;
+        public UserProfileDetailViewModel UserProfileViewModel
         {
             get
             {
@@ -32,7 +32,7 @@ namespace Chicken.ViewModel.Profile.VM
             TweetService.GetUserProfileDetail<UserProfile>(User.Id,
                 obj =>
                 {
-                    this.UserProfileViewModel = new UserProfileViewModel(obj);
+                    this.UserProfileViewModel = new UserProfileDetailViewModel(obj);
                     base.Refreshed();
                 });
         }
