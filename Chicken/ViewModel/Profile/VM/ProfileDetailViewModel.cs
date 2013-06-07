@@ -1,4 +1,6 @@
-﻿using Chicken.Model;
+﻿using System.Collections.Generic;
+using Chicken.Common;
+using Chicken.Model;
 using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile.VM
@@ -46,13 +48,26 @@ namespace Chicken.ViewModel.Profile.VM
                 obj =>
                 {
                     this.UserProfileViewModel = new UserProfileDetailViewModel(obj);
+                    GetFollowedByState();
                     base.Refreshed();
                 });
         }
 
         private void GetFollowedByState()
         {
- 
+            TweetService.GetFriendshipConnections<Friendships<Friendship>>(User.Id,
+                friendships =>
+                {
+                    if (friendships != null && friendships.Count != 0)
+                    {
+                        Friendship friendship = friendships[0];
+                        List<string> connections = friendship.Connections;
+                        if (connections.Contains(Const.FOLLOWED_BY))
+                        {
+                            FollowedBy = true;
+                        }
+                    }
+                });
         }
     }
 }

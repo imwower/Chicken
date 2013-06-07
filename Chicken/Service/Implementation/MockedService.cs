@@ -47,9 +47,10 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetFriendshipConnections<T>(string userId, Action<T> callBack)
+        public void GetFriendshipConnections<T>(string userIdList, Action<T> callBack)
         {
-            throw new NotImplementedException();
+            string url = "SampleData/friendships.json";
+            HandleWebRequest<T>(url, callBack);
         }
         public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {

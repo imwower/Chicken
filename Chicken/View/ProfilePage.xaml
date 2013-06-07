@@ -114,7 +114,7 @@
                                             <Rectangle
                                                 Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/follows.you.png" />
+                                                    <ImageBrush ImageSource="/Images/dark/followedby.png" />
                                                 </Rectangle.OpacityMask>
                                             </Rectangle>
                                         </StackPanel>

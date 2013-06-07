@@ -12,7 +12,7 @@ namespace Chicken.Model
         [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
 
-        public IList<string> Connections { get; set; }
+        public List<string> Connections { get; set; }
     }
 
     public class Friendships<T> : ModelBaseList<T> where T : Friendship

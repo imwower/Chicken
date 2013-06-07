@@ -24,6 +24,7 @@
         #region rest api
         public const string DEFAULT_VALUE_TRUE = "true";
         public const string DEFAULT_VALUE_FALSE = "false";
+        public const string FOLLOWED_BY = "followed_by";
 
         #region rest api parameters
         public const string ID = "id";
@@ -51,6 +52,7 @@
         public const string USER_FOLLOWING_IDS = "friends/ids.json";
         public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
+        public const string FRIENDSHIPS_LOOKUP = "friendships/lookup.json";
         #endregion
 
         #region status page

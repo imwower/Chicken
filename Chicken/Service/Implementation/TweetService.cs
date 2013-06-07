@@ -56,6 +56,20 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        /// <summary>
+        /// comma-separated list
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="userIdList"></param>
+        /// <param name="callBack"></param>
+        public void GetFriendshipConnections<T>(string userIdList, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.USER_ID, userIdList);
+            string url = TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_LOOKUP, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
         public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
