@@ -106,6 +106,27 @@
                                                                     <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
                                                                 </Style>
                                                             </StackPanel.Resources>
+                                                            <!--private-->
+                                                            <Rectangle
+                                                                Visibility="{Binding TweetViewModel.User.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                <Rectangle.OpacityMask>
+                                                                    <ImageBrush ImageSource="/Images/dark/private.png" />
+                                                                </Rectangle.OpacityMask>
+                                                            </Rectangle>
+                                                            <!--Is Translator-->
+                                                            <Rectangle
+                                                                Visibility="{Binding TweetViewModel.User.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                <Rectangle.OpacityMask>
+                                                                    <ImageBrush ImageSource="/Images/dark/global.png" />
+                                                                </Rectangle.OpacityMask>
+                                                            </Rectangle>
+                                                            <!--Is Verified-->
+                                                            <Rectangle
+                                                                Visibility="{Binding TweetViewModel.User.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                                <Rectangle.OpacityMask>
+                                                                    <ImageBrush ImageSource="/Images/dark/verified.png" />
+                                                                </Rectangle.OpacityMask>
+                                                            </Rectangle>
                                                             <!--conversation-->
                                                             <Rectangle Visibility="{Binding TweetViewModel.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                                                 <Rectangle.OpacityMask>

@@ -14,5 +14,14 @@ namespace Chicken.Model
 
         [JsonProperty("profile_image_url_https")]
         public string ProfileImage { get; set; }
+
+        [JsonProperty("verified")]
+        public bool IsVerified { get; set; }
+
+        [JsonProperty("protected")]
+        public bool IsPrivate { get; set; }
+
+        [JsonProperty("is_translator")]
+        public bool IsTranslator { get; set; }
     }
 }

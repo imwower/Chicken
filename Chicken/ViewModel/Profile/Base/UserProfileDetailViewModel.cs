@@ -16,6 +16,54 @@ namespace Chicken.ViewModel.Profile.Base
             }
         }
 
+        public string Location
+        {
+            get
+            {
+                return userProfile.Location;
+            }
+        }
+
+        public string Url
+        {
+            get
+            {
+                return userProfile.Url;
+            }
+        }
+
+        public string TweetsCount
+        {
+            get
+            {
+                return userProfile.TweetsCount;
+            }
+        }
+
+        public string FollowingCount
+        {
+            get
+            {
+                return userProfile.FollowingCount;
+            }
+        }
+
+        public string FollowersCount
+        {
+            get
+            {
+                return userProfile.FollowersCount;
+            }
+        }
+
+        public string FavoritesCount
+        {
+            get
+            {
+                return userProfile.FavoritesCount;
+            }
+        }
+
         public bool IsFollowing
         {
             get

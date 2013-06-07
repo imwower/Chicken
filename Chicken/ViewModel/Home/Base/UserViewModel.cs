@@ -50,5 +50,29 @@ namespace Chicken.ViewModel.Home.Base
                 return user.ProfileImage.Replace("_normal", "_bigger");
             }
         }
+
+        public bool IsVerified
+        {
+            get
+            {
+                return user.IsVerified;
+            }
+        }
+
+        public bool IsPrivate
+        {
+            get
+            {
+                return user.IsPrivate;
+            }
+        }
+
+        public bool IsTranslator
+        {
+            get
+            {
+                return user.IsTranslator;
+            }
+        }
     }
 }
