@@ -19,7 +19,7 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
-                        Title="{Binding Path=Title}">
+                        Title="{Binding Path=User.ScreenName}">
             <!--profile detail-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"

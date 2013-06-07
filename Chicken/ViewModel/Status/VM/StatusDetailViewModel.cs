@@ -72,7 +72,14 @@ namespace Chicken.ViewModel.Status.VM
 
         private void ClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+            var userViewModel = parameter as UserViewModel;
+            var user = new UserModel
+            {
+                Id = userViewModel.Id,
+                Name = userViewModel.Name,
+                ScreenName = userViewModel.ScreenName,
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
         }
 
         private void ItemClickAction(object parameter)

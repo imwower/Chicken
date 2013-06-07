@@ -229,7 +229,7 @@
                 <!--avatar-->
                 <Button Grid.Column="0"
                         Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                        CommandParameter="{Binding User.Id}">
+                        CommandParameter="{Binding User}">
                     <Button.Template>
                         <ControlTemplate>
                             <ctrls:ImageContainer ImageSource="{Binding Path=User.ProfileImage}"
@@ -338,7 +338,7 @@
                 <!--avatar-->
                 <Button Grid.Column="0"
                         Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                        CommandParameter="{Binding User.Id}">
+                        CommandParameter="{Binding User}">
                     <Button.Template>
                         <ControlTemplate>
                             <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}"
@@ -381,7 +381,7 @@
         <DataTemplate x:Key="FriendTemplate">
             <Button Margin="0,4"
                     Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                    CommandParameter="{Binding Id}">
+                    CommandParameter="{Binding}">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>

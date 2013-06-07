@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -12,17 +11,17 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        private string userId;
-        public string UserId
+        private UserModel user;
+        public UserModel User
         {
             get
             {
-                return userId;
+                return user;
             }
             set
             {
-                userId = value;
-                RaisePropertyChanged("UserId");
+                user = value;
+                RaisePropertyChanged("User");
             }
         }
 
@@ -73,7 +72,7 @@ namespace Chicken.ViewModel.Profile
         #region private method
         private void ClickAction(object parameter)
         {
-            if (UserId == parameter.ToString())
+            if (User.Id == (parameter as UserProfileViewModel).Id)
             {
                 NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);
             }

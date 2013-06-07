@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile;
@@ -32,14 +33,8 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string userId = IsolatedStorageService.GetAndDeleteObject<string>(Const.PageNameEnum.ProfilePage);
-            profileViewModel.UserId = userId;
-        }
-
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            IsolatedStorageService.CreateObject(Const.PageNameEnum.ProfilePage, profileViewModel.UserId);
+            var user = IsolatedStorageService.GetAndDeleteObject<UserModel>(Const.PageNameEnum.ProfilePage);
+            profileViewModel.User = user;
         }
 
         public void ChangeSelectedIndex(int selectedIndex)

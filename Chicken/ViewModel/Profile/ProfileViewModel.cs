@@ -1,24 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Chicken.ViewModel.Home.Base;
 using Chicken.ViewModel.Profile.VM;
+using Chicken.Model;
 
 namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private string userId;
-        public string UserId
+        private UserModel user;
+        public UserModel User
         {
             get
             {
-                return userId;
+                return user;
             }
             set
             {
-                userId = value;
-                RaisePropertyChanged("UserId");
+                user = value;
+                RaisePropertyChanged("User");
             }
         }
         #endregion
@@ -28,7 +30,7 @@ namespace Chicken.ViewModel.Profile
         {
             get
             {
-                return new DelegateCommand(Mention);
+                return new DelegateCommand(MentionAction);
             }
         }
 
@@ -43,7 +45,6 @@ namespace Chicken.ViewModel.Profile
 
         public ProfileViewModel()
         {
-            Title = "Profile";
             var baseViewModelList = new List<PivotItemViewModelBase>
             {
                 new ProfileDetailViewModel(),
@@ -57,11 +58,11 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            (PivotItems[selectedIndex] as ProfileViewModelBase).UserId = userId;
+            (PivotItems[selectedIndex] as ProfileViewModelBase).User = user;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }
 
-        private void Mention(object parameter)
+        private void MentionAction(object parameter)
         {
             //TODO
         }

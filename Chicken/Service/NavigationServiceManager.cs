@@ -19,19 +19,20 @@ namespace Chicken.Service
             {
                 IsolatedStorageService.CreateObject(pageName, parameter);
             }
+            string random = "?random=" + DateTime.Now.Ticks.ToString("x");
             switch (pageName)
             {
                 case Const.PageNameEnum.MainPage:
-                    frame.Navigate(new Uri(Const.MainPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.MainPage + random, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.ProfilePage:
-                    frame.Navigate(new Uri(Const.ProfilePage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.ProfilePage + random, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.StatusPage:
-                    frame.Navigate(new Uri(Const.StatusPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.StatusPage + random, UriKind.Relative));
                     break;
                 case Const.PageNameEnum.NewTweetPage:
-                    frame.Navigate(new Uri(Const.NewTweetPage, UriKind.Relative));
+                    frame.Navigate(new Uri(Const.NewTweetPage + random, UriKind.Relative));
                     break;
                 default:
                     break;

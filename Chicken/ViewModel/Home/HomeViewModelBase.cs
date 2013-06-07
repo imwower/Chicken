@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
-using System;
 
 namespace Chicken.ViewModel.Home
 {
@@ -38,7 +37,14 @@ namespace Chicken.ViewModel.Home
 
         private void ClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+            var userViewModel = parameter as UserViewModel;
+            var user = new UserModel
+            {
+                Id = userViewModel.Id,
+                Name = userViewModel.Name,
+                ScreenName = userViewModel.ScreenName,
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
         }
 
         private void ItemClickAction(object parameter)

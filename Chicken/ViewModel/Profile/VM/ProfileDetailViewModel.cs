@@ -29,7 +29,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void RefreshAction()
         {
-            TweetService.GetUserProfileDetail<UserProfile>(UserId,
+            TweetService.GetUserProfileDetail<UserProfile>(User.Id,
                 obj =>
                 {
                     this.UserProfileViewModel = new UserProfileViewModel(obj);

@@ -74,7 +74,7 @@
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
 
-        //public const string NewTweetParam = "NewTweetParam";
+        //public const string RANDOM = "random";
         #endregion
 
         #region page name enum
@@ -122,5 +122,13 @@
         None = 0,
         Top = 1,
         Bottom = 2,
+    }
+
+    public enum NewTweetActionType
+    {
+        None = 0,
+        PostNew = 1,
+        Reply = 2,
+        Quote = 3,
     }
 }

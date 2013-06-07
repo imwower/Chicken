@@ -61,7 +61,7 @@
                                 <!--profile summary-->
                                 <Button Grid.Row="0"
                                         Command="{Binding Path=ClickCommand}"
-                                        CommandParameter="{Binding Path=TweetViewModel.User.Id}">
+                                        CommandParameter="{Binding Path=TweetViewModel.User}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <Grid>

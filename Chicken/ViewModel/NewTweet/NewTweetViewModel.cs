@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
