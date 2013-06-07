@@ -112,7 +112,7 @@
                                             </Rectangle>
                                             <!--follows you-->
                                             <Rectangle
-                                                Visibility="{Binding UserProfileViewModel.FollowYou,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Rectangle.OpacityMask>
                                                     <ImageBrush ImageSource="/Images/dark/follows.you.png" />
                                                 </Rectangle.OpacityMask>

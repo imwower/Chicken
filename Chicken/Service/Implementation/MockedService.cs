@@ -47,6 +47,10 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void GetFriendshipConnections<T>(string userId, Action<T> callBack)
+        {
+            throw new NotImplementedException();
+        }
         public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_timeline.json";
@@ -132,6 +136,5 @@ namespace Chicken.Service.Implementation
             }
         }
         #endregion
-
     }
 }

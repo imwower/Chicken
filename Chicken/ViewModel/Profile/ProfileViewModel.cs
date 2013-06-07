@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Chicken.ViewModel.Home.Base;
-using Chicken.ViewModel.Profile.VM;
 using Chicken.Model;
+using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
 {
@@ -62,14 +61,14 @@ namespace Chicken.ViewModel.Profile
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }
 
-        private void MentionAction(object parameter)
+        private void MentionAction()
         {
-            //TODO
+            (PivotItems[SelectedIndex] as ProfileViewModelBase).Mention();
         }
 
         private void NewMessageAction(object parameter)
         {
-            //TODO
+            (PivotItems[SelectedIndex] as ProfileViewModelBase).NewMessage();
         }
     }
 }

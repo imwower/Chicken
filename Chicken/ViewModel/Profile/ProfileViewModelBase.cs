@@ -69,6 +69,28 @@ namespace Chicken.ViewModel.Profile
             ClickHandler = this.ClickAction;
         }
 
+        #region public method
+        public virtual void Mention()
+        {
+            if (IsLoading)
+            {
+                return;
+            }
+            NewTweetModel newTweet = new NewTweetModel
+            {
+                ActionType = (int)NewTweetActionType.Mention,
+                Text = User.ScreenName + " ",
+            };
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
+        }
+
+        public virtual void NewMessage()
+        {
+
+        }
+        #endregion
+
         #region private method
         private void ClickAction(object parameter)
         {

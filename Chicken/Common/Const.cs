@@ -130,5 +130,6 @@
         PostNew = 1,
         Reply = 2,
         Quote = 3,
+        Mention = 4,
     }
 }

@@ -71,6 +71,11 @@ namespace Chicken.View
                         newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
                         this.TextContent.Select(this.TextContent.Text.Length, 0);
                         break;
+                    case NewTweetActionType.Mention:
+                        newTweetViewModel.Title = "Mention: " + tweet.InReplyToUserScreenName;
+                        this.TextContent.Text = tweet.Text;
+                        this.TextContent.Select(this.TextContent.Text.Length, 0);
+                        break;
                     case NewTweetActionType.PostNew:
                     case NewTweetActionType.None:
                     default:

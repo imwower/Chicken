@@ -1,0 +1,20 @@
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace Chicken.Model
+{
+    public class Friendship : ModelBase
+    {
+        public string Id { get; set; }
+
+        public string Name { get; set; }
+
+        [JsonProperty("screen_name")]
+        public string ScreenName { get; set; }
+
+        public IList<string> Connections { get; set; }
+    }
+
+    public class Friendships<T> : ModelBaseList<T> where T : Friendship
+    { }
+}

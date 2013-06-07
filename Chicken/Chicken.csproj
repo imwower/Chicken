@@ -114,6 +114,7 @@
     <Compile Include="Model\Entity\Entities.cs" />
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
+    <Compile Include="Model\Friendship.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\NewTweetModel.cs" />
     <Compile Include="Model\UserIdList.cs" />
@@ -220,7 +221,7 @@
     <Content Include="Images\dark\following.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Images\dark\follows.you.png">
+    <Content Include="Images\dark\followedby.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Images\dark\global.png">

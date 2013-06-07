@@ -19,6 +19,19 @@ namespace Chicken.ViewModel.Profile.VM
                 RaisePropertyChanged("UserProfileViewModel");
             }
         }
+        private bool followedBy;
+        public bool FollowedBy
+        {
+            get
+            {
+                return followedBy;
+            }
+            set
+            {
+                followedBy = value;
+                RaisePropertyChanged("FollowedBy");
+            }
+        }
         #endregion
 
         public ProfileDetailViewModel()
@@ -35,6 +48,11 @@ namespace Chicken.ViewModel.Profile.VM
                     this.UserProfileViewModel = new UserProfileDetailViewModel(obj);
                     base.Refreshed();
                 });
+        }
+
+        private void GetFollowedByState()
+        {
+ 
         }
     }
 }

@@ -19,6 +19,8 @@ namespace Chicken.Service.Interface
         #region profile page
         void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
+        void GetFriendshipConnections<T>(string userId, Action<T> callBack);
+
         void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
@@ -45,8 +47,6 @@ namespace Chicken.Service.Interface
         void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack);
         #endregion
     }
-
-
 
     public class RequestDataObject<T>
     {
