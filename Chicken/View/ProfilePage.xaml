@@ -50,7 +50,7 @@
                                 </Grid.RowDefinitions>
                                 <Grid Grid.Row="1" VerticalAlignment="Top">
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="124" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
@@ -59,72 +59,68 @@
                                     </Grid.RowDefinitions>
                                     <Grid.Background>
                                         <ImageBrush Stretch="Fill" Opacity="0.6"
-                                            ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" />
+                                                    ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" />
                                     </Grid.Background>
-                                    <Grid Grid.Row="0" Margin="0,-40,0,0" HorizontalAlignment="Center">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto" />
-                                            <RowDefinition Height="Auto" />
-                                        </Grid.RowDefinitions>
-                                        <!--Profile Image-->
-                                        <ctrls:ImageContainer Grid.Row="0" Width="124" Height="124"
-                                                              ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}">
-                                            <ctrls:ImageContainer.Clip>
-                                                <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                                            </ctrls:ImageContainer.Clip>
-                                        </ctrls:ImageContainer>
-                                        <StackPanel Grid.Row="1" Margin="0,4" Opacity="0.6"
-                                                    Orientation="Horizontal" HorizontalAlignment="Center">
-                                            <StackPanel.Resources>
-                                                <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
-                                                    <Setter Property="Fill" Value="{StaticResource PhoneForegroundBrush}" />
-                                                    <Setter Property="Margin" Value="2,0,2,20" />
-                                                    <Setter Property="VerticalAlignment" Value="Bottom" />
-                                                </Style>
-                                            </StackPanel.Resources>
-                                            <!--private-->
-                                            <Rectangle
-                                                Visibility="{Binding UserProfileViewModel.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/private.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                            <!--Is Translator-->
-                                            <Rectangle
-                                                Visibility="{Binding UserProfileViewModel.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/global.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                            <!--Is Verified-->
-                                            <Rectangle
-                                                Visibility="{Binding UserProfileViewModel.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/verified.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                            <!--following-->
-                                            <Rectangle
-                                                Visibility="{Binding UserProfileViewModel.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/following.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                            <!--follows you-->
-                                            <Rectangle
-                                                Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                                <Rectangle.OpacityMask>
-                                                    <ImageBrush ImageSource="/Images/dark/followedby.png" />
-                                                </Rectangle.OpacityMask>
-                                            </Rectangle>
-                                        </StackPanel>
-                                    </Grid>
+                                    <!--Profile Image-->
+                                    <ctrls:ImageContainer Grid.Row="0"
+                                                          Width="124" Height="124" Margin="0,-40,0,0"
+                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}">
+                                        <ctrls:ImageContainer.Clip>
+                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                        </ctrls:ImageContainer.Clip>
+                                    </ctrls:ImageContainer>
+                                    <!--is private, is verified, etc-->
+                                    <StackPanel Grid.Row="1" Margin="0,-10,0,0" Opacity="0.6"
+                                                Orientation="Horizontal" HorizontalAlignment="Center">
+                                        <StackPanel.Resources>
+                                            <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                                <Setter Property="Fill" Value="{StaticResource PhoneForegroundBrush}" />
+                                                <Setter Property="Margin" Value="2,0" />
+                                                <Setter Property="VerticalAlignment" Value="Bottom" />
+                                            </Style>
+                                        </StackPanel.Resources>
+                                        <!--private-->
+                                        <Rectangle
+                                            Visibility="{Binding UserProfileViewModel.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/private.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--Is Translator-->
+                                        <Rectangle
+                                            Visibility="{Binding UserProfileViewModel.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/global.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--Is Verified-->
+                                        <Rectangle
+                                            Visibility="{Binding UserProfileViewModel.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/verified.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--following-->
+                                        <Rectangle
+                                            Visibility="{Binding UserProfileViewModel.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/following.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                        <!--follows you-->
+                                        <Rectangle
+                                            Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <Rectangle.OpacityMask>
+                                                <ImageBrush ImageSource="/Images/dark/followedby.png" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </StackPanel>
                                     <!--Name-->
-                                    <TextBlock Text="{Binding UserProfileViewModel.Name}"
-                                               Grid.Row="1" Margin="0,-20,0,0" />
+                                    <TextBlock Grid.Row="2"
+                                               Text="{Binding UserProfileViewModel.Name}" />
                                     <!--Location-->
-                                    <TextBlock Text="{Binding UserProfileViewModel.Location}"
-                                               Grid.Row="3" />
+                                    <TextBlock Grid.Row="3"
+                                               Text="{Binding UserProfileViewModel.Location}" />
                                     <!--Url-->
                                     <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
                                      NavigateUri="{Binding Path=UserProfileViewModel.Url}"

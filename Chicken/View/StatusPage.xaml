@@ -199,7 +199,7 @@
                                             </TextBlock>
                                         </Border>
                                         <Border
-                                                Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <ctrls:ImageContainer ImageSource="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
                                                                   Style="{StaticResource ProfileImageIcon}" />
                                         </Border>
