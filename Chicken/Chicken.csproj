@@ -315,6 +315,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\emotions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
     <Content Include="SampleData\hometimeline.json">

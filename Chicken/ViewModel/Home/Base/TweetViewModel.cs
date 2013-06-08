@@ -2,6 +2,7 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.ViewModel.Status.Base;
+using System.Net;
 
 namespace Chicken.ViewModel.Home.Base
 {
@@ -75,7 +76,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return tweet.Text;
+                return HttpUtility.HtmlDecode(tweet.Text);
             }
         }
 

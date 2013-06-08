@@ -1,7 +1,10 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.IO.IsolatedStorage;
 using Chicken.Common;
 using Newtonsoft.Json;
+using System.Windows;
+using System;
 
 namespace Chicken.Service
 {
@@ -15,8 +18,8 @@ namespace Chicken.Service
 
         static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
         static JsonSerializer jsonSerializer = new JsonSerializer();
-        const string DraftFilePath = "Drafts";
-        const string DraftFileName = DraftFilePath + "\\draft.json";
+
+        const string EmotionsFileName = "emotions.json";
 
         public static bool CreateObject(Const.PageNameEnum pageName, object value)
         {
@@ -32,6 +35,20 @@ namespace Chicken.Service
         {
             string folderName = pageName.ToString();
             return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);
+        }
+
+        public static List<string> GetEmotions()
+        {
+            List<string> result = new List<string>();
+            if (!fileSystem.FileExists(EmotionsFileName))
+            {
+                using (IsolatedStorageFileStream fileStream = fileSystem.OpenFile(EmotionsFileName, FileMode.Create))
+                {
+                    var resource = Application.GetResourceStream(new Uri(Const.EMOTIONS_FILE_PATH, UriKind.RelativeOrAbsolute));
+                    resource.Stream.CopyTo(fileStream);
+                }
+            }
+            return result;
         }
 
         private static bool SerializeObject(string fileName, object value)

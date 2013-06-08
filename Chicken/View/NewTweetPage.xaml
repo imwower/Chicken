@@ -57,20 +57,20 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
             <!--send-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send" />
             <!--add image-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png" Text="image" 
-                                            Click="AddImageButton_Click" />
-            <!--at somebody-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png" Text="mention"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png"
+                                            Text="image" Click="AddImageButton_Click" />
+            <!--mention somebody-->
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png"
+                                            Text="mention" />
             <!--emotion-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="emotion"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="emotion" />
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
     <i:Interaction.Behaviors>
         <abu:AppBarItemCommand Id="send" Command="{Binding SendCommand}" />
-        <!--<abu:AppBarItemCommand Id="image" Command="{Binding AddImageCommand}" />-->
         <abu:AppBarItemCommand Id="mention" Command="{Binding MentionCommand}" />
         <abu:AppBarItemCommand Id="emotion" Command="{Binding AddEmotionCommand}" />
     </i:Interaction.Behaviors>
