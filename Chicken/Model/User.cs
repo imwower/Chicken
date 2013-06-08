@@ -10,10 +10,31 @@ namespace Chicken.Model
         public string Name { get; set; }
 
         [JsonProperty("screen_name")]
-        public string ScreenName { get; set; }
+        public string DisplayName { get; set; }
+
+        public string ScreenName
+        {
+            get
+            {
+                return "@" + DisplayName;
+            }
+        }
 
         [JsonProperty("profile_image_url_https")]
         public string ProfileImage { get; set; }
+
+        /// <summary>
+        /// status detail page needs bigger avatar,
+        /// so add this property to User,
+        /// not to UserProfile.
+        /// </summary>
+        public string ProfileImageBigger
+        {
+            get
+            {
+                return ProfileImage.Replace("_normal", "_bigger");
+            }
+        }
 
         [JsonProperty("verified")]
         public bool IsVerified { get; set; }

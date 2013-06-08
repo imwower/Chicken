@@ -370,8 +370,6 @@
                             </Grid>
                         </ControlTemplate>
                     </Button.Template>
-
-
                 </Button>
                 <!--content end-->
             </Grid>
@@ -388,7 +386,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
-                            <ctrls:ImageContainer ImageSource="{Binding ProfileImage}"
+                            <ctrls:ImageContainer ImageSource="{Binding ProfileImageBigger}"
                                                   Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
@@ -406,7 +404,7 @@
                                 <!--screen name-->
                                 <TextBlock Grid.Row="1" Text="{Binding ScreenName}" />
                                 <!--description-->
-                                <TextBlock Grid.Row="2" Text="{Binding Description}" Style="{StaticResource TextContentNormal}" />
+                                <TextBlock Grid.Row="2" Text="{Binding TruncatedDescription}" Style="{StaticResource TextContentNormal}" />
                             </Grid>
                         </Grid>
                     </ControlTemplate>

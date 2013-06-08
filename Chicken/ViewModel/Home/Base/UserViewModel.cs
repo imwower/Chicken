@@ -1,78 +1,78 @@
-﻿using Chicken.Model;
+﻿//using Chicken.Model;
 
-namespace Chicken.ViewModel.Home.Base
-{
-    public class UserViewModel
-    {
-        private User user;
+//namespace Chicken.ViewModel.Home.Base
+//{
+//    public class UserViewModel
+//    {
+//        private User user;
 
-        public UserViewModel(User user)
-        {
-            this.user = user;
-        }
+//        public UserViewModel(User user)
+//        {
+//            this.user = user;
+//        }
 
-        public string Name
-        {
-            get
-            {
-                return user.Name;
-            }
-        }
+//        public string Name
+//        {
+//            get
+//            {
+//                return user.Name;
+//            }
+//        }
 
-        public string ScreenName
-        {
-            get
-            {
-                return "@" + user.ScreenName;
-            }
-        }
+//        public string ScreenName
+//        {
+//            get
+//            {
+//                return "@" + user.ScreenName;
+//            }
+//        }
 
-        public string Id
-        {
-            get
-            {
-                return user.Id;
-            }
-        }
+//        public string Id
+//        {
+//            get
+//            {
+//                return user.Id;
+//            }
+//        }
 
-        public string ProfileImage
-        {
-            get
-            {
-                return user.ProfileImage;
-            }
-        }
+//        public string ProfileImage
+//        {
+//            get
+//            {
+//                return user.ProfileImage;
+//            }
+//        }
 
-        public string ProfileImageBigger
-        {
-            get
-            {
-                return user.ProfileImage.Replace("_normal", "_bigger");
-            }
-        }
+//        public string ProfileImageBigger
+//        {
+//            get
+//            {
+//                return user.ProfileImage.Replace("_normal", "_bigger");
+//            }
+//        }
 
-        public bool IsVerified
-        {
-            get
-            {
-                return user.IsVerified;
-            }
-        }
+//        public bool IsVerified
+//        {
+//            get
+//            {
+//                return user.IsVerified;
+//            }
+//        }
 
-        public bool IsPrivate
-        {
-            get
-            {
-                return user.IsPrivate;
-            }
-        }
+//        public bool IsPrivate
+//        {
+//            get
+//            {
+//                return user.IsPrivate;
+//            }
+//        }
 
-        public bool IsTranslator
-        {
-            get
-            {
-                return user.IsTranslator;
-            }
-        }
-    }
-}
+//        public bool IsTranslator
+//        {
+//            get
+//            {
+//                return user.IsTranslator;
+//            }
+//        }
+//    }
+//}

@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -11,7 +9,7 @@ namespace Chicken.ViewModel.Profile.VM
         public UserFollowingViewModel()
         {
             Header = "Following";
-            UserList = new ObservableCollection<UserProfileViewModel>();
+            UserList = new ObservableCollection<UserProfile>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
         }

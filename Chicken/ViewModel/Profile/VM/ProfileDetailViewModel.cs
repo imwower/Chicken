@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
     public class ProfileDetailViewModel : ProfileViewModelBase
     {
         #region properties
-        private UserProfileDetailViewModel userProfileViewModel;
-        public UserProfileDetailViewModel UserProfileViewModel
+        private UserProfileDetail userProfileViewModel;
+        public UserProfileDetail UserProfileViewModel
         {
             get
             {
@@ -44,10 +43,10 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void RefreshAction()
         {
-            TweetService.GetUserProfileDetail<UserProfile>(User.Id,
-                obj =>
+            TweetService.GetUserProfileDetail<UserProfileDetail>(User.Id,
+                userProfileDetail =>
                 {
-                    this.UserProfileViewModel = new UserProfileDetailViewModel(obj);
+                    this.UserProfileViewModel = userProfileDetail;
                     GetFollowedByState();
                     base.Refreshed();
                 });

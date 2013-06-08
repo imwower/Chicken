@@ -36,12 +36,6 @@ namespace Chicken.View
             statusViewModel.StatusId = statusId;
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            IsolatedStorageService.CreateObject(Const.PageNameEnum.StatusPage, statusViewModel.StatusId);
-        }
-
         public void ChangeSelectedIndex(int selectedIndex)
         {
             this.MainPivot.SelectedIndex = selectedIndex;

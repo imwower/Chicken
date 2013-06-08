@@ -1,49 +1,12 @@
-﻿using Chicken.Common;
-using Chicken.Model;
+﻿using Chicken.Model;
 
 namespace Chicken.ViewModel.Home.Base
 {
-    public class DirectMessageViewModel
+    public class DirectMessageViewModel : TweetViewModel
     {
-        private DirectMessage directMessage;
-        private UserViewModel user;
-
         public DirectMessageViewModel(DirectMessage directMessage)
+            : base(directMessage)
         {
-            this.directMessage = directMessage;
-            this.user = new UserViewModel(directMessage.Sender);
-        }
-
-        public string Id
-        {
-            get
-            {
-                return directMessage.Id;
-            }
-        }
-
-        public string Text
-        {
-            get
-            {
-                return directMessage.Text;
-            }
-        }
-
-        public string CreatedDate
-        {
-            get
-            {
-                return TwitterHelper.ParseToDateTime(directMessage.CreatedDate);
-            }
-        }
-
-        public UserViewModel User
-        {
-            get
-            {
-                return user;
-            }
         }
     }
 }

@@ -39,7 +39,7 @@
             <ctrls:HomePivotItem
                                  DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
                                  Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=DMList}"
+                                 ListBoxItems="{Binding Path=TweetList}"
                                  ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
 
             <i:Interaction.Triggers>

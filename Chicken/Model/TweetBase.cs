@@ -5,7 +5,7 @@ namespace Chicken.Model
 {
     public class TweetBase : ModelBase
     {
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }

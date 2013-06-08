@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using Chicken.Model;
+﻿//using System.Collections.ObjectModel;
+//using Chicken.Model;
 
 //namespace Chicken.ViewModel.Profile.Base
 //{

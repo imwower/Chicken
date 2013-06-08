@@ -102,6 +102,7 @@
     <Compile Include="Common\Const.cs" />
     <Compile Include="Common\TwitterHelper.cs" />
     <Compile Include="Controls\AutoGrid.cs" />
+    <Compile Include="Controls\AutoRichTextBox.cs" />
     <Compile Include="Controls\HomePivotItem.cs" />
     <Compile Include="Controls\ImageContainer.xaml.cs">
       <DependentUpon>ImageContainer.xaml</DependentUpon>
@@ -113,9 +114,11 @@
     <Compile Include="Model\Cursor.cs" />
     <Compile Include="Model\DirectMessage.cs" />
     <Compile Include="Model\Entity\Coordinates.cs" />
-    <Compile Include="Model\Entity\Entities.cs" />
+    <Compile Include="Model\Entity\EntityBase.cs" />
     <Compile Include="Model\Entity\HashTag.cs" />
     <Compile Include="Model\Entity\Media.cs" />
+    <Compile Include="Model\Entity\UrlEntity.cs" />
+    <Compile Include="Model\Entity\UserMention.cs" />
     <Compile Include="Model\Friendship.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\NewTweetModel.cs" />
@@ -126,6 +129,7 @@
     <Compile Include="Model\User.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserProfile.cs" />
+    <Compile Include="Model\UserProfileDetail.cs" />
     <Compile Include="Service\IsolatedStorageService.cs" />
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />
@@ -145,6 +149,7 @@
     <Compile Include="ViewModel\Status\Base\EntitiesViewModel.cs" />
     <Compile Include="ViewModel\Status\Base\HashTagViewModel.cs" />
     <Compile Include="ViewModel\Status\Base\MediaViewModel.cs" />
+    <Compile Include="ViewModel\Status\Base\UrlViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />

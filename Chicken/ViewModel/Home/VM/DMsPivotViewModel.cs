@@ -7,24 +7,10 @@ namespace Chicken.ViewModel.Home.VM
 {
     public class DMsPivotViewModel : HomeViewModelBase
     {
-        private ObservableCollection<DirectMessageViewModel> dmList;
-        public ObservableCollection<DirectMessageViewModel> DMList
-        {
-            get
-            {
-                return dmList;
-            }
-            set
-            {
-                dmList = value;
-                RaisePropertyChanged("DMList");
-            }
-        }
-
         public DMsPivotViewModel()
         {
             Header = "Messages";
-            DMList = new ObservableCollection<DirectMessageViewModel>();
+            TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
         }
@@ -33,9 +19,9 @@ namespace Chicken.ViewModel.Home.VM
         {
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
-            if (dmList.Count != 0)
+            if (TweetList.Count != 0)
             {
-                sinceId = dmList[0].Id;
+                sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
             TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
@@ -46,7 +32,7 @@ namespace Chicken.ViewModel.Home.VM
 #if !DEBUG
                        if (string.Compare(sinceId, messages[0].Id) == -1)
                        {
-                           DMList.Clear();
+                           TweetList.Clear();
                        }
 #endif
                        for (int i = messages.Count - 1; i >= 0; i--)
@@ -55,7 +41,7 @@ namespace Chicken.ViewModel.Home.VM
                            if (sinceId != messages[i].Id)
 #endif
                            {
-                               DMList.Insert(0, new DirectMessageViewModel(messages[i]));
+                               TweetList.Insert(0, new DirectMessageViewModel(messages[i]));
                            }
                        }
                    }
@@ -65,14 +51,14 @@ namespace Chicken.ViewModel.Home.VM
 
         private void LoadAction()
         {
-            if (dmList.Count == 0)
+            if (TweetList.Count == 0)
             {
                 base.Loaded();
                 return;
             }
             else
             {
-                string maxId = dmList[dmList.Count - 1].Id;
+                string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
                 TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
@@ -84,7 +70,7 @@ namespace Chicken.ViewModel.Home.VM
                             if (maxId != message.Id)
 #endif
                             {
-                                DMList.Add(new DirectMessageViewModel(message));
+                                TweetList.Add(new DirectMessageViewModel(message));
                             }
                         }
                         base.Loaded();

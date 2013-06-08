@@ -1,18 +1,18 @@
 ﻿using System;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.ViewModel.Status.Base;
+//using Chicken.ViewModel.Status.Base;
 using System.Net;
+using Chicken.Model.Entity;
 
 namespace Chicken.ViewModel.Home.Base
 {
     public class TweetViewModel
     {
+        #region private
         private TweetBase tweet;
         private TweetBase originalTweet;
-        private UserViewModel user;
-        private EntitiesViewModel entitiesViewModel;
-        private CoordinatesViewModel coordinatesViewModel;
+        #endregion
 
         public TweetViewModel(Tweet tweet)
         {
@@ -24,19 +24,6 @@ namespace Chicken.ViewModel.Home.Base
             else
             {
                 this.tweet = tweet as TweetBase;
-            }
-
-            if (this.tweet.User != null)
-            {
-                this.user = new UserViewModel(this.tweet.User);
-            }
-            if (this.tweet.Entities != null)
-            {
-                this.entitiesViewModel = new EntitiesViewModel(this.tweet.Entities);
-            }
-            if (this.tweet.Coordinates != null)
-            {
-                this.coordinatesViewModel = new CoordinatesViewModel(this.tweet.Coordinates);
             }
         }
 
@@ -56,11 +43,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public UserViewModel User
+        public User User
         {
             get
             {
-                return user;
+                return tweet.User;
             }
         }
 
@@ -92,17 +79,17 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return entitiesViewModel != null
-                    && entitiesViewModel.MediasViewModel != null
-                    && entitiesViewModel.MediasViewModel.Count != 0;
+                return this.tweet.Entities != null &&
+                    this.tweet.Entities.Medias != null &&
+                    this.tweet.Entities.Medias.Count != 0;
             }
         }
 
-        public EntitiesViewModel EntitiesViewModel
+        public Entities Entities
         {
             get
             {
-                return entitiesViewModel;
+                return this.tweet.Entities;
             }
         }
 
@@ -166,15 +153,15 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return coordinatesViewModel != null;
+                return this.tweet.Coordinates != null;
             }
         }
 
-        public CoordinatesViewModel CoordinatesViewModel
+        public Coordinates Coordinates
         {
             get
             {
-                return coordinatesViewModel;
+                return this.tweet.Coordinates;
             }
         }
 
@@ -187,7 +174,7 @@ namespace Chicken.ViewModel.Home.Base
             {
                 return RetweetCount != "0" ||
                     FavoriteCount != "0" ||
-                    coordinatesViewModel != null;
+                    IncludeCoordinates;
             }
         }
     }

@@ -13,7 +13,7 @@
     <Grid x:Name="grid"
           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.Background>
-            <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
         </Grid.Background>
     </Grid>
 </UserControl>

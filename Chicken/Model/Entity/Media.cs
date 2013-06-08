@@ -1,9 +1,8 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace Chicken.Model.Entity
 {
-    public class Media
+    public class Media : EntityBase
     {
         [JsonProperty("id_str")]
         public string Id { get; set; }
@@ -12,5 +11,21 @@ namespace Chicken.Model.Entity
 
         [JsonProperty("media_url")]
         public string MediaUrl { get; set; }
+
+        public string MediaUrlThumb
+        {
+            get
+            {
+                return MediaUrl + ":thumb";
+            }
+        }
+
+        public string MediaUrlSmall
+        {
+            get
+            {
+                return MediaUrl + ":small";
+            }
+        }
     }
 }

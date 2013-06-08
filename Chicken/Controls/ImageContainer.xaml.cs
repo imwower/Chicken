@@ -54,7 +54,7 @@ namespace Chicken.Controls
             pngCompleted = delegate(object pngImage, RoutedEventArgs gifArgs)
             {
                 Image pngImageControl = new Image();
-                pngImageControl.Stretch = Stretch.UniformToFill;
+                pngImageControl.Stretch = Stretch.Fill;
                 var bitmapImage = pngImage as BitmapImage;
                 pngImageControl.Source = bitmapImage;
                 container.grid.Children.Add(pngImageControl);
@@ -66,7 +66,7 @@ namespace Chicken.Controls
             gifCompleted = delegate(object gifImage, OpenReadCompletedEventArgs gifArgs)
             {
                 AnimatedImage gifImageControl = new AnimatedImage();
-                gifImageControl.Stretch = Stretch.UniformToFill;
+                gifImageControl.Stretch = Stretch.Fill;
                 var extendedImage = gifImage as ExtendedImage;
                 gifImageControl.Source = extendedImage;
                 container.grid.Children.Add(gifImageControl);

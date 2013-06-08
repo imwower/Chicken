@@ -2,7 +2,6 @@
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Status
 {
@@ -32,8 +31,8 @@ namespace Chicken.ViewModel.Status
 
         protected string nextCursor = "-1";
         protected string previousCursor;
-        private ObservableCollection<UserProfileViewModel> userList;
-        public ObservableCollection<UserProfileViewModel> UserList
+        private ObservableCollection<UserProfile> userList;
+        public ObservableCollection<UserProfile> UserList
         {
             get
             {
@@ -98,7 +97,7 @@ namespace Chicken.ViewModel.Status
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
+                        UserList.Insert(0, userProfiles[i]);
                     }
                     base.Refreshed();
                 });
@@ -111,7 +110,7 @@ namespace Chicken.ViewModel.Status
                 {
                     foreach (var userProfile in userProfiles)
                     {
-                        UserList.Add(new UserProfileViewModel(userProfile));
+                        UserList.Add(userProfile);
                     }
                     base.Loaded();
                 });

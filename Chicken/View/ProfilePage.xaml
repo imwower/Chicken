@@ -59,12 +59,12 @@
                                     </Grid.RowDefinitions>
                                     <Grid.Background>
                                         <ImageBrush Stretch="Fill" Opacity="0.6"
-                                                    ImageSource="{Binding UserProfileViewModel.UserProfileBannerImage}" />
+                                                    ImageSource="{Binding UserProfileViewModel.UserProfileBannerImageWeb}" />
                                     </Grid.Background>
                                     <!--Profile Image-->
                                     <ctrls:ImageContainer Grid.Row="0"
                                                           Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageNormal}">
+                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageOriginal}">
                                         <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                         </ctrls:ImageContainer.Clip>
@@ -107,7 +107,7 @@
                                                 <ImageBrush ImageSource="/Images/dark/following.png" />
                                             </Rectangle.OpacityMask>
                                         </Rectangle>
-                                        <!--follows you-->
+                                        <!--followedby-->
                                         <Rectangle
                                             Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Rectangle.OpacityMask>

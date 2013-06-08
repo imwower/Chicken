@@ -4,7 +4,6 @@ using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
-using Chicken.ViewModel.Profile.Base;
 
 namespace Chicken.ViewModel.Profile
 {
@@ -44,8 +43,8 @@ namespace Chicken.ViewModel.Profile
         #region for following and followers pivot
         protected string nextCursor = "-1";
         protected string previousCursor;
-        private ObservableCollection<UserProfileViewModel> userList;
-        public ObservableCollection<UserProfileViewModel> UserList
+        private ObservableCollection<UserProfile> userList;
+        public ObservableCollection<UserProfile> UserList
         {
             get
             {
@@ -94,13 +93,20 @@ namespace Chicken.ViewModel.Profile
         #region private method
         private void ClickAction(object parameter)
         {
-            if (User.Id == (parameter as UserProfileViewModel).Id)
+            var userProfile = parameter as UserProfile;
+            if (User.Id == userProfile.Id)
             {
                 NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);
             }
             else
             {
-                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+                var user = new UserModel
+                {
+                    Id = userProfile.Id,
+                    Name = userProfile.Name,
+                    ScreenName = userProfile.ScreenName,
+                };
+                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
             }
         }
         #endregion
@@ -114,7 +120,7 @@ namespace Chicken.ViewModel.Profile
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
+                        UserList.Insert(0, userProfiles[i]);
                     }
                     base.Refreshed();
                 });
@@ -127,7 +133,7 @@ namespace Chicken.ViewModel.Profile
                 {
                     foreach (var userProfile in userProfiles)
                     {
-                        UserList.Add(new UserProfileViewModel(userProfile));
+                        UserList.Add(userProfile);
                     }
                     base.Loaded();
                 });

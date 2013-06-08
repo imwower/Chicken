@@ -72,7 +72,7 @@ namespace Chicken.ViewModel.Status.VM
 
         private void ClickAction(object parameter)
         {
-            var userViewModel = parameter as UserViewModel;
+            var userViewModel = parameter as User;
             var user = new UserModel
             {
                 Id = userViewModel.Id,
