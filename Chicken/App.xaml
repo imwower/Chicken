@@ -12,7 +12,6 @@
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
         <!--<ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />-->
-        <it:ImageConverter x:Key="ImageConverter" />
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">

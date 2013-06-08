@@ -76,9 +76,11 @@
       <HintPath>libs\ImageTools.Controls.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools.Filtering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ImageTools.IO.Bmp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="ImageTools.IO.Gif">
       <HintPath>libs\ImageTools.IO.Gif.dll</HintPath>
     </Reference>
+    <Reference Include="ImageTools.IO.Png, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="ImageTools.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
@@ -251,15 +253,36 @@
     <Content Include="Images\dark\verified.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="libs\AppBarUtils.dll" />
-    <Content Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
-    <Content Include="libs\ImageTools.Controls.dll" />
-    <Content Include="libs\ImageTools.dll" />
-    <Content Include="libs\ImageTools.Filtering.dll" />
-    <Content Include="libs\ImageTools.IO.Gif.dll" />
-    <Content Include="libs\ImageTools.IO.Png.dll" />
-    <Content Include="libs\ImageTools.Utils.dll" />
-    <Content Include="libs\PhoneCodeContractsAssemblies.dll" />
+    <Content Include="libs\AppBarUtils.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ICSharpCode.SharpZLib.Phone.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.Controls.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.Filtering.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.IO.Bmp.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.IO.Gif.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.IO.Png.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\ImageTools.Utils.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="libs\PhoneCodeContractsAssemblies.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SampleData\errors.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -361,7 +384,9 @@
     <Content Include="Background.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="libs\Newtonsoft.Json.dll" />
+    <Content Include="libs\Newtonsoft.Json.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="SampleData\profileimage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

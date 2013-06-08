@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chicken", "Chicken\Chicken.csproj", "{383AF207-5AD1-4081-AC42-095EA1B80AEB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageTools.IO.Gif.Phone", "..\..\src\src\ImageTools\ImageTools.IO.Gif.Phone\ImageTools.IO.Gif.Phone.csproj", "{58E343B0-5342-4266-8F2E-E1D0554B9D11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,12 @@ Global
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{383AF207-5AD1-4081-AC42-095EA1B80AEB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.HTTP|Any CPU.ActiveCfg = Release|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.HTTP|Any CPU.Build.0 = Release|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E343B0-5342-4266-8F2E-E1D0554B9D11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using ImageTools;
+using ImageTools.Controls;
+using ImageTools.IO;
+using ImageTools.IO.Bmp;
 using ImageTools.IO.Gif;
-using System.Net;
+using ImageTools.IO.Png;
 
 namespace Chicken.Controls
 {
@@ -48,10 +53,11 @@ namespace Chicken.Controls
 
             pngCompleted = delegate(object pngImage, RoutedEventArgs gifArgs)
             {
-                container.grid.Children.Remove(container.GifImage);
-                container.PngImage.Visibility = Visibility.Visible;
+                Image pngImageControl = new Image();
+                pngImageControl.Stretch = Stretch.UniformToFill;
                 var bitmapImage = pngImage as BitmapImage;
-                container.PngImage.Source = bitmapImage;
+                pngImageControl.Source = bitmapImage;
+                container.grid.Children.Add(pngImageControl);
                 container.grid.Background = null;
                 bitmapImage.ImageOpened -= pngCompleted;
                 bitmapImage.ImageFailed -= pngFailed;
@@ -59,10 +65,11 @@ namespace Chicken.Controls
 
             gifCompleted = delegate(object gifImage, OpenReadCompletedEventArgs gifArgs)
             {
-                container.grid.Children.Remove(container.PngImage);
-                container.GifImage.Visibility = Visibility.Visible;
+                AnimatedImage gifImageControl = new AnimatedImage();
+                gifImageControl.Stretch = Stretch.UniformToFill;
                 var extendedImage = gifImage as ExtendedImage;
-                container.GifImage.Source = extendedImage;
+                gifImageControl.Source = extendedImage;
+                container.grid.Children.Add(gifImageControl);
                 container.grid.Background = null;
                 extendedImage.DownloadCompleted -= gifCompleted;
             };
@@ -70,8 +77,6 @@ namespace Chicken.Controls
             #region png image failed action
             pngFailed = delegate(object imageFailed, ExceptionRoutedEventArgs failedArgs)
             {
-                container.GifImage.Visibility = Visibility.Visible;
-                container.grid.Children.Remove(container.PngImage);
                 ExtendedImage gifImage = new ExtendedImage();
                 gifImage.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
                 gifImage.DownloadCompleted += gifCompleted;
@@ -90,7 +95,9 @@ namespace Chicken.Controls
         public ImageContainer()
         {
             InitializeComponent();
-            ImageTools.IO.Decoders.AddDecoder<GifDecoder>();
+            Decoders.AddDecoder<BmpDecoder>();
+            Decoders.AddDecoder<PngDecoder>();
+            Decoders.AddDecoder<GifDecoder>();
         }
     }
 }

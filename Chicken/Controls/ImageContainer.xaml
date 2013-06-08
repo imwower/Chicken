@@ -15,9 +15,5 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="UniformToFill" />
         </Grid.Background>
-        <it:AnimatedImage x:Name="GifImage" Stretch="UniformToFill"
-                          Source="{Binding Path=ImageSource, ElementName=Container, Converter={StaticResource ImageConverter}}" />
-        <Image x:Name="PngImage" Stretch="Fill"
-               Source="{Binding Path=ImageSource, ElementName=Container}" />
     </Grid>
 </UserControl>
