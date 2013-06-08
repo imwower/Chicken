@@ -73,7 +73,7 @@ namespace Chicken.Controls
                 entities.ForEach(entity => entity.Index = text.IndexOf(entity.Text));
                 entities = entities.OrderBy(entity => entity.Index).ToList();
             }
-            var paragraph = new Paragraph();
+            var paragraph = new Paragraph { TextAlignment = TextAlignment.Left };
             #endregion
             #region none
             if (entities.Count == 0)
@@ -81,6 +81,7 @@ namespace Chicken.Controls
                 paragraph.Inlines.Add(new Run { Text = text });
             }
             #endregion
+            #region spilt
             else
             {
                 int index = 0;
@@ -149,6 +150,7 @@ namespace Chicken.Controls
                 {
                     paragraph.Inlines.Add(new Run { Text = text.Substring(index, text.Length - index) });
                 }
+            #endregion
             }
             textBox.Blocks.Add(paragraph);
         }

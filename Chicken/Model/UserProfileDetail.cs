@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Chicken.Model.Entity;
+using Newtonsoft.Json;
 
 namespace Chicken.Model
 {
@@ -31,6 +33,9 @@ namespace Chicken.Model
 
         public string Url { get; set; }
 
+        [JsonProperty("entities")]
+        public UserProfileEntities Entities { get; set; }
+
         [JsonProperty("statuses_count")]
         public string TweetsCount { get; set; }
 
@@ -45,5 +50,26 @@ namespace Chicken.Model
 
         [JsonProperty("following")]
         public bool IsFollowing { get; set; }
+    }
+
+    public class UserProfileEntities
+    {
+        [JsonProperty("url")]
+        public UserProfileUrlEntities UserProfileUrlEntities { get; set; }
+
+        [JsonProperty("description")]
+        public UserProfileDescriptionEntities DescriptionEntities { get; set; }
+    }
+
+    public class UserProfileUrlEntities
+    {
+        [JsonProperty("urls")]
+        public List<UrlEntity> Urls { get; set; }
+    }
+
+    public class UserProfileDescriptionEntities
+    {
+        [JsonProperty("urls")]
+        public List<UrlEntity> Urls { get; set; }
     }
 }

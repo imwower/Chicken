@@ -122,9 +122,11 @@
                                     <TextBlock Grid.Row="3"
                                                Text="{Binding UserProfileViewModel.Location}" />
                                     <!--Url-->
-                                    <HyperlinkButton Grid.Row="4" Content="{Binding UserProfileViewModel.Url}"
-                                     NavigateUri="{Binding Path=UserProfileViewModel.Url}"
-                                     TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
+                                    <HyperlinkButton Grid.Row="4"
+                                                     Visibility="{Binding Path=UserProfileViewModel.Url,Converter={StaticResource StringToVisibilityConverter}}"
+                                                     Content="{Binding Path=UserProfileViewModel.Entities.UserProfileUrlEntities.Urls[0].TruncatedUrl}"
+                                                     NavigateUri="{Binding Path=UserProfileViewModel.Entities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                                                     TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
                                     <!--Tweets, Following, Followers, Favorites-->
                                     <Border Grid.Row="5" Style="{StaticResource RetweetCountBorder}"
@@ -167,7 +169,8 @@
                                     </Border>
                                 </Grid>
                                 <!--description-->
-                                <TextBlock Text="{Binding UserProfileViewModel.Description}" Grid.Row="2"
+                                <TextBlock Grid.Row="2"
+                                           Text="{Binding UserProfileViewModel.Description}"
                                            Style="{StaticResource TextContentCenter}" VerticalAlignment="Center" />
                             </Grid>
                         </ScrollViewer.Content>
