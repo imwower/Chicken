@@ -93,7 +93,7 @@ namespace Chicken.ViewModel.Profile
         #region private method
         private void ClickAction(object parameter)
         {
-            var userProfile = parameter as UserProfile;
+            var userProfile = parameter as User;
             if (User.Id == userProfile.Id)
             {
                 NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);
