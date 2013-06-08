@@ -138,18 +138,11 @@
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
-    <Compile Include="ViewModel\Profile\Base\FriendListViewModel.cs" />
-    <Compile Include="ViewModel\Profile\Base\UserProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
-    <Compile Include="ViewModel\Status\Base\CoordinatesViewModel.cs" />
-    <Compile Include="ViewModel\Status\Base\EntitiesViewModel.cs" />
-    <Compile Include="ViewModel\Status\Base\HashTagViewModel.cs" />
-    <Compile Include="ViewModel\Status\Base\MediaViewModel.cs" />
-    <Compile Include="ViewModel\Status\Base\UrlViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
@@ -166,7 +159,6 @@
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\Home\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\PivotItemViewModelBase.cs" />
     <Compile Include="View\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
@@ -307,7 +299,6 @@
     <Compile Include="ViewModel\Home\Base\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
-    <Compile Include="ViewModel\Profile\Base\UserProfileDetailViewModel.cs" />
     <Content Include="SampleData\user_timeline.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

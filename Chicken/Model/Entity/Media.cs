@@ -2,8 +2,16 @@
 
 namespace Chicken.Model.Entity
 {
-    public class Media : EntityBase
+    public class Media : UrlEntity
     {
+        public override EntityType EntityType
+        {
+            get
+            {
+                return EntityType.Media;
+            }
+        }
+
         [JsonProperty("id_str")]
         public string Id { get; set; }
 

@@ -4,8 +4,16 @@ namespace Chicken.Model.Entity
 {
     public class UrlEntity : EntityBase
     {
+        public override EntityType EntityType
+        {
+            get
+            {
+                return EntityType.Url;
+            }
+        }
+
         [JsonProperty("url")]
-        public string UrlString { get; set; }
+        public override string Text { get; set; }
 
         [JsonProperty("display_url")]
         public string DisplayUrl { get; set; }
@@ -17,7 +25,11 @@ namespace Chicken.Model.Entity
         {
             get
             {
-                return DisplayUrl.Remove(DisplayUrl.IndexOf("/" + 1));
+                int index = DisplayUrl.IndexOf("/");
+                if (index != -1)
+                    return "[" + DisplayUrl.Remove(index) + "]";
+                else
+                    return "[" + DisplayUrl + "]";
             }
         }
     }

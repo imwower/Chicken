@@ -266,9 +266,15 @@
                                     <TextBlock Text="{Binding User.ScreenName}" Grid.Row="1"
                                                Style="{StaticResource TweetScreenName}" />
                                     <!--text-->
-                                    <TextBlock Text="{Binding Text}" Grid.Row="2"
+                                    <ctrls:AutoRichTextBox Grid.Row="2" TweetData="{Binding}"
+                                        HorizontalAlignment="Stretch" TextAlignment="Left">
+                                    </ctrls:AutoRichTextBox>
+
+                                    <!--<TextBlock Text="{Binding Text}" Grid.Row="2"
                                                Style="{StaticResource TextContentNormal}"
-                                               HorizontalAlignment="Stretch" TextAlignment="Left" />
+                                               HorizontalAlignment="Stretch" TextAlignment="Left" />-->
+
+
                                     <Grid Grid.Row="3" Opacity="0.6" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />

@@ -20,23 +20,22 @@ namespace Chicken.Model.Entity
 
     public class EntityBase
     {
-        [JsonProperty("indices")]
-        public List<int> Indices { get; set; }
+        public virtual EntityType EntityType { get; private set; }
 
-        public int Index
-        {
-            get
-            {
-                return Indices[0];
-            }
-        }
+        public virtual string Text { get; set; }
 
-        public int Length
-        {
-            get
-            {
-                return Indices[1] - Indices[0];
-            }
-        }
+        //[JsonProperty("indices")]
+        //public List<int> Indices { get; set; }
+
+        public int Index { get; set; }
+    }
+
+    public enum EntityType
+    {
+        None = 0,
+        Media = 1,
+        HashTag = 2,
+        Url = 3,
+        UserMention = 4,
     }
 }
