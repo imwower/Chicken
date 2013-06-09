@@ -324,7 +324,7 @@
                     <!--via-->
                     <HyperlinkButton Content="{Binding Path=Source}" Grid.Row="1"
                                      NavigateUri="{Binding Path=SourceUrl}" TargetName="_blank"
-                                     Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
+                                     Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right" />
                 </Grid>
                 <!--content end-->
             </Grid>
@@ -364,7 +364,7 @@
                                 <TextBlock Grid.Row="0" Text="{Binding User.Name}" />
                                 <!--text-->
                                 <TextBlock Grid.Row="1" Text="{Binding Text}"
-                                           Style="{StaticResource TextContent}"
+                                           Style="{StaticResource TextContentNormal}"
                                            HorizontalAlignment="Stretch" TextAlignment="Left" />
                                 <!--date-->
                                 <TextBlock Grid.Row="2" Opacity="0.6"

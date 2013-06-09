@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Net;
 using Chicken.Common;
 using Chicken.Model;
-//using Chicken.ViewModel.Status.Base;
-using System.Net;
 using Chicken.Model.Entity;
 
 namespace Chicken.ViewModel.Home.Base
