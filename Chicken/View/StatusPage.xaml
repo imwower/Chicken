@@ -168,9 +168,11 @@
                                 </Button>
                                 <!--content-->
                                 <Grid Grid.Row="1" Margin="4">
-                                    <TextBlock Text="{Binding TweetViewModel.Text}" Grid.Row="1"
-                                               Style="{StaticResource TextContent}" Margin="4"
-                                               HorizontalAlignment="Stretch" TextAlignment="Left" />
+                                    <!--text-->
+                                    <ctrls:AutoRichTextBox TweetData="{Binding Path=TweetViewModel}"
+                                                           HorizontalAlignment="Stretch" TextAlignment="Left"
+                                                           Style="{StaticResource TextContent}">
+                                    </ctrls:AutoRichTextBox>
                                 </Grid>
                                 <!--via-->
                                 <HyperlinkButton Grid.Row="2" Margin="4"

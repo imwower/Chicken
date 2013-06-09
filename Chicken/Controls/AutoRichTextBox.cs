@@ -73,7 +73,7 @@ namespace Chicken.Controls
                 entities.ForEach(entity => entity.Index = text.IndexOf(entity.Text));
                 entities = entities.OrderBy(entity => entity.Index).ToList();
             }
-            var paragraph = new Paragraph { TextAlignment = TextAlignment.Left };
+            var paragraph = new Paragraph();
             #endregion
             #region none
             if (entities.Count == 0)

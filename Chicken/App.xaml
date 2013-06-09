@@ -51,7 +51,7 @@
         </SolidColorBrush>
 
         <!--Content default is Medium-->
-        <Style x:Name="TextContent" TargetType="TextBlock">
+        <Style x:Name="TextContent" TargetType="ctrls:AutoRichTextBox">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
@@ -66,7 +66,9 @@
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <!--Content Normal Center-->
-        <Style x:Name="TextContentCenter" TargetType="TextBlock" BasedOn="{StaticResource TextContent}">
+        <Style x:Name="TextContentCenter" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="TextAlignment" Value="Center" />
         </Style>
 
