@@ -58,7 +58,7 @@ namespace Chicken.Controls
                 var bitmapImage = pngImage as BitmapImage;
                 pngImageControl.Source = bitmapImage;
                 container.grid.Children.Add(pngImageControl);
-                container.grid.Background = new SolidColorBrush(Colors.Transparent);
+                container.grid.Children.Remove(container.placehold);
                 bitmapImage.ImageOpened -= pngCompleted;
                 bitmapImage.ImageFailed -= pngFailed;
             };
@@ -70,7 +70,7 @@ namespace Chicken.Controls
                 var extendedImage = gifImage as ExtendedImage;
                 gifImageControl.Source = extendedImage;
                 container.grid.Children.Add(gifImageControl);
-                container.grid.Background = new SolidColorBrush(Colors.Transparent);
+                container.grid.Children.Remove(container.placehold);
                 extendedImage.DownloadCompleted -= gifCompleted;
             };
 

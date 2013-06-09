@@ -9,6 +9,11 @@ namespace Chicken.ViewModel.NewTweet
 {
     public class NewTweetViewModel : NotificationObject
     {
+        #region event handler
+        public delegate void AddEmotionEventHandler();
+        public AddEmotionEventHandler AddEmotionHandler;
+        #endregion
+
         #region properties
         private string title;
         public string Title
@@ -34,6 +39,19 @@ namespace Chicken.ViewModel.NewTweet
             {
                 tweetModel = value;
                 RaisePropertyChanged("TweetModel");
+            }
+        }
+        private AppBarState state;
+        public AppBarState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                RaisePropertyChanged("State");
             }
         }
         #endregion
@@ -101,8 +119,21 @@ namespace Chicken.ViewModel.NewTweet
         { }
 
         private void AddEmotionAction()
-        { }
+        {
+            if (AddEmotionHandler != null)
+            {
+                AddEmotionHandler();
+            }
+        }
 
         #endregion
+    }
+
+    public enum AppBarState
+    {
+        Default = 0,
+        AddImage = 1,
+        AddMention = 2,
+        AddEmotion = 3,
     }
 }

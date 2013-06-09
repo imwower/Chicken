@@ -22,7 +22,7 @@ namespace Chicken.View
         private const int maxLength = 400;
         private const int maxCharLength = 140;
         private NewTweetViewModel newTweetViewModel;
-        private Popup popup;
+        private bool alreadyInitEmotionPanel;
         #endregion
 
         public NewTweetPage()
@@ -31,6 +31,7 @@ namespace Chicken.View
             this.BackKeyPress += new EventHandler<CancelEventArgs>(NewTweetPage_BackKeyPress);
             this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
             newTweetViewModel = new NewTweetViewModel();
+            newTweetViewModel.AddEmotionHandler = this.AddEmotionHandler;
             this.DataContext = newTweetViewModel;
         }
 
@@ -42,11 +43,11 @@ namespace Chicken.View
 
         private void NewTweetPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (popup != null && popup.IsOpen)
-            {
-                ClosePopup(true);
-                e.Cancel = true;
-            }
+            //if (popup != null && popup.IsOpen)
+            //{
+            //    ClosePopup(true);
+            //    e.Cancel = true;
+            //}
         }
         #endregion
 
@@ -113,36 +114,64 @@ namespace Chicken.View
 
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
-            (App.Current as App).RootFrame.RenderTransform = new CompositeTransform();
+            (App.Current as App).RootFrame.RenderTransform = null;
+            this.EmotionPanel.Visibility = Visibility.Collapsed;
         }
         #endregion
 
         #region add image
-        private void AddImageButton_Click(object sender, EventArgs e)
+        //private void AddImageButton_Click(object sender, EventArgs e)
+        //{
+        //    popup = new Popup();
+        //    var photoChooserControl = new PhotoChooserControl();
+        //    photoChooserControl.AddImageHandler = this.AddImageStream;
+        //    photoChooserControl.CancelAddImageHandler = this.CancelAddImage;
+        //    popup.Child = photoChooserControl;
+        //    ClosePopup(false);
+        //}
+
+        //private void AddImageStream(string fileName, Stream stream)
+        //{
+        //    newTweetViewModel.TweetModel.FileName = fileName;
+        //    ClosePopup(true);
+        //}
+
+        //private void CancelAddImage()
+        //{
+        //    ClosePopup(true);
+        //}
+
+        //private void ClosePopup(bool close)
+        //{
+        //    //this.IsHitTestVisible = ApplicationBar.IsVisible = close;
+        //    //popup.IsOpen = !close;
+        //}
+        #endregion
+
+        #region add emotion
+        private void AddEmotionHandler()
         {
-            popup = new Popup();
-            var photoChooserControl = new PhotoChooserControl();
-            photoChooserControl.AddImageHandler = this.AddImageStream;
-            photoChooserControl.CancelAddImageHandler = this.CancelAddImage;
-            popup.Child = photoChooserControl;
-            ClosePopup(false);
+            if (!alreadyInitEmotionPanel)
+            {
+                alreadyInitEmotionPanel = true;
+                for (int i = 0; i < 10; i++)
+                {
+                    Button button = new Button
+                   {
+                       Content = "button" + i,
+                   };
+                    button.Click += new RoutedEventHandler(Button_Click);
+                    this.EmotionPanel.Children.Add(button);
+                }
+            }
+            this.EmotionPanel.Visibility = Visibility.Visible;
+            this.Focus();
         }
 
-        private void AddImageStream(string fileName, Stream stream)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            newTweetViewModel.TweetModel.FileName = fileName;
-            ClosePopup(true);
-        }
-
-        private void CancelAddImage()
-        {
-            ClosePopup(true);
-        }
-
-        private void ClosePopup(bool close)
-        {
-            this.IsHitTestVisible = ApplicationBar.IsVisible = close;
-            popup.IsOpen = !close;
+            var button = sender as Button;
+            string result = button.Content.ToString();
         }
         #endregion
     }

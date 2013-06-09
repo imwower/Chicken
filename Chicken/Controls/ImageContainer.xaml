@@ -10,10 +10,13 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480" x:Name="Container">
 
-    <Grid x:Name="grid"
+    <Grid x:Name="grid" Background="Transparent"
           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid.Background>
-            <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
-        </Grid.Background>
+        <Rectangle x:Name="placehold" Opacity="0.4"
+                   Fill="{StaticResource PhoneForegroundBrush}">
+            <Rectangle.OpacityMask>
+                <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
+            </Rectangle.OpacityMask>
+        </Rectangle>
     </Grid>
 </UserControl>

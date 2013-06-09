@@ -6,72 +6,96 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctrls="clr-namespace:Chicken.Controls"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
-    <Grid x:Name="LayoutRoot" VerticalAlignment="Stretch">
+    <Grid x:Name="LayoutRoot">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="200" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <Grid.Resources>
-            <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                <Setter Property="TextAlignment" Value="Left" />
-            </Style>
-        </Grid.Resources>
-        <!--title-->
-        <Grid Grid.Row="0">
-            <TextBlock Text="{Binding Path=Title}" />
-        </Grid>
-        <!--text-->
-        <ScrollViewer Grid.Row="1" Margin="8,4" VerticalAlignment="Stretch"
+        <!--content-->
+        <Grid x:Name="Content" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="200" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                    <Setter Property="TextAlignment" Value="Left" />
+                </Style>
+            </Grid.Resources>
+            <!--title-->
+            <TextBlock Grid.Row="0" Text="Title" />
+            <!--text-->
+            <ScrollViewer Grid.Row="1"
+                      Margin="8,4" VerticalAlignment="Stretch"
                       VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
-            <TextBox Name="TextContent"
-                     Style="{StaticResource TextBoxContent}"
-                     TextAlignment="Left" AcceptsReturn="True"
-                     GotFocus="TextContent_GotFocus"
-                     TextChanged="TextContent_TextChanged"
-                     MaxHeight="400" MaxLength="400"/>
-        </ScrollViewer>
-        <!--menu-->
-        <StackPanel x:Name="MenuPanel" Grid.Row="2"
-                        Orientation="Horizontal" Opacity="0.6">
-            <!--char counter-->
-            <TextBlock x:Name="TextCounter" Text="140" />
-            <TextBlock Text=" image" />
-            <TextBlock Text=" location" />
-        </StackPanel>
-        <Grid Grid.Row="3" HorizontalAlignment="Right" VerticalAlignment="Bottom">
-            <Image Source="/Images/dark/cat.png" Stretch="None" />
+                <TextBox x:Name="TextContent"
+                             Style="{StaticResource TextBoxContent}"
+                             TextAlignment="Left" AcceptsReturn="True"
+                             GotFocus="TextContent_GotFocus"
+                             TextChanged="TextContent_TextChanged"
+                             MaxHeight="400" MaxLength="400" />
+            </ScrollViewer>
+            <!--menu-->
+            <StackPanel x:Name="MenuPanel" Grid.Row="2"
+                            Orientation="Horizontal" Opacity="0.6">
+                <!--char counter-->
+                <TextBlock x:Name="TextCounter" Text="140" />
+                <!--<TextBlock Text=" image" />-->
+                <!--<TextBlock Text=" location" />-->
+            </StackPanel>
+        </Grid>
+        <!--place hold-->
+        <Grid x:Name="PlaceHold" Grid.Row="1" Margin="4">
+            <Rectangle Opacity="0.4" Width="128" Height="128"
+                       Fill="{StaticResource PhoneForegroundBrush}">
+                <Rectangle.OpacityMask>
+                    <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
+                </Rectangle.OpacityMask>
+            </Rectangle>
+            <ctrls:WrapPanel x:Name="EmotionPanel">
+                <ctrls:WrapPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid Margin="4" Opacity="0.4" Background="Transparent">
+                                        <Rectangle Fill="Gray" Opacity="0.2" />
+                                        <ContentPresenter Margin="4" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ctrls:WrapPanel.Resources>
+            </ctrls:WrapPanel>
         </Grid>
     </Grid>
 
-    <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <!--send-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.send.png" Text="send" />
-            <!--add image-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.camera.png"
-                                            Text="image" Click="AddImageButton_Click" />
-            <!--mention somebody-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.mention.png"
-                                            Text="mention" />
-            <!--emotion-->
-            <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.emotion.png" Text="emotion" />
-        </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>
-
-    <i:Interaction.Behaviors>
-        <abu:AppBarItemCommand Id="send" Command="{Binding SendCommand}" />
-        <abu:AppBarItemCommand Id="mention" Command="{Binding MentionCommand}" />
-        <abu:AppBarItemCommand Id="emotion" Command="{Binding AddEmotionCommand}" />
-    </i:Interaction.Behaviors>
+    <i:Interaction.Triggers>
+        <abu:StateChangedTrigger State="{Binding State}">
+            <abu:SwitchAppBarAction>
+                <abu:AppBar Id="0">
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
+                                      Text="send" Command="{Binding SendCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
+                                      Text="image" Command="{Binding AddImageCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
+                                      Text="emotion" Command="{Binding AddEmotionCommand}" />
+                </abu:AppBar>
+            </abu:SwitchAppBarAction>
+        </abu:StateChangedTrigger>
+    </i:Interaction.Triggers>
 </phone:PhoneApplicationPage>
