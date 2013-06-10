@@ -76,10 +76,10 @@
                                       Command="{Binding Path=RefreshCommand}" />
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
-                                      Command="{Binding Path=RefreshCommand}" />
+                                      Command="{Binding Path=TopCommand}" />
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
-                                      Command="{Binding Path=RefreshCommand}" />
+                                      Command="{Binding Path=BottomCommand}" />
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
                                       Command="{Binding Path=NewMessageCommand}" />

@@ -3,13 +3,11 @@
     public class Const
     {
         //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
-        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/P26B6O/1.1/";
+        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/6X0S1V/1.1/";
         public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
         public static string DEFAULT_COUNT_VALUE = "5";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
         public static string QUOTECHARACTER = "RT";
-
-        public static string EMOTIONS_FILE_PATH = "Data/emotions.json";
 
         #region http method
         public const string HTTPGET = "GET";
@@ -19,8 +17,9 @@
         #endregion
 
         #region default source and source url
-        public const string DefaultSource = "web";
-        public const string DefaultSourceUrl = "https://github.com/";
+        public const string DEFAULTSOURCE = "web";
+        public const string DEFAULTSOURCEURL = "https://github.com/";
+        public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
         #endregion
 
         #region rest api
@@ -77,6 +76,7 @@
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
+        public const string NewMessagePage = "/View/NewMessagePage.xaml";
 
         //public const string RANDOM = "random";
         #endregion
@@ -88,6 +88,7 @@
             ProfilePage = 1,
             StatusPage = 2,
             NewTweetPage = 3,
+            NewMessagePage = 4,
         }
         #endregion
 

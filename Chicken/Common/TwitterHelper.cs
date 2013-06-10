@@ -38,7 +38,7 @@ namespace Chicken.Common
         {
             if (string.IsNullOrEmpty(source))
             {
-                return Const.DefaultSource;
+                return Const.DEFAULTSOURCE;
             }
             string result = SourceRegex.Match(source).Groups["url"].Value;
             if (string.IsNullOrEmpty(result))
@@ -52,12 +52,12 @@ namespace Chicken.Common
         {
             if (string.IsNullOrEmpty(source))
             {
-                return Const.DefaultSourceUrl;
+                return Const.DEFAULTSOURCEURL;
             }
             string result = SourceUrlRegex.Match(source).Groups["link"].Value;
             if (string.IsNullOrEmpty(result))
             {
-                return Const.DefaultSourceUrl;
+                return Const.DEFAULTSOURCEURL;
             }
             return result;
         }

@@ -46,7 +46,7 @@ namespace Chicken.ViewModel.Home
 
         private void NewMessage()
         {
-
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage);
         }
     }
 }

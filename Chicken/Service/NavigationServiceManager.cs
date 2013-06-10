@@ -34,6 +34,9 @@ namespace Chicken.Service
                 case Const.PageNameEnum.NewTweetPage:
                     frame.Navigate(new Uri(Const.NewTweetPage + random, UriKind.Relative));
                     break;
+                case Const.PageNameEnum.NewMessagePage:
+                    frame.Navigate(new Uri(Const.NewMessagePage + random, UriKind.Relative));
+                    break;
                 default:
                     break;
             }

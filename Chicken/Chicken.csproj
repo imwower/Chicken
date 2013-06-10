@@ -111,6 +111,7 @@
     <Compile Include="Controls\PhotoChooserControl.xaml.cs">
       <DependentUpon>PhotoChooserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\TemplateSelector.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
     <Compile Include="Model\Cursor.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
@@ -153,6 +155,9 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewMessagePage.xaml.cs">
+      <DependentUpon>NewMessagePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewTweetPage.xaml.cs">
       <DependentUpon>NewTweetPage.xaml</DependentUpon>
@@ -302,6 +307,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewMessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
