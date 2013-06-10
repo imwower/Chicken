@@ -12,6 +12,7 @@ namespace Chicken.ViewModel.NewTweet
         #region event handler
         public delegate void AddEmotionEventHandler();
         public AddEmotionEventHandler AddEmotionHandler;
+        public AddEmotionEventHandler KeyboardHandler;
         #endregion
 
         #region properties
@@ -80,6 +81,14 @@ namespace Chicken.ViewModel.NewTweet
                 return new DelegateCommand(AddEmotionAction);
             }
         }
+
+        public ICommand KeyboardCommand
+        {
+            get
+            {
+                return new DelegateCommand(KeyboardAction);
+            }
+        }
         #endregion
 
         #region service
@@ -122,7 +131,17 @@ namespace Chicken.ViewModel.NewTweet
         {
             if (AddEmotionHandler != null)
             {
+                State = AppBarState.AddEmotion;
                 AddEmotionHandler();
+            }
+        }
+
+        private void KeyboardAction()
+        {
+            if (KeyboardHandler != null)
+            {
+                State = AppBarState.Default;
+                KeyboardHandler();
             }
         }
 

@@ -1,18 +1,14 @@
 ﻿using System;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
-using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewTweet;
 using Microsoft.Phone.Controls;
-using Microsoft.Phone.Shell;
 
 namespace Chicken.View
 {
@@ -32,6 +28,7 @@ namespace Chicken.View
             this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
             newTweetViewModel = new NewTweetViewModel();
             newTweetViewModel.AddEmotionHandler = this.AddEmotionHandler;
+            newTweetViewModel.KeyboardHandler = this.KeyboardHandler;
             this.DataContext = newTweetViewModel;
         }
 
@@ -116,6 +113,7 @@ namespace Chicken.View
         {
             (App.Current as App).RootFrame.RenderTransform = null;
             this.EmotionPanel.Visibility = Visibility.Collapsed;
+            this.newTweetViewModel.State = AppBarState.Default;
         }
         #endregion
 
@@ -176,6 +174,12 @@ namespace Chicken.View
             int start = this.TextContent.SelectionStart;
             this.TextContent.Text = this.TextContent.Text.Insert(start, result);
             this.TextContent.SelectionStart = start + result.Length;
+        }
+
+        private void KeyboardHandler()
+        {
+            this.EmotionPanel.Visibility = Visibility.Collapsed;
+            this.TextContent.Focus();
         }
         #endregion
     }

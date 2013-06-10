@@ -85,6 +85,7 @@
     <i:Interaction.Triggers>
         <abu:StateChangedTrigger State="{Binding State}">
             <abu:SwitchAppBarAction>
+                <!--default-->
                 <abu:AppBar Id="0">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
@@ -94,6 +95,17 @@
                                       Text="mention" Command="{Binding MentionCommand}" />
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
                                       Text="emotion" Command="{Binding AddEmotionCommand}" />
+                </abu:AppBar>
+                <!--add emotion-->
+                <abu:AppBar Id="3">
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
+                                      Text="send" Command="{Binding SendCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
+                                      Text="image" Command="{Binding AddImageCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
+                                      Text="emotion" Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>
             </abu:SwitchAppBarAction>
         </abu:StateChangedTrigger>
