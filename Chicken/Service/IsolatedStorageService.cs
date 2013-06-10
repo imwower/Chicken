@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
+using System.Windows;
 using Chicken.Common;
 using Newtonsoft.Json;
-using System.Windows;
-using System;
 
 namespace Chicken.Service
 {
@@ -16,11 +16,16 @@ namespace Chicken.Service
             DeleteAfterRead,
         }
 
+        #region private static
         static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
         static JsonSerializer jsonSerializer = new JsonSerializer();
+        #endregion
 
+        #region const
         const string EmotionsFileName = "emotions.json";
+        #endregion
 
+        #region public method
         public static bool CreateObject(Const.PageNameEnum pageName, object value)
         {
             string folderName = pageName.ToString();
@@ -40,17 +45,33 @@ namespace Chicken.Service
         public static List<string> GetEmotions()
         {
             List<string> result = new List<string>();
-            if (!fileSystem.FileExists(EmotionsFileName))
             {
-                using (IsolatedStorageFileStream fileStream = fileSystem.OpenFile(EmotionsFileName, FileMode.Create))
+                using (var fileStream = fileSystem.OpenFile(EmotionsFileName, FileMode.OpenOrCreate))
                 {
-                    var resource = Application.GetResourceStream(new Uri(Const.EMOTIONS_FILE_PATH, UriKind.RelativeOrAbsolute));
-                    resource.Stream.CopyTo(fileStream);
+                    if (fileStream == null || fileStream.Length == 0)
+                    {
+                        var resource = Application.GetResourceStream(new Uri(Const.EMOTIONS_FILE_PATH, UriKind.Relative));
+                        resource.Stream.CopyTo(fileStream);
+                    }
+                    using (var streamReader = new StreamReader(fileStream))
+                    {
+                        fileStream.Position = 0;
+                        while (!streamReader.EndOfStream)
+                        {
+                            string s = streamReader.ReadLine();
+                            if (!string.IsNullOrEmpty(s))
+                            {
+                                result.Add(s.Trim());
+                            }
+                        }
+                    }
                 }
             }
             return result;
         }
+        #endregion
 
+        #region private method
         private static bool SerializeObject(string fileName, object value)
         {
             if (fileSystem.FileExists(fileName))
@@ -87,5 +108,6 @@ namespace Chicken.Service
             }
             return result;
         }
+        #endregion
     }
 }

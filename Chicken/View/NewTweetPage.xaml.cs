@@ -154,11 +154,12 @@ namespace Chicken.View
             if (!alreadyInitEmotionPanel)
             {
                 alreadyInitEmotionPanel = true;
-                for (int i = 0; i < 10; i++)
+                var emotions = IsolatedStorageService.GetEmotions();
+                foreach (var emotion in emotions)
                 {
                     Button button = new Button
                    {
-                       Content = "button" + i,
+                       Content = emotion,
                    };
                     button.Click += new RoutedEventHandler(Button_Click);
                     this.EmotionPanel.Children.Add(button);
@@ -172,6 +173,9 @@ namespace Chicken.View
         {
             var button = sender as Button;
             string result = button.Content.ToString();
+            int start = this.TextContent.SelectionStart;
+            this.TextContent.Text = this.TextContent.Text.Insert(start, result);
+            this.TextContent.SelectionStart = start + result.Length;
         }
         #endregion
     }

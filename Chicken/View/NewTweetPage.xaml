@@ -22,7 +22,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <!--content-->
-        <Grid x:Name="Content" Grid.Row="0">
+        <Grid Grid.Row="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="200" />
@@ -34,7 +34,7 @@
                 </Style>
             </Grid.Resources>
             <!--title-->
-            <TextBlock Grid.Row="0" Text="Title" />
+            <TextBlock Grid.Row="0" Text="{Binding Path=Title}" />
             <!--text-->
             <ScrollViewer Grid.Row="1"
                       Margin="8,4" VerticalAlignment="Stretch"

@@ -9,7 +9,7 @@
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
         public static string QUOTECHARACTER = "RT";
 
-        public static string EMOTIONS_FILE_PATH = "/Data/emotions.json";
+        public static string EMOTIONS_FILE_PATH = "Data/emotions.json";
 
         #region http method
         public const string HTTPGET = "GET";
