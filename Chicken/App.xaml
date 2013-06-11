@@ -282,7 +282,7 @@
                                             </Style>
                                         </Grid.Resources>
                                         <!--date-->
-                                        <TextBlock Text="{Binding CreatedDate}" Grid.Row="0" />
+                                        <TextBlock Grid.Row="0" Text="{Binding CreatedDate}" />
                                         <!--media retweet count etc-->
                                         <StackPanel Grid.Row="0"
                                                     HorizontalAlignment="Right" Orientation="Horizontal">

@@ -72,39 +72,68 @@
                                         <ctrls:MessageTemplateSelector Content="{Binding}">
                                             <ctrls:MessageTemplateSelector.MessageTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Margin="0,4" Orientation="Horizontal"
-                                                                HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="64" />
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="48" />
+                                                        </Grid.ColumnDefinitions>
                                                         <!--avatar-->
-                                                        <Button Width="64" Height="64"
+                                                        <Button Grid.Column="0"
                                                                 Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
                                                                 CommandParameter="{Binding User}">
                                                             <Button.Template>
                                                                 <ControlTemplate>
-                                                                    <ctrls:ImageContainer ImageSource="{Binding Path=User.ProfileImage}"
+                                                                    <ctrls:ImageContainer Margin="0"
+                                                                                          ImageSource="{Binding Path=User.ProfileImage}"
                                                                                           Style="{StaticResource ProfileImageSmall}" />
                                                                 </ControlTemplate>
                                                             </Button.Template>
                                                         </Button>
-                                                        <!--content-->
-                                                        <Polygon Opacity="0.2"
-                                                            Fill="{StaticResource PhoneForegroundBrush}"
-                                                            Points="0,10 10,10, 10,20" />
-                                                        <StackPanel>
-                                                            <!--text-->
-                                                            <Grid>
-                                                                <Rectangle Opacity="0.2"
-                                                                           Fill="{StaticResource PhoneForegroundBrush}">
-                                                                </Rectangle>
+                                                        <StackPanel Grid.Column="1" Margin="4,0" Orientation="Horizontal">
+                                                            <!--content-->
+                                                            <Polygon Opacity="0.2"
+                                                                     Fill="{StaticResource PhoneForegroundBrush}"
+                                                                     Points="0,10 10,10, 10,20" />
+                                                            <Grid MaxWidth="350">
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition />
+                                                                    <RowDefinition />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.Resources>
+                                                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                                                        <Setter Property="TextAlignment" Value="Left" />
+                                                                    </Style>
+                                                                </Grid.Resources>
                                                                 <!--text-->
-                                                                <ctrls:AutoRichTextBox TweetData="{Binding}"
-                                                                                       TextAlignment="Left">
-                                                                </ctrls:AutoRichTextBox>
+                                                                <Grid Grid.Row="0">
+                                                                    <Rectangle Opacity="0.2"
+                                                                               Fill="{StaticResource PhoneForegroundBrush}">
+                                                                    </Rectangle>
+                                                                    <!--text-->
+                                                                    <ctrls:AutoRichTextBox Margin="0,4"
+                                                                                           TweetData="{Binding}" TextAlignment="Left">
+                                                                    </ctrls:AutoRichTextBox>
+                                                                </Grid>
+                                                                <TextBlock Grid.Row="1" Opacity="0.6"
+                                                                           Text="{Binding CreatedDate}" />
                                                             </Grid>
-                                                            <TextBlock Opacity="0.6" Text="{Binding Path=CreatedDate}" />
                                                         </StackPanel>
                                                         <!--delete-->
-                                                        <TextBlock Width="64" Height="64" Text="delete" />
-                                                    </StackPanel>
+                                                        <Button Grid.Column="2" VerticalAlignment="Center">
+                                                            <Button.Template>
+                                                                <ControlTemplate>
+                                                                    <Rectangle Opacity="0.4" Width="48" Height="48"
+                                                                        Fill="{StaticResource PhoneForegroundBrush}">
+                                                                        <Rectangle.OpacityMask>
+                                                                            <ImageBrush ImageSource="/Images/dark/appbar.delete.png" Stretch="Fill" />
+                                                                        </Rectangle.OpacityMask>
+                                                                    </Rectangle>
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        </Button>
+                                                    </Grid>
                                                 </DataTemplate>
                                             </ctrls:MessageTemplateSelector.MessageTemplate>
                                         </ctrls:MessageTemplateSelector>
