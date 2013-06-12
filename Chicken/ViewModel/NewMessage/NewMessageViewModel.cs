@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Chicken.Model;
 using Chicken.Service;
@@ -12,17 +13,31 @@ namespace Chicken.ViewModel.NewMessage
     {
         #region properties
         private List<DirectMessageViewModel> messageList;
-        private ConversationViewModel conversationViewModel;
-        public ConversationViewModel ConversationViewModel
+        private User user;
+        public User User
         {
             get
             {
-                return conversationViewModel;
+                return user;
             }
             set
             {
-                conversationViewModel = value;
-                RaisePropertyChanged("ConversationViewModel");
+                user = value;
+                RaisePropertyChanged("User");
+            }
+        }
+
+        private ObservableCollection<DirectMessageViewModel> messages;
+        public ObservableCollection<DirectMessageViewModel> Messages
+        {
+            get
+            {
+                return messages;
+            }
+            set
+            {
+                messages = value;
+                RaisePropertyChanged("Messages");
             }
         }
         #endregion
@@ -34,14 +49,18 @@ namespace Chicken.ViewModel.NewMessage
         public NewMessageViewModel()
         {
             Header = "Chat";
-            ConversationViewModel = new ConversationViewModel();
-            ConversationViewModel.User.Id = "514378421";
+            User = new User();
             messageList = new List<DirectMessageViewModel>();
+            Messages = new ObservableCollection<DirectMessageViewModel>();
             RefreshHandler = this.RefreshAction;
         }
 
         private void RefreshAction()
         {
+            if (user == null || user.Id == null)
+            {
+                return;
+            }
             TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
                messages =>
                {
@@ -49,7 +68,7 @@ namespace Chicken.ViewModel.NewMessage
                    {
                        foreach (var message in messages)
                        {
-                           if (message.User.Id == conversationViewModel.User.Id)
+                           if (message.User.Id == user.Id)
                            {
                                messageList.Add(new DirectMessageViewModel(message));
                            }
@@ -69,21 +88,24 @@ namespace Chicken.ViewModel.NewMessage
                     {
                         foreach (var message in messages)
                         {
-                            if (message.Receiver.Id == ConversationViewModel.User.Id)
+                            if (message.Receiver.Id == user.Id)
                             {
+                                message.IsSentByMe = true;
                                 message.User = message.Receiver;
-                                messageList.Add(new DirectMessageViewModel(message) { IsSentByMe = true });
+                                messageList.Add(new DirectMessageViewModel(message));
                             }
                         }
                     }
 
-                    ConversationViewModel.Messages.Clear();
                     messageList = messageList.OrderBy(m => m.CreatedDate).ToList();
+                    Messages.Clear();
+
                     foreach (var message in messageList)
                     {
-                        ConversationViewModel.Messages.Add(message);
+                        Messages.Add(message);
                     }
                 });
+            base.Refreshed();
         }
     }
 }

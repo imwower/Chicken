@@ -188,7 +188,6 @@
             </Setter>
         </Style>
 
-
         <Style TargetType="ListBoxItem">
             <Setter Property="HorizontalAlignment" Value="Stretch" />
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -354,7 +353,9 @@
                     </Button.Template>
                 </Button>
                 <!--content-->
-                <Button Grid.Column="1">
+                <Button Grid.Column="1"
+                        Command="{Binding DataContext.ItemClickCommand, ElementName=AutoListBox}"
+                        CommandParameter="{Binding User}">
                     <Button.Template>
                         <ControlTemplate>
                             <Grid>

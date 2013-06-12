@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using Microsoft.Phone.Controls;
-using Chicken.ViewModel.NewMessage;
+﻿using System.Windows;
 using System.Windows.Navigation;
+using Chicken.Common;
+using Chicken.Model;
+using Chicken.Service;
+using Chicken.ViewModel.NewMessage;
+using Microsoft.Phone.Controls;
 
 namespace Chicken.View
 {
@@ -38,6 +31,8 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            var user = IsolatedStorageService.GetAndDeleteObject<User>(Const.PageNameEnum.NewMessagePage);
+            newMessageViewModel.User = user;
         }
     }
 }

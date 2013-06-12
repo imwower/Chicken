@@ -47,7 +47,7 @@
                     <Grid Margin="4">
                         <ListBox x:Name="AutoListBox"
                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                 ItemsSource="{Binding Path=ConversationViewModel.Messages}">
+                                 ItemsSource="{Binding Path=Messages}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <!--message template-->

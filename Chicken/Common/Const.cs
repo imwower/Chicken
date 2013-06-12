@@ -9,17 +9,19 @@
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
         public static string QUOTECHARACTER = "RT";
 
+        #region defalut value
+        public const string DEFAULTSOURCE = "web";
+        public const string DEFAULTSOURCEURL = "https://github.com/";
+
+        public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
+        public const string LATEST_MESSAGES_FILENAME = "direct_message_collection.json";
+        #endregion
+
         #region http method
         public const string HTTPGET = "GET";
         public const string HTTPPOST = "POST";
         public const string BOUNDARY = "-------------CHICKENFORWINDOWSPHONE";
         public const string NEWLINE = "\r\n";
-        #endregion
-
-        #region default source and source url
-        public const string DEFAULTSOURCE = "web";
-        public const string DEFAULTSOURCEURL = "https://github.com/";
-        public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
         #endregion
 
         #region rest api

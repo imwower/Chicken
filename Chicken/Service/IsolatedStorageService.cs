@@ -4,7 +4,9 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows;
 using Chicken.Common;
+using Chicken.Model;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Chicken.Service
 {
@@ -23,6 +25,8 @@ namespace Chicken.Service
 
         #region const
         const string EmotionsFileName = "emotions.json";
+        const string DirectMessageFolderPath = "DirectMessages";
+        //const string DirectMessageFileName = "DirectMessages";
         #endregion
 
         #region public method
@@ -36,12 +40,41 @@ namespace Chicken.Service
             return SerializeObject(folderName + "\\" + folderName, value);
         }
 
+        public static bool CreateObject(Const.PageNameEnum pageName, string fileName, object value)
+        {
+            string folderName = pageName.ToString();
+            if (!fileSystem.DirectoryExists(folderName))
+            {
+                fileSystem.CreateDirectory(folderName);
+            }
+            return SerializeObject(folderName + "\\" + fileName, value);
+        }
+
+        public static T GetObject<T>(Const.PageNameEnum pageName)
+        {
+            string folderName = pageName.ToString();
+            return DeserializeObject<T>(folderName + "\\" + folderName);
+        }
+
         public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName)
         {
             string folderName = pageName.ToString();
             return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);
         }
 
+        public static T GetObject<T>(Const.PageNameEnum pageName, string fileName)
+        {
+            string folderName = pageName.ToString();
+            return DeserializeObject<T>(folderName + "\\" + fileName);
+        }
+
+        public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName, string fileName)
+        {
+            string folderName = pageName.ToString();
+            return DeserializeObject<T>(folderName + "\\" + fileName, FileOption.DeleteAfterRead);
+        }
+
+        #region method for pages
         public static List<string> GetEmotions()
         {
             List<string> result = new List<string>();
@@ -69,6 +102,41 @@ namespace Chicken.Service
             }
             return result;
         }
+
+        public static void AddMessages(Conversation conversation)
+        {
+            conversation.Messages.ForEach(m => m = new DirectMessage { Id = m.Id, Text = m.Text });
+
+            #region create folder
+            if (!fileSystem.DirectoryExists(DirectMessageFolderPath))
+            {
+                fileSystem.CreateDirectory(DirectMessageFolderPath);
+            }
+            #endregion
+
+            using (var fileStream = fileSystem.OpenFile(DirectMessageFolderPath + "\\" + conversation.User.Id, FileMode.OpenOrCreate))
+            {
+                if (fileStream == null || fileStream.Length == 0)
+                #region directly serialize
+                {
+                    using (TextWriter writer = new StreamWriter(fileStream))
+                    {
+                        jsonSerializer.Serialize(writer, conversation);
+                    }
+                }
+                #endregion
+                else
+                {
+                    using (var reader = new StreamReader(fileStream))
+                    {
+                        JObject o = (JObject)JToken.ReadFrom(new JsonTextReader(reader));
+
+                    }
+                }
+            }
+
+        }
+        #endregion
         #endregion
 
         #region private method

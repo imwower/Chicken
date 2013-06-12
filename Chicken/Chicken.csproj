@@ -114,6 +114,7 @@
     <Compile Include="Controls\TemplateSelector.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
+    <Compile Include="Model\LatestMessagesModel.cs" />
     <Compile Include="Model\Cursor.cs" />
     <Compile Include="Model\DirectMessage.cs" />
     <Compile Include="Model\Entity\Coordinates.cs" />

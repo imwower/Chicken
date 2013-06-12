@@ -50,6 +50,14 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public bool IsSentByMe
+        {
+            get
+            {
+                return tweet.IsSentByMe;
+            }
+        }
+
         public string Id
         {
             get

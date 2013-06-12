@@ -7,6 +7,8 @@ namespace Chicken.Model
     {
         public virtual User User { get; set; }
 
+        public bool IsSentByMe { get; set; }
+
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
 
