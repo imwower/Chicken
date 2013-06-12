@@ -464,7 +464,6 @@
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
-        <!--处理应用程序的生存期事件所需的对象-->
         <shell:PhoneApplicationService 
             Launching="Application_Launching" Closing="Application_Closing" 
             Activated="Application_Activated" Deactivated="Application_Deactivated"/>

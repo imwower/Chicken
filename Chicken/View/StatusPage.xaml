@@ -251,17 +251,6 @@
                                                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                                  ItemsSource="{Binding ConversationList}"
                                                  ItemTemplate="{StaticResource TweetTemplate}">
-                                            <ListBox.ItemContainerStyle>
-                                                <Style TargetType="ListBoxItem">
-                                                    <Setter Property="Template">
-                                                        <Setter.Value>
-                                                            <ControlTemplate>
-                                                                <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                            </ControlTemplate>
-                                                        </Setter.Value>
-                                                    </Setter>
-                                                </Style>
-                                            </ListBox.ItemContainerStyle>
                                         </ListBox>
                                     </StackPanel>
                                 </Grid>
