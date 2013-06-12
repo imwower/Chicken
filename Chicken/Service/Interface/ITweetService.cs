@@ -14,6 +14,8 @@ namespace Chicken.Service.Interface
         void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+
+        void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region profile page

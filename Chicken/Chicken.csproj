@@ -139,6 +139,7 @@
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\NewMessage\ConversationViewModel.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
@@ -293,6 +294,9 @@
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
     <Content Include="SampleData\user_timeline.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SampleData\direct_messages_sent_by_me.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

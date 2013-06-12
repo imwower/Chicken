@@ -30,12 +30,17 @@ namespace Chicken.Controls
     {
         public DataTemplate MessageTemplate { get; set; }
 
-        public DataTemplate MyMessageTemplate { get; set; }
+        public DataTemplate MessageSentByMeTemplate { get; set; }
 
         protected override DataTemplate SelectTemplate(DependencyObject sender, object newValue)
         {
             DirectMessageViewModel message = newValue as DirectMessageViewModel;
+            if (message.IsSentByMe)
+            {
+                return MessageSentByMeTemplate;
+            }
             return MessageTemplate;
+            //ListBox.ItemContainerStyleProperty
         }
     }
 }

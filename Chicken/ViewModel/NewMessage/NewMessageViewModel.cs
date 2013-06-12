@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using Chicken.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Implementation;
@@ -11,17 +11,18 @@ namespace Chicken.ViewModel.NewMessage
     public class NewMessageViewModel : PivotItemViewModelBase
     {
         #region properties
-        private ObservableCollection<DirectMessageViewModel> conversationList;
-        public ObservableCollection<DirectMessageViewModel> ConversationList
+        private List<DirectMessageViewModel> messageList;
+        private ConversationViewModel conversationViewModel;
+        public ConversationViewModel ConversationViewModel
         {
             get
             {
-                return conversationList;
+                return conversationViewModel;
             }
             set
             {
-                conversationList = value;
-                RaisePropertyChanged("ConversationList");
+                conversationViewModel = value;
+                RaisePropertyChanged("ConversationViewModel");
             }
         }
         #endregion
@@ -33,42 +34,56 @@ namespace Chicken.ViewModel.NewMessage
         public NewMessageViewModel()
         {
             Header = "Chat";
-            ConversationList = new ObservableCollection<DirectMessageViewModel>();
+            ConversationViewModel = new ConversationViewModel();
+            ConversationViewModel.User.Id = "514378421";
+            messageList = new List<DirectMessageViewModel>();
             RefreshHandler = this.RefreshAction;
         }
 
         private void RefreshAction()
         {
-            string sinceId = string.Empty;
-            var parameters = TwitterHelper.GetDictionary();
-            if (ConversationList.Count != 0)
-            {
-                sinceId = ConversationList[0].Id;
-                parameters.Add(Const.SINCE_ID, sinceId);
-            }
             TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
                messages =>
                {
                    if (messages != null && messages.Count != 0)
                    {
-#if !DEBUG
-                       if (string.Compare(sinceId, messages[0].Id) == -1)
+                       foreach (var message in messages)
                        {
-                           TweetList.Clear();
-                       }
-#endif
-                       for (int i = messages.Count - 1; i >= 0; i--)
-                       {
-#if !DEBUG
-                           if (sinceId != messages[i].Id)
-#endif
+                           if (message.User.Id == conversationViewModel.User.Id)
                            {
-                               ConversationList.Insert(0, new DirectMessageViewModel(messages[i]));
+                               messageList.Add(new DirectMessageViewModel(message));
                            }
                        }
-                   }
-                   base.Refreshed();
-               }, parameters);
+                   };
+
+                   GetDirectMessagesSentByMe();
+               });
+        }
+
+        private void GetDirectMessagesSentByMe()
+        {
+            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
+                messages =>
+                {
+                    if (messages != null && messages.Count != 0)
+                    {
+                        foreach (var message in messages)
+                        {
+                            if (message.Receiver.Id == ConversationViewModel.User.Id)
+                            {
+                                message.User = message.Receiver;
+                                messageList.Add(new DirectMessageViewModel(message) { IsSentByMe = true });
+                            }
+                        }
+                    }
+
+                    ConversationViewModel.Messages.Clear();
+                    messageList = messageList.OrderBy(m => m.CreatedDate).ToList();
+                    foreach (var message in messageList)
+                    {
+                        ConversationViewModel.Messages.Add(message);
+                    }
+                });
         }
     }
 }

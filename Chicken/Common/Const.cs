@@ -3,7 +3,7 @@
     public class Const
     {
         //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
-        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/6X0S1V/1.1/";
+        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/UT3I3O/1.1/";
         public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
         public static string DEFAULT_COUNT_VALUE = "5";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "6";
@@ -44,6 +44,7 @@
         public const string STATUSES_HOMETIMELINE = "statuses/home_timeline.json";
         public const string STATUSES_MENTIONS_TIMELINE = "statuses/mentions_timeline.json";
         public const string DIRECT_MESSAGES = "direct_messages.json";
+        public const string DIRECT_MESSAGES_SENT_BY_ME = "direct_messages/sent.json";
         #endregion
 
         #region profile page

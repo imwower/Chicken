@@ -45,6 +45,11 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES, parameters);
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region profile page

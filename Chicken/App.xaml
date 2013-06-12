@@ -188,6 +188,12 @@
             </Setter>
         </Style>
 
+
+        <Style TargetType="ListBoxItem">
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        </Style>
+
         <!--media and retweet icon-->
         <Style x:Name="RetweetRectangleSmall" TargetType="Rectangle">
             <Setter Property="Stretch" Value="Fill" />
@@ -444,17 +450,6 @@
                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                              ItemsSource="{TemplateBinding ListBoxItems}"
                                              ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
-                                        <ListBox.ItemContainerStyle>
-                                            <Style TargetType="ListBoxItem">
-                                                <Setter Property="Template">
-                                                    <Setter.Value>
-                                                        <ControlTemplate>
-                                                            <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                        </ControlTemplate>
-                                                    </Setter.Value>
-                                                </Setter>
-                                            </Style>
-                                        </ListBox.ItemContainerStyle>
                                     </ListBox>
                                 </ScrollViewer>
                             </ctrls:AutoGrid>

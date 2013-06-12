@@ -38,6 +38,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/direct_messages.json";
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/direct_messages_sent_by_me.json";
+            HandleWebRequest<T>(url, callBack);
+        }
         #endregion
 
         #region profile page
@@ -137,5 +143,6 @@ namespace Chicken.Service.Implementation
             }
         }
         #endregion
+
     }
 }

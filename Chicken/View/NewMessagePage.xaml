@@ -39,118 +39,46 @@
                     <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
-            <ctrls:AutoGrid.RowDefinitions>
-                <RowDefinition />
-            </ctrls:AutoGrid.RowDefinitions>
-            <ScrollViewer Grid.Row="0"
-                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                                  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <ScrollViewer
+                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Content>
                     <!--conversation-->
                     <Grid Margin="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <StackPanel Grid.Row="0" HorizontalAlignment="Stretch">
-                            <ListBox x:Name="AutoListBox"
-                                                 VerticalAlignment="Top"
-                                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                                 ItemsSource="{Binding ConversationList}">
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate>
-                                                    <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <ctrls:MessageTemplateSelector Content="{Binding}">
-                                            <ctrls:MessageTemplateSelector.MessageTemplate>
-                                                <DataTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="64" />
-                                                            <ColumnDefinition Width="*" />
-                                                            <ColumnDefinition Width="48" />
-                                                        </Grid.ColumnDefinitions>
-                                                        <!--avatar-->
-                                                        <Button Grid.Column="0"
-                                                                Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                                                                CommandParameter="{Binding User}">
-                                                            <Button.Template>
-                                                                <ControlTemplate>
-                                                                    <ctrls:ImageContainer Margin="0"
-                                                                                          ImageSource="{Binding Path=User.ProfileImage}"
-                                                                                          Style="{StaticResource ProfileImageSmall}" />
-                                                                </ControlTemplate>
-                                                            </Button.Template>
-                                                        </Button>
-                                                        <StackPanel Grid.Column="1" Margin="4,0" Orientation="Horizontal">
-                                                            <!--content-->
-                                                            <Polygon Opacity="0.2"
-                                                                     Fill="{StaticResource PhoneForegroundBrush}"
-                                                                     Points="0,10 10,10, 10,20" />
-                                                            <Grid MaxWidth="350">
-                                                                <Grid.RowDefinitions>
-                                                                    <RowDefinition />
-                                                                    <RowDefinition />
-                                                                </Grid.RowDefinitions>
-                                                                <Grid.Resources>
-                                                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                                                                        <Setter Property="HorizontalAlignment" Value="Left" />
-                                                                        <Setter Property="TextAlignment" Value="Left" />
-                                                                    </Style>
-                                                                </Grid.Resources>
-                                                                <!--text-->
-                                                                <Grid Grid.Row="0">
-                                                                    <Rectangle Opacity="0.2"
-                                                                               Fill="{StaticResource PhoneForegroundBrush}">
-                                                                    </Rectangle>
-                                                                    <!--text-->
-                                                                    <ctrls:AutoRichTextBox Margin="0,4"
-                                                                                           TweetData="{Binding}" TextAlignment="Left">
-                                                                    </ctrls:AutoRichTextBox>
-                                                                </Grid>
-                                                                <TextBlock Grid.Row="1" Opacity="0.6"
-                                                                           Text="{Binding CreatedDate}" />
-                                                            </Grid>
-                                                        </StackPanel>
-                                                        <!--delete-->
-                                                        <Button Grid.Column="2" VerticalAlignment="Center">
-                                                            <Button.Template>
-                                                                <ControlTemplate>
-                                                                    <Rectangle Opacity="0.4" Width="48" Height="48"
-                                                                        Fill="{StaticResource PhoneForegroundBrush}">
-                                                                        <Rectangle.OpacityMask>
-                                                                            <ImageBrush ImageSource="/Images/dark/appbar.delete.png" Stretch="Fill" />
-                                                                        </Rectangle.OpacityMask>
-                                                                    </Rectangle>
-                                                                </ControlTemplate>
-                                                            </Button.Template>
-                                                        </Button>
-                                                    </Grid>
-                                                </DataTemplate>
-                                            </ctrls:MessageTemplateSelector.MessageTemplate>
-                                        </ctrls:MessageTemplateSelector>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
+                        <ListBox x:Name="AutoListBox"
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                 ItemsSource="{Binding Path=ConversationViewModel.Messages}">
+                            <ListBox.ItemContainerStyle>
+                                <Style TargetType="ListBoxItem">
+                                    <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListBox.ItemContainerStyle>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <ctrls:MessageTemplateSelector>
+                                        <ctrls:MessageTemplateSelector.ContentTemplate>
+                                            <DataTemplate>
+                                                <ContentPresenter />
+                                            </DataTemplate>
+                                        </ctrls:MessageTemplateSelector.ContentTemplate>
+                                        
+                                    </ctrls:MessageTemplateSelector>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                     </Grid>
                 </ScrollViewer.Content>
             </ScrollViewer>
         </ctrls:AutoGrid>
-        <StackPanel Orientation="Horizontal">
+        <StackPanel Grid.Row="3" Orientation="Horizontal">
             <!--menu-->
             <!--text box-->
-
+            <TextBox Text="message" />
         </StackPanel>
         <!--progress bar-->
+        <ProgressBar Grid.Row="4" IsIndeterminate="True"
+                                         Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 
 

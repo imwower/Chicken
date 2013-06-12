@@ -6,6 +6,9 @@ namespace Chicken.Model
     {
         [JsonProperty("sender")]
         public override User User { get; set; }
+
+        [JsonProperty("recipient")]
+        public User Receiver { get; set; }
     }
 
     public class DirectMessageList<T> : ModelBaseList<T> where T : DirectMessage
