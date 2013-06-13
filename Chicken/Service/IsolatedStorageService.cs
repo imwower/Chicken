@@ -122,47 +122,63 @@ namespace Chicken.Service
                 });
             }
             #endregion
-
             #region create folder
             if (!fileSystem.DirectoryExists(DirectMessageFolderPath))
             {
                 fileSystem.CreateDirectory(DirectMessageFolderPath);
             }
             #endregion
-
-            using (var fileStream = fileSystem.OpenFile(DirectMessageFolderPath + "\\" + con.User.Id, FileMode.OpenOrCreate))
+            string filepath = DirectMessageFolderPath + "\\" + con.User.Id;
+            if (!fileSystem.FileExists(filepath))
             {
-                if (fileStream == null || fileStream.Length == 0)
                 #region directly serialize
+                using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Create))
                 {
-                    using (TextWriter writer = new StreamWriter(fileStream))
                     {
-                        jsonSerializer.Serialize(writer, con);
+                        using (TextWriter writer = new StreamWriter(fileStream))
+                        {
+                            jsonSerializer.Serialize(writer, con);
+                        }
                     }
                 }
                 #endregion
-                else
+            }
+            else
+            {
+                #region serialize object
+                JObject jobject = null;
+                using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
                 {
                     using (var streamReader = new StreamReader(fileStream))
                     {
                         using (var reader = new JsonTextReader(streamReader))
                         {
-                            JObject jobject = (JObject)JToken.ReadFrom(reader);
-                            jobject["User"] = JObject.FromObject(con.User);
+                            jobject = (JObject)JToken.ReadFrom(reader);
+                            jobject["User"] = JObject.FromObject(con.User, jsonSerializer);
 
                             foreach (var msg in con.Messages)
                             {
-                                jobject["Messages"].Last.AddAfterSelf(JObject.FromObject(msg));
-                            }
-                            using (var writer = new JTokenWriter(jobject))
-                            {
-                                writer.WriteToken(reader);
+                                jobject["Messages"].Last.AddAfterSelf(JObject.FromObject(msg, jsonSerializer));
                             }
                         }
                     }
                 }
+                #endregion
+                #region write to temp file
+                using (var outStream = fileSystem.OpenFile(filepath + "____", FileMode.Create))
+                {
+                    using (var jsonWriter = new JsonTextWriter(new StreamWriter(outStream)))
+                    {
+                        jobject.WriteTo(jsonWriter);
+                    }
+                }
+                #endregion
+                #region rename
+                fileSystem.DeleteFile(filepath);
+                fileSystem.MoveFile(filepath + "____", filepath);
+                #endregion
             }
-            conversation = null;
+
             con = null;
         }
         #endregion
