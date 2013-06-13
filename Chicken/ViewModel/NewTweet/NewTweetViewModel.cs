@@ -147,12 +147,4 @@ namespace Chicken.ViewModel.NewTweet
 
         #endregion
     }
-
-    public enum AppBarState
-    {
-        Default = 0,
-        AddImage = 1,
-        AddMention = 2,
-        AddEmotion = 3,
-    }
 }

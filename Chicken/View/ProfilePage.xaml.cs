@@ -33,7 +33,7 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var user = IsolatedStorageService.GetAndDeleteObject<UserModel>(Const.PageNameEnum.ProfilePage);
+            var user = IsolatedStorageService.GetAndDeleteObject<User>(Const.PageNameEnum.ProfilePage);
             profileViewModel.User = user;
         }
 

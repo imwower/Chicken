@@ -200,6 +200,19 @@
             <Setter Property="Height" Value="16" />
             <Setter Property="Margin" Value="2" />
         </Style>
+        <!--emotion button-->
+        <Style x:Name="EmotionButton" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid Margin="4" Opacity="0.4" Background="Transparent">
+                            <Rectangle Fill="Gray" Opacity="0.2" />
+                            <ContentPresenter Margin="4" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
         <!--profile image-->
         <Style x:Name="ProfileImage" TargetType="ctrls:ImageContainer">

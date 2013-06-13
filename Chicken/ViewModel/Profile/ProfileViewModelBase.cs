@@ -10,8 +10,8 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        private UserModel user;
-        public UserModel User
+        private User user;
+        public User User
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Chicken.ViewModel.Profile
             }
             NewTweetModel newTweet = new NewTweetModel
             {
-                ActionType = (int)NewTweetActionType.Mention,
+                Type = NewTweetActionType.Mention,
                 Text = User.ScreenName + " ",
             };
             IsLoading = false;
@@ -86,7 +86,16 @@ namespace Chicken.ViewModel.Profile
 
         public virtual void NewMessage()
         {
-
+            if (IsLoading)
+            {
+                return;
+            }
+            var newMessage = new NewMessageModel
+            {
+                Type = NewMessageActionType.Reply,
+                User = user,
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
         }
         #endregion
 
@@ -100,13 +109,7 @@ namespace Chicken.ViewModel.Profile
             }
             else
             {
-                var user = new UserModel
-                {
-                    Id = userProfile.Id,
-                    Name = userProfile.Name,
-                    ScreenName = userProfile.ScreenName,
-                };
-                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
+                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, userProfile);
             }
         }
         #endregion

@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Home.VM;
 
@@ -46,7 +47,11 @@ namespace Chicken.ViewModel.Home
 
         private void NewMessage()
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage);
+            var newMessage = new NewMessageModel
+            {
+                Type = NewMessageActionType.PostNew
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
         }
     }
 }

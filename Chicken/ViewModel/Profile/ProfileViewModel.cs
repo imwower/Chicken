@@ -9,8 +9,8 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private UserModel user;
-        public UserModel User
+        private User user;
+        public User User
         {
             get
             {

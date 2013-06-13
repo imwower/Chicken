@@ -60,7 +60,7 @@ namespace Chicken.ViewModel
         public virtual void MainPivot_LoadedPivotItem(int selectedIndex)
         {
             SelectedIndex = selectedIndex;
-            if (!PivotItems[SelectedIndex].IsInited)
+            if (!PivotItems[selectedIndex].IsInited)
             {
                 Refresh();
             }

@@ -125,6 +125,7 @@
     <Compile Include="Model\Entity\UserMention.cs" />
     <Compile Include="Model\Friendship.cs" />
     <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\NewMessageModel.cs" />
     <Compile Include="Model\NewTweetModel.cs" />
     <Compile Include="Model\UserIdList.cs" />
     <Compile Include="Model\Retweet.cs" />
@@ -140,7 +141,6 @@
     <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
-    <Compile Include="ViewModel\NewMessage\ConversationViewModel.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />

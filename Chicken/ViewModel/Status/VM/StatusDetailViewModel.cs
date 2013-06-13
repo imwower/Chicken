@@ -72,14 +72,7 @@ namespace Chicken.ViewModel.Status.VM
 
         private void ClickAction(object parameter)
         {
-            var userViewModel = parameter as User;
-            var user = new UserModel
-            {
-                Id = userViewModel.Id,
-                Name = userViewModel.Name,
-                ScreenName = userViewModel.ScreenName,
-            };
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
@@ -139,7 +132,7 @@ namespace Chicken.ViewModel.Status.VM
             }
             NewTweetModel newTweet = new NewTweetModel
             {
-                ActionType = (int)type,
+                Type = type,
             };
             switch (type)
             {

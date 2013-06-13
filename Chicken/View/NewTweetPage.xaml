@@ -65,18 +65,7 @@
             </Rectangle>
             <ctrls:WrapPanel x:Name="EmotionPanel">
                 <ctrls:WrapPanel.Resources>
-                    <Style TargetType="Button">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <Grid Margin="4" Opacity="0.4" Background="Transparent">
-                                        <Rectangle Fill="Gray" Opacity="0.2" />
-                                        <ContentPresenter Margin="4" />
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource EmotionButton}" />
                 </ctrls:WrapPanel.Resources>
             </ctrls:WrapPanel>
         </Grid>

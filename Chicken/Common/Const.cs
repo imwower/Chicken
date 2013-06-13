@@ -15,6 +15,8 @@
 
         public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
         public const string LATEST_MESSAGES_FILENAME = "latest_direct_messages.json";
+
+        public const int MaxCharLength = 140;
         #endregion
 
         #region http method
@@ -132,6 +134,14 @@
         Bottom = 2,
     }
 
+    public enum AppBarState
+    {
+        Default = 0,
+        AddImage = 1,
+        AddMention = 2,
+        AddEmotion = 3,
+    }
+
     public enum NewTweetActionType
     {
         None = 0,
@@ -139,5 +149,12 @@
         Reply = 2,
         Quote = 3,
         Mention = 4,
+    }
+
+    public enum NewMessageActionType
+    {
+        None = 0,
+        PostNew = 1,
+        Reply = 2,
     }
 }

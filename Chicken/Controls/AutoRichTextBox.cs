@@ -105,10 +105,10 @@ namespace Chicken.Controls
                                     obj =>
                                     {
                                         var mention = obj as UserMention;
-                                        var user = new UserModel
+                                        var user = new User
                                         {
                                             Id = mention.Id,
-                                            ScreenName = mention.Text,
+                                            DisplayName = mention.DisplayNameName
                                         };
                                         ScreenNameClick(user);
                                     }),
@@ -155,7 +155,7 @@ namespace Chicken.Controls
             textBox.Blocks.Add(paragraph);
         }
 
-        private static void ScreenNameClick(UserModel user)
+        private static void ScreenNameClick(User user)
         {
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
         }

@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrls="clr-namespace:Chicken.Controls"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -22,6 +23,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <Grid.Resources>
@@ -30,13 +32,13 @@
             </Style>
         </Grid.Resources>
         <!--title-->
-        <TextBlock Grid.Row="0" Text="{Binding Path=Header}" />
-        <!--user name whom to send to-->
-        <TextBox Grid.Row="1" Text="TO:" />
+        <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
+        <!--whom to send to-->
+        <TextBox x:Name="UserName" Grid.Row="1" Text="{Binding Path=NewMessage.User.ScreenName}" />
         <!--conversation list-->
         <ctrls:AutoGrid Grid.Row="2" Margin="4">
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                <i:EventTrigger EventName="VerticalCompressionTopHandler">
                     <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
@@ -62,11 +64,11 @@
                                                     <Button Width="64" Height="64"
                                                             HorizontalAlignment="Left" VerticalAlignment="Top"
                                                             Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                                                            CommandParameter="{Binding DataContext.User, ElementName=Page}">
+                                                            CommandParameter="{Binding DataContext.NewMessage.User, ElementName=Page}">
                                                         <Button.Template>
                                                             <ControlTemplate>
                                                                 <ctrls:ImageContainer Margin="0" 
-                                                                                      ImageSource="{Binding DataContext.User.ProfileImage, ElementName=Page}"
+                                                                                      ImageSource="{Binding DataContext.NewMessage.User.ProfileImage, ElementName=Page}"
                                                                                       Style="{StaticResource ProfileImageSmall}" />
                                                             </ControlTemplate>
                                                         </Button.Template>
@@ -170,13 +172,58 @@
                 </ScrollViewer.Content>
             </ScrollViewer>
         </ctrls:AutoGrid>
-        <StackPanel Grid.Row="3" Orientation="Horizontal">
-            <!--menu-->
+        <Grid Grid.Row="3" Margin="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!--char counter-->
+            <TextBlock x:Name="TextCounter" Grid.Column="0"
+                       TextAlignment="Center"
+                       Opacity="0.6" Text="140" />
             <!--text box-->
-            <TextBox Text="message" />
-        </StackPanel>
+            <TextBox x:Name="TextContent" Grid.Column="1"
+                     Style="{StaticResource TextBoxContent}"
+                     TextAlignment="Left"
+                     TextChanged="TextContent_TextChanged"
+                     GotFocus="TextContent_GotFocus"
+                     MaxHeight="400" MaxLength="400" />
+        </Grid>
+        <!--emotion-->
+        <Grid Grid.Row="4">
+            <ctrls:WrapPanel x:Name="EmotionPanel" Visibility="Collapsed">
+                <ctrls:WrapPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource EmotionButton}" />
+                </ctrls:WrapPanel.Resources>
+            </ctrls:WrapPanel>
+        </Grid>
         <!--progress bar-->
-        <ProgressBar Grid.Row="4" IsIndeterminate="True"
-                                         Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <ProgressBar Grid.Row="5" IsIndeterminate="True"
+                     Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
+
+    <i:Interaction.Triggers>
+        <abu:StateChangedTrigger State="{Binding State}">
+            <abu:SwitchAppBarAction>
+                <!--default-->
+                <abu:AppBar Id="0">
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
+                                      Text="send" Command="{Binding SendCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
+                                      Text="emotion" Command="{Binding AddEmotionCommand}" />
+                </abu:AppBar>
+                <!--add emotion-->
+                <abu:AppBar Id="3">
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
+                                      Text="send" Command="{Binding SendCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
+                                      Text="emotion" Command="{Binding KeyboardCommand}" />
+                </abu:AppBar>
+            </abu:SwitchAppBarAction>
+        </abu:StateChangedTrigger>
+    </i:Interaction.Triggers>
 </phone:PhoneApplicationPage>

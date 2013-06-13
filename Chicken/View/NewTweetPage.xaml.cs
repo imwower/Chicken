@@ -15,8 +15,6 @@ namespace Chicken.View
     public partial class NewTweetPage : PhoneApplicationPage
     {
         #region properties
-        private const int maxLength = 400;
-        private const int maxCharLength = 140;
         private NewTweetViewModel newTweetViewModel;
         private bool alreadyInitEmotionPanel;
         #endregion
@@ -54,8 +52,8 @@ namespace Chicken.View
             var tweet = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.PageNameEnum.NewTweetPage);
             if (tweet != null)
             {
-                newTweetViewModel.TweetModel.ActionType = tweet.ActionType;
-                switch ((NewTweetActionType)tweet.ActionType)
+                newTweetViewModel.TweetModel.Type = tweet.Type;
+                switch (tweet.Type)
                 {
                     case NewTweetActionType.Quote:
                         newTweetViewModel.Title = "Quote:";
@@ -97,7 +95,7 @@ namespace Chicken.View
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
             //counter:
-            int remain = maxCharLength - this.TextContent.Text.Length;
+            int remain = Const.MaxCharLength - this.TextContent.Text.Length;
             if (remain < 0)
             {
                 this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
@@ -155,10 +153,7 @@ namespace Chicken.View
                 var emotions = IsolatedStorageService.GetEmotions();
                 foreach (var emotion in emotions)
                 {
-                    Button button = new Button
-                   {
-                       Content = emotion,
-                   };
+                    Button button = new Button { Content = emotion };
                     button.Click += new RoutedEventHandler(Button_Click);
                     this.EmotionPanel.Children.Add(button);
                 }
@@ -171,6 +166,10 @@ namespace Chicken.View
         {
             var button = sender as Button;
             string result = button.Content.ToString();
+            if (this.TextContent.Text.Length + result.Length > Const.MaxCharLength)
+            {
+                return;
+            }
             int start = this.TextContent.SelectionStart;
             this.TextContent.Text = this.TextContent.Text.Insert(start, result);
             this.TextContent.SelectionStart = start + result.Length;

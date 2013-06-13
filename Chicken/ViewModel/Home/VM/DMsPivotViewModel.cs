@@ -172,40 +172,41 @@ namespace Chicken.ViewModel.Home.VM
                     #endregion
 
                     #region finish
-                    if (latestMessages.Messages.Count < 5 && hasMoreMsgs && hasMoreMsgsByMe)
+                    var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
+                    foreach (var msg in latestmsgs)
                     {
-                        list.Clear();
-                        dict.Clear();
-                        LoadAction();
+                        TweetList.Add(new TweetViewModel(msg));
                     }
-                    else
-                    {
-                        FinishRefreshing();
-                    }
+                    base.Refreshed();
+                    base.Loaded();
+                    IsolatedStorageService.AddLatestMessages(latestMessages);
                     #endregion
                 }, parameters);
         }
 
-        private void FinishRefreshing()
-        {
-            var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
-            foreach (var msg in latestmsgs)
-            {
-                TweetList.Add(new TweetViewModel(msg));
-            }
-            base.Refreshed();
-            base.Loaded();
-            IsolatedStorageService.AddLatestMessages(latestMessages);
-        }
-
         private void LoadAction()
         {
-            GetReceivedMessages(true);
+            if (hasMoreMsgs && hasMoreMsgsByMe)
+            {
+                list.Clear();
+                dict.Clear();
+                GetReceivedMessages(true);
+            }
+            else
+            {
+                LoadHandler = null;
+                base.Loaded();
+            }
         }
 
         private void ItemClickAction(object user)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, user);
+            var newMessage = new NewMessageModel
+            {
+                Type = NewMessageActionType.Reply,
+                User = user as User,
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
         }
     }
 }
