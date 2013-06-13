@@ -303,6 +303,7 @@
     <Content Include="SampleData\direct_messages_sent_by_me.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="SampleData\Rate_limit_exceeded.json" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
