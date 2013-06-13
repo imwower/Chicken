@@ -12,11 +12,11 @@ namespace Chicken.Model
 
         public string MaxIdByMe { get; set; }
 
-        public List<DirectMessage> Messages { get; set; }
+        public Dictionary<string, DirectMessage> Messages { get; set; }
 
         public LatestMessagesModel()
         {
-            Messages = new List<DirectMessage>();
+            Messages = new Dictionary<string, DirectMessage>();
         }
     }
 

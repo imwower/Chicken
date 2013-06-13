@@ -9,8 +9,6 @@ namespace Chicken.Model
 
         [JsonProperty("recipient")]
         public User Receiver { get; set; }
-
-        public bool IsOld { get; set; }
     }
 
     public class DirectMessageList<T> : ModelBaseList<T> where T : DirectMessage

@@ -13,7 +13,8 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="True"
+    x:Name="Page">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -61,11 +62,11 @@
                                                     <Button Width="64" Height="64"
                                                             HorizontalAlignment="Left" VerticalAlignment="Top"
                                                             Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                                                            CommandParameter="{Binding User}">
+                                                            CommandParameter="{Binding DataContext.User, ElementName=Page}">
                                                         <Button.Template>
                                                             <ControlTemplate>
                                                                 <ctrls:ImageContainer Margin="0" 
-                                                                                      ImageSource="{Binding Path=User.ProfileImage}"
+                                                                                      ImageSource="{Binding DataContext.User.ProfileImage, ElementName=Page}"
                                                                                       Style="{StaticResource ProfileImageSmall}" />
                                                             </ControlTemplate>
                                                         </Button.Template>

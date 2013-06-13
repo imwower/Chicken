@@ -29,7 +29,6 @@ namespace Chicken.Service
         #region const
         const string EmotionsFileName = "emotions.json";
         const string DirectMessageFolderPath = "DirectMessages";
-        //const string DirectMessageFileName = "DirectMessages";
         #endregion
 
         #region public method
@@ -76,6 +75,7 @@ namespace Chicken.Service
             string folderName = pageName.ToString();
             return DeserializeObject<T>(folderName + "\\" + fileName, FileOption.DeleteAfterRead);
         }
+        #endregion
 
         #region method for pages
         public static List<string> GetEmotions()
@@ -117,8 +117,11 @@ namespace Chicken.Service
             {
                 con.Messages.Add(new DirectMessage
                 {
+                    IsSentByMe = m.IsSentByMe,
                     Id = m.Id,
                     Text = m.Text,
+                    CreatedDate = m.CreatedDate,
+                    Entities = m.Entities,
                 });
             }
             #endregion
@@ -147,6 +150,7 @@ namespace Chicken.Service
             {
                 #region serialize object
                 JObject jobject = null;
+                string tempfilepath = filepath + "____";
                 using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
                 {
                     using (var streamReader = new StreamReader(fileStream))
@@ -165,7 +169,7 @@ namespace Chicken.Service
                 }
                 #endregion
                 #region write to temp file
-                using (var outStream = fileSystem.OpenFile(filepath + "____", FileMode.Create))
+                using (var outStream = fileSystem.OpenFile(tempfilepath, FileMode.Create))
                 {
                     using (var jsonWriter = new JsonTextWriter(new StreamWriter(outStream)))
                     {
@@ -175,13 +179,61 @@ namespace Chicken.Service
                 #endregion
                 #region rename
                 fileSystem.DeleteFile(filepath);
-                fileSystem.MoveFile(filepath + "____", filepath);
+                fileSystem.MoveFile(tempfilepath, filepath);
                 #endregion
             }
 
             con = null;
         }
-        #endregion
+
+        public static Conversation GetMessages(string userId)
+        {
+            Conversation conversation = null;
+            string filepath = DirectMessageFolderPath + "\\" + userId;
+            if (fileSystem.FileExists(filepath))
+            {
+                using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
+                {
+                    using (var reader = new JsonTextReader(new StreamReader(fileStream)))
+                    {
+                        conversation = jsonSerializer.Deserialize<Conversation>(reader);
+                    }
+                }
+            }
+            return conversation;
+        }
+
+        public static void AddLatestMessages(LatestMessagesModel latestMessages)
+        {
+            #region init
+            var latestmsgs = new LatestMessagesModel
+            {
+                MaxId = latestMessages.MaxId,
+                SinceId = latestMessages.SinceId,
+                MaxIdByMe = latestMessages.MaxIdByMe,
+                SinceIdByMe = latestMessages.SinceIdByMe,
+            };
+            foreach (var msg in latestMessages.Messages)
+            {
+                latestmsgs.Messages.Add(msg.Key, new DirectMessage
+                {
+                    IsSentByMe = msg.Value.IsSentByMe,
+                    Id = msg.Value.Id,
+                    Text = msg.Value.Text,
+                    Entities = msg.Value.Entities,
+                    CreatedDate = msg.Value.CreatedDate,
+                    User = msg.Value.User
+                });
+            }
+            #endregion
+            CreateObject(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME, latestmsgs);
+        }
+
+        public static LatestMessagesModel GetLatestMessages()
+        {
+            return GetObject<LatestMessagesModel>(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME);
+        }
+
         #endregion
 
         #region private method
