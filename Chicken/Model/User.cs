@@ -12,6 +12,7 @@ namespace Chicken.Model
         [JsonProperty("screen_name")]
         public string DisplayName { get; set; }
 
+        [JsonIgnore]
         public string ScreenName
         {
             get
@@ -28,6 +29,7 @@ namespace Chicken.Model
         /// so add this property to User,
         /// not to UserProfile.
         /// </summary>
+        [JsonIgnore]
         public string ProfileImageBigger
         {
             get

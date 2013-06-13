@@ -14,7 +14,7 @@
         public const string DEFAULTSOURCEURL = "https://github.com/";
 
         public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
-        public const string LATEST_MESSAGES_FILENAME = "direct_message_collection.json";
+        public const string LATEST_MESSAGES_FILENAME = "latest_direct_messages.json";
         #endregion
 
         #region http method

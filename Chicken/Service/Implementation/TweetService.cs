@@ -41,14 +41,15 @@ namespace Chicken.Service.Implementation
         public void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
-            parameters.Add(Const.DIRECT_MESSAGE_SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES, parameters);
             HandleWebRequest<T>(url, callBack);
         }
 
         public void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
         {
-            throw new NotImplementedException();
+            parameters = CheckSinceIdAndMaxId(parameters);
+            string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES_SENT_BY_ME, parameters);
+            HandleWebRequest<T>(url, callBack);
         }
         #endregion
 

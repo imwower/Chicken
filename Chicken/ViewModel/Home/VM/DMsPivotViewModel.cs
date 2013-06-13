@@ -10,12 +10,13 @@ namespace Chicken.ViewModel.Home.VM
 {
     public class DMsPivotViewModel : HomeViewModelBase
     {
-        private LatestMessagesModel oldMessages;
         private LatestMessagesModel latestMessages;
+        private List<DirectMessage> list;
 
         public DMsPivotViewModel()
         {
             Header = "Messages";
+            list = new List<DirectMessage>();
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
@@ -28,11 +29,11 @@ namespace Chicken.ViewModel.Home.VM
             var file = IsolatedStorageService.GetObject<LatestMessagesModel>(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME);
             if (file == null)
             {
-                oldMessages = new LatestMessagesModel();
+                latestMessages = new LatestMessagesModel();
             }
             else
             {
-                oldMessages = file;
+                latestMessages = file;
             }
             #endregion
 
@@ -47,17 +48,7 @@ namespace Chicken.ViewModel.Home.VM
 
                         foreach (var message in messages)
                         {
-                            if (!latestMessages.Messages.ContainsKey(message.User.Id))
-                            {
-                                var user = new User
-                                {
-                                    Id = message.User.Id,
-                                    DisplayName = message.User.DisplayName,
-                                    ProfileImage = message.User.ProfileImage,
-                                };
-                                latestMessages.Messages.Add(message.User.Id, new Conversation { User = user });
-                            }
-                            latestMessages.Messages[message.User.Id].Messages.Add(message);
+                            list.Add(message);
                         }
                         GetDirectMessagesSentByMe();
                     }
@@ -70,6 +61,7 @@ namespace Chicken.ViewModel.Home.VM
             TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
                 messages =>
                 {
+                    #region get messsages
                     if (messages != null && messages.Count != 0)
                     {
                         latestMessages.SinceIdByMe = messages.First().Id;
@@ -79,40 +71,41 @@ namespace Chicken.ViewModel.Home.VM
                         {
                             message.IsSentByMe = true;
                             message.User = message.Receiver;
-                            if (!oldMessages.Messages.ContainsKey(message.User.Id))
-                            {
-                                var user = new User
-                                {
-                                    Id = message.User.Id,
-                                    DisplayName = message.User.DisplayName,
-                                    ProfileImage = message.User.ProfileImage,
-                                };
-                                latestMessages.Messages.Add(message.User.Id, new Conversation { User = user });
-                            }
-                            latestMessages.Messages[message.User.Id].Messages.Add(message);
+                            list.Add(message);
                         }
                     }
+                    #endregion
 
-                    foreach (var kvp in latestMessages.Messages)
+                    var dict = new Dictionary<string, Conversation>();
+                    latestMessages.Messages.Clear();
+                    var group = list.OrderByDescending(m => m.Id).GroupBy(u => u.User.Id);
+
+                    foreach (var msgs in group)
                     {
-                        //no new msg:
-                        //if (!kvp.Value.IsNew)
-                        //{
-                        //    TweetList.Add(new TweetViewModel(kvp.Value.Messages[0]));
-                        //}
-                        ////add new msgs to file:
-                        //else
+                        foreach (var msg in msgs)
                         {
-                            var msgs = kvp.Value.Messages.OrderByDescending(m => m.CreatedDate).ToList();
-                            TweetList.Add(new TweetViewModel(msgs[0]));
-                            //msgs.RemoveAt(0);
-                            kvp.Value.Messages = msgs;
-                            IsolatedStorageService.AddMessages(kvp.Value);
+                            if (!msg.IsOld)
+                            {
+                                if (!dict.ContainsKey(msgs.Key))
+                                {
+                                    dict.Add(msgs.Key, new Conversation());
+                                }
+                                dict[msgs.Key].Messages.Add(msg);
+                            }
                         }
-                    }
-                    base.Refreshed();
 
-                    IsolatedStorageService.CreateObject(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME, oldMessages);
+                        IsolatedStorageService.AddMessages(dict[msgs.Key]);
+
+                        #region store current msgs
+                        var first = msgs.First();
+                        first.IsOld = true;
+                        TweetList.Add(new TweetViewModel(first));
+                        latestMessages.Messages.Add(first);
+                        #endregion
+                    }
+
+                    IsolatedStorageService.CreateObject(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME, latestMessages);
+                    base.Refreshed();
                 });
         }
 

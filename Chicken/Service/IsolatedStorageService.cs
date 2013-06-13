@@ -20,7 +20,10 @@ namespace Chicken.Service
 
         #region private static
         static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
-        static JsonSerializer jsonSerializer = new JsonSerializer();
+        static JsonSerializer jsonSerializer = new JsonSerializer
+        {
+            NullValueHandling = NullValueHandling.Ignore
+        };
         #endregion
 
         #region const
@@ -105,7 +108,20 @@ namespace Chicken.Service
 
         public static void AddMessages(Conversation conversation)
         {
-            conversation.Messages.ForEach(m => m = new DirectMessage { Id = m.Id, Text = m.Text });
+            #region init
+            var con = new Conversation
+            {
+                User = conversation.Messages[0].User,
+            };
+            foreach (var m in conversation.Messages)
+            {
+                con.Messages.Add(new DirectMessage
+                {
+                    Id = m.Id,
+                    Text = m.Text,
+                });
+            }
+            #endregion
 
             #region create folder
             if (!fileSystem.DirectoryExists(DirectMessageFolderPath))
@@ -114,27 +130,40 @@ namespace Chicken.Service
             }
             #endregion
 
-            using (var fileStream = fileSystem.OpenFile(DirectMessageFolderPath + "\\" + conversation.User.Id, FileMode.OpenOrCreate))
+            using (var fileStream = fileSystem.OpenFile(DirectMessageFolderPath + "\\" + con.User.Id, FileMode.OpenOrCreate))
             {
                 if (fileStream == null || fileStream.Length == 0)
                 #region directly serialize
                 {
                     using (TextWriter writer = new StreamWriter(fileStream))
                     {
-                        jsonSerializer.Serialize(writer, conversation);
+                        jsonSerializer.Serialize(writer, con);
                     }
                 }
                 #endregion
                 else
                 {
-                    using (var reader = new StreamReader(fileStream))
+                    using (var streamReader = new StreamReader(fileStream))
                     {
-                        JObject o = (JObject)JToken.ReadFrom(new JsonTextReader(reader));
+                        using (var reader = new JsonTextReader(streamReader))
+                        {
+                            JObject jobject = (JObject)JToken.ReadFrom(reader);
+                            jobject["User"] = JObject.FromObject(con.User);
 
+                            foreach (var msg in con.Messages)
+                            {
+                                jobject["Messages"].Last.AddAfterSelf(JObject.FromObject(msg));
+                            }
+                            using (var writer = new JTokenWriter(jobject))
+                            {
+                                writer.WriteToken(reader);
+                            }
+                        }
                     }
                 }
             }
-
+            conversation = null;
+            con = null;
         }
         #endregion
         #endregion
