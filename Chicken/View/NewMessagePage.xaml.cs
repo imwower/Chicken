@@ -7,6 +7,7 @@ using Chicken.Service;
 using Chicken.ViewModel.NewMessage;
 using Microsoft.Phone.Controls;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Chicken.View
 {
@@ -122,6 +123,19 @@ namespace Chicken.View
         }
         #endregion
 
-
+        #region user name
+        private void UserName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string username = this.UserName.Text.Replace("@", "").Replace(" ", "");
+                if (!string.IsNullOrEmpty(username))
+                {
+                    newMessageViewModel.NewMessage.User.DisplayName = username;
+                    this.TextContent.Focus();
+                }
+            }
+        }
+        #endregion
     }
 }

@@ -34,6 +34,7 @@
         #region rest api parameters
         public const string ID = "id";
         public const string USER_ID = "user_id";
+        public const string USER_SCREEN_NAME = "screen_name";
         public const string COUNT = "count";
         public const string SINCE_ID = "since_id";
         public const string MAX_ID = "max_id";
@@ -42,6 +43,7 @@
         public const string CURSOR = "cursor";
         public const string STATUS = "status";
         public const string IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
+        public const string TEXT = "text";
         #endregion
 
         #region home page
@@ -73,6 +75,10 @@
         #region post new tweet
         public const string STATUS_POST_NEW_TWEET = "statuses/update.json";
         public const string STATUS_POST_NEW_TWEET_WITH_MEDIA = "statuses/update_with_media.json";
+        #endregion
+
+        #region new message
+        public const string DIRECT_MESSAGE_POST_NEW_MESSAGE = "direct_messages/new.json";
         #endregion
         #endregion
 

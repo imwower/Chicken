@@ -121,6 +121,7 @@ namespace Chicken.ViewModel.NewMessage
         {
             if (newMessage.Type != NewMessageActionType.Reply)
             {
+                newMessage.User = new User();
                 base.Refreshed();
                 return;
             }
@@ -310,11 +311,27 @@ namespace Chicken.ViewModel.NewMessage
         #region actions
         private void SendAction()
         {
-            if (string.IsNullOrEmpty(newMessage.Text))
+            if (string.IsNullOrEmpty(newMessage.Text) ||
+                string.IsNullOrEmpty(newMessage.User.DisplayName))
             {
                 return;
             }
-            //TweetService.postNewMessage();
+            TweetService.PostNewMessage<ModelBase>(newMessage.User.DisplayName, newMessage.Text,
+                model =>
+                {
+                    List<ErrorMessage> errors = model.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        //error
+                    }
+                    else
+                    {
+                        newMessage.Text = string.Empty;
+                        list.Clear();
+                        dict.Clear();
+                        GetReceivedMessages();
+                    }
+                });
         }
 
         private void AddEmotionAction()

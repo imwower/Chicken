@@ -48,6 +48,10 @@ namespace Chicken.Service.Interface
         #region new tweet
         void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack);
         #endregion
+
+        #region new message
+        void PostNewMessage<T>(string userName, string text, Action<T> callBack);
+        #endregion
     }
 
     public class RequestDataObject<T>

@@ -34,7 +34,8 @@
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
         <!--whom to send to-->
-        <TextBox x:Name="UserName" Grid.Row="1" Text="@" />
+        <TextBox x:Name="UserName" Grid.Row="1" Text="@"
+                KeyDown="UserName_KeyDown" />
         <!--conversation list-->
         <ctrls:AutoGrid Grid.Row="2" Margin="4">
             <i:Interaction.Triggers>

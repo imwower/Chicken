@@ -184,6 +184,17 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region new message
+        public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.USER_SCREEN_NAME, userName);
+            parameters.Add(Const.TEXT, text);
+            string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGE_POST_NEW_MESSAGE, parameters);
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {
