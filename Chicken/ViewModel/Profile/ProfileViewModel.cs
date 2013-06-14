@@ -57,7 +57,7 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            (PivotItems[selectedIndex] as ProfileViewModelBase).User = user;
+            (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = user;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }
 

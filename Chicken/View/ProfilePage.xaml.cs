@@ -24,10 +24,7 @@ namespace Chicken.View
         private void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
             int selectedIndex = (sender as Pivot).SelectedIndex;
-            Dispatcher.BeginInvoke(() =>
-                {
-                    profileViewModel.MainPivot_LoadedPivotItem(selectedIndex);
-                });
+            profileViewModel.MainPivot_LoadedPivotItem(selectedIndex);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

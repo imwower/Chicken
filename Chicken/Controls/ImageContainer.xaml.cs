@@ -61,6 +61,7 @@ namespace Chicken.Controls
                 container.grid.Children.Remove(container.placehold);
                 bitmapImage.ImageOpened -= pngCompleted;
                 bitmapImage.ImageFailed -= pngFailed;
+                container.UpdateLayout();
             };
 
             gifCompleted = delegate(object gifImage, OpenReadCompletedEventArgs gifArgs)

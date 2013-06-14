@@ -20,10 +20,7 @@ namespace Chicken.View
         void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
             int selectedIndex = (sender as Pivot).SelectedIndex;
-            Dispatcher.BeginInvoke(() =>
-            {
-                mainViewModel.MainPivot_LoadedPivotItem(selectedIndex);
-            });
+            mainViewModel.MainPivot_LoadedPivotItem(selectedIndex);
         }
 
         public void ChangeSelectedIndex(int selectedIndex)

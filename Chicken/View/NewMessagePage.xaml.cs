@@ -31,23 +31,28 @@ namespace Chicken.View
             {
                 newMessageViewModel.Refresh();
             }
+            if (newMessageViewModel.NewMessage != null && newMessageViewModel.NewMessage.Type == NewMessageActionType.Reply)
+            {
+                this.UserName.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                this.UserName.SelectionStart = 1;
+                this.UserName.Focus();
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var newMessage = IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(Const.PageNameEnum.NewMessagePage);
-            if (newMessage != null && newMessage.Type == NewMessageActionType.Reply)
-            {
-                this.UserName.IsEnabled = false;
-            }
             newMessageViewModel.NewMessage = newMessage;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             base.OnNavigatedFrom(e);
-            if (newMessageViewModel.NewMessage != null)
+            if (newMessageViewModel.NewMessage.Text != null)
             {
                 IsolatedStorageService.CreateObject(Const.PageNameEnum.NewMessagePage, newMessageViewModel.NewMessage);
             }

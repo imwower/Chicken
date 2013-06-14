@@ -124,6 +124,8 @@ namespace Chicken.ViewModel.NewMessage
                 base.Refreshed();
                 return;
             }
+            Header += " " + newMessage.User.ScreenName;
+
             #region init from file
             var file = IsolatedStorageService.GetLatestMessages();
             if (file != null)
@@ -273,6 +275,7 @@ namespace Chicken.ViewModel.NewMessage
             var conversation = IsolatedStorageService.GetMessages(newMessage.User.Id);
             if (conversation != null)
             {
+                Messages.Clear();
                 var msgs = conversation.Messages.OrderBy(m => m.Id);
                 foreach (var msg in msgs)
                 {

@@ -34,7 +34,7 @@
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
         <!--whom to send to-->
-        <TextBox x:Name="UserName" Grid.Row="1" Text="{Binding Path=NewMessage.User.ScreenName}" />
+        <TextBox x:Name="UserName" Grid.Row="1" Text="@" />
         <!--conversation list-->
         <ctrls:AutoGrid Grid.Row="2" Margin="4">
             <i:Interaction.Triggers>
@@ -172,6 +172,7 @@
                 </ScrollViewer.Content>
             </ScrollViewer>
         </ctrls:AutoGrid>
+        <!--text-->
         <Grid Grid.Row="3" Margin="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />

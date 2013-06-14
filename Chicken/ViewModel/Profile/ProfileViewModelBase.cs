@@ -10,17 +10,17 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        private User user;
-        public User User
+        private User userProfile;
+        public User UserProfile
         {
             get
             {
-                return user;
+                return userProfile;
             }
             set
             {
-                user = value;
-                RaisePropertyChanged("User");
+                userProfile = value;
+                RaisePropertyChanged("UserProfile");
             }
         }
 
@@ -78,7 +78,7 @@ namespace Chicken.ViewModel.Profile
             NewTweetModel newTweet = new NewTweetModel
             {
                 Type = NewTweetActionType.Mention,
-                Text = User.ScreenName + " ",
+                Text = UserProfile.ScreenName + " ",
             };
             IsLoading = false;
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
@@ -93,7 +93,7 @@ namespace Chicken.ViewModel.Profile
             var newMessage = new NewMessageModel
             {
                 Type = NewMessageActionType.Reply,
-                User = user,
+                User = userProfile,
             };
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
         }
@@ -102,14 +102,14 @@ namespace Chicken.ViewModel.Profile
         #region private method
         private void ClickAction(object parameter)
         {
-            var userProfile = parameter as User;
-            if (User.Id == userProfile.Id)
+            var user = parameter as User;
+            if (UserProfile.Id == user.Id)
             {
                 NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);
             }
             else
             {
-                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, userProfile);
+                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
             }
         }
         #endregion

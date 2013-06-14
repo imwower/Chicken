@@ -251,7 +251,7 @@
                         CommandParameter="{Binding User}">
                     <Button.Template>
                         <ControlTemplate>
-                            <ctrls:ImageContainer ImageSource="{Binding Path=User.ProfileImage}"
+                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}"
                                                   Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
