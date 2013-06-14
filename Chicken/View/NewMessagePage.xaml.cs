@@ -32,22 +32,16 @@ namespace Chicken.View
             {
                 newMessageViewModel.Refresh();
             }
-            if (newMessageViewModel.NewMessage != null && newMessageViewModel.NewMessage.Type == NewMessageActionType.Reply)
-            {
-                this.UserName.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                this.UserName.SelectionStart = 1;
-                this.UserName.Focus();
-            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             var newMessage = IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(Const.PageNameEnum.NewMessagePage);
-            newMessageViewModel.NewMessage = newMessage;
+            if (newMessage != null)
+            {
+                newMessageViewModel.NewMessage = newMessage;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -70,7 +64,9 @@ namespace Chicken.View
             }
             else
             {
-                this.newMessageViewModel.NewMessage.Text = this.TextContent.Text;
+                var textbox = sender as TextBox;
+                var binding = textbox.GetBindingExpression(TextBox.TextProperty);
+                binding.UpdateSource();
             }
             this.TextCounter.Text = remain.ToString();
         }
@@ -128,14 +124,17 @@ namespace Chicken.View
         {
             if (e.Key == Key.Enter)
             {
-                string username = this.UserName.Text.Replace("@", "").Replace(" ", "");
-                if (!string.IsNullOrEmpty(username))
-                {
-                    newMessageViewModel.NewMessage.User.DisplayName = username;
-                    this.TextContent.Focus();
-                }
+                this.TextContent.Focus();
             }
         }
         #endregion
+
+        private void UserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //string username = this.UserName.Text.Replace("@", "").Replace(" ", "");
+            var textbox = sender as TextBox;
+            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
+        }
     }
 }

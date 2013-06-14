@@ -157,10 +157,10 @@
         Mention = 4,
     }
 
-    public enum NewMessageActionType
-    {
-        None = 0,
-        PostNew = 1,
-        Reply = 2,
-    }
+    //public enum NewMessageActionType
+    //{
+    //    None = 0,
+    //    PostNew = 1,
+    //    Reply = 2,
+    //}
 }

@@ -34,8 +34,11 @@
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
         <!--whom to send to-->
-        <TextBox x:Name="UserName" Grid.Row="1" Text="@"
-                KeyDown="UserName_KeyDown" />
+        <TextBox x:Name="UserName" Grid.Row="1"
+                 Visibility="{Binding Path=IsNew,Converter={StaticResource BooleanToVisibilityConverter}}"
+                 Text="{Binding Path=User.DisplayName,Mode=TwoWay}"
+                 TextChanged="UserName_TextChanged"
+                 KeyDown="UserName_KeyDown" />
         <!--conversation list-->
         <ctrls:AutoGrid Grid.Row="2" Margin="4">
             <i:Interaction.Triggers>
@@ -187,6 +190,7 @@
             <TextBox x:Name="TextContent" Grid.Column="1"
                      Style="{StaticResource TextBoxContent}"
                      TextAlignment="Left"
+                     Text="{Binding Path=Text,Mode=TwoWay}"
                      TextChanged="TextContent_TextChanged"
                      GotFocus="TextContent_GotFocus"
                      MaxHeight="400" MaxLength="400" />
@@ -211,8 +215,8 @@
                 <abu:AppBar Id="0">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
                                       Text="emotion" Command="{Binding AddEmotionCommand}" />
                 </abu:AppBar>
@@ -220,8 +224,8 @@
                 <abu:AppBar Id="3">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
                                       Text="emotion" Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>

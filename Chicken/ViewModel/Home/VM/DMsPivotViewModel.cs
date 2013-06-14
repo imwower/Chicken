@@ -203,7 +203,6 @@ namespace Chicken.ViewModel.Home.VM
         {
             var newMessage = new NewMessageModel
             {
-                Type = NewMessageActionType.Reply,
                 User = user as User,
             };
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);

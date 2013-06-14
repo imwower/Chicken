@@ -47,11 +47,7 @@ namespace Chicken.ViewModel.Home
 
         private void NewMessage()
         {
-            var newMessage = new NewMessageModel
-            {
-                Type = NewMessageActionType.PostNew
-            };
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage);
         }
     }
 }

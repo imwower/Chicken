@@ -80,8 +80,8 @@
                                       Text="send" Command="{Binding SendCommand}" />
                     <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
                                       Text="image" Command="{Binding AddImageCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
                                       Text="emotion" Command="{Binding AddEmotionCommand}" />
                 </abu:AppBar>
@@ -91,8 +91,8 @@
                                       Text="send" Command="{Binding SendCommand}" />
                     <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
                                       Text="image" Command="{Binding AddImageCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
+                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
                                       Text="emotion" Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>

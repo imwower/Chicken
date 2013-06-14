@@ -4,7 +4,7 @@ namespace Chicken.Model
 {
     public class NewMessageModel
     {
-        public NewMessageActionType Type { get; set; }
+        public bool IsNew { get; set; }
 
         public User User { get; set; }
 

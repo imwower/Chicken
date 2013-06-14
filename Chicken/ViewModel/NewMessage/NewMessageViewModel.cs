@@ -25,6 +25,7 @@ namespace Chicken.ViewModel.NewMessage
         private bool hasMoreMsgs = true;
         private bool hasMoreMsgsByMe = true;
         private Dictionary<string, Conversation> dict;
+
         private ObservableCollection<DirectMessageViewModel> messages;
         public ObservableCollection<DirectMessageViewModel> Messages
         {
@@ -51,17 +52,42 @@ namespace Chicken.ViewModel.NewMessage
                 RaisePropertyChanged("State");
             }
         }
-        private NewMessageModel newMessage;
-        public NewMessageModel NewMessage
+
+        public NewMessageModel NewMessage { get; set; }
+        public string Text
         {
             get
             {
-                return newMessage;
+                return NewMessage.Text;
             }
             set
             {
-                newMessage = value;
-                RaisePropertyChanged("NewMessage");
+                NewMessage.Text = value;
+                RaisePropertyChanged("Text");
+            }
+        }
+        public bool IsNew
+        {
+            get
+            {
+                return NewMessage.IsNew;
+            }
+            set
+            {
+                NewMessage.IsNew = value;
+                RaisePropertyChanged("IsNew");
+            }
+        }
+        public User User
+        {
+            get
+            {
+                return NewMessage.User;
+            }
+            set
+            {
+                NewMessage.User = value;
+                RaisePropertyChanged("User");
             }
         }
         #endregion
@@ -111,7 +137,7 @@ namespace Chicken.ViewModel.NewMessage
             dict = new Dictionary<string, Conversation>();
             latestMessages = new LatestMessagesModel();
             Messages = new ObservableCollection<DirectMessageViewModel>();
-            newMessage = new NewMessageModel();
+            NewMessage = new NewMessageModel { IsNew = true };
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
             ClickHandler = this.ClickAction;
@@ -119,13 +145,13 @@ namespace Chicken.ViewModel.NewMessage
 
         private void RefreshAction()
         {
-            if (newMessage.Type != NewMessageActionType.Reply)
+            if (IsNew)
             {
-                newMessage.User = new User();
+                User = new User();
                 base.Refreshed();
                 return;
             }
-            Header += " " + newMessage.User.ScreenName;
+            Header += " " + User.ScreenName;
 
             #region init from file
             var file = IsolatedStorageService.GetLatestMessages();
@@ -273,7 +299,7 @@ namespace Chicken.ViewModel.NewMessage
 
         private void FinishRefreshing()
         {
-            var conversation = IsolatedStorageService.GetMessages(newMessage.User.Id);
+            var conversation = IsolatedStorageService.GetMessages(NewMessage.User.Id);
             if (conversation != null)
             {
                 Messages.Clear();
@@ -283,8 +309,10 @@ namespace Chicken.ViewModel.NewMessage
                     Messages.Add(new DirectMessageViewModel(msg));
                 }
             }
+            ScrollTo = ScrollTo.Bottom;
             base.Refreshed();
-            base.Loaded();
+            list.Clear();
+            dict.Clear();
             IsolatedStorageService.AddLatestMessages(latestMessages);
         }
 
@@ -292,8 +320,6 @@ namespace Chicken.ViewModel.NewMessage
         {
             if (hasMoreMsgs && hasMoreMsgsByMe)
             {
-                list.Clear();
-                dict.Clear();
                 GetReceivedMessages(true);
             }
             else
@@ -311,12 +337,15 @@ namespace Chicken.ViewModel.NewMessage
         #region actions
         private void SendAction()
         {
-            if (string.IsNullOrEmpty(newMessage.Text) ||
-                string.IsNullOrEmpty(newMessage.User.DisplayName))
+            if (string.IsNullOrEmpty(NewMessage.Text))
             {
-                return;
+                User.DisplayName = User.DisplayName.Replace("@", "").Replace(" ", "");
+                if (string.IsNullOrEmpty(User.DisplayName))
+                {
+                    return;
+                }
             }
-            TweetService.PostNewMessage<ModelBase>(newMessage.User.DisplayName, newMessage.Text,
+            TweetService.PostNewMessage<ModelBase>(NewMessage.User.DisplayName, NewMessage.Text,
                 model =>
                 {
                     List<ErrorMessage> errors = model.Errors;
@@ -326,10 +355,11 @@ namespace Chicken.ViewModel.NewMessage
                     }
                     else
                     {
-                        newMessage.Text = string.Empty;
-                        list.Clear();
-                        dict.Clear();
-                        GetReceivedMessages();
+                        //TODO: new user name
+                        Text = string.Empty;
+                        IsNew = false;
+                        Messages.Clear();
+                        RefreshAction();
                     }
                 });
         }

@@ -92,7 +92,6 @@ namespace Chicken.ViewModel.Profile
             }
             var newMessage = new NewMessageModel
             {
-                Type = NewMessageActionType.Reply,
                 User = userProfile,
             };
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
