@@ -126,7 +126,8 @@ namespace Chicken.Service.Implementation
         #region new message
         public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
         {
-            string url = "SampleData/direct_message_post_new_message.json";
+            //string url = "SampleData/direct_message_post_new_message.json";
+            string url = "SampleData/not_following_you.json";
             HandleWebRequest<T>(url, callBack);
         }
         #endregion

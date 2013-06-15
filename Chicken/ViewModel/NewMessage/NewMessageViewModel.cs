@@ -148,10 +148,26 @@ namespace Chicken.ViewModel.NewMessage
         {
             if (!ValidateUserName())
             {
+                HasError = true;
                 return;
             }
+            TweetService.GetFriendshipConnections<Friendships<Friendship>>(User.Id,
+                friendships =>
+                {
+                    //user existes or not:
+                    List<ErrorMessage> errors = friendships.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        //
+                    }
+                    Friendship friendship = friendships[0];
+                    List<string> connections = friendship.Connections;
+                    if (!connections.Contains(Const.FOLLOWED_BY))
+                    {
+                        HasError = true;
+                    }
 
-
+                });
         }
 
         #region actions
@@ -223,7 +239,7 @@ namespace Chicken.ViewModel.NewMessage
                     List<ErrorMessage> errors = message.Errors;
                     if (errors != null && errors.Count != 0)
                     {
-                        //error
+                        HandleError(errors[0]);
                     }
                     else
                     {
@@ -418,6 +434,10 @@ namespace Chicken.ViewModel.NewMessage
 
         private bool ValidateUserName()
         {
+            if (string.IsNullOrEmpty(User.DisplayName))
+            {
+                return false;
+            }
             User.DisplayName = User.DisplayName.Replace("@", "").Replace(" ", "");
             if (string.IsNullOrEmpty(User.DisplayName))
             {

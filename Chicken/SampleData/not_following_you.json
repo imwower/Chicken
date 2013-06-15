@@ -1,0 +1,8 @@
+﻿{
+    "errors": [
+        {
+            "message": "You cannot send messages to users who are not following you", 
+            "code": 150
+        }
+    ]
+}

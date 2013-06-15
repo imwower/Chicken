@@ -7,7 +7,6 @@ namespace Chicken.Model
     public class ModelBase
     {
         [JsonProperty("errors")]
-        [DefaultValue(null)]
         public List<ErrorMessage> Errors { get; set; }
     }
 

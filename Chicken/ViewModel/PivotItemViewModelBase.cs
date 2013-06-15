@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Threading;
+using System.Windows;
+using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Model;
 
 namespace Chicken.ViewModel
 {
@@ -12,10 +12,12 @@ namespace Chicken.ViewModel
         #region event handler
         protected delegate void LoadEventHandler();
         protected delegate void ClickEventHandler(object parameter);
+        public delegate void ErrorEventHandler(ErrorMessage errorMessage);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
         protected ClickEventHandler ClickHandler;
         protected ClickEventHandler ItemClickHandler;
+        public ErrorEventHandler ErrorHandler;
         #endregion
 
         #region properties
@@ -30,6 +32,19 @@ namespace Chicken.ViewModel
             {
                 header = value;
                 RaisePropertyChanged("Header");
+            }
+        }
+        private bool hasError;
+        public bool HasError
+        {
+            get
+            {
+                return hasError;
+            }
+            set
+            {
+                hasError = value;
+                RaisePropertyChanged("HasError");
             }
         }
         private bool isLoading;
@@ -134,26 +149,6 @@ namespace Chicken.ViewModel
         #endregion
 
         #region public method
-        public virtual void Refresh()
-        {
-            if (RefreshHandler == null)
-            {
-                return;
-            }
-            Thread.Sleep(1000);
-            if (worker.IsBusy)
-            {
-                return;
-            }
-            else
-            {
-                IsLoading = true;
-                worker.DoWork += DoRefresh;
-                worker.RunWorkerCompleted += RefreshCompleted;
-                worker.RunWorkerAsync();
-            }
-        }
-
         public virtual void Load()
         {
             if (LoadHandler == null)
@@ -170,6 +165,26 @@ namespace Chicken.ViewModel
                 IsLoading = true;
                 worker.DoWork += DoLoad;
                 worker.RunWorkerCompleted += LoadCompleted;
+                worker.RunWorkerAsync();
+            }
+        }
+
+        public virtual void Refresh()
+        {
+            if (RefreshHandler == null)
+            {
+                return;
+            }
+            Thread.Sleep(1000);
+            if (worker.IsBusy)
+            {
+                return;
+            }
+            else
+            {
+                IsLoading = true;
+                worker.DoWork += DoRefresh;
+                worker.RunWorkerCompleted += RefreshCompleted;
                 worker.RunWorkerAsync();
             }
         }
@@ -210,6 +225,14 @@ namespace Chicken.ViewModel
             }
             IsLoading = false;
             ItemClickHandler(parameter);
+        }
+
+        public virtual void HandleError(ErrorMessage message)
+        {
+            if (ErrorHandler != null)
+            {
+                ErrorHandler(message);
+            }
         }
         #endregion
 
@@ -259,7 +282,7 @@ namespace Chicken.ViewModel
         #endregion
         #endregion
 
-        #region
+        #region refreshed
         protected void Refreshed()
         {
             IsLoading = false;
