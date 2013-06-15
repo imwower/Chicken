@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Windows;
 using System.Windows.Controls;
@@ -46,6 +47,27 @@ namespace Chicken.Controls
             }
             #endregion
 
+            #region cache
+            if (pngCache.ContainsKey(newValue))
+            {
+                Image pngImageControl = new Image();
+                pngImageControl.Stretch = Stretch.Fill;
+                pngImageControl.Source = pngCache[newValue];
+                container.grid.Children.Add(pngImageControl);
+                container.grid.Children.Remove(container.placehold);
+                return;
+            }
+            else if (gifCache.ContainsKey(newValue))
+            {
+                AnimatedImage gifImageControl = new AnimatedImage();
+                gifImageControl.Stretch = Stretch.Fill;
+                gifImageControl.Source = gifCache[newValue];
+                container.grid.Children.Add(gifImageControl);
+                container.grid.Children.Remove(container.placehold);
+                return;
+            }
+            #endregion
+
             #region action
             EventHandler<RoutedEventArgs> pngCompleted = null;
             OpenReadCompletedEventHandler gifCompleted = null;
@@ -57,6 +79,7 @@ namespace Chicken.Controls
                 pngImageControl.Stretch = Stretch.Fill;
                 var bitmapImage = pngImage as BitmapImage;
                 pngImageControl.Source = bitmapImage;
+                pngCache[newValue] = bitmapImage;
                 container.grid.Children.Add(pngImageControl);
                 container.grid.Children.Remove(container.placehold);
                 bitmapImage.ImageOpened -= pngCompleted;
@@ -69,6 +92,7 @@ namespace Chicken.Controls
                 gifImageControl.Stretch = Stretch.Fill;
                 var extendedImage = gifImage as ExtendedImage;
                 gifImageControl.Source = extendedImage;
+                gifCache[newValue] = extendedImage;
                 container.grid.Children.Add(gifImageControl);
                 container.grid.Children.Remove(container.placehold);
                 extendedImage.DownloadCompleted -= gifCompleted;
@@ -85,14 +109,16 @@ namespace Chicken.Controls
             };
             #endregion
             #endregion
-
             BitmapImage image = new BitmapImage();
-            image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            image.CreateOptions = BitmapCreateOptions.None;
             image.ImageOpened += new EventHandler<RoutedEventArgs>(pngCompleted);
             image.ImageFailed += new EventHandler<ExceptionRoutedEventArgs>(pngFailed);
 
             image.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
         }
+
+        private static Dictionary<string, BitmapImage> pngCache = new Dictionary<string, BitmapImage>();
+        private static Dictionary<string, ExtendedImage> gifCache = new Dictionary<string, ExtendedImage>();
 
         public ImageContainer()
         {
