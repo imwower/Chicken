@@ -215,37 +215,41 @@ namespace Chicken.Service.Implementation
         private void HandleResponse<T>(IAsyncResult result)
         {
             var dto = result.AsyncState as RequestDataObject<T>;
-#if RELEASE
             try
-            { 
-#endif
-            var response = dto.Request.EndGetResponse(result);
-            using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
-                using (var reader = new JsonTextReader(streamReader))
+                var response = dto.Request.EndGetResponse(result);
+                using (var streamReader = new StreamReader(response.GetResponseStream()))
                 {
-                    dto.Result = jsonSerializer.Deserialize<T>(reader);
+                    using (var reader = new JsonTextReader(streamReader))
+                    {
+                        dto.Result = jsonSerializer.Deserialize<T>(reader);
+                    }
                 }
             }
-#if RELEASE
-		            }
+            catch (WebException webException)
+            {
+                using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
+                {
+                    using (var reader = new JsonTextReader(streamReader))
+                    {
+                        dto.Result = jsonSerializer.Deserialize<T>(reader);
+                    }
+                } 
+            }
             catch (Exception e)
             {
             }
             finally
-            {  
-#endif
-            if (dto.CallBack != null)
             {
-                Deployment.Current.Dispatcher.BeginInvoke(
-                    () =>
-                    {
-                        dto.CallBack(dto.Result);
-                    });
+                if (dto.CallBack != null)
+                {
+                    Deployment.Current.Dispatcher.BeginInvoke(
+                        () =>
+                        {
+                            dto.CallBack(dto.Result);
+                        });
+                }
             }
-#if RELEASE
-		            }  
-#endif
         }
 
         public static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)

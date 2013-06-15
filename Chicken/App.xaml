@@ -287,8 +287,7 @@
                                                Style="{StaticResource TweetScreenName}" />
                                     <!--text-->
                                     <ctrls:AutoRichTextBox Grid.Row="2" TweetData="{Binding}"
-                                                           HorizontalAlignment="Stretch" TextAlignment="Left">
-                                    </ctrls:AutoRichTextBox>
+                                                           HorizontalAlignment="Stretch" TextAlignment="Left" />
                                     <Grid Grid.Row="3" Opacity="0.6" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>
                                             <RowDefinition />

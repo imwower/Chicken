@@ -37,13 +37,17 @@
         <TextBox x:Name="UserName" Grid.Row="1"
                  Visibility="{Binding Path=IsNew,Converter={StaticResource BooleanToVisibilityConverter}}"
                  Text="{Binding Path=User.DisplayName,Mode=TwoWay}"
+                 InputScope="NameOrPhoneNumber"
                  TextChanged="UserName_TextChanged"
                  KeyDown="UserName_KeyDown" />
         <!--conversation list-->
-        <ctrls:AutoGrid Grid.Row="2" Margin="4">
+        <ctrls:AutoGrid Grid.Row="2" Margin="4" ScrollTo="{Binding Path=ScrollTo}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="VerticalCompressionTopHandler">
                     <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                    <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ScrollViewer

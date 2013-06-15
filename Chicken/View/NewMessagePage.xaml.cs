@@ -45,7 +45,7 @@ namespace Chicken.View
             }
             else
             {
-                newMessageViewModel.NewMessage.IsNew = true;
+                newMessageViewModel.IsNew = true;
             }
         }
 

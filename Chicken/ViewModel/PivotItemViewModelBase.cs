@@ -176,12 +176,12 @@ namespace Chicken.ViewModel
 
         public virtual void ScrollToTop()
         {
-            ScrollTo = Common.ScrollTo.Top;
+            ScrollTo = ScrollTo.Top;
         }
 
         public virtual void ScrollToBottom()
         {
-            ScrollTo = Common.ScrollTo.Bottom;
+            ScrollTo = ScrollTo.Bottom;
         }
 
         public virtual void Click(object parameter)

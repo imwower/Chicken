@@ -25,6 +25,7 @@ namespace Chicken.ViewModel.NewMessage
         private bool hasMoreMsgs = true;
         private bool hasMoreMsgsByMe = true;
         private Dictionary<string, Conversation> dict;
+        private bool followedBy;
 
         private ObservableCollection<DirectMessageViewModel> messages;
         public ObservableCollection<DirectMessageViewModel> Messages
@@ -143,6 +144,17 @@ namespace Chicken.ViewModel.NewMessage
             ClickHandler = this.ClickAction;
         }
 
+        public void GetFriendship()
+        {
+            if (!ValidateUserName())
+            {
+                return;
+            }
+
+
+        }
+
+        #region actions
         private void RefreshAction()
         {
             if (IsNew)
@@ -164,6 +176,86 @@ namespace Chicken.ViewModel.NewMessage
             GetReceivedMessages();
         }
 
+        private void LoadAction()
+        {
+            if (hasMoreMsgs && hasMoreMsgsByMe)
+            {
+                GetReceivedMessages(true);
+            }
+            else
+            {
+                LoadHandler = null;
+                base.Loaded();
+            }
+        }
+
+        private void ClickAction(object parameter)
+        {
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+        }
+
+        private void SendAction()
+        {
+            #region validate user name and text
+            if (IsLoading)
+            {
+                return;
+            }
+            if (string.IsNullOrEmpty(NewMessage.Text))
+            {
+                return;
+            }
+            else
+            {
+                if (!ValidateUserName())
+                {
+                    return;
+                }
+            }
+            #endregion
+            #region validate friendship
+
+            #endregion
+            #region post new message
+            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.DisplayName, NewMessage.Text,
+                message =>
+                {
+                    List<ErrorMessage> errors = message.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        //error
+                    }
+                    else
+                    {
+                        this.User = message.User;
+                        Text = string.Empty;
+                        IsNew = false;
+                        RefreshAction();
+                    }
+                });
+            #endregion
+        }
+
+        private void AddEmotionAction()
+        {
+            if (AddEmotionHandler != null)
+            {
+                State = AppBarState.AddEmotion;
+                AddEmotionHandler();
+            }
+        }
+
+        private void KeyboardAction()
+        {
+            if (KeyboardHandler != null)
+            {
+                State = AppBarState.Default;
+                KeyboardHandler();
+            }
+        }
+        #endregion
+
+        #region private
         private void GetReceivedMessages(bool isLoadAction = false)
         {
             #region parameters
@@ -292,94 +384,46 @@ namespace Chicken.ViewModel.NewMessage
                     #endregion
 
                     #region finish
-                    FinishRefreshing();
+                    FinishRefreshing(isLoadAction);
                     #endregion
                 }, parameters);
         }
 
-        private void FinishRefreshing()
+        private void FinishRefreshing(bool isLoadAction = false)
         {
             var conversation = IsolatedStorageService.GetMessages(NewMessage.User.Id);
             if (conversation != null)
             {
-                Messages.Clear();
+                var lastId = Messages.Count == 0 ? string.Empty : Messages.Last().Id;
                 var msgs = conversation.Messages.OrderBy(m => m.Id);
                 foreach (var msg in msgs)
                 {
-                    Messages.Add(new DirectMessageViewModel(msg));
+                    if (string.Compare(msg.Id, lastId) > 0)
+                        Messages.Add(new DirectMessageViewModel(msg));
                 }
             }
-            ScrollTo = ScrollTo.Bottom;
+            if (isLoadAction)
+            {
+                ScrollTo = ScrollTo.Top;
+            }
+            else
+            {
+                ScrollTo = ScrollTo.Bottom;
+            }
             base.Refreshed();
             list.Clear();
             dict.Clear();
             IsolatedStorageService.AddLatestMessages(latestMessages);
         }
 
-        private void LoadAction()
+        private bool ValidateUserName()
         {
-            if (hasMoreMsgs && hasMoreMsgsByMe)
+            User.DisplayName = User.DisplayName.Replace("@", "").Replace(" ", "");
+            if (string.IsNullOrEmpty(User.DisplayName))
             {
-                GetReceivedMessages(true);
+                return false;
             }
-            else
-            {
-                LoadHandler = null;
-                base.Loaded();
-            }
-        }
-
-        private void ClickAction(object parameter)
-        {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
-        }
-
-        #region actions
-        private void SendAction()
-        {
-            if (string.IsNullOrEmpty(NewMessage.Text))
-            {
-                User.DisplayName = User.DisplayName.Replace("@", "").Replace(" ", "");
-                if (string.IsNullOrEmpty(User.DisplayName))
-                {
-                    return;
-                }
-            }
-            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.DisplayName, NewMessage.Text,
-                message =>
-                {
-                    List<ErrorMessage> errors = message.Errors;
-                    if (errors != null && errors.Count != 0)
-                    {
-                        //error
-                    }
-                    else
-                    {
-                        this.User = message.User;
-                        Text = string.Empty;
-                        IsNew = false;
-                        Messages.Clear();
-                        RefreshAction();
-                    }
-                });
-        }
-
-        private void AddEmotionAction()
-        {
-            if (AddEmotionHandler != null)
-            {
-                State = AppBarState.AddEmotion;
-                AddEmotionHandler();
-            }
-        }
-
-        private void KeyboardAction()
-        {
-            if (KeyboardHandler != null)
-            {
-                State = AppBarState.Default;
-                KeyboardHandler();
-            }
+            return true;
         }
         #endregion
     }
