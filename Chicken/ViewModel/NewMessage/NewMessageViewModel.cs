@@ -137,7 +137,7 @@ namespace Chicken.ViewModel.NewMessage
             dict = new Dictionary<string, Conversation>();
             latestMessages = new LatestMessagesModel();
             Messages = new ObservableCollection<DirectMessageViewModel>();
-            NewMessage = new NewMessageModel { IsNew = true };
+            NewMessage = new NewMessageModel();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
             ClickHandler = this.ClickAction;
@@ -151,7 +151,7 @@ namespace Chicken.ViewModel.NewMessage
                 base.Refreshed();
                 return;
             }
-            Header += " " + User.ScreenName;
+            Header = User.ScreenName;
 
             #region init from file
             var file = IsolatedStorageService.GetLatestMessages();
@@ -345,17 +345,17 @@ namespace Chicken.ViewModel.NewMessage
                     return;
                 }
             }
-            TweetService.PostNewMessage<ModelBase>(NewMessage.User.DisplayName, NewMessage.Text,
-                model =>
+            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.DisplayName, NewMessage.Text,
+                message =>
                 {
-                    List<ErrorMessage> errors = model.Errors;
+                    List<ErrorMessage> errors = message.Errors;
                     if (errors != null && errors.Count != 0)
                     {
                         //error
                     }
                     else
                     {
-                        //TODO: new user name
+                        this.User = message.User;
                         Text = string.Empty;
                         IsNew = false;
                         Messages.Clear();

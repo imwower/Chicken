@@ -61,7 +61,6 @@ namespace Chicken.Controls
                 container.grid.Children.Remove(container.placehold);
                 bitmapImage.ImageOpened -= pngCompleted;
                 bitmapImage.ImageFailed -= pngFailed;
-                container.UpdateLayout();
             };
 
             gifCompleted = delegate(object gifImage, OpenReadCompletedEventArgs gifArgs)
@@ -79,18 +78,20 @@ namespace Chicken.Controls
             pngFailed = delegate(object imageFailed, ExceptionRoutedEventArgs failedArgs)
             {
                 ExtendedImage gifImage = new ExtendedImage();
-                gifImage.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
-                gifImage.DownloadCompleted += gifCompleted;
+                gifImage.DownloadCompleted += new OpenReadCompletedEventHandler(gifCompleted);
                 (imageFailed as BitmapImage).ImageFailed -= pngFailed;
+
+                gifImage.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
             };
             #endregion
             #endregion
 
             BitmapImage image = new BitmapImage();
-            image.CreateOptions = BitmapCreateOptions.None;
+            image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            image.ImageOpened += new EventHandler<RoutedEventArgs>(pngCompleted);
+            image.ImageFailed += new EventHandler<ExceptionRoutedEventArgs>(pngFailed);
+
             image.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
-            image.ImageOpened += pngCompleted;
-            image.ImageFailed += pngFailed;
         }
 
         public ImageContainer()

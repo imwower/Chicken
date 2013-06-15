@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
@@ -6,8 +8,6 @@ using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewMessage;
 using Microsoft.Phone.Controls;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace Chicken.View
 {
@@ -26,6 +26,7 @@ namespace Chicken.View
             this.Loaded += NewMessagePage_Loaded;
         }
 
+        #region navigate to
         void NewMessagePage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!newMessageViewModel.IsInited)
@@ -42,6 +43,10 @@ namespace Chicken.View
             {
                 newMessageViewModel.NewMessage = newMessage;
             }
+            else
+            {
+                newMessageViewModel.NewMessage.IsNew = true;
+            }
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
@@ -52,6 +57,7 @@ namespace Chicken.View
                 IsolatedStorageService.CreateObject(Const.PageNameEnum.NewMessagePage, newMessageViewModel.NewMessage);
             }
         }
+        #endregion
 
         #region text content
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
@@ -127,14 +133,13 @@ namespace Chicken.View
                 this.TextContent.Focus();
             }
         }
-        #endregion
 
         private void UserName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //string username = this.UserName.Text.Replace("@", "").Replace(" ", "");
             var textbox = sender as TextBox;
             var binding = textbox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
         }
+        #endregion
     }
 }
