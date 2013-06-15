@@ -185,6 +185,23 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region new message
+        public void GetUser<T>(string screenName, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.USER_SCREEN_NAME, screenName);
+            parameters.Add(Const.INCLUDE_ENTITIES, Const.DEFAULT_VALUE_FALSE);
+            string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetFriendships<T>(string screenNameList, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.USER_SCREEN_NAME, screenNameList);
+            string url = TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_LOOKUP, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
         public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
@@ -234,7 +251,7 @@ namespace Chicken.Service.Implementation
                     {
                         dto.Result = jsonSerializer.Deserialize<T>(reader);
                     }
-                } 
+                }
             }
             catch (Exception e)
             {

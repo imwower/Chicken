@@ -12,12 +12,12 @@ namespace Chicken.ViewModel
         #region event handler
         protected delegate void LoadEventHandler();
         protected delegate void ClickEventHandler(object parameter);
-        public delegate void ErrorEventHandler(ErrorMessage errorMessage);
+        public delegate void ToastMessageEventHandler(ToastMessage toastMessage);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
         protected ClickEventHandler ClickHandler;
         protected ClickEventHandler ItemClickHandler;
-        public ErrorEventHandler ErrorHandler;
+        public ToastMessageEventHandler ToastMessageHandler;
         #endregion
 
         #region properties
@@ -227,11 +227,11 @@ namespace Chicken.ViewModel
             ItemClickHandler(parameter);
         }
 
-        public virtual void HandleError(ErrorMessage message)
+        public virtual void HandleError(ToastMessage message)
         {
-            if (ErrorHandler != null)
+            if (ToastMessageHandler != null)
             {
-                ErrorHandler(message);
+                ToastMessageHandler(message);
             }
         }
         #endregion

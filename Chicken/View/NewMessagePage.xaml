@@ -32,7 +32,8 @@
             </Style>
         </Grid.Resources>
         <!--title-->
-        <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
+        <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}"
+                 Foreground="{Binding HasError, Converter={StaticResource BooleanToFillConverter}}"  />
         <!--whom to send to-->
         <TextBox x:Name="UserName" Grid.Row="1"
                  Visibility="{Binding Path=IsNew,Converter={StaticResource BooleanToVisibilityConverter}}"
@@ -51,7 +52,7 @@
                 </i:EventTrigger>
             </i:Interaction.Triggers>
             <ScrollViewer
-                HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
                 HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ScrollViewer.Content>
                     <!--conversation-->

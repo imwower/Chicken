@@ -58,6 +58,7 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/friendships.json";
             HandleWebRequest<T>(url, callBack);
         }
+
         public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_timeline.json";
@@ -124,6 +125,18 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region new message
+        public void GetUser<T>(string screenName, Action<T> callBack)
+        {
+            string url = "SampleData/userProfile.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetFriendships<T>(string screenNameList, Action<T> callBack)
+        {
+            string url = "SampleData/friendships.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+
         public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
         {
             //string url = "SampleData/direct_message_post_new_message.json";
@@ -152,6 +165,5 @@ namespace Chicken.Service.Implementation
             }
         }
         #endregion
-
     }
 }

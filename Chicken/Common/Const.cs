@@ -3,7 +3,8 @@
     public class Const
     {
         //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
-        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/UT3I3O/1.1/";
+        //public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/UT3I3O/1.1/";
+        public static string API = "https://blog-lonzhu.rhcloud.com/weixin/o/6J8HA5/1.1/";
         public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
         public static string DEFAULT_COUNT_VALUE = "20";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "21";

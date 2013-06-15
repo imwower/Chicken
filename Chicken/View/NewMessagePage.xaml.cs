@@ -20,10 +20,12 @@ namespace Chicken.View
         public NewMessagePage()
         {
             InitializeComponent();
-            newMessageViewModel = new NewMessageViewModel();
-            newMessageViewModel.ErrorHandler = this.ErrorHandler;
-            newMessageViewModel.AddEmotionHandler = this.AddEmotionHandler;
-            newMessageViewModel.KeyboardHandler = this.KeyboardHandler;
+            newMessageViewModel = new NewMessageViewModel()
+            {
+                ToastMessageHandler = this.ToastMessageHandler,
+                AddEmotionHandler = this.AddEmotionHandler,
+                KeyboardHandler = this.KeyboardHandler
+            };
             this.DataContext = newMessageViewModel;
             this.Loaded += NewMessagePage_Loaded;
         }
@@ -51,14 +53,14 @@ namespace Chicken.View
             }
         }
 
-        protected override void OnNavigatedFrom(NavigationEventArgs e)
-        {
-            base.OnNavigatedFrom(e);
-            if (newMessageViewModel.NewMessage.Text != null)
-            {
-                IsolatedStorageService.CreateObject(Const.PageNameEnum.NewMessagePage, newMessageViewModel.NewMessage);
-            }
-        }
+        //protected override void OnNavigatedFrom(NavigationEventArgs e)
+        //{
+        //    base.OnNavigatedFrom(e);
+        //    if (newMessageViewModel.NewMessage.Text != null)
+        //    {
+        //        IsolatedStorageService.CreateObject(Const.PageNameEnum.NewMessagePage, newMessageViewModel.NewMessage);
+        //    }
+        //}
         #endregion
 
         #region text content
@@ -133,6 +135,7 @@ namespace Chicken.View
             if (e.Key == Key.Enter)
             {
                 this.TextContent.Focus();
+                newMessageViewModel.ValidateFriendship();
             }
         }
 
@@ -144,13 +147,12 @@ namespace Chicken.View
         }
         #endregion
 
-        #region error handler
-        private void ErrorHandler(ErrorMessage message)
+        #region message handler
+        private void ToastMessageHandler(ToastMessage message)
         {
             var toast = new ToastPrompt
             {
                 Message = message.Message,
-                TextWrapping = TextWrapping.Wrap,
             };
             toast.Show();
         }

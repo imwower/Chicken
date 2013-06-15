@@ -23,6 +23,7 @@ namespace Chicken.ViewModel.Home.VM
             Header = "Messages";
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
+            latestMessages = new LatestMessagesModel();
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
@@ -31,18 +32,13 @@ namespace Chicken.ViewModel.Home.VM
 
         private void RefreshAction()
         {
-            #region init from file
+            #region init
             var file = IsolatedStorageService.GetLatestMessages();
-            if (file == null)
-            {
-                latestMessages = new LatestMessagesModel();
-            }
-            else
+            if (file != null)
             {
                 latestMessages = file;
             }
             #endregion
-
             GetReceivedMessages();
         }
 
@@ -143,9 +139,8 @@ namespace Chicken.ViewModel.Home.VM
                     #endregion
 
                     #region group
-                    var group = list.OrderByDescending(m => m.Id).GroupBy(u => u.User.Id);
-
-                    foreach (var msgs in group)
+                    var groups = list.OrderByDescending(m => m.Id).GroupBy(u => u.User.Id);
+                    foreach (var msgs in groups)
                     {
                         foreach (var msg in msgs)
                         {
@@ -158,27 +153,38 @@ namespace Chicken.ViewModel.Home.VM
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
 
                         #region store latest msgs
-                        var first = msgs.First();
-                        if (latestMessages.Messages.ContainsKey(first.User.Id))
+                        if (!isLoadAction)
                         {
+                            var first = msgs.First();
                             latestMessages.Messages[first.User.Id] = first;
-                        }
-                        else
-                        {
-                            latestMessages.Messages.Add(first.User.Id, first);
                         }
                         #endregion
                     }
                     #endregion
-
                     #region finish
-                    var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
-                    foreach (var msg in latestmsgs)
+                    if (!isLoadAction)
                     {
-                        TweetList.Add(new TweetViewModel(msg));
+                        var latestmsgs = latestMessages.Messages.Values.OrderBy(m => m.Id);
+                        var latestId = TweetList.Count == 0 ? string.Empty : TweetList.First().Id;
+                        foreach (var msg in latestmsgs)
+                        {
+                            if (string.Compare(msg.Id, latestId) > 0)
+                                TweetList.Insert(0, new TweetViewModel(msg));
+                        }
+                    }
+                    else
+                    {
+                        var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
+                        var oldestId = TweetList.Count == 0 ? string.Empty : TweetList.Last().Id;
+                        foreach (var msg in latestmsgs)
+                        {
+                            if (string.Compare(msg.Id, oldestId) < 0)
+                                TweetList.Add(new TweetViewModel(msg));
+                        }
                     }
                     base.Refreshed();
-                    base.Loaded();
+                    list.Clear();
+                    dict.Clear();
                     IsolatedStorageService.AddLatestMessages(latestMessages);
                     #endregion
                 }, parameters);
@@ -188,8 +194,6 @@ namespace Chicken.ViewModel.Home.VM
         {
             if (hasMoreMsgs && hasMoreMsgsByMe)
             {
-                list.Clear();
-                dict.Clear();
                 GetReceivedMessages(true);
             }
             else

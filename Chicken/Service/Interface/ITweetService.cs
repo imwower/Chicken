@@ -50,6 +50,10 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region new message
+        void GetUser<T>(string screenName, Action<T> callBack);
+
+        void GetFriendships<T>(string screenNameList, Action<T> callBack);
+
         void PostNewMessage<T>(string userName, string text, Action<T> callBack);
         #endregion
     }
