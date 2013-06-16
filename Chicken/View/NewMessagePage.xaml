@@ -203,11 +203,7 @@
         </Grid>
         <!--emotion-->
         <Grid Grid.Row="4">
-            <ctrls:WrapPanel x:Name="EmotionPanel" Visibility="Collapsed">
-                <ctrls:WrapPanel.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource EmotionButton}" />
-                </ctrls:WrapPanel.Resources>
-            </ctrls:WrapPanel>
+            <ctrls:EmotionPanel x:Name="Emotions" Visibility="Collapsed" />
         </Grid>
         <!--progress bar-->
         <ProgressBar Grid.Row="5" IsIndeterminate="True"

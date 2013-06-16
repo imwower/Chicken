@@ -64,11 +64,7 @@
                     <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
                 </Rectangle.OpacityMask>
             </Rectangle>
-            <ctrls:WrapPanel x:Name="EmotionPanel">
-                <ctrls:WrapPanel.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource EmotionButton}" />
-                </ctrls:WrapPanel.Resources>
-            </ctrls:WrapPanel>
+            <ctrls:EmotionPanel x:Name="Emotions" />
         </Grid>
     </Grid>
 

@@ -104,6 +104,9 @@
     <Compile Include="Common\TwitterHelper.cs" />
     <Compile Include="Controls\AutoGrid.cs" />
     <Compile Include="Controls\AutoRichTextBox.cs" />
+    <Compile Include="Controls\EmotionPanel.xaml.cs">
+      <DependentUpon>EmotionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\HomePivotItem.cs" />
     <Compile Include="Controls\ImageContainer.xaml.cs">
       <DependentUpon>ImageContainer.xaml</DependentUpon>
@@ -320,6 +323,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\EmotionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ImageContainer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
