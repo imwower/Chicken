@@ -86,6 +86,7 @@ namespace Chicken.ViewModel.Home.VM
                             list.Add(message);
                         }
                         latestMessages.SinceId = messages.First().Id;
+                        latestMessages.MaxId = messages.Last().Id;
                     }
                     RefreshDirectMessagesSentByMe();
                 }, parameters);
@@ -113,6 +114,7 @@ namespace Chicken.ViewModel.Home.VM
                             list.Add(message);
                         }
                         latestMessages.SinceIdByMe = messages.First().Id;
+                        latestMessages.MaxIdByMe = messages.Last().Id;
                     }
                     #endregion
                     #region group

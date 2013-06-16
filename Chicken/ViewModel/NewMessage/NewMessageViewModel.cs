@@ -307,6 +307,7 @@ namespace Chicken.ViewModel.NewMessage
                             list.Add(message);
                         }
                         latestMessages.SinceId = messages.First().Id;
+                        latestMessages.MaxId = messages.Last().Id;
                     }
                     RefreshDirectMessagesSentByMe();
                 }, parameters);
@@ -334,6 +335,7 @@ namespace Chicken.ViewModel.NewMessage
                             list.Add(message);
                         }
                         latestMessages.SinceIdByMe = messages.First().Id;
+                        latestMessages.MaxIdByMe = messages.Last().Id;
                     }
                     #endregion
                     #region group
@@ -471,14 +473,7 @@ namespace Chicken.ViewModel.NewMessage
                     if (string.Compare(msg.Id, oldestId) < 0)
                         Messages.Insert(0, new DirectMessageViewModel(msg));
                 }
-                if (IsInited)
-                {
-                    ScrollTo = ScrollTo.Top;
-                }
-                else
-                {
-                    ScrollTo = ScrollTo.Bottom;
-                }
+                ScrollTo = ScrollTo.Top;
             }
             base.Loaded();
             list.Clear();
