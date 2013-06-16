@@ -4,11 +4,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewMessage;
 using Microsoft.Phone.Controls;
-using Chicken.Controls;
 
 namespace Chicken.View
 {
