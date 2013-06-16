@@ -222,9 +222,13 @@
                             <!--send message-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
                                       Command="{Binding Path=MessageCommand}" />
-                            <!--at the user-->
+                            <!--mention-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
                                       Command="{Binding Path=MentionCommand}" />
+                            <abu:AppBar.MenuItems>
+                                <abu:AppBarMenuItem Text="{Binding FollowButtonText}"
+                                                    Command="{Binding Path=FollowCommand}" />
+                            </abu:AppBar.MenuItems>
                         </abu:AppBar>
                         <abu:AppBar Id="1" Mode="Minimized">
                             <!--refresh-->
@@ -236,7 +240,7 @@
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
                                       Command="{Binding Path=BottomCommand}" />
-                            <!--at the user-->
+                            <!--mention-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
                                       Command="{Binding Path=MentionCommand}" />
                         </abu:AppBar>

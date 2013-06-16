@@ -56,6 +56,8 @@
 
         #region profile page
         public const string USERS_SHOW = "users/show.json";
+        public const string FRIENDSHIPS_CREATE = "friendships/create.json";
+        public const string FRIENDSHIPS_DESTROY = "friendships/destroy.json";
         public const string USER_TIMELINE = "statuses/user_timeline.json";
         public const string USER_FAVORITE = "favorites/list.json";
         public const string USER_FOLLOWING_IDS = "friends/ids.json";

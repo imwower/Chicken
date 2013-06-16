@@ -62,6 +62,18 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void FollowOrUnFollow<T>(User user, Action<T> callBack)
+        {
+            if (user == null)
+                return;
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.USER_ID, user.Id);
+            string url = user.IsFollowing ?
+                TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_DESTROY, parameters) :
+                TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_CREATE, parameters);
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
+
         /// <summary>
         /// comma-separated list
         /// </summary>

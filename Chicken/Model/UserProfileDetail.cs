@@ -47,9 +47,6 @@ namespace Chicken.Model
 
         [JsonProperty("favourites_count")]
         public string FavoritesCount { get; set; }
-
-        [JsonProperty("following")]
-        public bool IsFollowing { get; set; }
     }
 
     public class UserProfileEntities

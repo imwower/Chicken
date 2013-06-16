@@ -21,6 +21,8 @@ namespace Chicken.Service.Interface
         #region profile page
         void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
+        void FollowOrUnFollow<T>(User user, Action<T> callBack);
+
         void GetFriendshipConnections<T>(string userIdList, Action<T> callBack);
 
         void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);

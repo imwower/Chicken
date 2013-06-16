@@ -65,7 +65,7 @@
             "profile_use_background_image": true, 
             "default_profile": false, 
             "default_profile_image": false, 
-            "following": true, 
+            "following": false, 
             "follow_request_sent": null, 
             "notifications": null
         }, 

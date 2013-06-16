@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.ComponentModel;
 
 namespace Chicken.Model
 {
@@ -37,6 +38,10 @@ namespace Chicken.Model
                 return ProfileImage.Replace("_normal", "_bigger");
             }
         }
+
+        [JsonProperty("following")]
+        [DefaultValue(false)]
+        public bool IsFollowing { get; set; }
 
         [JsonProperty("verified")]
         public bool IsVerified { get; set; }

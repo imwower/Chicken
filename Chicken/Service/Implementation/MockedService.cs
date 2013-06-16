@@ -53,6 +53,20 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
+        public void FollowOrUnFollow<T>(User user, Action<T> callBack)
+        {
+            if (user.IsFollowing)
+            {
+                string url = "SampleData/userProfile_unfollow.json";
+                HandleWebRequest<T>(url, callBack);
+            }
+            else
+            {
+                string url = "SampleData/userProfile_follow.json";
+                HandleWebRequest<T>(url, callBack);
+            }
+        }
+
         public void GetFriendshipConnections<T>(string userIdList, Action<T> callBack)
         {
             string url = "SampleData/friendships.json";

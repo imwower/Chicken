@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -28,8 +29,8 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("UserProfile");
             }
         }
-
-        #region for tweets and favorites pivot
+        
+        #region for tweets and favorites pivot item
         private ObservableCollection<TweetViewModel> tweetList;
         public ObservableCollection<TweetViewModel> TweetList
         {
@@ -44,8 +45,7 @@ namespace Chicken.ViewModel.Profile
             }
         }
         #endregion
-
-        #region for following and followers pivot
+        #region for following and followers pivot item
         protected string nextCursor = "-1";
         protected string previousCursor;
         private ObservableCollection<UserProfile> userList;
@@ -74,21 +74,6 @@ namespace Chicken.ViewModel.Profile
         }
 
         #region public method
-        public virtual void Mention()
-        {
-            if (IsLoading)
-            {
-                return;
-            }
-            NewTweetModel newTweet = new NewTweetModel
-            {
-                Type = NewTweetActionType.Mention,
-                Text = UserProfile.ScreenName + " ",
-            };
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
-        }
-
         public virtual void NewMessage()
         {
             if (IsLoading)
@@ -103,7 +88,7 @@ namespace Chicken.ViewModel.Profile
         }
         #endregion
 
-        #region private method
+        #region actions
         private void ClickAction(object parameter)
         {
             var user = parameter as User;
