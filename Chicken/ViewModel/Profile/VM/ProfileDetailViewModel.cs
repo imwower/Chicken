@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Chicken.Common;
 using Chicken.Model;
+using Chicken.Service;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -38,9 +39,11 @@ namespace Chicken.ViewModel.Profile.VM
         public ProfileDetailViewModel()
         {
             Header = "Profile";
-            RefreshHandler = RefreshAction;
+            RefreshHandler = this.RefreshAction;
+            NewMessageHandler = this.NewMessageAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
             TweetService.GetUserProfileDetail<UserProfileDetail>(UserProfile.Id,
@@ -51,6 +54,24 @@ namespace Chicken.ViewModel.Profile.VM
                     base.Refreshed();
                 });
         }
+
+        private void NewMessageAction()
+        {
+            if (!followedBy)
+            {
+                HandleMessage(new ToastMessage
+                {
+                    Message = userProfileViewModel.ScreenName + " did not follow you"
+                });
+                return;
+            }
+            var newMessage = new NewMessageModel
+            {
+                User = userProfileViewModel as User,
+            };
+            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
+        }
+        #endregion
 
         private void GetFollowedByState()
         {

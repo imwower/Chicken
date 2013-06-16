@@ -9,6 +9,11 @@ namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModelBase : PivotItemViewModelBase
     {
+        #region event handler
+        public delegate void NewMessageEventHandler();
+        public NewMessageEventHandler NewMessageHandler;
+        #endregion
+
         #region properties
         private User userProfile;
         public User UserProfile
@@ -90,11 +95,11 @@ namespace Chicken.ViewModel.Profile
             {
                 return;
             }
-            var newMessage = new NewMessageModel
+            if (NewMessageHandler != null)
             {
-                User = userProfile,
-            };
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
+                IsLoading = false;
+                NewMessageHandler();
+            }
         }
         #endregion
 
