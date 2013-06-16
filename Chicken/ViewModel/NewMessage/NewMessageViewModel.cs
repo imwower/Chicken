@@ -1,24 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Implementation;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.NewTweet;
 
 namespace Chicken.ViewModel.NewMessage
 {
-    public class NewMessageViewModel : PivotItemViewModelBase
+    public class NewMessageViewModel : NewTweetViewModel
     {
-        #region event handler
-        public delegate void AddEmotionEventHandler();
-        public AddEmotionEventHandler AddEmotionHandler;
-        public AddEmotionEventHandler KeyboardHandler;
-        #endregion
-
         #region properties
         private LatestMessagesModel latestMessages;
         private List<DirectMessage> list;
@@ -37,19 +31,6 @@ namespace Chicken.ViewModel.NewMessage
             {
                 messages = value;
                 RaisePropertyChanged("Messages");
-            }
-        }
-        private AppBarState state;
-        public AppBarState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                RaisePropertyChanged("State");
             }
         }
 
@@ -88,40 +69,6 @@ namespace Chicken.ViewModel.NewMessage
             {
                 NewMessage.User = value;
                 RaisePropertyChanged("User");
-            }
-        }
-        #endregion
-
-        #region binding
-        public ICommand SendCommand
-        {
-            get
-            {
-                return new DelegateCommand(SendAction);
-            }
-        }
-
-        //public ICommand MentionCommand
-        //{
-        //    get
-        //    {
-        //        return new DelegateCommand(MentionAction);
-        //    }
-        //}
-
-        public ICommand AddEmotionCommand
-        {
-            get
-            {
-                return new DelegateCommand(AddEmotionAction);
-            }
-        }
-
-        public ICommand KeyboardCommand
-        {
-            get
-            {
-                return new DelegateCommand(KeyboardAction);
             }
         }
         #endregion
@@ -230,7 +177,7 @@ namespace Chicken.ViewModel.NewMessage
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
         }
 
-        private void SendAction()
+        protected override void SendAction()
         {
             #region validate user name and text
             if (IsLoading || HasError ||
@@ -247,7 +194,7 @@ namespace Chicken.ViewModel.NewMessage
                     List<ErrorMessage> errors = message.Errors;
                     if (errors != null && errors.Count != 0)
                     {
-                        ToastMessageHandler(new ToastMessage
+                        HandleMessage(new ToastMessage
                         {
                             Message = errors[0].Message
                         });
@@ -259,31 +206,13 @@ namespace Chicken.ViewModel.NewMessage
                         IsNew = false;
                         RefreshAction();
                         //
-                        ToastMessageHandler(new ToastMessage
+                        HandleMessage(new ToastMessage
                         {
                             Message = "message sent successfully"
                         });
                     }
                 });
             #endregion
-        }
-
-        private void AddEmotionAction()
-        {
-            if (AddEmotionHandler != null)
-            {
-                State = AppBarState.AddEmotion;
-                AddEmotionHandler();
-            }
-        }
-
-        private void KeyboardAction()
-        {
-            if (KeyboardHandler != null)
-            {
-                State = AppBarState.Default;
-                KeyboardHandler();
-            }
         }
         #endregion
 

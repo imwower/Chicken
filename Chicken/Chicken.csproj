@@ -167,6 +167,7 @@
     <Compile Include="View\NewTweetPage.xaml.cs">
       <DependentUpon>NewTweetPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\PageBase.cs" />
     <Compile Include="View\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>

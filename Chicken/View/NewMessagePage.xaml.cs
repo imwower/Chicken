@@ -8,11 +8,10 @@ using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewMessage;
-using Microsoft.Phone.Controls;
 
 namespace Chicken.View
 {
-    public partial class NewMessagePage : PhoneApplicationPage
+    public partial class NewMessagePage : PageBase
     {
         private NewMessageViewModel newMessageViewModel;
         private bool alreadyInitEmotionPanel;
@@ -22,7 +21,7 @@ namespace Chicken.View
             InitializeComponent();
             newMessageViewModel = new NewMessageViewModel()
             {
-                ToastMessageHandler = this.ToastMessageHandler,
+                ToastMessageHandler = ToastMessageHandler,
                 AddEmotionHandler = this.AddEmotionHandler,
                 KeyboardHandler = this.KeyboardHandler
             };
@@ -135,17 +134,6 @@ namespace Chicken.View
             var textbox = sender as TextBox;
             var binding = textbox.GetBindingExpression(TextBox.TextProperty);
             binding.UpdateSource();
-        }
-        #endregion
-
-        #region message handler
-        private void ToastMessageHandler(ToastMessage message)
-        {
-            var toast = new ToastPrompt
-            {
-                Message = message.Message,
-            };
-            toast.Show();
         }
         #endregion
     }

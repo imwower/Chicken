@@ -149,7 +149,7 @@ namespace Chicken.ViewModel
         #endregion
 
         #region public method
-        public virtual void Load()
+        public void Load()
         {
             if (LoadHandler == null)
             {
@@ -169,7 +169,7 @@ namespace Chicken.ViewModel
             }
         }
 
-        public virtual void Refresh()
+        public void Refresh()
         {
             if (RefreshHandler == null)
             {
@@ -189,17 +189,17 @@ namespace Chicken.ViewModel
             }
         }
 
-        public virtual void ScrollToTop()
+        public void ScrollToTop()
         {
             ScrollTo = ScrollTo.Top;
         }
 
-        public virtual void ScrollToBottom()
+        public void ScrollToBottom()
         {
             ScrollTo = ScrollTo.Bottom;
         }
 
-        public virtual void Click(object parameter)
+        public void Click(object parameter)
         {
             if (ClickHandler == null)
             {
@@ -213,7 +213,7 @@ namespace Chicken.ViewModel
             ClickHandler(parameter);
         }
 
-        public virtual void ItemClick(object parameter)
+        public void ItemClick(object parameter)
         {
             if (ItemClickHandler == null)
             {
@@ -227,7 +227,7 @@ namespace Chicken.ViewModel
             ItemClickHandler(parameter);
         }
 
-        public virtual void HandleError(ToastMessage message)
+        public void HandleMessage(ToastMessage message)
         {
             if (ToastMessageHandler != null)
             {

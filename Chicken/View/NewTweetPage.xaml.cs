@@ -5,14 +5,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
+using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewTweet;
-using Microsoft.Phone.Controls;
 
 namespace Chicken.View
 {
-    public partial class NewTweetPage : PhoneApplicationPage
+    public partial class NewTweetPage : PageBase
     {
         #region properties
         private NewTweetViewModel newTweetViewModel;
@@ -22,11 +22,13 @@ namespace Chicken.View
         public NewTweetPage()
         {
             InitializeComponent();
-            this.BackKeyPress += new EventHandler<CancelEventArgs>(NewTweetPage_BackKeyPress);
             this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
-            newTweetViewModel = new NewTweetViewModel();
-            newTweetViewModel.AddEmotionHandler = this.AddEmotionHandler;
-            newTweetViewModel.KeyboardHandler = this.KeyboardHandler;
+            newTweetViewModel = new NewTweetViewModel()
+            {
+                ToastMessageHandler = ToastMessageHandler,
+                AddEmotionHandler = this.AddEmotionHandler,
+                KeyboardHandler = this.KeyboardHandler
+            };
             this.DataContext = newTweetViewModel;
         }
 
@@ -34,15 +36,6 @@ namespace Chicken.View
         private void NewTweetPage_Loaded(object sender, RoutedEventArgs e)
         {
             this.TextContent.Focus();
-        }
-
-        private void NewTweetPage_BackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            //if (popup != null && popup.IsOpen)
-            //{
-            //    ClosePopup(true);
-            //    e.Cancel = true;
-            //}
         }
         #endregion
 

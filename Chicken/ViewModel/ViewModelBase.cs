@@ -6,9 +6,8 @@ namespace Chicken.ViewModel
     {
         #region event handler
         protected delegate void LoadEventHandler();
-        protected delegate void ClickEventHandler(object parameter);
-        protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
+        protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler ScrollToTopHandler;
         protected LoadEventHandler ScrollToBottomHandler;
         #endregion
@@ -52,40 +51,36 @@ namespace Chicken.ViewModel
         #endregion
 
         #region public method
-        public virtual void Refresh()
-        {
-            if (RefreshHandler == null)
-            {
-                return;
-            }
-            RefreshHandler();
-        }
-
         public virtual void Load()
         {
-            if (LoadHandler == null)
+            if (LoadHandler != null)
             {
-                return;
+                LoadHandler();
             }
-            LoadHandler();
+        }
+
+        public virtual void Refresh()
+        {
+            if (RefreshHandler != null)
+            {
+                RefreshHandler();
+            }
         }
 
         public virtual void ScrollToTop()
         {
-            if (ScrollToTopHandler == null)
+            if (ScrollToTopHandler != null)
             {
-                return;
+                ScrollToTopHandler();
             }
-            ScrollToTopHandler();
         }
 
         public virtual void ScrollToBottom()
         {
-            if (ScrollToBottomHandler == null)
+            if (ScrollToBottomHandler != null)
             {
-                return;
+                ScrollToBottomHandler();
             }
-            ScrollToBottomHandler();
         }
         #endregion
     }

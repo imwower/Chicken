@@ -1,30 +1,37 @@
-﻿using System;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.Service.Interface;
+using Chicken.ViewModel;
 using Chicken.ViewModel.Profile;
 using Microsoft.Phone.Controls;
 
 namespace Chicken.View
 {
-    public partial class ProfilePage : PhoneApplicationPage, INavigationService
+    public partial class ProfilePage : PivotPageBase
     {
-        ProfileViewModel profileViewModel;
+        protected override Pivot Pivot
+        {
+            get
+            {
+                return this.MainPivot;
+            }
+        }
+        private ProfileViewModel profileViewModel;
+        protected override PivotViewModelBase PivotViewModelBase
+        {
+            get
+            {
+                return this.profileViewModel;
+            }
+        }
 
         public ProfilePage()
         {
             InitializeComponent();
             profileViewModel = new ProfileViewModel();
             this.MainPivot.DataContext = profileViewModel;
-            this.MainPivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
-        }
-
-        private void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
-        {
-            int selectedIndex = (sender as Pivot).SelectedIndex;
-            profileViewModel.MainPivot_LoadedPivotItem(selectedIndex);
+            base.Init();
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -32,11 +39,6 @@ namespace Chicken.View
             base.OnNavigatedTo(e);
             var user = IsolatedStorageService.GetAndDeleteObject<User>(Const.PageNameEnum.ProfilePage);
             profileViewModel.User = user;
-        }
-
-        public void ChangeSelectedIndex(int selectedIndex)
-        {
-            this.MainPivot.SelectedIndex = selectedIndex;
         }
     }
 }

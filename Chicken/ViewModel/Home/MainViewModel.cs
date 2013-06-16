@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Chicken.Common;
-using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Home.VM;
 

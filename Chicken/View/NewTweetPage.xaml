@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage 
+﻿<v:PageBase
     x:Class="Chicken.View.NewTweetPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ctrls="clr-namespace:Chicken.Controls"
+    xmlns:v="clr-namespace:Chicken.View"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -78,8 +79,8 @@
                 <abu:AppBar Id="0">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
-                                      Text="image" Command="{Binding AddImageCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
+                                      Text="image" Command="{Binding AddImageCommand}" />-->
                     <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
                                       Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
@@ -89,8 +90,8 @@
                 <abu:AppBar Id="3">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
-                                      Text="image" Command="{Binding AddImageCommand}" />
+                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.camera.png"
+                                      Text="image" Command="{Binding AddImageCommand}" />-->
                     <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
                                       Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
@@ -99,4 +100,4 @@
             </abu:SwitchAppBarAction>
         </abu:StateChangedTrigger>
     </i:Interaction.Triggers>
-</phone:PhoneApplicationPage>
+</v:PageBase>

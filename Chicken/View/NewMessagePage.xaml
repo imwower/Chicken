@@ -1,4 +1,4 @@
-﻿<phone:PhoneApplicationPage 
+﻿<v:PageBase
     x:Class="Chicken.View.NewMessagePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -6,6 +6,7 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrls="clr-namespace:Chicken.Controls"
+    xmlns:v="clr-namespace:Chicken.View"
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -237,4 +238,4 @@
             </abu:SwitchAppBarAction>
         </abu:StateChangedTrigger>
     </i:Interaction.Triggers>
-</phone:PhoneApplicationPage>
+</v:PageBase>

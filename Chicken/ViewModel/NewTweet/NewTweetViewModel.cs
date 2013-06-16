@@ -7,7 +7,7 @@ using Chicken.Service.Interface;
 
 namespace Chicken.ViewModel.NewTweet
 {
-    public class NewTweetViewModel : NotificationObject
+    public class NewTweetViewModel : PivotItemViewModelBase
     {
         #region event handler
         public delegate void AddEmotionEventHandler();
@@ -66,13 +66,13 @@ namespace Chicken.ViewModel.NewTweet
             }
         }
 
-        public ICommand MentionCommand
-        {
-            get
-            {
-                return new DelegateCommand(MentionAction);
-            }
-        }
+        //public ICommand MentionCommand
+        //{
+        //    get
+        //    {
+        //        return new DelegateCommand(MentionAction);
+        //    }
+        //}
 
         public ICommand AddEmotionCommand
         {
@@ -101,8 +101,8 @@ namespace Chicken.ViewModel.NewTweet
             tweetModel = new NewTweetModel();
         }
 
-        #region private method
-        private void SendAction()
+        #region actions
+        protected virtual void SendAction()
         {
             if (string.IsNullOrEmpty(tweetModel.Text))
             {
@@ -114,18 +114,29 @@ namespace Chicken.ViewModel.NewTweet
                     List<ErrorMessage> errors = tweet.Errors;
                     if (errors != null && errors.Count != 0)
                     {
-                        //error;
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = errors[0].Message
+                        });
                     }
                     else
                     {
                         tweetModel.Text = string.Empty;
-                        NavigationServiceManager.NavigateTo(Const.PageNameEnum.MainPage);
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = "tweet sent successfully",
+                            Complete =
+                            () =>
+                            {
+                                NavigationServiceManager.NavigateTo(Const.PageNameEnum.MainPage);
+                            }
+                        });
                     }
                 });
         }
 
-        private void MentionAction()
-        { }
+        //private void MentionAction()
+        //{ }
 
         private void AddEmotionAction()
         {
@@ -144,7 +155,6 @@ namespace Chicken.ViewModel.NewTweet
                 KeyboardHandler();
             }
         }
-
         #endregion
     }
 }
