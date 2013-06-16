@@ -30,6 +30,7 @@ namespace Chicken.ViewModel.Home.VM
             ItemClickHandler = this.ItemClickAction;
         }
 
+        #region action
         private void RefreshAction()
         {
             #region init
@@ -39,162 +40,14 @@ namespace Chicken.ViewModel.Home.VM
                 latestMessages = file;
             }
             #endregion
-            GetReceivedMessages();
-        }
-
-        private void GetReceivedMessages(bool isLoadAction = false)
-        {
-            #region parameters
-            var parameters = TwitterHelper.GetDictionary();
-            if (!isLoadAction)
-            {
-                if (!string.IsNullOrEmpty(latestMessages.SinceId))
-                {
-                    parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(latestMessages.MaxId))
-                {
-                    parameters.Add(Const.MAX_ID, latestMessages.MaxId);
-                }
-            }
-            #endregion
-
-            TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
-                messages =>
-                {
-                    if (messages != null && messages.Count != 0)
-                    {
-                        foreach (var message in messages)
-                        {
-                            if (message.Id != latestMessages.MaxId)
-                            {
-                                list.Add(message);
-                            }
-                        }
-                        if (!isLoadAction)
-                        {
-                            latestMessages.SinceId = messages.First().Id;
-                        }
-                        latestMessages.MaxId = messages.Last().Id;
-                    }
-                    else
-                    {
-                        if (isLoadAction)
-                            hasMoreMsgs = false;
-                    }
-
-                    GetDirectMessagesSentByMe(isLoadAction);
-                }, parameters);
-        }
-
-        private void GetDirectMessagesSentByMe(bool isLoadAction = false)
-        {
-            #region parameters
-            var parameters = TwitterHelper.GetDictionary();
-            if (!isLoadAction)
-            {
-                if (!string.IsNullOrEmpty(latestMessages.SinceIdByMe))
-                {
-                    parameters.Add(Const.SINCE_ID, latestMessages.SinceIdByMe);
-                }
-            }
-            else
-            {
-                if (!string.IsNullOrEmpty(latestMessages.MaxIdByMe))
-                {
-                    parameters.Add(Const.MAX_ID, latestMessages.MaxIdByMe);
-                }
-            }
-            #endregion
-
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
-                messages =>
-                {
-                    #region get messsages
-                    if (messages != null && messages.Count != 0)
-                    {
-                        foreach (var message in messages)
-                        {
-                            if (message.Id != latestMessages.MaxIdByMe)
-                            {
-                                message.IsSentByMe = true;
-                                message.User = message.Receiver;
-                                list.Add(message);
-                            }
-                        }
-                        if (!isLoadAction)
-                        {
-                            latestMessages.SinceIdByMe = messages.First().Id;
-                        }
-                        latestMessages.MaxIdByMe = messages.Last().Id;
-                    }
-                    else
-                    {
-                        if (isLoadAction)
-                            hasMoreMsgsByMe = false;
-                    }
-                    #endregion
-
-                    #region group
-                    var groups = list.OrderByDescending(m => m.Id).GroupBy(u => u.User.Id);
-                    foreach (var msgs in groups)
-                    {
-                        foreach (var msg in msgs)
-                        {
-                            if (!dict.ContainsKey(msgs.Key))
-                            {
-                                dict.Add(msgs.Key, new Conversation());
-                            }
-                            dict[msgs.Key].Messages.Add(msg);
-                        }
-                        IsolatedStorageService.AddMessages(dict[msgs.Key]);
-
-                        #region store latest msgs
-                        if (!isLoadAction)
-                        {
-                            var first = msgs.First();
-                            latestMessages.Messages[first.User.Id] = first;
-                        }
-                        #endregion
-                    }
-                    #endregion
-                    #region finish
-                    if (!isLoadAction)
-                    {
-                        var latestmsgs = latestMessages.Messages.Values.OrderBy(m => m.Id);
-                        var latestId = TweetList.Count == 0 ? string.Empty : TweetList.First().Id;
-                        foreach (var msg in latestmsgs)
-                        {
-                            if (string.Compare(msg.Id, latestId) > 0)
-                                TweetList.Insert(0, new TweetViewModel(msg));
-                        }
-                    }
-                    else
-                    {
-                        var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
-                        var oldestId = TweetList.Count == 0 ? string.Empty : TweetList.Last().Id;
-                        foreach (var msg in latestmsgs)
-                        {
-                            if (string.Compare(msg.Id, oldestId) < 0)
-                                TweetList.Add(new TweetViewModel(msg));
-                        }
-                    }
-                    base.Refreshed();
-                    list.Clear();
-                    dict.Clear();
-                    IsolatedStorageService.AddLatestMessages(latestMessages);
-                    #endregion
-                }, parameters);
+            RefreshReceivedMessages();
         }
 
         private void LoadAction()
         {
             if (hasMoreMsgs && hasMoreMsgsByMe)
             {
-                GetReceivedMessages(true);
+                LoadReceivedMessages();
             }
             else
             {
@@ -211,5 +64,188 @@ namespace Chicken.ViewModel.Home.VM
             };
             NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
         }
+        #endregion
+
+        #region private
+        private void RefreshReceivedMessages()
+        {
+            #region parameters
+            var parameters = TwitterHelper.GetDictionary();
+            if (!string.IsNullOrEmpty(latestMessages.SinceId))
+            {
+                parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
+            }
+            #endregion
+            TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
+                messages =>
+                {
+                    if (messages != null && messages.Count != 0)
+                    {
+                        foreach (var message in messages)
+                        {
+                            list.Add(message);
+                        }
+                        latestMessages.SinceId = messages.First().Id;
+                    }
+                    RefreshDirectMessagesSentByMe();
+                }, parameters);
+        }
+
+        private void RefreshDirectMessagesSentByMe()
+        {
+            #region parameters
+            var parameters = TwitterHelper.GetDictionary();
+            if (!string.IsNullOrEmpty(latestMessages.SinceIdByMe))
+            {
+                parameters.Add(Const.SINCE_ID, latestMessages.SinceIdByMe);
+            }
+            #endregion
+            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
+                messages =>
+                {
+                    #region get messsages
+                    if (messages != null && messages.Count != 0)
+                    {
+                        foreach (var message in messages)
+                        {
+                            message.IsSentByMe = true;
+                            message.User = message.Receiver;
+                            list.Add(message);
+                        }
+                        latestMessages.SinceIdByMe = messages.First().Id;
+                    }
+                    #endregion
+                    #region group
+                    var groups = list.OrderByDescending(m => m.Id).GroupBy(u => u.User.Id);
+                    foreach (var msgs in groups)
+                    {
+                        foreach (var msg in msgs)
+                        {
+                            if (!dict.ContainsKey(msgs.Key))
+                            {
+                                dict.Add(msgs.Key, new Conversation());
+                            }
+                            dict[msgs.Key].Messages.Add(msg);
+                        }
+                        IsolatedStorageService.AddMessages(dict[msgs.Key]);
+                        #region store latest msgs
+                        var first = msgs.First();
+                        latestMessages.Messages[first.User.Id] = first;
+                        #endregion
+                    }
+                    #endregion
+                    IsolatedStorageService.AddLatestMessages(latestMessages);
+                    FinishRefreshing();
+                }, parameters);
+        }
+
+        private void FinishRefreshing()
+        {
+            TweetList.Clear();
+            var latestmsgs = latestMessages.Messages.Values.OrderBy(m => m.Id);
+            foreach (var msg in latestmsgs)
+            {
+                TweetList.Insert(0, new TweetViewModel(msg));
+            }
+            ScrollTo = ScrollTo.Top;
+            base.Refreshed();
+            list.Clear();
+            dict.Clear();
+        }
+
+        private void LoadReceivedMessages()
+        {
+            #region parameters
+            var parameters = TwitterHelper.GetDictionary();
+            if (!string.IsNullOrEmpty(latestMessages.MaxId))
+            {
+                parameters.Add(Const.MAX_ID, latestMessages.MaxId);
+            }
+            #endregion
+            TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
+                messages =>
+                {
+                    if (messages != null && messages.Count != 0)
+                    {
+                        foreach (var message in messages)
+                        {
+                            if (message.Id != latestMessages.MaxId)
+                                list.Add(message);
+                        }
+                        latestMessages.MaxId = messages.Last().Id;
+                    }
+                    else
+                    {
+                        hasMoreMsgs = false;
+                    }
+                    LoadDirectMessagesSentByMe();
+                }, parameters);
+        }
+
+        private void LoadDirectMessagesSentByMe()
+        {
+            #region parameters
+            var parameters = TwitterHelper.GetDictionary();
+            if (!string.IsNullOrEmpty(latestMessages.MaxIdByMe))
+            {
+                parameters.Add(Const.MAX_ID, latestMessages.MaxIdByMe);
+            }
+            #endregion
+            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
+                messages =>
+                {
+                    #region get messsages
+                    if (messages != null && messages.Count != 0)
+                    {
+                        foreach (var message in messages)
+                        {
+                            if (message.Id != latestMessages.MaxIdByMe)
+                            {
+                                message.IsSentByMe = true;
+                                message.User = message.Receiver;
+                                list.Add(message);
+                            }
+                        }
+                        latestMessages.MaxIdByMe = messages.Last().Id;
+                    }
+                    else
+                    {
+                        hasMoreMsgsByMe = false;
+                    }
+                    #endregion
+                    #region group
+                    var groups = list.GroupBy(u => u.User.Id);
+                    foreach (var msgs in groups)
+                    {
+                        foreach (var msg in msgs)
+                        {
+                            if (!dict.ContainsKey(msgs.Key))
+                            {
+                                dict.Add(msgs.Key, new Conversation());
+                            }
+                            dict[msgs.Key].Messages.Add(msg);
+                        }
+                        IsolatedStorageService.AddMessages(dict[msgs.Key]);
+                    }
+                    #endregion
+                    IsolatedStorageService.AddLatestMessages(latestMessages);
+                    FinishLoading();
+                }, parameters);
+        }
+
+        private void FinishLoading()
+        {
+            TweetList.Clear();
+            var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
+            foreach (var msg in latestmsgs)
+            {
+                TweetList.Add(new TweetViewModel(msg));
+            }
+            ScrollTo = ScrollTo.Bottom;
+            base.Refreshed();
+            list.Clear();
+            dict.Clear();
+        }
+        #endregion
     }
 }

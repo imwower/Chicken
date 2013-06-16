@@ -296,15 +296,7 @@ namespace Chicken.ViewModel.NewMessage
             {
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
             }
-            //else
-            //{
-            //    if (!string.IsNullOrEmpty(latestMessages.MaxId))
-            //    {
-            //        parameters.Add(Const.MAX_ID, latestMessages.MaxId);
-            //    }
-            //}
             #endregion
-
             TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
                 messages =>
                 {
@@ -363,6 +355,7 @@ namespace Chicken.ViewModel.NewMessage
                         #endregion
                     }
                     #endregion
+                    IsolatedStorageService.AddLatestMessages(latestMessages);
                     FinishRefreshing();
                 }, parameters);
         }
@@ -379,12 +372,11 @@ namespace Chicken.ViewModel.NewMessage
                     if (string.Compare(msg.Id, latestId) > 0)
                         Messages.Add(new DirectMessageViewModel(msg));
                 }
-                ScrollTo = ScrollTo.Top;
+                ScrollTo = ScrollTo.Bottom;
             }
             base.Refreshed();
             list.Clear();
             dict.Clear();
-            IsolatedStorageService.AddLatestMessages(latestMessages);
         }
 
         private void LoadReceivedMessages()
@@ -462,6 +454,7 @@ namespace Chicken.ViewModel.NewMessage
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
                     }
                     #endregion
+                    IsolatedStorageService.AddLatestMessages(latestMessages);
                     FinishLoading();
                 }, parameters);
         }
@@ -472,18 +465,24 @@ namespace Chicken.ViewModel.NewMessage
             if (conversation != null)
             {
                 var oldestId = Messages.Count == 0 ? string.Empty : Messages.First().Id;
-                var msgs = conversation.Messages.OrderBy(m => m.Id);
+                var msgs = conversation.Messages.OrderByDescending(m => m.Id);
                 foreach (var msg in msgs)
                 {
                     if (string.Compare(msg.Id, oldestId) < 0)
                         Messages.Insert(0, new DirectMessageViewModel(msg));
                 }
-                ScrollTo = ScrollTo.Bottom;
+                if (IsInited)
+                {
+                    ScrollTo = ScrollTo.Top;
+                }
+                else
+                {
+                    ScrollTo = ScrollTo.Bottom;
+                }
             }
             base.Loaded();
             list.Clear();
             dict.Clear();
-            IsolatedStorageService.AddLatestMessages(latestMessages);
         }
 
         private void ValidateUserName()

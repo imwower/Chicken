@@ -52,15 +52,6 @@ namespace Chicken.View
                 newMessageViewModel.IsNew = true;
             }
         }
-
-        //protected override void OnNavigatedFrom(NavigationEventArgs e)
-        //{
-        //    base.OnNavigatedFrom(e);
-        //    if (newMessageViewModel.NewMessage.Text != null)
-        //    {
-        //        IsolatedStorageService.CreateObject(Const.PageNameEnum.NewMessagePage, newMessageViewModel.NewMessage);
-        //    }
-        //}
         #endregion
 
         #region text content
