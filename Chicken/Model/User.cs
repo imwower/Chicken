@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel;
 
 namespace Chicken.Model
 {
@@ -40,7 +39,7 @@ namespace Chicken.Model
         }
 
         [JsonProperty("following")]
-        [DefaultValue(false)]
+        [JsonConverter(typeof(StringToBooleanConverter))]
         public bool IsFollowing { get; set; }
 
         [JsonProperty("verified")]

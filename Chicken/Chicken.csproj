@@ -132,6 +132,7 @@
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\NewMessageModel.cs" />
     <Compile Include="Model\NewTweetModel.cs" />
+    <Compile Include="Model\StringToBooleanConverter.cs" />
     <Compile Include="Model\ToastMessage.cs" />
     <Compile Include="Model\UserIdList.cs" />
     <Compile Include="Model\Retweet.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
+    <Compile Include="ViewModel\Profile\MyProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
@@ -163,6 +165,9 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MyProfilePage.xaml.cs">
+      <DependentUpon>MyProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewMessagePage.xaml.cs">
       <DependentUpon>NewMessagePage.xaml</DependentUpon>
@@ -345,6 +350,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\MyProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\NewMessagePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -363,7 +372,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Data\emotions.json">
+    <Content Include="Data\Emotions.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Properties\AppManifest.xml" />

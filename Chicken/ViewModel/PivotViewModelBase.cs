@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Chicken.Common;
 
 namespace Chicken.ViewModel
 {
@@ -18,7 +19,6 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("Title");
             }
         }
-
         private int selectedIndex = 0;
         public int SelectedIndex
         {
@@ -31,7 +31,6 @@ namespace Chicken.ViewModel
                 selectedIndex = value;
             }
         }
-
         private ObservableCollection<PivotItemViewModelBase> pivotItems;
         public ObservableCollection<PivotItemViewModelBase> PivotItems
         {

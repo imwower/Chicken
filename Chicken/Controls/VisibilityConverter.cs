@@ -56,9 +56,7 @@ namespace Chicken.Controls
             {
                 return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
             }
-            bool b = (bool)value;
-            return
-                (b == true) ?
+            return (bool)value ?
             (Brush)Application.Current.Resources["PhoneAccentBrush"]
             : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
         }

@@ -14,9 +14,6 @@
         public const string DEFAULTSOURCE = "web";
         public const string DEFAULTSOURCEURL = "https://github.com/";
 
-        public const string EMOTIONS_FILE_PATH = "Data/emotions.json";
-        public const string LATEST_MESSAGES_FILENAME = "latest_direct_messages.json";
-
         public const int MaxCharLength = 140;
         #endregion
 
@@ -160,11 +157,4 @@
         Quote = 3,
         Mention = 4,
     }
-
-    //public enum NewMessageActionType
-    //{
-    //    None = 0,
-    //    PostNew = 1,
-    //    Reply = 2,
-    //}
 }

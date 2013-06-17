@@ -1,5 +1,5 @@
 ﻿<v:PivotPageBase
-    x:Class="Chicken.View.ProfilePage"
+    x:Class="Chicken.View.MyProfilePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -11,17 +11,17 @@
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
     xmlns:v ="clr-namespace:Chicken.View"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait"  Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
                         Title="{Binding Path=User.ScreenName}">
-            <!--profile detail-->
+            <!--my profile detail-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
@@ -101,20 +101,6 @@
                                                 <ImageBrush ImageSource="/Images/dark/verified.png" />
                                             </Rectangle.OpacityMask>
                                         </Rectangle>
-                                        <!--following-->
-                                        <Rectangle
-                                            Visibility="{Binding UserProfileViewModel.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <Rectangle.OpacityMask>
-                                                <ImageBrush ImageSource="/Images/dark/following.png" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
-                                        <!--followedby-->
-                                        <Rectangle
-                                            Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                            <Rectangle.OpacityMask>
-                                                <ImageBrush ImageSource="/Images/dark/followedby.png" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
                                     </StackPanel>
                                     <!--Name-->
                                     <TextBlock Grid.Row="2"
@@ -180,25 +166,25 @@
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
-            <!--user tweets-->
+            <!--my tweets-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
-            <!--user following-->
+            <!--my following-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <!--user followers-->
+            <!--my followers-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[3],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <!--user favorites-->
+            <!--my favorites-->
             <ctrls:HomePivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[4],ElementName=MainPivot}"
                 Header="{Binding Path=Header}"
@@ -209,7 +195,7 @@
                 <abu:SelectedPivotItemChangedTrigger>
                     <!--mapping-->
                     <abu:SelectedPivotItemChangedTrigger.SelectionMappings>
-                        <!--profile detail-->
+                        <!--my profile detail-->
                         <abu:SelectionMapping SourceIndex="0" TargetIndex="0" />
                         <abu:SelectionMapping SourceIndex="1" TargetIndex="1" />
                         <abu:SelectionMapping SourceIndex="2" TargetIndex="1" />
@@ -219,15 +205,14 @@
                     <!--items-->
                     <abu:SwitchAppBarAction>
                         <abu:AppBar Id="0" Mode="Minimized">
-                            <!--send message-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
-                                      Command="{Binding Path=MessageCommand}" />
-                            <!--mention-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
-                                      Command="{Binding Path=MentionCommand}" />
+                            <!--edit my profile-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="edit"
+                                      Command="{Binding Path=EditMyProfileCommand}" />
                             <abu:AppBar.MenuItems>
-                                <abu:AppBarMenuItem Text="{Binding FollowButtonText}"
-                                                    Command="{Binding Path=FollowCommand}" />
+                                <abu:AppBarMenuItem Text="settings"
+                                                    Command="{Binding Path=SettingsCommand}" />
+                                <abu:AppBarMenuItem Text="blocks"
+                                                    Command="{Binding Path=BlocksCommand}" />
                             </abu:AppBar.MenuItems>
                         </abu:AppBar>
                         <abu:AppBar Id="1" Mode="Minimized">
@@ -240,9 +225,9 @@
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
                                       Command="{Binding Path=BottomCommand}" />
-                            <!--mention-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
-                                      Command="{Binding Path=MentionCommand}" />
+                            <!--edit my profile-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="edit"
+                                      Command="{Binding Path=EditMyProfileCommand}" />
                         </abu:AppBar>
                     </abu:SwitchAppBarAction>
                 </abu:SelectedPivotItemChangedTrigger>

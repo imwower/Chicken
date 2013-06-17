@@ -31,28 +31,37 @@ namespace Chicken.View
 
     public class PivotPageBase : PageBase, INavigationService
     {
-        protected virtual Pivot Pivot;
+        protected virtual Pivot Pivot { get; private set; }
 
-        protected virtual PivotViewModelBase PivotViewModelBase;
+        protected virtual PivotViewModelBase PivotViewModelBase { get; private set; }
 
         protected virtual void Init()
         {
-            Pivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
-            foreach (var item in PivotViewModelBase.PivotItems)
+            if (Pivot != null)
             {
-                item.ToastMessageHandler = ToastMessageHandler;
+                Pivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
+                foreach (var item in PivotViewModelBase.PivotItems)
+                {
+                    item.ToastMessageHandler = ToastMessageHandler;
+                }
             }
         }
 
         protected virtual void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
-            int selectedIndex = (sender as Pivot).SelectedIndex;
-            PivotViewModelBase.MainPivot_LoadedPivotItem(selectedIndex);
+            if (PivotViewModelBase != null)
+            {
+                int selectedIndex = (sender as Pivot).SelectedIndex;
+                PivotViewModelBase.MainPivot_LoadedPivotItem(selectedIndex);
+            }
         }
 
         public virtual void ChangeSelectedIndex(int selectedIndex)
         {
-            Pivot.SelectedIndex = selectedIndex;
+            if (Pivot != null)
+            {
+                Pivot.SelectedIndex = selectedIndex;
+            }
         }
     }
 }

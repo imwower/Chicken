@@ -19,86 +19,45 @@ namespace Chicken.Service
         }
 
         #region private static
-        static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
-        static JsonSerializer jsonSerializer = new JsonSerializer
-        {
-            NullValueHandling = NullValueHandling.Ignore
-        };
+        private static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
+        private static JsonSerializer jsonSerializer = new JsonSerializer
+          {
+              NullValueHandling = NullValueHandling.Ignore
+          };
         #endregion
 
         #region const
-        const string EmotionsFileName = "emotions.json";
-        const string DirectMessageFolderPath = "DirectMessages";
-        #endregion
+        private const string SAVED_DATA_FOLDER_PATH = "Data";
+        private const string EMOTIONS_FILE_NAME = "Emotions.json";
 
-        #region public method
-        public static bool CreateObject(Const.PageNameEnum pageName, object value)
-        {
-            string folderName = pageName.ToString();
-            if (!fileSystem.DirectoryExists(folderName))
-            {
-                fileSystem.CreateDirectory(folderName);
-            }
-            return SerializeObject(folderName + "\\" + folderName, value);
-        }
+        private const string LATEST_MESSAGES_FILENAME = "LatestDirectMessages.json";
+        private const string DIRECT_MESSAGES_FOLDERPATH = "DirectMessages";
 
-        public static bool CreateObject(Const.PageNameEnum pageName, string fileName, object value)
-        {
-            string folderName = pageName.ToString();
-            if (!fileSystem.DirectoryExists(folderName))
-            {
-                fileSystem.CreateDirectory(folderName);
-            }
-            return SerializeObject(folderName + "\\" + fileName, value);
-        }
-
-        public static T GetObject<T>(Const.PageNameEnum pageName)
-        {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + folderName);
-        }
-
-        public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName)
-        {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);
-        }
-
-        public static T GetObject<T>(Const.PageNameEnum pageName, string fileName)
-        {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + fileName);
-        }
-
-        public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName, string fileName)
-        {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + fileName, FileOption.DeleteAfterRead);
-        }
+        private const string AUTHENTICATED_USER_FILE_NAME = "AuthenticatedUser.json";
         #endregion
 
         #region method for pages
         public static List<string> GetEmotions()
         {
             List<string> result = new List<string>();
+            CheckDataFolderPath();
+            string emotionsfilepath = SAVED_DATA_FOLDER_PATH + "/" + EMOTIONS_FILE_NAME;
+            using (var fileStream = fileSystem.OpenFile(emotionsfilepath, FileMode.OpenOrCreate))
             {
-                using (var fileStream = fileSystem.OpenFile(EmotionsFileName, FileMode.OpenOrCreate))
+                if (fileStream == null || fileStream.Length == 0)
                 {
-                    if (fileStream == null || fileStream.Length == 0)
+                    var resource = Application.GetResourceStream(new Uri(emotionsfilepath, UriKind.Relative));
+                    resource.Stream.CopyTo(fileStream);
+                }
+                using (var streamReader = new StreamReader(fileStream))
+                {
+                    fileStream.Position = 0;
+                    while (!streamReader.EndOfStream)
                     {
-                        var resource = Application.GetResourceStream(new Uri(Const.EMOTIONS_FILE_PATH, UriKind.Relative));
-                        resource.Stream.CopyTo(fileStream);
-                    }
-                    using (var streamReader = new StreamReader(fileStream))
-                    {
-                        fileStream.Position = 0;
-                        while (!streamReader.EndOfStream)
+                        string s = streamReader.ReadLine();
+                        if (!string.IsNullOrEmpty(s))
                         {
-                            string s = streamReader.ReadLine();
-                            if (!string.IsNullOrEmpty(s))
-                            {
-                                result.Add(s.Trim());
-                            }
+                            result.Add(s.Trim());
                         }
                     }
                 }
@@ -126,12 +85,12 @@ namespace Chicken.Service
             }
             #endregion
             #region create folder
-            if (!fileSystem.DirectoryExists(DirectMessageFolderPath))
+            if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
             {
-                fileSystem.CreateDirectory(DirectMessageFolderPath);
+                fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
             }
             #endregion
-            string filepath = DirectMessageFolderPath + "\\" + con.User.Id;
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + con.User.Id + ".json";
             if (!fileSystem.FileExists(filepath))
             {
                 #region directly serialize
@@ -182,25 +141,13 @@ namespace Chicken.Service
                 fileSystem.MoveFile(tempfilepath, filepath);
                 #endregion
             }
-
             con = null;
         }
 
         public static Conversation GetMessages(string userId)
         {
-            Conversation conversation = null;
-            string filepath = DirectMessageFolderPath + "\\" + userId;
-            if (fileSystem.FileExists(filepath))
-            {
-                using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
-                {
-                    using (var reader = new JsonTextReader(new StreamReader(fileStream)))
-                    {
-                        conversation = jsonSerializer.Deserialize<Conversation>(reader);
-                    }
-                }
-            }
-            return conversation;
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + userId + ".json";
+            return DeserializeObject<Conversation>(filepath, FileOption.OnlyRead);
         }
 
         public static void AddLatestMessages(LatestMessagesModel latestMessages)
@@ -226,17 +173,69 @@ namespace Chicken.Service
                 });
             }
             #endregion
-            CreateObject(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME, latestmsgs);
+            #region create folder
+            if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
+            {
+                fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
+            }
+            #endregion
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILENAME;
+            SerializeObject(filepath, latestmsgs);
         }
 
         public static LatestMessagesModel GetLatestMessages()
         {
-            return GetObject<LatestMessagesModel>(Const.PageNameEnum.MainPage, Const.LATEST_MESSAGES_FILENAME);
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILENAME;
+            return DeserializeObject<LatestMessagesModel>(filepath, FileOption.OnlyRead);
         }
 
+        public static void CreateAuthenticatedUser(User authenticatedUser)
+        {
+            CheckDataFolderPath();
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
+            SerializeObject(filepath, authenticatedUser);
+        }
+
+        public static User GetAuthenticatedUser()
+        {
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
+            return DeserializeObject<User>(filepath, FileOption.OnlyRead);
+        }
+        #endregion
+
+        #region public method
+        public static bool CreateObject(Const.PageNameEnum pageName, object value)
+        {
+            string folderName = pageName.ToString();
+            if (!fileSystem.DirectoryExists(folderName))
+            {
+                fileSystem.CreateDirectory(folderName);
+            }
+            return SerializeObject(folderName + "\\" + folderName, value);
+        }
+
+        public static T GetObject<T>(Const.PageNameEnum pageName)
+        {
+            string folderName = pageName.ToString();
+            return DeserializeObject<T>(folderName + "\\" + folderName);
+        }
+
+        public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName)
+        {
+            string folderName = pageName.ToString();
+            return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);
+        }
         #endregion
 
         #region private method
+        private static void CheckDataFolderPath()
+        {
+            if (!fileSystem.DirectoryExists(SAVED_DATA_FOLDER_PATH))
+            {
+                fileSystem.CreateDirectory(SAVED_DATA_FOLDER_PATH);
+            }
+        }
+
         private static bool SerializeObject(string fileName, object value)
         {
             if (fileSystem.FileExists(fileName))
