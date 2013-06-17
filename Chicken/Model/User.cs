@@ -50,5 +50,12 @@ namespace Chicken.Model
 
         [JsonProperty("is_translator")]
         public bool IsTranslator { get; set; }
+
+        /// <summary>
+        /// for profile page,
+        /// only
+        /// </summary>
+        [JsonIgnore]
+        public bool IsMyself { get; set; }
     }
 }

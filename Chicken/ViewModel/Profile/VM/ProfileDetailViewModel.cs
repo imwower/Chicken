@@ -34,7 +34,6 @@ namespace Chicken.ViewModel.Profile.VM
                 RaisePropertyChanged("FollowedBy");
             }
         }
-        public bool IsMyself { get; set; }
         #endregion
 
         public ProfileDetailViewModel()
@@ -51,8 +50,14 @@ namespace Chicken.ViewModel.Profile.VM
                 userProfileDetail =>
                 {
                     this.UserProfileViewModel = userProfileDetail;
-                    if (!IsMyself)
+                    if (UserProfile.IsMyself)
+                    {
+                        App.UpdateAuthenticatedUser(userProfileDetail);
+                    }
+                    else
+                    {
                         GetFollowedByState();
+                    }
                     base.Refreshed();
                 });
         }

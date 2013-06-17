@@ -111,9 +111,6 @@
     <Compile Include="Controls\ImageContainer.xaml.cs">
       <DependentUpon>ImageContainer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\PhotoChooserControl.xaml.cs">
-      <DependentUpon>PhotoChooserControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\PopUp.cs" />
     <Compile Include="Controls\TemplateSelector.cs" />
     <Compile Include="Controls\ToastPrompt.cs" />
@@ -151,7 +148,6 @@
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
-    <Compile Include="ViewModel\Profile\MyProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
@@ -165,9 +161,6 @@
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MyProfilePage.xaml.cs">
-      <DependentUpon>MyProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewMessagePage.xaml.cs">
       <DependentUpon>NewMessagePage.xaml</DependentUpon>
@@ -348,15 +341,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\PhotoChooserControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MyProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

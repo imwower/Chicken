@@ -105,7 +105,7 @@
         StatusPage = 2,
         NewTweetPage = 3,
         NewMessagePage = 4,
-        MyProfilePage = 5,
+        //MyProfilePage = 5,
     }
     #endregion
 
@@ -151,6 +151,12 @@
         AddImage = 1,
         AddMention = 2,
         AddEmotion = 3,
+
+        ProfileDefault = 10,
+        ProfileWithRefresh = 11,
+
+        MyProfileDefault = 20,
+        MyProfileWithRefresh = 21,
     }
 
     public enum NewTweetActionType

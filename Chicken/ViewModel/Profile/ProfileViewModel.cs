@@ -46,6 +46,19 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("FollowButtonText");
             }
         }
+        private AppBarState state = AppBarState.ProfileDefault;
+        public AppBarState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                RaisePropertyChanged("State");
+            }
+        }
         #endregion
 
         #region binding
@@ -72,6 +85,22 @@ namespace Chicken.ViewModel.Profile
                 return new DelegateCommand(FollowAction);
             }
         }
+
+        public ICommand EditMyProfileCommand
+        {
+            get
+            {
+                return new DelegateCommand(EditMyProfileAction);
+            }
+        }
+
+        public ICommand BlocksCommand
+        {
+            get
+            {
+                return new DelegateCommand(BlocksAction);
+            }
+        }
         #endregion
 
         #region services
@@ -94,7 +123,22 @@ namespace Chicken.ViewModel.Profile
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
             if (User == null)
+            {
                 User = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
+            }
+            #region is myself or not
+            if (User.Id == App.AuthenticatedUser.Id)
+            {
+                State = AppBarState.MyProfileDefault;
+                User.IsMyself = true;
+            }
+            #endregion
+            #region change appbar menu
+            if (selectedIndex != 0)
+            {
+                State = State + 1;
+            }
+            #endregion
             (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }
@@ -152,5 +196,11 @@ namespace Chicken.ViewModel.Profile
                     #endregion
                 });
         }
+
+        private void EditMyProfileAction()
+        { }
+
+        private void BlocksAction()
+        { }
     }
 }

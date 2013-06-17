@@ -30,7 +30,7 @@ namespace Chicken.View
         {
             InitializeComponent();
             profileViewModel = new ProfileViewModel();
-            this.MainPivot.DataContext = profileViewModel;
+            this.DataContext = profileViewModel;
             base.Init();
         }
     }

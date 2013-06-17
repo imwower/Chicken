@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Navigation;
+using Chicken.Model;
+using Chicken.Service;
+using Chicken.Service.Interface;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -8,6 +11,15 @@ namespace Chicken
     public partial class App : Application
     {
         public PhoneApplicationFrame RootFrame { get; private set; }
+        public static User AuthenticatedUser { get; private set; }
+        //public static Size GetScreenSize()
+        //{
+        //    return Application.Current.RootVisual.RenderSize;
+        //}
+
+        #region services
+        public ITweetService TweetService = TweetServiceManager.TweetService;
+        #endregion
 
         public App()
         {
@@ -23,17 +35,29 @@ namespace Chicken
             }
         }
 
-        public static Size GetScreenSize()
+        public static void UpdateAuthenticatedUser(User user)
         {
-            return Application.Current.RootVisual.RenderSize;
+            IsolatedStorageService.CreateAuthenticatedUser(user);
+            AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
         }
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            if (AuthenticatedUser == null)
+                AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
+            if (AuthenticatedUser == null)
+                TweetService.GetMyProfileDetail<User>(
+                    profile =>
+                    {
+                        AuthenticatedUser = profile;
+                        IsolatedStorageService.CreateAuthenticatedUser(AuthenticatedUser);
+                    });
         }
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (AuthenticatedUser == null)
+                AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
         }
 
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)

@@ -79,7 +79,7 @@ namespace Chicken.ViewModel.Home
 
         private void MyProfileAction()
         {
-            NavigationServiceManager.NavigateTo(PageNameEnum.MyProfilePage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, App.AuthenticatedUser);
         }
 
         private void SettingsAction()
