@@ -64,6 +64,7 @@
         public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
         public const string FRIENDSHIPS_LOOKUP = "friendships/lookup.json";
+        public const string PROFILE_MYSELF = "account/verify_credentials.json";
         #endregion
 
         #region status page

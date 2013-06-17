@@ -63,9 +63,20 @@
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
                                       Command="{Binding Path=BottomCommand}" />
-                            <!--top-->
+                            <!--new tweet-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"
                                       Command="{Binding Path=NewTweetCommand}" />
+                            <abu:AppBar.MenuItems>
+                                <!--search-->
+                                <abu:AppBarMenuItem Text="search"
+                                                    Command="{Binding Path=SearchCommand}" />
+                                <!--my profile-->
+                                <abu:AppBarMenuItem Text="me"
+                                                    Command="{Binding Path=MyProfileCommand}" />
+                                <!--settings-->
+                                <abu:AppBarMenuItem Text="settings"
+                                                    Command="{Binding Path=SettingsCommand}" />
+                            </abu:AppBar.MenuItems>
                         </abu:AppBar>
                         <!--with dm-->
                         <abu:AppBar Id="1" Mode="Minimized">

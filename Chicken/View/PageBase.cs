@@ -29,11 +29,11 @@ namespace Chicken.View
         #endregion
     }
 
-    public abstract class PivotPageBase : PageBase, INavigationService
+    public class PivotPageBase : PageBase, INavigationService
     {
-        protected abstract Pivot Pivot { get; }
+        protected virtual Pivot Pivot;
 
-        protected abstract PivotViewModelBase PivotViewModelBase { get; }
+        protected virtual PivotViewModelBase PivotViewModelBase;
 
         protected virtual void Init()
         {
