@@ -72,12 +72,12 @@ namespace Chicken.ViewModel.Status.VM
 
         private void ClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
 
         private void AddFavoriteAction()
@@ -152,7 +152,7 @@ namespace Chicken.ViewModel.Status.VM
                     break;
             }
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
         }
 
         private void LoadConversation(string statusId)

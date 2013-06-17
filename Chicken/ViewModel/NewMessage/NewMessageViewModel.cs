@@ -174,7 +174,7 @@ namespace Chicken.ViewModel.NewMessage
 
         private void ClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         protected override void SendAction()

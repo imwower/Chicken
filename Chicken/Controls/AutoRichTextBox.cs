@@ -157,7 +157,7 @@ namespace Chicken.Controls
 
         private static void ScreenNameClick(User user)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Chicken.ViewModel.Home.VM
             {
                 User = user as User,
             };
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage, newMessage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage, newMessage);
         }
         #endregion
 

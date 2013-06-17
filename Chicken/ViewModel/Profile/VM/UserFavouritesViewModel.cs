@@ -82,7 +82,7 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void ItemClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
     }
 }

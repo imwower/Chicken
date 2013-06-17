@@ -204,7 +204,7 @@ namespace Chicken.Service
         #endregion
 
         #region public method
-        public static bool CreateObject(Const.PageNameEnum pageName, object value)
+        public static bool CreateObject(PageNameEnum pageName, object value)
         {
             string folderName = pageName.ToString();
             if (!fileSystem.DirectoryExists(folderName))
@@ -214,13 +214,13 @@ namespace Chicken.Service
             return SerializeObject(folderName + "\\" + folderName, value);
         }
 
-        public static T GetObject<T>(Const.PageNameEnum pageName)
+        public static T GetObject<T>(PageNameEnum pageName)
         {
             string folderName = pageName.ToString();
             return DeserializeObject<T>(folderName + "\\" + folderName);
         }
 
-        public static T GetAndDeleteObject<T>(Const.PageNameEnum pageName)
+        public static T GetAndDeleteObject<T>(PageNameEnum pageName)
         {
             string folderName = pageName.ToString();
             return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);

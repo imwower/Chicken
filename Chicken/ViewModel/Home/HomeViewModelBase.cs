@@ -37,12 +37,12 @@ namespace Chicken.ViewModel.Home
 
         private void ClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
     }
 }

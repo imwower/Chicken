@@ -1,8 +1,8 @@
-﻿
-using Chicken.ViewModel.Profile;
-using Chicken.ViewModel;
-using System.Windows.Navigation;
+﻿using System.Windows.Navigation;
 using Chicken.Service;
+using Chicken.ViewModel;
+using Chicken.ViewModel.Profile;
+
 namespace Chicken.View
 {
     public partial class MyProfilePage : PivotPageBase
@@ -34,7 +34,6 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            //do not delete data, in case of null error:
             var user = IsolatedStorageService.GetAuthenticatedUser();
             myProfileViewModel.User = user;
         }

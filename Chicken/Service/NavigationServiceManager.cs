@@ -13,7 +13,7 @@ namespace Chicken.Service
         private static PhoneApplicationFrame frame = Application.Current.RootVisual as PhoneApplicationFrame;
         #endregion
 
-        public static void NavigateTo(Const.PageNameEnum pageName, object parameter = null)
+        public static void NavigateTo(PageNameEnum pageName, object parameter = null)
         {
             if (parameter != null)
             {
@@ -22,19 +22,19 @@ namespace Chicken.Service
             string random = "?random=" + DateTime.Now.Ticks.ToString("x");
             switch (pageName)
             {
-                case Const.PageNameEnum.MainPage:
+                case PageNameEnum.MainPage:
                     frame.Navigate(new Uri(Const.MainPage + random, UriKind.Relative));
                     break;
-                case Const.PageNameEnum.ProfilePage:
+                case PageNameEnum.ProfilePage:
                     frame.Navigate(new Uri(Const.ProfilePage + random, UriKind.Relative));
                     break;
-                case Const.PageNameEnum.StatusPage:
+                case PageNameEnum.StatusPage:
                     frame.Navigate(new Uri(Const.StatusPage + random, UriKind.Relative));
                     break;
-                case Const.PageNameEnum.NewTweetPage:
+                case PageNameEnum.NewTweetPage:
                     frame.Navigate(new Uri(Const.NewTweetPage + random, UriKind.Relative));
                     break;
-                case Const.PageNameEnum.NewMessagePage:
+                case PageNameEnum.NewMessagePage:
                     frame.Navigate(new Uri(Const.NewMessagePage + random, UriKind.Relative));
                     break;
                 default:

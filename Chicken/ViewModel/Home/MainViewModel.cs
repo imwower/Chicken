@@ -14,7 +14,7 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
-                return new DelegateCommand(NewTweet);
+                return new DelegateCommand(NewTweetAction);
             }
         }
 
@@ -22,7 +22,31 @@ namespace Chicken.ViewModel.Home
         {
             get
             {
-                return new DelegateCommand(NewMessage);
+                return new DelegateCommand(NewMessageAction);
+            }
+        }
+
+        public ICommand SearchCommand
+        {
+            get
+            {
+                return new DelegateCommand(SearchAction);
+            }
+        }
+
+        public ICommand MyProfileCommand
+        {
+            get
+            {
+                return new DelegateCommand(MyProfileAction);
+            }
+        }
+
+        public ICommand SettingsCommand
+        {
+            get
+            {
+                return new DelegateCommand(SettingsAction);
             }
         }
         #endregion
@@ -39,14 +63,27 @@ namespace Chicken.ViewModel.Home
             PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
-        private void NewTweet()
+        #region actions
+        private void NewTweetAction()
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage);
         }
 
-        private void NewMessage()
+        private void NewMessageAction()
         {
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewMessagePage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage);
         }
+
+        private void SearchAction()
+        { }
+
+        private void MyProfileAction()
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.MyProfilePage);
+        }
+
+        private void SettingsAction()
+        { }
+        #endregion
     }
 }

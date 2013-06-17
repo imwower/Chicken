@@ -38,7 +38,7 @@ namespace Chicken.View
         {
             base.OnNavigatedTo(e);
             //do not delete data, in case of null error:
-            var user = IsolatedStorageService.GetObject<User>(Const.PageNameEnum.ProfilePage);
+            var user = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
             profileViewModel.User = user;
         }
     }

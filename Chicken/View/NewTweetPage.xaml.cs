@@ -38,7 +38,7 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            var tweet = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.PageNameEnum.NewTweetPage);
+            var tweet = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(PageNameEnum.NewTweetPage);
             if (tweet != null)
             {
                 newTweetViewModel.TweetModel.Type = tweet.Type;
@@ -76,7 +76,7 @@ namespace Chicken.View
             base.OnNavigatingFrom(e);
             if (!string.IsNullOrEmpty(newTweetViewModel.TweetModel.Text))
             {
-                IsolatedStorageService.CreateObject(Const.PageNameEnum.NewTweetPage, newTweetViewModel.TweetModel);
+                IsolatedStorageService.CreateObject(PageNameEnum.NewTweetPage, newTweetViewModel.TweetModel);
             }
         }
 

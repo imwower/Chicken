@@ -105,7 +105,7 @@ namespace Chicken.ViewModel.Profile
                 Text = User.ScreenName + " ",
             };
             PivotItems[SelectedIndex].IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.PageNameEnum.NewTweetPage, newTweet);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
         }
 
         private void NewMessageAction()

@@ -128,7 +128,7 @@ namespace Chicken.ViewModel.NewTweet
                             Complete =
                             () =>
                             {
-                                NavigationServiceManager.NavigateTo(Const.PageNameEnum.MainPage);
+                                NavigationServiceManager.NavigateTo(PageNameEnum.MainPage);
                             }
                         });
                     }

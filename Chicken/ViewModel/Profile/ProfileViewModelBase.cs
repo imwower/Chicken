@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -29,7 +28,7 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("UserProfile");
             }
         }
-        
+
         #region for tweets and favorites pivot item
         private ObservableCollection<TweetViewModel> tweetList;
         public ObservableCollection<TweetViewModel> TweetList
@@ -94,11 +93,11 @@ namespace Chicken.ViewModel.Profile
             var user = parameter as User;
             if (UserProfile.Id == user.Id)
             {
-                NavigationServiceManager.ChangeSelectedIndex((int)Const.ProfilePageEnum.ProfileDetail);
+                NavigationServiceManager.ChangeSelectedIndex((int)ProfilePageEnum.ProfileDetail);
             }
             else
             {
-                NavigationServiceManager.NavigateTo(Const.PageNameEnum.ProfilePage, user);
+                NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
             }
         }
         #endregion

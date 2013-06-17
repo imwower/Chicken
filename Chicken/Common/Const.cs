@@ -92,35 +92,35 @@
 
         //public const string RANDOM = "random";
         #endregion
-
-        #region page name enum
-        public enum PageNameEnum
-        {
-            MainPage = 0,
-            ProfilePage = 1,
-            StatusPage = 2,
-            NewTweetPage = 3,
-            NewMessagePage = 4,
-        }
-        #endregion
-
-        #region page index enum
-        public enum MainPageEnum
-        {
-            Home = 0,
-            Mentions = 1,
-            DMs = 2,
-        }
-
-        public enum ProfilePageEnum
-        {
-            ProfileDetail = 0,
-            Following = 1,
-            Followers = 2,
-            Favorites = 3,
-        }
-        #endregion
     }
+    #region page name enum
+    public enum PageNameEnum
+    {
+        MainPage = 0,
+        ProfilePage = 1,
+        StatusPage = 2,
+        NewTweetPage = 3,
+        NewMessagePage = 4,
+        MyProfilePage = 5,
+    }
+    #endregion
+
+    #region page index enum
+    //public enum MainPageEnum
+    //{
+    //    Home = 0,
+    //    Mentions = 1,
+    //    DMs = 2,
+    //}
+
+    public enum ProfilePageEnum
+    {
+        ProfileDetail = 0,
+        Following = 1,
+        Followers = 2,
+        Favorites = 3,
+    }
+    #endregion
 
     public enum AddToFavoriteActionType
     {

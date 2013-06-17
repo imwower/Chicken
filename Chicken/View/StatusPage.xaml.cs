@@ -36,7 +36,7 @@ namespace Chicken.View
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            string statusId = IsolatedStorageService.GetAndDeleteObject<string>(Const.PageNameEnum.StatusPage);
+            string statusId = IsolatedStorageService.GetAndDeleteObject<string>(PageNameEnum.StatusPage);
             statusViewModel.StatusId = statusId;
         }
     }
