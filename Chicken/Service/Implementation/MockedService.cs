@@ -159,6 +159,14 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region my profile
+        public void GetMyProfileDetail<T>(Action<T> callBack)
+        {
+            string url = "SampleData/myprofile.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack)
         {

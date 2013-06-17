@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows;
-using System.Windows.Controls;
 using Chicken.Common;
 using Chicken.Service.Interface;
 using Microsoft.Phone.Controls;
@@ -36,6 +35,9 @@ namespace Chicken.Service
                     break;
                 case PageNameEnum.NewMessagePage:
                     frame.Navigate(new Uri(Const.NewMessagePage + random, UriKind.Relative));
+                    break;
+                case PageNameEnum.MyProfilePage:
+                    frame.Navigate(new Uri(Const.MyProfilePage + random, UriKind.Relative));
                     break;
                 default:
                     break;

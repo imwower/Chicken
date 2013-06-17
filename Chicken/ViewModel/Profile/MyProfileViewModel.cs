@@ -63,8 +63,24 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-            base.MainPivot_LoadedPivotItem(selectedIndex);
+            if (User == null)
+                User = IsolatedStorageService.GetAuthenticatedUser();
+            if (User != null)
+            {
+                (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
+                base.MainPivot_LoadedPivotItem(selectedIndex);
+            }
+            else
+            {
+                TweetService.GetMyProfileDetail<User>(
+                    profile =>
+                    {
+                        User = profile;
+                        (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
+                        base.MainPivot_LoadedPivotItem(selectedIndex);
+                        IsolatedStorageService.CreateAuthenticatedUser(User);
+                    });
+            }
         }
 
         #region actions

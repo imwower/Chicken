@@ -93,6 +93,8 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
+            if (User == null)
+                User = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
             (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }

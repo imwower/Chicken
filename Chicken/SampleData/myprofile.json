@@ -1,0 +1,58 @@
+﻿{
+    "location": null, 
+    "profile_sidebar_fill_color": "252429", 
+    "verified": false, 
+    "name": "Chicken4WP", 
+    "time_zone": "Beijing", 
+    "follow_request_sent": false, 
+    "is_translator": false, 
+    "lang": "en", 
+    "notifications": false, 
+    "default_profile_image": false, 
+    "profile_image_url_https": "https://twimg0-a.akamaihd.net/profile_images/344513261582355423/006ac1edc1330d7e6f00dd26d244c1d8_normal.png", 
+    "id": 1519684519, 
+    "profile_background_color": "1A1B1F", 
+    "status": {}, 
+    "favourites_count": 0, 
+    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/344918034410117389/e9de606eb39018dd89c3e9f19819f29f.jpeg", 
+    "geo_enabled": false, 
+    "profile_link_color": "2FC2EF", 
+    "following": false, 
+    "utc_offset": 28800, 
+    "profile_image_url": "http://a0.twimg.com/profile_images/344513261582355423/006ac1edc1330d7e6f00dd26d244c1d8_normal.png", 
+    "profile_background_image_url_https": "https://twimg0-a.akamaihd.net/profile_background_images/344918034410117389/e9de606eb39018dd89c3e9f19819f29f.jpeg", 
+    "created_at": "Sat Jun 15 15:21:04 +0000 2013", 
+    "id_str": "1519684519", 
+    "statuses_count": 1, 
+    "profile_use_background_image": true, 
+    "default_profile": false, 
+    "profile_text_color": "666666", 
+    "protected": false, 
+    "description": "Chicken for WP is a twitter client on Windows Phone", 
+    "friends_count": 8, 
+    "followers_count": 1, 
+    "screen_name": "Chicken4WP", 
+    "profile_sidebar_border_color": "FFFFFF", 
+    "contributors_enabled": false, 
+    "listed_count": 0, 
+    "entities": {
+        "url": {
+            "urls": [
+                {
+                    "display_url": "github.com/george67483408…", 
+                    "expanded_url": "https://github.com/george674834080/Chicken", 
+                    "url": "https://t.co/Sjn95K2JiZ", 
+                    "indices": [
+                        0, 
+                        23
+                    ]
+                }
+            ]
+        }, 
+        "description": {
+            "urls": [ ]
+        }
+    }, 
+    "url": "https://t.co/Sjn95K2JiZ", 
+    "profile_background_tile": true
+}

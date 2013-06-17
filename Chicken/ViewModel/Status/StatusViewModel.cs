@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Chicken.Common;
+using Chicken.Service;
 using Chicken.ViewModel.Status.VM;
 
 namespace Chicken.ViewModel.Status
@@ -72,6 +74,8 @@ namespace Chicken.ViewModel.Status
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
+            if (string.IsNullOrEmpty(StatusId))
+                StatusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
             (PivotItems[selectedIndex] as StatusViewModelBase).StatusId = StatusId;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }

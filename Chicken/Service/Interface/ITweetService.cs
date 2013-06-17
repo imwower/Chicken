@@ -58,6 +58,10 @@ namespace Chicken.Service.Interface
 
         void PostNewMessage<T>(string userName, string text, Action<T> callBack);
         #endregion
+
+        #region my profile page
+        void GetMyProfileDetail<T>(Action<T> callBack);
+        #endregion
     }
 
     public class RequestDataObject<T>

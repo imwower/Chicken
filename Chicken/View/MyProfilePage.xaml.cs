@@ -30,12 +30,5 @@ namespace Chicken.View
             this.MainPivot.DataContext = myProfileViewModel;
             base.Init();
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            var user = IsolatedStorageService.GetAuthenticatedUser();
-            myProfileViewModel.User = user;
-        }
     }
 }

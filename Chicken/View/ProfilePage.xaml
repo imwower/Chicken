@@ -225,6 +225,9 @@
                             <!--mention-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="mention"
                                       Command="{Binding Path=MentionCommand}" />
+                            <!--edit my profile-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.edit.png" Text="edit"
+                                      Command="{Binding Path=EditMyProfileCommand}" />
                             <abu:AppBar.MenuItems>
                                 <abu:AppBarMenuItem Text="{Binding FollowButtonText}"
                                                     Command="{Binding Path=FollowCommand}" />

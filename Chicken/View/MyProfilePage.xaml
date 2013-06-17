@@ -206,7 +206,7 @@
                     <abu:SwitchAppBarAction>
                         <abu:AppBar Id="0" Mode="Minimized">
                             <!--edit my profile-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="edit"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.edit.png" Text="edit"
                                       Command="{Binding Path=EditMyProfileCommand}" />
                             <abu:AppBar.MenuItems>
                                 <abu:AppBarMenuItem Text="settings"
@@ -226,7 +226,7 @@
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
                                       Command="{Binding Path=BottomCommand}" />
                             <!--edit my profile-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.mention.png" Text="edit"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.edit.png" Text="edit"
                                       Command="{Binding Path=EditMyProfileCommand}" />
                         </abu:AppBar>
                     </abu:SwitchAppBarAction>

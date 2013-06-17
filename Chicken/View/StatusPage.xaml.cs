@@ -32,12 +32,5 @@ namespace Chicken.View
             this.MainPivot.DataContext = statusViewModel;
             base.Init();
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            string statusId = IsolatedStorageService.GetAndDeleteObject<string>(PageNameEnum.StatusPage);
-            statusViewModel.StatusId = statusId;
-        }
     }
 }

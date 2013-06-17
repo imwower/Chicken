@@ -33,13 +33,5 @@ namespace Chicken.View
             this.MainPivot.DataContext = profileViewModel;
             base.Init();
         }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            //do not delete data, in case of null error:
-            var user = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
-            profileViewModel.User = user;
-        }
     }
 }

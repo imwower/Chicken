@@ -224,6 +224,16 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region my profile
+        public void GetMyProfileDetail<T>(Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
+            string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_MYSELF, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {

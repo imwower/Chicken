@@ -42,6 +42,7 @@
         public const string STATUS = "status";
         public const string IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
         public const string TEXT = "text";
+        public const string SKIP_STATUS = "skip_status";
         #endregion
 
         #region home page
@@ -61,7 +62,6 @@
         public const string USER_FOLLOWER_IDS = "followers/ids.json";
         public const string USERS_LOOKUP = "users/lookup.json";
         public const string FRIENDSHIPS_LOOKUP = "friendships/lookup.json";
-        public const string PROFILE_MYSELF = "account/verify_credentials.json";
         #endregion
 
         #region status page
@@ -70,7 +70,6 @@
         public const string ADD_TO_FAVORITES_CREATE = "favorites/create.json";
         public const string ADD_TO_FAVORITES_DESTROY = "favorites/destroy.json";
         public const string RETWEET_CREATE = "{0}statuses/retweet/{1}.json";
-
         #endregion
 
         #region post new tweet
@@ -81,6 +80,10 @@
         #region new message
         public const string DIRECT_MESSAGE_POST_NEW_MESSAGE = "direct_messages/new.json";
         #endregion
+
+        #region my profile
+        public const string PROFILE_MYSELF = "account/verify_credentials.json";
+        #endregion
         #endregion
 
         #region page name
@@ -89,6 +92,7 @@
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
         public const string NewMessagePage = "/View/NewMessagePage.xaml";
+        public const string MyProfilePage = "/View/MyProfilePage.xaml";
 
         //public const string RANDOM = "random";
         #endregion
