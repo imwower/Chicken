@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -83,6 +84,66 @@ namespace Chicken.ViewModel.Profile
             {
                 IsLoading = false;
                 NewMessageHandler();
+            }
+        }
+
+        public virtual void Mention()
+        {
+            NewTweetModel newTweet = new NewTweetModel
+            {
+                Type = NewTweetActionType.Mention,
+                Text = UserProfile.ScreenName + " ",
+            };
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
+        }
+
+        /// <summary>
+        /// follow or unfollow,
+        /// based on isfollowing property.
+        /// </summary>
+        public virtual void Follow()
+        {
+            IsLoading = true;
+            TweetService.FollowOrUnFollow<User>(UserProfile,
+                userProfile =>
+                {
+                    IsLoading = false;
+                    List<ErrorMessage> errors = userProfile.Errors;
+                    var toastMessage = new ToastMessage();
+                    #region handle error
+                    if (errors != null && errors.Count != 0)
+                    {
+                        toastMessage.Message = errors[0].Message;
+                        HandleMessage(toastMessage);
+                    }
+                    #endregion
+                    #region success
+                    else
+                    {
+                        toastMessage.Message = UserProfile.IsFollowing ? "unfollow successfully" : "follow successfully";
+                        toastMessage.Complete =
+                            () =>
+                            {
+                                TweetService.GetUserProfileDetail<User>(UserProfile.Id,
+                                    userProfileDetail =>
+                                    {
+                                        UserProfile = userProfileDetail;
+                                        Refresh();
+                                    });
+                            };
+                        HandleMessage(toastMessage);
+                    }
+                    #endregion
+                });
+        }
+
+        public virtual void EditMyProfile()
+        {
+            IsLoading = false;
+            if (userProfile.IsMyself)
+            {
+                NavigationServiceManager.NavigateTo(PageNameEnum.EditMyProfilePage);
             }
         }
         #endregion

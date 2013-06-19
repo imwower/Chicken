@@ -80,6 +80,7 @@ namespace Chicken.ViewModel.Profile.VM
         }
         #endregion
 
+        #region private
         private void GetFollowedByState()
         {
             TweetService.GetFriendshipConnections<Friendships<Friendship>>(UserProfile.Id,
@@ -96,5 +97,6 @@ namespace Chicken.ViewModel.Profile.VM
                     }
                 });
         }
+        #endregion
     }
 }
