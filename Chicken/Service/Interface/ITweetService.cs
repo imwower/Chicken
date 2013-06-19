@@ -61,6 +61,7 @@ namespace Chicken.Service.Interface
 
         #region my profile page
         void GetMyProfileDetail<T>(Action<T> callBack);
+        void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters);
         #endregion
     }
 

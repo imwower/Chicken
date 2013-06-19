@@ -232,6 +232,17 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_MYSELF, parameters);
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters)
+        {
+            if (parameters == null)
+            {
+                return;
+            }
+            parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
+            string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_UPDATE_MYPROFILE, parameters);
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+        }
         #endregion
 
         #region private method

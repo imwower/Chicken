@@ -1,45 +1,36 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Profile.VM;
+using System.Collections.Generic;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class MyProfileViewModel : PivotViewModelBase
+    public class MyProfileViewModel : PivotItemViewModelBase
     {
         #region properties
-        private User user;
-        public User User
+        private UserProfileDetail myProfile;
+        public UserProfileDetail MyProfile
         {
             get
             {
-                return user;
+                return myProfile;
             }
             set
             {
-                user = value;
-                RaisePropertyChanged("User");
+                myProfile = value;
+                RaisePropertyChanged("MyProfile");
             }
         }
         #endregion
 
         #region binding
-        public ICommand EditMyProfileCommand
+        public ICommand SaveCommand
         {
             get
             {
-                return new DelegateCommand(EditMyProfileAction);
-            }
-        }
-
-        public ICommand BlocksCommand
-        {
-            get
-            {
-                return new DelegateCommand(BlocksAction);
+                return new DelegateCommand(SaveAction);
             }
         }
         #endregion
@@ -50,45 +41,57 @@ namespace Chicken.ViewModel.Profile
 
         public MyProfileViewModel()
         {
-            var baseViewModelList = new List<PivotItemViewModelBase>
-            {
-                new ProfileDetailViewModel(){ IsMyself = true },
-                new UserTweetsViewModel(),
-                new UserFollowingViewModel(),
-                new UserFollowersViewModel(),
-                new UserFavoritesViewModel(),
-            };
-            this.PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
-        }
-
-        public override void MainPivot_LoadedPivotItem(int selectedIndex)
-        {
-            if (User == null)
-                User = IsolatedStorageService.GetAuthenticatedUser();
-            if (User != null)
-            {
-                (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-                base.MainPivot_LoadedPivotItem(selectedIndex);
-            }
-            else
-            {
-                TweetService.GetMyProfileDetail<User>(
-                    profile =>
-                    {
-                        User = profile;
-                        (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-                        base.MainPivot_LoadedPivotItem(selectedIndex);
-                        IsolatedStorageService.CreateAuthenticatedUser(User);
-                    });
-            }
+            Header = "Edit";
+            RefreshHandler = this.RefreshAction;
         }
 
         #region actions
-        private void EditMyProfileAction()
-        { }
+        private void RefreshAction()
+        {
+            MyProfile = IsolatedStorageService.GetAuthenticatedUser();
+            base.Refreshed();
+        }
 
-        private void BlocksAction()
-        { }
+        private void SaveAction()
+        {
+            IsLoading = true;
+            var parameters = TwitterHelper.GetDictionary();
+            if (MyProfile.Name != App.AuthenticatedUser.Name)
+                parameters.Add(Const.USER_NAME, MyProfile.Name);
+            if (MyProfile.Location != App.AuthenticatedUser.Location)
+                parameters.Add(Const.LOCATION, MyProfile.Location);
+            if (MyProfile.Url != App.AuthenticatedUser.Url)
+                parameters.Add(Const.URL, MyProfile.Url);
+            if (MyProfile.Description != App.AuthenticatedUser.Description)
+                parameters.Add(Const.DESCRIPTION, MyProfile.Description);
+            if (parameters.Count == 0)
+                return;
+            TweetService.UpdateMyProfile<User>(
+                user =>
+                {
+                    IsLoading = false;
+                    List<ErrorMessage> errors = user.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = errors[0].Message
+                        });
+                    }
+                    else
+                    {
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = "update successfully",
+                            Complete =
+                            () =>
+                            {
+                                NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
+                            }
+                        });
+                    }
+                }, parameters);
+        }
         #endregion
     }
 }

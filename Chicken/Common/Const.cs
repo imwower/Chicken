@@ -43,6 +43,11 @@
         public const string IN_REPLY_TO_STATUS_ID = "in_reply_to_status_id";
         public const string TEXT = "text";
         public const string SKIP_STATUS = "skip_status";
+        //update my profile
+        public const string USER_NAME = "name";
+        public const string URL = "url";
+        public const string LOCATION = "location";
+        public const string DESCRIPTION = "description";
         #endregion
 
         #region home page
@@ -83,6 +88,7 @@
 
         #region my profile
         public const string PROFILE_MYSELF = "account/verify_credentials.json";
+        public const string PROFILE_UPDATE_MYPROFILE = "account/update_profile.json";
         #endregion
         #endregion
 
@@ -92,9 +98,8 @@
         public const string StatusPage = "/View/StatusPage.xaml";
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
         public const string NewMessagePage = "/View/NewMessagePage.xaml";
-        public const string MyProfilePage = "/View/MyProfilePage.xaml";
+        public const string EditMyProfilePage = "/View/EditMyProfilePage.xaml";
 
-        //public const string RANDOM = "random";
         #endregion
     }
     #region page name enum

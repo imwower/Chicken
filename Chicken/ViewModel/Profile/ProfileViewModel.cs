@@ -85,13 +85,13 @@ namespace Chicken.ViewModel.Profile
             }
         }
 
-        public ICommand BlocksCommand
-        {
-            get
-            {
-                return new DelegateCommand(BlocksAction);
-            }
-        }
+        //public ICommand BlocksCommand
+        //{
+        //    get
+        //    {
+        //        return new DelegateCommand(BlocksAction);
+        //    }
+        //}
         #endregion
 
         public ProfileViewModel()

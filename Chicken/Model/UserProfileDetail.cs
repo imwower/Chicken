@@ -47,6 +47,25 @@ namespace Chicken.Model
 
         [JsonProperty("favourites_count")]
         public string FavoritesCount { get; set; }
+
+        public string ExpandedDescription
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(Description) &&
+                    Entities != null &&
+                    Entities.DescriptionEntities != null &&
+                    Entities.DescriptionEntities.Urls != null &&
+                    Entities.DescriptionEntities.Urls.Count != 0)
+                {
+                    foreach (var u in Entities.DescriptionEntities.Urls)
+                    {
+                        Description = Description.Replace(u.Text, u.ExpandedUrl);
+                    }
+                }
+                return Description;
+            }
+        }
     }
 
     public class UserProfileEntities

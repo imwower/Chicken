@@ -189,17 +189,17 @@ namespace Chicken.Service
             return DeserializeObject<LatestMessagesModel>(filepath, FileOption.OnlyRead);
         }
 
-        public static void CreateAuthenticatedUser(User authenticatedUser)
+        public static void CreateAuthenticatedUser(UserProfileDetail authenticatedUser)
         {
             CheckDataFolderPath();
             string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
             SerializeObject(filepath, authenticatedUser);
         }
 
-        public static User GetAuthenticatedUser()
+        public static UserProfileDetail GetAuthenticatedUser()
         {
             string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
-            return DeserializeObject<User>(filepath, FileOption.OnlyRead);
+            return DeserializeObject<UserProfileDetail>(filepath, FileOption.OnlyRead);
         }
         #endregion
 

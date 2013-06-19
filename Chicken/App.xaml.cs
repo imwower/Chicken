@@ -11,7 +11,7 @@ namespace Chicken
     public partial class App : Application
     {
         public PhoneApplicationFrame RootFrame { get; private set; }
-        public static User AuthenticatedUser { get; private set; }
+        public static UserProfileDetail AuthenticatedUser { get; private set; }
         //public static Size GetScreenSize()
         //{
         //    return Application.Current.RootVisual.RenderSize;
@@ -35,7 +35,7 @@ namespace Chicken
             }
         }
 
-        public static void UpdateAuthenticatedUser(User user)
+        public static void UpdateAuthenticatedUser(UserProfileDetail user)
         {
             IsolatedStorageService.CreateAuthenticatedUser(user);
             AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
@@ -46,7 +46,7 @@ namespace Chicken
             if (AuthenticatedUser == null)
                 AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
             if (AuthenticatedUser == null)
-                TweetService.GetMyProfileDetail<User>(
+                TweetService.GetMyProfileDetail<UserProfileDetail>(
                     profile =>
                     {
                         AuthenticatedUser = profile;
