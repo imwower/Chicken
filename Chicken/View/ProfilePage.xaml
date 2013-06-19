@@ -246,8 +246,8 @@
                     <abu:AppBar.MenuItems>
                         <abu:AppBarMenuItem Text="settings"
                                                     Command="{Binding Path=SettingsCommand}" />
-                        <abu:AppBarMenuItem Text="blocks"
-                                                    Command="{Binding Path=BlocksCommand}" />
+                        <!--<abu:AppBarMenuItem Text="blocks"
+                                                    Command="{Binding Path=BlocksCommand}" />-->
                     </abu:AppBar.MenuItems>
                 </abu:AppBar>
                 <!--my profile with refresh, top, bottom button-->

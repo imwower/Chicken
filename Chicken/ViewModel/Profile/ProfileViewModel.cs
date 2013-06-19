@@ -172,9 +172,9 @@ namespace Chicken.ViewModel.Profile
             (PivotItems[SelectedIndex] as ProfileViewModelBase).EditMyProfile();
         }
 
-        private void BlocksAction()
-        {
-            //TODO
-        }
+        //private void BlocksAction()
+        //{
+        //    //TODO
+        //}
     }
 }
