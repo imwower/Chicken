@@ -79,6 +79,28 @@ namespace Chicken.Common
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
+
+        /// <summary>
+        /// for test api url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static string GenerateAPIParams(string url, IDictionary<string, object> parameters = null)
+        {
+            StringBuilder sb = new StringBuilder(url);
+            if (parameters == null || parameters.Count == 0)
+            {
+                return sb.ToString();
+            }
+            sb.Append("?");
+            foreach (var item in parameters)
+            {
+                sb.Append(item.Key).Append("=").Append(HttpUtility.UrlEncode(item.Value.ToString())).Append("&");
+            }
+            sb.Remove(sb.Length - 1, 1);
+            return sb.ToString();
+        }
         #endregion
 
         public static IDictionary<string, object> GetDictionary(IDictionary<string, object> parameters = null)

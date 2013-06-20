@@ -99,6 +99,8 @@
         public const string NewTweetPage = "/View/NewTweetPage.xaml";
         public const string NewMessagePage = "/View/NewMessagePage.xaml";
         public const string EditMyProfilePage = "/View/EditMyProfilePage.xaml";
+        public const string SettingsPage = "/View/SettingsPage.xaml";
+        public const string APISettingsPage = "/View/APISettingsPage.xaml";
 
         #endregion
     }
@@ -111,6 +113,8 @@
         NewTweetPage = 3,
         NewMessagePage = 4,
         EditMyProfilePage = 5,
+        SettingsPage = 6,
+        APISettingsPage = 7,
     }
     #endregion
 

@@ -11,8 +11,10 @@ namespace Chicken.View
         public EditMyProfilePage()
         {
             InitializeComponent();
-            myProfileViewModel = new MyProfileViewModel();
-            myProfileViewModel.ToastMessageHandler = ToastMessageHandler;
+            myProfileViewModel = new MyProfileViewModel()
+            {
+                ToastMessageHandler = ToastMessageHandler
+            };
             this.Loaded += EditMyProfilePage_Loaded;
             this.DataContext = myProfileViewModel;
         }

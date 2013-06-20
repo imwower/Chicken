@@ -39,6 +39,12 @@ namespace Chicken.Service
                 case PageNameEnum.EditMyProfilePage:
                     frame.Navigate(new Uri(Const.EditMyProfilePage + random, UriKind.Relative));
                     break;
+                case PageNameEnum.SettingsPage:
+                    frame.Navigate(new Uri(Const.SettingsPage + random, UriKind.Relative));
+                    break;
+                case PageNameEnum.APISettingsPage:
+                    frame.Navigate(new Uri(Const.APISettingsPage + random, UriKind.Relative));
+                    break;
                 default:
                     break;
             }

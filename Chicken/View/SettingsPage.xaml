@@ -1,0 +1,64 @@
+﻿<v:PivotPageBase 
+    x:Class="Chicken.View.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls" 
+    xmlns:ctrls="clr-namespace:Chicken.Controls"
+    xmlns:v="clr-namespace:Chicken.View"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    shell:SystemTray.IsVisible="True">
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <controls:Pivot x:Name="MainPivot"
+                        Title="{Binding Path=Title}">
+            <controls:PivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding Path=Header}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalAlignment="Top"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <StackPanel Grid.Row="0">
+                                    <TextBlock Text="API" />
+                                    <TextBlock Text="Type" />
+                                    <TextBlock Text="{Binding Path=GeneralSettings.APISettings.Type}" />
+                                    <TextBlock Text="Url" />
+                                    <TextBlock Text="{Binding Path=GeneralSettings.APISettings.Url}" />
+                                    <Button Content="Edit API"
+                                            Command="{Binding Path=EditAPISettingsCommand}" />
+                                </StackPanel>
+                                <Button Grid.Row="1" Content="Clear Cache"
+                                        Command="{Binding Path=ClearCacheCommand}" />
+
+                            </Grid>
+                        </ScrollViewer.Content>
+                    </ScrollViewer>
+                    <ProgressBar Grid.Row="1" IsIndeterminate="True"
+                                 Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                </Grid>
+            </controls:PivotItem>
+        </controls:Pivot>
+    </Grid>
+
+</v:PivotPageBase>

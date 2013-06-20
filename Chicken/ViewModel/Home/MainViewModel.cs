@@ -83,7 +83,9 @@ namespace Chicken.ViewModel.Home
         }
 
         private void SettingsAction()
-        { }
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
+        }
         #endregion
     }
 }

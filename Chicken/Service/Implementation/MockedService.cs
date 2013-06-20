@@ -173,6 +173,14 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region edit api settings
+        public void TestAPIUrl<T>(string apiUrl, Action<T> callBack)
+        {
+            string url = "SampleData/myprofile.json";
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack)
         {

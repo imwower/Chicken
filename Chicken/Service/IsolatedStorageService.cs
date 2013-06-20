@@ -30,10 +30,12 @@ namespace Chicken.Service
         private const string SAVED_DATA_FOLDER_PATH = "Data";
         private const string EMOTIONS_FILE_NAME = "Emotions.json";
 
-        private const string LATEST_MESSAGES_FILENAME = "LatestDirectMessages.json";
+        private const string LATEST_MESSAGES_FILE_NAME = "LatestDirectMessages.json";
         private const string DIRECT_MESSAGES_FOLDERPATH = "DirectMessages";
 
         private const string AUTHENTICATED_USER_FILE_NAME = "AuthenticatedUser.json";
+
+        private const string GENERALSETTINGS_FILE_NAME = "GeneralSettings.json";
         #endregion
 
         #region method for pages
@@ -179,13 +181,13 @@ namespace Chicken.Service
                 fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
             }
             #endregion
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILENAME;
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILE_NAME;
             SerializeObject(filepath, latestmsgs);
         }
 
         public static LatestMessagesModel GetLatestMessages()
         {
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILENAME;
+            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILE_NAME;
             return DeserializeObject<LatestMessagesModel>(filepath, FileOption.OnlyRead);
         }
 
@@ -201,6 +203,20 @@ namespace Chicken.Service
             string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
             return DeserializeObject<UserProfileDetail>(filepath, FileOption.OnlyRead);
         }
+
+        public static void CreateAppSettings(GeneralSettings settings)
+        {
+            CheckDataFolderPath();
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + GENERALSETTINGS_FILE_NAME;
+            SerializeObject(filepath, settings);
+        }
+
+        public static GeneralSettings GetAppSettings()
+        {
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + GENERALSETTINGS_FILE_NAME;
+            return DeserializeObject<GeneralSettings>(filepath, FileOption.OnlyRead);
+        }
+
         #endregion
 
         #region public method

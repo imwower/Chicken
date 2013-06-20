@@ -245,6 +245,17 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region edit api settings
+        public void TestAPIUrl<T>(string apiUrl, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
+            string url = apiUrl + Const.PROFILE_MYSELF;
+            url = TwitterHelper.GenerateAPIParams(url, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+        #endregion
+
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
         {

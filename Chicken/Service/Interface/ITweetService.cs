@@ -63,6 +63,10 @@ namespace Chicken.Service.Interface
         void GetMyProfileDetail<T>(Action<T> callBack);
         void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters);
         #endregion
+
+        #region edit api settings page
+        void TestAPIUrl<T>(string apiUrl, Action<T> callBack);
+        #endregion
     }
 
     public class RequestDataObject<T>

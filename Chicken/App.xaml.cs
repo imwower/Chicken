@@ -12,6 +12,7 @@ namespace Chicken
     {
         public PhoneApplicationFrame RootFrame { get; private set; }
         public static UserProfileDetail AuthenticatedUser { get; private set; }
+        public static GeneralSettings Settings { get; private set; }
         //public static Size GetScreenSize()
         //{
         //    return Application.Current.RootVisual.RenderSize;
@@ -41,23 +42,47 @@ namespace Chicken
             AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
         }
 
+        public static void UpdateAppSettings(GeneralSettings settings)
+        {
+            IsolatedStorageService.CreateAppSettings(settings);
+            Settings = IsolatedStorageService.GetAppSettings();
+        }
+
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            if (AuthenticatedUser == null)
-                AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
-            if (AuthenticatedUser == null)
-                TweetService.GetMyProfileDetail<UserProfileDetail>(
-                    profile =>
-                    {
-                        AuthenticatedUser = profile;
-                        IsolatedStorageService.CreateAuthenticatedUser(AuthenticatedUser);
-                    });
+            if (Settings == null)
+            {
+                Settings = IsolatedStorageService.GetAppSettings();
+            }
+            if (Settings == null)
+            {
+                NavigationServiceManager.NavigateTo(Common.PageNameEnum.APISettingsPage);
+            }
+            else
+            {
+                if (AuthenticatedUser == null)
+                    AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
+            }
+
+            //if (AuthenticatedUser == null)
+            //    TweetService.GetMyProfileDetail<UserProfileDetail>(
+            //        profile =>
+            //        {
+            //            AuthenticatedUser = profile;
+            //            IsolatedStorageService.CreateAuthenticatedUser(AuthenticatedUser);
+            //        });
         }
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            if (Settings == null)
+            {
+                Settings = IsolatedStorageService.GetAppSettings();
+            }
             if (AuthenticatedUser == null)
+            {
                 AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
+            }
         }
 
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
