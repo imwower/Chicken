@@ -48,6 +48,7 @@ namespace Chicken.Model
         [JsonProperty("favourites_count")]
         public string FavoritesCount { get; set; }
 
+        [JsonIgnore]
         public string ExpandedDescription
         {
             get

@@ -14,7 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -32,17 +32,20 @@
             <StackPanel Orientation="Vertical">
                 <!--name-->
                 <TextBlock Text="Name" />
-                <TextBox Text="{Binding Path=MyProfile.Name, Mode=TwoWay}"
-                        TextChanged="TextBox_TextChanged" />
+                <TextBox Text="{Binding Path=MyProfile.Name}"
+                        TextChanged="Name_TextChanged" />
                 <!--location-->
                 <TextBlock Text="Loacation" />
-                <TextBox Text="{Binding Path=MyProfile.Location, Mode=TwoWay}" />
+                <TextBox Text="{Binding Path=MyProfile.Location}"
+                         TextChanged="Location_TextChanged" />
                 <!--link-->
                 <TextBlock Text="Link" />
-                <TextBox Text="{Binding Path=MyProfile.Entities.UserProfileUrlEntities.Urls[0].ExpandedUrl, Mode=TwoWay}" />
+                <TextBox Text="{Binding Path=MyProfile.Entities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                        TextChanged="Url_TextChanged" />
                 <!--description-->
                 <TextBlock Text="Description" />
-                <TextBox Text="{Binding Path=MyProfile.ExpandedDescription, Mode=TwoWay}"
+                <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"
+                         TextChanged="Description_TextChanged"
                          TextWrapping="Wrap" AcceptsReturn="True" Height="240" MaxLength="160" />
             </StackPanel>
         </ScrollViewer>
@@ -50,7 +53,7 @@
         <ProgressBar Grid.Row="2" IsIndeterminate="True"
                      Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
-    
+
     <v:PageBase.ApplicationBar>
         <shell:ApplicationBar>
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.check.png" Text="save" />

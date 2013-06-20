@@ -1,9 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using System.Collections.Generic;
 
 namespace Chicken.ViewModel.Profile
 {

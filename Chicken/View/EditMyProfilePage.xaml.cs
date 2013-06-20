@@ -25,11 +25,24 @@ namespace Chicken.View
             }
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var textbox = sender as TextBox;
-            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
-            binding.UpdateSource();
+            myProfileViewModel.MyProfile.Name = (sender as TextBox).Text;
+        }
+
+        private void Location_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myProfileViewModel.MyProfile.Location = (sender as TextBox).Text;
+        }
+
+        private void Url_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myProfileViewModel.MyProfile.Url = (sender as TextBox).Text;
+        }
+
+        private void Description_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            myProfileViewModel.MyProfile.Description = (sender as TextBox).Text;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace Chicken.Model.Entity
         [JsonProperty("expanded_url")]
         public string ExpandedUrl { get; set; }
 
+        [JsonIgnore]
         public string TruncatedUrl
         {
             get

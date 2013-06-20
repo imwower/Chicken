@@ -1,10 +1,12 @@
 ﻿
+using Newtonsoft.Json;
 namespace Chicken.Model
 {
     public class UserProfile : User
     {
         public string Description { get; set; }
 
+        [JsonIgnore]
         public string TruncatedDescription
         {
             get
