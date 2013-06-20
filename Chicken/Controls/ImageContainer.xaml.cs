@@ -68,57 +68,19 @@ namespace Chicken.Controls
             }
             #endregion
 
-            #region action
-            EventHandler<RoutedEventArgs> pngCompleted = null;
-            OpenReadCompletedEventHandler gifCompleted = null;
-            EventHandler<ExceptionRoutedEventArgs> pngFailed = null;
-
-            pngCompleted = delegate(object pngImage, RoutedEventArgs gifArgs)
-            {
-                Image pngImageControl = new Image();
-                pngImageControl.Stretch = Stretch.Fill;
-                var bitmapImage = pngImage as BitmapImage;
-                pngImageControl.Source = bitmapImage;
-                pngCache[newValue] = bitmapImage;
-                container.grid.Children.Add(pngImageControl);
-                container.grid.Children.Remove(container.placehold);
-                bitmapImage.ImageOpened -= pngCompleted;
-                bitmapImage.ImageFailed -= pngFailed;
-            };
-
-            gifCompleted = delegate(object gifImage, OpenReadCompletedEventArgs gifArgs)
-            {
-                AnimatedImage gifImageControl = new AnimatedImage();
-                gifImageControl.Stretch = Stretch.Fill;
-                var extendedImage = gifImage as ExtendedImage;
-                gifImageControl.Source = extendedImage;
-                gifCache[newValue] = extendedImage;
-                container.grid.Children.Add(gifImageControl);
-                container.grid.Children.Remove(container.placehold);
-                extendedImage.DownloadCompleted -= gifCompleted;
-            };
-
-            #region png image failed action
-            pngFailed = delegate(object imageFailed, ExceptionRoutedEventArgs failedArgs)
-            {
-                ExtendedImage gifImage = new ExtendedImage();
-                gifImage.DownloadCompleted += new OpenReadCompletedEventHandler(gifCompleted);
-                (imageFailed as BitmapImage).ImageFailed -= pngFailed;
-
-                gifImage.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
-            };
-            #endregion
-            #endregion
             BitmapImage image = new BitmapImage();
-            image.CreateOptions = BitmapCreateOptions.None;
-            image.ImageOpened += new EventHandler<RoutedEventArgs>(pngCompleted);
-            image.ImageFailed += new EventHandler<ExceptionRoutedEventArgs>(pngFailed);
-
+            image.CreateOptions = BitmapCreateOptions.IgnoreImageCache;
+            image.ImageOpened += container.png_ImageOpened;
+            image.ImageFailed += container.png_ImageFailed;
             image.UriSource = new Uri(newValue, UriKind.RelativeOrAbsolute);
         }
 
+        #region static properties
+        private static readonly object pnglocker = new object();
+        private static readonly object giflocker = new object();
         private static Dictionary<string, BitmapImage> pngCache = new Dictionary<string, BitmapImage>();
         private static Dictionary<string, ExtendedImage> gifCache = new Dictionary<string, ExtendedImage>();
+        #endregion
 
         public ImageContainer()
         {
@@ -126,6 +88,51 @@ namespace Chicken.Controls
             Decoders.AddDecoder<BmpDecoder>();
             Decoders.AddDecoder<PngDecoder>();
             Decoders.AddDecoder<GifDecoder>();
+        }
+
+        private void png_ImageOpened(object sender, RoutedEventArgs e)
+        {
+            Image pngImageControl = new Image();
+            pngImageControl.Stretch = Stretch.Fill;
+            var bitmapImage = sender as BitmapImage;
+            pngImageControl.Source = bitmapImage;
+            this.grid.Children.Add(pngImageControl);
+            this.grid.Children.Remove(this.placehold);
+            this.grid.UpdateLayout();
+
+            lock (pnglocker)
+            {
+                pngCache[bitmapImage.UriSource.OriginalString] = bitmapImage;
+            }
+            bitmapImage.ImageOpened -= png_ImageOpened;
+            bitmapImage.ImageFailed -= png_ImageFailed;
+        }
+
+        private void png_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+            var bitmapImage = sender as BitmapImage;
+            ExtendedImage gifImage = new ExtendedImage();
+            gifImage.DownloadCompleted += gifImage_DownloadCompleted;
+            gifImage.UriSource = bitmapImage.UriSource;
+            bitmapImage.ImageOpened -= png_ImageOpened;
+            bitmapImage.ImageFailed -= png_ImageFailed;
+        }
+
+        private void gifImage_DownloadCompleted(object sender, OpenReadCompletedEventArgs e)
+        {
+            var gifImage = sender as ExtendedImage;
+            AnimatedImage gifImageControl = new AnimatedImage();
+            gifImageControl.Stretch = Stretch.Fill;
+            gifImageControl.Source = gifImage;
+            this.grid.Children.Add(gifImageControl);
+            this.grid.Children.Remove(this.placehold);
+            this.UpdateLayout();
+
+            lock (giflocker)
+            {
+                gifCache[gifImage.UriSource.OriginalString] = gifImage;
+            }
+            gifImage.DownloadCompleted -= gifImage_DownloadCompleted;
         }
     }
 }
