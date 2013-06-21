@@ -6,6 +6,7 @@ namespace Chicken.Model
 {
     public class UserProfileDetail : UserProfile
     {
+        [JsonIgnore]
         public string ProfileImageOriginal
         {
             get

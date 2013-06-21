@@ -21,8 +21,8 @@ namespace Chicken.Service
             string random = "?random=" + DateTime.Now.Ticks.ToString("x");
             switch (pageName)
             {
-                case PageNameEnum.MainPage:
-                    frame.Navigate(new Uri(Const.MainPage + random, UriKind.Relative));
+                case PageNameEnum.HomePage:
+                    frame.Navigate(new Uri(Const.HomePage + random, UriKind.Relative));
                     break;
                 case PageNameEnum.ProfilePage:
                     frame.Navigate(new Uri(Const.ProfilePage + random, UriKind.Relative));

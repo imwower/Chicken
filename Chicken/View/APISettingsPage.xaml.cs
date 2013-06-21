@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using Chicken.ViewModel.Settings;
 
 namespace Chicken.View
@@ -17,6 +18,15 @@ namespace Chicken.View
                 ToastMessageHandler = ToastMessageHandler
             };
             this.DataContext = apiSettingsViewModel;
+            this.Loaded += APISettingsPage_Loaded;
+        }
+
+        private void APISettingsPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!apiSettingsViewModel.IsInited)
+            {
+                apiSettingsViewModel.Refresh();
+            }
         }
 
         private void Url_TextChanged(object sender, TextChangedEventArgs e)

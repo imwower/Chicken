@@ -144,6 +144,9 @@
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />
     <Compile Include="Service\Implementation\MockedService.cs" />
+    <Compile Include="SplashScreenPage.xaml.cs">
+      <DependentUpon>SplashScreenPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
@@ -172,8 +175,8 @@
     <Compile Include="View\EditMyProfilePage.xaml.cs">
       <DependentUpon>EditMyProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="View\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\NewMessagePage.xaml.cs">
       <DependentUpon>NewMessagePage.xaml</DependentUpon>
@@ -292,6 +295,7 @@
     <Content Include="Images\dark\verified.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="SplashScreenImage.jpg" />
     <None Include="libs\AppBarUtils.dll" />
     <None Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
     <None Include="libs\ImageTools.Controls.dll" />
@@ -357,6 +361,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SplashScreenPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\APISettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -365,7 +373,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainPage.xaml">
+    <Page Include="View\HomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -441,7 +449,6 @@
     <Content Include="SampleData\profileimage.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
@@ -49,20 +49,28 @@ namespace Chicken.ViewModel.Settings
         #region actions
         private void RefreshAction()
         {
-            GeneralSettings = App.Settings;
-            if (GeneralSettings == null)
+            if (App.Settings == null)
             {
                 Header = "Init API settings";
                 isInitAPI = true;
+                GeneralSettings = new GeneralSettings
+                {
+                    APISettings = new APIProxy
+                    {
+                        Url = "https://blog-lonzhu.rhcloud.com/weixin/o/UT3I3O/1.1/"
+                    }
+                };
+            }
+            else
+            {
+                GeneralSettings = App.Settings;
             }
             base.Refreshed();
         }
 
         private void SaveAction()
         {
-            if (string.IsNullOrEmpty(GeneralSettings.APISettings.Url) ||
-                GeneralSettings.APISettings.Type == App.Settings.APISettings.Type ||
-                GeneralSettings.APISettings.Url == App.Settings.APISettings.Url)
+            if (string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
             {
                 return;
             }
@@ -71,32 +79,35 @@ namespace Chicken.ViewModel.Settings
             {
                 GeneralSettings.APISettings.Url += "/";
             }
-            try
-            {
-                TweetService.TestAPIUrl<UserProfileDetail>(GeneralSettings.APISettings.Url,
+            TweetService.TestAPIUrl<UserProfileDetail>(GeneralSettings.APISettings.Url,
                     userProfileDetail =>
                     {
-                        App.UpdateAuthenticatedUser(userProfileDetail);
-                        App.UpdateAppSettings(GeneralSettings);
-                        HandleMessage(new ToastMessage
+                        IsLoading = false;
+                        List<ErrorMessage> errors = userProfileDetail.Errors;
+                        if (errors != null && errors.Count != 0)
                         {
-                            Message = isInitAPI ? "hello, " + userProfileDetail.ScreenName : "update successfully",
-                            Complete =
-                            () =>
+                            HandleMessage(new ToastMessage
                             {
-                                NavigationServiceManager.NavigateTo(PageNameEnum.MainPage);
-                            }
-                        });
+                                Message = errors[0].Message
+                            });
+                        }
+                        else
+                        {
+                            IsolatedStorageService.CreateAppSettings(GeneralSettings);
+                            App.InitAppSettings();
+                            IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
+                            App.InitAuthenticatedUser();
+                            HandleMessage(new ToastMessage
+                            {
+                                Message = isInitAPI ? "hello, " + userProfileDetail.ScreenName : "update successfully",
+                                Complete =
+                                () =>
+                                {
+                                    NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                                }
+                            });
+                        }
                     });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                IsLoading = false;
-            }
         }
         #endregion
     }

@@ -2,7 +2,6 @@
 using System.Windows.Navigation;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.Service.Interface;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -10,16 +9,44 @@ namespace Chicken
 {
     public partial class App : Application
     {
+        #region properites
         public PhoneApplicationFrame RootFrame { get; private set; }
-        public static UserProfileDetail AuthenticatedUser { get; private set; }
-        public static GeneralSettings Settings { get; private set; }
+        private static UserProfileDetail authenticatedUser;
+        public static UserProfileDetail AuthenticatedUser
+        {
+            get
+            {
+                if (authenticatedUser == null)
+                {
+                    InitAuthenticatedUser();
+                }
+                return authenticatedUser;
+            }
+            private set
+            {
+                authenticatedUser = value;
+            }
+        }
+        private static GeneralSettings settings;
+        public static GeneralSettings Settings
+        {
+            get
+            {
+                if (settings == null)
+                {
+                    InitAppSettings();
+                }
+                return settings;
+            }
+            private set
+            {
+                settings = value;
+            }
+        }
         //public static Size GetScreenSize()
         //{
         //    return Application.Current.RootVisual.RenderSize;
-        //}
-
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
+        //} 
         #endregion
 
         public App()
@@ -36,53 +63,22 @@ namespace Chicken
             }
         }
 
-        public static void UpdateAuthenticatedUser(UserProfileDetail user)
+        public static void InitAuthenticatedUser()
         {
-            IsolatedStorageService.CreateAuthenticatedUser(user);
-            AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
+            authenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
         }
 
-        public static void UpdateAppSettings(GeneralSettings settings)
+        public static void InitAppSettings()
         {
-            IsolatedStorageService.CreateAppSettings(settings);
-            Settings = IsolatedStorageService.GetAppSettings();
+            settings = IsolatedStorageService.GetAppSettings();
         }
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
-            if (Settings == null)
-            {
-                Settings = IsolatedStorageService.GetAppSettings();
-            }
-            if (Settings == null)
-            {
-                NavigationServiceManager.NavigateTo(Common.PageNameEnum.APISettingsPage);
-            }
-            else
-            {
-                if (AuthenticatedUser == null)
-                    AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
-            }
-
-            //if (AuthenticatedUser == null)
-            //    TweetService.GetMyProfileDetail<UserProfileDetail>(
-            //        profile =>
-            //        {
-            //            AuthenticatedUser = profile;
-            //            IsolatedStorageService.CreateAuthenticatedUser(AuthenticatedUser);
-            //        });
         }
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
-            if (Settings == null)
-            {
-                Settings = IsolatedStorageService.GetAppSettings();
-            }
-            if (AuthenticatedUser == null)
-            {
-                AuthenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
-            }
         }
 
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)

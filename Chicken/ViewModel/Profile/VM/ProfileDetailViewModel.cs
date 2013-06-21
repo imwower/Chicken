@@ -52,7 +52,8 @@ namespace Chicken.ViewModel.Profile.VM
                     this.UserProfileViewModel = userProfileDetail;
                     if (UserProfile.IsMyself)
                     {
-                        App.UpdateAuthenticatedUser(userProfileDetail);
+                        IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
+                        App.InitAuthenticatedUser();
                     }
                     else
                     {
