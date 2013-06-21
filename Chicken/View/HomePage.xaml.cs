@@ -46,7 +46,7 @@ namespace Chicken.View
                 }
             }
 
-            if (MessageBox.Show("exit?", "exit", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            if (MessageBox.Show("Are you sure to exit?", "", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
             {
                 e.Cancel = true;
             }
