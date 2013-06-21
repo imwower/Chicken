@@ -1,7 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2009/deployment" AppPlatformVersion="7.1">
-  <App xmlns="" ProductID="{5019ed79-8e75-4593-8713-7ea85c78dc8f}" Title="Chicken" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal"  Author="Chicken author" Description="Sample description" Publisher="Chicken">
+  <App xmlns=""
+       ProductID="{5019ed79-8e75-4593-8713-7ea85c78dc8f}"
+       Title="Chicken"
+       RuntimeType="Silverlight"
+       Version="1.0.0.0"
+       Genre="apps.normal"
+       Author="im_wower"
+       Description="Chicken for Windows Phone"
+       Publisher="Chicken">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES"/>

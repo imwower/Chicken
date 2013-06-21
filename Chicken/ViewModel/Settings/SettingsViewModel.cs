@@ -12,6 +12,7 @@ namespace Chicken.ViewModel.Settings
             var baseViewModelList = new List<PivotItemViewModelBase>
             {
                 new GeneralSettingsViewModel(),
+                new AboutViewModel(),
             };
             this.PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }

@@ -93,8 +93,9 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
     <Reference Include="System.Windows.Interactivity, Version=3.8.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml" />
     <Reference Include="mscorlib.extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -116,6 +117,7 @@
     <Compile Include="Controls\ToastPrompt.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
+    <Compile Include="Model\AboutModel.cs" />
     <Compile Include="Model\GenenalSettings.cs" />
     <Compile Include="Model\LatestMessagesModel.cs" />
     <Compile Include="Model\Cursor.cs" />
@@ -296,6 +298,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Resource Include="SplashScreenImage.jpg" />
+    <Content Include="Data\About.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="libs\AppBarUtils.dll" />
     <None Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
     <None Include="libs\ImageTools.Controls.dll" />

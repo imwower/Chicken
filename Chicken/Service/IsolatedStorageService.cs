@@ -36,6 +36,8 @@ namespace Chicken.Service
         private const string AUTHENTICATED_USER_FILE_NAME = "AuthenticatedUser.json";
 
         private const string GENERALSETTINGS_FILE_NAME = "GeneralSettings.json";
+
+        private const string ABOUT_FILE_NAME = "About.json";
         #endregion
 
         #region method for pages
@@ -215,6 +217,29 @@ namespace Chicken.Service
         {
             string filepath = SAVED_DATA_FOLDER_PATH + "/" + GENERALSETTINGS_FILE_NAME;
             return DeserializeObject<GeneralSettings>(filepath, FileOption.OnlyRead);
+        }
+
+        public static void CreateAbout(AboutModel about)
+        {
+            CheckDataFolderPath();
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + ABOUT_FILE_NAME;
+            SerializeObject(filepath, about);
+        }
+
+        public static AboutModel GetAbout()
+        {
+            CheckDataFolderPath();
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + ABOUT_FILE_NAME;
+            using (var fileStream = fileSystem.OpenFile(filepath, FileMode.OpenOrCreate))
+            {
+                if (fileStream == null || fileStream.Length == 0)
+                {
+                    var resource = Application.GetResourceStream(new Uri(filepath, UriKind.Relative));
+                    resource.Stream.CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+            }
+            return DeserializeObject<AboutModel>(filepath);
         }
 
         #endregion

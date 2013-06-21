@@ -21,6 +21,7 @@
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <controls:Pivot x:Name="MainPivot"
                         Title="{Binding Path=Title}">
+            <!--general settings-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
                 Header="{Binding Path=Header}">
@@ -44,17 +45,65 @@
                                     <TextBlock Text="Type" />
                                     <TextBlock Text="{Binding Path=GeneralSettings.APISettings.Type}" />
                                     <TextBlock Text="Url" />
-                                    <TextBlock Text="{Binding Path=GeneralSettings.APISettings.Url}" />
+                                    <TextBlock Text="{Binding Path=GeneralSettings.APISettings.Url}"
+                                               TextWrapping="Wrap" />
                                     <Button Content="Edit API"
                                             Command="{Binding Path=EditAPISettingsCommand}" />
                                 </StackPanel>
                                 <Button Grid.Row="1" Content="Clear Cache"
                                         Command="{Binding Path=ClearCacheCommand}" />
-
                             </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>
                     <ProgressBar Grid.Row="1" IsIndeterminate="True"
+                                 Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                </Grid>
+            </controls:PivotItem>
+            <!--about-->
+            <controls:PivotItem
+                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding Path=Header}">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="10" />
+                    </Grid.RowDefinitions>
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalScrollBarVisibility="Disabled"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ScrollViewer.Content>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <!--logo-->
+                                <StackPanel Grid.Row="0">
+                                    <Image Source="/Background.png"
+                                           Width="124" Height="124">
+                                        <Image.Clip>
+                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                        </Image.Clip>
+                                    </Image>
+                                </StackPanel>
+                                <!--version-->
+                                <TextBlock Grid.Row="1" HorizontalAlignment="Center">
+                                        <Run Text="Version: " />
+                                        <Run Text="{Binding Path=CurrentVersion}" />
+                                </TextBlock>
+                                <!--description-->
+                                <TextBlock Grid.Row="2" Text="{Binding Path=AboutModel.Description}"
+                                           Style="{StaticResource TextContentCenter}" VerticalAlignment="Center"/>
+                            </Grid>
+                        </ScrollViewer.Content>
+                    </ScrollViewer>
+                    <!--update-->
+                    <Button Grid.Row="1" Content="Check for Update" VerticalAlignment="Bottom"
+                            Command="{Binding Path=UpdateDescriptionCommand}" />
+                    <ProgressBar Grid.Row="2" IsIndeterminate="True"
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
