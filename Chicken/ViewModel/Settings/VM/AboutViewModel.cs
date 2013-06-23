@@ -1,6 +1,5 @@
-﻿using System.Xml.Linq;
-using System.Reflection;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using System.Xml.Linq;
 using Chicken.Model;
 using Chicken.Service;
 
