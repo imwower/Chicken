@@ -62,8 +62,8 @@ namespace Chicken.ViewModel.Profile
                 parameters.Add(Const.LOCATION, MyProfile.Location);
             if (MyProfile.Url != App.AuthenticatedUser.Url)
                 parameters.Add(Const.URL, MyProfile.Url);
-            if (MyProfile.Description != App.AuthenticatedUser.Description)
-                parameters.Add(Const.DESCRIPTION, MyProfile.Description);
+            if (MyProfile.Text != App.AuthenticatedUser.Text)
+                parameters.Add(Const.DESCRIPTION, MyProfile.Text);
             if (parameters.Count == 0)
                 return;
             TweetService.UpdateMyProfile<User>(

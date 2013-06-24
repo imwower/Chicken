@@ -1,8 +1,4 @@
-﻿using System.Windows.Navigation;
-using Chicken.Common;
-using Chicken.Model;
-using Chicken.Service;
-using Chicken.ViewModel;
+﻿using Chicken.ViewModel;
 using Chicken.ViewModel.Profile;
 using Microsoft.Phone.Controls;
 

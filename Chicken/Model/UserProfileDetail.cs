@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Chicken.Model.Entity;
 using Newtonsoft.Json;
+using Chicken.Common;
 
 namespace Chicken.Model
 {
@@ -35,7 +36,28 @@ namespace Chicken.Model
         public string Url { get; set; }
 
         [JsonProperty("entities")]
-        public UserProfileEntities Entities { get; set; }
+        public UserProfileEntities UserProfileEntities { get; set; }
+
+        [JsonIgnore]
+        public override Entities Entities
+        {
+            get
+            {
+                Entities entities = new Entities();
+                if (UserProfileEntities != null &&
+                    UserProfileEntities.DescriptionEntities != null &&
+                    UserProfileEntities.DescriptionEntities.Urls != null &&
+                    UserProfileEntities.DescriptionEntities.Urls.Count != 0)
+                {
+                    entities.Urls = UserProfileEntities.DescriptionEntities.Urls;
+                }
+                entities.UserMentions = TwitterHelper.ParseUserMentions(Text);
+                entities.HashTags = TwitterHelper.ParseHashTags(Text);
+                return entities;
+            }
+            set
+            { }
+        }
 
         [JsonProperty("statuses_count")]
         public string TweetsCount { get; set; }
@@ -49,23 +71,27 @@ namespace Chicken.Model
         [JsonProperty("favourites_count")]
         public string FavoritesCount { get; set; }
 
+        /// <summary>
+        /// for edit my profile page,
+        /// only
+        /// </summary>
         [JsonIgnore]
         public string ExpandedDescription
         {
             get
             {
-                if (!string.IsNullOrEmpty(Description) &&
-                    Entities != null &&
-                    Entities.DescriptionEntities != null &&
-                    Entities.DescriptionEntities.Urls != null &&
-                    Entities.DescriptionEntities.Urls.Count != 0)
+                if (!string.IsNullOrEmpty(Text) &&
+                    UserProfileEntities != null &&
+                    UserProfileEntities.DescriptionEntities != null &&
+                    UserProfileEntities.DescriptionEntities.Urls != null &&
+                    UserProfileEntities.DescriptionEntities.Urls.Count != 0)
                 {
-                    foreach (var u in Entities.DescriptionEntities.Urls)
+                    foreach (var u in UserProfileEntities.DescriptionEntities.Urls)
                     {
-                        Description = Description.Replace(u.Text, u.ExpandedUrl);
+                        Text = Text.Replace(u.Text, u.ExpandedUrl);
                     }
                 }
-                return Description;
+                return Text;
             }
         }
     }

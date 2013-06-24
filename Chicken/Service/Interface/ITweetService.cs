@@ -19,13 +19,13 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region profile page
-        void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserProfileDetail<T>(User user, Action<T> callBack);
 
         void FollowOrUnFollow<T>(User user, Action<T> callBack);
 
         void GetFriendshipConnections<T>(string userIdList, Action<T> callBack);
 
-        void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null);
 
         void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
@@ -33,7 +33,7 @@ namespace Chicken.Service.Interface
 
         void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null);
 
-        void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region status page

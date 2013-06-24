@@ -54,10 +54,18 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region profile page
-        public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfileDetail<T>(User user, Action<T> callBack)
         {
-            parameters = TwitterHelper.GetDictionary(parameters);
-            parameters.Add(Const.USER_ID, userId);
+            var parameters = TwitterHelper.GetDictionary();
+            if (!string.IsNullOrEmpty(user.Id))
+            {
+                parameters.Add(Const.USER_ID, user.Id);
+            }
+            else if (!string.IsNullOrEmpty(user.DisplayName))
+            {
+                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+            }
+            parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -88,10 +96,17 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
-            parameters.Add(Const.USER_ID, userId);
+            if (!string.IsNullOrEmpty(user.Id))
+            {
+                parameters.Add(Const.USER_ID, user.Id);
+            }
+            else if (!string.IsNullOrEmpty(user.DisplayName))
+            {
+                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+            }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
         }
@@ -124,10 +139,17 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
-            parameters.Add(Const.USER_ID, userId);
+            if (!string.IsNullOrEmpty(user.Id))
+            {
+                parameters.Add(Const.USER_ID, user.Id);
+            }
+            else if (!string.IsNullOrEmpty(user.DisplayName))
+            {
+                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+            }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVORITE, parameters);
             HandleWebRequest<T>(url, callBack);
         }

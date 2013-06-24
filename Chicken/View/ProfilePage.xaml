@@ -125,8 +125,8 @@
                                     <!--Url-->
                                     <HyperlinkButton Grid.Row="4"
                                                      Visibility="{Binding Path=UserProfileViewModel.Url,Converter={StaticResource StringToVisibilityConverter}}"
-                                                     Content="{Binding Path=UserProfileViewModel.Entities.UserProfileUrlEntities.Urls[0].TruncatedUrl}"
-                                                     NavigateUri="{Binding Path=UserProfileViewModel.Entities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                                                     Content="{Binding Path=UserProfileViewModel.UserProfileEntities.UserProfileUrlEntities.Urls[0].TruncatedUrl}"
+                                                     NavigateUri="{Binding Path=UserProfileViewModel.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
                                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
                                     <!--Tweets, Following, Followers, Favorites-->
@@ -170,9 +170,12 @@
                                     </Border>
                                 </Grid>
                                 <!--description-->
-                                <TextBlock Grid.Row="2"
-                                           Text="{Binding UserProfileViewModel.ExpandedDescription}"
-                                           Style="{StaticResource TextContentCenter}" VerticalAlignment="Center" />
+                                <ctrls:AutoRichTextBox  Grid.Row="2"
+                                                        TweetData="{Binding Path=UserProfileViewModel}"
+                                                        HorizontalAlignment="Stretch"
+                                                         VerticalAlignment="Center" TextAlignment="Center"
+                                                        Style="{StaticResource TextContent}">
+                                </ctrls:AutoRichTextBox>
                             </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>

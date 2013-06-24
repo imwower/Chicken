@@ -34,6 +34,14 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
+        public TweetBase Tweet
+        {
+            get
+            {
+                return tweet;
+            }
+        }
+
         public TweetBase OriginalTweet
         {
             get
@@ -70,7 +78,7 @@ namespace Chicken.ViewModel.Home.Base
         {
             get
             {
-                return HttpUtility.HtmlDecode(tweet.Text);
+                return tweet.Text;
             }
         }
 

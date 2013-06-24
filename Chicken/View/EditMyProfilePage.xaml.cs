@@ -44,7 +44,7 @@ namespace Chicken.View
 
         private void Description_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.Description = (sender as TextBox).Text;
+            myProfileViewModel.MyProfile.Text = (sender as TextBox).Text;
         }
     }
 }

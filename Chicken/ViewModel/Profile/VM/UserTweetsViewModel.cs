@@ -26,7 +26,7 @@ namespace Chicken.ViewModel.Profile.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetUserTweets<TweetList<Tweet>>(UserProfile.Id,
+            TweetService.GetUserTweets<TweetList<Tweet>>(this.UserProfile,
                 tweets =>
                 {
                     if (tweets != null && tweets.Count != 0)
@@ -63,7 +63,7 @@ namespace Chicken.ViewModel.Profile.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetUserTweets<TweetList<Tweet>>(UserProfile.Id,
+                TweetService.GetUserTweets<TweetList<Tweet>>(this.UserProfile,
                     tweets =>
                     {
                         foreach (var tweet in tweets)

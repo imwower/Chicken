@@ -125,7 +125,7 @@ namespace Chicken.ViewModel.Profile
                         toastMessage.Complete =
                             () =>
                             {
-                                TweetService.GetUserProfileDetail<User>(UserProfile.Id,
+                                TweetService.GetUserProfileDetail<User>(UserProfile,
                                     userProfileDetail =>
                                     {
                                         UserProfile = userProfileDetail;

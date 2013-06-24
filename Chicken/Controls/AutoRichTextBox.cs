@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -10,20 +11,19 @@ using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
 using Chicken.ViewModel;
-using Chicken.ViewModel.Home.Base;
 
 namespace Chicken.Controls
 {
     public class AutoRichTextBox : RichTextBox
     {
         public static DependencyProperty TweetDataProperty =
-            DependencyProperty.Register("TweetData", typeof(TweetViewModel), typeof(AutoRichTextBox), new PropertyMetadata(TweetDataPropertyChanged));
+            DependencyProperty.Register("TweetData", typeof(TweetBase), typeof(AutoRichTextBox), new PropertyMetadata(TweetDataPropertyChanged));
 
-        public TweetViewModel TweetData
+        public TweetBase TweetData
         {
             get
             {
-                return (TweetViewModel)GetValue(TweetDataProperty);
+                return (TweetBase)GetValue(TweetDataProperty);
             }
             set
             {
@@ -34,7 +34,7 @@ namespace Chicken.Controls
         public static void TweetDataPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             var textBox = sender as AutoRichTextBox;
-            var tweet = e.NewValue as TweetViewModel;
+            var tweet = e.NewValue as TweetBase;
             if (textBox == null || tweet == null)
             {
                 return;
@@ -70,7 +70,6 @@ namespace Chicken.Controls
                         entities.Add(hashtag);
                     }
                 }
-                entities.ForEach(entity => entity.Index = text.IndexOf(entity.Text));
                 entities = entities.OrderBy(entity => entity.Index).ToList();
             }
             var paragraph = new Paragraph();
@@ -89,7 +88,10 @@ namespace Chicken.Controls
                 {
                     if (index < entity.Index)
                     {
-                        paragraph.Inlines.Add(new Run { Text = text.Substring(index, entity.Index - index) });
+                        paragraph.Inlines.Add(new Run
+                        {
+                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index - index))
+                        });
                         index = entity.Index;
                     }
                     switch (entity.EntityType)
@@ -108,7 +110,7 @@ namespace Chicken.Controls
                                         var user = new User
                                         {
                                             Id = mention.Id,
-                                            DisplayName = mention.DisplayNameName
+                                            DisplayName = mention.DisplayName
                                         };
                                         ScreenNameClick(user);
                                     }),
@@ -148,7 +150,10 @@ namespace Chicken.Controls
                 //last:
                 if (index < text.Length)
                 {
-                    paragraph.Inlines.Add(new Run { Text = text.Substring(index, text.Length - index) });
+                    paragraph.Inlines.Add(new Run
+                    {
+                        Text = HttpUtility.HtmlDecode(text.Substring(index, text.Length - index)),
+                    });
                 }
             #endregion
             }

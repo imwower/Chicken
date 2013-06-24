@@ -310,7 +310,7 @@
                                     <TextBlock Text="{Binding User.ScreenName}" Grid.Row="1"
                                                Style="{StaticResource TweetScreenName}" />
                                     <!--text-->
-                                    <ctrls:AutoRichTextBox Grid.Row="2" TweetData="{Binding}"
+                                    <ctrls:AutoRichTextBox Grid.Row="2" TweetData="{Binding Path=Tweet}"
                                                            HorizontalAlignment="Stretch" TextAlignment="Left" />
                                     <Grid Grid.Row="3" Opacity="0.6" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>

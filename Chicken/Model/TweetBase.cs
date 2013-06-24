@@ -15,7 +15,7 @@ namespace Chicken.Model
         [JsonProperty("id_str")]
         public string Id { get; set; }
 
-        public string Text { get; set; }
+        public virtual string Text { get; set; }
 
         [JsonProperty("source")]
         public string Source { get; set; }
@@ -27,7 +27,7 @@ namespace Chicken.Model
         public string FavoriteCount { get; set; }
 
         [JsonProperty("entities")]
-        public Entities Entities { get; set; }
+        public virtual Entities Entities { get; set; }
 
         [JsonProperty("favorited")]
         public bool Favorited { get; set; }

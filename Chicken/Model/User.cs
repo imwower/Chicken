@@ -2,10 +2,10 @@
 
 namespace Chicken.Model
 {
-    public class User : ModelBase
+    public class User : TweetBase
     {
-        [JsonProperty("id_str")]
-        public string Id { get; set; }
+        //[JsonProperty("id_str")]
+        //public string Id { get; set; }
 
         public string Name { get; set; }
 

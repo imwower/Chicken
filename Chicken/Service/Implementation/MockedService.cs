@@ -47,7 +47,7 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region profile page
-        public void GetUserProfileDetail<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfileDetail<T>(User user, Action<T> callBack)
         {
             string url = "SampleData/userProfile.json";
             HandleWebRequest<T>(url, callBack);
@@ -73,7 +73,7 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserTweets<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_timeline.json";
             HandleWebRequest<T>(url, callBack);
@@ -98,7 +98,7 @@ namespace Chicken.Service.Implementation
             HandleWebRequest<T>(url, callBack);
         }
 
-        public void GetUserFavorites<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_favourites.json";
             HandleWebRequest<T>(url, callBack);

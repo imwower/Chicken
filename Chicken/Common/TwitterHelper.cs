@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
+using Chicken.Model.Entity;
 
 namespace Chicken.Common
 {
@@ -11,10 +12,10 @@ namespace Chicken.Common
         #region const
         public static string DATETIMEFORMAT = "yyyy-MM-dd  HH:mm:ss";
         //
-        const string SOURCEPATTERN = @".*>(?<url>[\s\S]+?)</a>";
-        static Regex SourceRegex = new Regex(SOURCEPATTERN);
-        const string SOURCEURLPATTERN = @"<a href=\""(?<link>[^\s>]+)\""";
-        static Regex SourceUrlRegex = new Regex(SOURCEURLPATTERN);
+        static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
+        static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
+        static Regex UserNameRegex = new Regex(@"(^|\s)@((_*[a-zA-Z0-9]+_*)+)[^@\s$]");
+        static Regex HashTagRegex = new Regex(@"(^|\s)#(\w+)(\s|$)");
         #endregion
 
         #region parse tweet string
@@ -60,6 +61,38 @@ namespace Chicken.Common
                 return Const.DEFAULTSOURCEURL;
             }
             return result;
+        }
+
+        public static List<UserMention> ParseUserMentions(string text)
+        {
+            List<UserMention> entities = new List<UserMention>();
+            var results = UserNameRegex.Matches(text);
+
+            foreach (var result in results)
+            {
+                var entity = new UserMention
+                {
+                    DisplayName = result.ToString().Trim().Replace("@", ""),
+                };
+                entities.Add(entity);
+            }
+            return entities;
+        }
+
+        public static List<HashTag> ParseHashTags(string text)
+        {
+            List<HashTag> entities = new List<HashTag>();
+            var results = HashTagRegex.Matches(text);
+
+            foreach (var result in results)
+            {
+                var entity = new HashTag
+                {
+                    DisplayText = result.ToString().Trim(),
+                };
+                entities.Add(entity);
+            }
+            return entities;
         }
         #endregion
 

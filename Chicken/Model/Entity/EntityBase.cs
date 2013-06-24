@@ -24,7 +24,16 @@ namespace Chicken.Model.Entity
 
         public virtual string Text { get; set; }
 
-        public int Index { get; set; }
+        [JsonProperty("indices")]
+        public List<int> Indices { get; set; }
+
+        public int Index
+        {
+            get
+            {
+                return Indices[0];
+            }
+        }
     }
 
     public enum EntityType

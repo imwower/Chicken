@@ -16,13 +16,13 @@ namespace Chicken.Model.Entity
         public string Id { get; set; }
 
         [JsonProperty("screen_name")]
-        public string DisplayNameName { get; set; }
+        public string DisplayName { get; set; }
 
         public override string Text
         {
             get
             {
-                return "@" + DisplayNameName;
+                return "@" + DisplayName;
             }
         }
     }

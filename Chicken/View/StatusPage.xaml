@@ -170,7 +170,7 @@
                                 <!--content-->
                                 <Grid Grid.Row="1" Margin="4">
                                     <!--text-->
-                                    <ctrls:AutoRichTextBox TweetData="{Binding Path=TweetViewModel}"
+                                    <ctrls:AutoRichTextBox TweetData="{Binding Path=TweetViewModel.Tweet}"
                                                            HorizontalAlignment="Stretch" TextAlignment="Left"
                                                            Style="{StaticResource TextContent}">
                                     </ctrls:AutoRichTextBox>

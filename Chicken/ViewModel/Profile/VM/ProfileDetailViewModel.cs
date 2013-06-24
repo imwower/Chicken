@@ -46,7 +46,7 @@ namespace Chicken.ViewModel.Profile.VM
         #region actions
         private void RefreshAction()
         {
-            TweetService.GetUserProfileDetail<UserProfileDetail>(UserProfile.Id,
+            TweetService.GetUserProfileDetail<UserProfileDetail>(UserProfile,
                 userProfileDetail =>
                 {
                     this.UserProfileViewModel = userProfileDetail;
@@ -84,7 +84,7 @@ namespace Chicken.ViewModel.Profile.VM
         #region private
         private void GetFollowedByState()
         {
-            TweetService.GetFriendshipConnections<Friendships<Friendship>>(UserProfile.Id,
+            TweetService.GetFriendshipConnections<Friendships<Friendship>>(this.UserProfileViewModel.Id,
                 friendships =>
                 {
                     if (friendships != null && friendships.Count != 0)
