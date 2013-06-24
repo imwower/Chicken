@@ -11,11 +11,11 @@ namespace Chicken.Common
     {
         #region const
         public static string DATETIMEFORMAT = "yyyy-MM-dd  HH:mm:ss";
-        //
-        static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
-        static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
-        static Regex UserNameRegex = new Regex(@"(^|\s)@((_*[a-zA-Z0-9]+_*)+)[^@\s$]");
-        static Regex HashTagRegex = new Regex(@"(^|\s)#(\w+)(\s|$)");
+
+        private static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
+        private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
+        private static Regex UserNameRegex = new Regex(@"@((_*[A-Za-z0-9]+_*)+)(\s|$)");
+        private static Regex HashTagRegex = new Regex(@"#\w+(\s|$)");
         #endregion
 
         #region parse tweet string
@@ -66,14 +66,16 @@ namespace Chicken.Common
         public static List<UserMention> ParseUserMentions(string text)
         {
             List<UserMention> entities = new List<UserMention>();
-            var results = UserNameRegex.Matches(text);
-
-            foreach (var result in results)
+            var matches = UserNameRegex.Matches(text);
+            foreach (Match match in matches)
             {
-                var entity = new UserMention
+                var entity = new UserMention();
+                entity.Indices = new List<int>
                 {
-                    DisplayName = result.ToString().Trim().Replace("@", ""),
+                    //trim whitespace at begin
+                    match.Index == 0 ? 0 : match.Index + 1
                 };
+                entity.DisplayName = match.Value.Trim().Replace("@", "");
                 entities.Add(entity);
             }
             return entities;
@@ -82,14 +84,16 @@ namespace Chicken.Common
         public static List<HashTag> ParseHashTags(string text)
         {
             List<HashTag> entities = new List<HashTag>();
-            var results = HashTagRegex.Matches(text);
-
-            foreach (var result in results)
+            var matches = HashTagRegex.Matches(text);
+            foreach (Match match in matches)
             {
-                var entity = new HashTag
-                {
-                    DisplayText = result.ToString().Trim(),
+                var entity = new HashTag();
+                entity.Indices = new List<int>
+                { 
+                    //trim whitespace at begin
+                    match.Index == 0 ? 0 : match.Index + 1
                 };
+                entity.DisplayText = match.Value.Trim().Replace("#", "");
                 entities.Add(entity);
             }
             return entities;

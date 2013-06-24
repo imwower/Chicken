@@ -97,8 +97,9 @@ namespace Chicken.Controls
             var bitmapImage = sender as BitmapImage;
             pngImageControl.Source = bitmapImage;
             this.grid.Children.Add(pngImageControl);
-            this.grid.Children.Remove(this.placehold);
-            this.grid.UpdateLayout();
+            //this.grid.Children.Remove(this.placehold);
+            this.placehold.Visibility = Visibility.Collapsed;
+            this.UpdateLayout();
 
             lock (pnglocker)
             {
@@ -125,7 +126,8 @@ namespace Chicken.Controls
             gifImageControl.Stretch = Stretch.Fill;
             gifImageControl.Source = gifImage;
             this.grid.Children.Add(gifImageControl);
-            this.grid.Children.Remove(this.placehold);
+            //this.grid.Children.Remove(this.placehold);
+            this.placehold.Visibility = Visibility.Collapsed;
             this.UpdateLayout();
 
             lock (giflocker)

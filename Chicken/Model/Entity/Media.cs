@@ -2,7 +2,7 @@
 
 namespace Chicken.Model.Entity
 {
-    public class Media : UrlEntity
+    public class MediaEntity : UrlEntity
     {
         public override EntityType EntityType
         {
@@ -17,7 +17,7 @@ namespace Chicken.Model.Entity
 
         public string Type { get; set; }
 
-        [JsonProperty("media_url")]
+        [JsonProperty("media_url_https")]
         public string MediaUrl { get; set; }
 
         public string MediaUrlThumb

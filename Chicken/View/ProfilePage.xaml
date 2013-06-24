@@ -247,8 +247,8 @@
                     <abu:AppBarButton IconUri="/Images/dark/appbar.edit.png" Text="edit"
                                       Command="{Binding Path=EditMyProfileCommand}" />
                     <abu:AppBar.MenuItems>
-                        <abu:AppBarMenuItem Text="settings"
-                                                    Command="{Binding Path=SettingsCommand}" />
+                        <!--<abu:AppBarMenuItem Text="settings"
+                                                    Command="{Binding Path=SettingsCommand}" />-->
                         <!--<abu:AppBarMenuItem Text="blocks"
                                                     Command="{Binding Path=BlocksCommand}" />-->
                     </abu:AppBar.MenuItems>

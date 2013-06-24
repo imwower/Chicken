@@ -6,7 +6,7 @@ namespace Chicken.Model.Entity
     public class Entities
     {
         [JsonProperty("media")]
-        public List<Media> Medias { get; set; }
+        public List<MediaEntity> Medias { get; set; }
 
         [JsonProperty("hashtags")]
         public List<HashTag> HashTags { get; set; }

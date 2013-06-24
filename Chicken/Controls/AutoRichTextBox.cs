@@ -44,26 +44,28 @@ namespace Chicken.Controls
             var entities = new List<EntityBase>();
             if (tweet.Entities != null)
             {
-                if (tweet.Entities.UserMentions != null && tweet.Entities.UserMentions.Count != 0)
+                if (tweet.Entities.UserMentions != null)
+                {
                     foreach (var userMention in tweet.Entities.UserMentions)
                     {
                         entities.Add(userMention);
                     }
-                if (tweet.Entities.Medias != null && tweet.Entities.Medias.Count != 0)
+                }
+                if (tweet.Entities.Medias != null)
                 {
                     foreach (var media in tweet.Entities.Medias)
                     {
                         entities.Add(media);
                     }
                 }
-                if (tweet.Entities.Urls != null && tweet.Entities.Urls.Count != 0)
+                if (tweet.Entities.Urls != null)
                 {
                     foreach (var url in tweet.Entities.Urls)
                     {
                         entities.Add(url);
                     }
                 }
-                if (tweet.Entities.HashTags != null && tweet.Entities.HashTags.Count != 0)
+                if (tweet.Entities.HashTags != null)
                 {
                     foreach (var hashtag in tweet.Entities.HashTags)
                     {
@@ -77,7 +79,10 @@ namespace Chicken.Controls
             #region none
             if (entities.Count == 0)
             {
-                paragraph.Inlines.Add(new Run { Text = text });
+                paragraph.Inlines.Add(new Run
+                {
+                    Text = HttpUtility.HtmlDecode(text)
+                });
             }
             #endregion
             #region spilt
@@ -103,17 +108,7 @@ namespace Chicken.Controls
                             {
                                 TextDecorations = null,
                                 CommandParameter = userMention,
-                                Command = new DelegateCommand(
-                                    obj =>
-                                    {
-                                        var mention = obj as UserMention;
-                                        var user = new User
-                                        {
-                                            Id = mention.Id,
-                                            DisplayName = mention.DisplayName
-                                        };
-                                        ScreenNameClick(user);
-                                    }),
+                                Command = new DelegateCommand(obj => ScreenNameClick(obj)),
                             };
                             hyperlink.Inlines.Add(userMention.Text + " ");
                             paragraph.Inlines.Add(hyperlink);
@@ -121,6 +116,16 @@ namespace Chicken.Controls
                         #endregion
                         #region media, url
                         case EntityType.Media:
+                            var mediaEntity = entity as MediaEntity;
+                            var medialink = new Hyperlink
+                            {
+                                TextDecorations = null,
+                                NavigateUri = new Uri(mediaEntity.MediaUrl, UriKind.Absolute),
+                                TargetName = "_blank",
+                            };
+                            medialink.Inlines.Add(mediaEntity.TruncatedUrl + " ");
+                            paragraph.Inlines.Add(medialink);
+                            break;
                         case EntityType.Url:
                             var urlEntity = entity as UrlEntity;
                             var link = new Hyperlink
@@ -160,8 +165,14 @@ namespace Chicken.Controls
             textBox.Blocks.Add(paragraph);
         }
 
-        private static void ScreenNameClick(User user)
+        private static void ScreenNameClick(object parameter)
         {
+            var mention = parameter as UserMention;
+            var user = new User
+            {
+                Id = mention.Id,
+                DisplayName = mention.DisplayName
+            };
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
         }
     }
