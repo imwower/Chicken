@@ -15,8 +15,8 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region properties
-        private User userProfile;
-        public User UserProfile
+        private UserProfileDetail userProfile;
+        public UserProfileDetail UserProfile
         {
             get
             {

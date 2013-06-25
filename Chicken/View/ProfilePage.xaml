@@ -11,7 +11,7 @@
     xmlns:abu="clr-namespace:AppBarUtils;assembly=AppBarUtils"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
     xmlns:v ="clr-namespace:Chicken.View"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -59,12 +59,12 @@
                                     </Grid.RowDefinitions>
                                     <Grid.Background>
                                         <ImageBrush Stretch="Fill" Opacity="0.6"
-                                                    ImageSource="{Binding UserProfileViewModel.UserProfileBannerImageWeb}" />
+                                                    ImageSource="{Binding UserProfile.UserProfileBannerImageWeb}" />
                                     </Grid.Background>
                                     <!--Profile Image-->
                                     <ctrls:ImageContainer Grid.Row="0"
                                                           Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageSource="{Binding UserProfileViewModel.ProfileImageOriginal}">
+                                                          ImageSource="{Binding UserProfile.ProfileImageOriginal}">
                                         <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                         </ctrls:ImageContainer.Clip>
@@ -81,28 +81,28 @@
                                         </StackPanel.Resources>
                                         <!--private-->
                                         <Rectangle
-                                            Visibility="{Binding UserProfileViewModel.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding UserProfile.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Rectangle.OpacityMask>
                                                 <ImageBrush ImageSource="/Images/dark/private.png" />
                                             </Rectangle.OpacityMask>
                                         </Rectangle>
                                         <!--Is Translator-->
                                         <Rectangle
-                                            Visibility="{Binding UserProfileViewModel.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding UserProfile.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Rectangle.OpacityMask>
                                                 <ImageBrush ImageSource="/Images/dark/global.png" />
                                             </Rectangle.OpacityMask>
                                         </Rectangle>
                                         <!--Is Verified-->
                                         <Rectangle
-                                            Visibility="{Binding UserProfileViewModel.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding UserProfile.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Rectangle.OpacityMask>
                                                 <ImageBrush ImageSource="/Images/dark/verified.png" />
                                             </Rectangle.OpacityMask>
                                         </Rectangle>
                                         <!--following-->
                                         <Rectangle
-                                            Visibility="{Binding UserProfileViewModel.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            Visibility="{Binding UserProfile.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
                                             <Rectangle.OpacityMask>
                                                 <ImageBrush ImageSource="/Images/dark/following.png" />
                                             </Rectangle.OpacityMask>
@@ -117,15 +117,15 @@
                                     </StackPanel>
                                     <!--Name-->
                                     <TextBlock Grid.Row="2"
-                                               Text="{Binding UserProfileViewModel.Name}" />
+                                               Text="{Binding UserProfile.Name}" />
                                     <!--Location-->
                                     <TextBlock Grid.Row="3"
-                                               Text="{Binding UserProfileViewModel.Location}" />
+                                               Text="{Binding UserProfile.Location}" />
                                     <!--Url-->
                                     <HyperlinkButton Grid.Row="4"
-                                                     Visibility="{Binding Path=UserProfileViewModel.Url,Converter={StaticResource StringToVisibilityConverter}}"
-                                                     Content="{Binding Path=UserProfileViewModel.UserProfileEntities.UserProfileUrlEntities.Urls[0].TruncatedUrl}"
-                                                     NavigateUri="{Binding Path=UserProfileViewModel.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                                                     Visibility="{Binding Path=UserProfile.Url,Converter={StaticResource StringToVisibilityConverter}}"
+                                                     Content="{Binding Path=UserProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].TruncatedUrl}"
+                                                     NavigateUri="{Binding Path=UserProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
                                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
                                     <!--Tweets, Following, Followers, Favorites-->
@@ -146,22 +146,22 @@
                                                 </Style>
                                             </Grid.Resources>
                                             <TextBlock Grid.Column="0">
-                                            <Run Text="{Binding UserProfileViewModel.TweetsCount}" />
+                                            <Run Text="{Binding UserProfile.TweetsCount}" />
                                             <LineBreak />
                                             <Run Text="TWEETS" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="1">
-                                            <Run Text="{Binding UserProfileViewModel.FollowingCount}" />
+                                            <Run Text="{Binding UserProfile.FollowingCount}" />
                                             <LineBreak />
                                             <Run Text="FOLLOWING" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="2">
-                                            <Run Text="{Binding UserProfileViewModel.FollowersCount}" />
+                                            <Run Text="{Binding UserProfile.FollowersCount}" />
                                             <LineBreak />
                                             <Run Text="FOLLOWERS" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="3">
-                                            <Run Text="{Binding UserProfileViewModel.FavoritesCount}" />
+                                            <Run Text="{Binding UserProfile.FavoritesCount}" />
                                             <LineBreak />
                                             <Run Text="FAVORITES" />
                                             </TextBlock>
@@ -170,7 +170,7 @@
                                 </Grid>
                                 <!--description-->
                                 <ctrls:AutoRichTextBox  Grid.Row="2"
-                                                        TweetData="{Binding Path=UserProfileViewModel}"
+                                                        TweetData="{Binding Path=UserProfile}"
                                                         HorizontalAlignment="Stretch"
                                                          VerticalAlignment="Center" TextAlignment="Center"
                                                         Style="{StaticResource TextContent}">

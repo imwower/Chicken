@@ -12,8 +12,8 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private User user;
-        public User User
+        private UserProfileDetail user;
+        public UserProfileDetail User
         {
             get
             {
@@ -51,6 +51,7 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("State");
             }
         }
+        private bool isInit;
         #endregion
 
         #region binding
@@ -114,41 +115,53 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            #region init from file
-            if (User == null)
+            var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
+            #region init
+            if (!isInit)
             {
-                User = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
-            }
-            #endregion
-            #region is myself or not; change appbar menu
-            if (User.Id == App.AuthenticatedUser.Id)
-            {
-                User.IsMyself = true;
-                if (selectedIndex == 0)
+                TweetService.GetUserProfileDetail<UserProfileDetail>(selectedUser,
+                userProfileDetail =>
                 {
-                    State = AppBarState.MyProfileDefault;
-                }
-                else
-                {
-                    State = AppBarState.MyProfileWithEdit;
-                }
+                    this.User = userProfileDetail;
+                    #region is myself or not; change appbar menu
+                    if (User.Id == App.AuthenticatedUser.Id)
+                    {
+                        User.IsMyself = true;
+                        if (selectedIndex == 0)
+                        {
+                            State = AppBarState.MyProfileDefault;
+                        }
+                        else
+                        {
+                            State = AppBarState.MyProfileWithEdit;
+                        }
+                    }
+                    else
+                    {
+                        if (selectedIndex == 0)
+                        {
+                            State = AppBarState.ProfileDefault;
+                        }
+                        else
+                        {
+                            State = AppBarState.ProfileWithRefresh;
+                        }
+                        ChangeFollowButtonText();
+                    }
+                    #endregion
+                    (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
+                    base.MainPivot_LoadedPivotItem(selectedIndex);
+                    isInit = true;
+                });
             }
             else
             {
-                if (selectedIndex == 0)
-                {
-                    State = AppBarState.ProfileDefault;
-                }
-                else
-                {
-                    State = AppBarState.ProfileWithRefresh;
-                }
-                ChangeFollowButtonText();
+                (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
+                base.MainPivot_LoadedPivotItem(selectedIndex);
             }
             #endregion
-            (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-            base.MainPivot_LoadedPivotItem(selectedIndex);
         }
+
         #region actions
         private void MentionAction()
         {
@@ -182,18 +195,15 @@ namespace Chicken.ViewModel.Profile
                     #endregion
                     #region success
                     toastMessage.Message = User.IsFollowing ? "unfollow successfully" : "follow successfully";
-                    toastMessage.Complete =
-                        () =>
+                    PivotItems[SelectedIndex].HandleMessage(toastMessage);
+                    TweetService.GetUserProfileDetail<UserProfileDetail>(User,
+                        userProfileDetail =>
                         {
-                            TweetService.GetUserProfileDetail<User>(User,
-                                userProfileDetail =>
-                                {
-                                    User = userProfileDetail;
-                                    ChangeFollowButtonText();
-                                    PivotItems[SelectedIndex].Refresh();
-                                });
-                        };
-                    PivotItems[SelectedIndex].ToastMessageHandler(toastMessage);
+                            this.User = userProfileDetail;
+                            ChangeFollowButtonText();
+                            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
+                            PivotItems[SelectedIndex].Refresh();
+                        });
                     #endregion
                 });
         }

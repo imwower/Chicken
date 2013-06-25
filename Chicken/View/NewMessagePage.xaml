@@ -14,7 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
     x:Name="Page">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -96,12 +96,12 @@
                                                                 </Style>
                                                             </StackPanel.Resources>
                                                             <!--text-->
-                                                            <Grid MaxWidth="360">
+                                                            <Grid MaxWidth="380">
                                                                 <Rectangle Opacity="0.2"
                                                                            Fill="{StaticResource PhoneForegroundBrush}">
                                                                 </Rectangle>
                                                                 <!--text-->
-                                                                <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding}"
+                                                                <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding Path=Tweet}"
                                                                                        Style="{StaticResource TextContent}" TextAlignment="Left">
                                                                 </ctrls:AutoRichTextBox>
                                                             </Grid>
@@ -109,19 +109,6 @@
                                                                        Text="{Binding CreatedDate}" />
                                                         </StackPanel>
                                                     </StackPanel>
-                                                    <!--delete-->
-                                                    <Button HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                        <Button.Template>
-                                                            <ControlTemplate>
-                                                                <Rectangle Opacity="0.4" Width="23" Height="23"
-                                                                           Fill="{StaticResource PhoneForegroundBrush}">
-                                                                    <Rectangle.OpacityMask>
-                                                                        <ImageBrush ImageSource="/Images/dark/delete.png" Stretch="Fill" />
-                                                                    </Rectangle.OpacityMask>
-                                                                </Rectangle>
-                                                            </ControlTemplate>
-                                                        </Button.Template>
-                                                    </Button>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ctrls:MessageTemplateSelector.MessageTemplate>
@@ -129,19 +116,6 @@
                                         <ctrls:MessageTemplateSelector.MessageSentByMeTemplate>
                                             <DataTemplate>
                                                 <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <!--delete-->
-                                                    <Button HorizontalAlignment="Right" VerticalAlignment="Top">
-                                                        <Button.Template>
-                                                            <ControlTemplate>
-                                                                <Rectangle Opacity="0.4" Width="23" Height="23"
-                                                                           Fill="{StaticResource PhoneForegroundBrush}">
-                                                                    <Rectangle.OpacityMask>
-                                                                        <ImageBrush ImageSource="/Images/dark/delete.png" Stretch="Fill" />
-                                                                    </Rectangle.OpacityMask>
-                                                                </Rectangle>
-                                                            </ControlTemplate>
-                                                        </Button.Template>
-                                                    </Button>
                                                     <!--content-->
                                                     <StackPanel Margin="4,0" Orientation="Horizontal"
                                                                 HorizontalAlignment="Right" VerticalAlignment="Top">
@@ -153,13 +127,13 @@
                                                                 </Style>
                                                             </StackPanel.Resources>
                                                             <!--content-->
-                                                            <Grid MaxWidth="360">
+                                                            <Grid MaxWidth="380">
                                                                 <Rectangle Opacity="0.2"
                                                                            Fill="{StaticResource PhoneForegroundBrush}">
                                                                 </Rectangle>
                                                                 <!--text-->
                                                                 <ctrls:AutoRichTextBox Margin="0,4"
-                                                                                       TweetData="{Binding}" TextAlignment="Left">
+                                                                                       TweetData="{Binding Path=Tweet}" TextAlignment="Left">
                                                                 </ctrls:AutoRichTextBox>
                                                             </Grid>
                                                             <!--date-->

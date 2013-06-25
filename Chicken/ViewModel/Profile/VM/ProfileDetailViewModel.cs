@@ -8,19 +8,6 @@ namespace Chicken.ViewModel.Profile.VM
     public class ProfileDetailViewModel : ProfileViewModelBase
     {
         #region properties
-        private UserProfileDetail userProfileViewModel;
-        public UserProfileDetail UserProfileViewModel
-        {
-            get
-            {
-                return userProfileViewModel;
-            }
-            set
-            {
-                userProfileViewModel = value;
-                RaisePropertyChanged("UserProfileViewModel");
-            }
-        }
         private bool followedBy;
         public bool FollowedBy
         {
@@ -46,21 +33,16 @@ namespace Chicken.ViewModel.Profile.VM
         #region actions
         private void RefreshAction()
         {
-            TweetService.GetUserProfileDetail<UserProfileDetail>(UserProfile,
-                userProfileDetail =>
-                {
-                    this.UserProfileViewModel = userProfileDetail;
-                    if (UserProfile.IsMyself)
-                    {
-                        IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
-                        App.InitAuthenticatedUser();
-                    }
-                    else
-                    {
-                        GetFollowedByState();
-                    }
-                    base.Refreshed();
-                });
+            if (UserProfile.IsMyself)
+            {
+                IsolatedStorageService.CreateAuthenticatedUser(UserProfile);
+                App.InitAuthenticatedUser();
+            }
+            else
+            {
+                GetFollowedByState();
+            }
+            base.Refreshed();
         }
 
         private void NewMessageAction()
@@ -69,13 +51,13 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 HandleMessage(new ToastMessage
                 {
-                    Message = userProfileViewModel.ScreenName + " did not follow you"
+                    Message = UserProfile.ScreenName + " did not follow you"
                 });
                 return;
             }
             var newMessage = new NewMessageModel
             {
-                User = userProfileViewModel as User,
+                User = UserProfile as User,
             };
             NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage, newMessage);
         }
@@ -84,7 +66,7 @@ namespace Chicken.ViewModel.Profile.VM
         #region private
         private void GetFollowedByState()
         {
-            TweetService.GetFriendshipConnections<Friendships<Friendship>>(this.UserProfileViewModel.Id,
+            TweetService.GetFriendshipConnections<Friendships<Friendship>>(this.UserProfile.Id,
                 friendships =>
                 {
                     if (friendships != null && friendships.Count != 0)

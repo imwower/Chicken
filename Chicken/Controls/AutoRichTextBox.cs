@@ -40,6 +40,7 @@ namespace Chicken.Controls
                 return;
             }
             #region init
+            textBox.Blocks.Clear();
             string text = tweet.Text;
             var entities = new List<EntityBase>();
             if (tweet.Entities != null)
@@ -110,7 +111,7 @@ namespace Chicken.Controls
                                 CommandParameter = userMention,
                                 Command = new DelegateCommand(obj => ScreenNameClick(obj)),
                             };
-                            hyperlink.Inlines.Add(userMention.Text + " ");
+                            hyperlink.Inlines.Add(userMention.Text);
                             paragraph.Inlines.Add(hyperlink);
                             break;
                         #endregion
@@ -123,8 +124,10 @@ namespace Chicken.Controls
                                 NavigateUri = new Uri(mediaEntity.MediaUrl, UriKind.Absolute),
                                 TargetName = "_blank",
                             };
-                            medialink.Inlines.Add(mediaEntity.TruncatedUrl + " ");
+                            medialink.Inlines.Add(mediaEntity.TruncatedUrl);
                             paragraph.Inlines.Add(medialink);
+                            //check the position of url entity
+                            position += EmitUrlPosition(mediaEntity.Text);
                             break;
                         case EntityType.Url:
                             var urlEntity = entity as UrlEntity;
@@ -134,18 +137,10 @@ namespace Chicken.Controls
                                 NavigateUri = new Uri(urlEntity.ExpandedUrl, UriKind.Absolute),
                                 TargetName = "_blank",
                             };
-                            link.Inlines.Add(urlEntity.TruncatedUrl + " ");
+                            link.Inlines.Add(urlEntity.TruncatedUrl);
                             paragraph.Inlines.Add(link);
-                            #region check the position of url entity
-                            if (urlEntity.Text.StartsWith("http://") && urlEntity.Text.Length > App.Configuration.MaxShortUrlLength)
-                            {
-                                position += urlEntity.Text.Length - App.Configuration.MaxShortUrlLength;
-                            }
-                            if (urlEntity.Text.StartsWith("https://") && urlEntity.Text.Length > App.Configuration.MaxShortUrlLengthHttps)
-                            {
-                                position += urlEntity.Text.Length - App.Configuration.MaxShortUrlLengthHttps;
-                            }
-                            #endregion
+                            //check the position of url entity
+                            position += EmitUrlPosition(urlEntity.Text);
                             break;
                         #endregion
                         #region hashtag
@@ -154,7 +149,7 @@ namespace Chicken.Controls
                             var run = new Run
                             {
                                 Foreground = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush,
-                                Text = hashtag.Text + " ",
+                                Text = hashtag.Text,
                             };
                             paragraph.Inlines.Add(run);
                             break;
@@ -173,6 +168,19 @@ namespace Chicken.Controls
             #endregion
             }
             textBox.Blocks.Add(paragraph);
+        }
+
+        private static int EmitUrlPosition(string urltext)
+        {
+            if (urltext.StartsWith("http://") && urltext.Length > App.Configuration.MaxShortUrlLength)
+            {
+                return urltext.Length - App.Configuration.MaxShortUrlLength + 1;
+            }
+            else if (urltext.StartsWith("https://") && urltext.Length > App.Configuration.MaxShortUrlLengthHttps)
+            {
+                return urltext.Length - App.Configuration.MaxShortUrlLengthHttps + 1;
+            }
+            return 0;
         }
 
         private static void ScreenNameClick(object parameter)

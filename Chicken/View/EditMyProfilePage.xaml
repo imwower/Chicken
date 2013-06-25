@@ -14,7 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480">
+    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -39,7 +39,7 @@
                          TextChanged="Location_TextChanged" />
                 <!--link-->
                 <TextBlock Text="Link" />
-                <TextBox Text="{Binding Path=MyProfile.Entities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                <TextBox Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
                         TextChanged="Url_TextChanged" />
                 <!--description-->
                 <TextBlock Text="Description" />

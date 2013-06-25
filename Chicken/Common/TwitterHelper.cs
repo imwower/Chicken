@@ -14,8 +14,8 @@ namespace Chicken.Common
 
         private static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
         private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
-        private static Regex UserNameRegex = new Regex(@"@((_*[A-Za-z0-9]+_*)+)(\s|$)");
-        private static Regex HashTagRegex = new Regex(@"#\w+(\s|$)");
+        private static Regex UserNameRegex = new Regex(@"@(?<name>(_*[A-Za-z0-9]+_*)+)([^@#.\w]|$)");
+        private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)(\s|$)");
         #endregion
 
         #region parse tweet string
@@ -70,12 +70,8 @@ namespace Chicken.Common
             foreach (Match match in matches)
             {
                 var entity = new UserMention();
-                entity.Indices = new List<int>
-                {
-                    //trim whitespace at begin
-                    match.Index == 0 ? 0 : match.Index + 1
-                };
-                entity.DisplayName = match.Value.Trim().Replace("@", "");
+                entity.Indices = new List<int> { match.Index };
+                entity.DisplayName = match.Groups["name"].Value;
                 entities.Add(entity);
             }
             return entities;
@@ -88,12 +84,8 @@ namespace Chicken.Common
             foreach (Match match in matches)
             {
                 var entity = new HashTag();
-                entity.Indices = new List<int>
-                { 
-                    //trim whitespace at begin
-                    match.Index == 0 ? 0 : match.Index + 1
-                };
-                entity.DisplayText = match.Value.Trim().Replace("#", "");
+                entity.Indices = new List<int> { match.Index };
+                entity.DisplayText = match.Groups["hashtag"].Value;
                 entities.Add(entity);
             }
             return entities;
