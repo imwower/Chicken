@@ -30,7 +30,7 @@ namespace Chicken.View
         {
             InitializeComponent();
             mainViewModel = new MainViewModel();
-            this.MainPivot.DataContext = mainViewModel;
+            this.DataContext = mainViewModel;
             base.Init();
             this.BackKeyPress += HomePage_BackKeyPress;
         }

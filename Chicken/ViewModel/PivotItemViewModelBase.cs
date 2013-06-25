@@ -92,11 +92,6 @@ namespace Chicken.ViewModel
         BackgroundWorker worker = new BackgroundWorker();
         #endregion
 
-        public PivotItemViewModelBase()
-        {
-            worker.WorkerSupportsCancellation = true;
-        }
-
         #region binding Command
         public ICommand RefreshCommand
         {
@@ -145,8 +140,12 @@ namespace Chicken.ViewModel
                 return new DelegateCommand(ItemClick);
             }
         }
-
         #endregion
+
+        public PivotItemViewModelBase()
+        {
+            worker.WorkerSupportsCancellation = true;
+        }
 
         #region public method
         public void Load()

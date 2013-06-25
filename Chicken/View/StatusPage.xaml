@@ -270,35 +270,47 @@
             <controls:PivotItem
                 Header="Favorites">
             </controls:PivotItem>
-
-            <i:Interaction.Triggers>
-                <abu:SelectedPivotItemChangedTrigger>
-                    <!--mapping-->
-                    <abu:SelectedPivotItemChangedTrigger.SelectionMappings>
-                        <!--status detail-->
-                        <abu:SelectionMapping SourceIndex="0" TargetIndex="0" />
-                    </abu:SelectedPivotItemChangedTrigger.SelectionMappings>
-                    <!--items-->
-                    <abu:SwitchAppBarAction>
-                        <abu:AppBar Id="0" Mode="Minimized">
-                            <!--favorite-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
-                                      Command="{Binding Path=AddToFavoriteCommand}" />
-                            <!--retweet-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
-                                      Command="{Binding Path=RetweetCommand}" />
-                            <!--reply-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
-                                      Command="{Binding Path=ReplyCommand}" />
-                            <!--quote-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
-                                      Command="{Binding Path=QuoteCommand}" />
-                        </abu:AppBar>
-                        <!--retweet-->
-                        <!--favorite-->
-                    </abu:SwitchAppBarAction>
-                </abu:SelectedPivotItemChangedTrigger>
-            </i:Interaction.Triggers>
         </controls:Pivot>
     </Grid>
+
+    <i:Interaction.Triggers>
+        <abu:StateChangedTrigger State="{Binding State}">
+            <abu:SwitchAppBarAction>
+                <!--state page default-->
+                <abu:AppBar Id="30" Mode="Minimized">
+                    <!--favorite-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
+                                      Command="{Binding Path=AddToFavoriteCommand}" />
+                    <!--retweet-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
+                                      Command="{Binding Path=RetweetCommand}" />
+                    <!--reply-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
+                                      Command="{Binding Path=ReplyCommand}" />
+                    <!--quote-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
+                                      Command="{Binding Path=QuoteCommand}" />
+                </abu:AppBar>
+                <!--with delete button-->
+                <abu:AppBar Id="31" Mode="Minimized">
+                    <!--favorite-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
+                                      Command="{Binding Path=AddToFavoriteCommand}" />
+                    <!--retweet-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
+                                      Command="{Binding Path=RetweetCommand}" />
+                    <!--reply-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
+                                      Command="{Binding Path=ReplyCommand}" />
+                    <!--quote-->
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
+                                      Command="{Binding Path=QuoteCommand}" />
+                    <abu:AppBar.MenuItems>
+                        <abu:AppBarMenuItem Text="delete"
+                                            Command="{Binding Path=DeleteCommand}" />
+                    </abu:AppBar.MenuItems>
+                </abu:AppBar>
+            </abu:SwitchAppBarAction>
+        </abu:StateChangedTrigger>
+    </i:Interaction.Triggers>
 </v:PivotPageBase>

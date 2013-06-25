@@ -1,6 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Common;
-using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Home.Base;

@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
@@ -7,30 +9,10 @@ namespace Chicken.ViewModel.Status
 {
     public class StatusViewModelBase : PivotItemViewModelBase
     {
-        #region event handler
-        protected LoadEventHandler AddFavoriteHandler;
-        protected LoadEventHandler RetweetHandler;
-        protected LoadEventHandler ReplyHandler;
-        protected LoadEventHandler QuoteHandler;
-        #endregion
-
         #region properties
-        private string statusId;
-        public string StatusId
-        {
-            get
-            {
-                return statusId;
-            }
-            set
-            {
-                statusId = value;
-                RaisePropertyChanged("StatusId");
-            }
-        }
-
+        public Tweet Tweet { get; set; }
         protected string nextCursor = "-1";
-        protected string previousCursor;
+        protected string previousCursor = string.Empty;
         private ObservableCollection<UserProfile> userList;
         public ObservableCollection<UserProfile> UserList
         {
@@ -50,41 +32,100 @@ namespace Chicken.ViewModel.Status
         public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
+        public StatusViewModelBase()
+        {
+            ClickHandler = this.ClickAction;
+            ItemClickHandler = this.ItemClickAction;
+        }
+
         #region public methods
         public virtual void AddFavorite()
         {
-            if (AddFavoriteHandler == null)
+            if (IsLoading)
             {
                 return;
             }
-            AddFavoriteHandler();
+            IsLoading = true;
+            var action = Tweet.Favorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
+            TweetService.AddToFavorites<Tweet>(Tweet.Id, action,
+                tweet =>
+                {
+                    var toastMessage = new ToastMessage();
+                    List<ErrorMessage> errors = tweet.Errors;
+                    #region handle error
+                    if (errors != null && errors.Count != 0)
+                    {
+                        IsLoading = false;
+                        toastMessage.Message = errors[0].Message;
+                        HandleMessage(toastMessage);
+                        return;
+                    }
+                    #endregion
+                    toastMessage.Message = Tweet.Favorited ? "Remove favorites successfully" : "Add to favorites successfully";
+                    HandleMessage(toastMessage);
+                    Tweet = tweet;
+                    Refresh();
+                });
         }
 
         public virtual void Retweet()
         {
-            if (RetweetHandler == null)
+            if (IsLoading)
             {
                 return;
             }
-            RetweetHandler();
+            IsLoading = true;
+            var action = RetweetActionType.Create;
+            if (!Tweet.Retweeted)
+            {
+                TweetService.Retweet<Tweet>(Tweet.Id, action,
+                   tweet =>
+                   {
+                       var toastMessage = new ToastMessage();
+                       List<ErrorMessage> errors = tweet.Errors;
+                       #region handle error
+                       if (errors != null && errors.Count != 0)
+                       {
+                           IsLoading = false;
+                           toastMessage.Message = errors[0].Message;
+                           HandleMessage(toastMessage);
+                           return;
+                       }
+                       #endregion
+                       toastMessage.Message = "Retweet successfully";
+                       HandleMessage(toastMessage);
+                       Tweet = tweet;
+                       Refresh();
+                   });
+            }
         }
 
         public virtual void Reply()
         {
-            if (ReplyHandler == null)
-            {
-                return;
-            }
-            ReplyHandler();
+            DoAction(NewTweetActionType.Reply);
         }
 
         public virtual void Quote()
         {
-            if (QuoteHandler == null)
-            {
-                return;
-            }
-            QuoteHandler();
+            DoAction(NewTweetActionType.Quote);
+        }
+
+        public virtual void Delete()
+        {
+            if (Tweet.IsSentByMe)
+            { }
+        }
+        #endregion
+
+        #region actions
+        private void ClickAction(object parameter)
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
+        }
+
+        private void ItemClickAction(object parameter)
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
         #endregion
 
@@ -116,6 +157,39 @@ namespace Chicken.ViewModel.Status
                 });
         }
         #endregion
+        #endregion
+
+        #region private
+        private void DoAction(NewTweetActionType type)
+        {
+            if (IsLoading)
+            {
+                return;
+            }
+            NewTweetModel newTweet = new NewTweetModel
+            {
+                Type = type,
+            };
+            switch (type)
+            {
+                case NewTweetActionType.Quote:
+                    newTweet.Text = Const.QUOTECHARACTER + " " + Tweet.User.ScreenName + " " + Tweet.Text;
+                    newTweet.InReplyToStatusId = Tweet.Id;
+                    newTweet.InReplyToUserScreenName = Tweet.User.ScreenName;
+                    break;
+                case NewTweetActionType.Reply:
+                    newTweet.Text = Tweet.User.ScreenName + " ";
+                    newTweet.InReplyToStatusId = Tweet.Id;
+                    newTweet.InReplyToUserScreenName = Tweet.User.ScreenName;
+                    break;
+                case NewTweetActionType.PostNew:
+                case NewTweetActionType.None:
+                default:
+                    break;
+            }
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
+        }
         #endregion
     }
 }

@@ -3,27 +3,16 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Service;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Status.VM;
+using Chicken.Model;
 
 namespace Chicken.ViewModel.Status
 {
     public class StatusViewModel : PivotViewModelBase
     {
         #region properites
-        private string statusId;
-        public string StatusId
-        {
-            get
-            {
-                return statusId;
-            }
-            set
-            {
-                statusId = value;
-                RaisePropertyChanged("StatusId");
-            }
-        }
-
+        private Tweet tweet;
         #endregion
 
         #region binding
@@ -58,6 +47,18 @@ namespace Chicken.ViewModel.Status
                 return new DelegateCommand(Quote);
             }
         }
+
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return new DelegateCommand(DeleteAction);
+            }
+        }
+        #endregion
+
+        #region services
+        public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
         public StatusViewModel()
@@ -74,12 +75,29 @@ namespace Chicken.ViewModel.Status
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            if (string.IsNullOrEmpty(StatusId))
-                StatusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
-            (PivotItems[selectedIndex] as StatusViewModelBase).StatusId = StatusId;
-            base.MainPivot_LoadedPivotItem(selectedIndex);
+            PivotItems[selectedIndex].IsLoading = true;
+            if (!IsInit)
+            {
+                string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
+                TweetService.GetStatusDetail<Tweet>(statusId,
+                    tweet =>
+                    {
+                        this.tweet = tweet;
+                        if (this.tweet.User.Id == App.AuthenticatedUser.Id)
+                        {
+                            this.tweet.IsSentByMe = true;
+                        }
+                        SwitchAppBar(selectedIndex);
+                        IsInit = true;
+                    });
+            }
+            else
+            {
+                SwitchAppBar(selectedIndex);
+            }
         }
 
+        #region actions
         private void AddToFavorite()
         {
             (PivotItems[SelectedIndex] as StatusViewModelBase).AddFavorite();
@@ -99,5 +117,27 @@ namespace Chicken.ViewModel.Status
         {
             (PivotItems[SelectedIndex] as StatusViewModelBase).Quote();
         }
+
+        private void DeleteAction()
+        {
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Delete();
+        }
+        #endregion
+
+        #region private
+        private void SwitchAppBar(int selectedIndex)
+        {
+            if (tweet.IsSentByMe)
+            {
+                State = AppBarState.StatusPageWithDelete;
+            }
+            else
+            {
+                State = AppBarState.StatusPageDefault;
+            }
+            (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
+            base.MainPivot_LoadedPivotItem(selectedIndex);
+        }
+        #endregion
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Windows.Navigation;
-using Chicken.Common;
-using Chicken.Service;
-using Chicken.ViewModel;
+﻿using Chicken.ViewModel;
 using Chicken.ViewModel.Status;
 using Microsoft.Phone.Controls;
 
@@ -29,7 +26,7 @@ namespace Chicken.View
         {
             InitializeComponent();
             statusViewModel = new StatusViewModel();
-            this.MainPivot.DataContext = statusViewModel;
+            this.DataContext = statusViewModel;
             base.Init();
         }
     }

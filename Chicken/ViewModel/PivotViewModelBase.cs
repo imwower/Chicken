@@ -21,7 +21,7 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("Title");
             }
         }
-        private int selectedIndex = 0;
+        private int selectedIndex;
         public int SelectedIndex
         {
             get
@@ -31,6 +31,19 @@ namespace Chicken.ViewModel
             set
             {
                 selectedIndex = value;
+            }
+        }
+        private AppBarState state;
+        public AppBarState State
+        {
+            get
+            {
+                return state;
+            }
+            set
+            {
+                state = value;
+                RaisePropertyChanged("State");
             }
         }
         private ObservableCollection<PivotItemViewModelBase> pivotItems;
@@ -46,6 +59,7 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("PivotItems");
             }
         }
+        protected bool IsInit { get; set; }
         #endregion
 
         #region binding

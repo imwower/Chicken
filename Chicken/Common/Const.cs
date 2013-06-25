@@ -5,7 +5,7 @@
         //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
         public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/9KZ895/1.1/";
         //chicken4wp
-        //public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/761SAU/1.1/";
+        //public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/391VC9/1.1/";
         //public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
         public static string DEFAULT_COUNT_VALUE = "20";
         public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "21";
@@ -172,6 +172,9 @@
 
         MyProfileDefault = 20,
         MyProfileWithEdit = 21,
+
+        StatusPageDefault = 30,
+        StatusPageWithDelete = 31,
     }
 
     public enum NewTweetActionType

@@ -38,20 +38,6 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("FollowButtonText");
             }
         }
-        private AppBarState state = AppBarState.ProfileDefault;
-        public AppBarState State
-        {
-            get
-            {
-                return state;
-            }
-            set
-            {
-                state = value;
-                RaisePropertyChanged("State");
-            }
-        }
-        private bool isInit;
         #endregion
 
         #region binding
@@ -115,10 +101,9 @@ namespace Chicken.ViewModel.Profile
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
-            #region init
-            if (!isInit)
+            if (!IsInit)
             {
+                var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
                 TweetService.GetUserProfileDetail<UserProfileDetail>(selectedUser,
                 userProfileDetail =>
                 {
@@ -128,14 +113,13 @@ namespace Chicken.ViewModel.Profile
                         User.IsMyself = true;
                     }
                     SwitchAppBar(selectedIndex);
-                    isInit = true;
+                    IsInit = true;
                 });
             }
             else
             {
                 SwitchAppBar(selectedIndex);
             }
-            #endregion
         }
 
         #region actions
@@ -164,8 +148,9 @@ namespace Chicken.ViewModel.Profile
                     #region handle error
                     if (errors != null && errors.Count != 0)
                     {
+                        PivotItems[SelectedIndex].IsLoading = false;
                         toastMessage.Message = errors[0].Message;
-                        PivotItems[SelectedIndex].ToastMessageHandler(toastMessage);
+                        PivotItems[SelectedIndex].HandleMessage(toastMessage);
                         return;
                     }
                     #endregion

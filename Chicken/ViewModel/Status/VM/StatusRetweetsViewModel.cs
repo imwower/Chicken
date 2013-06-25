@@ -26,7 +26,7 @@ namespace Chicken.ViewModel.Status.VM
             {
                 parameters.Add(Const.CURSOR, previousCursor);
             }
-            TweetService.GetStatusRetweetIds<UserIdList>(StatusId,
+            TweetService.GetStatusRetweetIds<UserIdList>(Tweet.Id,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
@@ -56,7 +56,7 @@ namespace Chicken.ViewModel.Status.VM
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
-            TweetService.GetStatusRetweetIds<UserIdList>(StatusId,
+            TweetService.GetStatusRetweetIds<UserIdList>(Tweet.Id,
                 userIdList =>
                 {
                     if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
