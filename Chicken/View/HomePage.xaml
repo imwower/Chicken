@@ -91,6 +91,11 @@
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
                                       Command="{Binding Path=NewMessageCommand}" />
+                            <abu:AppBar.MenuItems>
+                                <!--settings-->
+                                <abu:AppBarMenuItem Text="settings"
+                                                    Command="{Binding Path=SettingsCommand}" />
+                            </abu:AppBar.MenuItems>
                         </abu:AppBar>
                     </abu:SwitchAppBarAction>
                 </abu:SelectedPivotItemChangedTrigger>

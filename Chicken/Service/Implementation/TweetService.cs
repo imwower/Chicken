@@ -317,12 +317,19 @@ namespace Chicken.Service.Implementation
             }
             catch (WebException webException)
             {
-                using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
+                try
                 {
-                    using (var reader = new JsonTextReader(streamReader))
+                    using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
                     {
-                        dto.Result = jsonSerializer.Deserialize<T>(reader);
+                        using (var reader = new JsonTextReader(streamReader))
+                        {
+                            dto.Result = jsonSerializer.Deserialize<T>(reader);
+                        }
                     }
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
             catch (Exception e)

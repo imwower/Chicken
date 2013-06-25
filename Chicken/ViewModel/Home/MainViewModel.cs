@@ -41,14 +41,6 @@ namespace Chicken.ViewModel.Home
                 return new DelegateCommand(MyProfileAction);
             }
         }
-
-        public ICommand SettingsCommand
-        {
-            get
-            {
-                return new DelegateCommand(SettingsAction);
-            }
-        }
         #endregion
 
         public MainViewModel()
@@ -80,11 +72,6 @@ namespace Chicken.ViewModel.Home
         private void MyProfileAction()
         {
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, App.AuthenticatedUser);
-        }
-
-        private void SettingsAction()
-        {
-            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
         }
         #endregion
     }

@@ -123,41 +123,17 @@ namespace Chicken.ViewModel.Profile
                 userProfileDetail =>
                 {
                     this.User = userProfileDetail;
-                    #region is myself or not; change appbar menu
                     if (User.Id == App.AuthenticatedUser.Id)
                     {
                         User.IsMyself = true;
-                        if (selectedIndex == 0)
-                        {
-                            State = AppBarState.MyProfileDefault;
-                        }
-                        else
-                        {
-                            State = AppBarState.MyProfileWithEdit;
-                        }
                     }
-                    else
-                    {
-                        if (selectedIndex == 0)
-                        {
-                            State = AppBarState.ProfileDefault;
-                        }
-                        else
-                        {
-                            State = AppBarState.ProfileWithRefresh;
-                        }
-                        ChangeFollowButtonText();
-                    }
-                    #endregion
-                    (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-                    base.MainPivot_LoadedPivotItem(selectedIndex);
+                    SwitchAppBar(selectedIndex);
                     isInit = true;
                 });
             }
             else
             {
-                (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
-                base.MainPivot_LoadedPivotItem(selectedIndex);
+                SwitchAppBar(selectedIndex);
             }
             #endregion
         }
@@ -220,6 +196,37 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region private
+        private void SwitchAppBar(int selectedIndex)
+        {
+            #region switch appbar
+            if (User.IsMyself)
+            {
+                if (selectedIndex == 0)
+                {
+                    State = AppBarState.MyProfileDefault;
+                }
+                else
+                {
+                    State = AppBarState.MyProfileWithEdit;
+                }
+            }
+            else
+            {
+                if (selectedIndex == 0)
+                {
+                    State = AppBarState.ProfileDefault;
+                }
+                else
+                {
+                    State = AppBarState.ProfileWithRefresh;
+                }
+                ChangeFollowButtonText();
+            }
+            #endregion
+            (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
+            base.MainPivot_LoadedPivotItem(selectedIndex);
+        }
+
         private void ChangeFollowButtonText()
         {
             if (User.IsFollowing)

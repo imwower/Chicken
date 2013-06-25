@@ -1,5 +1,7 @@
 ﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Service;
 
 namespace Chicken.ViewModel
 {
@@ -46,6 +48,16 @@ namespace Chicken.ViewModel
         }
         #endregion
 
+        #region binding
+        public ICommand SettingsCommand
+        {
+            get
+            {
+                return new DelegateCommand(SettingsAction);
+            }
+        }
+        #endregion
+
         public PivotViewModelBase()
         {
             RefreshHandler = this.RefreshAction;
@@ -78,6 +90,11 @@ namespace Chicken.ViewModel
         private void ScrollToBottomAction()
         {
             PivotItems[SelectedIndex].ScrollToBottom();
+        }
+
+        private void SettingsAction()
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
         }
         #endregion
     }

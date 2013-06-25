@@ -18,5 +18,7 @@
                 <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
             </Rectangle.OpacityMask>
         </Rectangle>
+        <Image x:Name="PngImage" Stretch="Fill" />
+        <it:AnimatedImage x:Name="GifImage" Stretch="Fill" />
     </Grid>
 </UserControl>

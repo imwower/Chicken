@@ -92,11 +92,12 @@ namespace Chicken.Controls
 
         private void png_ImageOpened(object sender, RoutedEventArgs e)
         {
-            Image pngImageControl = new Image();
-            pngImageControl.Stretch = Stretch.Fill;
+            //Image pngImageControl = new Image();
+            //pngImageControl.Stretch = Stretch.Fill;
             var bitmapImage = sender as BitmapImage;
-            pngImageControl.Source = bitmapImage;
-            this.grid.Children.Add(pngImageControl);
+            this.PngImage.Source = bitmapImage;
+            //pngImageControl.Source = bitmapImage;
+            //this.grid.Children.Add(pngImageControl);
             //this.grid.Children.Remove(this.placehold);
             this.placehold.Visibility = Visibility.Collapsed;
             this.UpdateLayout();
@@ -122,11 +123,12 @@ namespace Chicken.Controls
         private void gifImage_DownloadCompleted(object sender, OpenReadCompletedEventArgs e)
         {
             var gifImage = sender as ExtendedImage;
-            AnimatedImage gifImageControl = new AnimatedImage();
-            gifImageControl.Stretch = Stretch.Fill;
-            gifImageControl.Source = gifImage;
-            this.grid.Children.Add(gifImageControl);
+            //AnimatedImage gifImageControl = new AnimatedImage();
+            //gifImageControl.Stretch = Stretch.Fill;
+            //gifImageControl.Source = gifImage;
+            //this.grid.Children.Add(gifImageControl);
             //this.grid.Children.Remove(this.placehold);
+            this.GifImage.Source = gifImage;
             this.placehold.Visibility = Visibility.Collapsed;
             this.UpdateLayout();
 
