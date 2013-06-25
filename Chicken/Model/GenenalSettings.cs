@@ -1,13 +1,11 @@
-﻿namespace Chicken.Model
+﻿using System;
+using Newtonsoft.Json;
+
+namespace Chicken.Model
 {
     public class GeneralSettings
     {
         public APIProxy APISettings { get; set; }
-
-        public GeneralSettings()
-        {
-            APISettings = new APIProxy();
-        }
     }
 
     public class APIProxy

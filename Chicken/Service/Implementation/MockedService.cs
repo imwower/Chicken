@@ -179,6 +179,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/myprofile.json";
             HandleWebRequest<T>(url, callBack);
         }
+
+        public void GetTweetConfiguration<T>(Action<T> callBack)
+        {
+            string url = "SampleData/configuration.json";
+            HandleWebRequest<T>(url, callBack);
+        }
         #endregion
 
         #region private method

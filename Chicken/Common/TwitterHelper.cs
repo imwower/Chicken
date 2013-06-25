@@ -103,7 +103,7 @@ namespace Chicken.Common
         #region generate url
         public static string GenerateUrlParams(string action, IDictionary<string, object> parameters = null)
         {
-            StringBuilder sb = new StringBuilder(Const.API).Append(action);
+            StringBuilder sb = new StringBuilder(App.Settings.APISettings.Url).Append(action);
             if (parameters == null || parameters.Count == 0)
             {
                 return sb.ToString();

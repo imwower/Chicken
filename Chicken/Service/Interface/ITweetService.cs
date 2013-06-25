@@ -66,7 +66,10 @@ namespace Chicken.Service.Interface
 
         #region edit api settings page
         void TestAPIUrl<T>(string apiUrl, Action<T> callBack);
+
+        void GetTweetConfiguration<T>(Action<T> callBack);
         #endregion
+
     }
 
     public class RequestDataObject<T>

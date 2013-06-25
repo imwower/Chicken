@@ -88,16 +88,16 @@ namespace Chicken.Controls
             #region spilt
             else
             {
-                int index = 0;
+                int index = 0; int position = 0;
                 foreach (var entity in entities)
                 {
-                    if (index < entity.Index)
+                    if (index < entity.Index + position)
                     {
                         paragraph.Inlines.Add(new Run
                         {
-                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index - index))
+                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index + position - index))
                         });
-                        index = entity.Index;
+                        index = entity.Index + position;
                     }
                     switch (entity.EntityType)
                     {
@@ -136,6 +136,16 @@ namespace Chicken.Controls
                             };
                             link.Inlines.Add(urlEntity.TruncatedUrl + " ");
                             paragraph.Inlines.Add(link);
+                            #region check the position of url entity
+                            if (urlEntity.Text.StartsWith("http://") && urlEntity.Text.Length > App.Configuration.MaxShortUrlLength)
+                            {
+                                position += urlEntity.Text.Length - App.Configuration.MaxShortUrlLength;
+                            }
+                            if (urlEntity.Text.StartsWith("https://") && urlEntity.Text.Length > App.Configuration.MaxShortUrlLengthHttps)
+                            {
+                                position += urlEntity.Text.Length - App.Configuration.MaxShortUrlLengthHttps;
+                            }
+                            #endregion
                             break;
                         #endregion
                         #region hashtag

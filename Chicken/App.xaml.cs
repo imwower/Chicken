@@ -22,10 +22,6 @@ namespace Chicken
                 }
                 return authenticatedUser;
             }
-            private set
-            {
-                authenticatedUser = value;
-            }
         }
         private static GeneralSettings settings;
         public static GeneralSettings Settings
@@ -38,11 +34,20 @@ namespace Chicken
                 }
                 return settings;
             }
-            private set
+        }
+        private static TweetConfiguration configuration;
+        public static TweetConfiguration Configuration
+        {
+            get
             {
-                settings = value;
+                if (configuration == null)
+                {
+                    InitConfiguration();
+                }
+                return configuration;
             }
         }
+
         //public static Size GetScreenSize()
         //{
         //    return Application.Current.RootVisual.RenderSize;
@@ -71,6 +76,11 @@ namespace Chicken
         public static void InitAppSettings()
         {
             settings = IsolatedStorageService.GetAppSettings();
+        }
+
+        public static void InitConfiguration()
+        {
+            configuration = IsolatedStorageService.GetTweetConfiguration();
         }
 
         private void Application_Launching(object sender, LaunchingEventArgs e)

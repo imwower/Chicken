@@ -4,6 +4,7 @@ using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
+using Chicken.Service.Interface;
 using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
@@ -94,6 +95,10 @@ namespace Chicken.ViewModel.Profile
         //}
         #endregion
 
+        #region services
+        public ITweetService TweetService = TweetServiceManager.TweetService;
+        #endregion
+
         public ProfileViewModel()
         {
             var baseViewModelList = new List<PivotItemViewModelBase>
@@ -130,14 +135,6 @@ namespace Chicken.ViewModel.Profile
             }
             else
             {
-                if (User.IsFollowing)
-                {
-                    FollowButtonText = "unfollow";
-                }
-                else
-                {
-                    FollowButtonText = "follow";
-                }
                 if (selectedIndex == 0)
                 {
                     State = AppBarState.ProfileDefault;
@@ -146,12 +143,13 @@ namespace Chicken.ViewModel.Profile
                 {
                     State = AppBarState.ProfileWithRefresh;
                 }
+                ChangeFollowButtonText();
             }
             #endregion
             (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }
-
+        #region actions
         private void MentionAction()
         {
             (PivotItems[SelectedIndex] as ProfileViewModelBase).Mention();
@@ -162,9 +160,42 @@ namespace Chicken.ViewModel.Profile
             (PivotItems[SelectedIndex] as ProfileViewModelBase).NewMessage();
         }
 
+        /// <summary>
+        /// follow or unfollow,
+        /// based on isfollowing property.
+        /// </summary>
         private void FollowAction()
         {
-            (PivotItems[SelectedIndex] as ProfileViewModelBase).Follow();
+            PivotItems[SelectedIndex].IsLoading = true;
+            TweetService.FollowOrUnFollow<User>(User,
+                userProfile =>
+                {
+                    List<ErrorMessage> errors = userProfile.Errors;
+                    var toastMessage = new ToastMessage();
+                    #region handle error
+                    if (errors != null && errors.Count != 0)
+                    {
+                        toastMessage.Message = errors[0].Message;
+                        PivotItems[SelectedIndex].ToastMessageHandler(toastMessage);
+                        return;
+                    }
+                    #endregion
+                    #region success
+                    toastMessage.Message = User.IsFollowing ? "unfollow successfully" : "follow successfully";
+                    toastMessage.Complete =
+                        () =>
+                        {
+                            TweetService.GetUserProfileDetail<User>(User,
+                                userProfileDetail =>
+                                {
+                                    User = userProfileDetail;
+                                    ChangeFollowButtonText();
+                                    PivotItems[SelectedIndex].Refresh();
+                                });
+                        };
+                    PivotItems[SelectedIndex].ToastMessageHandler(toastMessage);
+                    #endregion
+                });
         }
 
         private void EditMyProfileAction()
@@ -175,6 +206,21 @@ namespace Chicken.ViewModel.Profile
         //private void BlocksAction()
         //{
         //    //TODO
-        //}
+        //} 
+        #endregion
+
+        #region private
+        private void ChangeFollowButtonText()
+        {
+            if (User.IsFollowing)
+            {
+                FollowButtonText = "unfollow";
+            }
+            else
+            {
+                FollowButtonText = "follow";
+            }
+        }
+        #endregion
     }
 }

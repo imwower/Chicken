@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
@@ -42,7 +43,7 @@ namespace Chicken.ViewModel.Settings
 
         public APISettingsViewModel()
         {
-            Header = "Edit API settings";
+            Header = "Edit API";
             RefreshHandler = this.RefreshAction;
         }
 
@@ -51,13 +52,12 @@ namespace Chicken.ViewModel.Settings
         {
             if (App.Settings == null)
             {
-                Header = "Init API settings";
                 isInitAPI = true;
                 GeneralSettings = new GeneralSettings
                 {
                     APISettings = new APIProxy
                     {
-                        Url = "https://blog-lonzhu.rhcloud.com/weixin/o/UT3I3O/1.1/"
+                        Url = Const.testAPI
                     }
                 };
             }
@@ -80,34 +80,48 @@ namespace Chicken.ViewModel.Settings
                 GeneralSettings.APISettings.Url += "/";
             }
             TweetService.TestAPIUrl<UserProfileDetail>(GeneralSettings.APISettings.Url,
-                    userProfileDetail =>
+                userProfileDetail =>
+                {
+                    IsLoading = false;
+                    List<ErrorMessage> errors = userProfileDetail.Errors;
+                    if (errors != null && errors.Count != 0)
                     {
-                        IsLoading = false;
-                        List<ErrorMessage> errors = userProfileDetail.Errors;
-                        if (errors != null && errors.Count != 0)
+                        HandleMessage(new ToastMessage
                         {
-                            HandleMessage(new ToastMessage
-                            {
-                                Message = errors[0].Message
-                            });
-                        }
-                        else
+                            Message = errors[0].Message
+                        });
+                    }
+                    else
+                    {
+                        IsolatedStorageService.CreateAppSettings(GeneralSettings);
+                        App.InitAppSettings();
+                        IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
+                        App.InitAuthenticatedUser();
+                        GetConfiguration();
+                    }
+                });
+        }
+        #endregion
+
+        #region private
+        private void GetConfiguration()
+        {
+            TweetService.GetTweetConfiguration<TweetConfiguration>(
+                configuration =>
+                {
+                    configuration.LastUpdateTime = DateTime.Now;
+                    IsolatedStorageService.CreateTweetConfiguration(configuration);
+                    App.InitConfiguration();
+                    HandleMessage(new ToastMessage
+                    {
+                        Message = isInitAPI ? "hello, " + App.AuthenticatedUser.ScreenName : "update successfully",
+                        Complete =
+                        () =>
                         {
-                            IsolatedStorageService.CreateAppSettings(GeneralSettings);
-                            App.InitAppSettings();
-                            IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
-                            App.InitAuthenticatedUser();
-                            HandleMessage(new ToastMessage
-                            {
-                                Message = isInitAPI ? "hello, " + userProfileDetail.ScreenName : "update successfully",
-                                Complete =
-                                () =>
-                                {
-                                    NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                                }
-                            });
+                            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
                         }
                     });
+                });
         }
         #endregion
     }

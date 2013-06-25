@@ -188,7 +188,7 @@ namespace Chicken.Service.Implementation
             switch (action)
             {
                 case RetweetActionType.Create:
-                    url = String.Format(Const.RETWEET_CREATE, Const.API, statusId);
+                    url = String.Format(Const.RETWEET_CREATE, App.Settings.APISettings.Url, statusId);
                     break;
             }
             HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
@@ -274,6 +274,12 @@ namespace Chicken.Service.Implementation
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = apiUrl + Const.PROFILE_MYSELF;
             url = TwitterHelper.GenerateAPIParams(url, parameters);
+            HandleWebRequest<T>(url, callBack);
+        }
+
+        public void GetTweetConfiguration<T>(Action<T> callBack)
+        {
+            string url = TwitterHelper.GenerateUrlParams(Const.TWEET_CONFIGURATION);
             HandleWebRequest<T>(url, callBack);
         }
         #endregion

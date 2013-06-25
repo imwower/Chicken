@@ -38,6 +38,8 @@ namespace Chicken.Service
         private const string GENERALSETTINGS_FILE_NAME = "GeneralSettings.json";
 
         private const string ABOUT_FILE_NAME = "About.json";
+
+        private const string TWEET_CONFIGURATION_FILE_NAME = "TweetConfiguration.json";
         #endregion
 
         #region method for pages
@@ -195,35 +197,29 @@ namespace Chicken.Service
 
         public static void CreateAuthenticatedUser(UserProfileDetail authenticatedUser)
         {
-            CheckDataFolderPath();
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
-            SerializeObject(filepath, authenticatedUser);
+            CheckDataFolderPathAndSerializeOjbect(AUTHENTICATED_USER_FILE_NAME, authenticatedUser);
         }
 
         public static UserProfileDetail GetAuthenticatedUser()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + AUTHENTICATED_USER_FILE_NAME;
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + AUTHENTICATED_USER_FILE_NAME;
             return DeserializeObject<UserProfileDetail>(filepath, FileOption.OnlyRead);
         }
 
         public static void CreateAppSettings(GeneralSettings settings)
         {
-            CheckDataFolderPath();
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + GENERALSETTINGS_FILE_NAME;
-            SerializeObject(filepath, settings);
+            CheckDataFolderPathAndSerializeOjbect(GENERALSETTINGS_FILE_NAME, settings);
         }
 
         public static GeneralSettings GetAppSettings()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + GENERALSETTINGS_FILE_NAME;
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + GENERALSETTINGS_FILE_NAME;
             return DeserializeObject<GeneralSettings>(filepath, FileOption.OnlyRead);
         }
 
         public static void CreateAbout(AboutModel about)
         {
-            CheckDataFolderPath();
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + ABOUT_FILE_NAME;
-            SerializeObject(filepath, about);
+            CheckDataFolderPathAndSerializeOjbect(ABOUT_FILE_NAME, about);
         }
 
         public static AboutModel GetAbout()
@@ -240,6 +236,17 @@ namespace Chicken.Service
                 }
             }
             return DeserializeObject<AboutModel>(filepath);
+        }
+
+        public static void CreateTweetConfiguration(TweetConfiguration configuration)
+        {
+            CheckDataFolderPathAndSerializeOjbect(TWEET_CONFIGURATION_FILE_NAME, configuration);
+        }
+
+        public static TweetConfiguration GetTweetConfiguration()
+        {
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + TWEET_CONFIGURATION_FILE_NAME;
+            return DeserializeObject<TweetConfiguration>(filepath, FileOption.OnlyRead);
         }
 
         #endregion
@@ -275,6 +282,13 @@ namespace Chicken.Service
             {
                 fileSystem.CreateDirectory(SAVED_DATA_FOLDER_PATH);
             }
+        }
+
+        private static void CheckDataFolderPathAndSerializeOjbect(string filename, object data)
+        {
+            CheckDataFolderPath();
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + filename;
+            SerializeObject(filepath, data);
         }
 
         private static bool SerializeObject(string fileName, object value)
