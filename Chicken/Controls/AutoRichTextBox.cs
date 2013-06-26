@@ -174,11 +174,11 @@ namespace Chicken.Controls
         {
             if (urltext.StartsWith("http://") && urltext.Length > App.Configuration.MaxShortUrlLength)
             {
-                return urltext.Length - App.Configuration.MaxShortUrlLength + 1;
+                return urltext.Length - App.Configuration.MaxShortUrlLength;
             }
             else if (urltext.StartsWith("https://") && urltext.Length > App.Configuration.MaxShortUrlLengthHttps)
             {
-                return urltext.Length - App.Configuration.MaxShortUrlLengthHttps + 1;
+                return urltext.Length - App.Configuration.MaxShortUrlLengthHttps;
             }
             return 0;
         }

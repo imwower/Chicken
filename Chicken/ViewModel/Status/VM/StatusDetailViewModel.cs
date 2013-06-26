@@ -45,6 +45,10 @@ namespace Chicken.ViewModel.Status.VM
         private void RefreshAction()
         {
             TweetViewModel = new TweetViewModel(Tweet);
+            if (ConversationList != null && ConversationList.Count != 0)
+            {
+                ConversationList.Clear();
+            }
             LoadConversation(Tweet.InReplyToTweetId);
             IsInited = true;
         }

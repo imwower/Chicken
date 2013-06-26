@@ -103,6 +103,7 @@ namespace Chicken.ViewModel.Profile
         {
             if (!IsInit)
             {
+                PivotItems[selectedIndex].IsLoading = true;
                 var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
                 TweetService.GetUserProfileDetail<UserProfileDetail>(selectedUser,
                 userProfileDetail =>

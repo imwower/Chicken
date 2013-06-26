@@ -75,9 +75,9 @@ namespace Chicken.ViewModel.Status
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            PivotItems[selectedIndex].IsLoading = true;
             if (!IsInit)
             {
+                PivotItems[selectedIndex].IsLoading = true;
                 string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
                 TweetService.GetStatusDetail<Tweet>(statusId,
                     tweet =>
