@@ -5,12 +5,11 @@ using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Media;
+using System.Windows.Markup;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
-using Chicken.ViewModel;
 
 namespace Chicken.Controls
 {
@@ -31,18 +30,28 @@ namespace Chicken.Controls
             }
         }
 
+        private const string paragraphTemplate = @"<Paragraph
+                    xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
+                    xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
+                    {0}
+                </Paragraph>";
+
+        private const string hyperlinkTemplate = @"<Hyperlink NavigateUri=""{0}"" TargetName=""{1}"">
+                    {2}
+            </Hyperlink>";
+
         public static void TweetDataPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
+            #region init
             var textBox = sender as AutoRichTextBox;
             var tweet = e.NewValue as TweetBase;
             if (textBox == null || tweet == null)
             {
                 return;
             }
-            #region init
             textBox.Blocks.Clear();
-            string text = tweet.Text;
             var entities = new List<EntityBase>();
+            #region
             if (tweet.Entities != null)
             {
                 if (tweet.Entities.UserMentions != null)
@@ -73,125 +82,85 @@ namespace Chicken.Controls
                         entities.Add(hashtag);
                     }
                 }
-                entities = entities.OrderBy(entity => entity.Index).ToList();
             }
-            var paragraph = new Paragraph();
+            #endregion
             #endregion
             #region none
             if (entities.Count == 0)
             {
+                var paragraph = new Paragraph();
                 paragraph.Inlines.Add(new Run
                 {
-                    Text = HttpUtility.HtmlDecode(text)
+                    Text = HttpUtility.HtmlDecode(tweet.Text)
                 });
+                textBox.Blocks.Add(paragraph);
             }
             #endregion
-            #region spilt
+            #region add
             else
             {
-                int index = 0; int position = 0;
+                entities = entities.Distinct(n => n.Text).ToList();
+                string xaml = tweet.Text;
+                string hyperlink = string.Empty;
                 foreach (var entity in entities)
                 {
-                    if (index < entity.Index + position)
-                    {
-                        paragraph.Inlines.Add(new Run
-                        {
-                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index + position - index))
-                        });
-                        index = entity.Index + position;
-                    }
                     switch (entity.EntityType)
                     {
-                        #region user mention
                         case EntityType.UserMention:
-                            var userMention = entity as UserMention;
-                            var hyperlink = new Hyperlink
-                            {
-                                TextDecorations = null,
-                                CommandParameter = userMention,
-                                Command = new DelegateCommand(obj => ScreenNameClick(obj)),
-                            };
-                            hyperlink.Inlines.Add(userMention.Text);
-                            paragraph.Inlines.Add(hyperlink);
+                            var mention = entity as UserMention;
+                            hyperlink = string.Format(hyperlinkTemplate, mention.Id, mention.EntityType.ToString(), mention.Text);
                             break;
-                        #endregion
-                        #region media, url
+                        case EntityType.HashTag:
+                            var tag = entity as HashTag;
+                            hyperlink = string.Format(hyperlinkTemplate, tag.Text, tag.EntityType.ToString(), tag.Text);
+                            break;
                         case EntityType.Media:
-                            var mediaEntity = entity as MediaEntity;
-                            var medialink = new Hyperlink
-                            {
-                                TextDecorations = null,
-                                NavigateUri = new Uri(mediaEntity.MediaUrl, UriKind.Absolute),
-                                TargetName = "_blank",
-                            };
-                            medialink.Inlines.Add(mediaEntity.TruncatedUrl);
-                            paragraph.Inlines.Add(medialink);
-                            //check the position of url entity
-                            position += EmitUrlPosition(mediaEntity.Text);
+                            var media = entity as MediaEntity;
+                            hyperlink = string.Format(hyperlinkTemplate, media.MediaUrl, "_blank", media.TruncatedUrl);
                             break;
                         case EntityType.Url:
-                            var urlEntity = entity as UrlEntity;
-                            var link = new Hyperlink
-                            {
-                                TextDecorations = null,
-                                NavigateUri = new Uri(urlEntity.ExpandedUrl, UriKind.Absolute),
-                                TargetName = "_blank",
-                            };
-                            link.Inlines.Add(urlEntity.TruncatedUrl);
-                            paragraph.Inlines.Add(link);
-                            //check the position of url entity
-                            position += EmitUrlPosition(urlEntity.Text);
+                            var url = entity as UrlEntity;
+                            hyperlink = string.Format(hyperlinkTemplate, url.ExpandedUrl, "_blank", url.TruncatedUrl);
                             break;
-                        #endregion
-                        #region hashtag
-                        case EntityType.HashTag:
-                            var hashtag = entity as HashTag;
-                            var run = new Run
-                            {
-                                Foreground = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush,
-                                Text = hashtag.Text,
-                            };
-                            paragraph.Inlines.Add(run);
+                        default:
                             break;
-                        #endregion
                     }
-                    index += entity.Text.Length;
+                    xaml = xaml.Replace(entity.Text, hyperlink);
                 }
-                //last:
-                if (index < text.Length)
+                string graph = string.Format(paragraphTemplate, xaml);
+                Paragraph paragraph = (Paragraph)XamlReader.Load(graph);
+                foreach (var inline in paragraph.Inlines)
                 {
-                    paragraph.Inlines.Add(new Run
+                    if (inline is Hyperlink)
                     {
-                        Text = HttpUtility.HtmlDecode(text.Substring(index, text.Length - index)),
-                    });
+                        var link = inline as Hyperlink;
+                        if (link.TargetName != "_blank")
+                        {
+                            link.Click += Hyperlink_Click;
+                        }
+                    }
                 }
+                textBox.Blocks.Add(paragraph);
+            }
             #endregion
-            }
-            textBox.Blocks.Add(paragraph);
         }
 
-        private static int EmitUrlPosition(string urltext)
+        private static void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            if (urltext.StartsWith("http://") && urltext.Length > App.Configuration.MaxShortUrlLength)
+            var hyperlink = sender as Hyperlink;
+            EntityType type = (EntityType)Enum.Parse(typeof(EntityType), hyperlink.TargetName, true);
+            switch (type)
             {
-                return urltext.Length - App.Configuration.MaxShortUrlLength;
+                case EntityType.UserMention:
+                    User user = new User();
+                    user.DisplayName = (hyperlink.Inlines[0] as Run).Text.Replace("@", "");
+                    user.Id = hyperlink.NavigateUri == null ? string.Empty : hyperlink.NavigateUri.OriginalString;
+                    NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
+                    break;
+                case EntityType.HashTag:
+                    //TODO: to search page
+                    break;
             }
-            else if (urltext.StartsWith("https://") && urltext.Length > App.Configuration.MaxShortUrlLengthHttps)
-            {
-                return urltext.Length - App.Configuration.MaxShortUrlLengthHttps;
-            }
-            return 0;
-        }
-
-        private static void ScreenNameClick(object parameter)
-        {
-            var mention = parameter as UserMention;
-            var user = new User
-            {
-                Id = mention.Id,
-                DisplayName = mention.DisplayName
-            };
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
         }
     }
 }

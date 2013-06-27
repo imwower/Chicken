@@ -54,5 +54,4 @@
         <abu:AppBarItemCommand Type="Button" Id="save" Text="save"
                                Command="{Binding SaveCommand}" />
     </i:Interaction.Behaviors>
-
 </v:PageBase>
