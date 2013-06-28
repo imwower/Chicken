@@ -10,6 +10,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
+using System.Text;
 
 namespace Chicken.Controls
 {
@@ -102,6 +103,7 @@ namespace Chicken.Controls
                 entities = entities.Distinct(n => n.Text).ToList();
                 string xaml = tweet.Text;
                 string hyperlink = string.Empty;
+                #region replace
                 foreach (var entity in entities)
                 {
                     switch (entity.EntityType)
@@ -127,15 +129,25 @@ namespace Chicken.Controls
                     }
                     xaml = xaml.Replace(entity.Text, hyperlink);
                 }
+                #endregion
+                //replace & charactor
+                xaml = xaml.Replace("&", "&amp;");
                 string graph = string.Format(paragraphTemplate, xaml);
                 Paragraph paragraph = (Paragraph)XamlReader.Load(graph);
                 foreach (var inline in paragraph.Inlines)
                 {
-                    if (inline is Hyperlink)
+                    if (inline is Run)
+                    {
+                        var run = inline as Run;
+                        run.Text = HttpUtility.HtmlDecode(run.Text);
+                    }
+                    else if (inline is Hyperlink)
                     {
                         var link = inline as Hyperlink;
                         if (link.TargetName != "_blank")
                         {
+                            link.CommandParameter = link.NavigateUri.OriginalString;
+                            link.NavigateUri = null;
                             link.Click += Hyperlink_Click;
                         }
                     }
