@@ -10,7 +10,6 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
-using System.Text;
 
 namespace Chicken.Controls
 {
@@ -31,13 +30,11 @@ namespace Chicken.Controls
             }
         }
 
-        private const string paragraphTemplate = @"<Paragraph
-                    xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation""
-                    xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
+        private const string paragraphTemplate = @"<Paragraph xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"" xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
                     {0}
                 </Paragraph>";
 
-        private const string hyperlinkTemplate = @"<Hyperlink NavigateUri=""{0}"" TargetName=""{1}"">
+        private const string hyperlinkTemplate = @"<Hyperlink TextDecorations=""None"" Foreground=""{{StaticResource PhoneAccentBrush}}"" NavigateUri=""{0}"" TargetName=""{1}"">
                     {2}
             </Hyperlink>";
 
@@ -127,7 +124,7 @@ namespace Chicken.Controls
                         default:
                             break;
                     }
-                    xaml = xaml.Replace(entity.Text, hyperlink);
+                    xaml = xaml.Replace(entity.Text, hyperlink, StringComparison.OrdinalIgnoreCase);
                 }
                 #endregion
                 //replace & charactor
@@ -166,7 +163,7 @@ namespace Chicken.Controls
                 case EntityType.UserMention:
                     User user = new User();
                     user.DisplayName = (hyperlink.Inlines[0] as Run).Text.Replace("@", "");
-                    user.Id = hyperlink.NavigateUri == null ? string.Empty : hyperlink.NavigateUri.OriginalString;
+                    user.Id = hyperlink.CommandParameter == null ? string.Empty : hyperlink.CommandParameter as string;
                     NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
                     break;
                 case EntityType.HashTag:

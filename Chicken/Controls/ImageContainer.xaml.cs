@@ -46,16 +46,26 @@ namespace Chicken.Controls
             this.PngImage.ImageFailed -= png_ImageFailed;
             this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
 
-            this.PngImage.Source = new BitmapImage(new Uri(newValue));
+            var bitmapImage = new BitmapImage
+            {
+                UriSource = new Uri(newValue + "?random=" + DateTime.Now.Ticks.ToString("x")),
+                CreateOptions = BitmapCreateOptions.BackgroundCreation
+            };
+            this.PngImage.Source = bitmapImage;
             this.PngImage.ImageOpened += png_ImageOpened;
             this.PngImage.ImageFailed += png_ImageFailed;
+
+            this.source.Text = "BEGIN. " + bitmapImage.UriSource.OriginalString;
+
         }
 
         private void png_ImageOpened(object sender, RoutedEventArgs e)
         {
-            //this.grid.Children.Remove(this.placehold);
             this.placehold.Visibility = Visibility.Collapsed;
-            //this.UpdateLayout();
+            this.UpdateLayout();
+
+            var bitmapImage = (sender as Image).Source as BitmapImage;
+            this.source.Text += "END. " + bitmapImage.PixelHeight;
         }
 
         private void png_ImageFailed(object sender, ExceptionRoutedEventArgs e)
@@ -70,9 +80,8 @@ namespace Chicken.Controls
 
         private void gifImage_DownloadCompleted(object sender, EventArgs e)
         {
-            //this.grid.Children.Remove(this.placehold);
             this.placehold.Visibility = Visibility.Collapsed;
-            //this.UpdateLayout();
+            this.UpdateLayout();
             this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
         }
     }

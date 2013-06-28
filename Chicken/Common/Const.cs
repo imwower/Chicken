@@ -2,8 +2,9 @@
 {
     public class Const
     {
-        //public static string API = "https://wxt2005.org/tapi/o/N2X81L/";
         public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/9KZ895/1.1/";
+        //public static string testAPI = "https://wxt2005.org/tapi/o/HLPI75/1.1/";
+
         //chicken4wp
         //public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/391VC9/1.1/";
         //public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
