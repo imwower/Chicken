@@ -112,6 +112,8 @@
     <Compile Include="Controls\ImageContainer.xaml.cs">
       <DependentUpon>ImageContainer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\LazyListBox.cs" />
+    <Compile Include="Controls\LazyListBoxItem.cs" />
     <Compile Include="Controls\PopUp.cs" />
     <Compile Include="Controls\TemplateSelector.cs" />
     <Compile Include="Controls\ToastPrompt.cs" />

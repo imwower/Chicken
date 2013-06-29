@@ -75,7 +75,7 @@ namespace Chicken.Controls
                 FrameworkElement element = VisualTreeHelper.GetChild(scrollViewer, 0) as FrameworkElement;
                 if (element != null)
                 {
-                    VisualStateGroup vgroup = Utils.FindVisualState(element, "VerticalCompression");
+                    VisualStateGroup vgroup = Utils.GetVisualStateGroup(element, "VerticalCompression");
                     if (vgroup != null)
                     {
                         vgroup.CurrentStateChanging += new EventHandler<VisualStateChangedEventArgs>(vgroup_CurrentStateChanging);

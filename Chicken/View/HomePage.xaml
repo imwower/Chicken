@@ -22,22 +22,22 @@
                         x:Name="MainPivot" Title="{Binding Path=Title}">
             <!--Home-->
             <ctrls:HomePivotItem
-                                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
-                                 Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=TweetList}"
-                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=TweetList}"
+                ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--Mentions-->
             <ctrls:HomePivotItem
-                                 DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
-                                 Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=TweetList}"
-                                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=TweetList}"
+                ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--DMs-->
             <ctrls:HomePivotItem
-                                 DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
-                                 Header="{Binding Path=Header}"
-                                 ListBoxItems="{Binding Path=TweetList}"
-                                 ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
+                DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
+                Header="{Binding Path=Header}"
+                ListBoxItems="{Binding Path=TweetList}"
+                ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
 
             <i:Interaction.Triggers>
                 <abu:SelectedPivotItemChangedTrigger>
@@ -55,16 +55,16 @@
                         <abu:AppBar Id="0" Mode="Minimized">
                             <!--refresh-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
-                                      Command="{Binding Path=RefreshCommand}" />
+                                              Command="{Binding Path=RefreshCommand}" />
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
-                                      Command="{Binding Path=TopCommand}" />
+                                              Command="{Binding Path=TopCommand}" />
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
-                                      Command="{Binding Path=BottomCommand}" />
+                                              Command="{Binding Path=BottomCommand}" />
                             <!--new tweet-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"
-                                      Command="{Binding Path=NewTweetCommand}" />
+                                              Command="{Binding Path=NewTweetCommand}" />
                             <abu:AppBar.MenuItems>
                                 <!--search-->
                                 <abu:AppBarMenuItem Text="search"
@@ -81,16 +81,16 @@
                         <abu:AppBar Id="1" Mode="Minimized">
                             <!--refresh-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
-                                      Command="{Binding Path=RefreshCommand}" />
+                                              Command="{Binding Path=RefreshCommand}" />
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
-                                      Command="{Binding Path=TopCommand}" />
+                                              Command="{Binding Path=TopCommand}" />
                             <!--bottom-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
-                                      Command="{Binding Path=BottomCommand}" />
+                                              Command="{Binding Path=BottomCommand}" />
                             <!--top-->
                             <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
-                                      Command="{Binding Path=NewMessageCommand}" />
+                                              Command="{Binding Path=NewMessageCommand}" />
                             <abu:AppBar.MenuItems>
                                 <!--settings-->
                                 <abu:AppBarMenuItem Text="settings"
