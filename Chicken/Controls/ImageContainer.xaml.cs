@@ -45,27 +45,20 @@ namespace Chicken.Controls
             this.PngImage.ImageOpened -= png_ImageOpened;
             this.PngImage.ImageFailed -= png_ImageFailed;
             this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
-
             var bitmapImage = new BitmapImage
             {
-                UriSource = new Uri(newValue + "?random=" + DateTime.Now.Ticks.ToString("x")),
-                CreateOptions = BitmapCreateOptions.BackgroundCreation
+                UriSource = new Uri(newValue),
             };
             this.PngImage.Source = bitmapImage;
             this.PngImage.ImageOpened += png_ImageOpened;
             this.PngImage.ImageFailed += png_ImageFailed;
-
-            this.source.Text = "BEGIN. " + bitmapImage.UriSource.OriginalString;
-
         }
 
         private void png_ImageOpened(object sender, RoutedEventArgs e)
         {
-            this.placehold.Visibility = Visibility.Collapsed;
-            this.UpdateLayout();
-
-            var bitmapImage = (sender as Image).Source as BitmapImage;
-            this.source.Text += "END. " + bitmapImage.PixelHeight;
+            this.Grid.Children.Remove(this.Placehold);
+            this.Grid.Children.Remove(this.GifImage);
+            this.PngImage.ImageOpened -= png_ImageOpened;
         }
 
         private void png_ImageFailed(object sender, ExceptionRoutedEventArgs e)
@@ -73,15 +66,14 @@ namespace Chicken.Controls
             BitmapImage bitmapImage = (BitmapImage)(sender as Image).Source;
             this.GifImage.Source = new ExtendedImage { UriSource = bitmapImage.UriSource };
             this.GifImage.LoadingCompleted += gifImage_DownloadCompleted;
-
             this.PngImage.ImageOpened -= png_ImageOpened;
             this.PngImage.ImageFailed -= png_ImageFailed;
         }
 
         private void gifImage_DownloadCompleted(object sender, EventArgs e)
         {
-            this.placehold.Visibility = Visibility.Collapsed;
-            this.UpdateLayout();
+            this.Grid.Children.Remove(this.Placehold);
+            this.Grid.Children.Remove(this.PngImage);
             this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
         }
     }

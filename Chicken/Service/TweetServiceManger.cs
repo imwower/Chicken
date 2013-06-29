@@ -5,17 +5,23 @@ namespace Chicken.Service
 {
     public class TweetServiceManager
     {
+        private static ITweetService tweetService;
+
         public static ITweetService TweetService
         {
             get
             {
+                if (tweetService == null)
+                {
 #if HTTP
-                return new TweetService();
+                    tweetService = new TweetService();
 #elif DEBUG
-                return new MockedService();                
+                tweetService = new MockedService();                
 #else
-                return new TweetService();
+                tweetService = new TweetService();
 #endif
+                }
+                return tweetService;
             }
         }
     }

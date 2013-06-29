@@ -266,7 +266,7 @@
         <DataTemplate x:Key="TweetTemplate">
             <Grid Margin="0,4">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="268" />
+                    <ColumnDefinition Width="68" />
                     <ColumnDefinition Width="*"  />
                 </Grid.ColumnDefinitions>
                 <!--avatar-->
@@ -275,8 +275,8 @@
                         CommandParameter="{Binding User}">
                     <Button.Template>
                         <ControlTemplate>
-                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}" />
-                                                  <!--Style="{StaticResource ProfileImageSmall}" />-->
+                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}"
+                                                  Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
@@ -481,12 +481,20 @@
                                     <RowDefinition />
                                 </ctrls:AutoGrid.RowDefinitions>
                                 <ScrollViewer Grid.Row="0"
-                                              HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                                    <ListBox x:Name="AutoListBox"
-                                             VerticalAlignment="Top"
+                                              VirtualizingStackPanel.VirtualizationMode="Recycling"
+                                              HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Auto">
+                                    <ListBox x:Name="AutoListBox" VerticalAlignment="Top"
+                                             VirtualizingStackPanel.VirtualizationMode="Recycling"
                                              ScrollViewer.VerticalScrollBarVisibility="Disabled"
                                              ItemsSource="{TemplateBinding ListBoxItems}"
                                              ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
+                                        <ListBox.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <VirtualizingStackPanel CacheMode="BitmapCache"
+                                                                        VirtualizingStackPanel.VirtualizationMode="Recycling" />
+                                            </ItemsPanelTemplate>
+                                        </ListBox.ItemsPanel>
                                     </ListBox>
                                 </ScrollViewer>
                             </ctrls:AutoGrid>

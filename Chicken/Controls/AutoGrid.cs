@@ -31,10 +31,6 @@ namespace Chicken.Controls
             {
                 var newValue = (ScrollTo)e.NewValue;
                 var oldValue = (ScrollTo)e.OldValue;
-                if (newValue == oldValue)
-                {
-                    return;
-                }
                 switch (newValue)
                 {
                     case ScrollTo.Top:
@@ -50,9 +46,9 @@ namespace Chicken.Controls
         }
 
         #region properties
-        bool alreadyHookedScrollEvents = false;
-        ScrollBar scrollBar;
-        ScrollViewer scrollViewer;
+        private bool alreadyHookedScrollEvents = false;
+        private ScrollBar scrollBar;
+        private ScrollViewer scrollViewer;
         #endregion
 
         #region event
@@ -65,7 +61,7 @@ namespace Chicken.Controls
             this.Loaded += new RoutedEventHandler(AutoListBox_Loaded);
         }
 
-        void AutoListBox_Loaded(object sender, RoutedEventArgs e)
+        private void AutoListBox_Loaded(object sender, RoutedEventArgs e)
         {
             if (alreadyHookedScrollEvents)
             {
@@ -94,7 +90,7 @@ namespace Chicken.Controls
             {
                 if (VerticalCompressionTopHandler != null)
                 {
-                    VerticalCompressionTopHandler(sender, e);
+                    Dispatcher.BeginInvoke(() => VerticalCompressionTopHandler(sender, e));
                 }
             }
 
@@ -102,7 +98,7 @@ namespace Chicken.Controls
             {
                 if (VerticalCompressionBottomHandler != null)
                 {
-                    VerticalCompressionBottomHandler(sender, e);
+                    Dispatcher.BeginInvoke(() => VerticalCompressionBottomHandler(sender, e));
                 }
             }
             if (e.NewState.Name == "NoVerticalCompression")

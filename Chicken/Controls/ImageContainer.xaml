@@ -8,22 +8,17 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    d:DesignHeight="480" d:DesignWidth="480" x:Name="Container">
+    d:DesignHeight="480" d:DesignWidth="480">
 
-    <Grid x:Name="grid" Background="Transparent"
+    <Grid x:Name="Grid" Background="Transparent"
           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>        
-        <Rectangle x:Name="placehold" Opacity="0.4"
+        <Rectangle x:Name="Placehold" Opacity="0.4"
                    Fill="{StaticResource PhoneForegroundBrush}">
             <Rectangle.OpacityMask>
                 <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
             </Rectangle.OpacityMask>
         </Rectangle>
-        <Image x:Name="PngImage" Grid.Row="0" Stretch="Fill" Width="64" Height="64" />
-        <it:AnimatedImage x:Name="GifImage" Grid.Row="0" Stretch="Fill" Width="64" Height="64" />
-        <TextBlock x:Name="source" Grid.Row="1" TextWrapping="Wrap" />
+        <Image x:Name="PngImage" Stretch="Fill" />
+        <it:AnimatedImage x:Name="GifImage" Stretch="Fill" />
     </Grid>
 </UserControl>

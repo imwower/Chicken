@@ -147,8 +147,8 @@ namespace Chicken.Common
             int index = source.IndexOf(oldString, compare);
             if (index >= 0)
             {
-                source = source.Remove(index, oldString.Length);
-                source = source.Insert(index, newString);
+                string found = source.Substring(index, oldString.Length);
+                source = source.Replace(found, newString);
             }
             return source;
         }

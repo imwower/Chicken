@@ -1,7 +1,9 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Navigation;
 using Chicken.Model;
 using Chicken.Service;
+using MemoryDiagnostics;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 
@@ -62,6 +64,7 @@ namespace Chicken
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
+                MemoryDiagnosticsHelper.Start(TimeSpan.FromMilliseconds(500), true);
 #if RELEASE
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled; 
 #endif

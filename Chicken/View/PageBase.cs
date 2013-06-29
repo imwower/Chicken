@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Windows.Navigation;
 using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Service.Interface;
@@ -18,11 +18,7 @@ namespace Chicken.View
             };
             if (message.Complete != null)
             {
-                toast.Completed +=
-                   (o, e) =>
-                   {
-                       message.Complete();
-                   };
+                toast.Completed += (o, e) => message.Complete();
             }
             toast.Show();
         }
@@ -39,7 +35,7 @@ namespace Chicken.View
         {
             if (Pivot != null)
             {
-                Pivot.LoadedPivotItem += new EventHandler<PivotItemEventArgs>(MainPivot_LoadedPivotItem);
+                Pivot.LoadedPivotItem += MainPivot_LoadedPivotItem;
                 foreach (var item in PivotViewModelBase.PivotItems)
                 {
                     item.ToastMessageHandler = ToastMessageHandler;
@@ -61,6 +57,19 @@ namespace Chicken.View
             if (Pivot != null)
             {
                 Pivot.SelectedIndex = selectedIndex;
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            if (Pivot != null)
+            {
+                Pivot.LoadedPivotItem -= MainPivot_LoadedPivotItem;
+                foreach (var item in PivotViewModelBase.PivotItems)
+                {
+                    item.ToastMessageHandler -= ToastMessageHandler;
+                }
             }
         }
     }
