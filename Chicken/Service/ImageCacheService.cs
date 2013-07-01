@@ -1,18 +1,10 @@
-﻿using System.Linq;
-using System;
-using System.Net;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
-using System.Windows.Ink;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
-using System.Threading;
-using System.IO;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Threading;
 
 namespace Chicken.Service
 {
@@ -20,92 +12,108 @@ namespace Chicken.Service
     {
         #region properties
         private static AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+        private static bool isInit;
         private static bool isStop;
         private static int pendingWorkIndex = 0;
-        private static Dictionary<string, int> pendingWorkDic = new Dictionary<string, int>();
+        private static Dictionary<string, PendingWork> pendingWorkDic = new Dictionary<string, PendingWork>();
         private static Dictionary<string, Stream> imageCacheDic = new Dictionary<string, Stream>();
-        //private static Random random = new Random();
+        private static Random random = new Random();
         private static readonly object pendingWorkLocker = new object();
         private static readonly object cacheLocker = new object();
-        private static List<BackgroundWorker> workers = new List<BackgroundWorker>(5);
+        private static BackgroundWorker doWorker = new BackgroundWorker();
+        private const int MAX_WORKER_COUNT = 5;
+        private static List<BackgroundWorker> workers = new List<BackgroundWorker>(MAX_WORKER_COUNT);
         #endregion
 
-        #region event handler
-        public static delegate void SetImageStreamEventHandler(Stream imageStream);
-        public static SetImageStreamEventHandler SetImageStreamHandler;
-        #endregion
-
-        public static void SetImageStream(string url)
+        public static void SetImageStream(string imageUrl, Action<Stream> callBack)
         {
-            int index = url.IndexOf("?random=");
-            string imageUrl = url.Substring(0, url.Length - index);
-            string uniqueId = url.Substring(index);
-
             if (imageCacheDic.ContainsKey(imageUrl))
             {
 #if DEBUG
                 System.Diagnostics.Debug.WriteLine("CACHED. " + imageUrl);
 #endif
-                if (SetImageStreamHandler != null)
-                    SetImageStreamHandler(imageCacheDic[imageUrl]);
+                callBack(imageCacheDic[imageUrl]);
                 return;
             }
-            AddWork(url, imageUrl, uniqueId);
-            if (pendingWorkIndex == 0)
-                autoResetEvent.Set();
-            //Thread.Sleep(random.Next(1000));
+            #region init
+            if (!isInit)
+            {
+                Init();
+            }
+            #endregion
+            var pendingWork = new PendingWork
+            {
+                ImageUrl = imageUrl,
+                CallBack = callBack
+            };
+            AddWork(pendingWork);
         }
 
-        private static void AddWork(string url, string imageUrl, string uniqueId)
+        private static void Init()
         {
-            autoResetEvent.WaitOne();
-            lock (pendingWorkLocker)
+            for (int i = 0; i < MAX_WORKER_COUNT; i++)
             {
-                pendingWorkIndex += 1;
-                pendingWorkDic.Add(url, pendingWorkIndex);
+                var worker = new BackgroundWorker { WorkerSupportsCancellation = true };
+                workers.Add(worker);
             }
+            doWorker.DoWork += DoWork;
+            doWorker.RunWorkerAsync();
+            isInit = true;
             autoResetEvent.Set();
         }
 
-        private static void DoWork()
+        private static void AddWork(PendingWork pendingwork)
         {
-            autoResetEvent.WaitOne();
+            //Thread.Sleep(random.Next(1000));
             lock (pendingWorkLocker)
             {
-                var pendinglist = pendingWorkDic.Values.OrderBy(v => v).ToList();
-                for (int i = 0; i < workers.Count; i++)
+                if (!pendingWorkDic.ContainsKey(pendingwork.ImageUrl))
                 {
-                    if (pendinglist.Count == 0)
-                        break;
-                    if (workers[i] == null)
-                        workers[i] = new BackgroundWorker { WorkerSupportsCancellation = true };
-                    if (!workers[i].IsBusy)
-                    {
-                        workers[i].DoWork -= DownloadImage;
-                        workers[i].DoWork += DownloadImage;
-                        var pendingwork = pendingWorkDic.First(kvp => kvp.Value == pendinglist.First());
-                        workers[i].RunWorkerAsync(pendingwork.Key);
-                        pendingWorkDic.Remove(pendingwork.Key);
-                        pendinglist.Remove(pendingwork.Value);
-                    }
+                    pendingwork.Index = pendingWorkIndex += 1;
+                    pendingWorkDic.Add(pendingwork.ImageUrl, pendingwork);
                 }
             }
-            autoResetEvent.Set();
         }
 
-        private static void DownloadImage(object sender, DoWorkEventArgs e)
+        private static void DoWork(object argument, DoWorkEventArgs e)
         {
-            string url = sender as string;
-            HttpWebRequest request = WebRequest.CreateHttp(url);
+            while (!isStop)
+            {
+                autoResetEvent.WaitOne();
+                lock (pendingWorkLocker)
+                {
+                    var pendinglist = pendingWorkDic.Values.OrderBy(v => v.Index).ToList();
+                    for (int i = 0; i < workers.Count; i++)
+                    {
+                        if (pendinglist.Count == 0)
+                            break;
+                        if (!workers[i].IsBusy)
+                        {
+                            workers[i].DoWork -= DownloadImage;
+                            workers[i].DoWork += DownloadImage;
+                            var pendingwork = pendingWorkDic.First(kvp => kvp.Value.Index == pendinglist.First().Index);
+                            workers[i].RunWorkerAsync(pendingwork.Value);
+                            pendingWorkDic.Remove(pendingwork.Key);
+                            pendinglist.RemoveAt(0);
+                        }
+                    }
+                }
+                autoResetEvent.Set();
+            }
+        }
+
+        private static void DownloadImage(object argument, DoWorkEventArgs e)
+        {
+            var pendingwork = e.Argument as PendingWork;
+            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl);
             request.BeginGetResponse(
                 result =>
                 {
                     HttpWebRequest r = result.AsyncState as HttpWebRequest;
                     HttpWebResponse response = (HttpWebResponse)r.EndGetResponse(result);
                     Stream stream = response.GetResponseStream();
-                    AddImageCache(url, stream);
-                    if (SetImageStreamHandler != null)
-                        SetImageStreamHandler(imageCacheDic[url]);
+                    AddImageCache(pendingwork.ImageUrl, stream);
+                    pendingwork.CallBack(imageCacheDic[pendingwork.ImageUrl]);
                 }, request);
         }
 
@@ -120,6 +128,15 @@ namespace Chicken.Service
                 System.Diagnostics.Debug.WriteLine("add cache: " + imageUrl);
 #endif
             }
+        }
+
+        private class PendingWork
+        {
+            public int Index { get; set; }
+
+            public string ImageUrl { get; set; }
+
+            public Action<Stream> CallBack { get; set; }
         }
     }
 }

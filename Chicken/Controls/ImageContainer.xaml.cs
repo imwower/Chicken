@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Threading;
+﻿using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using Chicken.Service;
 using ImageTools;
 using ImageTools.IO;
 using ImageTools.IO.Bmp;
 using ImageTools.IO.Gif;
 using ImageTools.IO.Png;
-using Chicken.Service;
 
 namespace Chicken.Controls
 {
@@ -35,7 +31,6 @@ namespace Chicken.Controls
         public ImageContainer()
         {
             InitializeComponent();
-            ThreadPool.SetMaxThreads(5, 5);
             Decoders.AddDecoder<BmpDecoder>();
             Decoders.AddDecoder<PngDecoder>();
             Decoders.AddDecoder<GifDecoder>();
@@ -48,25 +43,8 @@ namespace Chicken.Controls
 
         private void SetImageSource(string newValue)
         {
-            //
-            ImageCacheService.SetImageStreamHandler += this.SetImageStream;
-            ImageCacheService.SetImageStream(newValue);
+            ImageCacheService.SetImageStream(newValue, SetImageStream);
         }
-
-        //private void DownloadImage(object state)
-        //{
-        //    string url = state as string;
-        //    HttpWebRequest request = WebRequest.CreateHttp(url);
-        //    request.BeginGetResponse(
-        //        result =>
-        //        {
-        //            HttpWebRequest r = result.AsyncState as HttpWebRequest;
-        //            HttpWebResponse response = (HttpWebResponse)r.EndGetResponse(result);
-        //            Stream stream = response.GetResponseStream();
-        //            AddCache(url, stream);
-        //            SetImageStream(url);
-        //        }, request);
-        //}
 
         private void SetImageStream(Stream imageStream)
         {
@@ -105,18 +83,5 @@ namespace Chicken.Controls
                     }
                 });
         }
-
-        //        private static void AddCache(string key, Stream stream)
-        //        {
-        //            lock (locker)
-        //            {
-        //                var memoryStream = new MemoryStream();
-        //                stream.CopyTo(memoryStream);
-        //                cache[key] = memoryStream;
-        //#if DEBUG
-        //                System.Diagnostics.Debug.WriteLine("add cache: " + key);
-        //#endif
-        //            }
-        //        }
     }
 }
