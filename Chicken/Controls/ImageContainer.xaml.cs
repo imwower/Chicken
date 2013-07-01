@@ -43,43 +43,42 @@ namespace Chicken.Controls
 
         private void SetImageSource(string newValue)
         {
-            ImageCacheService.SetImageStream(newValue, SetImageStream);
+            ImageCacheService.SetImageStream(newValue, SetImageSource);
         }
 
-        private void SetImageStream(Stream imageStream)
+        private void SetImageSource(byte[] data)
         {
             Dispatcher.BeginInvoke(
                 () =>
                 {
-                    var stream = new MemoryStream();
-                    imageStream.Position = 0;
-                    imageStream.CopyTo(stream);
                     try
                     {
 #if DEBUG
-                        System.Diagnostics.Debug.WriteLine("set png image.");
+                        System.Diagnostics.Debug.WriteLine("set png image. length: " + data.Length);
 #endif
-                        stream.Position = 0;
+                        var png = new MemoryStream(data);
+                        png.Position = 0;
                         var bitmapImage = new BitmapImage();
-                        bitmapImage.SetSource(stream);
+                        bitmapImage.SetSource(png);
                         this.PngImage.Source = bitmapImage;
-                        this.Grid.Children.Remove(this.GifImage);
                     }
                     catch
                     {
 #if DEBUG
-                        System.Diagnostics.Debug.WriteLine("set gif image.");
+                        System.Diagnostics.Debug.WriteLine("set gif image. length: " + data.Length);
 #endif
+                        var gif = new MemoryStream(data);
+                        gif.Position = 0;
                         var gifImage = new ExtendedImage();
-                        stream.Position = 0;
-                        gifImage.SetSource(stream);
+                        gifImage.SetSource(gif);
                         this.GifImage.Source = gifImage;
-                        this.Grid.Children.Remove(this.PngImage);
                     }
                     finally
                     {
-                        this.Grid.Children.Remove(this.Placehold);
-                        this.UpdateLayout();
+#if DEBUG
+                        System.Diagnostics.Debug.WriteLine("remove place hold.");
+#endif
+                        this.Placehold.Visibility = Visibility.Collapsed;
                     }
                 });
         }
