@@ -53,9 +53,7 @@ namespace Chicken.Controls
                 {
                     try
                     {
-#if DEBUG
-                        System.Diagnostics.Debug.WriteLine("set png image. length: " + data.Length);
-#endif
+                        System.Diagnostics.Debug.WriteLine("set png image. length: {0}", data.Length);
                         var png = new MemoryStream(data);
                         png.Position = 0;
                         var bitmapImage = new BitmapImage();
@@ -64,9 +62,7 @@ namespace Chicken.Controls
                     }
                     catch
                     {
-#if DEBUG
-                        System.Diagnostics.Debug.WriteLine("set gif image. length: " + data.Length);
-#endif
+                        System.Diagnostics.Debug.WriteLine("set gif image. length: {0}", data.Length);
                         var gif = new MemoryStream(data);
                         gif.Position = 0;
                         var gifImage = new ExtendedImage();
@@ -75,9 +71,7 @@ namespace Chicken.Controls
                     }
                     finally
                     {
-#if DEBUG
                         System.Diagnostics.Debug.WriteLine("remove place hold.");
-#endif
                         this.Placehold.Visibility = Visibility.Collapsed;
                     }
                 });
