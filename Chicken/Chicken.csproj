@@ -146,6 +146,7 @@
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserProfile.cs" />
     <Compile Include="Model\UserProfileDetail.cs" />
+    <Compile Include="Service\ImageCacheService.cs" />
     <Compile Include="Service\IsolatedStorageService.cs" />
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />

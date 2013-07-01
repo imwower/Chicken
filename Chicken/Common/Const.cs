@@ -2,8 +2,8 @@
 {
     public class Const
     {
-        public static string testAPI = "http://chicken4wp.hostingsiteforfree.com/o/6FUQI7/1.1/";
-        //public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/9KZ895/1.1/";
+        //public static string testAPI = "http://chicken4wp.hostingsiteforfree.com/o/6FUQI7/1.1/";
+        public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/9KZ895/1.1/";
         //public static string testAPI = "https://wxt2005.org/tapi/o/HLPI75/1.1/";
 
         //chicken4wp

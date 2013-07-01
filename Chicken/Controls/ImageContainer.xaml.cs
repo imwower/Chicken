@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -7,6 +11,7 @@ using ImageTools.IO;
 using ImageTools.IO.Bmp;
 using ImageTools.IO.Gif;
 using ImageTools.IO.Png;
+using Chicken.Service;
 
 namespace Chicken.Controls
 {
@@ -30,6 +35,7 @@ namespace Chicken.Controls
         public ImageContainer()
         {
             InitializeComponent();
+            ThreadPool.SetMaxThreads(5, 5);
             Decoders.AddDecoder<BmpDecoder>();
             Decoders.AddDecoder<PngDecoder>();
             Decoders.AddDecoder<GifDecoder>();
@@ -37,44 +43,80 @@ namespace Chicken.Controls
 
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as ImageContainer).OnSourceChanged(e.NewValue as string);
+            (d as ImageContainer).SetImageSource(e.NewValue as string);
         }
 
-        private void OnSourceChanged(string newValue)
+        private void SetImageSource(string newValue)
         {
-            this.PngImage.ImageOpened -= png_ImageOpened;
-            this.PngImage.ImageFailed -= png_ImageFailed;
-            this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
-            var bitmapImage = new BitmapImage
-            {
-                UriSource = new Uri(newValue),
-            };
-            this.PngImage.Source = bitmapImage;
-            this.PngImage.ImageOpened += png_ImageOpened;
-            this.PngImage.ImageFailed += png_ImageFailed;
+            //
+            ImageCacheService.SetImageStreamHandler += this.SetImageStream;
+            ImageCacheService.SetImageStream(newValue);
         }
 
-        private void png_ImageOpened(object sender, RoutedEventArgs e)
+        //private void DownloadImage(object state)
+        //{
+        //    string url = state as string;
+        //    HttpWebRequest request = WebRequest.CreateHttp(url);
+        //    request.BeginGetResponse(
+        //        result =>
+        //        {
+        //            HttpWebRequest r = result.AsyncState as HttpWebRequest;
+        //            HttpWebResponse response = (HttpWebResponse)r.EndGetResponse(result);
+        //            Stream stream = response.GetResponseStream();
+        //            AddCache(url, stream);
+        //            SetImageStream(url);
+        //        }, request);
+        //}
+
+        private void SetImageStream(Stream imageStream)
         {
-            this.Grid.Children.Remove(this.Placehold);
-            this.Grid.Children.Remove(this.GifImage);
-            this.PngImage.ImageOpened -= png_ImageOpened;
+            Dispatcher.BeginInvoke(
+                () =>
+                {
+                    var stream = new MemoryStream();
+                    imageStream.Position = 0;
+                    imageStream.CopyTo(stream);
+                    try
+                    {
+#if DEBUG
+                        System.Diagnostics.Debug.WriteLine("set png image.");
+#endif
+                        stream.Position = 0;
+                        var bitmapImage = new BitmapImage();
+                        bitmapImage.SetSource(stream);
+                        this.PngImage.Source = bitmapImage;
+                        this.Grid.Children.Remove(this.GifImage);
+                    }
+                    catch
+                    {
+#if DEBUG
+                        System.Diagnostics.Debug.WriteLine("set gif image.");
+#endif
+                        var gifImage = new ExtendedImage();
+                        stream.Position = 0;
+                        gifImage.SetSource(stream);
+                        this.GifImage.Source = gifImage;
+                        this.Grid.Children.Remove(this.PngImage);
+                    }
+                    finally
+                    {
+                        this.Grid.Children.Remove(this.Placehold);
+                        this.UpdateLayout();
+                    }
+                });
         }
 
-        private void png_ImageFailed(object sender, ExceptionRoutedEventArgs e)
-        {
-            BitmapImage bitmapImage = (BitmapImage)(sender as Image).Source;
-            this.GifImage.Source = new ExtendedImage { UriSource = bitmapImage.UriSource };
-            this.GifImage.LoadingCompleted += gifImage_DownloadCompleted;
-            this.PngImage.ImageOpened -= png_ImageOpened;
-            this.PngImage.ImageFailed -= png_ImageFailed;
-        }
-
-        private void gifImage_DownloadCompleted(object sender, EventArgs e)
-        {
-            this.Grid.Children.Remove(this.Placehold);
-            this.Grid.Children.Remove(this.PngImage);
-            this.GifImage.LoadingCompleted -= gifImage_DownloadCompleted;
-        }
+        //        private static void AddCache(string key, Stream stream)
+        //        {
+        //            lock (locker)
+        //            {
+        //                var memoryStream = new MemoryStream();
+        //                stream.CopyTo(memoryStream);
+        //                cache[key] = memoryStream;
+        //#if DEBUG
+        //                System.Diagnostics.Debug.WriteLine("add cache: " + key);
+        //#endif
+        //            }
+        //        }
     }
 }

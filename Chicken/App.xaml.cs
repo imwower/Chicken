@@ -117,7 +117,6 @@ namespace Chicken
                 System.Diagnostics.Debugger.Break();
             }
         }
-
         #region
 
         private bool phoneApplicationInitialized = false;

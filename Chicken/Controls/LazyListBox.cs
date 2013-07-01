@@ -413,8 +413,10 @@ namespace Chicken.Controls
                 return;
             }
 
+#if ONLISTCHANGESCOMPLETE_LOGGING
             // This is an expensive operation!!!
             Debug.WriteLine("OnListChangesComplete is running... this is EXPENSIVE and should only happen at load time and when scrolling finishes");
+#endif
 
             ComputeVisibleItems();
 

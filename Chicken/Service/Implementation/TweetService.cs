@@ -7,6 +7,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service.Interface;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace Chicken.Service.Implementation
 {
@@ -317,19 +318,19 @@ namespace Chicken.Service.Implementation
             }
             catch (WebException webException)
             {
-                using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
+                try
                 {
-                    try
+                    using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
                     {
                         using (var reader = new JsonTextReader(streamReader))
                         {
                             dto.Result = jsonSerializer.Deserialize<T>(reader);
                         }
                     }
-                    catch
-                    {
-                        string exception = streamReader.ReadToEnd();
-                    }
+                }
+                catch
+                {
+                    Debug.WriteLine(webException.Message);
                 }
             }
             catch (Exception e)

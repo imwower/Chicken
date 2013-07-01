@@ -4,9 +4,6 @@ namespace Chicken.Model
 {
     public class User : TweetBase
     {
-        //[JsonProperty("id_str")]
-        //public string Id { get; set; }
-
         public string Name { get; set; }
 
         [JsonProperty("screen_name")]
