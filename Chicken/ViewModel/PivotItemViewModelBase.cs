@@ -56,8 +56,11 @@ namespace Chicken.ViewModel
             }
             set
             {
-                isLoading = value;
-                RaisePropertyChanged("IsLoading");
+                if (isLoading != value)
+                {
+                    isLoading = value;
+                    RaisePropertyChanged("IsLoading");
+                }
             }
         }
         private bool isInited;
@@ -82,6 +85,7 @@ namespace Chicken.ViewModel
             }
             set
             {
+                scrollTo = ScrollTo.None;
                 scrollTo = value;
                 RaisePropertyChanged("ScrollTo");
             }

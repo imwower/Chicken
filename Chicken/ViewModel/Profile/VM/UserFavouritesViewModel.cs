@@ -19,6 +19,11 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void RefreshAction()
         {
+            if (!CheckIfFollowingPrivate())
+            {
+                base.Refreshed();
+                return;
+            }
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)

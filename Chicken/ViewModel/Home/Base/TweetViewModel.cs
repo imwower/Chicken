@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;

@@ -17,8 +17,15 @@ namespace Chicken.ViewModel.Profile.VM
             ItemClickHandler = this.ItemClickAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
+            if (!CheckIfFollowingPrivate())
+            {
+                base.Refreshed();
+                return;
+            }
+            #region refresh
             string sinceId = string.Empty;
             var parameters = TwitterHelper.GetDictionary();
             if (TweetList.Count != 0)
@@ -49,6 +56,7 @@ namespace Chicken.ViewModel.Profile.VM
                     }
                     base.Refreshed();
                 }, parameters);
+            #endregion
         }
 
         private void LoadAction()
@@ -84,5 +92,6 @@ namespace Chicken.ViewModel.Profile.VM
         {
             NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
+        #endregion
     }
 }

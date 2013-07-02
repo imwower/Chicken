@@ -507,7 +507,7 @@
                                 <RowDefinition Height="*" />
                                 <RowDefinition Height="10" />
                             </Grid.RowDefinitions>
-                            <ctrls:LazyListBox x:Name="AutoListBox" Grid.Row="0"                                               
+                            <ctrls:LazyListBox x:Name="AutoListBox" Grid.Row="0"
                                                ItemsSource="{TemplateBinding ListBoxItems}"
                                                ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
                                 <i:Interaction.Triggers>

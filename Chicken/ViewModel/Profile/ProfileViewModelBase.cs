@@ -123,6 +123,19 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region protected methods
+        protected bool CheckIfFollowingPrivate()
+        {
+            if (this.UserProfile.IsPrivate &&
+                !this.UserProfile.IsFollowing)
+            {
+                HandleMessage(new ToastMessage
+                {
+                    Message = "you must follow the private user first"
+                });
+                return false;
+            }
+            return true;
+        }
         #region for following and followers pivot
         protected void RefreshUserProfiles(string userIds)
         {

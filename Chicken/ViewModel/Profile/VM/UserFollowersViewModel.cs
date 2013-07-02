@@ -16,6 +16,11 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void RefreshAction()
         {
+            if (!CheckIfFollowingPrivate())
+            {
+                base.Refreshed();
+                return;
+            }
             if (previousCursor == "0")
             {
                 base.Refreshed();

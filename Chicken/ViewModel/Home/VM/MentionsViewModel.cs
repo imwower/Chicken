@@ -30,7 +30,7 @@ namespace Chicken.ViewModel.Home.VM
                 {
                     if (tweets != null && tweets.Count != 0)
                     {
-#if !DEBUG
+#if !LOCAL
                         if (string.Compare(sinceId, tweets[0].Id) == -1)
                         {
                             TweetList.Clear();
@@ -38,7 +38,7 @@ namespace Chicken.ViewModel.Home.VM
 #endif
                         for (int i = tweets.Count - 1; i >= 0; i--)
                         {
-#if !DEBUG
+#if !LOCAL
                             if (sinceId != tweets[i].Id)
 #endif
                             {
@@ -67,7 +67,7 @@ namespace Chicken.ViewModel.Home.VM
                     {
                         foreach (var tweet in tweets)
                         {
-#if !DEBUG
+#if !LOCAL
                             if (maxId != tweet.Id)
 #endif
                             {

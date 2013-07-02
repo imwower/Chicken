@@ -58,6 +58,7 @@ namespace Chicken.ViewModel.Home.VM
 
         private void ItemClickAction(object user)
         {
+            IsLoading = false;
             var newMessage = new NewMessageModel
             {
                 User = user as User,

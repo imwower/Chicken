@@ -13,12 +13,10 @@ namespace Chicken.Service
             {
                 if (tweetService == null)
                 {
-#if HTTP
-                    tweetService = new TweetService();
-#elif DEBUG
-                tweetService = new MockedService();                
+#if LOCAL
+                    tweetService = new MockedService();
 #else
-                tweetService = new TweetService();
+                    tweetService = new TweetService();
 #endif
                 }
                 return tweetService;

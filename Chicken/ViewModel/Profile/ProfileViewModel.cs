@@ -114,6 +114,7 @@ namespace Chicken.ViewModel.Profile
                         User.IsMyself = true;
                     }
                     SwitchAppBar(selectedIndex);
+                    ChangeFollowButtonText();
                     IsInit = true;
                 });
             }
@@ -156,7 +157,20 @@ namespace Chicken.ViewModel.Profile
                     }
                     #endregion
                     #region success
-                    toastMessage.Message = User.IsFollowing ? "unfollow successfully" : "follow successfully";
+                    string message = string.Empty;
+                    if (User.IsFollowing)
+                    {
+                        message = "unfollow successfully";
+                    }
+                    else if (User.IsPrivate)
+                    {
+                        message = "request sent successfully";
+                    }
+                    else
+                    {
+                        message = "follow successfully";
+                    }
+                    toastMessage.Message = message;
                     PivotItems[SelectedIndex].HandleMessage(toastMessage);
                     TweetService.GetUserProfileDetail<UserProfileDetail>(User,
                         userProfileDetail =>
@@ -206,7 +220,6 @@ namespace Chicken.ViewModel.Profile
                 {
                     State = AppBarState.ProfileWithRefresh;
                 }
-                ChangeFollowButtonText();
             }
             #endregion
             (PivotItems[selectedIndex] as ProfileViewModelBase).UserProfile = User;
