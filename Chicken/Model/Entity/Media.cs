@@ -20,6 +20,7 @@ namespace Chicken.Model.Entity
         [JsonProperty("media_url_https")]
         public string MediaUrl { get; set; }
 
+        [JsonIgnore]
         public string MediaUrlThumb
         {
             get
@@ -28,6 +29,7 @@ namespace Chicken.Model.Entity
             }
         }
 
+        [JsonIgnore]
         public string MediaUrlSmall
         {
             get

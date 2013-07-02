@@ -27,7 +27,7 @@ namespace Chicken.Model
         public string FavoriteCount { get; set; }
 
         [JsonProperty("entities")]
-        public virtual Entities Entities { get; set; }
+        public Entities Entities { get; set; }
 
         [JsonProperty("favorited")]
         public bool Favorited { get; set; }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -53,7 +54,7 @@ namespace Chicken.Controls
                 {
                     try
                     {
-                        System.Diagnostics.Debug.WriteLine("set png image. length: {0}", data.Length);
+                        Debug.WriteLine("set png image. length: {0}", data.Length);
                         var png = new MemoryStream(data);
                         png.Position = 0;
                         var bitmapImage = new BitmapImage();
@@ -62,7 +63,7 @@ namespace Chicken.Controls
                     }
                     catch
                     {
-                        System.Diagnostics.Debug.WriteLine("set gif image. length: {0}", data.Length);
+                        Debug.WriteLine("set gif image. length: {0}", data.Length);
                         var gif = new MemoryStream(data);
                         gif.Position = 0;
                         var gifImage = new ExtendedImage();
@@ -71,7 +72,7 @@ namespace Chicken.Controls
                     }
                     finally
                     {
-                        System.Diagnostics.Debug.WriteLine("remove place hold.");
+                        Debug.WriteLine("remove place hold.");
                         this.Placehold.Visibility = Visibility.Collapsed;
                     }
                 });

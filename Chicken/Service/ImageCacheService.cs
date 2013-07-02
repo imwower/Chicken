@@ -51,6 +51,7 @@ namespace Chicken.Service
             #endregion
         }
 
+        #region private method
         private static void Init()
         {
             for (int i = 0; i < MAX_WORKER_COUNT; i++)
@@ -91,6 +92,7 @@ namespace Chicken.Service
                         var worker = workers[i];
                         if (!worker.IsBusy)
                         {
+                            worker.DoWork -= DownloadImage;
                             worker.DoWork += DownloadImage;
                             var pendingwork = pendingWorkList[0];
                             pendingWorkList.RemoveAt(0);
@@ -143,6 +145,7 @@ namespace Chicken.Service
                 Debug.WriteLine("add cache. url: {0}; length: {1} ", imageUrl, imageCacheDic[imageUrl].Length);
             }
         }
+        #endregion
 
         private class PendingWork
         {

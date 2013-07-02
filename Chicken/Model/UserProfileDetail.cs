@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Chicken.Model.Entity;
 using Newtonsoft.Json;
-using Chicken.Common;
 
 namespace Chicken.Model
 {
@@ -37,27 +36,6 @@ namespace Chicken.Model
 
         [JsonProperty("entities")]
         public UserProfileEntities UserProfileEntities { get; set; }
-
-        [JsonIgnore]
-        public override Entities Entities
-        {
-            get
-            {
-                Entities entities = new Entities();
-                if (UserProfileEntities != null &&
-                    UserProfileEntities.DescriptionEntities != null &&
-                    UserProfileEntities.DescriptionEntities.Urls != null &&
-                    UserProfileEntities.DescriptionEntities.Urls.Count != 0)
-                {
-                    entities.Urls = UserProfileEntities.DescriptionEntities.Urls;
-                }
-                entities.UserMentions = TwitterHelper.ParseUserMentions(Text);
-                entities.HashTags = TwitterHelper.ParseHashTags(Text);
-                return entities;
-            }
-            set
-            { }
-        }
 
         [JsonProperty("statuses_count")]
         public string TweetsCount { get; set; }

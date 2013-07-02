@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using System.Windows.Markup;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
+using System.Windows.Media;
 
 namespace Chicken.Controls
 {
@@ -30,13 +31,7 @@ namespace Chicken.Controls
             }
         }
 
-        private const string paragraphTemplate = @"<Paragraph xmlns=""http://schemas.microsoft.com/winfx/2006/xaml/presentation"" xmlns:x=""http://schemas.microsoft.com/winfx/2006/xaml"">
-                    {0}
-                </Paragraph>";
-
-        private const string hyperlinkTemplate = @"<Hyperlink TextDecorations=""None"" Foreground=""{{StaticResource PhoneAccentBrush}}"" NavigateUri=""{0}"" TargetName=""{1}"">
-                    {2}
-            </Hyperlink>";
+        private const string pattern = @"(?<text>{0})([^\w]|$)";
 
         public static void TweetDataPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
@@ -48,48 +43,118 @@ namespace Chicken.Controls
                 return;
             }
             textBox.Blocks.Clear();
+            string text = tweet.Text;
+            var paragraph = new Paragraph();
             var entities = new List<EntityBase>();
-            #region
+            #region tweet
             if (tweet.Entities != null)
             {
+                #region user mention
                 if (tweet.Entities.UserMentions != null)
                 {
-                    foreach (var userMention in tweet.Entities.UserMentions)
+                    var mentions = tweet.Entities.UserMentions.Distinct(m => m.Id);
+                    foreach (var mention in mentions)
                     {
-                        entities.Add(userMention);
+                        var matches = Regex.Matches(text, string.Format(pattern, mention.Text), RegexOptions.IgnoreCase);
+                        foreach (Match match in matches)
+                        {
+                            var m = new UserMention
+                            {
+                                Index = match.Index,
+                                Id = mention.Id,
+                                DisplayName = mention.DisplayName,
+                            };
+                            entities.Add(m);
+                        }
                     }
                 }
+                #endregion
+                #region media
                 if (tweet.Entities.Medias != null)
                 {
                     foreach (var media in tweet.Entities.Medias)
                     {
-                        entities.Add(media);
+                        var matches = Regex.Matches(text, string.Format(pattern, media.Text), RegexOptions.IgnoreCase);
+                        foreach (Match match in matches)
+                        {
+                            var m = new MediaEntity
+                            {
+                                Index = match.Index,
+                                Text = media.Text,
+                                MediaUrl = media.MediaUrl,
+                                DisplayUrl = media.DisplayUrl,
+                            };
+                            entities.Add(m);
+                        }
                     }
                 }
+                #endregion
+                #region url
                 if (tweet.Entities.Urls != null)
                 {
                     foreach (var url in tweet.Entities.Urls)
                     {
-                        entities.Add(url);
+                        var matches = Regex.Matches(text, string.Format(pattern, url.Text), RegexOptions.IgnoreCase);
+                        foreach (Match match in matches)
+                        {
+                            var m = new UrlEntity
+                            {
+                                Index = match.Index,
+                                Text = url.Text,
+                                DisplayUrl = url.DisplayUrl,
+                                ExpandedUrl = url.ExpandedUrl,
+                            };
+                            entities.Add(m);
+                        }
                     }
                 }
+                #endregion
+                #region hashtag
                 if (tweet.Entities.HashTags != null)
                 {
                     foreach (var hashtag in tweet.Entities.HashTags)
                     {
-                        entities.Add(hashtag);
+                        var matches = Regex.Matches(text, string.Format(pattern, hashtag.Text), RegexOptions.IgnoreCase);
+                        foreach (Match match in matches)
+                        {
+                            var m = new HashTag
+                            {
+                                Index = match.Index,
+                                Text = hashtag.Text,
+                            };
+                            entities.Add(m);
+                        }
                     }
                 }
+                #endregion
+            }
+            #endregion
+            #region profile
+            else if (e.NewValue is UserProfileDetail)
+            {
+                var profile = e.NewValue as UserProfileDetail;
+                var mentions = TwitterHelper.ParseUserMentions(profile.Text);
+                entities.AddRange(mentions);
+                var hashtags = TwitterHelper.ParseHashTags(profile.Text);
+                entities.AddRange(hashtags);
+                #region url
+                if (profile.UserProfileEntities != null &&
+                    profile.UserProfileEntities.DescriptionEntities != null &&
+                    profile.UserProfileEntities.DescriptionEntities.Urls != null)
+                {
+                    var urls = profile.UserProfileEntities.DescriptionEntities.Urls.Cast<EntityBase>();
+                    entities.AddRange(urls);
+                }
+                #endregion
             }
             #endregion
             #endregion
             #region none
             if (entities.Count == 0)
             {
-                var paragraph = new Paragraph();
                 paragraph.Inlines.Add(new Run
                 {
-                    Text = HttpUtility.HtmlDecode(tweet.Text)
+                    Text = HttpUtility.HtmlDecode(text)
                 });
                 textBox.Blocks.Add(paragraph);
             }
@@ -97,58 +162,63 @@ namespace Chicken.Controls
             #region add
             else
             {
-                entities = entities.Distinct(n => n.Text).ToList();
-                string xaml = tweet.Text;
-                string hyperlink = string.Empty;
                 #region replace
-                foreach (var entity in entities)
+                int index = 0;
+                foreach (var entity in entities.OrderBy(v => v.Index))
                 {
+                    #region starter
+                    if (index < entity.Index)
+                    {
+                        paragraph.Inlines.Add(new Run
+                        {
+                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index - index))
+                        });
+                        index = entity.Index;
+                    }
+                    #endregion
+                    var hyperlink = new Hyperlink();
+                    hyperlink.TextDecorations = null;
+                    hyperlink.Foreground = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
+                    #region entity
                     switch (entity.EntityType)
                     {
+                        #region mention, hashtag
                         case EntityType.UserMention:
-                            var mention = entity as UserMention;
-                            hyperlink = string.Format(hyperlinkTemplate, mention.Id, mention.EntityType.ToString(), mention.Text);
-                            break;
                         case EntityType.HashTag:
-                            var tag = entity as HashTag;
-                            hyperlink = string.Format(hyperlinkTemplate, tag.Text, tag.EntityType.ToString(), tag.Text);
+                            hyperlink.CommandParameter = entity;
+                            hyperlink.Click += Hyperlink_Click;
+                            hyperlink.Inlines.Add(entity.Text);
                             break;
+                        #endregion
+                        #region media, url
                         case EntityType.Media:
-                            var media = entity as MediaEntity;
-                            hyperlink = string.Format(hyperlinkTemplate, media.MediaUrl, "_blank", media.TruncatedUrl);
+                            var mediaEntity = entity as MediaEntity;
+                            hyperlink.NavigateUri = new Uri(mediaEntity.MediaUrl, UriKind.Absolute);
+                            hyperlink.TargetName = "_blank";
+                            hyperlink.Inlines.Add(mediaEntity.TruncatedUrl);
                             break;
                         case EntityType.Url:
-                            var url = entity as UrlEntity;
-                            hyperlink = string.Format(hyperlinkTemplate, url.ExpandedUrl, "_blank", url.TruncatedUrl);
+                            var urlEntity = entity as UrlEntity;
+                            hyperlink.NavigateUri = new Uri(urlEntity.ExpandedUrl, UriKind.Absolute);
+                            hyperlink.TargetName = "_blank";
+                            hyperlink.Inlines.Add(urlEntity.TruncatedUrl);
                             break;
-                        default:
-                            break;
+                        #endregion
                     }
-                    xaml = xaml.Replace(entity.Text, hyperlink, StringComparison.OrdinalIgnoreCase);
+                    #endregion
+                    paragraph.Inlines.Add(hyperlink);
+                    index += entity.Text.Length;
+                }
+                #region ender
+                if (index < text.Length)
+                {
+                    paragraph.Inlines.Add(new Run
+                    {
+                        Text = HttpUtility.HtmlDecode(text.Substring(index, text.Length - index)),
+                    });
                 }
                 #endregion
-                //replace & charactor
-                xaml = xaml.Replace("&", "&amp;");
-                string graph = string.Format(paragraphTemplate, xaml);
-                Paragraph paragraph = (Paragraph)XamlReader.Load(graph);
-                foreach (var inline in paragraph.Inlines)
-                {
-                    if (inline is Run)
-                    {
-                        var run = inline as Run;
-                        run.Text = HttpUtility.HtmlDecode(run.Text);
-                    }
-                    else if (inline is Hyperlink)
-                    {
-                        var link = inline as Hyperlink;
-                        if (link.TargetName != "_blank")
-                        {
-                            link.CommandParameter = link.NavigateUri.OriginalString;
-                            link.NavigateUri = null;
-                            link.Click += Hyperlink_Click;
-                        }
-                    }
-                }
+                #endregion
                 textBox.Blocks.Add(paragraph);
             }
             #endregion
@@ -157,13 +227,16 @@ namespace Chicken.Controls
         private static void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             var hyperlink = sender as Hyperlink;
-            EntityType type = (EntityType)Enum.Parse(typeof(EntityType), hyperlink.TargetName, true);
-            switch (type)
+            var entity = hyperlink.CommandParameter as EntityBase;
+            switch (entity.EntityType)
             {
                 case EntityType.UserMention:
-                    User user = new User();
-                    user.DisplayName = (hyperlink.Inlines[0] as Run).Text.Replace("@", "");
-                    user.Id = hyperlink.CommandParameter == null ? string.Empty : hyperlink.CommandParameter as string;
+                    var mention = entity as UserMention;
+                    User user = new User
+                    {
+                        Id = mention.Id,
+                        DisplayName = mention.DisplayName,
+                    };
                     NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
                     break;
                 case EntityType.HashTag:

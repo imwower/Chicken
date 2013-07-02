@@ -15,7 +15,7 @@ namespace Chicken.Common
         private static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
         private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
         private static Regex UserNameRegex = new Regex(@"@(?<name>(_*[A-Za-z0-9]{1,15}_*)+)(?!(\.[A-Za-z]+))([^@A-Za-z]|$)");
-        private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)(\s|$)");
+        private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)([^\w]|$)");
         #endregion
 
         #region parse tweet string
@@ -63,32 +63,28 @@ namespace Chicken.Common
             return result;
         }
 
-        public static List<UserMention> ParseUserMentions(string text)
+        public static IEnumerable<EntityBase> ParseUserMentions(string text)
         {
-            List<UserMention> entities = new List<UserMention>();
             var matches = UserNameRegex.Matches(text);
             foreach (Match match in matches)
             {
                 var entity = new UserMention();
-                entity.Indices = new List<int> { match.Index };
+                entity.Index = match.Index;
                 entity.DisplayName = match.Groups["name"].Value;
-                entities.Add(entity);
+                yield return entity;
             }
-            return entities;
         }
 
-        public static List<HashTag> ParseHashTags(string text)
+        public static IEnumerable<EntityBase> ParseHashTags(string text)
         {
-            List<HashTag> entities = new List<HashTag>();
             var matches = HashTagRegex.Matches(text);
             foreach (Match match in matches)
             {
                 var entity = new HashTag();
-                entity.Indices = new List<int> { match.Index };
+                entity.Index = match.Index;
                 entity.DisplayText = match.Groups["hashtag"].Value;
-                entities.Add(entity);
+                yield return entity;
             }
-            return entities;
         }
         #endregion
 
@@ -140,18 +136,5 @@ namespace Chicken.Common
             }
             return parameters;
         }
-
-        #region extensions
-        public static string Replace(this string source, string oldString, string newString, StringComparison compare)
-        {
-            int index = source.IndexOf(oldString, compare);
-            if (index >= 0)
-            {
-                string found = source.Substring(index, oldString.Length);
-                source = source.Replace(found, newString);
-            }
-            return source;
-        }
-        #endregion
     }
 }
