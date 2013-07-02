@@ -48,21 +48,30 @@ namespace Chicken.Controls
             {
                 #region add entity
                 var entityList = new List<EntityBase>();
-                if (tweet.Entities.UserMentions != null)
-                    entityList.AddRange(tweet.Entities.UserMentions.Cast<EntityBase>());
-                if (tweet.Entities.HashTags != null)
-                    entityList.AddRange(tweet.Entities.HashTags.Cast<EntityBase>());
-                if (tweet.Entities.Urls != null)
-                    entityList.AddRange(tweet.Entities.Urls.Cast<EntityBase>());
-                if (tweet.Entities.Medias != null)
-                    entityList.AddRange(tweet.Entities.Medias.Cast<EntityBase>());
-                #endregion
                 var parsedList = new List<EntityBase>();
-                parsedList.AddRange(TwitterHelper.ParseUserMentions(text));
-                parsedList.AddRange(TwitterHelper.ParseHashTags(text));
-                parsedList.AddRange(TwitterHelper.ParseUrls(text));
+                if (tweet.Entities.UserMentions != null && tweet.Entities.UserMentions.Count != 0)
+                {
+                    entityList.AddRange(tweet.Entities.UserMentions.Cast<EntityBase>());
+                    parsedList.AddRange(TwitterHelper.ParseUserMentions(text));
+                }
+                if (tweet.Entities.HashTags != null && tweet.Entities.HashTags.Count != 0)
+                {
+                    entityList.AddRange(tweet.Entities.HashTags.Cast<EntityBase>());
+                    parsedList.AddRange(TwitterHelper.ParseHashTags(text));
+                }
+                if (tweet.Entities.Urls != null && tweet.Entities.Urls.Count != 0)
+                {
+                    entityList.AddRange(tweet.Entities.Urls.Cast<EntityBase>());
+                    parsedList.AddRange(TwitterHelper.ParseUrls(text, tweet.Entities.Urls));
+                }
+                if (tweet.Entities.Medias != null)
+                {
+                    entityList.AddRange(tweet.Entities.Medias.Cast<EntityBase>());
+                    parsedList.AddRange(TwitterHelper.ParseMedias(text, tweet.Entities.Medias));
+                }
+                #endregion
                 var results = Select(entityList, parsedList);
-                entities.AddRange(results);
+                entities = results.ToList();
             }
             #endregion
             #region profile
@@ -78,7 +87,7 @@ namespace Chicken.Controls
                     profile.UserProfileEntities.DescriptionEntities != null &&
                     profile.UserProfileEntities.DescriptionEntities.Urls != null)
                 {
-                    var parsedUrls = TwitterHelper.ParseUrls(profile.Text);
+                    var parsedUrls = TwitterHelper.ParseUrls(profile.Text, profile.UserProfileEntities.DescriptionEntities.Urls);
                     var results = Select(profile.UserProfileEntities.DescriptionEntities.Urls.Cast<EntityBase>(), parsedUrls);
                     entities.AddRange(results);
                 }
@@ -198,7 +207,7 @@ namespace Chicken.Controls
                     ExpandedUrl = entity.ExpandedUrl,
                     MediaUrl = entity.MediaUrl
                 };
-            return results.AsEnumerable();
+            return results.Distinct(r => r.Index);
         }
     }
 }

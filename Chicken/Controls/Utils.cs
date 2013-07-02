@@ -345,21 +345,5 @@ namespace Chicken.Controls
             After
         }
         #endregion
-
-        #region Extension
-        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
-        {
-            Dictionary<TKey, object> keys = new Dictionary<TKey, object>();
-            foreach (TSource element in source)
-            {
-                var elementValue = keySelector(element);
-                if (!keys.ContainsKey(elementValue))
-                {
-                    keys.Add(elementValue, null);
-                    yield return element;
-                }
-            }
-        }
-        #endregion
     }
 }

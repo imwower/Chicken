@@ -16,7 +16,7 @@ namespace Chicken.Common
         private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
         private static Regex UserNameRegex = new Regex(@"@(?<name>(_*[A-Za-z0-9]{1,15}_*)+)(?!(\.[A-Za-z]+))([^@A-Za-z]|$)");
         private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)([^\w]|$)");
-        private static Regex UrlRegex = new Regex(@"http(s)?://[^\s]*");
+        private const string URLPATTERN = @"(?<text>{0})([^/\w]|$)";
         #endregion
 
         #region parse tweet string
@@ -88,15 +88,37 @@ namespace Chicken.Common
             }
         }
 
-        public static IEnumerable<EntityBase> ParseUrls(string text)
+        public static IEnumerable<EntityBase> ParseUrls(string text, List<UrlEntity> urls)
         {
-            var matches = UrlRegex.Matches(text);
-            foreach (Match match in matches)
+            foreach (var url in urls)
             {
-                var entity = new UrlEntity();
-                entity.Index = match.Index;
-                entity.Text = match.Value;
-                yield return entity;
+                var matches = Regex.Matches(text, string.Format(URLPATTERN, Regex.Escape(url.Text)), RegexOptions.IgnoreCase);
+                foreach (Match match in matches)
+                {
+                    var m = new UrlEntity
+                    {
+                        Index = match.Index,
+                        Text = url.Text,
+                    };
+                    yield return m;
+                }
+            }
+        }
+
+        public static IEnumerable<EntityBase> ParseMedias(string text, List<MediaEntity> medias)
+        {
+            foreach (var media in medias)
+            {
+                var matches = Regex.Matches(text, string.Format(URLPATTERN, Regex.Escape(media.Text)));
+                foreach (Match match in matches)
+                {
+                    var m = new UrlEntity
+                    {
+                        Index = match.Index,
+                        Text = media.Text,
+                    };
+                    yield return m;
+                }
             }
         }
         #endregion
@@ -149,5 +171,21 @@ namespace Chicken.Common
             }
             return parameters;
         }
+
+        #region Extension
+        public static IEnumerable<TSource> Distinct<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
+        {
+            Dictionary<TKey, object> keys = new Dictionary<TKey, object>();
+            foreach (TSource element in source)
+            {
+                var elementValue = keySelector(element);
+                if (!keys.ContainsKey(elementValue))
+                {
+                    keys.Add(elementValue, null);
+                    yield return element;
+                }
+            }
+        }
+        #endregion
     }
 }
