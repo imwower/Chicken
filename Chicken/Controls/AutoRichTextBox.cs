@@ -175,11 +175,10 @@ namespace Chicken.Controls
             switch (entity.EntityType)
             {
                 case EntityType.UserMention:
-                    var mention = entity as UserMention;
                     User user = new User
                     {
-                        Id = mention.Id,
-                        DisplayName = mention.DisplayName,
+                        Id = entity.Id,
+                        DisplayName = entity.DisplayName,
                     };
                     NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
                     break;

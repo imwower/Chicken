@@ -57,6 +57,7 @@ namespace Chicken.Service
             for (int i = 0; i < MAX_WORKER_COUNT; i++)
             {
                 var worker = new BackgroundWorker { WorkerSupportsCancellation = true };
+                worker.RunWorkerCompleted += DoWorkCompleted;
                 workers.Add(worker);
             }
             doWorker.DoWork += DoWork;
@@ -68,6 +69,15 @@ namespace Chicken.Service
         {
             lock (pendingWorkLocker)
             {
+                #region remove same task
+                var sameWorks = pendingWorkList.Where(w => w.ImageUrl == pendingwork.ImageUrl).ToList();
+                Debug.WriteLine("remove {0} same works.", sameWorks.Count);
+                foreach (var same in sameWorks)
+                {
+                    pendingwork.CallBack += same.CallBack;
+                    pendingWorkList.Remove(same);
+                }
+                #endregion
                 pendingWorkList.Add(pendingwork);
             }
             autoResetEvent.Set();
@@ -92,19 +102,9 @@ namespace Chicken.Service
                         var worker = workers[i];
                         if (!worker.IsBusy)
                         {
-                            worker.DoWork -= DownloadImage;
                             worker.DoWork += DownloadImage;
                             var pendingwork = pendingWorkList[0];
                             pendingWorkList.RemoveAt(0);
-                            #region remove same task
-                            var sameWorks = pendingWorkList.Where(w => w.ImageUrl == pendingwork.ImageUrl).ToList();
-                            Debug.WriteLine("remove {0} same works.", sameWorks.Count);
-                            foreach (var same in sameWorks)
-                            {
-                                pendingwork.CallBack += same.CallBack;
-                                pendingWorkList.Remove(same);
-                            }
-                            #endregion
                             Debug.WriteLine("worker {0} starts to work. url: {1}", i, pendingwork.ImageUrl);
                             worker.RunWorkerAsync(pendingwork);
                         }
@@ -116,7 +116,7 @@ namespace Chicken.Service
         private static void DownloadImage(object argument, DoWorkEventArgs e)
         {
             var pendingwork = e.Argument as PendingWork;
-            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl+"?random="+DateTime.Now.Ticks.ToString("x"));
+            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl + "?random=" + DateTime.Now.Ticks.ToString("x"));
             request.BeginGetResponse(
                 result =>
                 {
@@ -133,6 +133,11 @@ namespace Chicken.Service
                         System.Diagnostics.Debug.WriteLine(ex.ToString());
                     }
                 }, request);
+        }
+
+        private static void DoWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            (sender as BackgroundWorker).DoWork -= DownloadImage;
         }
 
         private static void AddImageCache(string imageUrl, Stream stream)
