@@ -70,10 +70,10 @@ namespace Chicken.ViewModel.Settings
 
         private void SaveAction()
         {
-            if (string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
-            {
+            if (IsLoading)
                 return;
-            }
+            if (string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
+                return;
             IsLoading = true;
             if (!GeneralSettings.APISettings.Url.EndsWith("/"))
             {
@@ -106,22 +106,22 @@ namespace Chicken.ViewModel.Settings
         #region private
         private void GetConfiguration()
         {
-            TweetService.GetTweetConfiguration<TweetConfiguration>(
-                configuration =>
+            //TweetService.GetTweetConfiguration<TweetConfiguration>(
+            //    configuration =>
+            //    {
+            //configuration.LastUpdateTime = DateTime.Now;
+            //IsolatedStorageService.CreateTweetConfiguration(configuration);
+            //App.InitConfiguration();
+            HandleMessage(new ToastMessage
+            {
+                Message = isInitAPI ? "hello, " + App.AuthenticatedUser.ScreenName : "update successfully",
+                Complete =
+                () =>
                 {
-                    configuration.LastUpdateTime = DateTime.Now;
-                    IsolatedStorageService.CreateTweetConfiguration(configuration);
-                    App.InitConfiguration();
-                    HandleMessage(new ToastMessage
-                    {
-                        Message = isInitAPI ? "hello, " + App.AuthenticatedUser.ScreenName : "update successfully",
-                        Complete =
-                        () =>
-                        {
-                            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                        }
-                    });
-                });
+                    NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                }
+            });
+            //});
         }
         #endregion
     }

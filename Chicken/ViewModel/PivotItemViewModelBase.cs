@@ -34,19 +34,6 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("Header");
             }
         }
-        private bool hasError;
-        public bool HasError
-        {
-            get
-            {
-                return hasError;
-            }
-            set
-            {
-                hasError = value;
-                RaisePropertyChanged("HasError");
-            }
-        }
         private bool isLoading;
         public bool IsLoading
         {
@@ -85,7 +72,11 @@ namespace Chicken.ViewModel
             }
             set
             {
-                scrollTo = ScrollTo.None;
+                if (scrollTo == value)
+                {
+                    scrollTo = ScrollTo.None;
+                    RaisePropertyChanged("ScrollTo");
+                }
                 scrollTo = value;
                 RaisePropertyChanged("ScrollTo");
             }

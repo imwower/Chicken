@@ -19,7 +19,6 @@ namespace Chicken.ViewModel.NewMessage
         private bool hasMoreMsgs = true;
         private bool hasMoreMsgsByMe = true;
         private Dictionary<string, Conversation> dict;
-
         private ObservableCollection<DirectMessageViewModel> messages;
         public ObservableCollection<DirectMessageViewModel> Messages
         {
@@ -33,7 +32,6 @@ namespace Chicken.ViewModel.NewMessage
                 RaisePropertyChanged("Messages");
             }
         }
-
         public NewMessageModel NewMessage { get; set; }
         public string Text
         {
@@ -69,6 +67,19 @@ namespace Chicken.ViewModel.NewMessage
             {
                 NewMessage.User = value;
                 RaisePropertyChanged("User");
+            }
+        }
+        private bool hasError;
+        public bool HasError
+        {
+            get
+            {
+                return hasError;
+            }
+            set
+            {
+                hasError = value;
+                RaisePropertyChanged("HasError");
             }
         }
         #endregion

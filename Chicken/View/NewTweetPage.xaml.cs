@@ -18,7 +18,6 @@ namespace Chicken.View
         public NewTweetPage()
         {
             InitializeComponent();
-            this.Loaded += new RoutedEventHandler(NewTweetPage_Loaded);
             newTweetViewModel = new NewTweetViewModel()
             {
                 ToastMessageHandler = ToastMessageHandler,
@@ -26,6 +25,7 @@ namespace Chicken.View
                 KeyboardHandler = this.KeyboardHandler
             };
             this.DataContext = newTweetViewModel;
+            this.Loaded += NewTweetPage_Loaded;
         }
 
         #region loaded

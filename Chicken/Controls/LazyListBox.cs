@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Chicken.Common;
 
 namespace Chicken.Controls
 {
     /// <summary>
     /// A list box that lazily loads items
     /// </summary>
-    public class LazyListBox : ListBox, ISupportOffsetChanges
+    public class LazyListBox : ListBox
     {
         #region Fields
         /// <summary>
@@ -208,7 +210,10 @@ namespace Chicken.Controls
             if (scrollViewerVisualStateGroup != null)
                 scrollViewerVisualStateGroup.CurrentStateChanging += ScrollingStateChanging;
             //hook up compression event
-            verticalCompressionVisualStateGroup = Utils.GetVisualStateGroup(element, VerticalCompressionVisualStateGroupName);
+            if (scrollViewer.VerticalScrollBarVisibility == ScrollBarVisibility.Disabled)
+                verticalCompressionVisualStateGroup = this.GetVisualStateGroup(VerticalCompressionVisualStateGroupName);
+            else
+                verticalCompressionVisualStateGroup = element.GetVisualStateGroup(VerticalCompressionVisualStateGroupName);
             if (verticalCompressionVisualStateGroup != null)
                 verticalCompressionVisualStateGroup.CurrentStateChanging += vgroup_CurrentStateChanging;
         }
@@ -292,7 +297,6 @@ namespace Chicken.Controls
           typeof(DataTemplate),
           typeof(LazyListBox),
           null);
-
         /// <summary>
         /// The item template to use for cached items (those that have previously been loaded, but are no longer visible)
         /// </summary>
@@ -302,6 +306,20 @@ namespace Chicken.Controls
             set { SetValue(CachedItemTemplateProperty, value); }
         }
         #endregion
+
+        public static readonly DependencyProperty ScrollToProperty = DependencyProperty.Register(
+            "ScrollTo", typeof(ScrollTo), typeof(LazyListBox), new PropertyMetadata(ScrollToPropertyChanged));
+        public ScrollTo ScrollTo
+        {
+            get
+            {
+                return (ScrollTo)GetValue(ScrollToProperty);
+            }
+            set
+            {
+                SetValue(ScrollToProperty, value);
+            }
+        }
 
         /// <summary>
         /// Creates a new instance of the LazyListBox class
@@ -640,7 +658,7 @@ namespace Chicken.Controls
         /// Standard ListBox method called whenever the underlying list changes
         /// </summary>
         /// <param name="e">Info about the changed items</param>
-        protected override void OnItemsChanged(System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
         {
             base.OnItemsChanged(e);
 
@@ -674,57 +692,30 @@ namespace Chicken.Controls
             return (stackPanel.ItemContainerGenerator as ItemContainerGenerator).IndexFromContainer(container);
         }
 
-        #region ISupportOffsetChanges Members
-
-        /// <summary>
-        /// Notification that the offset has changed programmatically
-        /// </summary>
-        /// <param name="offset">The new offset</param>
-        public void HorizontalOffsetChanged(double offset)
-        {
-            // Don't support horizontal lists right now
-            throw new NotSupportedException("Horizontal scrolling is not implemented");
-        }
-
-        /// <summary>
-        /// Notification that the offset has changed programmatically
-        /// </summary>
-        /// <param name="offset">The new offset</param>
-        public void VerticalOffsetChanged(double offset)
+        #region scroll to
+        private static void ScrollToPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             // Set the targetOffset; the next ArrangeOverride will pick this up and compute
             // the newly visible items
-            if (stackPanel.Orientation == Orientation.Vertical)
+            var lazyListBox = sender as LazyListBox;
+            if (lazyListBox != null && lazyListBox.scrollViewer != null)
             {
-                visibleItemsComputed = false;
-                targetScrollOffset = offset;
-                InvalidateArrange();
+                var scrollTo = (ScrollTo)e.NewValue;
+                if (lazyListBox.stackPanel.Orientation == Orientation.Vertical)
+                {
+                    double offset = 0d;
+                    if (scrollTo == ScrollTo.Bottom)
+                        offset = lazyListBox.scrollViewer.ExtentHeight;
+                    if (offset != lazyListBox.scrollViewer.VerticalOffset)
+                    {
+                        lazyListBox.scrollViewer.ScrollToVerticalOffset(offset);
+                        lazyListBox.visibleItemsComputed = false;
+                        lazyListBox.InvalidateArrange();
+                    }
+                }
             }
-            return;
         }
         #endregion
-    }
-
-    /// <summary>
-    /// Interface for listboxes that want to know when their offset has changed
-    /// </summary>
-    /// <remarks>
-    /// This is really a hack for supporting re-creation of LazyListBox along with 
-    /// saved scroll offsets...
-    /// </remarks>
-    public interface ISupportOffsetChanges
-    {
-        /// <summary>
-        /// The horizontal offset has been changed
-        /// </summary>
-        /// <param name="offset">The new offset</param>
-        void HorizontalOffsetChanged(double offset);
-
-        /// <summary>
-        /// The vertical offset has been changed
-        /// </summary>
-        /// <param name="offset">The new offset</param>
-        void VerticalOffsetChanged(double offset);
     }
 
     /// <summary>

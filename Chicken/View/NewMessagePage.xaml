@@ -42,119 +42,111 @@
                  TextChanged="UserName_TextChanged"
                  KeyDown="UserName_KeyDown" />
         <!--conversation list-->
-        <ctrls:AutoGrid Grid.Row="2" Margin="4" ScrollTo="{Binding Path=ScrollTo}">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="VerticalCompressionTopHandler">
-                    <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
-                </i:EventTrigger>
-                <i:EventTrigger EventName="VerticalCompressionBottomHandler">
-                    <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <ScrollViewer
-                HorizontalAlignment="Stretch" VerticalAlignment="Bottom"
-                HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <ScrollViewer.Content>
-                    <!--conversation-->
-                    <Grid Margin="4">
-                        <ListBox x:Name="AutoListBox"
-                                 ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                 ItemsSource="{Binding Path=Messages}">
-                            <ListBox.ItemTemplate>
+        <Grid Grid.Row="2" Margin="4"
+              HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+            <!--conversation-->
+            <ctrls:LazyListBox x:Name="AutoListBox" Margin="4"
+                               ItemsSource="{Binding Path=Messages}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <!--message template-->
+                        <ctrls:MessageTemplateSelector Content="{Binding}"
+                                                       HorizontalAlignment="Stretch"
+                                                       HorizontalContentAlignment="Stretch">
+                            <ctrls:MessageTemplateSelector.MessageTemplate>
                                 <DataTemplate>
-                                    <!--message template-->
-                                    <ctrls:MessageTemplateSelector Content="{Binding}"
-                                                                   HorizontalAlignment="Stretch"
-                                                                   HorizontalContentAlignment="Stretch">
-                                        <ctrls:MessageTemplateSelector.MessageTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Left">
-                                                    <!--avatar-->
-                                                    <Button Width="64" Height="64"
-                                                            HorizontalAlignment="Left" VerticalAlignment="Top"
-                                                            Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                                                            CommandParameter="{Binding DataContext.NewMessage.User, ElementName=Page}">
-                                                        <Button.Template>
-                                                            <ControlTemplate>
-                                                                <ctrls:ImageContainer Margin="0" 
-                                                                                      ImageSource="{Binding DataContext.NewMessage.User.ProfileImage, ElementName=Page}"
-                                                                                      Style="{StaticResource ProfileImageSmall}" />
-                                                            </ControlTemplate>
-                                                        </Button.Template>
-                                                    </Button>
-                                                    <StackPanel Margin="4,0" Orientation="Horizontal"
-                                                                HorizontalAlignment="Left" VerticalAlignment="Top">
-                                                        <!--content-->
-                                                        <Polygon Opacity="0.2"
-                                                                 Fill="{StaticResource PhoneForegroundBrush}"
-                                                                 Points="0,10 10,10, 10,20" />
-                                                        <StackPanel>
-                                                            <StackPanel.Resources>
-                                                                <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                                                                    <Setter Property="HorizontalAlignment" Value="Left" />
-                                                                    <Setter Property="TextAlignment" Value="Left" />
-                                                                </Style>
-                                                            </StackPanel.Resources>
-                                                            <!--text-->
-                                                            <Grid MaxWidth="380">
-                                                                <Rectangle Opacity="0.2"
-                                                                           Fill="{StaticResource PhoneForegroundBrush}">
-                                                                </Rectangle>
-                                                                <!--text-->
-                                                                <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding Path=Tweet}"
-                                                                                       Style="{StaticResource TextContent}" TextAlignment="Left">
-                                                                </ctrls:AutoRichTextBox>
-                                                            </Grid>
-                                                            <TextBlock Opacity="0.6"
-                                                                       Text="{Binding CreatedDate}" />
-                                                        </StackPanel>
-                                                    </StackPanel>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ctrls:MessageTemplateSelector.MessageTemplate>
-                                        <!--my message-->
-                                        <ctrls:MessageTemplateSelector.MessageSentByMeTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Right">
-                                                    <!--content-->
-                                                    <StackPanel Margin="4,0" Orientation="Horizontal"
-                                                                HorizontalAlignment="Right" VerticalAlignment="Top">
-                                                        <StackPanel>
-                                                            <StackPanel.Resources>
-                                                                <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-                                                                    <Setter Property="HorizontalAlignment" Value="Left" />
-                                                                    <Setter Property="TextAlignment" Value="Left" />
-                                                                </Style>
-                                                            </StackPanel.Resources>
-                                                            <!--content-->
-                                                            <Grid MaxWidth="380">
-                                                                <Rectangle Opacity="0.2"
-                                                                           Fill="{StaticResource PhoneForegroundBrush}">
-                                                                </Rectangle>
-                                                                <!--text-->
-                                                                <ctrls:AutoRichTextBox Margin="0,4"
-                                                                                       TweetData="{Binding Path=Tweet}" TextAlignment="Left">
-                                                                </ctrls:AutoRichTextBox>
-                                                            </Grid>
-                                                            <!--date-->
-                                                            <TextBlock Opacity="0.6"
-                                                                       Text="{Binding CreatedDate}" />
-                                                        </StackPanel>
-                                                        <Polygon Opacity="0.2"
-                                                                     Fill="{StaticResource PhoneForegroundBrush}"
-                                                                     Points="0,10 10,10, 0,20" />
-                                                    </StackPanel>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </ctrls:MessageTemplateSelector.MessageSentByMeTemplate>
-                                    </ctrls:MessageTemplateSelector>
+                                    <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Left">
+                                        <!--avatar-->
+                                        <Button Width="64" Height="64"
+                                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
+                                                CommandParameter="{Binding DataContext.NewMessage.User, ElementName=Page}">
+                                            <Button.Template>
+                                                <ControlTemplate>
+                                                    <ctrls:ImageContainer Margin="0"
+                                                                          ImageSource="{Binding DataContext.NewMessage.User.ProfileImage, ElementName=Page}"
+                                                                          Style="{StaticResource ProfileImageSmall}" />
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                        <StackPanel Margin="4,0" Orientation="Horizontal"
+                                                    HorizontalAlignment="Left" VerticalAlignment="Top">
+                                            <!--content-->
+                                            <Polygon Opacity="0.2"
+                                                     Fill="{StaticResource PhoneForegroundBrush}"
+                                                     Points="0,10 10,10, 10,20" />
+                                            <StackPanel>
+                                                <StackPanel.Resources>
+                                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                                        <Setter Property="TextAlignment" Value="Left" />
+                                                    </Style>
+                                                </StackPanel.Resources>
+                                                <!--text-->
+                                                <Grid MaxWidth="380">
+                                                    <Rectangle Opacity="0.2"
+                                                               Fill="{StaticResource PhoneForegroundBrush}">
+                                                    </Rectangle>
+                                                    <!--text-->
+                                                    <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding Path=Tweet}"
+                                                                           Style="{StaticResource TextContent}" TextAlignment="Left">
+                                                    </ctrls:AutoRichTextBox>
+                                                </Grid>
+                                                <TextBlock Opacity="0.6"
+                                                           Text="{Binding CreatedDate}" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </StackPanel>
                                 </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </ScrollViewer.Content>
-            </ScrollViewer>
-        </ctrls:AutoGrid>
+                            </ctrls:MessageTemplateSelector.MessageTemplate>
+                            <!--my message-->
+                            <ctrls:MessageTemplateSelector.MessageSentByMeTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="4" Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <!--content-->
+                                        <StackPanel Margin="4,0" Orientation="Horizontal"
+                                                    HorizontalAlignment="Right" VerticalAlignment="Top">
+                                            <StackPanel>
+                                                <StackPanel.Resources>
+                                                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
+                                                        <Setter Property="HorizontalAlignment" Value="Left" />
+                                                        <Setter Property="TextAlignment" Value="Left" />
+                                                    </Style>
+                                                </StackPanel.Resources>
+                                                <!--content-->
+                                                <Grid MaxWidth="380">
+                                                    <Rectangle Opacity="0.2"
+                                                               Fill="{StaticResource PhoneForegroundBrush}">
+                                                    </Rectangle>
+                                                    <!--text-->
+                                                    <ctrls:AutoRichTextBox Margin="0,4"
+                                                                           TweetData="{Binding Path=Tweet}" TextAlignment="Left">
+                                                    </ctrls:AutoRichTextBox>
+                                                </Grid>
+                                                <!--date-->
+                                                <TextBlock Opacity="0.6"
+                                                           Text="{Binding CreatedDate}" />
+                                            </StackPanel>
+                                            <Polygon Opacity="0.2"
+                                                     Fill="{StaticResource PhoneForegroundBrush}"
+                                                     Points="0,10 10,10, 0,20" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ctrls:MessageTemplateSelector.MessageSentByMeTemplate>
+                        </ctrls:MessageTemplateSelector>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="VerticalCompressionTopHandler">
+                        <i:InvokeCommandAction Command="{Binding Path=LoadCommand}" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="VerticalCompressionBottomHandler">
+                        <i:InvokeCommandAction Command="{Binding Path=RefreshCommand}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ctrls:LazyListBox>
+        </Grid>
         <!--text-->
         <Grid Grid.Row="3" Margin="4">
             <Grid.ColumnDefinitions>

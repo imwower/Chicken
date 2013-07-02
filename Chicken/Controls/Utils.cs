@@ -52,9 +52,8 @@ namespace Chicken.Controls
             foreach (FrameworkElement element in selfOrAncestors)
             {
                 IList groups = VisualStateManager.GetVisualStateGroups(element);
-                foreach (object o in groups)
+                foreach (VisualStateGroup group in groups)
                 {
-                    VisualStateGroup group = o as VisualStateGroup;
                     if (group != null && group.Name == groupName)
                         return group;
                 }

@@ -28,7 +28,7 @@ namespace Chicken.View
         }
 
         #region navigate to
-        void NewMessagePage_Loaded(object sender, RoutedEventArgs e)
+        private void NewMessagePage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!newMessageViewModel.IsInited)
             {

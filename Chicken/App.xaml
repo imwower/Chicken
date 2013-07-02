@@ -508,6 +508,7 @@
                                 <RowDefinition Height="10" />
                             </Grid.RowDefinitions>
                             <ctrls:LazyListBox x:Name="AutoListBox" Grid.Row="0"
+                                               ScrollTo="{Binding Path=ScrollTo}"
                                                ItemsSource="{TemplateBinding ListBoxItems}"
                                                ItemTemplate="{TemplateBinding ListBoxItemTemplate}">
                                 <i:Interaction.Triggers>
