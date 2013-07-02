@@ -13,21 +13,22 @@ namespace Chicken.Model.Entity
         }
 
         [JsonProperty("id_str")]
-        public string Id { get; set; }
+        public override string Id { get; set; }
 
-        public string Type { get; set; }
+        //[JsonProperty("type")]
+        //public override string MediaType { get; set; }
 
         [JsonProperty("media_url_https")]
-        public string MediaUrl { get; set; }
+        public override string MediaUrl { get; set; }
 
-        [JsonIgnore]
-        public string MediaUrlThumb
-        {
-            get
-            {
-                return MediaUrl + ":thumb";
-            }
-        }
+        //[JsonIgnore]
+        //public string MediaUrlThumb
+        //{
+        //    get
+        //    {
+        //        return MediaUrl + ":thumb";
+        //    }
+        //}
 
         [JsonIgnore]
         public string MediaUrlSmall

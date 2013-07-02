@@ -116,7 +116,7 @@ namespace Chicken.Service
         private static void DownloadImage(object argument, DoWorkEventArgs e)
         {
             var pendingwork = e.Argument as PendingWork;
-            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl);
+            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl+"?random="+DateTime.Now.Ticks.ToString("x"));
             request.BeginGetResponse(
                 result =>
                 {

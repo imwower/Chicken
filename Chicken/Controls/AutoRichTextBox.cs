@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Model.Entity;
 using Chicken.Service;
-using System.Windows.Media;
 
 namespace Chicken.Controls
 {
@@ -31,8 +30,6 @@ namespace Chicken.Controls
             }
         }
 
-        private const string pattern = @"(?<text>{0})([^\w]|$)";
-
         public static void TweetDataPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             #region init
@@ -49,84 +46,23 @@ namespace Chicken.Controls
             #region tweet
             if (tweet.Entities != null)
             {
-                #region user mention
+                #region add entity
+                var entityList = new List<EntityBase>();
                 if (tweet.Entities.UserMentions != null)
-                {
-                    var mentions = tweet.Entities.UserMentions.Distinct(m => m.Id);
-                    foreach (var mention in mentions)
-                    {
-                        var matches = Regex.Matches(text, string.Format(pattern, mention.Text), RegexOptions.IgnoreCase);
-                        foreach (Match match in matches)
-                        {
-                            var m = new UserMention
-                            {
-                                Index = match.Index,
-                                Id = mention.Id,
-                                DisplayName = mention.DisplayName,
-                            };
-                            entities.Add(m);
-                        }
-                    }
-                }
-                #endregion
-                #region media
-                if (tweet.Entities.Medias != null)
-                {
-                    foreach (var media in tweet.Entities.Medias)
-                    {
-                        var matches = Regex.Matches(text, string.Format(pattern, media.Text), RegexOptions.IgnoreCase);
-                        foreach (Match match in matches)
-                        {
-                            var m = new MediaEntity
-                            {
-                                Index = match.Index,
-                                Text = media.Text,
-                                MediaUrl = media.MediaUrl,
-                                DisplayUrl = media.DisplayUrl,
-                            };
-                            entities.Add(m);
-                        }
-                    }
-                }
-                #endregion
-                #region url
-                if (tweet.Entities.Urls != null)
-                {
-                    foreach (var url in tweet.Entities.Urls)
-                    {
-                        var matches = Regex.Matches(text, string.Format(pattern, url.Text), RegexOptions.IgnoreCase);
-                        foreach (Match match in matches)
-                        {
-                            var m = new UrlEntity
-                            {
-                                Index = match.Index,
-                                Text = url.Text,
-                                DisplayUrl = url.DisplayUrl,
-                                ExpandedUrl = url.ExpandedUrl,
-                            };
-                            entities.Add(m);
-                        }
-                    }
-                }
-                #endregion
-                #region hashtag
+                    entityList.AddRange(tweet.Entities.UserMentions.Cast<EntityBase>());
                 if (tweet.Entities.HashTags != null)
-                {
-                    foreach (var hashtag in tweet.Entities.HashTags)
-                    {
-                        var matches = Regex.Matches(text, string.Format(pattern, hashtag.Text), RegexOptions.IgnoreCase);
-                        foreach (Match match in matches)
-                        {
-                            var m = new HashTag
-                            {
-                                Index = match.Index,
-                                Text = hashtag.Text,
-                            };
-                            entities.Add(m);
-                        }
-                    }
-                }
+                    entityList.AddRange(tweet.Entities.HashTags.Cast<EntityBase>());
+                if (tweet.Entities.Urls != null)
+                    entityList.AddRange(tweet.Entities.Urls.Cast<EntityBase>());
+                if (tweet.Entities.Medias != null)
+                    entityList.AddRange(tweet.Entities.Medias.Cast<EntityBase>());
                 #endregion
+                var parsedList = new List<EntityBase>();
+                parsedList.AddRange(TwitterHelper.ParseUserMentions(text));
+                parsedList.AddRange(TwitterHelper.ParseHashTags(text));
+                parsedList.AddRange(TwitterHelper.ParseUrls(text));
+                var results = Select(entityList, parsedList);
+                entities.AddRange(results);
             }
             #endregion
             #region profile
@@ -142,8 +78,9 @@ namespace Chicken.Controls
                     profile.UserProfileEntities.DescriptionEntities != null &&
                     profile.UserProfileEntities.DescriptionEntities.Urls != null)
                 {
-                    var urls = profile.UserProfileEntities.DescriptionEntities.Urls.Cast<EntityBase>();
-                    entities.AddRange(urls);
+                    var parsedUrls = TwitterHelper.ParseUrls(profile.Text);
+                    var results = Select(profile.UserProfileEntities.DescriptionEntities.Urls.Cast<EntityBase>(), parsedUrls);
+                    entities.AddRange(results);
                 }
                 #endregion
             }
@@ -192,16 +129,14 @@ namespace Chicken.Controls
                         #endregion
                         #region media, url
                         case EntityType.Media:
-                            var mediaEntity = entity as MediaEntity;
-                            hyperlink.NavigateUri = new Uri(mediaEntity.MediaUrl, UriKind.Absolute);
+                            hyperlink.NavigateUri = new Uri(entity.MediaUrl, UriKind.Absolute);
                             hyperlink.TargetName = "_blank";
-                            hyperlink.Inlines.Add(mediaEntity.TruncatedUrl);
+                            hyperlink.Inlines.Add(entity.TruncatedUrl);
                             break;
                         case EntityType.Url:
-                            var urlEntity = entity as UrlEntity;
-                            hyperlink.NavigateUri = new Uri(urlEntity.ExpandedUrl, UriKind.Absolute);
+                            hyperlink.NavigateUri = new Uri(entity.ExpandedUrl, UriKind.Absolute);
                             hyperlink.TargetName = "_blank";
-                            hyperlink.Inlines.Add(urlEntity.TruncatedUrl);
+                            hyperlink.Inlines.Add(entity.TruncatedUrl);
                             break;
                         #endregion
                     }
@@ -243,6 +178,27 @@ namespace Chicken.Controls
                     //TODO: to search page
                     break;
             }
+        }
+
+        private static IEnumerable<EntityBase> Select(IEnumerable<EntityBase> entityList, IEnumerable<EntityBase> parsedList)
+        {
+            var results =
+                from entity in entityList
+                from mention in parsedList
+                where entity.Text.Equals(mention.Text, StringComparison.OrdinalIgnoreCase)
+                select new EntityBase
+                {
+                    EntityType = entity.EntityType,
+                    Index = mention.Index,
+                    Text = entity.Text,
+                    Id = entity.Id,
+                    DisplayName = entity.DisplayName,
+                    DisplayText = entity.DisplayText,
+                    DisplayUrl = entity.DisplayUrl,
+                    ExpandedUrl = entity.ExpandedUrl,
+                    MediaUrl = entity.MediaUrl
+                };
+            return results.AsEnumerable();
         }
     }
 }

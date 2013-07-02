@@ -55,8 +55,12 @@ namespace Chicken.ViewModel.Status.VM
 
         private void LoadAction()
         {
-            var tweet = ConversationList[ConversationList.Count - 1];
-            LoadConversation(tweet.InReplyToTweetId);
+            string statusId = string.Empty;
+            if (ConversationList != null && ConversationList.Count != 0)
+            {
+                statusId = ConversationList[ConversationList.Count - 1].InReplyToTweetId;
+            }
+            LoadConversation(statusId);
         }
 
         #region private method

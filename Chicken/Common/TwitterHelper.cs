@@ -16,6 +16,7 @@ namespace Chicken.Common
         private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
         private static Regex UserNameRegex = new Regex(@"@(?<name>(_*[A-Za-z0-9]{1,15}_*)+)(?!(\.[A-Za-z]+))([^@A-Za-z]|$)");
         private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)([^\w]|$)");
+        private static Regex UrlRegex = new Regex(@"http(s)?://[^\s]*");
         #endregion
 
         #region parse tweet string
@@ -83,6 +84,18 @@ namespace Chicken.Common
                 var entity = new HashTag();
                 entity.Index = match.Index;
                 entity.DisplayText = match.Groups["hashtag"].Value;
+                yield return entity;
+            }
+        }
+
+        public static IEnumerable<EntityBase> ParseUrls(string text)
+        {
+            var matches = UrlRegex.Matches(text);
+            foreach (Match match in matches)
+            {
+                var entity = new UrlEntity();
+                entity.Index = match.Index;
+                entity.Text = match.Value;
                 yield return entity;
             }
         }

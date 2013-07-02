@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -52,6 +53,7 @@ namespace Chicken.Controls
             Dispatcher.BeginInvoke(
                 () =>
                 {
+                    Thread.Sleep(67);
                     try
                     {
                         Debug.WriteLine("set png image. length: {0}", data.Length);

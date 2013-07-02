@@ -16,22 +16,9 @@ namespace Chicken.Model.Entity
         public override string Text { get; set; }
 
         [JsonProperty("display_url")]
-        public string DisplayUrl { get; set; }
+        public override string DisplayUrl { get; set; }
 
         [JsonProperty("expanded_url")]
-        public string ExpandedUrl { get; set; }
-
-        [JsonIgnore]
-        public string TruncatedUrl
-        {
-            get
-            {
-                int index = DisplayUrl.IndexOf("/");
-                if (index != -1)
-                    return "[" + DisplayUrl.Remove(index) + "]";
-                else
-                    return "[" + DisplayUrl + "]";
-            }
-        }
+        public override string ExpandedUrl { get; set; }
     }
 }
