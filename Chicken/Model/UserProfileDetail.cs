@@ -18,6 +18,7 @@ namespace Chicken.Model
         [JsonProperty("profile_banner_url")]
         public string UserProfileBannerImage { get; set; }
 
+        [JsonIgnore]
         public string UserProfileBannerImageWeb
         {
             get

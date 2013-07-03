@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading;
 
@@ -55,8 +56,10 @@ namespace Chicken.Service
         {
             for (int i = 0; i < MAX_WORKER_COUNT; i++)
             {
-                var worker = new BackgroundWorker { WorkerSupportsCancellation = true };
-                worker.RunWorkerCompleted += DoWorkCompleted;
+                var worker = new BackgroundWorker
+                {
+                    WorkerSupportsCancellation = true
+                };
                 workers.Add(worker);
             }
             doWorker.DoWork += DoWork;
@@ -87,11 +90,6 @@ namespace Chicken.Service
             while (!isStop)
             {
                 autoResetEvent.WaitOne();
-                if (e.Cancel)
-                {
-                    continue;
-                }
-                Thread.Sleep(random.Next(1000));
                 lock (pendingWorkLocker)
                 {
                     for (int i = 0; i < workers.Count; i++)
@@ -112,8 +110,13 @@ namespace Chicken.Service
             }
         }
 
-        private static void DownloadImage(object argument, DoWorkEventArgs e)
+        private static void DownloadImage(object sender, DoWorkEventArgs e)
         {
+            Thread.Sleep(random.Next(1000));
+            if (e.Cancel)
+            {
+                return;
+            }
             var pendingwork = e.Argument as PendingWork;
             HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl + "?random=" + DateTime.Now.Ticks.ToString("x"));
             request.BeginGetResponse(
@@ -129,14 +132,13 @@ namespace Chicken.Service
                     }
                     catch (Exception ex)
                     {
-                        System.Diagnostics.Debug.WriteLine(ex.ToString());
+                        Debug.WriteLine(ex.ToString());
+                    }
+                    finally
+                    {
+                        (sender as BackgroundWorker).DoWork -= DownloadImage;
                     }
                 }, request);
-        }
-
-        private static void DoWorkCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            (sender as BackgroundWorker).DoWork -= DownloadImage;
         }
 
         private static void AddImageCache(string imageUrl, Stream stream)

@@ -121,7 +121,7 @@ namespace Chicken.Common
                     var entity = new HashTag
                     {
                         Index = match.Index,
-                        DisplayText = hashtag.Text
+                        DisplayText = hashtag.DisplayText,
                     };
                     yield return entity;
                 }

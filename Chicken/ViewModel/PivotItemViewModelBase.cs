@@ -72,11 +72,6 @@ namespace Chicken.ViewModel
             }
             set
             {
-                if (scrollTo == value)
-                {
-                    scrollTo = ScrollTo.None;
-                    RaisePropertyChanged("ScrollTo");
-                }
                 scrollTo = value;
                 RaisePropertyChanged("ScrollTo");
             }

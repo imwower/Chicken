@@ -10,15 +10,8 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480">
 
-    <Grid x:Name="Grid" Background="Transparent"
-          HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <Rectangle x:Name="Placehold" Opacity="0.4"
-                   Fill="{StaticResource PhoneForegroundBrush}">
-            <Rectangle.OpacityMask>
-                <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
-            </Rectangle.OpacityMask>
-        </Rectangle>
-        <Image x:Name="PngImage" Stretch="Fill" />
+    <Grid x:Name="Grid">
+        <Image x:Name="PngImage" Source="/Images/dark/cat.png" Stretch="Fill" />
         <it:AnimatedImage x:Name="GifImage" Stretch="Fill" />
     </Grid>
 </UserControl>
