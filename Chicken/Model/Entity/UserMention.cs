@@ -12,6 +12,12 @@ namespace Chicken.Model.Entity
             }
         }
 
+        [JsonProperty("id_str")]
+        public string Id { get; set; }
+
+        [JsonProperty("screen_name")]
+        public string DisplayName { get; set; }
+
         public override string Text
         {
             get
@@ -19,11 +25,5 @@ namespace Chicken.Model.Entity
                 return "@" + DisplayName;
             }
         }
-
-        [JsonProperty("id_str")]
-        public override string Id { get; set; }
-
-        [JsonProperty("screen_name")]
-        public override string DisplayName { get; set; }
     }
 }

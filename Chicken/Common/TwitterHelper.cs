@@ -11,12 +11,13 @@ namespace Chicken.Common
     {
         #region const
         public static string DATETIMEFORMAT = "yyyy-MM-dd  HH:mm:ss";
-
         private static Regex SourceRegex = new Regex(@".*>(?<url>[\s\S]+?)</a>");
         private static Regex SourceUrlRegex = new Regex(@"<a href=\""(?<link>[^\s>]+)\""");
-        private static Regex UserNameRegex = new Regex(@"@(?<name>(_*[A-Za-z0-9]{1,15}_*)+)(?!(\.[A-Za-z]+))([^@A-Za-z]|$)");
-        private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)([^\w]|$)");
-        private const string URLPATTERN = @"(?<text>{0})([^/\w]|$)";
+        private static Regex UserNameRegex = new Regex(@"([^A-Za-z0-9_]|^)@(?<name>(_*[A-Za-z0-9]{1,15}_*)+)(?![A-Za-z0-9_@])");
+        private static Regex HashTagRegex = new Regex(@"#(?<hashtag>\w+)(?!(\w+))");
+        private const string USERNAMEPATTERN = @"(?<name>{0})(?![A-Za-z0-9_@])";
+        private const string HASHTAGPATTERN = @"(?<hashtag>{0})(?!(\w+))";
+        private const string URLPATTERN = @"(?<text>{0})(?![A-Za-z0-9-_/])";
         #endregion
 
         #region parse tweet string
@@ -69,10 +70,30 @@ namespace Chicken.Common
             var matches = UserNameRegex.Matches(text);
             foreach (Match match in matches)
             {
-                var entity = new UserMention();
-                entity.Index = match.Index;
-                entity.DisplayName = match.Groups["name"].Value;
+                var entity = new UserMention
+                {
+                    Index = match.Groups["name"].Index - 1,//remove @
+                    DisplayName = match.Groups["name"].Value
+                };
                 yield return entity;
+            }
+        }
+
+        public static IEnumerable<EntityBase> ParseUserMentions(string text, List<UserMention> mentions)
+        {
+            foreach (var mention in mentions.Distinct(m => m.Text))
+            {
+                var matches = Regex.Matches(text, string.Format(USERNAMEPATTERN, Regex.Escape(mention.Text)), RegexOptions.IgnoreCase);
+                foreach (Match match in matches)
+                {
+                    var entity = new UserMention
+                    {
+                        Index = match.Index,
+                        Id = mention.Id,
+                        DisplayName = mention.DisplayName
+                    };
+                    yield return entity;
+                }
             }
         }
 
@@ -81,26 +102,47 @@ namespace Chicken.Common
             var matches = HashTagRegex.Matches(text);
             foreach (Match match in matches)
             {
-                var entity = new HashTag();
-                entity.Index = match.Index;
-                entity.DisplayText = match.Groups["hashtag"].Value;
+                var entity = new HashTag
+                {
+                    Index = match.Index,
+                    DisplayText = match.Groups["hashtag"].Value
+                };
                 yield return entity;
+            }
+        }
+
+        public static IEnumerable<EntityBase> ParseHashTags(string text, List<HashTag> hashtags)
+        {
+            foreach (var hashtag in hashtags.Distinct(h => h.Text))
+            {
+                var matches = Regex.Matches(text, string.Format(HASHTAGPATTERN, Regex.Escape(hashtag.Text)));
+                foreach (Match match in matches)
+                {
+                    var entity = new HashTag
+                    {
+                        Index = match.Index,
+                        DisplayText = hashtag.Text
+                    };
+                    yield return entity;
+                }
             }
         }
 
         public static IEnumerable<EntityBase> ParseUrls(string text, List<UrlEntity> urls)
         {
-            foreach (var url in urls)
+            foreach (var url in urls.Distinct(u => u.Text))
             {
-                var matches = Regex.Matches(text, string.Format(URLPATTERN, Regex.Escape(url.Text)), RegexOptions.IgnoreCase);
+                var matches = Regex.Matches(text, string.Format(URLPATTERN, Regex.Escape(url.Text)));
                 foreach (Match match in matches)
                 {
-                    var m = new UrlEntity
+                    var entity = new UrlEntity
                     {
                         Index = match.Index,
                         Text = url.Text,
+                        DisplayUrl = url.DisplayUrl,
+                        ExpandedUrl = url.ExpandedUrl,
                     };
-                    yield return m;
+                    yield return entity;
                 }
             }
         }
@@ -112,12 +154,14 @@ namespace Chicken.Common
                 var matches = Regex.Matches(text, string.Format(URLPATTERN, Regex.Escape(media.Text)));
                 foreach (Match match in matches)
                 {
-                    var m = new UrlEntity
+                    var entity = new MediaEntity
                     {
                         Index = match.Index,
                         Text = media.Text,
+                        DisplayUrl = media.DisplayUrl,
+                        MediaUrl = media.MediaUrl,
                     };
-                    yield return m;
+                    yield return entity;
                 }
             }
         }

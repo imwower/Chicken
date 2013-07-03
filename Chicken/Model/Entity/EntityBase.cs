@@ -20,44 +20,11 @@ namespace Chicken.Model.Entity
 
     public class EntityBase
     {
-        public virtual EntityType EntityType { get; set; }
+        public virtual EntityType EntityType { get; private set; }
 
         public int Index { get; set; }
 
         public virtual string Text { get; set; }
-
-        #region for user mention
-        public virtual string Id { get; set; }
-        public virtual string DisplayName { get; set; }
-        #endregion
-
-        #region for hashtag
-        public virtual string DisplayText { get; set; }
-        #endregion
-
-        #region for url
-        public virtual string DisplayUrl { get; set; }
-        public virtual string ExpandedUrl { get; set; }
-        //public virtual string TruncatedUrl { get; set; }
-        [JsonIgnore]
-        public virtual string TruncatedUrl
-        {
-            get
-            {
-                int index = DisplayUrl.IndexOf("/");
-                if (index != -1)
-                    return "[" + DisplayUrl.Remove(index) + "]";
-                else
-                    return "[" + DisplayUrl + "]";
-            }
-            set
-            { }
-        }
-        #endregion
-
-        #region for media
-        public virtual string MediaUrl { get; set; }
-        #endregion
     }
 
     public enum EntityType

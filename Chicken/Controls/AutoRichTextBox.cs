@@ -47,31 +47,23 @@ namespace Chicken.Controls
             if (tweet.Entities != null)
             {
                 #region add entity
-                var entityList = new List<EntityBase>();
-                var parsedList = new List<EntityBase>();
                 if (tweet.Entities.UserMentions != null && tweet.Entities.UserMentions.Count != 0)
                 {
-                    entityList.AddRange(tweet.Entities.UserMentions.Cast<EntityBase>());
-                    parsedList.AddRange(TwitterHelper.ParseUserMentions(text));
+                    entities.AddRange(TwitterHelper.ParseUserMentions(text, tweet.Entities.UserMentions));
                 }
                 if (tweet.Entities.HashTags != null && tweet.Entities.HashTags.Count != 0)
                 {
-                    entityList.AddRange(tweet.Entities.HashTags.Cast<EntityBase>());
-                    parsedList.AddRange(TwitterHelper.ParseHashTags(text));
+                    entities.AddRange(TwitterHelper.ParseHashTags(text, tweet.Entities.HashTags));
                 }
                 if (tweet.Entities.Urls != null && tweet.Entities.Urls.Count != 0)
                 {
-                    entityList.AddRange(tweet.Entities.Urls.Cast<EntityBase>());
-                    parsedList.AddRange(TwitterHelper.ParseUrls(text, tweet.Entities.Urls));
+                    entities.AddRange(TwitterHelper.ParseUrls(text, tweet.Entities.Urls));
                 }
-                if (tweet.Entities.Medias != null)
+                if (tweet.Entities.Medias != null && tweet.Entities.Medias.Count != 0)
                 {
-                    entityList.AddRange(tweet.Entities.Medias.Cast<EntityBase>());
-                    parsedList.AddRange(TwitterHelper.ParseMedias(text, tweet.Entities.Medias));
+                    entities.AddRange(TwitterHelper.ParseMedias(text, tweet.Entities.Medias));
                 }
                 #endregion
-                var results = Select(entityList, parsedList);
-                entities = results.ToList();
             }
             #endregion
             #region profile
@@ -88,8 +80,7 @@ namespace Chicken.Controls
                     profile.UserProfileEntities.DescriptionEntities.Urls != null)
                 {
                     var parsedUrls = TwitterHelper.ParseUrls(profile.Text, profile.UserProfileEntities.DescriptionEntities.Urls);
-                    var results = Select(profile.UserProfileEntities.DescriptionEntities.Urls.Cast<EntityBase>(), parsedUrls);
-                    entities.AddRange(results);
+                    entities.AddRange(parsedUrls);
                 }
                 #endregion
             }
@@ -138,14 +129,16 @@ namespace Chicken.Controls
                         #endregion
                         #region media, url
                         case EntityType.Media:
-                            hyperlink.NavigateUri = new Uri(entity.MediaUrl, UriKind.Absolute);
+                            var media = entity as MediaEntity;
+                            hyperlink.NavigateUri = new Uri(media.MediaUrl, UriKind.Absolute);
                             hyperlink.TargetName = "_blank";
-                            hyperlink.Inlines.Add(entity.TruncatedUrl);
+                            hyperlink.Inlines.Add(media.TruncatedUrl);
                             break;
                         case EntityType.Url:
-                            hyperlink.NavigateUri = new Uri(entity.ExpandedUrl, UriKind.Absolute);
+                            var url = entity as UrlEntity;
+                            hyperlink.NavigateUri = new Uri(url.ExpandedUrl, UriKind.Absolute);
                             hyperlink.TargetName = "_blank";
-                            hyperlink.Inlines.Add(entity.TruncatedUrl);
+                            hyperlink.Inlines.Add(url.TruncatedUrl);
                             break;
                         #endregion
                     }
@@ -175,10 +168,11 @@ namespace Chicken.Controls
             switch (entity.EntityType)
             {
                 case EntityType.UserMention:
+                    var mention = entity as UserMention;
                     User user = new User
                     {
-                        Id = entity.Id,
-                        DisplayName = entity.DisplayName,
+                        Id = mention.Id,
+                        DisplayName = mention.DisplayName,
                     };
                     NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
                     break;
@@ -186,27 +180,6 @@ namespace Chicken.Controls
                     //TODO: to search page
                     break;
             }
-        }
-
-        private static IEnumerable<EntityBase> Select(IEnumerable<EntityBase> entityList, IEnumerable<EntityBase> parsedList)
-        {
-            var results =
-                from entity in entityList
-                from mention in parsedList
-                where entity.Text.Equals(mention.Text, StringComparison.OrdinalIgnoreCase)
-                select new EntityBase
-                {
-                    EntityType = entity.EntityType,
-                    Index = mention.Index,
-                    Text = entity.Text,
-                    Id = entity.Id,
-                    DisplayName = entity.DisplayName,
-                    DisplayText = entity.DisplayText,
-                    DisplayUrl = entity.DisplayUrl,
-                    ExpandedUrl = entity.ExpandedUrl,
-                    MediaUrl = entity.MediaUrl
-                };
-            return results.Distinct(r => r.Index);
         }
     }
 }

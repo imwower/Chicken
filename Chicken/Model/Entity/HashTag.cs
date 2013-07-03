@@ -11,6 +11,9 @@ namespace Chicken.Model.Entity
             }
         }
 
+        [JsonProperty("text")]
+        public string DisplayText { get; set; }
+
         public override string Text
         {
             get
@@ -18,8 +21,5 @@ namespace Chicken.Model.Entity
                 return "#" + DisplayText;
             }
         }
-
-        [JsonProperty("text")]
-        public override string DisplayText { get; set; }
     }
 }
