@@ -80,6 +80,7 @@ namespace Chicken.Service
                     pendingWorkList.Remove(same);
                 }
                 #endregion
+                Debug.WriteLine("add new work. url: {0}", pendingwork.ImageUrl);
                 pendingWorkList.Add(pendingwork);
             }
             autoResetEvent.Set();
@@ -89,7 +90,13 @@ namespace Chicken.Service
         {
             while (!isStop)
             {
-                autoResetEvent.WaitOne();
+                if (pendingWorkList.Count == 0)
+                {
+                    Debug.WriteLine("wait for pending work...");
+                    autoResetEvent.WaitOne();
+                    Debug.WriteLine("start to wok. number is: {0}", pendingWorkList.Count);
+                    continue;
+                }
                 lock (pendingWorkLocker)
                 {
                     for (int i = 0; i < workers.Count; i++)

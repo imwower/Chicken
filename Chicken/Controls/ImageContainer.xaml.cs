@@ -47,8 +47,11 @@ namespace Chicken.Controls
             Dispatcher.BeginInvoke(
                 () =>
                 {
+                    #region clear
                     if (data == null)
                     {
+                        if (this.PngImage.Source != null)
+                            this.PngImage.Source = null;
                         if (this.GifImage.Source != null)
                         {
                             this.GifImage.Stop();
@@ -58,6 +61,7 @@ namespace Chicken.Controls
                         Debug.WriteLine("clear image.");
                         return;
                     }
+                    #endregion
                     #region set image source
                     try
                     {
@@ -76,6 +80,7 @@ namespace Chicken.Controls
                         var gifImage = new ExtendedImage();
                         gifImage.SetSource(gif);
                         this.GifImage.Source = gifImage;
+                        this.PngImage.Source = null;
                     }
                     finally
                     {
