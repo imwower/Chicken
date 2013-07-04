@@ -11,8 +11,8 @@ namespace Chicken.ViewModel.Status
     public class StatusViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        private TweetViewModel tweet;
-        public TweetViewModel Tweet
+        private TweetDetailViewModel tweet;
+        public TweetDetailViewModel Tweet
         {
             get
             {
@@ -26,8 +26,8 @@ namespace Chicken.ViewModel.Status
         }
         protected string nextCursor = "-1";
         protected string previousCursor = string.Empty;
-        private ObservableCollection<UserProfile> userList;
-        public ObservableCollection<UserProfile> UserList
+        private ObservableCollection<UserProfileViewModel> userList;
+        public ObservableCollection<UserProfileViewModel> UserList
         {
             get
             {
@@ -76,7 +76,7 @@ namespace Chicken.ViewModel.Status
                     #endregion
                     toastMessage.Message = Tweet.IsFavorited ? "Remove favorites successfully" : "Add to favorites successfully";
                     HandleMessage(toastMessage);
-                    Tweet = new TweetViewModel(t);
+                    Tweet = new TweetDetailViewModel(t);
                     Refresh();
                 });
         }
@@ -107,7 +107,7 @@ namespace Chicken.ViewModel.Status
                        #endregion
                        toastMessage.Message = "Retweet successfully";
                        HandleMessage(toastMessage);
-                       Tweet = new TweetViewModel(t);
+                       Tweet = new TweetDetailViewModel(t);
                        Refresh();
                    });
             }
@@ -148,12 +148,12 @@ namespace Chicken.ViewModel.Status
         #region for retweets and favorites pivot
         protected void RefreshUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList>(userIds,
                 userProfiles =>
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, userProfiles[i]);
+                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                     base.Refreshed();
                 });
@@ -161,12 +161,12 @@ namespace Chicken.ViewModel.Status
 
         protected void LoadUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList>(userIds,
                 userProfiles =>
                 {
                     foreach (var userProfile in userProfiles)
                     {
-                        UserList.Add(userProfile);
+                        UserList.Add(new UserProfileViewModel(userProfile));
                     }
                     base.Loaded();
                 });

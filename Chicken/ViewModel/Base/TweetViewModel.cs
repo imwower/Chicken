@@ -10,7 +10,7 @@ namespace Chicken.ViewModel.Base
     {
         #region private
         private TweetBase tweet;
-        private UserViewModel user;
+        protected UserViewModel user;
         private TweetViewModel originalTweet;
         private bool isPaused;
         private LazyDataLoadState currentState;
@@ -222,11 +222,11 @@ namespace Chicken.ViewModel.Base
                 case LazyDataLoadState.Reloading:
                 case LazyDataLoadState.Loading:
                     if (User != null)
-                        User.ChangeVisibility(true);
+                        User.IsVisible = true;
                     break;
                 case LazyDataLoadState.Unloaded:
                     if (User != null)
-                        User.ChangeVisibility(false);
+                        User.IsVisible = false;
                     break;
                 case LazyDataLoadState.Loaded:
                     break;

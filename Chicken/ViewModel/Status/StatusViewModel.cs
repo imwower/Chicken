@@ -13,7 +13,7 @@ namespace Chicken.ViewModel.Status
     public class StatusViewModel : PivotViewModelBase
     {
         #region properites
-        private TweetViewModel tweet;
+        private TweetDetailViewModel tweet;
         #endregion
 
         #region binding
@@ -87,14 +87,16 @@ namespace Chicken.ViewModel.Status
                         {
                             data.IsSentByMe = true;
                         }
-                        this.tweet = new TweetViewModel(data);
-                        SwitchAppBar(selectedIndex);
+                        this.tweet = new TweetDetailViewModel(data);
+                        (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
+                        base.MainPivot_LoadedPivotItem(selectedIndex);
+                        SwitchAppBar();
                         IsInit = true;
                     });
             }
             else
             {
-                SwitchAppBar(selectedIndex);
+                SwitchAppBar();
             }
         }
 
@@ -126,7 +128,7 @@ namespace Chicken.ViewModel.Status
         #endregion
 
         #region private
-        private void SwitchAppBar(int selectedIndex)
+        private void SwitchAppBar()
         {
             if (tweet.IsSentByMe)
             {
@@ -136,8 +138,6 @@ namespace Chicken.ViewModel.Status
             {
                 State = AppBarState.StatusPageDefault;
             }
-            (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
-            base.MainPivot_LoadedPivotItem(selectedIndex);
         }
         #endregion
     }

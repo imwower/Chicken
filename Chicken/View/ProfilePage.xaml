@@ -18,8 +18,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot"
-                        Title="{Binding Path=User.ScreenName}">
+        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=User.ScreenName}">
             <!--profile detail-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
@@ -64,7 +63,7 @@
                                     <!--Profile Image-->
                                     <ctrls:ImageContainer Grid.Row="0"
                                                           Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageSource="{Binding UserProfile.ProfileImageOriginal}">
+                                                          ImageSource="{Binding UserProfile.ProfileImageSource}">
                                         <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                         </ctrls:ImageContainer.Clip>
@@ -142,7 +141,7 @@
                                                 <Style TargetType="TextBlock">
                                                     <Setter Property="Margin" Value="2,0" />
                                                     <Setter Property="TextAlignment" Value="Left" />
-                                                    <Setter Property="Foreground" Value="{StaticResource RetweetCountTextColorBrush}" />
+                                                    <Setter Property="Foreground" Value="{StaticResource PhoneAccentBrush}" />
                                                 </Style>
                                             </Grid.Resources>
                                             <TextBlock Grid.Column="0">
@@ -170,7 +169,7 @@
                                 </Grid>
                                 <!--description-->
                                 <ctrls:AutoRichTextBox  Grid.Row="2"
-                                                        TweetData="{Binding Path=UserProfile}"
+                                                        TweetData="{Binding Path=UserProfile.UserProfileDetail}"
                                                         HorizontalAlignment="Stretch"
                                                          VerticalAlignment="Center" TextAlignment="Center"
                                                         Style="{StaticResource TextContent}">

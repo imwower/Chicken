@@ -1,15 +1,14 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using Chicken.Service;
 using ImageTools;
 using ImageTools.IO;
 using ImageTools.IO.Bmp;
 using ImageTools.IO.Gif;
 using ImageTools.IO.Png;
-using System;
 
 namespace Chicken.Controls
 {

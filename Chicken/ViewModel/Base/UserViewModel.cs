@@ -1,17 +1,35 @@
-﻿using Chicken.Model;
+﻿using System.Windows;
+using Chicken.Model;
 using Chicken.Service;
-using System.Windows;
+using System.ComponentModel;
 
 namespace Chicken.ViewModel.Base
 {
     public class UserViewModel : NotificationObject
     {
+        #region private
         private User user;
         private byte[] profileImageSource;
+        private bool isVisible;
+        #endregion
 
         public UserViewModel(User user)
         {
             this.user = user;
+        }
+
+        public bool IsVisible
+        {
+            get
+            {
+                return isVisible;
+            }
+            set
+            {
+                isVisible = value;
+                PropertyChanged += IsVisible_PropertyChanged;
+                RaisePropertyChanged("IsVisible");
+            }
         }
 
         public User User
@@ -124,20 +142,24 @@ namespace Chicken.ViewModel.Base
             }
         }
 
-        public void ChangeVisibility(bool isVisible)
+        private void IsVisible_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    if (isVisible)
+            if (e.PropertyName == "IsVisible")
+            {
+                Deployment.Current.Dispatcher.BeginInvoke(
+                    () =>
                     {
-                        ImageCacheService.SetImageStream(profileImage, data => ProfileImageSource = data);
-                    }
-                    else
-                    {
-                        ProfileImageSource = null;
-                    }
-                });
+                        if (IsVisible)
+                        {
+                            ImageCacheService.SetImageStream(profileImage, data => ProfileImageSource = data);
+                        }
+                        else
+                        {
+                            ProfileImageSource = null;
+                        }
+                    });
+                PropertyChanged -= IsVisible_PropertyChanged;
+            }
         }
     }
 
@@ -149,6 +171,7 @@ namespace Chicken.ViewModel.Base
             : base(profile)
         {
             this.profile = profile;
+            IsVisible = true;
         }
 
         public UserProfile UserProfile

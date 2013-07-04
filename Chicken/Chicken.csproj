@@ -169,6 +169,7 @@
       <DependentUpon>SplashScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Base\DirectMessageViewModel.cs" />
+    <Compile Include="ViewModel\Base\TweetDetailViewModel.cs" />
     <Compile Include="ViewModel\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />

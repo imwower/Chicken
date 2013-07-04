@@ -47,8 +47,8 @@ namespace Chicken.ViewModel.Profile
         #region for following and followers pivot item
         protected string nextCursor = "-1";
         protected string previousCursor;
-        private ObservableCollection<UserProfile> userList;
-        public ObservableCollection<UserProfile> UserList
+        private ObservableCollection<UserProfileViewModel> userList;
+        public ObservableCollection<UserProfileViewModel> UserList
         {
             get
             {
@@ -140,12 +140,12 @@ namespace Chicken.ViewModel.Profile
         #region for following and followers pivot
         protected void RefreshUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList>(userIds,
                 userProfiles =>
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
                     {
-                        UserList.Insert(0, userProfiles[i]);
+                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                     base.Refreshed();
                 });
@@ -153,12 +153,12 @@ namespace Chicken.ViewModel.Profile
 
         protected void LoadUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList<UserProfile>>(userIds,
+            TweetService.GetUserProfiles<UserProfileList>(userIds,
                 userProfiles =>
                 {
                     foreach (var userProfile in userProfiles)
                     {
-                        UserList.Add(userProfile);
+                        UserList.Add(new UserProfileViewModel(userProfile));
                     }
                     base.Loaded();
                 });

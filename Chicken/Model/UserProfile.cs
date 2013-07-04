@@ -8,7 +8,7 @@ namespace Chicken.Model
         public override string Text { get; set; }
     }
 
-    public class UserProfileList<T> : ModelBaseList<T> where T : UserProfile
+    public class UserProfileList : ModelBaseList<UserProfile>
     {
     }
 }

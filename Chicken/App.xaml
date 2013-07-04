@@ -45,11 +45,6 @@
             <Setter Property="Margin" Value="0,4,0,0" />
         </Style>
 
-        <SolidColorBrush x:Key="RetweetCountTextColorBrush">
-            <!--wp-->
-            <Color>#0A9DCD</Color>
-        </SolidColorBrush>
-
         <!--Content default is Medium-->
         <Style x:Name="TextContent" TargetType="ctrls:AutoRichTextBox">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
@@ -186,11 +181,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
-
-        <Style TargetType="ListBoxItem">
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         </Style>
 
         <Style TargetType="ctrls:LazyListBoxItem">
@@ -463,7 +453,7 @@
         <DataTemplate x:Key="FriendTemplate">
             <Button Margin="0,4"
                     Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                    CommandParameter="{Binding}">
+                    CommandParameter="{Binding User}">
                 <Button.Template>
                     <ControlTemplate>
                         <Grid>
@@ -471,7 +461,7 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*"  />
                             </Grid.ColumnDefinitions>
-                            <ctrls:ImageContainer ImageSource="{Binding ProfileImageBigger}"
+                            <ctrls:ImageContainer ImageSource="{Binding ProfileImageSource}"
                                                   Grid.Column="0" Style="{StaticResource ProfileImageBigger}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>
