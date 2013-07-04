@@ -172,7 +172,7 @@ namespace Chicken.Controls
                     User user = new User
                     {
                         Id = mention.Id,
-                        DisplayName = mention.DisplayName,
+                        ScreenName = mention.DisplayName,
                     };
                     NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
                     break;

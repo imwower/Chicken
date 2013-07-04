@@ -1,6 +1,6 @@
 ﻿using Chicken.Model;
 
-namespace Chicken.ViewModel.Home.Base
+namespace Chicken.ViewModel.Base
 {
     public class DirectMessageViewModel : TweetViewModel
     {

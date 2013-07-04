@@ -66,14 +66,6 @@ namespace Chicken.ViewModel.NewTweet
             }
         }
 
-        //public ICommand MentionCommand
-        //{
-        //    get
-        //    {
-        //        return new DelegateCommand(MentionAction);
-        //    }
-        //}
-
         public ICommand AddEmotionCommand
         {
             get
@@ -134,9 +126,6 @@ namespace Chicken.ViewModel.NewTweet
                     }
                 });
         }
-
-        //private void MentionAction()
-        //{ }
 
         private void AddEmotionAction()
         {

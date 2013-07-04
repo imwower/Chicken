@@ -4,7 +4,7 @@ using System.Linq;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -23,7 +23,6 @@ namespace Chicken.ViewModel.Home.VM
             Header = "Messages";
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
-            latestMessages = new LatestMessagesModel();
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
@@ -38,6 +37,10 @@ namespace Chicken.ViewModel.Home.VM
             if (file != null)
             {
                 latestMessages = file;
+            }
+            else
+            {
+                latestMessages = new LatestMessagesModel();
             }
             #endregion
             RefreshReceivedMessages();

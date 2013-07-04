@@ -1,36 +1,40 @@
 ﻿using System;
 using Chicken.Common;
+using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Model.Entity;
 
-namespace Chicken.ViewModel.Home.Base
+namespace Chicken.ViewModel.Base
 {
-    public class TweetViewModel
+    public class TweetViewModel : NotificationObject, ILazyDataItem
     {
         #region private
         private TweetBase tweet;
-        private TweetBase originalTweet;
+        private UserViewModel user;
+        private TweetViewModel originalTweet;
+        private bool isPaused;
+        private LazyDataLoadState currentState;
         #endregion
 
-        public TweetViewModel(Tweet tweet)
+        public TweetViewModel(Tweet data)
         {
-            if (tweet.RetweetStatus != null)
+            #region tweet
+            if (data.RetweetStatus != null)
             {
-                this.originalTweet = tweet as TweetBase;
-                this.tweet = tweet.RetweetStatus;
+                this.tweet = data.RetweetStatus;
+                this.originalTweet = new TweetViewModel(data.RetweetStatus);
             }
             else
             {
-                this.tweet = tweet as TweetBase;
+                this.tweet = data;
             }
+            #endregion
+            this.user = new UserViewModel(this.tweet.User);
         }
 
-        public bool IncludeRetweet
+        public TweetViewModel(TweetBase retweet)
         {
-            get
-            {
-                return this.originalTweet != null;
-            }
+            this.tweet = retweet;
         }
 
         public TweetBase Tweet
@@ -41,19 +45,27 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public TweetBase OriginalTweet
+        public virtual string Id
         {
             get
             {
-                return originalTweet;
+                return tweet.Id;
             }
         }
 
-        public User User
+        protected virtual string createdDate
         {
             get
             {
-                return tweet.User;
+                return TwitterHelper.ParseToDateTime(tweet.CreatedDate);
+            }
+        }
+
+        public string CreatedDate
+        {
+            get
+            {
+                return createdDate;
             }
         }
 
@@ -65,11 +77,11 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public string Id
+        public UserViewModel User
         {
             get
             {
-                return tweet.Id;
+                return user;
             }
         }
 
@@ -81,11 +93,19 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public string CreatedDate
+        public TweetViewModel OriginalTweet
         {
             get
             {
-                return TwitterHelper.ParseToDateTime(tweet.CreatedDate);
+                return originalTweet;
+            }
+        }
+
+        public bool IncludeRetweet
+        {
+            get
+            {
+                return this.originalTweet != null;
             }
         }
 
@@ -107,7 +127,7 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public bool Retweeted
+        public bool IsRetweeted
         {
             get
             {
@@ -115,7 +135,7 @@ namespace Chicken.ViewModel.Home.Base
             }
         }
 
-        public bool Favorited
+        public bool IsFavorited
         {
             get
             {
@@ -191,5 +211,56 @@ namespace Chicken.ViewModel.Home.Base
                     IncludeCoordinates;
             }
         }
+
+        public void GoToState(LazyDataLoadState state)
+        {
+            currentState = state;
+            switch (state)
+            {
+                case LazyDataLoadState.Minimum:
+                case LazyDataLoadState.Cached:
+                case LazyDataLoadState.Reloading:
+                case LazyDataLoadState.Loading:
+                    if (User != null)
+                        User.ChangeVisibility(true);
+                    break;
+                case LazyDataLoadState.Unloaded:
+                    if (User != null)
+                        User.ChangeVisibility(false);
+                    break;
+                case LazyDataLoadState.Loaded:
+                    break;
+            }
+        }
+
+        public void Pause()
+        {
+            isPaused = true;
+        }
+
+        public void Unpause()
+        {
+            isPaused = false;
+        }
+
+        public bool IsPaused
+        {
+            get
+            {
+                return isPaused;
+            }
+        }
+
+        public LazyDataLoadState CurrentState
+        {
+            get
+            {
+                return currentState;
+            }
+        }
+
+        public event EventHandler<LazyDataItemStateChangedEventArgs> CurrentStateChanged;
+
+        public event EventHandler<LazyDataItemPausedStateChangedEventArgs> PauseStateChanged;
     }
 }

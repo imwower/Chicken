@@ -5,6 +5,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
+using Chicken.ViewModel.Base;
 using Chicken.ViewModel.Status.VM;
 
 namespace Chicken.ViewModel.Status
@@ -12,7 +13,7 @@ namespace Chicken.ViewModel.Status
     public class StatusViewModel : PivotViewModelBase
     {
         #region properites
-        private Tweet tweet;
+        private TweetViewModel tweet;
         #endregion
 
         #region binding
@@ -80,13 +81,13 @@ namespace Chicken.ViewModel.Status
                 PivotItems[selectedIndex].IsLoading = true;
                 string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
                 TweetService.GetStatusDetail<Tweet>(statusId,
-                    tweet =>
+                    data =>
                     {
-                        this.tweet = tweet;
-                        if (this.tweet.User.Id == App.AuthenticatedUser.Id)
+                        if (data.User.Id == App.AuthenticatedUser.Id)
                         {
-                            this.tweet.IsSentByMe = true;
+                            data.IsSentByMe = true;
                         }
+                        this.tweet = new TweetViewModel(data);
                         SwitchAppBar(selectedIndex);
                         IsInit = true;
                     });

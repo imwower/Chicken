@@ -3,7 +3,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile
 {
@@ -15,8 +15,8 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region properties
-        private UserProfileDetail userProfile;
-        public UserProfileDetail UserProfile
+        private UserProfileDetailViewModel userProfile;
+        public UserProfileDetailViewModel UserProfile
         {
             get
             {
@@ -88,10 +88,14 @@ namespace Chicken.ViewModel.Profile
 
         public virtual void Mention()
         {
+            if (IsLoading)
+            {
+                return;
+            }
             NewTweetModel newTweet = new NewTweetModel
             {
                 Type = NewTweetActionType.Mention,
-                Text = UserProfile.ScreenName + " ",
+                Text = UserProfile.DisplayName + " ",
             };
             IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
@@ -100,10 +104,7 @@ namespace Chicken.ViewModel.Profile
         public virtual void EditMyProfile()
         {
             IsLoading = false;
-            if (userProfile.IsMyself)
-            {
-                NavigationServiceManager.NavigateTo(PageNameEnum.EditMyProfilePage);
-            }
+            NavigationServiceManager.NavigateTo(PageNameEnum.EditMyProfilePage);
         }
         #endregion
 

@@ -2,10 +2,7 @@
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
 using Chicken.Common;
-using Chicken.Model;
-using Chicken.Service;
 using Chicken.ViewModel.NewMessage;
 
 namespace Chicken.View
@@ -33,20 +30,6 @@ namespace Chicken.View
             if (!newMessageViewModel.IsInited)
             {
                 newMessageViewModel.Refresh();
-            }
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            var newMessage = IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(PageNameEnum.NewMessagePage);
-            if (newMessage != null)
-            {
-                newMessageViewModel.NewMessage = newMessage;
-            }
-            else
-            {
-                newMessageViewModel.IsNew = true;
             }
         }
         #endregion

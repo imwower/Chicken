@@ -5,15 +5,18 @@ namespace Chicken.Model
 {
     public class TweetBase : ModelBase
     {
-        public virtual User User { get; set; }
-
-        public bool IsSentByMe { get; set; }
+        [JsonProperty("id_str")]
+        public string Id { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
 
-        [JsonProperty("id_str")]
-        public string Id { get; set; }
+        /// <summary>
+        /// isolatedstorage service
+        /// </summary>
+        public bool IsSentByMe { get; set; }
+
+        public virtual User User { get; set; }
 
         public virtual string Text { get; set; }
 

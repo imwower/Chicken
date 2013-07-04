@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.Controls
 {

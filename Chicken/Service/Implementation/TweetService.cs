@@ -62,9 +62,9 @@ namespace Chicken.Service.Implementation
             {
                 parameters.Add(Const.USER_ID, user.Id);
             }
-            else if (!string.IsNullOrEmpty(user.DisplayName))
+            else if (!string.IsNullOrEmpty(user.ScreenName))
             {
-                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+                parameters.Add(Const.USER_SCREEN_NAME, user.ScreenName);
             }
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
@@ -104,9 +104,9 @@ namespace Chicken.Service.Implementation
             {
                 parameters.Add(Const.USER_ID, user.Id);
             }
-            else if (!string.IsNullOrEmpty(user.DisplayName))
+            else if (!string.IsNullOrEmpty(user.ScreenName))
             {
-                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+                parameters.Add(Const.USER_SCREEN_NAME, user.ScreenName);
             }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, parameters);
             HandleWebRequest<T>(url, callBack);
@@ -147,9 +147,9 @@ namespace Chicken.Service.Implementation
             {
                 parameters.Add(Const.USER_ID, user.Id);
             }
-            else if (!string.IsNullOrEmpty(user.DisplayName))
+            else if (!string.IsNullOrEmpty(user.ScreenName))
             {
-                parameters.Add(Const.USER_SCREEN_NAME, user.DisplayName);
+                parameters.Add(Const.USER_SCREEN_NAME, user.ScreenName);
             }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVORITE, parameters);
             HandleWebRequest<T>(url, callBack);

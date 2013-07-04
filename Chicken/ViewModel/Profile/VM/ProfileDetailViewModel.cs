@@ -35,7 +35,7 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (UserProfile.IsMyself)
             {
-                IsolatedStorageService.CreateAuthenticatedUser(UserProfile);
+                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
                 App.InitAuthenticatedUser();
             }
             else
@@ -57,7 +57,7 @@ namespace Chicken.ViewModel.Profile.VM
             }
             var newMessage = new NewMessageModel
             {
-                User = UserProfile as User,
+                User = UserProfile.User as User,
             };
             NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage, newMessage);
         }

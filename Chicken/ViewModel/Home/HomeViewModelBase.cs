@@ -2,7 +2,7 @@
 using Chicken.Common;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Home
 {

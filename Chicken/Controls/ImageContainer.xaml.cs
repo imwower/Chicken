@@ -9,19 +9,20 @@ using ImageTools.IO;
 using ImageTools.IO.Bmp;
 using ImageTools.IO.Gif;
 using ImageTools.IO.Png;
+using System;
 
 namespace Chicken.Controls
 {
     public partial class ImageContainer : UserControl
     {
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(string), typeof(ImageContainer), new PropertyMetadata(OnSourceChanged));
+            DependencyProperty.Register("ImageSource", typeof(byte[]), typeof(ImageContainer), new PropertyMetadata(OnSourceChanged));
 
-        public string ImageSource
+        public byte[] ImageSource
         {
             get
             {
-                return (string)GetValue(ImageSourceProperty);
+                return (byte[])GetValue(ImageSourceProperty);
             }
             set
             {
@@ -39,12 +40,7 @@ namespace Chicken.Controls
 
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            (d as ImageContainer).SetImageSource(e.NewValue as string);
-        }
-
-        private void SetImageSource(string newValue)
-        {
-            ImageCacheService.SetImageStream(newValue, SetImageSource);
+            (d as ImageContainer).SetImageSource(e.NewValue as byte[]);
         }
 
         private void SetImageSource(byte[] data)
@@ -52,6 +48,18 @@ namespace Chicken.Controls
             Dispatcher.BeginInvoke(
                 () =>
                 {
+                    if (data == null)
+                    {
+                        if (this.GifImage.Source != null)
+                        {
+                            this.GifImage.Stop();
+                            this.GifImage.Source = null;
+                        }
+                        this.PngImage.Source = defaultImage;
+                        Debug.WriteLine("clear image.");
+                        return;
+                    }
+                    #region set image source
                     try
                     {
                         Debug.WriteLine("set png image. length: {0}", data.Length);
@@ -74,7 +82,10 @@ namespace Chicken.Controls
                     {
                         Debug.WriteLine("remove place hold.");
                     }
+                    #endregion
                 });
         }
+
+        private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
     }
 }

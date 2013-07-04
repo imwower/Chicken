@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Home.VM
 {
@@ -24,24 +24,24 @@ namespace Chicken.ViewModel.Home.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetTweets<TweetList<Tweet>>(
-                tweetList =>
+            TweetService.GetTweets<TweetList>(
+                list =>
                 {
-                    if (tweetList != null && tweetList.Count != 0)
+                    if (list != null && list.Count != 0)
                     {
 #if !LOCAL
-                        if (string.Compare(sinceId, tweetList[0].Id) == -1)
+                        if (string.Compare(sinceId, list[0].Id) == -1)
                         {
                             TweetList.Clear();
                         }
 #endif
-                        for (int i = tweetList.Count - 1; i >= 0; i--)
+                        for (int i = list.Count - 1; i >= 0; i--)
                         {
 #if !LOCAL
-                            if (sinceId != tweetList[i].Id)
+                            if (sinceId != list[i].Id)
 #endif
                             {
-                                TweetList.Insert(0, new TweetViewModel(tweetList[i]));
+                                TweetList.Insert(0, new TweetViewModel(list[i]));
                             }
                         }
                     }
@@ -61,7 +61,7 @@ namespace Chicken.ViewModel.Home.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetTweets<TweetList<Tweet>>(
+                TweetService.GetTweets<TweetList>(
                     tweetList =>
                     {
                         if (tweetList != null && tweetList.Count != 0)

@@ -311,10 +311,10 @@
                 <!--avatar-->
                 <Button Grid.Column="0"
                         Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                        CommandParameter="{Binding User}">
+                        CommandParameter="{Binding Path=User.User}">
                     <Button.Template>
                         <ControlTemplate>
-                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImage}"
+                            <ctrls:ImageContainer ImageSource="{Binding User.ProfileImageSource}"
                                                   Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
@@ -349,7 +349,8 @@
                                     <TextBlock Text="{Binding User.ScreenName}" Grid.Row="1"
                                                Style="{StaticResource TweetScreenName}" />
                                     <!--text-->
-                                    <ctrls:AutoRichTextBox Grid.Row="2" TweetData="{Binding Path=Tweet}"
+                                    <ctrls:AutoRichTextBox Grid.Row="2"
+                                                           TweetData="{Binding Path=Tweet}"
                                                            HorizontalAlignment="Stretch" TextAlignment="Left" />
                                     <Grid Grid.Row="3" Opacity="0.6" HorizontalAlignment="Stretch">
                                         <Grid.RowDefinitions>

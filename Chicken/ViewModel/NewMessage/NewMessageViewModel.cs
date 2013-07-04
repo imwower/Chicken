@@ -6,7 +6,7 @@ using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Implementation;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 using Chicken.ViewModel.NewTweet;
 
 namespace Chicken.ViewModel.NewMessage
@@ -93,7 +93,6 @@ namespace Chicken.ViewModel.NewMessage
             Header = "Chat";
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
-            latestMessages = new LatestMessagesModel();
             Messages = new ObservableCollection<DirectMessageViewModel>();
             NewMessage = new NewMessageModel();
             RefreshHandler = this.RefreshAction;
@@ -108,7 +107,7 @@ namespace Chicken.ViewModel.NewMessage
             {
                 return;
             }
-            TweetService.GetUser<User>(User.DisplayName,
+            TweetService.GetUser<User>(User.ScreenName,
                 user =>
                 {
                     #region user existes or not:
@@ -117,7 +116,7 @@ namespace Chicken.ViewModel.NewMessage
                     {
                         //user not exist:
                         HasError = true;
-                        Header = User.ScreenName + " does not exist";
+                        Header = User.DisplayName + " does not exist";
                         ToastMessageHandler(new ToastMessage
                         {
                             Message = Header
@@ -126,7 +125,7 @@ namespace Chicken.ViewModel.NewMessage
                     }
                     #endregion
                     #region user followed you or not
-                    TweetService.GetFriendships<Friendships<Friendship>>(User.DisplayName,
+                    TweetService.GetFriendships<Friendships<Friendship>>(User.ScreenName,
                         friendships =>
                         {
                             Friendship friendship = friendships[0];
@@ -134,7 +133,7 @@ namespace Chicken.ViewModel.NewMessage
                             if (!connections.Contains(Const.FOLLOWED_BY))
                             {
                                 HasError = true;
-                                Header = User.ScreenName + " did not follow you";
+                                Header = User.DisplayName + " did not follow you";
                                 ToastMessageHandler(new ToastMessage
                                 {
                                     Message = Header
@@ -153,20 +152,29 @@ namespace Chicken.ViewModel.NewMessage
         #region actions
         private void RefreshAction()
         {
-            if (IsNew)
+            #region init from file
+            var newMessage = IsolatedStorageService.GetObject<NewMessageModel>(PageNameEnum.NewMessagePage);
+            if (newMessage != null)
             {
-                User = new User();
+                NewMessage = newMessage;
+            }
+            else
+            {
+                IsNew = true;
                 base.Refreshed();
                 return;
             }
-            Header = User.ScreenName;
-            #region init from file
             var file = IsolatedStorageService.GetLatestMessages();
             if (file != null)
             {
                 latestMessages = file;
             }
+            else
+            {
+                latestMessages = new LatestMessagesModel();
+            }
             #endregion
+            Header = User.DisplayName;
             RefreshReceivedMessages();
         }
 
@@ -192,14 +200,14 @@ namespace Chicken.ViewModel.NewMessage
         {
             #region validate user name and text
             if (IsLoading || HasError ||
-                string.IsNullOrEmpty(NewMessage.User.DisplayName)
+                string.IsNullOrEmpty(NewMessage.User.ScreenName)
                 || string.IsNullOrEmpty(NewMessage.Text))
             {
                 return;
             }
             #endregion
             #region post new message
-            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.DisplayName, NewMessage.Text,
+            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.ScreenName, NewMessage.Text,
                 message =>
                 {
                     List<ErrorMessage> errors = message.Errors;
@@ -212,11 +220,11 @@ namespace Chicken.ViewModel.NewMessage
                     }
                     else
                     {
-                        this.User = message.Receiver;
+                        User = message.Receiver;
+                        //TODO: create receiver to isolated storage
                         Text = string.Empty;
                         IsNew = false;
                         RefreshAction();
-                        //
                         HandleMessage(new ToastMessage
                         {
                             Message = "message sent successfully"
@@ -422,10 +430,10 @@ namespace Chicken.ViewModel.NewMessage
 
         private void ValidateUserName()
         {
-            if (!string.IsNullOrEmpty(User.DisplayName))
+            if (!string.IsNullOrEmpty(User.ScreenName))
             {
-                User.DisplayName = User.DisplayName.Replace("@", "").Replace(" ", "");
-                if (!string.IsNullOrEmpty(User.DisplayName))
+                User.ScreenName = User.ScreenName.Replace("@", "").Replace(" ", "");
+                if (!string.IsNullOrEmpty(User.ScreenName))
                 {
                     HasError = false;
                 }

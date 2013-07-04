@@ -4,13 +4,26 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Status
 {
     public class StatusViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        public Tweet Tweet { get; set; }
+        private TweetViewModel tweet;
+        public TweetViewModel Tweet
+        {
+            get
+            {
+                return tweet;
+            }
+            set
+            {
+                tweet = value;
+                RaisePropertyChanged("Tweet");
+            }
+        }
         protected string nextCursor = "-1";
         protected string previousCursor = string.Empty;
         private ObservableCollection<UserProfile> userList;
@@ -46,12 +59,12 @@ namespace Chicken.ViewModel.Status
                 return;
             }
             IsLoading = true;
-            var action = Tweet.Favorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
+            var action = Tweet.IsFavorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
             TweetService.AddToFavorites<Tweet>(Tweet.Id, action,
-                tweet =>
+                t =>
                 {
                     var toastMessage = new ToastMessage();
-                    List<ErrorMessage> errors = tweet.Errors;
+                    List<ErrorMessage> errors = t.Errors;
                     #region handle error
                     if (errors != null && errors.Count != 0)
                     {
@@ -61,9 +74,9 @@ namespace Chicken.ViewModel.Status
                         return;
                     }
                     #endregion
-                    toastMessage.Message = Tweet.Favorited ? "Remove favorites successfully" : "Add to favorites successfully";
+                    toastMessage.Message = Tweet.IsFavorited ? "Remove favorites successfully" : "Add to favorites successfully";
                     HandleMessage(toastMessage);
-                    Tweet = tweet;
+                    Tweet = new TweetViewModel(t);
                     Refresh();
                 });
         }
@@ -76,13 +89,13 @@ namespace Chicken.ViewModel.Status
             }
             IsLoading = true;
             var action = RetweetActionType.Create;
-            if (!Tweet.Retweeted)
+            if (!Tweet.IsRetweeted)
             {
                 TweetService.Retweet<Tweet>(Tweet.Id, action,
-                   tweet =>
+                   t =>
                    {
                        var toastMessage = new ToastMessage();
-                       List<ErrorMessage> errors = tweet.Errors;
+                       List<ErrorMessage> errors = t.Errors;
                        #region handle error
                        if (errors != null && errors.Count != 0)
                        {
@@ -94,7 +107,7 @@ namespace Chicken.ViewModel.Status
                        #endregion
                        toastMessage.Message = "Retweet successfully";
                        HandleMessage(toastMessage);
-                       Tweet = tweet;
+                       Tweet = new TweetViewModel(t);
                        Refresh();
                    });
             }
@@ -113,7 +126,9 @@ namespace Chicken.ViewModel.Status
         public virtual void Delete()
         {
             if (Tweet.IsSentByMe)
-            { }
+            {
+                //TODO: delete tweet
+            }
         }
         #endregion
 

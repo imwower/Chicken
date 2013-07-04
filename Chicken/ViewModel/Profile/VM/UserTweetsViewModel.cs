@@ -2,7 +2,7 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -33,12 +33,12 @@ namespace Chicken.ViewModel.Profile.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetUserTweets<TweetList<Tweet>>(this.UserProfile,
+            TweetService.GetUserTweets<TweetList>(UserProfile.User,
                 tweets =>
                 {
                     if (tweets != null && tweets.Count != 0)
                     {
-#if !DEBUG
+#if !LOCAL
                         if (string.Compare(sinceId, tweets[0].Id) == -1)
                         {
                             TweetList.Clear();
@@ -46,7 +46,7 @@ namespace Chicken.ViewModel.Profile.VM
 #endif
                         for (int i = tweets.Count - 1; i >= 0; i--)
                         {
-#if !DEBUG
+#if !LOCAL
                             if (sinceId != tweets[i].Id)
 #endif
                             {
@@ -71,12 +71,12 @@ namespace Chicken.ViewModel.Profile.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetUserTweets<TweetList<Tweet>>(this.UserProfile,
+                TweetService.GetUserTweets<TweetList>(UserProfile.User,
                     tweets =>
                     {
                         foreach (var tweet in tweets)
                         {
-#if !DEBUG
+#if !LOCAL
                             if (maxId != tweet.Id)
 #endif
                             {

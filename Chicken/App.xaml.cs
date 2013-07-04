@@ -37,18 +37,18 @@ namespace Chicken
                 return settings;
             }
         }
-        private static TweetConfiguration configuration;
-        public static TweetConfiguration Configuration
-        {
-            get
-            {
-                if (configuration == null)
-                {
-                    InitConfiguration();
-                }
-                return configuration;
-            }
-        }
+        //private static TweetConfiguration configuration;
+        //public static TweetConfiguration Configuration
+        //{
+        //    get
+        //    {
+        //        if (configuration == null)
+        //        {
+        //            InitConfiguration();
+        //        }
+        //        return configuration;
+        //    }
+        //}
 
         //public static Size GetScreenSize()
         //{
@@ -81,10 +81,10 @@ namespace Chicken
             settings = IsolatedStorageService.GetAppSettings();
         }
 
-        public static void InitConfiguration()
-        {
-            configuration = IsolatedStorageService.GetTweetConfiguration();
-        }
+        //public static void InitConfiguration()
+        //{
+        //    configuration = IsolatedStorageService.GetTweetConfiguration();
+        //}
 
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {

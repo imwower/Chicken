@@ -8,7 +8,11 @@ namespace Chicken.Model
         public Retweet RetweetStatus { get; set; }
     }
 
-    public class TweetList<T> : ModelBaseList<T> where T : Tweet
+    public class Retweet : TweetBase
+    {
+    }
+
+    public class TweetList : ModelBaseList<Tweet>
     {
     }
 }

@@ -2,38 +2,27 @@
 
 namespace Chicken.Model
 {
-    public class User : TweetBase
+    public class User : Tweet
     {
         public string Name { get; set; }
 
         [JsonProperty("screen_name")]
-        public string DisplayName { get; set; }
+        public string ScreenName { get; set; }
 
+        /// <summary>
+        /// with @
+        /// </summary>
         [JsonIgnore]
-        public string ScreenName
+        public string DisplayName
         {
             get
             {
-                return "@" + DisplayName;
+                return "@" + ScreenName;
             }
         }
 
         [JsonProperty("profile_image_url_https")]
         public string ProfileImage { get; set; }
-
-        /// <summary>
-        /// status detail page needs bigger avatar,
-        /// so add this property to User,
-        /// not to UserProfile.
-        /// </summary>
-        [JsonIgnore]
-        public string ProfileImageBigger
-        {
-            get
-            {
-                return ProfileImage.Replace("_normal", "_bigger");
-            }
-        }
 
         [JsonProperty("following")]
         [JsonConverter(typeof(StringToBooleanConverter))]
@@ -47,12 +36,5 @@ namespace Chicken.Model
 
         [JsonProperty("is_translator")]
         public bool IsTranslator { get; set; }
-
-        /// <summary>
-        /// for profile page,
-        /// only
-        /// </summary>
-        [JsonIgnore]
-        public bool IsMyself { get; set; }
     }
 }

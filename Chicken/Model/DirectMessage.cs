@@ -12,5 +12,6 @@ namespace Chicken.Model
     }
 
     public class DirectMessageList<T> : ModelBaseList<T> where T : DirectMessage
-    { }
+    {
+    }
 }

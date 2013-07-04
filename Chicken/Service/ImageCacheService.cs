@@ -72,13 +72,13 @@ namespace Chicken.Service
             lock (pendingWorkLocker)
             {
                 #region remove same task
-                //var sameWorks = pendingWorkList.Where(w => w.ImageUrl == pendingwork.ImageUrl).ToList();
-                //Debug.WriteLine("remove {0} same works.", sameWorks.Count);
-                //foreach (var same in sameWorks)
-                //{
-                //    pendingwork.CallBack += same.CallBack;
-                //    pendingWorkList.Remove(same);
-                //}
+                var sameWorks = pendingWorkList.Where(w => w.ImageUrl == pendingwork.ImageUrl).ToList();
+                Debug.WriteLine("remove {0} same works.", sameWorks.Count);
+                foreach (var same in sameWorks)
+                {
+                    pendingwork.CallBack += same.CallBack;
+                    pendingWorkList.Remove(same);
+                }
                 #endregion
                 pendingWorkList.Add(pendingwork);
             }

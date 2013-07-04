@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
@@ -70,15 +69,11 @@ namespace Chicken.ViewModel.Settings
 
         private void SaveAction()
         {
-            if (IsLoading)
-                return;
-            if (string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
+            if (IsLoading
+                || string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
                 return;
             IsLoading = true;
-            if (!GeneralSettings.APISettings.Url.EndsWith("/"))
-            {
-                GeneralSettings.APISettings.Url += "/";
-            }
+            generalSettings.APISettings.Url = GeneralSettings.APISettings.Url.TrimEnd('/') + "/";
             TweetService.TestAPIUrl<UserProfileDetail>(GeneralSettings.APISettings.Url,
                 userProfileDetail =>
                 {

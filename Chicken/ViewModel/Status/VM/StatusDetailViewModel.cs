@@ -1,25 +1,12 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Model;
-using Chicken.ViewModel.Home.Base;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Status.VM
 {
     public class StatusDetailViewModel : StatusViewModelBase
     {
         #region properties
-        private TweetViewModel tweetViewModel;
-        public TweetViewModel TweetViewModel
-        {
-            get
-            {
-                return tweetViewModel;
-            }
-            set
-            {
-                tweetViewModel = value;
-                RaisePropertyChanged("TweetViewModel");
-            }
-        }
         private ObservableCollection<TweetViewModel> conversationList;
         public ObservableCollection<TweetViewModel> ConversationList
         {
@@ -42,10 +29,10 @@ namespace Chicken.ViewModel.Status.VM
             LoadHandler = this.LoadAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
-            TweetViewModel = new TweetViewModel(Tweet);
-            if (ConversationList != null && ConversationList.Count != 0)
+            if (ConversationList != null)
             {
                 ConversationList.Clear();
             }
@@ -62,6 +49,7 @@ namespace Chicken.ViewModel.Status.VM
             }
             LoadConversation(statusId);
         }
+        #endregion
 
         #region private method
         private void LoadConversation(string statusId)

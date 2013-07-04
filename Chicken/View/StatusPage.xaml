@@ -169,8 +169,8 @@
                                                  Style="{StaticResource HyperLinkSmall}" HorizontalAlignment="Right"/>
                             <!--retweet count, favorite count, location-->
                             <Border Grid.Row="3"
-                                        Style="{StaticResource RetweetCountBorder}" BorderThickness="0,1,0,0"
-                                        Visibility="{Binding TweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    Style="{StaticResource RetweetCountBorder}" BorderThickness="0,1,0,0"
+                                    Visibility="{Binding TweetViewModel.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <StackPanel.Resources>
                                         <Style TargetType="TextBlock">
@@ -181,7 +181,7 @@
                                         </Style>
                                     </StackPanel.Resources>
                                     <Border
-                                            Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                        Visibility="{Binding TweetViewModel.RetweetCount,Converter={StaticResource StringToVisibilityConverter}}">
                                         <TextBlock>
                                             <Run Text="{Binding TweetViewModel.RetweetCount}" />
                                             <LineBreak />
@@ -189,12 +189,13 @@
                                         </TextBlock>
                                     </Border>
                                     <Border
-                                            Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                        <ctrls:ImageContainer ImageSource="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
-                                                                  Style="{StaticResource ProfileImageIcon}" />
+                                        Visibility="{Binding TweetViewModel.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <ctrls:ImageContainer
+                                            ImageSource="{Binding TweetViewModel.OriginalTweet.User.ProfileImage}"
+                                            Style="{StaticResource ProfileImageIcon}" />
                                     </Border>
                                     <Border
-                                            Visibility="{Binding TweetViewModel.FavoriteCount,Converter={StaticResource StringToVisibilityConverter}}">
+                                        Visibility="{Binding TweetViewModel.FavoriteCount,Converter={StaticResource StringToVisibilityConverter}}">
                                         <TextBlock>
                                             <Run Text="{Binding TweetViewModel.FavoriteCount}" />
                                             <LineBreak />
@@ -202,7 +203,7 @@
                                         </TextBlock>
                                     </Border>
                                     <Border
-                                            Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Visibility="{Binding TweetViewModel.IncludeCoordinates,Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <TextBlock>
                                             <Run Text="{Binding TweetViewModel.Coordinates}" />
                                             <LineBreak />
@@ -213,9 +214,9 @@
                             </Border>
                             <!--media-->
                             <StackPanel  Grid.Row="4" Margin="4" HorizontalAlignment="Stretch"
-                                             Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                         Visibility="{Binding TweetViewModel.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
                                 <Image Stretch="Uniform"
-                                    Source="{Binding TweetViewModel.Entities.Medias[0].MediaUrlSmall}" />
+                                       Source="{Binding TweetViewModel.Entities.Medias[0].MediaUrlSmall}" />
                             </StackPanel>
                             <!--conversation-->
                             <Grid Grid.Row="5" Margin="4"

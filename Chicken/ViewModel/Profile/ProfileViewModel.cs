@@ -5,6 +5,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
+using Chicken.ViewModel.Base;
 using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
@@ -12,8 +13,8 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private UserProfileDetail user;
-        public UserProfileDetail User
+        private UserProfileDetailViewModel user;
+        public UserProfileDetailViewModel User
         {
             get
             {
@@ -72,14 +73,6 @@ namespace Chicken.ViewModel.Profile
                 return new DelegateCommand(EditMyProfileAction);
             }
         }
-
-        //public ICommand BlocksCommand
-        //{
-        //    get
-        //    {
-        //        return new DelegateCommand(BlocksAction);
-        //    }
-        //}
         #endregion
 
         #region services
@@ -106,17 +99,17 @@ namespace Chicken.ViewModel.Profile
                 PivotItems[selectedIndex].IsLoading = true;
                 var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
                 TweetService.GetUserProfileDetail<UserProfileDetail>(selectedUser,
-                userProfileDetail =>
-                {
-                    this.User = userProfileDetail;
-                    if (User.Id == App.AuthenticatedUser.Id)
+                    profile =>
                     {
-                        User.IsMyself = true;
-                    }
-                    SwitchAppBar(selectedIndex);
-                    ChangeFollowButtonText();
-                    IsInit = true;
-                });
+                        this.User = new UserProfileDetailViewModel(profile);
+                        if (User.Id == App.AuthenticatedUser.Id)
+                        {
+                            User.IsMyself = true;
+                        }
+                        SwitchAppBar(selectedIndex);
+                        ChangeFollowButtonText();
+                        IsInit = true;
+                    });
             }
             else
             {
@@ -142,10 +135,10 @@ namespace Chicken.ViewModel.Profile
         private void FollowAction()
         {
             PivotItems[SelectedIndex].IsLoading = true;
-            TweetService.FollowOrUnFollow<User>(User,
-                userProfile =>
+            TweetService.FollowOrUnFollow<User>(user.User,
+                profile =>
                 {
-                    List<ErrorMessage> errors = userProfile.Errors;
+                    List<ErrorMessage> errors = profile.Errors;
                     var toastMessage = new ToastMessage();
                     #region handle error
                     if (errors != null && errors.Count != 0)
@@ -172,10 +165,10 @@ namespace Chicken.ViewModel.Profile
                     }
                     toastMessage.Message = message;
                     PivotItems[SelectedIndex].HandleMessage(toastMessage);
-                    TweetService.GetUserProfileDetail<UserProfileDetail>(User,
-                        userProfileDetail =>
+                    TweetService.GetUserProfileDetail<UserProfileDetail>(User.User,
+                        profileDetail =>
                         {
-                            this.User = userProfileDetail;
+                            this.User = new UserProfileDetailViewModel(profileDetail);
                             ChangeFollowButtonText();
                             (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
                             PivotItems[SelectedIndex].Refresh();
@@ -188,11 +181,6 @@ namespace Chicken.ViewModel.Profile
         {
             (PivotItems[SelectedIndex] as ProfileViewModelBase).EditMyProfile();
         }
-
-        //private void BlocksAction()
-        //{
-        //    //TODO
-        //} 
         #endregion
 
         #region private

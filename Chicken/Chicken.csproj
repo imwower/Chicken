@@ -154,7 +154,6 @@
     <Compile Include="Model\ToastMessage.cs" />
     <Compile Include="Model\TweetConfiguration.cs" />
     <Compile Include="Model\UserIdList.cs" />
-    <Compile Include="Model\Retweet.cs" />
     <Compile Include="Model\Tweet.cs" />
     <Compile Include="Model\TweetBase.cs" />
     <Compile Include="Model\User.cs" />
@@ -169,7 +168,8 @@
     <Compile Include="SplashScreenPage.xaml.cs">
       <DependentUpon>SplashScreenPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Home\Base\DirectMessageViewModel.cs" />
+    <Compile Include="ViewModel\Base\DirectMessageViewModel.cs" />
+    <Compile Include="ViewModel\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
@@ -347,7 +347,7 @@
     <Compile Include="ViewModel\NotificationObject.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\ProfileViewModelBase.cs" />
-    <Compile Include="ViewModel\Home\Base\TweetViewModel.cs" />
+    <Compile Include="ViewModel\Base\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
     <Content Include="SampleData\user_timeline.json">

@@ -28,22 +28,22 @@ namespace Chicken
             }
             else
             {
-                if (App.Configuration == null ||
-                    App.Configuration.LastUpdateTime.Date < DateTime.Now.Date)
-                {
-                    TweetService.GetTweetConfiguration<TweetConfiguration>(
-                        configuration =>
-                        {
-                            configuration.LastUpdateTime = DateTime.Now;
-                            IsolatedStorageService.CreateTweetConfiguration(configuration);
-                            App.InitConfiguration();
-                            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                        });
-                }
-                else
-                {
-                    NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                }
+                //if (App.Configuration == null ||
+                //    App.Configuration.LastUpdateTime.Date < DateTime.Now.Date)
+                //{
+                //    TweetService.GetTweetConfiguration<TweetConfiguration>(
+                //        configuration =>
+                //        {
+                //            configuration.LastUpdateTime = DateTime.Now;
+                //            IsolatedStorageService.CreateTweetConfiguration(configuration);
+                //            App.InitConfiguration();
+                //            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                //        });
+                //}
+                //else
+                //{
+                NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                //}
             }
         }
     }
