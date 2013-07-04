@@ -67,6 +67,8 @@ namespace Chicken.Common
 
         public static IEnumerable<EntityBase> ParseUserMentions(string text)
         {
+            if (string.IsNullOrEmpty(text))
+                yield break;
             var matches = UserNameRegex.Matches(text);
             foreach (Match match in matches)
             {
@@ -99,6 +101,8 @@ namespace Chicken.Common
 
         public static IEnumerable<EntityBase> ParseHashTags(string text)
         {
+            if (string.IsNullOrEmpty(text))
+                yield break;
             var matches = HashTagRegex.Matches(text);
             foreach (Match match in matches)
             {

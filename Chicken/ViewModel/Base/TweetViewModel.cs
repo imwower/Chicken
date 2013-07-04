@@ -22,7 +22,8 @@ namespace Chicken.ViewModel.Base
             if (data.RetweetStatus != null)
             {
                 this.tweet = data.RetweetStatus;
-                this.originalTweet = new TweetViewModel(data.RetweetStatus);
+                data.RetweetStatus = null;
+                this.originalTweet = new TweetViewModel(data);
             }
             else
             {
@@ -32,16 +33,19 @@ namespace Chicken.ViewModel.Base
             this.user = new UserViewModel(this.tweet.User);
         }
 
-        public TweetViewModel(TweetBase retweet)
-        {
-            this.tweet = retweet;
-        }
-
         public TweetBase Tweet
         {
             get
             {
                 return tweet;
+            }
+        }
+
+        public TweetViewModel OriginalTweet
+        {
+            get
+            {
+                return originalTweet;
             }
         }
 
@@ -90,14 +94,6 @@ namespace Chicken.ViewModel.Base
             get
             {
                 return tweet.Text;
-            }
-        }
-
-        public TweetViewModel OriginalTweet
-        {
-            get
-            {
-                return originalTweet;
             }
         }
 

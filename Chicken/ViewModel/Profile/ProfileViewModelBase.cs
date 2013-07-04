@@ -24,8 +24,11 @@ namespace Chicken.ViewModel.Profile
             }
             set
             {
-                userProfile = value;
-                RaisePropertyChanged("UserProfile");
+                if (userProfile != value)
+                {
+                    userProfile = value;
+                    RaisePropertyChanged("UserProfile");
+                }
             }
         }
 

@@ -12,12 +12,8 @@ namespace Chicken.ViewModel.Base
             : base(data)
         {
             this.profile = Copy(this.Tweet.User);
-        }
-
-        public TweetDetailViewModel(TweetBase tweet)
-            : base(tweet)
-        {
-            this.profile = Copy(this.Tweet.User);
+            if (OriginalTweet != null)
+                OriginalTweet.User.IsVisible = true;
         }
 
         public UserProfileViewModel UserProfile

@@ -14,8 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480"
-    x:Name="Page">
+    mc:Ignorable="d" d:DesignHeight="800" d:DesignWidth="480">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -33,11 +32,11 @@
         </Grid.Resources>
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}"
-                 Foreground="{Binding HasError, Converter={StaticResource BooleanToFillConverter}}"  />
+                   Foreground="{Binding HasError, Converter={StaticResource BooleanToFillConverter}}"  />
         <!--whom to send to-->
         <TextBox x:Name="UserName" Grid.Row="1"
                  Visibility="{Binding Path=IsNew,Converter={StaticResource BooleanToVisibilityConverter}}"
-                 Text="{Binding Path=User.DisplayName,Mode=TwoWay}"
+                 Text="{Binding Path=User.ScreenName,Mode=TwoWay}"
                  InputScope="NameOrPhoneNumber"
                  TextChanged="UserName_TextChanged"
                  KeyDown="UserName_KeyDown" />
@@ -60,11 +59,11 @@
                                         <Button Width="64" Height="64"
                                                 HorizontalAlignment="Left" VerticalAlignment="Top"
                                                 Command="{Binding DataContext.ClickCommand, ElementName=AutoListBox}"
-                                                CommandParameter="{Binding DataContext.NewMessage.User, ElementName=Page}">
+                                                CommandParameter="{Binding User}">
                                             <Button.Template>
                                                 <ControlTemplate>
                                                     <ctrls:ImageContainer Margin="0"
-                                                                          ImageSource="{Binding DataContext.NewMessage.User.ProfileImage, ElementName=Page}"
+                                                                          ImageSource="{Binding User.ProfileImageSource}"
                                                                           Style="{StaticResource ProfileImageSmall}" />
                                                 </ControlTemplate>
                                             </Button.Template>
@@ -84,16 +83,14 @@
                                                 </StackPanel.Resources>
                                                 <!--text-->
                                                 <Grid MaxWidth="380">
-                                                    <Rectangle Opacity="0.2"
-                                                               Fill="{StaticResource PhoneForegroundBrush}">
+                                                    <Rectangle Opacity="0.2" Fill="{StaticResource PhoneForegroundBrush}">
                                                     </Rectangle>
                                                     <!--text-->
                                                     <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding Path=Tweet}"
                                                                            Style="{StaticResource TextContent}" TextAlignment="Left">
                                                     </ctrls:AutoRichTextBox>
                                                 </Grid>
-                                                <TextBlock Opacity="0.6"
-                                                           Text="{Binding CreatedDate}" />
+                                                <TextBlock Opacity="0.6" Text="{Binding CreatedDate}" />
                                             </StackPanel>
                                         </StackPanel>
                                     </StackPanel>
@@ -115,8 +112,7 @@
                                                 </StackPanel.Resources>
                                                 <!--content-->
                                                 <Grid MaxWidth="380">
-                                                    <Rectangle Opacity="0.2"
-                                                               Fill="{StaticResource PhoneForegroundBrush}">
+                                                    <Rectangle Opacity="0.2" Fill="{StaticResource PhoneForegroundBrush}">
                                                     </Rectangle>
                                                     <!--text-->
                                                     <ctrls:AutoRichTextBox Margin="0,4"
@@ -124,8 +120,7 @@
                                                     </ctrls:AutoRichTextBox>
                                                 </Grid>
                                                 <!--date-->
-                                                <TextBlock Opacity="0.6"
-                                                           Text="{Binding CreatedDate}" />
+                                                <TextBlock Opacity="0.6" Text="{Binding CreatedDate}" />
                                             </StackPanel>
                                             <Polygon Opacity="0.2"
                                                      Fill="{StaticResource PhoneForegroundBrush}"
@@ -164,7 +159,7 @@
                      Text="{Binding Path=Text,Mode=TwoWay}"
                      TextChanged="TextContent_TextChanged"
                      GotFocus="TextContent_GotFocus"
-                     MaxHeight="400" MaxLength="400" />
+                     MaxHeight="400" />
         </Grid>
         <!--emotion-->
         <Grid Grid.Row="4">
@@ -182,8 +177,6 @@
                 <abu:AppBar Id="0">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
                                       Text="emotion" Command="{Binding AddEmotionCommand}" />
                 </abu:AppBar>
@@ -191,8 +184,6 @@
                 <abu:AppBar Id="3">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
                                       Text="send" Command="{Binding SendCommand}" />
-                    <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
-                                      Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
                                       Text="emotion" Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>

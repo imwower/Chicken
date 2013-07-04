@@ -15,6 +15,6 @@ namespace Chicken.Model
         public List<string> Connections { get; set; }
     }
 
-    public class Friendships<T> : ModelBaseList<T> where T : Friendship
+    public class Friendships : ModelBaseList<Friendship>
     { }
 }

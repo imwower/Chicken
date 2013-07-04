@@ -32,28 +32,16 @@ namespace Chicken.ViewModel.NewMessage
                 RaisePropertyChanged("Messages");
             }
         }
-        public NewMessageModel NewMessage { get; set; }
-        public string Text
-        {
-            get
-            {
-                return NewMessage.Text;
-            }
-            set
-            {
-                NewMessage.Text = value;
-                RaisePropertyChanged("Text");
-            }
-        }
+        private NewMessageModel newMessage;
         public bool IsNew
         {
             get
             {
-                return NewMessage.IsNew;
+                return newMessage.IsNew;
             }
             set
             {
-                NewMessage.IsNew = value;
+                newMessage.IsNew = value;
                 RaisePropertyChanged("IsNew");
             }
         }
@@ -61,12 +49,24 @@ namespace Chicken.ViewModel.NewMessage
         {
             get
             {
-                return NewMessage.User;
+                return newMessage.User;
             }
             set
             {
-                NewMessage.User = value;
+                newMessage.User = value;
                 RaisePropertyChanged("User");
+            }
+        }
+        public string Text
+        {
+            get
+            {
+                return newMessage.Text;
+            }
+            set
+            {
+                newMessage.Text = value;
+                RaisePropertyChanged("Text");
             }
         }
         private bool hasError;
@@ -94,86 +94,52 @@ namespace Chicken.ViewModel.NewMessage
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
             Messages = new ObservableCollection<DirectMessageViewModel>();
-            NewMessage = new NewMessageModel();
+            newMessage = new NewMessageModel { User = new User() };
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
             ClickHandler = this.ClickAction;
         }
 
-        public void ValidateFriendship()
+        public void ValidateUser()
         {
-            ValidateUserName();
+            if (!string.IsNullOrEmpty(User.ScreenName))
+            {
+                User.ScreenName = User.ScreenName.Replace("@", "").Replace(" ", "");
+                if (string.IsNullOrEmpty(User.ScreenName))
+                    HasError = true;
+                else
+                    hasError = false;
+            }
+            else
+                HasError = true;
             if (HasError)
             {
+                Header = "not a validate user name";
+                HandleMessage(new ToastMessage
+                {
+                    Message = Header
+                });
                 return;
             }
-            TweetService.GetUser<User>(User.ScreenName,
-                user =>
-                {
-                    #region user existes or not:
-                    List<ErrorMessage> errors = user.Errors;
-                    if (errors != null && errors.Count != 0)
-                    {
-                        //user not exist:
-                        HasError = true;
-                        Header = User.DisplayName + " does not exist";
-                        ToastMessageHandler(new ToastMessage
-                        {
-                            Message = Header
-                        });
-                        return;
-                    }
-                    #endregion
-                    #region user followed you or not
-                    TweetService.GetFriendships<Friendships<Friendship>>(User.ScreenName,
-                        friendships =>
-                        {
-                            Friendship friendship = friendships[0];
-                            List<string> connections = friendship.Connections;
-                            if (!connections.Contains(Const.FOLLOWED_BY))
-                            {
-                                HasError = true;
-                                Header = User.DisplayName + " did not follow you";
-                                ToastMessageHandler(new ToastMessage
-                                {
-                                    Message = Header
-                                });
-                                return;
-                            }
-                            HasError = false;
-                            IsNew = false;
-                            User.Id = friendship.Id;
-                            RefreshAction();
-                        });
-                    #endregion
-                });
+            CheckIfUserExists();
         }
 
         #region actions
         private void RefreshAction()
         {
-            #region init from file
-            var newMessage = IsolatedStorageService.GetObject<NewMessageModel>(PageNameEnum.NewMessagePage);
-            if (newMessage != null)
-            {
-                NewMessage = newMessage;
-            }
-            else
+            var file = IsolatedStorageService.GetObject<NewMessageModel>(PageNameEnum.NewMessagePage);
+            if (file == null)
             {
                 IsNew = true;
                 base.Refreshed();
                 return;
             }
-            var file = IsolatedStorageService.GetLatestMessages();
-            if (file != null)
-            {
-                latestMessages = file;
-            }
-            else
-            {
+            newMessage = file;
+            User = newMessage.User;
+            IsNew = false;
+            latestMessages = IsolatedStorageService.GetLatestMessages();
+            if (latestMessages == null)
                 latestMessages = new LatestMessagesModel();
-            }
-            #endregion
             Header = User.DisplayName;
             RefreshReceivedMessages();
         }
@@ -200,14 +166,15 @@ namespace Chicken.ViewModel.NewMessage
         {
             #region validate user name and text
             if (IsLoading || HasError ||
-                string.IsNullOrEmpty(NewMessage.User.ScreenName)
-                || string.IsNullOrEmpty(NewMessage.Text))
+                string.IsNullOrEmpty(newMessage.User.ScreenName)
+                || string.IsNullOrEmpty(newMessage.Text))
             {
                 return;
             }
             #endregion
             #region post new message
-            TweetService.PostNewMessage<DirectMessage>(NewMessage.User.ScreenName, NewMessage.Text,
+            IsLoading = true;
+            TweetService.PostNewMessage<DirectMessage>(newMessage.User.ScreenName, newMessage.Text,
                 message =>
                 {
                     List<ErrorMessage> errors = message.Errors;
@@ -220,10 +187,10 @@ namespace Chicken.ViewModel.NewMessage
                     }
                     else
                     {
-                        User = message.Receiver;
-                        //TODO: create receiver to isolated storage
-                        Text = string.Empty;
+                        newMessage.User = message.Receiver;
                         IsNew = false;
+                        Text = string.Empty;
+                        IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
                         RefreshAction();
                         HandleMessage(new ToastMessage
                         {
@@ -245,7 +212,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
+            TweetService.GetDirectMessages<DirectMessageList>(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -270,7 +237,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
+            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
                 messages =>
                 {
                     #region get messsages
@@ -320,7 +287,10 @@ namespace Chicken.ViewModel.NewMessage
                 foreach (var msg in msgs)
                 {
                     if (string.Compare(msg.Id, latestId) > 0)
+                    {
+                        msg.User = newMessage.User;
                         Messages.Add(new DirectMessageViewModel(msg));
+                    }
                 }
                 ScrollTo = ScrollTo.Bottom;
             }
@@ -338,7 +308,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.MAX_ID, latestMessages.MaxId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList<DirectMessage>>(
+            TweetService.GetDirectMessages<DirectMessageList>(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -367,7 +337,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.MAX_ID, latestMessages.MaxIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList<DirectMessage>>(
+            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
                 messages =>
                 {
                     #region get messsages
@@ -419,7 +389,10 @@ namespace Chicken.ViewModel.NewMessage
                 foreach (var msg in msgs)
                 {
                     if (string.Compare(msg.Id, oldestId) < 0)
+                    {
+                        msg.User = newMessage.User;
                         Messages.Insert(0, new DirectMessageViewModel(msg));
+                    }
                 }
                 ScrollTo = ScrollTo.Top;
             }
@@ -428,21 +401,48 @@ namespace Chicken.ViewModel.NewMessage
             dict.Clear();
         }
 
-        private void ValidateUserName()
+        private void CheckIfUserExists()
         {
-            if (!string.IsNullOrEmpty(User.ScreenName))
-            {
-                User.ScreenName = User.ScreenName.Replace("@", "").Replace(" ", "");
-                if (!string.IsNullOrEmpty(User.ScreenName))
+            TweetService.GetUser<User>(User.ScreenName,
+                user =>
                 {
+                    List<ErrorMessage> errors = user.Errors;
+                    if (errors != null && errors.Count != 0)
+                    {
+                        HasError = true;
+                        Header = User.DisplayName + " does not exist";
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = Header
+                        });
+                        return;
+                    }
+                    newMessage.User = user;
+                    ValidateFriendship();
+                });
+        }
+
+        private void ValidateFriendship()
+        {
+            TweetService.GetFriendships<Friendships>(User.ScreenName,
+                friendships =>
+                {
+                    Friendship friendship = friendships[0];
+                    List<string> connections = friendship.Connections;
+                    if (!connections.Contains(Const.FOLLOWED_BY))
+                    {
+                        HasError = true;
+                        Header = User.DisplayName + " did not follow you";
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = Header
+                        });
+                        return;
+                    }
                     HasError = false;
-                }
-            }
-            else
-            {
-                HasError = true;
-                Header = "not a validate user name";
-            }
+                    IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
+                    RefreshAction();
+                });
         }
         #endregion
     }

@@ -20,8 +20,11 @@ namespace Chicken.ViewModel.Status
             }
             set
             {
-                tweet = value;
-                RaisePropertyChanged("Tweet");
+                if (tweet != value)
+                {
+                    tweet = value;
+                    RaisePropertyChanged("Tweet");
+                }
             }
         }
         protected string nextCursor = "-1";
@@ -87,10 +90,10 @@ namespace Chicken.ViewModel.Status
             {
                 return;
             }
-            IsLoading = true;
-            var action = RetweetActionType.Create;
             if (!Tweet.IsRetweeted)
             {
+                IsLoading = true;
+                var action = RetweetActionType.Create;
                 TweetService.Retweet<Tweet>(Tweet.Id, action,
                    t =>
                    {

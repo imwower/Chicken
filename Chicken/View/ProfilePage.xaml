@@ -18,7 +18,7 @@
     SupportedOrientations="Portrait"  Orientation="Portrait">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=User.ScreenName}">
+        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=User.DisplayName}">
             <!--profile detail-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
@@ -171,7 +171,7 @@
                                 <ctrls:AutoRichTextBox  Grid.Row="2"
                                                         TweetData="{Binding Path=UserProfile.UserProfileDetail}"
                                                         HorizontalAlignment="Stretch"
-                                                         VerticalAlignment="Center" TextAlignment="Center"
+                                                        VerticalAlignment="Center" TextAlignment="Center"
                                                         Style="{StaticResource TextContent}">
                                 </ctrls:AutoRichTextBox>
                             </Grid>

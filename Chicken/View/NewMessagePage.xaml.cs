@@ -97,7 +97,7 @@ namespace Chicken.View
             if (e.Key == Key.Enter)
             {
                 this.TextContent.Focus();
-                newMessageViewModel.ValidateFriendship();
+                newMessageViewModel.ValidateUser();
             }
         }
 

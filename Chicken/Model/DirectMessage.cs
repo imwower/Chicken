@@ -11,7 +11,7 @@ namespace Chicken.Model
         public User Receiver { get; set; }
     }
 
-    public class DirectMessageList<T> : ModelBaseList<T> where T : DirectMessage
+    public class DirectMessageList : ModelBaseList<DirectMessage>
     {
     }
 }

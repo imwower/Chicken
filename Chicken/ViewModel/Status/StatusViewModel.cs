@@ -88,15 +88,13 @@ namespace Chicken.ViewModel.Status
                             data.IsSentByMe = true;
                         }
                         this.tweet = new TweetDetailViewModel(data);
-                        (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
-                        base.MainPivot_LoadedPivotItem(selectedIndex);
-                        SwitchAppBar();
+                        SwitchAppBar(selectedIndex);
                         IsInit = true;
                     });
             }
             else
             {
-                SwitchAppBar();
+                SwitchAppBar(selectedIndex);
             }
         }
 
@@ -128,7 +126,7 @@ namespace Chicken.ViewModel.Status
         #endregion
 
         #region private
-        private void SwitchAppBar()
+        private void SwitchAppBar(int selectedIndex)
         {
             if (tweet.IsSentByMe)
             {
@@ -138,6 +136,8 @@ namespace Chicken.ViewModel.Status
             {
                 State = AppBarState.StatusPageDefault;
             }
+            (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
+            base.MainPivot_LoadedPivotItem(selectedIndex);
         }
         #endregion
     }

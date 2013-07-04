@@ -47,6 +47,8 @@ namespace Chicken.ViewModel.Profile.VM
 
         private void NewMessageAction()
         {
+            if (IsLoading)
+                return;
             if (!followedBy)
             {
                 HandleMessage(new ToastMessage
@@ -55,6 +57,7 @@ namespace Chicken.ViewModel.Profile.VM
                 });
                 return;
             }
+            IsLoading = false;
             var newMessage = new NewMessageModel
             {
                 User = UserProfile.User as User,
@@ -66,7 +69,7 @@ namespace Chicken.ViewModel.Profile.VM
         #region private
         private void GetFollowedByState()
         {
-            TweetService.GetFriendshipConnections<Friendships<Friendship>>(this.UserProfile.Id,
+            TweetService.GetFriendshipConnections<Friendships>(this.UserProfile.Id,
                 friendships =>
                 {
                     if (friendships != null && friendships.Count != 0)
