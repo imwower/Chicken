@@ -82,7 +82,7 @@ namespace Chicken.ViewModel.Settings
                 return;
             IsLoading = true;
             generalSettings.APISettings.Url = GeneralSettings.APISettings.Url.TrimEnd('/') + "/";
-            TweetService.TestAPIUrl<UserProfileDetail>(GeneralSettings.APISettings.Url,
+            TweetService.TestAPIUrl(GeneralSettings.APISettings.Url,
                 userProfileDetail =>
                 {
                     IsLoading = false;
@@ -114,7 +114,7 @@ namespace Chicken.ViewModel.Settings
         #region private
         private void GetConfiguration()
         {
-            //TweetService.GetTweetConfiguration<TweetConfiguration>(
+            //TweetService.GetTweetConfiguration(
             //    configuration =>
             //    {
             //configuration.LastUpdateTime = DateTime.Now;
@@ -122,7 +122,7 @@ namespace Chicken.ViewModel.Settings
             //App.InitConfiguration();
             HandleMessage(new ToastMessage
             {
-                Message = isInitAPI ? "hello, " + App.AuthenticatedUser.ScreenName : "update successfully",
+                Message = isInitAPI ? "hello, " + App.AuthenticatedUser.DisplayName : "update successfully",
                 Complete =
                 () =>
                 {

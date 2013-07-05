@@ -100,7 +100,7 @@ namespace Chicken.ViewModel.NewTweet
             {
                 return;
             }
-            TweetService.PostNewTweet<Tweet>(tweetModel,
+            TweetService.PostNewTweet(tweetModel,
                 tweet =>
                 {
                     List<ErrorMessage> errors = tweet.Errors;

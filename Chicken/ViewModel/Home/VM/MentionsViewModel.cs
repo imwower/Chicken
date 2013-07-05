@@ -25,7 +25,7 @@ namespace Chicken.ViewModel.Home.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetMentions<TweetList>(
+            TweetService.GetMentions(
                 tweets =>
                 {
                     if (tweets != null && tweets.Count != 0)
@@ -62,7 +62,7 @@ namespace Chicken.ViewModel.Home.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetMentions<TweetList>(
+                TweetService.GetMentions(
                     tweets =>
                     {
                         foreach (var tweet in tweets)

@@ -31,7 +31,7 @@ namespace Chicken.ViewModel.Profile.VM
                 sinceId = TweetList[0].Id;
                 parameters.Add(Const.SINCE_ID, sinceId);
             }
-            TweetService.GetUserFavorites<TweetList>(UserProfile.User,
+            TweetService.GetUserFavorites(UserProfile.User,
                 tweets =>
                 {
                     if (tweets != null && tweets.Count != 0)
@@ -68,7 +68,7 @@ namespace Chicken.ViewModel.Profile.VM
                 string maxId = TweetList[TweetList.Count - 1].Id;
                 var parameters = TwitterHelper.GetDictionary();
                 parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetUserFavorites<TweetList>(UserProfile.User,
+                TweetService.GetUserFavorites(UserProfile.User,
                     tweets =>
                     {
                         foreach (var tweet in tweets)

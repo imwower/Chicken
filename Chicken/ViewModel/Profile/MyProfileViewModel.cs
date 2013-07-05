@@ -48,8 +48,12 @@ namespace Chicken.ViewModel.Profile
         #region actions
         private void RefreshAction()
         {
-            MyProfile = IsolatedStorageService.GetAuthenticatedUser();
-            base.Refreshed();
+            TweetService.GetMyProfileDetail(
+                profile =>
+                {
+                    MyProfile = profile;
+                    base.Refreshed();
+                });
         }
 
         private void SaveAction()
@@ -66,7 +70,7 @@ namespace Chicken.ViewModel.Profile
                 parameters.Add(Const.DESCRIPTION, MyProfile.Text);
             if (parameters.Count == 0)
                 return;
-            TweetService.UpdateMyProfile<User>(
+            TweetService.UpdateMyProfile(
                 user =>
                 {
                     IsLoading = false;

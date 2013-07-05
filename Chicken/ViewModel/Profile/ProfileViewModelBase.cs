@@ -9,11 +9,6 @@ namespace Chicken.ViewModel.Profile
 {
     public class ProfileViewModelBase : PivotItemViewModelBase
     {
-        #region event handler
-        public delegate void NewMessageEventHandler();
-        public NewMessageEventHandler NewMessageHandler;
-        #endregion
-
         #region properties
         private UserProfileDetailViewModel userProfile;
         public UserProfileDetailViewModel UserProfile
@@ -78,15 +73,6 @@ namespace Chicken.ViewModel.Profile
         #region public method
         public virtual void NewMessage()
         {
-            if (IsLoading)
-            {
-                return;
-            }
-            if (NewMessageHandler != null)
-            {
-                IsLoading = false;
-                NewMessageHandler();
-            }
         }
 
         public virtual void Mention()
@@ -95,12 +81,13 @@ namespace Chicken.ViewModel.Profile
             {
                 return;
             }
+            IsLoading = false;
             NewTweetModel newTweet = new NewTweetModel
             {
                 Type = NewTweetActionType.Mention,
+                InReplyToUserScreenName = UserProfile.DisplayName,
                 Text = UserProfile.DisplayName + " ",
             };
-            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
         }
 
@@ -143,7 +130,7 @@ namespace Chicken.ViewModel.Profile
         #region for following and followers pivot
         protected void RefreshUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList>(userIds,
+            TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
@@ -156,7 +143,7 @@ namespace Chicken.ViewModel.Profile
 
         protected void LoadUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList>(userIds,
+            TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
                     foreach (var userProfile in userProfiles)

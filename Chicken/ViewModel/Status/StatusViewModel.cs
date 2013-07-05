@@ -64,7 +64,6 @@ namespace Chicken.ViewModel.Status
 
         public StatusViewModel()
         {
-            Title = "Status";
             var baseViewModelList = new List<PivotItemViewModelBase>()
             {
                 new StatusDetailViewModel(),
@@ -79,7 +78,7 @@ namespace Chicken.ViewModel.Status
             {
                 PivotItems[selectedIndex].IsLoading = true;
                 string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
-                TweetService.GetStatusDetail<Tweet>(statusId,
+                TweetService.GetStatusDetail(statusId,
                     data =>
                     {
                         if (data.User.Id == App.AuthenticatedUser.Id)

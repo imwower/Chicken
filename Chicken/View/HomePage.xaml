@@ -11,7 +11,7 @@
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
     xmlns:v ="clr-namespace:Chicken.View"
     x:Class="Chicken.View.HomePage"
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"

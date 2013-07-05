@@ -80,7 +80,7 @@ namespace Chicken.ViewModel.Home.VM
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList>(
+            TweetService.GetDirectMessages(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -105,7 +105,7 @@ namespace Chicken.ViewModel.Home.VM
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
+            TweetService.GetDirectMessagesSentByMe(
                 messages =>
                 {
                     #region get messsages
@@ -168,7 +168,7 @@ namespace Chicken.ViewModel.Home.VM
                 parameters.Add(Const.MAX_ID, latestMessages.MaxId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList>(
+            TweetService.GetDirectMessages(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -197,7 +197,7 @@ namespace Chicken.ViewModel.Home.VM
                 parameters.Add(Const.MAX_ID, latestMessages.MaxIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
+            TweetService.GetDirectMessagesSentByMe(
                 messages =>
                 {
                     #region get messsages

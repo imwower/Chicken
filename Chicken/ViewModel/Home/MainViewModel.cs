@@ -46,7 +46,6 @@ namespace Chicken.ViewModel.Home
 
         public MainViewModel()
         {
-            Title = "Chicken";
             var baseViewModelList = new List<PivotItemViewModelBase>
             {
                 new HomeViewModel(),

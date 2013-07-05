@@ -9,75 +9,77 @@ namespace Chicken.Service.Interface
     public interface ITweetService
     {
         #region Home Page
-        void GetTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetTweets(Action<TweetList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetMentions(Action<TweetList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetDirectMessages(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetDirectMessagesSentByMe(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region profile page
-        void GetUserProfileDetail<T>(User user, Action<T> callBack);
+        void GetUserProfileDetail(User user, Action<UserProfileDetail> callBack);
 
-        void FollowOrUnFollow<T>(User user, Action<T> callBack);
+        void FollowOrUnFollow(User user, Action<User> callBack);
 
-        void GetFriendshipConnections<T>(string userIdList, Action<T> callBack);
+        void GetFriendshipConnections(string userIdList, Action<Friendships> callBack);
 
-        void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserTweets(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetFollowingIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetFollowerIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserProfiles(string userIds, Action<UserProfileList> callBack, IDictionary<string, object> parameters = null);
 
-        void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetUserFavorites(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region status page
-        void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetStatusDetail(string statusId, Action<Tweet> callBack, IDictionary<string, object> parameters = null);
 
-        void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack);
+        void AddToFavorites(string statusId, AddToFavoriteActionType action, Action<Tweet> callBack);
 
-        void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack);
+        void Retweet(string statusId, RetweetActionType action, Action<Tweet> callBack);
 
-        void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
+        void GetStatusRetweetIds(string statusId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null);
 
-        void DeleteTweet<T>(string statusId, Action<T> callBack);
+        void DeleteTweet(string statusId, Action<Tweet> callBack);
 
         #endregion
 
         #region new tweet
-        void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack);
+        void PostNewTweet(NewTweetModel newTweet, Action<Tweet> callBack);
         #endregion
 
         #region new message
-        void GetUser<T>(string screenName, Action<T> callBack);
+        void GetUser(string screenName, Action<User> callBack);
 
-        void GetFriendships<T>(string screenNameList, Action<T> callBack);
-
-        void PostNewMessage<T>(string userName, string text, Action<T> callBack);
+        void PostNewMessage(NewMessageModel newMessage, Action<DirectMessage> callBack);
         #endregion
 
         #region my profile page
-        void GetMyProfileDetail<T>(Action<T> callBack);
-        void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters);
+        void GetMyProfileDetail(Action<UserProfileDetail> callBack);
+
+        void UpdateMyProfile(Action<User> callBack, IDictionary<string, object> parameters);
         #endregion
 
         #region edit api settings page
-        void TestAPIUrl<T>(string apiUrl, Action<T> callBack);
+        void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack);
 
-        void GetTweetConfiguration<T>(Action<T> callBack);
+        void GetTweetConfiguration(Action<TweetConfiguration> callBack);
         #endregion
 
     }
 
     public class RequestDataObject<T>
+        where T : ModelBase
     {
         public HttpWebRequest Request { get; set; }
+
         public Action<T> CallBack { get; set; }
+
         public T Result { get; set; }
     }
 }

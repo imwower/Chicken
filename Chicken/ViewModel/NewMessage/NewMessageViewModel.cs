@@ -174,7 +174,7 @@ namespace Chicken.ViewModel.NewMessage
             #endregion
             #region post new message
             IsLoading = true;
-            TweetService.PostNewMessage<DirectMessage>(newMessage.User.ScreenName, newMessage.Text,
+            TweetService.PostNewMessage(newMessage,
                 message =>
                 {
                     List<ErrorMessage> errors = message.Errors;
@@ -212,7 +212,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList>(
+            TweetService.GetDirectMessages(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -237,7 +237,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.SINCE_ID, latestMessages.SinceIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
+            TweetService.GetDirectMessagesSentByMe(
                 messages =>
                 {
                     #region get messsages
@@ -308,7 +308,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.MAX_ID, latestMessages.MaxId);
             }
             #endregion
-            TweetService.GetDirectMessages<DirectMessageList>(
+            TweetService.GetDirectMessages(
                 messages =>
                 {
                     if (messages != null && messages.Count != 0)
@@ -337,7 +337,7 @@ namespace Chicken.ViewModel.NewMessage
                 parameters.Add(Const.MAX_ID, latestMessages.MaxIdByMe);
             }
             #endregion
-            TweetService.GetDirectMessagesSentByMe<DirectMessageList>(
+            TweetService.GetDirectMessagesSentByMe(
                 messages =>
                 {
                     #region get messsages
@@ -403,7 +403,7 @@ namespace Chicken.ViewModel.NewMessage
 
         private void CheckIfUserExists()
         {
-            TweetService.GetUser<User>(User.ScreenName,
+            TweetService.GetUser(User.ScreenName,
                 user =>
                 {
                     List<ErrorMessage> errors = user.Errors;
@@ -424,7 +424,7 @@ namespace Chicken.ViewModel.NewMessage
 
         private void ValidateFriendship()
         {
-            TweetService.GetFriendships<Friendships>(User.ScreenName,
+            TweetService.GetFriendshipConnections(User.Id,
                 friendships =>
                 {
                     Friendship friendship = friendships[0];

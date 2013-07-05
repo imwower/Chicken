@@ -25,37 +25,37 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region Home Page
-        public void GetTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetTweets(Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_HOMETIMELINE, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetMentions(Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_MENTIONS_TIMELINE, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetDirectMessages(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetDirectMessagesSentByMe(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGES_SENT_BY_ME, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region profile page
-        public void GetUserProfileDetail<T>(User user, Action<T> callBack)
+        public void GetUserProfileDetail(User user, Action<UserProfileDetail> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(user.Id))
@@ -68,19 +68,18 @@ namespace Chicken.Service.Implementation
             }
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void FollowOrUnFollow<T>(User user, Action<T> callBack)
+        public void FollowOrUnFollow(User user, Action<User> callBack)
         {
             if (user == null)
                 return;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, user.Id);
-            string url = user.IsFollowing ?
-                TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_DESTROY, parameters) :
-                TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_CREATE, parameters);
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            string action = user.IsFollowing ? Const.FRIENDSHIPS_DESTROY : Const.FRIENDSHIPS_CREATE;
+            string url = TwitterHelper.GenerateUrlParams(action, parameters);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
 
         /// <summary>
@@ -89,15 +88,15 @@ namespace Chicken.Service.Implementation
         /// <typeparam name="T"></typeparam>
         /// <param name="userIdList"></param>
         /// <param name="callBack"></param>
-        public void GetFriendshipConnections<T>(string userIdList, Action<T> callBack)
+        public void GetFriendshipConnections(string userIdList, Action<Friendships> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, userIdList);
             string url = TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_LOOKUP, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserTweets(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             if (!string.IsNullOrEmpty(user.Id))
@@ -109,38 +108,38 @@ namespace Chicken.Service.Implementation
                 parameters.Add(Const.USER_SCREEN_NAME, user.ScreenName);
             }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_TIMELINE, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetFollowingIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.USER_ID, userId);
             parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USER_FOLLOWING_IDS, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetFollowerIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.USER_ID, userId);
             parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.USER_FOLLOWER_IDS, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserProfiles(string userIds, Action<UserProfileList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.USER_ID, userIds);
             parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             parameters.Add(Const.INCLUDE_ENTITIES, Const.DEFAULT_VALUE_FALSE);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_LOOKUP, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetUserFavorites(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = CheckSinceIdAndMaxId(parameters);
             if (!string.IsNullOrEmpty(user.Id))
@@ -152,20 +151,20 @@ namespace Chicken.Service.Implementation
                 parameters.Add(Const.USER_SCREEN_NAME, user.ScreenName);
             }
             string url = TwitterHelper.GenerateUrlParams(Const.USER_FAVORITE, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region Status Page
-        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail(string statusId, Action<Tweet> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.ID, statusId);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_SHOW, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack)
+        public void AddToFavorites(string statusId, AddToFavoriteActionType action, Action<Tweet> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, statusId);
@@ -173,48 +172,50 @@ namespace Chicken.Service.Implementation
             switch (action)
             {
                 case AddToFavoriteActionType.Destroy:
-                    url = TwitterHelper.GenerateUrlParams(Const.ADD_TO_FAVORITES_DESTROY, parameters);
+                    url = Const.ADD_TO_FAVORITES_DESTROY;
                     break;
                 case AddToFavoriteActionType.Create:
                 default:
-                    url = TwitterHelper.GenerateUrlParams(Const.ADD_TO_FAVORITES_CREATE, parameters);
+                    url = Const.ADD_TO_FAVORITES_CREATE;
                     break;
             }
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            url = TwitterHelper.GenerateUrlParams(url, parameters);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
 
-        public void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack)
+        public void Retweet(string statusId, RetweetActionType action, Action<Tweet> callBack)
         {
             string url = string.Empty;
             switch (action)
             {
                 case RetweetActionType.Create:
-                    url = string.Format(Const.RETWEET_CREATE, App.Settings.APISettings.Url, statusId);
+                    url = Const.RETWEET_CREATE;
                     break;
             }
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            url = string.Format(url, App.Settings.APISettings.Url, statusId);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
 
-        public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusRetweetIds(string statusId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             parameters.Add(Const.ID, statusId);
             parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_RETWEET_IDS, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void DeleteTweet<T>(string statusId, Action<T> callBack)
+        public void DeleteTweet(string statusId, Action<Tweet> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.ID, statusId);
             string url = string.Format(Const.STATUSES_DESTROY, App.Settings.APISettings.Url, statusId);
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
         #endregion
 
         #region new tweet
-        public void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack)
+        public void PostNewTweet(NewTweetModel newTweet, Action<Tweet> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.STATUS, newTweet.Text);
@@ -223,82 +224,75 @@ namespace Chicken.Service.Implementation
                 parameters.Add(Const.IN_REPLY_TO_STATUS_ID, newTweet.InReplyToStatusId);
             }
             string url = TwitterHelper.GenerateUrlParams(Const.STATUS_POST_NEW_TWEET, parameters);
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
         #endregion
 
         #region new message
-        public void GetUser<T>(string screenName, Action<T> callBack)
+        public void GetUser(string screenName, Action<User> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_SCREEN_NAME, screenName);
             parameters.Add(Const.INCLUDE_ENTITIES, Const.DEFAULT_VALUE_FALSE);
             string url = TwitterHelper.GenerateUrlParams(Const.USERS_SHOW, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetFriendships<T>(string screenNameList, Action<T> callBack)
+        public void PostNewMessage(NewMessageModel newMessage, Action<DirectMessage> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.USER_SCREEN_NAME, screenNameList);
-            string url = TwitterHelper.GenerateUrlParams(Const.FRIENDSHIPS_LOOKUP, parameters);
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
-        {
-            var parameters = TwitterHelper.GetDictionary();
-            parameters.Add(Const.USER_SCREEN_NAME, userName);
-            parameters.Add(Const.TEXT, text);
+            parameters.Add(Const.USER_SCREEN_NAME, newMessage.User.ScreenName);
+            parameters.Add(Const.TEXT, newMessage.Text);
             string url = TwitterHelper.GenerateUrlParams(Const.DIRECT_MESSAGE_POST_NEW_MESSAGE, parameters);
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
         #endregion
 
         #region my profile
-        public void GetMyProfileDetail<T>(Action<T> callBack)
+        public void GetMyProfileDetail(Action<UserProfileDetail> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_MYSELF, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters)
+        public void UpdateMyProfile(Action<User> callBack, IDictionary<string, object> parameters)
         {
-            if (parameters == null)
+            if (parameters == null || parameters.Count == 0)
             {
                 return;
             }
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_UPDATE_MYPROFILE, parameters);
-            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
+            HandleWebRequest(url, callBack, Const.HTTPPOST);
         }
         #endregion
 
         #region edit api settings
-        public void TestAPIUrl<T>(string apiUrl, Action<T> callBack)
+        public void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack)
         {
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = apiUrl + Const.PROFILE_MYSELF;
             url = TwitterHelper.GenerateAPIParams(url, parameters);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetTweetConfiguration<T>(Action<T> callBack)
+        public void GetTweetConfiguration(Action<TweetConfiguration> callBack)
         {
             string url = TwitterHelper.GenerateUrlParams(Const.TWEET_CONFIGURATION);
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region private method
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
+            where T : ModelBase, new()
         {
             HttpWebRequest request = WebRequest.CreateHttp(url);
-            request.Method = method.ToString();
-            RequestDataObject<T> dto = new RequestDataObject<T>
+            request.Method = method;
+            RequestDataObject<T> data = new RequestDataObject<T>
             {
                 Request = request,
                 CallBack = callBack,
@@ -307,57 +301,70 @@ namespace Chicken.Service.Implementation
                 result =>
                 {
                     HandleResponse<T>(result);
-                }, dto);
+                }, data);
         }
 
         private void HandleResponse<T>(IAsyncResult result)
+            where T : ModelBase, new()
         {
-            var dto = result.AsyncState as RequestDataObject<T>;
+            var data = result.AsyncState as RequestDataObject<T>;
+            #region deserialize
             try
             {
-                var response = dto.Request.EndGetResponse(result);
+                var response = data.Request.EndGetResponse(result);
                 using (var streamReader = new StreamReader(response.GetResponseStream()))
                 {
                     using (var reader = new JsonTextReader(streamReader))
                     {
-                        dto.Result = jsonSerializer.Deserialize<T>(reader);
+                        data.Result = jsonSerializer.Deserialize<T>(reader);
                     }
                 }
             }
+            #endregion
+            #region exception
             catch (WebException webException)
             {
                 try
                 {
+                    #region api error
                     using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
                     {
                         using (var reader = new JsonTextReader(streamReader))
                         {
-                            dto.Result = jsonSerializer.Deserialize<T>(reader);
+                            data.Result = jsonSerializer.Deserialize<T>(reader);
                         }
                     }
+                    #endregion
                 }
                 catch
                 {
+                    data.Result = GetErrorMessage<T>(webException.Message);
                     Debug.WriteLine(webException.Message);
                 }
             }
             catch (Exception e)
             {
+                data.Result = GetErrorMessage<T>(e.Message);
+                Debug.WriteLine(e.Message);
             }
+            #endregion
+            #region callback
             finally
             {
-                if (dto.CallBack != null)
+                if (data.CallBack != null)
                 {
                     Deployment.Current.Dispatcher.BeginInvoke(
                         () =>
                         {
-                            dto.CallBack(dto.Result);
+                            data.CallBack(data.Result);
                         });
                 }
             }
+            #endregion
         }
 
-        public static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)
+        #region private
+        private static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
             if (parameters.ContainsKey(Const.SINCE_ID) ||
@@ -371,6 +378,22 @@ namespace Chicken.Service.Implementation
             }
             return parameters;
         }
+
+        private static T GetErrorMessage<T>(string message)
+            where T : ModelBase, new()
+        {
+            return new T
+            {
+                Errors = new List<ErrorMessage>
+                {
+                    new ErrorMessage
+                    {
+                        Message = message
+                    }
+                }
+            };
+        }
+        #endregion
         #endregion
     }
 }

@@ -27,25 +27,10 @@ namespace Chicken.ViewModel.Profile.VM
         {
             Header = "Profile";
             RefreshHandler = this.RefreshAction;
-            NewMessageHandler = this.NewMessageAction;
         }
 
-        #region actions
-        private void RefreshAction()
-        {
-            if (UserProfile.IsMyself)
-            {
-                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
-                App.InitAuthenticatedUser();
-            }
-            else
-            {
-                GetFollowedByState();
-            }
-            base.Refreshed();
-        }
-
-        private void NewMessageAction()
+        #region override
+        public override void NewMessage()
         {
             if (IsLoading)
                 return;
@@ -66,10 +51,26 @@ namespace Chicken.ViewModel.Profile.VM
         }
         #endregion
 
+        #region actions
+        private void RefreshAction()
+        {
+            if (UserProfile.IsMyself)
+            {
+                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
+                App.InitAuthenticatedUser();
+            }
+            else
+            {
+                GetFollowedByState();
+            }
+            base.Refreshed();
+        }
+        #endregion
+
         #region private
         private void GetFollowedByState()
         {
-            TweetService.GetFriendshipConnections<Friendships>(this.UserProfile.Id,
+            TweetService.GetFriendshipConnections(this.UserProfile.Id,
                 friendships =>
                 {
                     if (friendships != null && friendships.Count != 0)

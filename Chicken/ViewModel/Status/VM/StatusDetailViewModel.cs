@@ -64,7 +64,7 @@ namespace Chicken.ViewModel.Status.VM
             {
                 ConversationList = new ObservableCollection<TweetViewModel>();
             }
-            TweetService.GetStatusDetail<Tweet>(statusId,
+            TweetService.GetStatusDetail(statusId,
                 tweet =>
                 {
                     ConversationList.Add(new TweetViewModel(tweet));

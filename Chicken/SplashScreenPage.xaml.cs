@@ -31,7 +31,7 @@ namespace Chicken
                 //if (App.Configuration == null ||
                 //    App.Configuration.LastUpdateTime.Date < DateTime.Now.Date)
                 //{
-                //    TweetService.GetTweetConfiguration<TweetConfiguration>(
+                //TweetService.GetTweetConfiguration(
                 //        configuration =>
                 //        {
                 //            configuration.LastUpdateTime = DateTime.Now;

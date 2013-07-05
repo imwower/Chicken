@@ -98,7 +98,7 @@ namespace Chicken.ViewModel.Profile
             {
                 PivotItems[selectedIndex].IsLoading = true;
                 var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
-                TweetService.GetUserProfileDetail<UserProfileDetail>(selectedUser,
+                TweetService.GetUserProfileDetail(selectedUser,
                     profile =>
                     {
                         this.User = new UserProfileDetailViewModel(profile);
@@ -135,7 +135,7 @@ namespace Chicken.ViewModel.Profile
         private void FollowAction()
         {
             PivotItems[SelectedIndex].IsLoading = true;
-            TweetService.FollowOrUnFollow<User>(user.User,
+            TweetService.FollowOrUnFollow(user.User,
                 profile =>
                 {
                     List<ErrorMessage> errors = profile.Errors;
@@ -165,7 +165,7 @@ namespace Chicken.ViewModel.Profile
                     }
                     toastMessage.Message = message;
                     PivotItems[SelectedIndex].HandleMessage(toastMessage);
-                    TweetService.GetUserProfileDetail<UserProfileDetail>(User.User,
+                    TweetService.GetUserProfileDetail(User.User,
                         profileDetail =>
                         {
                             this.User = new UserProfileDetailViewModel(profileDetail);

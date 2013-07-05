@@ -63,7 +63,7 @@ namespace Chicken.ViewModel.Status
             }
             IsLoading = true;
             var action = Tweet.IsFavorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
-            TweetService.AddToFavorites<Tweet>(Tweet.Id, action,
+            TweetService.AddToFavorites(Tweet.Id, action,
                 t =>
                 {
                     var toastMessage = new ToastMessage();
@@ -94,7 +94,7 @@ namespace Chicken.ViewModel.Status
             {
                 IsLoading = true;
                 var action = RetweetActionType.Create;
-                TweetService.Retweet<Tweet>(Tweet.Id, action,
+                TweetService.Retweet(Tweet.Id, action,
                    t =>
                    {
                        var toastMessage = new ToastMessage();
@@ -132,7 +132,7 @@ namespace Chicken.ViewModel.Status
                 !Tweet.IsSentByMe)
                 return;
             IsLoading = true;
-            TweetService.DeleteTweet<Tweet>(Tweet.Id,
+            TweetService.DeleteTweet(Tweet.Id,
                 data =>
                 {
                     IsLoading = false;
@@ -170,7 +170,7 @@ namespace Chicken.ViewModel.Status
         #region for retweets and favorites pivot
         protected void RefreshUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList>(userIds,
+            TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
                     for (int i = userProfiles.Count - 1; i >= 0; i--)
@@ -183,7 +183,7 @@ namespace Chicken.ViewModel.Status
 
         protected void LoadUserProfiles(string userIds)
         {
-            TweetService.GetUserProfiles<UserProfileList>(userIds,
+            TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
                     foreach (var userProfile in userProfiles)

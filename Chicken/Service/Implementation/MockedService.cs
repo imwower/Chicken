@@ -21,124 +21,117 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region Home Page
-        public void GetTweets<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetTweets(Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/hometimeline.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetMentions<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetMentions(Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/mentions.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetDirectMessages<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetDirectMessages(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/direct_messages.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetDirectMessagesSentByMe<T>(Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetDirectMessagesSentByMe(Action<DirectMessageList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/direct_messages_sent_by_me.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region profile page
-        public void GetUserProfileDetail<T>(User user, Action<T> callBack)
+        public void GetUserProfileDetail(User user, Action<UserProfileDetail> callBack)
         {
             string url = "SampleData/userProfile.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void FollowOrUnFollow<T>(User user, Action<T> callBack)
-        {
-            if (user.IsFollowing)
-            {
-                string url = "SampleData/userProfile_unfollow.json";
-                HandleWebRequest<T>(url, callBack);
-            }
-            else
-            {
-                string url = "SampleData/userProfile_follow.json";
-                HandleWebRequest<T>(url, callBack);
-            }
-        }
-
-        public void GetFriendshipConnections<T>(string userIdList, Action<T> callBack)
-        {
-            string url = "SampleData/friendships.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void GetUserTweets<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
-        {
-            string url = "SampleData/user_timeline.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void GetFollowingIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
-        {
-            string url = "SampleData/followingIds.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void GetFollowerIds<T>(string userId, Action<T> callBack, IDictionary<string, object> parameters = null)
-        {
-            string url = "SampleData/followingIds.json";
-            //string url = "SampleData/errors.json";
             HandleWebRequest(url, callBack);
         }
 
-        public void GetUserProfiles<T>(string userIds, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void FollowOrUnFollow(User user, Action<User> callBack)
         {
-            string url = "SampleData/lookup.json";
-            HandleWebRequest<T>(url, callBack);
+            string url = user.IsFollowing ?
+                "SampleData/userProfile_unfollow.json" :
+                "SampleData/userProfile_follow.json";
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetUserFavorites<T>(User user, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetFriendshipConnections(string userIdList, Action<Friendships> callBack)
+        {
+            string url = "SampleData/friendships.json";
+            HandleWebRequest(url, callBack);
+        }
+
+        public void GetUserTweets(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/user_timeline.json";
+            HandleWebRequest(url, callBack);
+        }
+
+        public void GetFollowingIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/followingIds.json";
+            HandleWebRequest(url, callBack);
+        }
+
+        public void GetFollowerIds(string userId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/followingIds.json";
+            HandleWebRequest(url, callBack);
+        }
+
+        public void GetUserProfiles(string userIds, Action<UserProfileList> callBack, IDictionary<string, object> parameters = null)
+        {
+            string url = "SampleData/lookup.json";
+            HandleWebRequest(url, callBack);
+        }
+
+        public void GetUserFavorites(User user, Action<TweetList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/user_favourites.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region status page
-        public void GetStatusDetail<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusDetail(string statusId, Action<Tweet> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/tweet.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void AddToFavorites<T>(string statusId, AddToFavoriteActionType action, Action<T> callBack)
+        public void AddToFavorites(string statusId, AddToFavoriteActionType action, Action<Tweet> callBack)
         {
             string url = "SampleData/tweet.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void Retweet<T>(string statusId, RetweetActionType action, Action<T> callBack)
+        public void Retweet(string statusId, RetweetActionType action, Action<Tweet> callBack)
         {
             string url = "SampleData/tweet.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null)
+        public void GetStatusRetweetIds(string statusId, Action<UserIdList> callBack, IDictionary<string, object> parameters = null)
         {
             string url = "SampleData/followingIds.json";
             HandleWebRequest(url, callBack);
         }
 
-        public void DeleteTweet<T>(string statusId, Action<T> callBack)
+        public void DeleteTweet(string statusId, Action<Tweet> callBack)
         {
             string url = "SampleData/tweet.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region new tweet
-        public void PostNewTweet<T>(NewTweetModel newTweet, Action<T> callBack)
+        public void PostNewTweet(NewTweetModel newTweet, Action<Tweet> callBack)
         {
             string url = "SampleData/tweet.json";
             HandleWebRequest(url, callBack);
@@ -146,51 +139,44 @@ namespace Chicken.Service.Implementation
         #endregion
 
         #region new message
-        public void GetUser<T>(string screenName, Action<T> callBack)
+        public void GetUser(string screenName, Action<User> callBack)
         {
             string url = "SampleData/userProfile.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetFriendships<T>(string screenNameList, Action<T> callBack)
+        public void PostNewMessage(NewMessageModel newMessage, Action<DirectMessage> callBack)
         {
-            string url = "SampleData/friendships.json";
-            HandleWebRequest<T>(url, callBack);
-        }
-
-        public void PostNewMessage<T>(string userName, string text, Action<T> callBack)
-        {
-            //string url = "SampleData/direct_message_post_new_message.json";
-            string url = "SampleData/not_following_you.json";
-            HandleWebRequest<T>(url, callBack);
+            string url = "SampleData/direct_message_post_new_message.json";
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region my profile
-        public void GetMyProfileDetail<T>(Action<T> callBack)
+        public void GetMyProfileDetail(Action<UserProfileDetail> callBack)
         {
             string url = "SampleData/myprofile.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void UpdateMyProfile<T>(Action<T> callBack, IDictionary<string, object> parameters)
+        public void UpdateMyProfile(Action<User> callBack, IDictionary<string, object> parameters)
         {
             string url = "SampleData/myprofile.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 
         #region edit api settings
-        public void TestAPIUrl<T>(string apiUrl, Action<T> callBack)
+        public void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack)
         {
             string url = "SampleData/myprofile.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
 
-        public void GetTweetConfiguration<T>(Action<T> callBack)
+        public void GetTweetConfiguration(Action<TweetConfiguration> callBack)
         {
             string url = "SampleData/configuration.json";
-            HandleWebRequest<T>(url, callBack);
+            HandleWebRequest(url, callBack);
         }
         #endregion
 

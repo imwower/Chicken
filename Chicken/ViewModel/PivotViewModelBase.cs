@@ -8,7 +8,7 @@ namespace Chicken.ViewModel
     public class PivotViewModelBase : ViewModelBase
     {
         #region properties
-        private string title = "Chicken";
+        private string title;
         public string Title
         {
             get
