@@ -158,9 +158,9 @@
 
     public enum ScrollTo
     {
+        Top = -1,
         None = 0,
-        Top = 1,
-        Bottom = 2,
+        Bottom = 1,
     }
 
     public enum AppBarState

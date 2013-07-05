@@ -704,7 +704,7 @@ namespace Chicken.Controls
                 if (lazyListBox.stackPanel.Orientation == Orientation.Vertical)
                 {
                     double offset = 0d;
-                    if (scrollTo == ScrollTo.Bottom)
+                    if (scrollTo > 0)
                         offset = lazyListBox.scrollViewer.ExtentHeight;
                     if (offset != lazyListBox.scrollViewer.VerticalOffset)
                     {

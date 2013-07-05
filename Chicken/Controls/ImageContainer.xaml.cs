@@ -50,18 +50,12 @@ namespace Chicken.Controls
                     #region clear
                     if (data == null)
                     {
-                        if (this.PngImage.Source != null)
-                            this.PngImage.Source = null;
-                        if (this.GifImage.Source != null)
-                        {
-                            this.GifImage.Stop();
-                            this.GifImage.Source = null;
-                        }
+                        ClearImage();
                         this.PngImage.Source = defaultImage;
-                        Debug.WriteLine("clear image.");
                         return;
                     }
                     #endregion
+                    ClearImage();
                     #region set image source
                     try
                     {
@@ -93,6 +87,18 @@ namespace Chicken.Controls
                     }
                     #endregion
                 });
+        }
+
+        private void ClearImage()
+        {
+            if (this.PngImage.Source != null)
+                this.PngImage.Source = null;
+            if (this.GifImage.Source != null)
+            {
+                this.GifImage.Stop();
+                this.GifImage.Source = null;
+            }
+            Debug.WriteLine("clear image.");
         }
 
         private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));

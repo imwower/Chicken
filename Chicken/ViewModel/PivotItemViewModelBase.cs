@@ -72,7 +72,21 @@ namespace Chicken.ViewModel
             }
             set
             {
-                scrollTo = value;
+                switch (value)
+                {
+                    case ScrollTo.Top:
+                        if (scrollTo < 0)
+                            scrollTo -= 1;
+                        else
+                            scrollTo = value;
+                        break;
+                    case ScrollTo.Bottom:
+                        if (scrollTo > 0)
+                            scrollTo += 1;
+                        else
+                            scrollTo = value;
+                        break;
+                }
                 RaisePropertyChanged("ScrollTo");
             }
         }
