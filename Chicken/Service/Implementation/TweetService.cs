@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Windows;
@@ -7,7 +8,6 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service.Interface;
 using Newtonsoft.Json;
-using System.Diagnostics;
 
 namespace Chicken.Service.Implementation
 {
@@ -189,7 +189,7 @@ namespace Chicken.Service.Implementation
             switch (action)
             {
                 case RetweetActionType.Create:
-                    url = String.Format(Const.RETWEET_CREATE, App.Settings.APISettings.Url, statusId);
+                    url = string.Format(Const.RETWEET_CREATE, App.Settings.APISettings.Url, statusId);
                     break;
             }
             HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
@@ -202,6 +202,14 @@ namespace Chicken.Service.Implementation
             parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.STATUSES_RETWEET_IDS, parameters);
             HandleWebRequest<T>(url, callBack);
+        }
+
+        public void DeleteTweet<T>(string statusId, Action<T> callBack)
+        {
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.ID, statusId);
+            string url = string.Format(Const.STATUSES_DESTROY, App.Settings.APISettings.Url, statusId);
+            HandleWebRequest<T>(url, callBack, Const.HTTPPOST);
         }
         #endregion
 

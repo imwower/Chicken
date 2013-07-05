@@ -32,6 +32,10 @@ namespace Chicken.ViewModel.Status.VM
                 {
                     if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
                     {
+                        HandleMessage(new ToastMessage
+                        {
+                            Message = "no retweets yet"
+                        });
                         base.Refreshed();
                         return;
                     }

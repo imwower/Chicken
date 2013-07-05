@@ -128,10 +128,29 @@ namespace Chicken.ViewModel.Status
 
         public virtual void Delete()
         {
-            if (Tweet.IsSentByMe)
-            {
-                //TODO: delete tweet
-            }
+            if (IsLoading ||
+                !Tweet.IsSentByMe)
+                return;
+            IsLoading = true;
+            TweetService.DeleteTweet<Tweet>(Tweet.Id,
+                data =>
+                {
+                    IsLoading = false;
+                    var toastMessage = new ToastMessage();
+                    List<ErrorMessage> errors = data.Errors;
+                    #region handle error
+                    if (errors != null && errors.Count != 0)
+                    {
+                        toastMessage.Message = errors[0].Message;
+                        HandleMessage(toastMessage);
+                        return;
+                    }
+                    toastMessage.Message = "delete successfully";
+                    toastMessage.Complete =
+                        () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                    HandleMessage(toastMessage);
+                    #endregion
+                });
         }
         #endregion
 

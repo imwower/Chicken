@@ -55,7 +55,7 @@ namespace Chicken.ViewModel.Settings.VM
 
         private void ClearCacheAction()
         {
-            //TODO
+            //TODO:clear cache
         }
 
         private void EditAPISettingsAction()

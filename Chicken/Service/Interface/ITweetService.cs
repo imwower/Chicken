@@ -45,6 +45,8 @@ namespace Chicken.Service.Interface
 
         void GetStatusRetweetIds<T>(string statusId, Action<T> callBack, IDictionary<string, object> parameters = null);
 
+        void DeleteTweet<T>(string statusId, Action<T> callBack);
+
         #endregion
 
         #region new tweet
