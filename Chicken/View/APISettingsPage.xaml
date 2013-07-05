@@ -15,7 +15,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480">
+    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
@@ -48,10 +48,15 @@
     <v:PageBase.ApplicationBar>
         <shell:ApplicationBar>
             <shell:ApplicationBarIconButton IconUri="/Images/dark/appbar.check.png" Text="save" />
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem Text="settings" />
+            </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </v:PageBase.ApplicationBar>
     <i:Interaction.Behaviors>
         <abu:AppBarItemCommand Type="Button" Id="save" Text="save"
                                Command="{Binding SaveCommand}" />
+        <abu:AppBarItemCommand Type="MenuItem"  Id="settings" Text="settings"
+                               Command="{Binding SettingsCommand}" />
     </i:Interaction.Behaviors>
 </v:PageBase>

@@ -263,9 +263,6 @@
                 Header="{Binding Path=Header}"
                 ListBoxItems="{Binding Path=UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <controls:PivotItem
-                Header="Favorites">
-            </controls:PivotItem>
         </controls:Pivot>
     </Grid>
 

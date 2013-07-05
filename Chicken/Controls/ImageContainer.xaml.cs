@@ -71,6 +71,11 @@ namespace Chicken.Controls
                         var bitmapImage = new BitmapImage();
                         bitmapImage.SetSource(png);
                         this.PngImage.Source = bitmapImage;
+                        if (this.GifImage.Source != null)
+                        {
+                            this.GifImage.Stop();
+                            this.GifImage.Source = null;
+                        }
                     }
                     catch
                     {

@@ -189,7 +189,6 @@
     <Compile Include="ViewModel\Status\StatusViewModel.cs" />
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
-    <Compile Include="ViewModel\Status\VM\StatusFavoritesViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetsViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\APISettingsPage.xaml.cs">

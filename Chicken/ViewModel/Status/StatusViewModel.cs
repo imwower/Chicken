@@ -69,7 +69,6 @@ namespace Chicken.ViewModel.Status
             {
                 new StatusDetailViewModel(),
                 new StatusRetweetsViewModel(),
-                new StatusViewModelBase(),
             };
             PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }

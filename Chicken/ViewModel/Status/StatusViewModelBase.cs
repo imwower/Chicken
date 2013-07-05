@@ -191,14 +191,14 @@ namespace Chicken.ViewModel.Status
             switch (type)
             {
                 case NewTweetActionType.Quote:
-                    newTweet.Text = Const.QUOTECHARACTER + " " + Tweet.User.ScreenName + " " + Tweet.Text;
+                    newTweet.Text = Const.QUOTECHARACTER + " " + Tweet.User.DisplayName + " " + Tweet.Text;
                     newTweet.InReplyToStatusId = Tweet.Id;
-                    newTweet.InReplyToUserScreenName = Tweet.User.ScreenName;
+                    newTweet.InReplyToUserScreenName = Tweet.User.DisplayName;
                     break;
                 case NewTweetActionType.Reply:
-                    newTweet.Text = Tweet.User.ScreenName + " ";
+                    newTweet.Text = Tweet.User.DisplayName + " ";
                     newTweet.InReplyToStatusId = Tweet.Id;
-                    newTweet.InReplyToUserScreenName = Tweet.User.ScreenName;
+                    newTweet.InReplyToUserScreenName = Tweet.User.DisplayName;
                     break;
                 case NewTweetActionType.PostNew:
                 case NewTweetActionType.None:

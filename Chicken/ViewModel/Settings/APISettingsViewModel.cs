@@ -34,6 +34,14 @@ namespace Chicken.ViewModel.Settings
                 return new DelegateCommand(SaveAction);
             }
         }
+
+        public ICommand SettingsCommand
+        {
+            get
+            {
+                return new DelegateCommand(SettingsAction);
+            }
+        }
         #endregion
 
         #region services
@@ -95,6 +103,11 @@ namespace Chicken.ViewModel.Settings
                         GetConfiguration();
                     }
                 });
+        }
+
+        private void SettingsAction()
+        {
+            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
         }
         #endregion
 
