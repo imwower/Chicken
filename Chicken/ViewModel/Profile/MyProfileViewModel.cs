@@ -68,8 +68,6 @@ namespace Chicken.ViewModel.Profile
             if (MyProfile.Url != App.AuthenticatedUser.Url)
                 parameters.Add(Const.URL, MyProfile.Url);
             parameters.Add(Const.DESCRIPTION, MyProfile.ExpandedDescription);
-            if (parameters.Count == 0)
-                return;
             TweetService.UpdateMyProfile(
                 user =>
                 {
@@ -81,19 +79,17 @@ namespace Chicken.ViewModel.Profile
                         {
                             Message = errors[0].Message
                         });
+                        return;
                     }
-                    else
+                    HandleMessage(new ToastMessage
                     {
-                        HandleMessage(new ToastMessage
+                        Message = "update successfully",
+                        Complete =
+                        () =>
                         {
-                            Message = "update successfully",
-                            Complete =
-                            () =>
-                            {
-                                NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
-                            }
-                        });
-                    }
+                            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
+                        }
+                    });
                 }, parameters);
         }
         #endregion

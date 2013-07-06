@@ -17,8 +17,9 @@ namespace Chicken.View
             newMessageViewModel = new NewMessageViewModel()
             {
                 ToastMessageHandler = ToastMessageHandler,
-                AddEmotionHandler = this.AddEmotionHandler,
-                KeyboardHandler = this.KeyboardHandler
+                BeforeSendHandler = this.BeforeSendAction,
+                AddEmotionHandler = this.AddEmotionAction,
+                KeyboardHandler = this.KeyboardAction
             };
             this.DataContext = newMessageViewModel;
             this.Loaded += NewMessagePage_Loaded;
@@ -55,13 +56,17 @@ namespace Chicken.View
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
             this.Emotions.Visibility = Visibility.Collapsed;
-            this.UpdateLayout();
             this.newMessageViewModel.State = AppBarState.Default;
         }
         #endregion
 
-        #region add emotion
-        private void AddEmotionHandler()
+        #region actions
+        private void BeforeSendAction()
+        {
+            this.Focus();
+        }
+
+        private void AddEmotionAction()
         {
             if (!this.Emotions.IsInit)
             {
@@ -75,15 +80,13 @@ namespace Chicken.View
         private void AddEmotion(string emotion)
         {
             if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
-            {
                 return;
-            }
             int start = this.TextContent.SelectionStart;
             this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
             this.TextContent.SelectionStart = start + emotion.Length;
         }
 
-        private void KeyboardHandler()
+        private void KeyboardAction()
         {
             this.Emotions.Visibility = Visibility.Collapsed;
             this.UpdateLayout();

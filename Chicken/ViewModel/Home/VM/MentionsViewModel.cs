@@ -16,6 +16,7 @@ namespace Chicken.ViewModel.Home.VM
             LoadHandler = this.LoadAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
             string sinceId = string.Empty;
@@ -57,26 +58,24 @@ namespace Chicken.ViewModel.Home.VM
                 base.Loaded();
                 return;
             }
-            else
-            {
-                string maxId = TweetList[TweetList.Count - 1].Id;
-                var parameters = TwitterHelper.GetDictionary();
-                parameters.Add(Const.MAX_ID, maxId);
-                TweetService.GetMentions(
-                    tweets =>
+            string maxId = TweetList[TweetList.Count - 1].Id;
+            var parameters = TwitterHelper.GetDictionary();
+            parameters.Add(Const.MAX_ID, maxId);
+            TweetService.GetMentions(
+                tweets =>
+                {
+                    foreach (var tweet in tweets)
                     {
-                        foreach (var tweet in tweets)
-                        {
 #if !LOCAL
                             if (maxId != tweet.Id)
 #endif
-                            {
-                                TweetList.Add(new TweetViewModel(tweet));
-                            }
+                        {
+                            TweetList.Add(new TweetViewModel(tweet));
                         }
-                        base.Loaded();
-                    }, parameters);
-            }
+                    }
+                    base.Loaded();
+                }, parameters);
         }
+        #endregion
     }
 }

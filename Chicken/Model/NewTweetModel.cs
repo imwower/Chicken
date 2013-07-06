@@ -1,4 +1,5 @@
 ﻿using Chicken.Common;
+
 namespace Chicken.Model
 {
     public class NewTweetModel

@@ -55,16 +55,8 @@
                 <!--<TextBlock Text=" location" />-->
             </StackPanel>
         </Grid>
-        <!--place hold-->
-        <Grid x:Name="PlaceHold" Grid.Row="1" Margin="4">
-            <Rectangle Opacity="0.4" Width="128" Height="128"
-                       Fill="{StaticResource PhoneForegroundBrush}">
-                <Rectangle.OpacityMask>
-                    <ImageBrush ImageSource="/Images/dark/cat.png" Stretch="Fill" />
-                </Rectangle.OpacityMask>
-            </Rectangle>
-            <ctrls:EmotionPanel x:Name="Emotions" />
-        </Grid>
+        <!--emotion panel-->
+        <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="1" Margin="4" Visibility="Collapsed"/>
     </Grid>
 
     <i:Interaction.Triggers>

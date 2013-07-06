@@ -46,19 +46,7 @@ namespace Chicken.ViewModel
                 RaisePropertyChanged("State");
             }
         }
-        private ObservableCollection<PivotItemViewModelBase> pivotItems;
-        public ObservableCollection<PivotItemViewModelBase> PivotItems
-        {
-            get
-            {
-                return pivotItems;
-            }
-            set
-            {
-                pivotItems = value;
-                RaisePropertyChanged("PivotItems");
-            }
-        }
+        public ObservableCollection<PivotItemViewModelBase> PivotItems { get; set; }
         protected bool IsInit { get; set; }
         #endregion
 

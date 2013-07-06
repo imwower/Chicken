@@ -21,8 +21,9 @@ namespace Chicken.View
             newTweetViewModel = new NewTweetViewModel()
             {
                 ToastMessageHandler = ToastMessageHandler,
-                AddEmotionHandler = this.AddEmotionHandler,
-                KeyboardHandler = this.KeyboardHandler
+                BeforeSendHandler = this.BeforeSendAction,
+                AddEmotionHandler = this.AddEmotionAction,
+                KeyboardHandler = this.KeyboardAction
             };
             this.DataContext = newTweetViewModel;
             this.Loaded += NewTweetPage_Loaded;
@@ -98,7 +99,6 @@ namespace Chicken.View
 
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
-            (App.Current as App).RootFrame.RenderTransform = null;
             this.Emotions.Visibility = Visibility.Collapsed;
             this.newTweetViewModel.State = AppBarState.Default;
         }
@@ -134,7 +134,12 @@ namespace Chicken.View
         #endregion
 
         #region add emotion
-        private void AddEmotionHandler()
+        private void BeforeSendAction()
+        {
+            this.Focus();
+        }
+
+        private void AddEmotionAction()
         {
             if (!this.Emotions.IsInit)
             {
@@ -148,17 +153,16 @@ namespace Chicken.View
         private void AddEmotion(string emotion)
         {
             if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
-            {
                 return;
-            }
             int start = this.TextContent.SelectionStart;
             this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
             this.TextContent.SelectionStart = start + emotion.Length;
         }
 
-        private void KeyboardHandler()
+        private void KeyboardAction()
         {
             this.Emotions.Visibility = Visibility.Collapsed;
+            this.UpdateLayout();
             this.TextContent.Focus();
         }
         #endregion

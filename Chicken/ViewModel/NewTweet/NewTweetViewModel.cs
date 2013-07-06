@@ -11,6 +11,7 @@ namespace Chicken.ViewModel.NewTweet
     {
         #region event handler
         public delegate void AddEmotionEventHandler();
+        public AddEmotionEventHandler BeforeSendHandler;
         public AddEmotionEventHandler AddEmotionHandler;
         public AddEmotionEventHandler KeyboardHandler;
         #endregion
@@ -29,17 +30,17 @@ namespace Chicken.ViewModel.NewTweet
                 RaisePropertyChanged("Title");
             }
         }
-        private NewTweetModel tweetModel;
-        public NewTweetModel TweetModel
+        public NewTweetModel TweetModel { get; set; }
+        public virtual string Text
         {
             get
             {
-                return tweetModel;
+                return TweetModel.Text;
             }
             set
             {
-                tweetModel = value;
-                RaisePropertyChanged("TweetModel");
+                TweetModel.Text = value;
+                RaisePropertyChanged("Text");
             }
         }
         private AppBarState state;
@@ -90,19 +91,22 @@ namespace Chicken.ViewModel.NewTweet
         public NewTweetViewModel()
         {
             Title = "what's happening?";
-            tweetModel = new NewTweetModel();
+            TweetModel = new NewTweetModel();
         }
 
         #region actions
         protected virtual void SendAction()
         {
-            if (string.IsNullOrEmpty(tweetModel.Text))
-            {
+            if (IsLoading
+                || string.IsNullOrEmpty(TweetModel.Text))
                 return;
-            }
-            TweetService.PostNewTweet(tweetModel,
+            IsLoading = true;
+            if (BeforeSendHandler != null)
+                BeforeSendHandler();
+            TweetService.PostNewTweet(TweetModel,
                 tweet =>
                 {
+                    IsLoading = false;
                     List<ErrorMessage> errors = tweet.Errors;
                     if (errors != null && errors.Count != 0)
                     {
@@ -110,20 +114,18 @@ namespace Chicken.ViewModel.NewTweet
                         {
                             Message = errors[0].Message
                         });
+                        return;
                     }
-                    else
+                    TweetModel.Text = string.Empty;
+                    HandleMessage(new ToastMessage
                     {
-                        tweetModel.Text = string.Empty;
-                        HandleMessage(new ToastMessage
+                        Message = "tweet sent successfully",
+                        Complete =
+                        () =>
                         {
-                            Message = "tweet sent successfully",
-                            Complete =
-                            () =>
-                            {
-                                NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                            }
-                        });
-                    }
+                            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                        }
+                    });
                 });
         }
 

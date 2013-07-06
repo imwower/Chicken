@@ -161,10 +161,8 @@
                      GotFocus="TextContent_GotFocus"
                      MaxHeight="400" />
         </Grid>
-        <!--emotion-->
-        <Grid Grid.Row="4">
-            <ctrls:EmotionPanel x:Name="Emotions" Visibility="Collapsed" />
-        </Grid>
+        <!--emotion panel-->
+        <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="4" Visibility="Collapsed" />
         <!--progress bar-->
         <ProgressBar Grid.Row="5" IsIndeterminate="True"
                      Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />

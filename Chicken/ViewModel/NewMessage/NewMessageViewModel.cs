@@ -19,19 +19,7 @@ namespace Chicken.ViewModel.NewMessage
         private bool hasMoreMsgs = true;
         private bool hasMoreMsgsByMe = true;
         private Dictionary<string, Conversation> dict;
-        private ObservableCollection<DirectMessageViewModel> messages;
-        public ObservableCollection<DirectMessageViewModel> Messages
-        {
-            get
-            {
-                return messages;
-            }
-            set
-            {
-                messages = value;
-                RaisePropertyChanged("Messages");
-            }
-        }
+        public ObservableCollection<DirectMessageViewModel> Messages { get; set; }
         private NewMessageModel newMessage;
         public bool IsNew
         {
@@ -57,7 +45,7 @@ namespace Chicken.ViewModel.NewMessage
                 RaisePropertyChanged("User");
             }
         }
-        public string Text
+        public override string Text
         {
             get
             {
@@ -146,7 +134,7 @@ namespace Chicken.ViewModel.NewMessage
 
         private void LoadAction()
         {
-            if (hasMoreMsgs && hasMoreMsgsByMe)
+            if (hasMoreMsgs || hasMoreMsgsByMe)
             {
                 LoadReceivedMessages();
             }
@@ -159,21 +147,23 @@ namespace Chicken.ViewModel.NewMessage
 
         private void ClickAction(object parameter)
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         protected override void SendAction()
         {
             #region validate user name and text
-            if (IsLoading || HasError ||
-                string.IsNullOrEmpty(newMessage.User.ScreenName)
+            if (IsLoading
+                || HasError
+                || string.IsNullOrEmpty(newMessage.User.ScreenName)
                 || string.IsNullOrEmpty(newMessage.Text))
-            {
                 return;
-            }
             #endregion
             #region post new message
             IsLoading = true;
+            if (BeforeSendHandler != null)
+                BeforeSendHandler();
             TweetService.PostNewMessage(newMessage,
                 message =>
                 {
@@ -184,19 +174,17 @@ namespace Chicken.ViewModel.NewMessage
                         {
                             Message = errors[0].Message
                         });
+                        return;
                     }
-                    else
+                    newMessage.User = message.Receiver;
+                    IsNew = false;
+                    Text = string.Empty;
+                    IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
+                    RefreshAction();
+                    HandleMessage(new ToastMessage
                     {
-                        newMessage.User = message.Receiver;
-                        IsNew = false;
-                        Text = string.Empty;
-                        IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
-                        RefreshAction();
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = "message sent successfully"
-                        });
-                    }
+                        Message = "message sent successfully"
+                    });
                 });
             #endregion
         }
@@ -417,7 +405,7 @@ namespace Chicken.ViewModel.NewMessage
                         });
                         return;
                     }
-                    newMessage.User = user;
+                    User = user;
                     ValidateFriendship();
                 });
         }
