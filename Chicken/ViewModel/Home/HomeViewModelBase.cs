@@ -47,11 +47,13 @@ namespace Chicken.ViewModel.Home
         #region actions
         private void ClickAction(object parameter)
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
         #endregion

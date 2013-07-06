@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Chicken.Model
 {
     public class ToastMessage

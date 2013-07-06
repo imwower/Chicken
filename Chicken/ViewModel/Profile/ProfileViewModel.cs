@@ -13,19 +13,7 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private UserProfileDetailViewModel user;
-        public UserProfileDetailViewModel User
-        {
-            get
-            {
-                return user;
-            }
-            set
-            {
-                user = value;
-                RaisePropertyChanged("User");
-            }
-        }
+        public UserProfileDetailViewModel User { get; set; }
         private string followButtonText;
         public string FollowButtonText
         {
@@ -104,11 +92,14 @@ namespace Chicken.ViewModel.Profile
             TweetService.GetUserProfileDetail(selectedUser,
                 profile =>
                 {
+                    if (profile.HasError)
+                    {
+                        PivotItems[selectedIndex].IsLoading = false;
+                        return;
+                    }
                     this.User = new UserProfileDetailViewModel(profile);
                     if (User.Id == App.AuthenticatedUser.Id)
-                    {
                         User.IsMyself = true;
-                    }
                     SwitchAppBar(selectedIndex);
                     ChangeFollowButtonText();
                     IsInit = true;
@@ -133,17 +124,13 @@ namespace Chicken.ViewModel.Profile
         private void FollowAction()
         {
             PivotItems[SelectedIndex].IsLoading = true;
-            TweetService.FollowOrUnFollow(user.User,
+            TweetService.FollowOrUnFollow(User.User,
                 profile =>
                 {
-                    List<ErrorMessage> errors = profile.Errors;
-                    var toastMessage = new ToastMessage();
                     #region handle error
-                    if (errors != null && errors.Count != 0)
+                    if (profile.HasError)
                     {
                         PivotItems[SelectedIndex].IsLoading = false;
-                        toastMessage.Message = errors[0].Message;
-                        PivotItems[SelectedIndex].HandleMessage(toastMessage);
                         return;
                     }
                     #endregion
@@ -155,11 +142,15 @@ namespace Chicken.ViewModel.Profile
                         message = "request sent successfully";
                     else
                         message = "follow successfully";
-                    toastMessage.Message = message;
-                    PivotItems[SelectedIndex].HandleMessage(toastMessage);
+                    App.HandleMessage(new ToastMessage
+                    {
+                        Message = message
+                    });
                     TweetService.GetUserProfileDetail(User.User,
                         profileDetail =>
                         {
+                            if (profileDetail.HasError)
+                                return;
                             this.User = new UserProfileDetailViewModel(profileDetail);
                             ChangeFollowButtonText();
                             (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;

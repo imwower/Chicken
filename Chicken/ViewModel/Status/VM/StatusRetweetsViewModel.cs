@@ -22,30 +22,36 @@ namespace Chicken.ViewModel.Status.VM
                 base.Refreshed();
                 return;
             }
+            #region parameter
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(previousCursor))
-            {
                 parameters.Add(Const.CURSOR, previousCursor);
-            }
+            #endregion
             TweetService.GetStatusRetweetIds(Tweet.Id,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
+                    #region handle error
+                    if (userIdList.HasError)
                     {
-                        HandleMessage(new ToastMessage
+                        base.Refreshed();
+                        return;
+                    }
+                    #endregion
+                    #region no retweets yet
+                    if (userIdList.UserIds.Count == 0)
+                    {
+                        App.HandleMessage(new ToastMessage
                         {
-                            Message = "no retweets yet"
+                            Message = "no new retweets yet"
                         });
                         base.Refreshed();
                         return;
                     }
-                    else
-                    {
-                        nextCursor = userIdList.NextCursor;
-                        previousCursor = userIdList.PreviousCursor;
-                        string ids = string.Join(",", userIdList.UserIds);
-                        RefreshUserProfiles(ids);
-                    }
+                    #endregion
+                    nextCursor = userIdList.NextCursor;
+                    previousCursor = userIdList.PreviousCursor;
+                    string ids = string.Join(",", userIdList.UserIds);
+                    RefreshUserProfiles(ids);
                 }, parameters);
         }
 
@@ -56,26 +62,34 @@ namespace Chicken.ViewModel.Status.VM
                 base.Loaded();
                 return;
             }
+            #region parameter
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(nextCursor))
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
+            #endregion
             TweetService.GetStatusRetweetIds(Tweet.Id,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
+                    if (userIdList.HasError)
                     {
                         base.Loaded();
                         return;
                     }
-                    else
+                    if (userIdList.UserIds.Count == 0)
                     {
-                        nextCursor = userIdList.NextCursor;
-                        previousCursor = userIdList.PreviousCursor;
-                        string ids = string.Join(",", userIdList.UserIds);
-                        LoadUserProfiles(ids);
+                        App.HandleMessage(new ToastMessage
+                        {
+                            Message = "no more retweets yet"
+                        });
+                        base.Loaded();
+                        return;
                     }
+                    nextCursor = userIdList.NextCursor;
+                    previousCursor = userIdList.PreviousCursor;
+                    string ids = string.Join(",", userIdList.UserIds);
+                    LoadUserProfiles(ids);
                 }, parameters);
         }
     }

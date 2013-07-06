@@ -103,7 +103,7 @@ namespace Chicken.ViewModel.NewMessage
             if (HasError)
             {
                 Header = "not a validate user name";
-                HandleMessage(new ToastMessage
+                App.HandleMessage(new ToastMessage
                 {
                     Message = Header
                 });
@@ -167,24 +167,22 @@ namespace Chicken.ViewModel.NewMessage
             TweetService.PostNewMessage(newMessage,
                 message =>
                 {
-                    List<ErrorMessage> errors = message.Errors;
-                    if (errors != null && errors.Count != 0)
+                    #region handle error
+                    if (message.HasError)
                     {
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = errors[0].Message
-                        });
+                        IsLoading = false;
                         return;
                     }
+                    #endregion
                     newMessage.User = message.Receiver;
                     IsNew = false;
                     Text = string.Empty;
                     IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
-                    RefreshAction();
-                    HandleMessage(new ToastMessage
+                    App.HandleMessage(new ToastMessage
                     {
                         Message = "message sent successfully"
                     });
+                    RefreshAction();
                 });
             #endregion
         }
@@ -203,12 +201,10 @@ namespace Chicken.ViewModel.NewMessage
             TweetService.GetDirectMessages(
                 messages =>
                 {
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
-                        {
                             list.Add(message);
-                        }
                         latestMessages.SinceId = messages.First().Id;
                         latestMessages.MaxId = messages.Last().Id;
                     }
@@ -229,7 +225,7 @@ namespace Chicken.ViewModel.NewMessage
                 messages =>
                 {
                     #region get messsages
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
                         {
@@ -248,9 +244,7 @@ namespace Chicken.ViewModel.NewMessage
                         foreach (var msg in msgs)
                         {
                             if (!dict.ContainsKey(msgs.Key))
-                            {
                                 dict.Add(msgs.Key, new Conversation());
-                            }
                             dict[msgs.Key].Messages.Add(msg);
                         }
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
@@ -280,7 +274,6 @@ namespace Chicken.ViewModel.NewMessage
                         Messages.Add(new DirectMessageViewModel(msg));
                     }
                 }
-                ScrollTo = ScrollTo.Bottom;
             }
             base.Refreshed();
             list.Clear();
@@ -299,18 +292,17 @@ namespace Chicken.ViewModel.NewMessage
             TweetService.GetDirectMessages(
                 messages =>
                 {
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError)
                     {
-                        foreach (var message in messages)
+                        if (messages.Count != 0)
                         {
-                            if (message.Id != latestMessages.MaxId)
-                                list.Add(message);
+                            foreach (var message in messages)
+                                if (message.Id != latestMessages.MaxId)
+                                    list.Add(message);
+                            latestMessages.MaxId = messages.Last().Id;
                         }
-                        latestMessages.MaxId = messages.Last().Id;
-                    }
-                    else
-                    {
-                        hasMoreMsgs = false;
+                        else
+                            hasMoreMsgs = false;
                     }
                     LoadDirectMessagesSentByMe();
                 }, parameters);
@@ -329,22 +321,23 @@ namespace Chicken.ViewModel.NewMessage
                 messages =>
                 {
                     #region get messsages
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError)
                     {
-                        foreach (var message in messages)
+                        if (messages.Count != 0)
                         {
-                            if (message.Id != latestMessages.MaxIdByMe)
+                            foreach (var message in messages)
                             {
-                                message.IsSentByMe = true;
-                                message.User = message.Receiver;
-                                list.Add(message);
+                                if (message.Id != latestMessages.MaxIdByMe)
+                                {
+                                    message.IsSentByMe = true;
+                                    message.User = message.Receiver;
+                                    list.Add(message);
+                                }
                             }
+                            latestMessages.MaxIdByMe = messages.Last().Id;
                         }
-                        latestMessages.MaxIdByMe = messages.Last().Id;
-                    }
-                    else
-                    {
-                        hasMoreMsgsByMe = false;
+                        else
+                            hasMoreMsgsByMe = false;
                     }
                     #endregion
                     #region group
@@ -354,9 +347,7 @@ namespace Chicken.ViewModel.NewMessage
                         foreach (var msg in msgs)
                         {
                             if (!dict.ContainsKey(msgs.Key))
-                            {
                                 dict.Add(msgs.Key, new Conversation());
-                            }
                             dict[msgs.Key].Messages.Add(msg);
                         }
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
@@ -382,7 +373,6 @@ namespace Chicken.ViewModel.NewMessage
                         Messages.Insert(0, new DirectMessageViewModel(msg));
                     }
                 }
-                ScrollTo = ScrollTo.Top;
             }
             base.Loaded();
             list.Clear();
@@ -394,15 +384,9 @@ namespace Chicken.ViewModel.NewMessage
             TweetService.GetUser(User.ScreenName,
                 user =>
                 {
-                    List<ErrorMessage> errors = user.Errors;
-                    if (errors != null && errors.Count != 0)
+                    if (user.HasError)
                     {
                         HasError = true;
-                        Header = User.DisplayName + " does not exist";
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = Header
-                        });
                         return;
                     }
                     User = user;
@@ -415,21 +399,23 @@ namespace Chicken.ViewModel.NewMessage
             TweetService.GetFriendshipConnections(User.Id,
                 friendships =>
                 {
-                    Friendship friendship = friendships[0];
-                    List<string> connections = friendship.Connections;
-                    if (!connections.Contains(Const.FOLLOWED_BY))
+                    if (!friendships.HasError && friendships.Count != 0)
                     {
-                        HasError = true;
-                        Header = User.DisplayName + " did not follow you";
-                        HandleMessage(new ToastMessage
+                        List<string> connections = friendships[0].Connections;
+                        if (!connections.Contains(Const.FOLLOWED_BY))
                         {
-                            Message = Header
-                        });
-                        return;
+                            HasError = true;
+                            Header = User.DisplayName + " did not follow you";
+                            App.HandleMessage(new ToastMessage
+                            {
+                                Message = Header
+                            });
+                            return;
+                        }
+                        HasError = false;
+                        IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
+                        RefreshAction();
                     }
-                    HasError = false;
-                    IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
-                    RefreshAction();
                 });
         }
         #endregion

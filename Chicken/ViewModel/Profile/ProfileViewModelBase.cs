@@ -99,25 +99,23 @@ namespace Chicken.ViewModel.Profile
         #region actions
         private void ClickAction(object parameter)
         {
+            IsLoading = false;
             var user = parameter as User;
             if (UserProfile.Id == user.Id)
-            {
                 NavigationServiceManager.ChangeSelectedIndex((int)ProfilePageEnum.ProfileDetail);
-            }
             else
-            {
                 NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
-            }
         }
         #endregion
 
         #region protected methods
+
         protected bool CheckIfFollowingPrivate()
         {
             if (this.UserProfile.IsPrivate &&
                 !this.UserProfile.IsFollowing)
             {
-                HandleMessage(new ToastMessage
+                App.HandleMessage(new ToastMessage
                 {
                     Message = "you must follow the private user first"
                 });
@@ -125,15 +123,17 @@ namespace Chicken.ViewModel.Profile
             }
             return true;
         }
+
         #region for following and followers pivot
         protected void RefreshUserProfiles(string userIds)
         {
             TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
-                    for (int i = userProfiles.Count - 1; i >= 0; i--)
+                    if (!userProfiles.HasError)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
+                        for (int i = userProfiles.Count - 1; i >= 0; i--)
+                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                     base.Refreshed();
                 });
@@ -144,9 +144,10 @@ namespace Chicken.ViewModel.Profile
             TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
-                    foreach (var userProfile in userProfiles)
+                    if (!userProfiles.HasError)
                     {
-                        UserList.Add(new UserProfileViewModel(userProfile));
+                        foreach (var userProfile in userProfiles)
+                            UserList.Add(new UserProfileViewModel(userProfile));
                     }
                     base.Loaded();
                 });

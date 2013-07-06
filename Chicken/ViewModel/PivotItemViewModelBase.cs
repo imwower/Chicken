@@ -3,7 +3,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Chicken.Common;
-using Chicken.Model;
 
 namespace Chicken.ViewModel
 {
@@ -12,12 +11,10 @@ namespace Chicken.ViewModel
         #region event handler
         protected delegate void LoadEventHandler();
         protected delegate void ClickEventHandler(object parameter);
-        public delegate void ToastMessageEventHandler(ToastMessage toastMessage);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
         protected ClickEventHandler ClickHandler;
         protected ClickEventHandler ItemClickHandler;
-        public ToastMessageEventHandler ToastMessageHandler;
         #endregion
 
         #region properties
@@ -184,12 +181,6 @@ namespace Chicken.ViewModel
                 worker.CancelAsync();
             IsLoading = false;
             ItemClickHandler(parameter);
-        }
-
-        public void HandleMessage(ToastMessage message)
-        {
-            if (ToastMessageHandler != null)
-                ToastMessageHandler(message);
         }
         #endregion
 

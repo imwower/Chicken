@@ -52,7 +52,7 @@ namespace Chicken.ViewModel.Profile.VM
                 return;
             if (!followedBy)
             {
-                HandleMessage(new ToastMessage
+                App.HandleMessage(new ToastMessage
                 {
                     Message = UserProfile.ScreenName + " did not follow you"
                 });
@@ -73,14 +73,11 @@ namespace Chicken.ViewModel.Profile.VM
             TweetService.GetFriendshipConnections(this.UserProfile.Id,
                 friendships =>
                 {
-                    if (friendships != null && friendships.Count != 0)
+                    if (!friendships.HasError && friendships.Count != 0)
                     {
-                        Friendship friendship = friendships[0];
-                        List<string> connections = friendship.Connections;
+                        List<string> connections = friendships[0].Connections;
                         if (connections.Contains(Const.FOLLOWED_BY))
-                        {
                             FollowedBy = true;
-                        }
                     }
                 });
         }

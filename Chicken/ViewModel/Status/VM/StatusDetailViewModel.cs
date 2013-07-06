@@ -33,9 +33,7 @@ namespace Chicken.ViewModel.Status.VM
         private void RefreshAction()
         {
             if (ConversationList != null)
-            {
                 ConversationList.Clear();
-            }
             LoadConversation(Tweet.InReplyToTweetId);
             IsInited = true;
         }
@@ -44,9 +42,7 @@ namespace Chicken.ViewModel.Status.VM
         {
             string statusId = string.Empty;
             if (ConversationList != null && ConversationList.Count != 0)
-            {
                 statusId = ConversationList[ConversationList.Count - 1].InReplyToTweetId;
-            }
             LoadConversation(statusId);
         }
         #endregion
@@ -61,13 +57,12 @@ namespace Chicken.ViewModel.Status.VM
                 return;
             }
             if (ConversationList == null)
-            {
                 ConversationList = new ObservableCollection<TweetViewModel>();
-            }
             TweetService.GetStatusDetail(statusId,
                 tweet =>
                 {
-                    ConversationList.Add(new TweetViewModel(tweet));
+                    if (!tweet.HasError)
+                        ConversationList.Add(new TweetViewModel(tweet));
                     base.Loaded();
                 });
         }

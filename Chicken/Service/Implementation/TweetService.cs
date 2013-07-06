@@ -382,8 +382,13 @@ namespace Chicken.Service.Implementation
         private static T GetErrorMessage<T>(string message)
             where T : ModelBase, new()
         {
+            App.HandleMessage(new ToastMessage
+            {
+                Message = message
+            });
             return new T
             {
+                HasError = true,
                 Errors = new List<ErrorMessage>
                 {
                     new ErrorMessage

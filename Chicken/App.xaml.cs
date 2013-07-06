@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Navigation;
 using Chicken.Model;
 using Chicken.Service;
+using Chicken.View;
 using MemoryDiagnostics;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -37,23 +38,6 @@ namespace Chicken
                 return settings;
             }
         }
-        //private static TweetConfiguration configuration;
-        //public static TweetConfiguration Configuration
-        //{
-        //    get
-        //    {
-        //        if (configuration == null)
-        //        {
-        //            InitConfiguration();
-        //        }
-        //        return configuration;
-        //    }
-        //}
-
-        //public static Size GetScreenSize()
-        //{
-        //    return Application.Current.RootVisual.RenderSize;
-        //} 
         #endregion
 
         public App()
@@ -86,6 +70,11 @@ namespace Chicken
         //    configuration = IsolatedStorageService.GetTweetConfiguration();
         //}
 
+        public static void HandleMessage(ToastMessage message)
+        {
+            PageBase.HandleMessage(message);
+        }
+
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
         }
@@ -117,15 +106,14 @@ namespace Chicken
                 System.Diagnostics.Debugger.Break();
             }
         }
-        #region
 
+        #region
         private bool phoneApplicationInitialized = false;
 
         private void InitializePhoneApplication()
         {
             if (phoneApplicationInitialized)
                 return;
-
             RootFrame = new PhoneApplicationFrame();
             RootFrame.Navigated += CompleteInitializePhoneApplication;
             RootFrame.NavigationFailed += RootFrame_NavigationFailed;
@@ -136,10 +124,8 @@ namespace Chicken
         {
             if (RootVisual != RootFrame)
                 RootVisual = RootFrame;
-
             RootFrame.Navigated -= CompleteInitializePhoneApplication;
         }
-
         #endregion
     }
 }

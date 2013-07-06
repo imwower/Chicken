@@ -87,49 +87,24 @@ namespace Chicken.ViewModel.Settings
                 {
                     IsLoading = false;
                     List<ErrorMessage> errors = userProfileDetail.Errors;
-                    if (errors != null && errors.Count != 0)
+                    if (userProfileDetail.HasError)
+                        return;
+                    IsolatedStorageService.CreateAppSettings(GeneralSettings);
+                    App.InitAppSettings();
+                    IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
+                    App.InitAuthenticatedUser();
+                    App.HandleMessage(new ToastMessage
                     {
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = errors[0].Message
-                        });
-                    }
-                    else
-                    {
-                        IsolatedStorageService.CreateAppSettings(GeneralSettings);
-                        App.InitAppSettings();
-                        IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
-                        App.InitAuthenticatedUser();
-                        GetConfiguration();
-                    }
+                        Message = isInitAPI ? "hello, " + App.AuthenticatedUser.DisplayName : "update successfully",
+                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
+                    });
                 });
         }
 
         private void SettingsAction()
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
-        }
-        #endregion
-
-        #region private
-        private void GetConfiguration()
-        {
-            //TweetService.GetTweetConfiguration(
-            //    configuration =>
-            //    {
-            //configuration.LastUpdateTime = DateTime.Now;
-            //IsolatedStorageService.CreateTweetConfiguration(configuration);
-            //App.InitConfiguration();
-            HandleMessage(new ToastMessage
-            {
-                Message = isInitAPI ? "hello, " + App.AuthenticatedUser.DisplayName : "update successfully",
-                Complete =
-                () =>
-                {
-                    NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                }
-            });
-            //});
         }
         #endregion
     }

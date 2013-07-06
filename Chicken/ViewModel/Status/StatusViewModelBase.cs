@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -58,59 +57,52 @@ namespace Chicken.ViewModel.Status
         public virtual void AddFavorite()
         {
             if (IsLoading)
-            {
                 return;
-            }
             IsLoading = true;
             var action = Tweet.IsFavorited ? AddToFavoriteActionType.Destroy : AddToFavoriteActionType.Create;
             TweetService.AddToFavorites(Tweet.Id, action,
-                t =>
-                {
-                    var toastMessage = new ToastMessage();
-                    List<ErrorMessage> errors = t.Errors;
-                    #region handle error
-                    if (errors != null && errors.Count != 0)
-                    {
-                        IsLoading = false;
-                        toastMessage.Message = errors[0].Message;
-                        HandleMessage(toastMessage);
-                        return;
-                    }
-                    #endregion
-                    toastMessage.Message = Tweet.IsFavorited ? "Remove favorites successfully" : "Add to favorites successfully";
-                    HandleMessage(toastMessage);
-                    Tweet = new TweetDetailViewModel(t);
-                    Refresh();
-                });
+               data =>
+               {
+                   #region handle error
+                   if (data.HasError)
+                   {
+                       IsLoading = false;
+                       return;
+                   }
+                   #endregion
+                   string message = Tweet.IsFavorited ? "Remove favorites successfully" : "Add to favorites successfully";
+                   App.HandleMessage(new ToastMessage
+                   {
+                       Message = message
+                   });
+                   Tweet = new TweetDetailViewModel(data);
+                   Refresh();
+               });
         }
 
         public virtual void Retweet()
         {
             if (IsLoading)
-            {
                 return;
-            }
             if (!Tweet.IsRetweeted)
             {
                 IsLoading = true;
                 var action = RetweetActionType.Create;
                 TweetService.Retweet(Tweet.Id, action,
-                   t =>
+                   data =>
                    {
-                       var toastMessage = new ToastMessage();
-                       List<ErrorMessage> errors = t.Errors;
                        #region handle error
-                       if (errors != null && errors.Count != 0)
+                       if (data.HasError)
                        {
                            IsLoading = false;
-                           toastMessage.Message = errors[0].Message;
-                           HandleMessage(toastMessage);
                            return;
                        }
                        #endregion
-                       toastMessage.Message = "Retweet successfully";
-                       HandleMessage(toastMessage);
-                       Tweet = new TweetDetailViewModel(t);
+                       App.HandleMessage(new ToastMessage
+                       {
+                           Message = "Retweet successfully"
+                       });
+                       Tweet = new TweetDetailViewModel(data);
                        Refresh();
                    });
             }
@@ -135,20 +127,17 @@ namespace Chicken.ViewModel.Status
             TweetService.DeleteTweet(Tweet.Id,
                 data =>
                 {
-                    IsLoading = false;
-                    var toastMessage = new ToastMessage();
-                    List<ErrorMessage> errors = data.Errors;
                     #region handle error
-                    if (errors != null && errors.Count != 0)
+                    if (data.HasError)
                     {
-                        toastMessage.Message = errors[0].Message;
-                        HandleMessage(toastMessage);
+                        IsLoading = false;
                         return;
                     }
-                    toastMessage.Message = "delete successfully";
-                    toastMessage.Complete =
-                        () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                    HandleMessage(toastMessage);
+                    App.HandleMessage(new ToastMessage
+                    {
+                        Message = "delete successfully",
+                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
+                    });
                     #endregion
                 });
         }
@@ -157,11 +146,13 @@ namespace Chicken.ViewModel.Status
         #region actions
         private void ClickAction(object parameter)
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
+            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
         #endregion
@@ -173,9 +164,10 @@ namespace Chicken.ViewModel.Status
             TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
-                    for (int i = userProfiles.Count - 1; i >= 0; i--)
+                    if (!userProfiles.HasError)
                     {
-                        UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
+                        for (int i = userProfiles.Count - 1; i >= 0; i--)
+                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                     base.Refreshed();
                 });
@@ -186,9 +178,10 @@ namespace Chicken.ViewModel.Status
             TweetService.GetUserProfiles(userIds,
                 userProfiles =>
                 {
-                    foreach (var userProfile in userProfiles)
+                    if (!userProfiles.HasError)
                     {
-                        UserList.Add(new UserProfileViewModel(userProfile));
+                        foreach (var userProfile in userProfiles)
+                            UserList.Add(new UserProfileViewModel(userProfile));
                     }
                     base.Loaded();
                 });
@@ -200,9 +193,8 @@ namespace Chicken.ViewModel.Status
         private void DoAction(NewTweetActionType type)
         {
             if (IsLoading)
-            {
                 return;
-            }
+            IsLoading = false;
             NewTweetModel newTweet = new NewTweetModel
             {
                 Type = type,
@@ -224,7 +216,6 @@ namespace Chicken.ViewModel.Status
                 default:
                     break;
             }
-            IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
         }
         #endregion

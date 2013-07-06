@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -107,24 +106,13 @@ namespace Chicken.ViewModel.NewTweet
                 tweet =>
                 {
                     IsLoading = false;
-                    List<ErrorMessage> errors = tweet.Errors;
-                    if (errors != null && errors.Count != 0)
-                    {
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = errors[0].Message
-                        });
+                    if (tweet.HasError)
                         return;
-                    }
                     TweetModel.Text = string.Empty;
-                    HandleMessage(new ToastMessage
+                    App.HandleMessage(new ToastMessage
                     {
                         Message = "tweet sent successfully",
-                        Complete =
-                        () =>
-                        {
-                            NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
-                        }
+                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
                     });
                 });
         }

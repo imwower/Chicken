@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -52,7 +51,8 @@ namespace Chicken.ViewModel.Profile
             TweetService.GetMyProfileDetail(
                 profile =>
                 {
-                    MyProfile = new UserProfileDetailViewModel(profile);
+                    if (!profile.HasError)
+                        MyProfile = new UserProfileDetailViewModel(profile);
                     base.Refreshed();
                 });
         }
@@ -72,23 +72,14 @@ namespace Chicken.ViewModel.Profile
                 user =>
                 {
                     IsLoading = false;
-                    List<ErrorMessage> errors = user.Errors;
-                    if (errors != null && errors.Count != 0)
-                    {
-                        HandleMessage(new ToastMessage
-                        {
-                            Message = errors[0].Message
-                        });
+                    if (user.HasError)
                         return;
-                    }
-                    HandleMessage(new ToastMessage
+                    App.HandleMessage(new ToastMessage
                     {
                         Message = "update successfully",
                         Complete =
                         () =>
-                        {
-                            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
-                        }
+                            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user)
                     });
                 }, parameters);
         }

@@ -6,6 +6,9 @@ namespace Chicken.Model
 {
     public class ModelBase
     {
+        [JsonIgnore]
+        public bool HasError { get; set; }
+
         [JsonProperty("errors")]
         public List<ErrorMessage> Errors { get; set; }
     }
@@ -17,7 +20,8 @@ namespace Chicken.Model
         public string Code { get; set; }
     }
 
-    public class ModelBaseList<T> : ModelBase, IList<T>, ICollection<T>, IEnumerable<T> where T : ModelBase
+    public class ModelBaseList<T> : ModelBase, IList<T>, ICollection<T>, IEnumerable<T>
+        where T : ModelBase
     {
         private List<T> list { get; set; }
 

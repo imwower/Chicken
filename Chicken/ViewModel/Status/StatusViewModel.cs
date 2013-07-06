@@ -2,7 +2,6 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Chicken.Common;
-using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Base;
@@ -74,26 +73,27 @@ namespace Chicken.ViewModel.Status
 
         public override void MainPivot_LoadedPivotItem(int selectedIndex)
         {
-            if (!IsInit)
-            {
-                PivotItems[selectedIndex].IsLoading = true;
-                string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
-                TweetService.GetStatusDetail(statusId,
-                    data =>
-                    {
-                        if (data.User.Id == App.AuthenticatedUser.Id)
-                        {
-                            data.IsSentByMe = true;
-                        }
-                        this.tweet = new TweetDetailViewModel(data);
-                        SwitchAppBar(selectedIndex);
-                        IsInit = true;
-                    });
-            }
-            else
+            if (IsInit)
             {
                 SwitchAppBar(selectedIndex);
+                return;
             }
+            PivotItems[selectedIndex].IsLoading = true;
+            string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
+            TweetService.GetStatusDetail(statusId,
+                data =>
+                {
+                    if (data.HasError)
+                    {
+                        PivotItems[selectedIndex].IsLoading = false;
+                        return;
+                    }
+                    if (data.User.Id == App.AuthenticatedUser.Id)
+                        data.IsSentByMe = true;
+                    this.tweet = new TweetDetailViewModel(data);
+                    SwitchAppBar(selectedIndex);
+                    IsInit = true;
+                });
         }
 
         #region actions
@@ -127,13 +127,9 @@ namespace Chicken.ViewModel.Status
         private void SwitchAppBar(int selectedIndex)
         {
             if (tweet.IsSentByMe)
-            {
                 State = AppBarState.StatusPageWithDelete;
-            }
             else
-            {
                 State = AppBarState.StatusPageDefault;
-            }
             (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
             base.MainPivot_LoadedPivotItem(selectedIndex);
         }

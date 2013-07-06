@@ -27,26 +27,25 @@ namespace Chicken.ViewModel.Profile.VM
                 base.Refreshed();
                 return;
             }
+            #region parameter
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(previousCursor))
             {
                 parameters.Add(Const.CURSOR, previousCursor);
             }
+            #endregion
             TweetService.GetFollowingIds(UserProfile.Id,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
+                    if (userIdList.HasError)
                     {
                         base.Refreshed();
                         return;
                     }
-                    else
-                    {
-                        nextCursor = userIdList.NextCursor;
-                        previousCursor = userIdList.PreviousCursor;
-                        string ids = string.Join(",", userIdList.UserIds);
-                        RefreshUserProfiles(ids);
-                    }
+                    nextCursor = userIdList.NextCursor;
+                    previousCursor = userIdList.PreviousCursor;
+                    string ids = string.Join(",", userIdList.UserIds);
+                    RefreshUserProfiles(ids);
                 }, parameters);
         }
 
@@ -57,26 +56,25 @@ namespace Chicken.ViewModel.Profile.VM
                 base.Loaded();
                 return;
             }
+            #region parameter
             var parameters = TwitterHelper.GetDictionary();
             if (!string.IsNullOrEmpty(nextCursor))
             {
                 parameters.Add(Const.CURSOR, nextCursor);
             }
+            #endregion
             TweetService.GetFollowingIds(UserProfile.Id,
                 userIdList =>
                 {
-                    if (userIdList == null || userIdList.UserIds == null || userIdList.UserIds.Count == 0)
+                    if (userIdList.HasError)
                     {
                         base.Loaded();
                         return;
                     }
-                    else
-                    {
-                        nextCursor = userIdList.NextCursor;
-                        previousCursor = userIdList.PreviousCursor;
-                        string ids = string.Join(",", userIdList.UserIds);
-                        LoadUserProfiles(ids);
-                    }
+                    nextCursor = userIdList.NextCursor;
+                    previousCursor = userIdList.PreviousCursor;
+                    string ids = string.Join(",", userIdList.UserIds);
+                    LoadUserProfiles(ids);
                 }, parameters);
         }
     }

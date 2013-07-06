@@ -20,7 +20,6 @@ namespace Chicken.View
             InitializeComponent();
             newTweetViewModel = new NewTweetViewModel()
             {
-                ToastMessageHandler = ToastMessageHandler,
                 BeforeSendHandler = this.BeforeSendAction,
                 AddEmotionHandler = this.AddEmotionAction,
                 KeyboardHandler = this.KeyboardAction
@@ -99,6 +98,7 @@ namespace Chicken.View
 
         private void TextContent_GotFocus(object sender, RoutedEventArgs e)
         {
+            (App.Current as App).RootFrame.RenderTransform = null;
             this.Emotions.Visibility = Visibility.Collapsed;
             this.newTweetViewModel.State = AppBarState.Default;
         }

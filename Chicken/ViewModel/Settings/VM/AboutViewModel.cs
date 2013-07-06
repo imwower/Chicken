@@ -8,11 +8,12 @@ namespace Chicken.ViewModel.Settings.VM
     public class AboutViewModel : SettingsViewModelBase
     {
         #region properties
+        private string currentVersion = GetVersionNumber();
         public string CurrentVersion
         {
             get
             {
-                return GetVersionNumber();
+                return currentVersion;
             }
         }
         private AboutModel aboutModel;

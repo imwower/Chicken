@@ -35,23 +35,17 @@ namespace Chicken.ViewModel.Home.VM
             #region init
             var file = IsolatedStorageService.GetLatestMessages();
             if (file != null)
-            {
                 latestMessages = file;
-            }
             else
-            {
                 latestMessages = new LatestMessagesModel();
-            }
             #endregion
             RefreshReceivedMessages();
         }
 
         private void LoadAction()
         {
-            if (hasMoreMsgs && hasMoreMsgsByMe)
-            {
+            if (hasMoreMsgs || hasMoreMsgsByMe)
                 LoadReceivedMessages();
-            }
             else
             {
                 LoadHandler = null;
@@ -83,12 +77,10 @@ namespace Chicken.ViewModel.Home.VM
             TweetService.GetDirectMessages(
                 messages =>
                 {
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
-                        {
                             list.Add(message);
-                        }
                         latestMessages.SinceId = messages.First().Id;
                         latestMessages.MaxId = messages.Last().Id;
                     }
@@ -109,7 +101,7 @@ namespace Chicken.ViewModel.Home.VM
                 messages =>
                 {
                     #region get messsages
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
                         {
@@ -128,9 +120,7 @@ namespace Chicken.ViewModel.Home.VM
                         foreach (var msg in msgs)
                         {
                             if (!dict.ContainsKey(msgs.Key))
-                            {
                                 dict.Add(msgs.Key, new Conversation());
-                            }
                             dict[msgs.Key].Messages.Add(msg);
                         }
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
@@ -150,10 +140,7 @@ namespace Chicken.ViewModel.Home.VM
             TweetList.Clear();
             var latestmsgs = latestMessages.Messages.Values.OrderBy(m => m.Id);
             foreach (var msg in latestmsgs)
-            {
                 TweetList.Insert(0, new TweetViewModel(msg));
-            }
-            ScrollTo = ScrollTo.Top;
             base.Refreshed();
             list.Clear();
             dict.Clear();
@@ -171,7 +158,7 @@ namespace Chicken.ViewModel.Home.VM
             TweetService.GetDirectMessages(
                 messages =>
                 {
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
                         {
@@ -181,9 +168,7 @@ namespace Chicken.ViewModel.Home.VM
                         latestMessages.MaxId = messages.Last().Id;
                     }
                     else
-                    {
                         hasMoreMsgs = false;
-                    }
                     LoadDirectMessagesSentByMe();
                 }, parameters);
         }
@@ -201,7 +186,7 @@ namespace Chicken.ViewModel.Home.VM
                 messages =>
                 {
                     #region get messsages
-                    if (messages != null && messages.Count != 0)
+                    if (!messages.HasError && messages.Count != 0)
                     {
                         foreach (var message in messages)
                         {
@@ -215,9 +200,7 @@ namespace Chicken.ViewModel.Home.VM
                         latestMessages.MaxIdByMe = messages.Last().Id;
                     }
                     else
-                    {
                         hasMoreMsgsByMe = false;
-                    }
                     #endregion
                     #region group
                     var groups = list.GroupBy(u => u.User.Id);
@@ -226,9 +209,7 @@ namespace Chicken.ViewModel.Home.VM
                         foreach (var msg in msgs)
                         {
                             if (!dict.ContainsKey(msgs.Key))
-                            {
                                 dict.Add(msgs.Key, new Conversation());
-                            }
                             dict[msgs.Key].Messages.Add(msg);
                         }
                         IsolatedStorageService.AddMessages(dict[msgs.Key]);
@@ -244,10 +225,7 @@ namespace Chicken.ViewModel.Home.VM
             TweetList.Clear();
             var latestmsgs = latestMessages.Messages.Values.OrderByDescending(m => m.Id);
             foreach (var msg in latestmsgs)
-            {
                 TweetList.Add(new TweetViewModel(msg));
-            }
-            ScrollTo = ScrollTo.Bottom;
             base.Refreshed();
             list.Clear();
             dict.Clear();

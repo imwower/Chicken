@@ -16,7 +16,6 @@ namespace Chicken.View
             InitializeComponent();
             newMessageViewModel = new NewMessageViewModel()
             {
-                ToastMessageHandler = ToastMessageHandler,
                 BeforeSendHandler = this.BeforeSendAction,
                 AddEmotionHandler = this.AddEmotionAction,
                 KeyboardHandler = this.KeyboardAction

@@ -13,10 +13,7 @@ namespace Chicken.View
         public APISettingsPage()
         {
             InitializeComponent();
-            apiSettingsViewModel = new APISettingsViewModel()
-            {
-                ToastMessageHandler = ToastMessageHandler
-            };
+            apiSettingsViewModel = new APISettingsViewModel();
             this.DataContext = apiSettingsViewModel;
             this.Loaded += APISettingsPage_Loaded;
         }

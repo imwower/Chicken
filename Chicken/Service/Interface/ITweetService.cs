@@ -70,10 +70,9 @@ namespace Chicken.Service.Interface
 
         void GetTweetConfiguration(Action<TweetConfiguration> callBack);
         #endregion
-
     }
 
-    public class RequestDataObject<T>
+    internal class RequestDataObject<T>
         where T : ModelBase
     {
         public HttpWebRequest Request { get; set; }
