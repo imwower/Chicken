@@ -78,9 +78,7 @@ namespace Chicken.ViewModel.Profile
         public virtual void Mention()
         {
             if (IsLoading)
-            {
                 return;
-            }
             IsLoading = false;
             NewTweetModel newTweet = new NewTweetModel
             {

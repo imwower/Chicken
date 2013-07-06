@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Chicken.Common;
-using Chicken.Model;
-using Chicken.Service;
 using Chicken.ViewModel.Home.VM;
 
 namespace Chicken.ViewModel.Home
@@ -58,21 +55,22 @@ namespace Chicken.ViewModel.Home
         #region actions
         private void NewTweetAction()
         {
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage);
+            (PivotItems[SelectedIndex] as HomeViewModelBase).NewTweet();
         }
 
         private void NewMessageAction()
         {
-            IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(PageNameEnum.NewMessagePage);
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage);
+            (PivotItems[SelectedIndex] as HomeViewModelBase).NewMessage();
         }
 
         private void SearchAction()
-        { }
+        {
+            //TODO: search
+        }
 
         private void MyProfileAction()
         {
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, App.AuthenticatedUser);
+            (PivotItems[SelectedIndex] as HomeViewModelBase).MyProfile();
         }
         #endregion
     }

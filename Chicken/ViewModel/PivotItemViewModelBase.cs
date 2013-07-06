@@ -50,19 +50,7 @@ namespace Chicken.ViewModel
                 }
             }
         }
-        private bool isInited;
-        public bool IsInited
-        {
-            get
-            {
-                return isInited;
-            }
-            set
-            {
-                isInited = value;
-                RaisePropertyChanged("IsInited");
-            }
-        }
+        public bool IsInited { get; set; }
         private ScrollTo scrollTo;
         public ScrollTo ScrollTo
         {
@@ -72,21 +60,7 @@ namespace Chicken.ViewModel
             }
             set
             {
-                switch (value)
-                {
-                    case ScrollTo.Top:
-                        if (scrollTo < 0)
-                            scrollTo -= 1;
-                        else
-                            scrollTo = value;
-                        break;
-                    case ScrollTo.Bottom:
-                        if (scrollTo > 0)
-                            scrollTo += 1;
-                        else
-                            scrollTo = value;
-                        break;
-                }
+                scrollTo = value;
                 RaisePropertyChanged("ScrollTo");
             }
         }
@@ -154,64 +128,50 @@ namespace Chicken.ViewModel
         #region public method
         public void Load()
         {
-            if (LoadHandler == null)
-            {
+            if (LoadHandler == null
+                || worker.IsBusy)
                 return;
-            }
-            Thread.Sleep(1000);
-            if (worker.IsBusy)
-            {
-                return;
-            }
-            else
-            {
+            if (!isLoading)
                 IsLoading = true;
-                worker.DoWork += DoLoad;
-                worker.RunWorkerCompleted += LoadCompleted;
-                worker.RunWorkerAsync();
-            }
+            worker.DoWork += DoLoad;
+            worker.RunWorkerCompleted += LoadCompleted;
+            worker.RunWorkerAsync();
         }
 
         public void Refresh()
         {
-            if (RefreshHandler == null)
-            {
+            if (RefreshHandler == null
+                || worker.IsBusy)
                 return;
-            }
-            Thread.Sleep(1000);
-            if (worker.IsBusy)
-            {
-                return;
-            }
-            else
-            {
+            if (!isLoading)
                 IsLoading = true;
-                worker.DoWork += DoRefresh;
-                worker.RunWorkerCompleted += RefreshCompleted;
-                worker.RunWorkerAsync();
-            }
+            worker.DoWork += DoRefresh;
+            worker.RunWorkerCompleted += RefreshCompleted;
+            worker.RunWorkerAsync();
         }
 
         public void ScrollToTop()
         {
+            //if (ScrollTo < 0)
+            //    ScrollTo -= 1;
+            //else
             ScrollTo = ScrollTo.Top;
         }
 
         public void ScrollToBottom()
         {
+            //if (ScrollTo > 0)
+            //    ScrollTo += 1;
+            //else
             ScrollTo = ScrollTo.Bottom;
         }
 
         public void Click(object parameter)
         {
             if (ClickHandler == null)
-            {
                 return;
-            }
             if (worker.IsBusy)
-            {
                 worker.CancelAsync();
-            }
             IsLoading = false;
             ClickHandler(parameter);
         }
@@ -219,13 +179,9 @@ namespace Chicken.ViewModel
         public void ItemClick(object parameter)
         {
             if (ItemClickHandler == null)
-            {
                 return;
-            }
             if (worker.IsBusy)
-            {
                 worker.CancelAsync();
-            }
             IsLoading = false;
             ItemClickHandler(parameter);
         }
@@ -233,9 +189,7 @@ namespace Chicken.ViewModel
         public void HandleMessage(ToastMessage message)
         {
             if (ToastMessageHandler != null)
-            {
                 ToastMessageHandler(message);
-            }
         }
         #endregion
 
@@ -243,44 +197,38 @@ namespace Chicken.ViewModel
         #region refresh
         private void DoRefresh(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             if (worker.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    RefreshHandler();
-                });
+            Deployment.Current.Dispatcher.BeginInvoke(RefreshHandler);
         }
 
         private void RefreshCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             worker.DoWork -= DoRefresh;
+            worker.RunWorkerCompleted -= RefreshCompleted;
         }
         #endregion
 
         #region load
         private void DoLoad(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
             if (worker.CancellationPending)
             {
                 e.Cancel = true;
                 return;
             }
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                {
-                    LoadHandler();
-                });
+            Deployment.Current.Dispatcher.BeginInvoke(LoadHandler);
         }
 
         private void LoadCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             worker.DoWork -= DoLoad;
+            worker.RunWorkerCompleted -= LoadCompleted;
         }
         #endregion
         #endregion

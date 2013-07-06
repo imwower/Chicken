@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 using Chicken.ViewModel.Base;
@@ -9,19 +10,7 @@ namespace Chicken.ViewModel.Home
     public class HomeViewModelBase : PivotItemViewModelBase
     {
         #region properties
-        private ObservableCollection<TweetViewModel> tweetList;
-        public ObservableCollection<TweetViewModel> TweetList
-        {
-            get
-            {
-                return tweetList;
-            }
-            set
-            {
-                tweetList = value;
-                RaisePropertyChanged("TweetList");
-            }
-        }
+        public ObservableCollection<TweetViewModel> TweetList { get; set; }
         #endregion
 
         #region services
@@ -34,6 +23,28 @@ namespace Chicken.ViewModel.Home
             ItemClickHandler = this.ItemClickAction;
         }
 
+        #region public methods
+        public virtual void NewTweet()
+        {
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage);
+        }
+
+        public virtual void NewMessage()
+        {
+            IsLoading = false;
+            IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(PageNameEnum.NewMessagePage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage);
+        }
+
+        public virtual void MyProfile()
+        {
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, App.AuthenticatedUser);
+        }
+        #endregion
+
+        #region actions
         private void ClickAction(object parameter)
         {
             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
@@ -43,5 +54,6 @@ namespace Chicken.ViewModel.Home
         {
             NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
+        #endregion
     }
 }

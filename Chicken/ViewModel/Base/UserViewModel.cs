@@ -1,7 +1,7 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using Chicken.Model;
 using Chicken.Service;
-using System.ComponentModel;
 
 namespace Chicken.ViewModel.Base
 {

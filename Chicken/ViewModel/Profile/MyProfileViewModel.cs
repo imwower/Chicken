@@ -4,14 +4,15 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile
 {
     public class MyProfileViewModel : PivotItemViewModelBase
     {
         #region properties
-        private UserProfileDetail myProfile;
-        public UserProfileDetail MyProfile
+        private UserProfileDetailViewModel myProfile;
+        public UserProfileDetailViewModel MyProfile
         {
             get
             {
@@ -51,7 +52,7 @@ namespace Chicken.ViewModel.Profile
             TweetService.GetMyProfileDetail(
                 profile =>
                 {
-                    MyProfile = profile;
+                    MyProfile = new UserProfileDetailViewModel(profile);
                     base.Refreshed();
                 });
         }
@@ -66,8 +67,7 @@ namespace Chicken.ViewModel.Profile
                 parameters.Add(Const.LOCATION, MyProfile.Location);
             if (MyProfile.Url != App.AuthenticatedUser.Url)
                 parameters.Add(Const.URL, MyProfile.Url);
-            if (MyProfile.Text != App.AuthenticatedUser.Text)
-                parameters.Add(Const.DESCRIPTION, MyProfile.Text);
+            parameters.Add(Const.DESCRIPTION, MyProfile.ExpandedDescription);
             if (parameters.Count == 0)
                 return;
             TweetService.UpdateMyProfile(

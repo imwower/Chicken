@@ -1,6 +1,6 @@
-﻿using Chicken.ViewModel.Profile;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using Chicken.ViewModel.Profile;
 
 namespace Chicken.View
 {
@@ -29,22 +29,22 @@ namespace Chicken.View
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.Name = (sender as TextBox).Text;
+            myProfileViewModel.MyProfile.UserProfileDetail.Name = (sender as TextBox).Text;
         }
 
         private void Location_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.Location = (sender as TextBox).Text;
+            myProfileViewModel.MyProfile.UserProfileDetail.Location = (sender as TextBox).Text;
         }
 
         private void Url_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.Url = (sender as TextBox).Text;
+            myProfileViewModel.MyProfile.UserProfileDetail.Url = (sender as TextBox).Text;
         }
 
         private void Description_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.Text = (sender as TextBox).Text;
+            myProfileViewModel.MyProfile.UserProfileDetail.Text = (sender as TextBox).Text;
         }
     }
 }

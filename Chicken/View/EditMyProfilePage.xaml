@@ -25,14 +25,15 @@
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
         <!--content-->
-        <ScrollViewer Grid.Row="1"
-                      Margin="8,4" VerticalAlignment="Top"
-                      VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+        <ScrollViewer Grid.Row="1" Margin="8,4"
+                      VerticalAlignment="Top"
+                      VerticalScrollBarVisibility="Auto"
+                      HorizontalScrollBarVisibility="Disabled">
             <StackPanel Orientation="Vertical">
                 <!--name-->
                 <TextBlock Text="Name" />
                 <TextBox Text="{Binding Path=MyProfile.Name}"
-                        TextChanged="Name_TextChanged" />
+                         TextChanged="Name_TextChanged" />
                 <!--location-->
                 <TextBlock Text="Loacation" />
                 <TextBox Text="{Binding Path=MyProfile.Location}"
@@ -40,7 +41,7 @@
                 <!--link-->
                 <TextBlock Text="Link" />
                 <TextBox Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
-                        TextChanged="Url_TextChanged" />
+                         TextChanged="Url_TextChanged" />
                 <!--description-->
                 <TextBlock Text="Description" />
                 <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"

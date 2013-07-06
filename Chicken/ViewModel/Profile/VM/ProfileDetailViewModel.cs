@@ -29,6 +29,22 @@ namespace Chicken.ViewModel.Profile.VM
             RefreshHandler = this.RefreshAction;
         }
 
+        #region actions
+        private void RefreshAction()
+        {
+            if (UserProfile.IsMyself)
+            {
+                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
+                App.InitAuthenticatedUser();
+            }
+            else
+            {
+                GetFollowedByState();
+            }
+            base.Refreshed();
+        }
+        #endregion
+
         #region override
         public override void NewMessage()
         {
@@ -45,25 +61,9 @@ namespace Chicken.ViewModel.Profile.VM
             IsLoading = false;
             var newMessage = new NewMessageModel
             {
-                User = UserProfile.User as User,
+                User = UserProfile.User,
             };
             NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage, newMessage);
-        }
-        #endregion
-
-        #region actions
-        private void RefreshAction()
-        {
-            if (UserProfile.IsMyself)
-            {
-                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
-                App.InitAuthenticatedUser();
-            }
-            else
-            {
-                GetFollowedByState();
-            }
-            base.Refreshed();
         }
         #endregion
 
