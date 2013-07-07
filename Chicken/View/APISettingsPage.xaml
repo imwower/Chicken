@@ -25,12 +25,14 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <!--title-->
-        <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
+        <TextBlock Grid.Row="0" Margin="4"
+                   Text="{Binding [APISettingsPage_Header]}" />
         <!--content-->
-        <ScrollViewer Grid.Row="1"
-                      Margin="8,4" VerticalAlignment="Top"
-                      VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
-            <StackPanel Orientation="Vertical">
+        <ScrollViewer Grid.Row="1" Margin="8,4"
+                      VerticalAlignment="Stretch"
+                      VerticalScrollBarVisibility="Visible"
+                      HorizontalScrollBarVisibility="Disabled">
+            <StackPanel>
                 <!--type-->
                 <ctrls:ListPicker Header="Type"
                                   ItemTemplate="{StaticResource ListPickerItemTemplate}"

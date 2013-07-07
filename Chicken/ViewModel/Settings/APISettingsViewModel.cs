@@ -23,17 +23,11 @@ namespace Chicken.ViewModel.Settings
                 RaisePropertyChanged("APISettings");
             }
         }
-        public APIProxy[] defaultAPIs;
         public APIProxy[] DefaultAPIs
         {
             get
             {
-                return defaultAPIs;
-            }
-            set
-            {
-                defaultAPIs = value;
-                RaisePropertyChanged("DefaultAPIs");
+                return APIProxy.DefaultAPIs;
             }
         }
         private bool isInitAPI;
@@ -70,7 +64,6 @@ namespace Chicken.ViewModel.Settings
         #region actions
         private void RefreshAction()
         {
-            DefaultAPIs = APIProxy.DefaultAPIs;
             if (App.Settings != null && App.Settings.APISettings != null)
                 APISettings = App.Settings.APISettings;
             else

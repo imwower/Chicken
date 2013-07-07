@@ -50,7 +50,11 @@ namespace Chicken.ViewModel
                 ci = new CultureInfo(App.Settings.CurrentLanguage.Name);
             else
             {
-                var lang = Language.DefaultLanguages.First(d => d.DisplayName == ci.DisplayName);
+                //ci.Name default is "zh-CN":
+                var lang = Language.DefaultLanguages.FirstOrDefault(d => d.Name == ci.Name);
+                //not zh-CN:
+                if (lang == null)
+                    lang = Language.DefaultLanguages.First(d => d.Name == "en-US");
                 App.InitLanguage(lang);
             }
             Thread.CurrentThread.CurrentCulture = ci;

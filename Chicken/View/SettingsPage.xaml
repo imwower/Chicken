@@ -29,39 +29,33 @@
                         <RowDefinition Height="*"/>
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
-                    <ScrollViewer Grid.Row="0" VerticalAlignment="Top"
+                    <ScrollViewer Grid.Row="0"
+                                  VerticalAlignment="Stretch"
                                   HorizontalScrollBarVisibility="Disabled"
                                   VerticalScrollBarVisibility="Auto">
                         <ScrollViewer.Content>
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                </Grid.RowDefinitions>
-                                <Grid.Resources>
+                            <StackPanel>
+                                <StackPanel.Resources>
                                     <Style TargetType="TextBlock">
                                         <Setter Property="Margin" Value="12,4" />
                                     </Style>
-                                </Grid.Resources>
-                                <StackPanel Grid.Row="0">
-                                    <TextBlock Text="API" />
-                                    <TextBlock Text="Type" />
-                                    <TextBlock Text="{Binding APISettings.Type}" />
-                                    <TextBlock Text="Url" />
-                                    <TextBlock TextWrapping="Wrap"
+                                </StackPanel.Resources>
+                                <TextBlock Text="API" />
+                                <TextBlock Text="Type" />
+                                <TextBlock Text="{Binding APISettings.Type}" />
+                                <TextBlock Text="Url" />
+                                <TextBlock TextWrapping="Wrap"
                                                Text="{Binding APISettings.Url}" />
-                                    <Button Content="Edit API"
+                                <Button Content="Edit API"
                                             Command="{Binding EditAPISettingsCommand}" />
-                                </StackPanel>
-                                <Button Grid.Row="1" Content="Clear Cache"
+                                <Button Content="Clear Cache"
                                         Command="{Binding ClearCacheCommand}" />
-                                <ctrls:ListPicker Grid.Row="2" Header="Language"
+                                <ctrls:ListPicker Header="Language"
                                                   ItemTemplate="{StaticResource ListPickerItemTemplate}"
                                                   ItemsSource="{Binding DefaultLanguages}"
                                                   SelectedItem="{Binding Language,Mode=TwoWay}">
                                 </ctrls:ListPicker>
-                            </Grid>
+                            </StackPanel>
                         </ScrollViewer.Content>
                     </ScrollViewer>
                     <ProgressBar Grid.Row="1" IsIndeterminate="True"

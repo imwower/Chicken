@@ -61,6 +61,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 API设置 的本地化字符串。
+        /// </summary>
+        public static string APISettingsPage_Header {
+            get {
+                return ResourceManager.GetString("APISettingsPage_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 你好世界 的本地化字符串。
         /// </summary>
         public static string HelloWorld {

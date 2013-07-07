@@ -37,17 +37,11 @@ namespace Chicken.ViewModel.Settings.VM
                 }
             }
         }
-        public Language[] defaultLanguages;
         public Language[] DefaultLanguages
         {
             get
             {
-                return defaultLanguages;
-            }
-            set
-            {
-                defaultLanguages = value;
-                RaisePropertyChanged("DefaultLanguages");
+                return Language.DefaultLanguages;
             }
         }
         #endregion
@@ -81,7 +75,6 @@ namespace Chicken.ViewModel.Settings.VM
         {
             if (App.Settings != null && App.Settings.APISettings != null)
                 APISettings = App.Settings.APISettings;
-            DefaultLanguages = Language.DefaultLanguages;
             base.Refreshed();
         }
 
