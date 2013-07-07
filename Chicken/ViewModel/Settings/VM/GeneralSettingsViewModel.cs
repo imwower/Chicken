@@ -7,17 +7,47 @@ namespace Chicken.ViewModel.Settings.VM
     public class GeneralSettingsViewModel : SettingsViewModelBase
     {
         #region properties
-        private GeneralSettings generalSettings;
-        public GeneralSettings GeneralSettings
+        private APIProxy setting;
+        public APIProxy APISettings
         {
             get
             {
-                return generalSettings;
+                return setting;
             }
             set
             {
-                generalSettings = value;
-                RaisePropertyChanged("GeneralSettings");
+                setting = value;
+                RaisePropertyChanged("APISettings");
+            }
+        }
+        private Language language = App.Settings.CurrentLanguage;
+        public Language Language
+        {
+            get
+            {
+                return language;
+            }
+            set
+            {
+                if (language != value)
+                {
+                    language = value;
+                    LanguageChangedAction();
+                    RaisePropertyChanged("Language");
+                }
+            }
+        }
+        public Language[] defaultLanguages;
+        public Language[] DefaultLanguages
+        {
+            get
+            {
+                return defaultLanguages;
+            }
+            set
+            {
+                defaultLanguages = value;
+                RaisePropertyChanged("DefaultLanguages");
             }
         }
         #endregion
@@ -49,7 +79,9 @@ namespace Chicken.ViewModel.Settings.VM
         #region actions
         private void RefreshAction()
         {
-            GeneralSettings = App.Settings;
+            if (App.Settings != null && App.Settings.APISettings != null)
+                APISettings = App.Settings.APISettings;
+            DefaultLanguages = Language.DefaultLanguages;
             base.Refreshed();
         }
 
@@ -62,6 +94,11 @@ namespace Chicken.ViewModel.Settings.VM
         {
             IsLoading = false;
             NavigationServiceManager.NavigateTo(Common.PageNameEnum.APISettingsPage);
+        }
+
+        private void LanguageChangedAction()
+        {
+            this.SetLanguage(Language);
         }
         #endregion
     }

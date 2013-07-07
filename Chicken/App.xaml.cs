@@ -65,10 +65,21 @@ namespace Chicken
             settings = IsolatedStorageService.GetAppSettings();
         }
 
-        //public static void InitConfiguration()
-        //{
-        //    configuration = IsolatedStorageService.GetTweetConfiguration();
-        //}
+        public static void InitAPISettings(APIProxy api)
+        {
+            if (Settings == null)
+                settings = new GeneralSettings();
+            settings.APISettings = api;
+            IsolatedStorageService.CreateAppSettings(settings);
+        }
+
+        public static void InitLanguage(Language language)
+        {
+            if (Settings == null)
+                settings = new GeneralSettings();
+            settings.CurrentLanguage = language;
+            IsolatedStorageService.CreateAppSettings(settings);
+        }
 
         public static void HandleMessage(ToastMessage message)
         {

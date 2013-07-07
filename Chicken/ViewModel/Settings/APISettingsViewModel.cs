@@ -10,17 +10,30 @@ namespace Chicken.ViewModel.Settings
     public class APISettingsViewModel : PivotItemViewModelBase
     {
         #region properties
-        private GeneralSettings generalSettings;
-        public GeneralSettings GeneralSettings
+        private APIProxy setting;
+        public APIProxy APISettings
         {
             get
             {
-                return generalSettings;
+                return setting;
             }
             set
             {
-                generalSettings = value;
-                RaisePropertyChanged("GeneralSettings");
+                setting = value;
+                RaisePropertyChanged("APISettings");
+            }
+        }
+        public APIProxy[] defaultAPIs;
+        public APIProxy[] DefaultAPIs
+        {
+            get
+            {
+                return defaultAPIs;
+            }
+            set
+            {
+                defaultAPIs = value;
+                RaisePropertyChanged("DefaultAPIs");
             }
         }
         private bool isInitAPI;
@@ -57,20 +70,18 @@ namespace Chicken.ViewModel.Settings
         #region actions
         private void RefreshAction()
         {
-            if (App.Settings == null)
-            {
-                isInitAPI = true;
-                GeneralSettings = new GeneralSettings
-                {
-                    APISettings = new APIProxy
-                    {
-                        Url = Const.testAPI
-                    }
-                };
-            }
+            DefaultAPIs = APIProxy.DefaultAPIs;
+            if (App.Settings != null && App.Settings.APISettings != null)
+                APISettings = App.Settings.APISettings;
             else
             {
-                GeneralSettings = App.Settings;
+                isInitAPI = true;
+                APISettings = new APIProxy
+                {
+                    Name = APIProxy.DefaultAPIs[0].Name,
+                    DisplayName = APIProxy.DefaultAPIs[0].DisplayName,
+                    Url = Const.testAPI
+                };
             }
             base.Refreshed();
         }
@@ -78,19 +89,18 @@ namespace Chicken.ViewModel.Settings
         private void SaveAction()
         {
             if (IsLoading
-                || string.IsNullOrEmpty(GeneralSettings.APISettings.Url))
+                || string.IsNullOrEmpty(APISettings.Url))
                 return;
             IsLoading = true;
-            generalSettings.APISettings.Url = GeneralSettings.APISettings.Url.TrimEnd('/') + "/";
-            TweetService.TestAPIUrl(GeneralSettings.APISettings.Url,
+            APISettings.Url = APISettings.Url.TrimEnd('/', '\r', '\n', ' ') + "/";
+            TweetService.TestAPIUrl(APISettings.Url,
                 userProfileDetail =>
                 {
                     IsLoading = false;
                     List<ErrorMessage> errors = userProfileDetail.Errors;
                     if (userProfileDetail.HasError)
                         return;
-                    IsolatedStorageService.CreateAppSettings(GeneralSettings);
-                    App.InitAppSettings();
+                    App.InitAPISettings(APISettings);
                     IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
                     App.InitAuthenticatedUser();
                     App.HandleMessage(new ToastMessage

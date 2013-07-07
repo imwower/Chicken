@@ -15,7 +15,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -32,13 +32,16 @@
                       VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
             <StackPanel Orientation="Vertical">
                 <!--type-->
-                <TextBlock Text="Type" />
-                <TextBox Text="{Binding Path=GeneralSettings.APISettings.Type}" />
+                <ctrls:ListPicker Header="Type"
+                                  ItemTemplate="{StaticResource ListPickerItemTemplate}"
+                                  ItemsSource="{Binding DefaultAPIs}"
+                                  SelectedItem="{Binding APISettings}" />
                 <!--url-->
-                <TextBlock Text="Url" />
-                <TextBox Text="{Binding Path=GeneralSettings.APISettings.Url, Mode=TwoWay}"
+                <TextBlock Text="Url" Margin="12,4" />
+                <TextBox TextWrapping="Wrap"
+                         Text="{Binding Path=APISettings.Url, Mode=TwoWay}"
                          TextChanged="Url_TextChanged"
-                         TextWrapping="Wrap" Height="240" MaxHeight="400" />
+                         Height="240" MaxHeight="400" />
             </StackPanel>
         </ScrollViewer>
         <!--progress bar-->

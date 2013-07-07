@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 using System.Threading;
 using Chicken.Model;
 using Chicken.Resources;
-using Chicken.Service;
 
 namespace Chicken.ViewModel
 {
@@ -34,14 +34,9 @@ namespace Chicken.ViewModel
             }
         }
 
-        public void SetLanguage(string language)
+        public void SetLanguage(Language language)
         {
-            var settings = App.Settings;
-            if (settings == null)
-                settings = new GeneralSettings();
-            settings.CurrentLanguage = language;
-            IsolatedStorageService.CreateAppSettings(settings);
-            App.InitAppSettings();
+            App.InitLanguage(language);
             isInit = false;
             RaisePropertyChanged("Item[]");
         }
@@ -51,9 +46,13 @@ namespace Chicken.ViewModel
         private static void InitCurrentCulture()
         {
             var ci = CultureInfo.CurrentUICulture;
-            if (App.Settings != null
-                && !string.IsNullOrEmpty(App.Settings.CurrentLanguage))
-                ci = new CultureInfo(App.Settings.CurrentLanguage);
+            if (App.Settings != null && App.Settings.CurrentLanguage != null)
+                ci = new CultureInfo(App.Settings.CurrentLanguage.Name);
+            else
+            {
+                var lang = Language.DefaultLanguages.First(d => d.DisplayName == ci.DisplayName);
+                App.InitLanguage(lang);
+            }
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
             isInit = true;

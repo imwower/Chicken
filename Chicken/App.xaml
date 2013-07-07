@@ -13,6 +13,256 @@
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
         <ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />
 
+        <!--themes-->
+        <Style TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="ScrollStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.5"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Scrolling">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="NotScrolling">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
+                                            <DoubleAnimation Storyboard.TargetName="HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="VerticalCompression">
+                                    <VisualState x:Name="NoVerticalCompression"/>
+                                    <VisualState x:Name="CompressionTop"/>
+                                    <VisualState x:Name="CompressionBottom"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="HorizontalCompression">
+                                    <VisualState x:Name="NoHorizontalCompression"/>
+                                    <VisualState x:Name="CompressionLeft"/>
+                                    <VisualState x:Name="CompressionRight"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <ScrollContentPresenter x:Name="ScrollContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
+                                <ScrollBar x:Name="VerticalScrollBar" IsHitTestVisible="False" Height="Auto" Width="5" HorizontalAlignment="Right" VerticalAlignment="Stretch" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{TemplateBinding VerticalOffset}" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" />
+                                <ScrollBar x:Name="HorizontalScrollBar" IsHitTestVisible="False" Width="Auto" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Value="{TemplateBinding HorizontalOffset}" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ctrls:LazyListBoxItem">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch" />
+            <Setter Property="VerticalAlignment" Value="Stretch" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ctrls:LazyListBoxItem">
+                        <Border x:Name="LayoutRoot" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="MouseOver" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentControl x:Name="ContentContainer"
+                                            VerticalAlignment="Stretch" 
+                                            HorizontalAlignment="Stretch"
+                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            Margin="{TemplateBinding Padding}" 
+                                            Content="{TemplateBinding Content}" 
+                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                            Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ctrls:ToastPrompt">
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+            <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}" />
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Overlay" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ctrls:ToastPrompt">
+                        <Grid VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="Transparent">
+                            <Rectangle Fill="{TemplateBinding Background}" Opacity="0.6" />
+                            <StackPanel VerticalAlignment="Bottom" Margin="0" Orientation="{TemplateBinding TextOrientation}">
+                                <StackPanel Margin="0" VerticalAlignment="Bottom" Orientation="Horizontal">
+                                    <Image Margin="0" Visibility="Collapsed" Name="ToastImage" VerticalAlignment="Bottom" Width="{TemplateBinding ImageWidth}" Height="{TemplateBinding ImageHeight}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" />
+                                    <TextBlock Text="{TemplateBinding Title}" FontWeight="Bold" VerticalAlignment="Center" Margin="0" Padding="0" />
+                                </StackPanel>
+                                <TextBlock Text="{TemplateBinding Message}" Margin="0" Padding="0" TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ctrls:ListPicker">
+            <Setter Property="Background" Value="{StaticResource PhoneTextBoxBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
+            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Margin" Value="{StaticResource PhoneTouchTargetOverhang}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ctrls:ListPicker">
+                        <StackPanel>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="PickerStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Expanded">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="Background"
+                                            Duration="0">
+                                                <DiscreteObjectKeyFrame
+                                                Value="{StaticResource PhoneTextBoxEditBackgroundColor}"
+                                                KeyTime="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="Border"
+                                            Storyboard.TargetProperty="BorderBrush"
+                                            Duration="0">
+                                                <DiscreteObjectKeyFrame
+                                                Value="{StaticResource PhoneTextBoxEditBorderBrush}"
+                                                KeyTime="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentControl
+                            Content="{TemplateBinding Header}"
+                            ContentTemplate="{TemplateBinding HeaderTemplate}"
+                            Foreground="{StaticResource PhoneSubtleBrush}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="0 0 0 8"/>
+                            <Grid>
+                                <Border
+                                x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding Background}"
+                                BorderThickness="2">
+                                    <Canvas x:Name="ItemsPresenterHost" MinHeight="46">
+                                        <ItemsPresenter x:Name="ItemsPresenter">
+                                            <ItemsPresenter.RenderTransform>
+                                                <TranslateTransform x:Name="ItemsPresenterTranslateTransform"/>
+                                            </ItemsPresenter.RenderTransform>
+                                        </ItemsPresenter>
+                                    </Canvas>
+                                </Border>
+                                <Popup x:Name="FullModePopup">
+                                    <Border Background="{StaticResource PhoneChromeBrush}">
+                                        <!-- Popup.Child should always be a Border -->
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <ContentControl
+                                            Grid.Row="0"
+                                            Content="{TemplateBinding FullModeHeader}"
+                                            Foreground="{StaticResource PhoneForegroundBrush}"
+                                            FontFamily="{StaticResource PhoneFontFamilySemiBold}"
+                                            FontSize="{StaticResource PhoneFontSizeMedium}"
+                                            HorizontalAlignment="Left"
+                                            Margin="24 12 0 0"/>
+                                            <ListBox
+                                            x:Name="FullModeSelector"
+                                            Grid.Row="1"
+                                            ItemTemplate="{TemplateBinding ActualFullModeItemTemplate}"
+                                            FontSize="{TemplateBinding FontSize}"
+                                            Margin="{StaticResource PhoneMargin}">
+                                                <ListBox.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <StackPanel/>
+                                                        <!-- Ensures all containers will be available during the Loaded event -->
+                                                    </ItemsPanelTemplate>
+                                                </ListBox.ItemsPanel>
+                                            </ListBox>
+                                        </Grid>
+                                    </Border>
+                                </Popup>
+                            </Grid>
+                        </StackPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="ctrls:ListPickerItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="Padding" Value="8 6"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ctrls:ListPickerItem">
+                        <Grid Background="{TemplateBinding Background}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames
+                                            Storyboard.TargetName="ContentContainer"
+                                            Storyboard.TargetProperty="Foreground"
+                                            Duration="0">
+                                                <DiscreteObjectKeyFrame
+                                                Value="{StaticResource PhoneAccentBrush}"
+                                                KeyTime="0"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <ContentControl
+                            x:Name="ContentContainer"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}"
+                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                            Margin="{TemplateBinding Padding}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
@@ -132,120 +382,6 @@
             </Setter>
         </Style>
 
-        <Style TargetType="ScrollViewer">
-            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="HorizontalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="BorderBrush" Value="Transparent"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ScrollViewer">
-                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="ScrollStates">
-                                    <VisualStateGroup.Transitions>
-                                        <VisualTransition GeneratedDuration="00:00:00.5"/>
-                                    </VisualStateGroup.Transitions>
-                                    <VisualState x:Name="Scrolling">
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                                            <DoubleAnimation Storyboard.TargetName="HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="1" Duration="0"/>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="NotScrolling">
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="VerticalScrollBar" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
-                                            <DoubleAnimation Storyboard.TargetName="HorizontalScrollBar" Storyboard.TargetProperty="Opacity" To="0" Duration="0"/>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="VerticalCompression">
-                                    <VisualState x:Name="NoVerticalCompression"/>
-                                    <VisualState x:Name="CompressionTop"/>
-                                    <VisualState x:Name="CompressionBottom"/>
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="HorizontalCompression">
-                                    <VisualState x:Name="NoHorizontalCompression"/>
-                                    <VisualState x:Name="CompressionLeft"/>
-                                    <VisualState x:Name="CompressionRight"/>
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <Grid Margin="{TemplateBinding Padding}">
-                                <ScrollContentPresenter x:Name="ScrollContentPresenter" Content="{TemplateBinding Content}" ContentTemplate="{TemplateBinding ContentTemplate}"/>
-                                <ScrollBar x:Name="VerticalScrollBar" IsHitTestVisible="False" Height="Auto" Width="5" HorizontalAlignment="Right" VerticalAlignment="Stretch" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableHeight}" Minimum="0" Value="{TemplateBinding VerticalOffset}" Orientation="Vertical" ViewportSize="{TemplateBinding ViewportHeight}" />
-                                <ScrollBar x:Name="HorizontalScrollBar" IsHitTestVisible="False" Width="Auto" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" IsTabStop="False" Maximum="{TemplateBinding ScrollableWidth}" Minimum="0" Value="{TemplateBinding HorizontalOffset}" Orientation="Horizontal" ViewportSize="{TemplateBinding ViewportWidth}" />
-                            </Grid>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="ctrls:LazyListBoxItem">
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="BorderBrush" Value="Transparent" />
-            <Setter Property="Padding" Value="0"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch" />
-            <Setter Property="VerticalAlignment" Value="Stretch" />
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="VerticalContentAlignment" Value="Stretch" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ctrls:LazyListBoxItem">
-                        <Border x:Name="LayoutRoot" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroup x:Name="CommonStates">
-                                    <VisualState x:Name="Normal" />
-                                    <VisualState x:Name="MouseOver" />
-                                    <VisualState x:Name="Disabled" />
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="SelectionStates">
-                                    <VisualState x:Name="Unselected"/>
-                                    <VisualState x:Name="Selected" />
-                                </VisualStateGroup>
-                            </VisualStateManager.VisualStateGroups>
-                            <ContentControl x:Name="ContentContainer"
-                                            VerticalAlignment="Stretch" 
-                                            HorizontalAlignment="Stretch"
-                                            VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" 
-                                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                                            Margin="{TemplateBinding Padding}" 
-                                            Content="{TemplateBinding Content}" 
-                                            ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                            Foreground="{TemplateBinding Foreground}" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="ctrls:ToastPrompt">
-            <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
-            <Setter Property="TextWrapping" Value="Wrap" />
-            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
-            <Setter Property="Background" Value="{StaticResource PhoneAccentBrush}" />
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Overlay" Value="Transparent" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ctrls:ToastPrompt">
-                        <Grid VerticalAlignment="{TemplateBinding VerticalAlignment}" Background="{TemplateBinding Background}">
-                            <StackPanel VerticalAlignment="Bottom" Margin="0" Orientation="{TemplateBinding TextOrientation}">
-                                <StackPanel Margin="0" VerticalAlignment="Bottom" Orientation="Horizontal">
-                                    <Image Margin="0" Visibility="Collapsed" Name="ToastImage" VerticalAlignment="Bottom" Width="{TemplateBinding ImageWidth}" Height="{TemplateBinding ImageHeight}" Source="{TemplateBinding ImageSource}" Stretch="{TemplateBinding Stretch}" />
-                                    <TextBlock Text="{TemplateBinding Title}" FontWeight="Bold" VerticalAlignment="Center" Margin="0" Padding="0" />
-                                </StackPanel>
-                                <TextBlock Text="{TemplateBinding Message}" Margin="0" Padding="0" TextWrapping="{TemplateBinding TextWrapping}" VerticalAlignment="Center" />
-                            </StackPanel>
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
         <!--media and retweet icon-->
         <Style x:Name="RetweetRectangleSmall" TargetType="Rectangle">
             <Setter Property="Stretch" Value="Fill" />
@@ -259,7 +395,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Grid Margin="4" Opacity="0.4" Background="Transparent">
-                            <Rectangle Fill="Gray" Opacity="0.2" />
+                            <Rectangle Fill="Gray" Opacity="0.6" />
                             <ContentPresenter Margin="4" />
                         </Grid>
                     </ControlTemplate>
@@ -487,6 +623,10 @@
             </Button>
         </DataTemplate>
 
+        <DataTemplate x:Key="ListPickerItemTemplate">
+            <TextBlock Text="{Binding DisplayName}" />
+        </DataTemplate>
+
         <!--Pivot Item-->
         <!--Home Pivot Item Style-->
         <Style TargetType="ctrls:HomePivotItem">
@@ -518,7 +658,6 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>
