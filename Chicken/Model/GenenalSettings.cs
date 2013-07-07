@@ -5,6 +5,8 @@ namespace Chicken.Model
 {
     public class GeneralSettings
     {
+        public string CurrentLanguage { get; set; }
+
         public APIProxy APISettings { get; set; }
     }
 

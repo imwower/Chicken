@@ -83,7 +83,7 @@
                     <!--<abu:AppBarButton IconUri="/Images/dark/appbar.mention.png"
                                       Text="mention" Command="{Binding MentionCommand}" />-->
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
-                                      Text="emotion" Command="{Binding KeyboardCommand}" />
+                                      Text="keyboard" Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>
             </abu:SwitchAppBarAction>
         </abu:StateChangedTrigger>

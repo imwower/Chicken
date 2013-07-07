@@ -113,6 +113,7 @@
 
         #endregion
     }
+
     #region page name enum
     public enum PageNameEnum
     {
@@ -128,13 +129,6 @@
     #endregion
 
     #region page index enum
-    //public enum MainPageEnum
-    //{
-    //    Home = 0,
-    //    Mentions = 1,
-    //    DMs = 2,
-    //}
-
     public enum ProfilePageEnum
     {
         ProfileDetail = 0,
