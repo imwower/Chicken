@@ -100,8 +100,7 @@
                                 </StackPanel>
                                 <!--version-->
                                 <TextBlock Grid.Row="1" HorizontalAlignment="Center">
-                                        <Run Text="Version: " />
-                                        <Run Text="{Binding Path=CurrentVersion}" />
+                                    <Run Text="{Binding Path=CurrentVersion}" />
                                 </TextBlock>
                                 <!--description-->
                                 <TextBlock Grid.Row="2" Text="{Binding Path=AboutModel.Description}"

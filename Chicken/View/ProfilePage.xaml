@@ -19,11 +19,12 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=User.DisplayName}">
+        <controls:Pivot x:Name="MainPivot"
+                        Title="{Binding Path=User.DisplayName}">
             <!--profile detail-->
             <controls:PivotItem
                 DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding [ProfilePage_ProfileDetail_Header]}">
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_ProfileDetail_Header]}">
                 <Grid Margin="0,-40,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -148,22 +149,26 @@
                                             <TextBlock Grid.Column="0">
                                             <Run Text="{Binding UserProfile.TweetsCount}" />
                                             <LineBreak />
-                                            <Run Text="TWEETS" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_ProfileDetail_Tweets]}" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="1">
                                             <Run Text="{Binding UserProfile.FollowingCount}" />
                                             <LineBreak />
-                                            <Run Text="FOLLOWING" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_ProfileDetail_Following]}" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="2">
                                             <Run Text="{Binding UserProfile.FollowersCount}" />
                                             <LineBreak />
-                                            <Run Text="FOLLOWERS" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_ProfileDetail_Followers]}" />
                                             </TextBlock>
                                             <TextBlock Grid.Column="3">
                                             <Run Text="{Binding UserProfile.FavoritesCount}" />
                                             <LineBreak />
-                                            <Run Text="FAVORITES" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_ProfileDetail_Favorites]}" />
                                             </TextBlock>
                                         </Grid>
                                     </Border>
@@ -185,25 +190,25 @@
             <!--user tweets-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding [ProfilePage_Tweets_Header]}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_Tweets_Header]}"
                 ListBoxItems="{Binding TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--user following-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[2],ElementName=MainPivot}"
-                Header="{Binding [ProfilePage_Following_Header]}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_Following_Header]}"
                 ListBoxItems="{Binding UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <!--user followers-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[3],ElementName=MainPivot}"
-                Header="{Binding [ProfilePage_Followers_Header]}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_Followers_Header]}"
                 ListBoxItems="{Binding Path=UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
             <!--user favorites-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[4],ElementName=MainPivot}"
-                Header="{Binding [ProfilePage_Favorites_Header]}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[ProfilePage_Favorites_Header]}"
                 ListBoxItems="{Binding TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
         </controls:Pivot>

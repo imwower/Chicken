@@ -15,6 +15,7 @@ namespace Chicken.Controls
 {
     public class AutoRichTextBox : RichTextBox
     {
+        //TODO: object
         public static DependencyProperty TweetDataProperty =
             DependencyProperty.Register("TweetData", typeof(TweetBase), typeof(AutoRichTextBox), new PropertyMetadata(TweetDataPropertyChanged));
 

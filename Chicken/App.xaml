@@ -294,7 +294,7 @@
         </Style>
 
         <Style x:Name="RetweetCountBorder" TargetType="Border">
-            <Setter Property="Opacity" Value="0.6" />
+            <Setter Property="Opacity" Value="0.8" />
             <Setter Property="BorderBrush" Value="Silver" />
             <Setter Property="Margin" Value="0,4,0,0" />
         </Style>

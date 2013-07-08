@@ -50,7 +50,7 @@
             </ScrollViewer>
             <!--menu-->
             <StackPanel x:Name="MenuPanel" Grid.Row="2"
-                            Orientation="Horizontal" Opacity="0.6">
+                        Orientation="Horizontal" Opacity="0.6">
                 <!--char counter-->
                 <TextBlock x:Name="TextCounter" Text="140" />
                 <!--<TextBlock Text=" image" />-->
@@ -58,7 +58,8 @@
             </StackPanel>
         </Grid>
         <!--emotion panel-->
-        <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="1" Margin="4" Visibility="Collapsed"/>
+        <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="1"
+                            Margin="4" Visibility="Collapsed" />
     </Grid>
 
     <i:Interaction.Triggers>

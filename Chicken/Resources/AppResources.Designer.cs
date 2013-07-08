@@ -259,11 +259,38 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 正在关注 的本地化字符串。
+        ///   查找类似 关注 的本地化字符串。
         /// </summary>
         public static string ProfilePage_Following_Header {
             get {
                 return ResourceManager.GetString("ProfilePage_Following_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 收藏 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_ProfileDetail_Favorites {
+            get {
+                return ResourceManager.GetString("ProfilePage_ProfileDetail_Favorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关注者 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_ProfileDetail_Followers {
+            get {
+                return ResourceManager.GetString("ProfilePage_ProfileDetail_Followers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在关注 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_ProfileDetail_Following {
+            get {
+                return ResourceManager.GetString("ProfilePage_ProfileDetail_Following", resourceCulture);
             }
         }
         
@@ -273,6 +300,15 @@ namespace Chicken.Resources {
         public static string ProfilePage_ProfileDetail_Header {
             get {
                 return ResourceManager.GetString("ProfilePage_ProfileDetail_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 推文 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_ProfileDetail_Tweets {
+            get {
+                return ResourceManager.GetString("ProfilePage_ProfileDetail_Tweets", resourceCulture);
             }
         }
         
@@ -354,6 +390,24 @@ namespace Chicken.Resources {
         public static string StatusPage_Retweets_Header {
             get {
                 return ResourceManager.GetString("StatusPage_Retweets_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 位置 的本地化字符串。
+        /// </summary>
+        public static string StatusPage_StatusDetail_Location {
+            get {
+                return ResourceManager.GetString("StatusPage_StatusDetail_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 转推 的本地化字符串。
+        /// </summary>
+        public static string StatusPage_StatusDetail_Retweets {
+            get {
+                return ResourceManager.GetString("StatusPage_StatusDetail_Retweets", resourceCulture);
             }
         }
     }

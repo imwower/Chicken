@@ -23,7 +23,7 @@
             <!--status detail-->
             <controls:PivotItem
                 DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding [StatusPage_Detail_Header]}">
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_Detail_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -202,7 +202,8 @@
                                         <TextBlock>
                                             <Run Text="{Binding Tweet.FavoriteCount}" />
                                             <LineBreak />
-                                            <Run Text="FAVORITES" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_StatusDetail_Retweets]}" />
                                         </TextBlock>
                                     </Border>
                                     <Border
@@ -210,7 +211,8 @@
                                         <TextBlock>
                                             <Run Text="{Binding Tweet.Coordinates}" />
                                             <LineBreak />
-                                            <Run Text="LOCATION" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_StatusDetail_Location]}" />
                                         </TextBlock>
                                     </Border>
                                 </StackPanel>

@@ -184,7 +184,7 @@
     <value>关注者</value>
   </data>
   <data name="ProfilePage_Following_Header" xml:space="preserve">
-    <value>正在关注</value>
+    <value>关注</value>
   </data>
   <data name="ProfilePage_ProfileDetail_Header" xml:space="preserve">
     <value>资料</value>
@@ -214,6 +214,24 @@
     <value>详情</value>
   </data>
   <data name="StatusPage_Retweets_Header" xml:space="preserve">
+    <value>转推</value>
+  </data>
+  <data name="ProfilePage_ProfileDetail_Favorites" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="ProfilePage_ProfileDetail_Followers" xml:space="preserve">
+    <value>关注者</value>
+  </data>
+  <data name="ProfilePage_ProfileDetail_Following" xml:space="preserve">
+    <value>正在关注</value>
+  </data>
+  <data name="ProfilePage_ProfileDetail_Tweets" xml:space="preserve">
+    <value>推文</value>
+  </data>
+  <data name="StatusPage_StatusDetail_Location" xml:space="preserve">
+    <value>位置</value>
+  </data>
+  <data name="StatusPage_StatusDetail_Retweets" xml:space="preserve">
     <value>转推</value>
   </data>
 </root>
