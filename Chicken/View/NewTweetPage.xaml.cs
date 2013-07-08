@@ -6,6 +6,7 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.NewTweet;
+using Chicken.ViewModel;
 
 namespace Chicken.View
 {
@@ -45,19 +46,19 @@ namespace Chicken.View
                 switch (tweet.Type)
                 {
                     case NewTweetActionType.Quote:
-                        newTweetViewModel.Title = App.Lang["NewTweetPage_Header_Quote"];
+                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_Quote");
                         this.TextContent.Text = tweet.Text;
                         newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
                         this.TextContent.Select(0, 0);
                         break;
                     case NewTweetActionType.Reply:
-                        newTweetViewModel.Title = App.Lang.FormatString("NewTweetPage_Header_ReplyTo", tweet.InReplyToUserScreenName);
+                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_ReplyTo", tweet.InReplyToUserScreenName);
                         this.TextContent.Text = tweet.Text;
                         newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
                         this.TextContent.Select(this.TextContent.Text.Length, 0);
                         break;
                     case NewTweetActionType.Mention:
-                        newTweetViewModel.Title = App.Lang.FormatString("NewTweetPage_Header_Mention", tweet.InReplyToUserScreenName);
+                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_Mention", tweet.InReplyToUserScreenName);
                         this.TextContent.Text = tweet.Text;
                         this.TextContent.Select(this.TextContent.Text.Length, 0);
                         break;

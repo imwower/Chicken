@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
         <!--title-->
         <TextBlock Grid.Row="0" Margin="4"
-                   Text="{Binding [APISettingsPage_Header]}" />
+                   Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_Header]}" />
         <!--content-->
         <ScrollViewer Grid.Row="1" Margin="8,4"
                       VerticalAlignment="Stretch"
@@ -34,12 +34,14 @@
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
                 <!--type-->
-                <ctrls:ListPicker Header="{Binding [APISettingsPage_APIType]}"
-                                  ItemTemplate="{StaticResource ListPickerItemTemplate}"
-                                  ItemsSource="{Binding DefaultAPIs}"
-                                  SelectedItem="{Binding APISettings}" />
+                <ctrls:ListPicker
+                    Header="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}"
+                    ItemTemplate="{StaticResource ListPickerItemTemplate}"
+                    ItemsSource="{Binding DefaultAPIs}"
+                    SelectedItem="{Binding APISettings}" />
                 <!--url-->
-                <TextBlock Text="{Binding [APISettingsPage_APIUrl]}" Margin="12,4" />
+                <TextBlock Margin="12,4"
+                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
                 <TextBox TextWrapping="Wrap"
                          Text="{Binding Path=APISettings.Url, Mode=TwoWay}"
                          TextChanged="Url_TextChanged"

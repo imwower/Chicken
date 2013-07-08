@@ -8,50 +8,58 @@ namespace Chicken.ViewModel
 {
     public class LanguageHelper : NotificationObject
     {
-        #region property
-        private static bool isInit;
-        #endregion
+        private static Helper helper;
+
+        public void InitLanguage()
+        {
+            helper = null;
+            RaisePropertyChanged("Item[]");
+        }
 
         public string this[string key]
         {
             get
             {
-                if (!isInit)
-                    InitCurrentCulture();
-                return AppResources.ResourceManager.GetString(key);
+                if (helper == null)
+                    helper = new Helper();
+                return helper[key];
             }
         }
 
-        public string FormatString(string key, params string[] parameters)
+        public static string GetString(string key, params string[] parameters)
         {
-            return string.Format(this[key], parameters);
+            if (helper == null)
+                helper = new Helper();
+            return string.Format(helper[key], parameters);
         }
 
-        public void InitLanguage()
+        private class Helper
         {
-            isInit = false;
-            RaisePropertyChanged("Item[]");
-        }
-
-        #region private method
-        private static void InitCurrentCulture()
-        {
-            var ci = CultureInfo.CurrentUICulture;
-            if (App.Settings != null && App.Settings.CurrentLanguage != null)
-                ci = new CultureInfo(App.Settings.CurrentLanguage.Name);
-            else
+            public Helper()
             {
-                //ci.Name default is "zh-CN":
-                var lang = Language.DefaultLanguages.FirstOrDefault(d => d.Name == ci.Name);
-                //not zh-CN:
-                if (lang == null)
-                    lang = Language.DefaultLanguages.First(d => d.Name == "en-US");
-                App.InitLanguage(lang);
+                var ci = CultureInfo.CurrentUICulture;
+                if (App.Settings != null && App.Settings.CurrentLanguage != null)
+                    ci = new CultureInfo(App.Settings.CurrentLanguage.Name);
+                else
+                {
+                    //ci.Name default is "zh-CN":
+                    var lang = Language.DefaultLanguages.FirstOrDefault(d => d.Name == ci.Name);
+                    //not zh-CN:
+                    if (lang == null)
+                        lang = Language.DefaultLanguages.First(d => d.Name == "en-US");
+                    App.InitLanguage(lang);
+                }
+                Thread.CurrentThread.CurrentCulture = ci;
+                Thread.CurrentThread.CurrentUICulture = ci;
             }
-            Thread.CurrentThread.CurrentCulture = ci;
-            Thread.CurrentThread.CurrentUICulture = ci;
-            isInit = true;
+
+            public string this[string key]
+            {
+                get
+                {
+                    return AppResources.ResourceManager.GetString(key);
+                }
+            }
         }
-        #endregion
     }
 }

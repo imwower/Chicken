@@ -6,9 +6,13 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:it="clr-namespace:ImageTools.Controls;assembly=ImageTools.Controls"
-    xmlns:ctrls ="clr-namespace:Chicken.Controls">
+    xmlns:ctrls ="clr-namespace:Chicken.Controls"
+    xmlns:vm="clr-namespace:Chicken.ViewModel">
 
     <Application.Resources>
+
+        <vm:LanguageHelper x:Key="LanguageHelper" />
+
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
         <ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />
