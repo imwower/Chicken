@@ -111,7 +111,7 @@ namespace Chicken.ViewModel.NewTweet
                     TweetModel.Text = string.Empty;
                     App.HandleMessage(new ToastMessage
                     {
-                        Message = "tweet sent successfully",
+                        Message = LanguageHelper.GetString("Toast_Msg_TweetSentSuccessfully"),
                         Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
                     });
                 });

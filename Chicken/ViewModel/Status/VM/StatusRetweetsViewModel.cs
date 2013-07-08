@@ -41,7 +41,7 @@ namespace Chicken.ViewModel.Status.VM
                     {
                         App.HandleMessage(new ToastMessage
                         {
-                            Message = "no new retweets yet"
+                            Message = LanguageHelper.GetString("Toast_Msg_NoNewRetweets"),
                         });
                         base.Refreshed();
                         return;
@@ -80,7 +80,7 @@ namespace Chicken.ViewModel.Status.VM
                     {
                         App.HandleMessage(new ToastMessage
                         {
-                            Message = "no more retweets yet"
+                            Message = LanguageHelper.GetString("Toast_Msg_NoMoreRetweets"),
                         });
                         base.Loaded();
                         return;

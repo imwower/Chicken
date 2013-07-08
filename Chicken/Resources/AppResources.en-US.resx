@@ -297,4 +297,61 @@
   <data name="AppBarButton_Retweet" xml:space="preserve">
     <value>retweet</value>
   </data>
+  <data name="Toast_Msg_NoMoreMentions" xml:space="preserve">
+    <value>no more mentions</value>
+  </data>
+  <data name="Toast_Msg_NoMoreTweets" xml:space="preserve">
+    <value>no more tweets</value>
+  </data>
+  <data name="Toast_Msg_NoNewMentions" xml:space="preserve">
+    <value>no new mentions yet</value>
+  </data>
+  <data name="Toast_Msg_NoNewTweets" xml:space="preserve">
+    <value>no new tweets yet</value>
+  </data>
+  <data name="Toast_Msg_AddFavoriteSuccessfully" xml:space="preserve">
+    <value>add to favorites successfully</value>
+  </data>
+  <data name="Toast_Msg_DeleteSuccessfully" xml:space="preserve">
+    <value>delete successfully</value>
+  </data>
+  <data name="Toast_Msg_FollowSuccessfully" xml:space="preserve">
+    <value>follow successfully</value>
+  </data>
+  <data name="Toast_Msg_HelloUser" xml:space="preserve">
+    <value>hello, {0}~</value>
+  </data>
+  <data name="Toast_Msg_MessageSentSuccessfully" xml:space="preserve">
+    <value>message sent successfully</value>
+  </data>
+  <data name="Toast_Msg_NoMoreRetweets" xml:space="preserve">
+    <value>no more retweets</value>
+  </data>
+  <data name="Toast_Msg_NoNewRetweets" xml:space="preserve">
+    <value>no new retweets yet</value>
+  </data>
+  <data name="Toast_Msg_NotFollowPrivateUser" xml:space="preserve">
+    <value>only confirmed followers have access to {0}'s Tweets</value>
+  </data>
+  <data name="Toast_Msg_NotFollowYou" xml:space="preserve">
+    <value>can't send message to {0} who not follow you</value>
+  </data>
+  <data name="Toast_Msg_RemoveFavoriteSuccessfully" xml:space="preserve">
+    <value>Remove favorites successfully</value>
+  </data>
+  <data name="Toast_Msg_RequestSentSuccessfully" xml:space="preserve">
+    <value>request sent successfully</value>
+  </data>
+  <data name="Toast_Msg_RetweetSuccessfully" xml:space="preserve">
+    <value>retweet successfully</value>
+  </data>
+  <data name="Toast_Msg_TweetSentSuccessfully" xml:space="preserve">
+    <value>tweet sent successfully</value>
+  </data>
+  <data name="Toast_Msg_UnfollowSuccessfully" xml:space="preserve">
+    <value>unfollow successfully</value>
+  </data>
+  <data name="Toast_Msg_UpdateMyProfileSuccessfully" xml:space="preserve">
+    <value>update successfully</value>
+  </data>
 </root>

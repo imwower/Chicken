@@ -180,7 +180,7 @@ namespace Chicken.ViewModel.NewMessage
                     IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
                     App.HandleMessage(new ToastMessage
                     {
-                        Message = "message sent successfully"
+                        Message = LanguageHelper.GetString("Toast_Msg_MessageSentSuccessfully"),
                     });
                     RefreshAction();
                 });

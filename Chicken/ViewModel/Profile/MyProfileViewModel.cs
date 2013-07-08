@@ -75,7 +75,7 @@ namespace Chicken.ViewModel.Profile
                         return;
                     App.HandleMessage(new ToastMessage
                     {
-                        Message = "update successfully",
+                        Message = LanguageHelper.GetString("Toast_Msg_UpdateMyProfileSuccessfully"),
                         Complete =
                         () =>
                             NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user)

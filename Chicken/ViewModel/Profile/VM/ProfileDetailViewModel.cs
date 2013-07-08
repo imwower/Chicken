@@ -53,7 +53,7 @@ namespace Chicken.ViewModel.Profile.VM
             {
                 App.HandleMessage(new ToastMessage
                 {
-                    Message = UserProfile.ScreenName + " did not follow you"
+                    Message = LanguageHelper.GetString("Toast_Msg_NotFollowYou", UserProfile.ScreenName),
                 });
                 return;
             }

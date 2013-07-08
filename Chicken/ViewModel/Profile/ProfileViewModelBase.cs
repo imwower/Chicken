@@ -117,7 +117,7 @@ namespace Chicken.ViewModel.Profile
             {
                 App.HandleMessage(new ToastMessage
                 {
-                    Message = "you must follow the private user first"
+                    Message = LanguageHelper.GetString("Toast_Msg_NotFollowPrivateUser", this.UserProfile.DisplayName),
                 });
                 return false;
             }

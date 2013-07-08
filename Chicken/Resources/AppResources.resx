@@ -297,4 +297,61 @@
   <data name="AppBarButton_Retweet" xml:space="preserve">
     <value>转推</value>
   </data>
+  <data name="Toast_Msg_MessageSentSuccessfully" xml:space="preserve">
+    <value>私信发送成功了哟</value>
+  </data>
+  <data name="Toast_Msg_NoMoreMentions" xml:space="preserve">
+    <value>没有更多的门神了</value>
+  </data>
+  <data name="Toast_Msg_NoMoreTweets" xml:space="preserve">
+    <value>没有更多的推文了</value>
+  </data>
+  <data name="Toast_Msg_NoNewMentions" xml:space="preserve">
+    <value>还没有新的门神呢</value>
+  </data>
+  <data name="Toast_Msg_NoNewTweets" xml:space="preserve">
+    <value>还没有新的推文呢</value>
+  </data>
+  <data name="Toast_Msg_AddFavoriteSuccessfully" xml:space="preserve">
+    <value>收藏成功了哟</value>
+  </data>
+  <data name="Toast_Msg_DeleteSuccessfully" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
+  <data name="Toast_Msg_FollowSuccessfully" xml:space="preserve">
+    <value>关注成功了哟</value>
+  </data>
+  <data name="Toast_Msg_HelloUser" xml:space="preserve">
+    <value>嗨, {0}~</value>
+  </data>
+  <data name="Toast_Msg_NoMoreRetweets" xml:space="preserve">
+    <value>没有更多的转推了</value>
+  </data>
+  <data name="Toast_Msg_NoNewRetweets" xml:space="preserve">
+    <value>还没有新的转推呢</value>
+  </data>
+  <data name="Toast_Msg_NotFollowPrivateUser" xml:space="preserve">
+    <value>只有经过{0}确认的关注者才能查看其推文</value>
+  </data>
+  <data name="Toast_Msg_NotFollowYou" xml:space="preserve">
+    <value>不能向没有关注你的{0}发送私信哟</value>
+  </data>
+  <data name="Toast_Msg_RemoveFavoriteSuccessfully" xml:space="preserve">
+    <value>成功取消收藏</value>
+  </data>
+  <data name="Toast_Msg_RequestSentSuccessfully" xml:space="preserve">
+    <value>请求发送成功了哟</value>
+  </data>
+  <data name="Toast_Msg_RetweetSuccessfully" xml:space="preserve">
+    <value>转推成功了哟</value>
+  </data>
+  <data name="Toast_Msg_TweetSentSuccessfully" xml:space="preserve">
+    <value>推文发送成功了哟</value>
+  </data>
+  <data name="Toast_Msg_UnfollowSuccessfully" xml:space="preserve">
+    <value>成功取消关注</value>
+  </data>
+  <data name="Toast_Msg_UpdateMyProfileSuccessfully" xml:space="preserve">
+    <value>更新成功了哟</value>
+  </data>
 </root>

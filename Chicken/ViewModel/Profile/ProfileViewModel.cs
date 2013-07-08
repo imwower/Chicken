@@ -149,11 +149,11 @@ namespace Chicken.ViewModel.Profile
                     #region success
                     string message = string.Empty;
                     if (User.IsFollowing)
-                        message = "unfollow successfully";
+                        message = LanguageHelper.GetString("Toast_Msg_UnfollowSuccessfully");
                     else if (User.IsPrivate)
-                        message = "request sent successfully";
+                        message = LanguageHelper.GetString("Toast_Msg_RequestSentSuccessfully");
                     else
-                        message = "follow successfully";
+                        message = LanguageHelper.GetString("Toast_Msg_FollowSuccessfully");
                     App.HandleMessage(new ToastMessage
                     {
                         Message = message

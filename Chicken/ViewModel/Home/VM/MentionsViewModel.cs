@@ -36,7 +36,7 @@ namespace Chicken.ViewModel.Home.VM
                         {
                             App.HandleMessage(new ToastMessage
                             {
-                                Message = "no new mentions yet"
+                                Message = LanguageHelper.GetString("Toast_Msg_NoNewMentions"),
                             });
                         }
                         #endregion
@@ -52,7 +52,7 @@ namespace Chicken.ViewModel.Home.VM
 #if !LOCAL
                                 if (sinceId != tweets[i].Id)
 #endif
-                                    TweetList.Insert(0, new TweetViewModel(tweets[i]));
+                                TweetList.Insert(0, new TweetViewModel(tweets[i]));
                             }
                         }
                         #endregion
@@ -83,7 +83,7 @@ namespace Chicken.ViewModel.Home.VM
                         {
                             App.HandleMessage(new ToastMessage
                             {
-                                Message = "no more mentions"
+                                Message = LanguageHelper.GetString("Toast_Msg_NoMoreMentions"),
                             });
                         }
                         #endregion
@@ -95,7 +95,7 @@ namespace Chicken.ViewModel.Home.VM
 #if !LOCAL
                                 if (maxId != tweet.Id)
 #endif
-                                    TweetList.Add(new TweetViewModel(tweet));
+                                TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
                         #endregion

@@ -70,7 +70,9 @@ namespace Chicken.ViewModel.Status
                        return;
                    }
                    #endregion
-                   string message = Tweet.IsFavorited ? "Remove favorites successfully" : "Add to favorites successfully";
+                   string message = Tweet.IsFavorited ?
+                      LanguageHelper.GetString("Toast_Msg_RemoveFavoriteSuccessfully") :
+                       LanguageHelper.GetString("Toast_Msg_AddFavoriteSuccessfully");
                    App.HandleMessage(new ToastMessage
                    {
                        Message = message
@@ -100,7 +102,7 @@ namespace Chicken.ViewModel.Status
                        #endregion
                        App.HandleMessage(new ToastMessage
                        {
-                           Message = "Retweet successfully"
+                           Message = LanguageHelper.GetString("Toast_Msg_RetweetSuccessfully"),
                        });
                        Tweet = new TweetDetailViewModel(data);
                        Refresh();
@@ -135,7 +137,7 @@ namespace Chicken.ViewModel.Status
                     }
                     App.HandleMessage(new ToastMessage
                     {
-                        Message = "delete successfully",
+                        Message = LanguageHelper.GetString("Toast_Msg_DeleteSuccessfully"),
                         Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
                     });
                     #endregion

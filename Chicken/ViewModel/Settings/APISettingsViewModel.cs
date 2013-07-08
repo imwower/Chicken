@@ -30,7 +30,6 @@ namespace Chicken.ViewModel.Settings
                 return APIProxy.DefaultAPIs;
             }
         }
-        private bool isInitAPI;
         #endregion
 
         #region binding
@@ -67,7 +66,6 @@ namespace Chicken.ViewModel.Settings
                 APISettings = App.Settings.APISettings;
             else
             {
-                isInitAPI = true;
                 APISettings = new APIProxy
                 {
                     Name = APIProxy.DefaultAPIs[0].Name,
@@ -95,11 +93,10 @@ namespace Chicken.ViewModel.Settings
                     App.InitAPISettings(APISettings);
                     IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
                     App.InitAuthenticatedUser();
-                    App.HandleMessage(new ToastMessage
-                    {
-                        Message = isInitAPI ? "hello, " + App.AuthenticatedUser.DisplayName : "update successfully",
-                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
-                    });
+                    var message = new ToastMessage();
+                    message.Message = LanguageHelper.GetString("Toast_Msg_HelloUser", App.AuthenticatedUser.DisplayName);
+                    message.Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                    App.HandleMessage(message);
                 });
         }
 

@@ -116,9 +116,9 @@
   <ItemGroup>
     <!--condition compile-->
     <Folder Include="SampleData"
-            Condition="'$(ConfigurationName)'=='Debug'" />
+            Condition="'$(ConfigurationName)'=='LOCAL'" />
     <Content Include="SampleData\*"
-             Condition="'$(ConfigurationName)'=='Debug'" />
+             Condition="'$(ConfigurationName)'=='LOCAL'" />
     <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs"
              Condition="'$(ConfigurationName)'!='Release'" />
     <!--condition compile-->
