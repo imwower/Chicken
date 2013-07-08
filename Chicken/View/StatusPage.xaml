@@ -11,7 +11,7 @@
     xmlns:v ="clr-namespace:Chicken.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="800"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
@@ -263,7 +263,7 @@
             <!--retweets-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding [StatusPage_Retweets_Header]}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_Retweets_Header]}"
                 ListBoxItems="{Binding UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
         </controls:Pivot>
