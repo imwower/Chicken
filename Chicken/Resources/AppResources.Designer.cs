@@ -97,11 +97,56 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 删除 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Delete {
+            get {
+                return ResourceManager.GetString("AppBarButton_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编辑 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Edit {
+            get {
+                return ResourceManager.GetString("AppBarButton_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 表情 的本地化字符串。
         /// </summary>
         public static string AppBarButton_Emotion {
             get {
                 return ResourceManager.GetString("AppBarButton_Emotion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 收藏 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Favorite {
+            get {
+                return ResourceManager.GetString("AppBarButton_Favorite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关注 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Follow {
+            get {
+                return ResourceManager.GetString("AppBarButton_Follow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提及 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Mention {
+            get {
+                return ResourceManager.GetString("AppBarButton_Mention", resourceCulture);
             }
         }
         
@@ -124,11 +169,38 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 引用 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Quote {
+            get {
+                return ResourceManager.GetString("AppBarButton_Quote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 刷新 的本地化字符串。
         /// </summary>
         public static string AppBarButton_Refresh {
             get {
                 return ResourceManager.GetString("AppBarButton_Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 回复 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Reply {
+            get {
+                return ResourceManager.GetString("AppBarButton_Reply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 转推 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Retweet {
+            get {
+                return ResourceManager.GetString("AppBarButton_Retweet", resourceCulture);
             }
         }
         
@@ -192,6 +264,15 @@ namespace Chicken.Resources {
         public static string AppBarButton_Tweet {
             get {
                 return ResourceManager.GetString("AppBarButton_Tweet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消关注 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_UnFollow {
+            get {
+                return ResourceManager.GetString("AppBarButton_UnFollow", resourceCulture);
             }
         }
         

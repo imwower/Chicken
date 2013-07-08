@@ -204,9 +204,9 @@ namespace Chicken.ViewModel.Profile
         private void ChangeFollowButtonText()
         {
             if (User.IsFollowing)
-                FollowButtonText = "unfollow";
+                FollowButtonText = LanguageHelper.GetString("AppBarButton_UnFollow");
             else
-                FollowButtonText = "follow";
+                FollowButtonText = LanguageHelper.GetString("AppBarButton_Follow");
         }
         #endregion
     }

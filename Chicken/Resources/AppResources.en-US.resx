@@ -237,8 +237,17 @@
   <data name="AppBarButton_Bottom" xml:space="preserve">
     <value>bottom</value>
   </data>
+  <data name="AppBarButton_Edit" xml:space="preserve">
+    <value>edit</value>
+  </data>
   <data name="AppBarButton_Emotion" xml:space="preserve">
     <value>emotion</value>
+  </data>
+  <data name="AppBarButton_Follow" xml:space="preserve">
+    <value>follow</value>
+  </data>
+  <data name="AppBarButton_Mention" xml:space="preserve">
+    <value>mention</value>
   </data>
   <data name="AppBarButton_Message" xml:space="preserve">
     <value>message</value>
@@ -269,5 +278,23 @@
   </data>
   <data name="AppBarButton_Tweet" xml:space="preserve">
     <value>tweet</value>
+  </data>
+  <data name="AppBarButton_UnFollow" xml:space="preserve">
+    <value>unfollow</value>
+  </data>
+  <data name="AppBarButton_Delete" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="AppBarButton_Favorite" xml:space="preserve">
+    <value>favorite</value>
+  </data>
+  <data name="AppBarButton_Quote" xml:space="preserve">
+    <value>quotes</value>
+  </data>
+  <data name="AppBarButton_Reply" xml:space="preserve">
+    <value>reply</value>
+  </data>
+  <data name="AppBarButton_Retweet" xml:space="preserve">
+    <value>retweet</value>
   </data>
 </root>

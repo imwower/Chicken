@@ -237,8 +237,17 @@
   <data name="AppBarButton_Bottom" xml:space="preserve">
     <value>底部</value>
   </data>
+  <data name="AppBarButton_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
   <data name="AppBarButton_Emotion" xml:space="preserve">
     <value>表情</value>
+  </data>
+  <data name="AppBarButton_Follow" xml:space="preserve">
+    <value>关注</value>
+  </data>
+  <data name="AppBarButton_Mention" xml:space="preserve">
+    <value>提及</value>
   </data>
   <data name="AppBarButton_Message" xml:space="preserve">
     <value>私信</value>
@@ -269,5 +278,23 @@
   </data>
   <data name="AppBarButton_Tweet" xml:space="preserve">
     <value>推文</value>
+  </data>
+  <data name="AppBarButton_UnFollow" xml:space="preserve">
+    <value>取消关注</value>
+  </data>
+  <data name="AppBarButton_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="AppBarButton_Favorite" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="AppBarButton_Quote" xml:space="preserve">
+    <value>引用</value>
+  </data>
+  <data name="AppBarButton_Reply" xml:space="preserve">
+    <value>回复</value>
+  </data>
+  <data name="AppBarButton_Retweet" xml:space="preserve">
+    <value>转推</value>
   </data>
 </root>

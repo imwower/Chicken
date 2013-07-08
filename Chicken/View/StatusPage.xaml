@@ -275,35 +275,44 @@
                 <!--state page default-->
                 <abu:AppBar Id="30" Mode="Minimized">
                     <!--favorite-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Favorite]}"
                                       Command="{Binding Path=AddToFavoriteCommand}" />
                     <!--retweet-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Retweet]}"
                                       Command="{Binding Path=RetweetCommand}" />
                     <!--reply-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Reply]}"
                                       Command="{Binding Path=ReplyCommand}" />
                     <!--quote-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Quote]}"
                                       Command="{Binding Path=QuoteCommand}" />
                 </abu:AppBar>
                 <!--with delete button-->
                 <abu:AppBar Id="31" Mode="Minimized">
                     <!--favorite-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png" Text="favorite"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.favorite.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Favorite]}"
                                       Command="{Binding Path=AddToFavoriteCommand}" />
                     <!--retweet-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png" Text="retweet"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.retweet.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Retweet]}"
                                       Command="{Binding Path=RetweetCommand}" />
                     <!--reply-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png" Text="reply"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.reply.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Reply]}"
                                       Command="{Binding Path=ReplyCommand}" />
                     <!--quote-->
-                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png" Text="quote"
+                    <abu:AppBarButton IconUri="/Images/dark/appbar.quote.png"
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Quote]}"
                                       Command="{Binding Path=QuoteCommand}" />
                     <abu:AppBar.MenuItems>
-                        <abu:AppBarMenuItem Text="delete"
-                                            Command="{Binding Path=DeleteCommand}" />
+                        <abu:AppBarMenuItem
+                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Delete]}"
+                            Command="{Binding Path=DeleteCommand}" />
                     </abu:AppBar.MenuItems>
                 </abu:AppBar>
             </abu:SwitchAppBarAction>
