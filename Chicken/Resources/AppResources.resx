@@ -234,4 +234,40 @@
   <data name="StatusPage_StatusDetail_Retweets" xml:space="preserve">
     <value>转推</value>
   </data>
+  <data name="AppBarButton_Bottom" xml:space="preserve">
+    <value>底部</value>
+  </data>
+  <data name="AppBarButton_Emotion" xml:space="preserve">
+    <value>表情</value>
+  </data>
+  <data name="AppBarButton_Message" xml:space="preserve">
+    <value>私信</value>
+  </data>
+  <data name="AppBarButton_MyProfile" xml:space="preserve">
+    <value>自己</value>
+  </data>
+  <data name="AppBarButton_Refresh" xml:space="preserve">
+    <value>刷新</value>
+  </data>
+  <data name="AppBarButton_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="AppBarButton_Search" xml:space="preserve">
+    <value>搜索</value>
+  </data>
+  <data name="AppBarButton_Send" xml:space="preserve">
+    <value>发送</value>
+  </data>
+  <data name="AppBarButton_Settings" xml:space="preserve">
+    <value>设置</value>
+  </data>
+  <data name="AppBarButton_Text" xml:space="preserve">
+    <value>文字</value>
+  </data>
+  <data name="AppBarButton_Top" xml:space="preserve">
+    <value>顶部</value>
+  </data>
+  <data name="AppBarButton_Tweet" xml:space="preserve">
+    <value>推文</value>
+  </data>
 </root>

@@ -62,9 +62,11 @@
         </shell:ApplicationBar>
     </v:PageBase.ApplicationBar>
     <i:Interaction.Behaviors>
-        <abu:AppBarItemCommand Type="Button" Id="save" Text="save"
+        <abu:AppBarItemCommand Type="Button" Id="save"
+                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Save]}"
                                Command="{Binding SaveCommand}" />
-        <abu:AppBarItemCommand Type="MenuItem"  Id="settings" Text="settings"
+        <abu:AppBarItemCommand Type="MenuItem"  Id="settings"
+                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
                                Command="{Binding SettingsCommand}" />
     </i:Interaction.Behaviors>
 </v:PageBase>

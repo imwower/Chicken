@@ -72,7 +72,8 @@
         </shell:ApplicationBar>
     </v:PageBase.ApplicationBar>
     <i:Interaction.Behaviors>
-        <abu:AppBarItemCommand Type="Button" Id="save" Text="save"
+        <abu:AppBarItemCommand Type="Button" Id="save"
+                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
                                Command="{Binding SaveCommand}" />
     </i:Interaction.Behaviors>
 </v:PageBase>

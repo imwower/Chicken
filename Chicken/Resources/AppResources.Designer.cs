@@ -88,6 +88,114 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 底部 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Bottom {
+            get {
+                return ResourceManager.GetString("AppBarButton_Bottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 表情 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Emotion {
+            get {
+                return ResourceManager.GetString("AppBarButton_Emotion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 私信 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Message {
+            get {
+                return ResourceManager.GetString("AppBarButton_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 自己 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_MyProfile {
+            get {
+                return ResourceManager.GetString("AppBarButton_MyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 刷新 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Refresh {
+            get {
+                return ResourceManager.GetString("AppBarButton_Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Save {
+            get {
+                return ResourceManager.GetString("AppBarButton_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 搜索 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Search {
+            get {
+                return ResourceManager.GetString("AppBarButton_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 发送 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Send {
+            get {
+                return ResourceManager.GetString("AppBarButton_Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 设置 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Settings {
+            get {
+                return ResourceManager.GetString("AppBarButton_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文字 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Text {
+            get {
+                return ResourceManager.GetString("AppBarButton_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 顶部 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Top {
+            get {
+                return ResourceManager.GetString("AppBarButton_Top", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 推文 的本地化字符串。
+        /// </summary>
+        public static string AppBarButton_Tweet {
+            get {
+                return ResourceManager.GetString("AppBarButton_Tweet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 简介: 的本地化字符串。
         /// </summary>
         public static string EditMyProfilePage_Description {

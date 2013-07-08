@@ -176,16 +176,20 @@
                 <!--default-->
                 <abu:AppBar Id="0">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
-                                      Text="send" Command="{Binding SendCommand}" />
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Send]}"
+                                      Command="{Binding SendCommand}" />
                     <abu:AppBarButton IconUri="/Images/dark/appbar.emotion.png"
-                                      Text="emotion" Command="{Binding AddEmotionCommand}" />
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Emotion]}"
+                                      Command="{Binding AddEmotionCommand}" />
                 </abu:AppBar>
                 <!--add emotion-->
                 <abu:AppBar Id="3">
                     <abu:AppBarButton IconUri="/Images/dark/appbar.send.png"
-                                      Text="send" Command="{Binding SendCommand}" />
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Send]}"
+                                      Command="{Binding SendCommand}" />
                     <abu:AppBarButton IconUri="/Images/dark/appbar.keyboard.png"
-                                      Text="emotion" Command="{Binding KeyboardCommand}" />
+                                      Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Text]}"
+                                      Command="{Binding KeyboardCommand}" />
                 </abu:AppBar>
             </abu:SwitchAppBarAction>
         </abu:StateChangedTrigger>

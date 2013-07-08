@@ -54,47 +54,59 @@
                     <abu:SwitchAppBarAction>
                         <abu:AppBar Id="0" Mode="Minimized">
                             <!--refresh-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Refresh]}"
                                               Command="{Binding Path=RefreshCommand}" />
                             <!--top-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Top]}"
                                               Command="{Binding Path=TopCommand}" />
                             <!--bottom-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Bottom]}"
                                               Command="{Binding Path=BottomCommand}" />
                             <!--new tweet-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.tweet.new.png" Text="tweet"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.tweet.new.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Tweet]}"
                                               Command="{Binding Path=NewTweetCommand}" />
                             <abu:AppBar.MenuItems>
                                 <!--search-->
-                                <abu:AppBarMenuItem Text="search"
-                                                    Command="{Binding Path=SearchCommand}" />
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Search]}"
+                                    Command="{Binding Path=SearchCommand}" />
                                 <!--my profile-->
-                                <abu:AppBarMenuItem Text="me"
-                                                    Command="{Binding Path=MyProfileCommand}" />
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_MyProfile]}"
+                                    Command="{Binding Path=MyProfileCommand}" />
                                 <!--settings-->
-                                <abu:AppBarMenuItem Text="settings"
-                                                    Command="{Binding Path=SettingsCommand}" />
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
+                                    Command="{Binding Path=SettingsCommand}" />
                             </abu:AppBar.MenuItems>
                         </abu:AppBar>
                         <!--with dm-->
                         <abu:AppBar Id="1" Mode="Minimized">
                             <!--refresh-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png" Text="refresh"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.refresh.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Refresh]}"
                                               Command="{Binding Path=RefreshCommand}" />
                             <!--top-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png" Text="top"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.top.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Top]}"
                                               Command="{Binding Path=TopCommand}" />
                             <!--bottom-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png" Text="bottom"
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.bottom.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Bottom]}"
                                               Command="{Binding Path=BottomCommand}" />
-                            <!--top-->
-                            <abu:AppBarButton IconUri="/Images/dark/appbar.message.png" Text="message"
+                            <!--message-->
+                            <abu:AppBarButton IconUri="/Images/dark/appbar.message.png"
+                                              Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Message]}"
                                               Command="{Binding Path=NewMessageCommand}" />
                             <abu:AppBar.MenuItems>
                                 <!--settings-->
-                                <abu:AppBarMenuItem Text="settings"
-                                                    Command="{Binding Path=SettingsCommand}" />
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
+                                    Command="{Binding Path=SettingsCommand}" />
                             </abu:AppBar.MenuItems>
                         </abu:AppBar>
                     </abu:SwitchAppBarAction>

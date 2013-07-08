@@ -234,4 +234,40 @@
   <data name="StatusPage_StatusDetail_Retweets" xml:space="preserve">
     <value>RETWEETS</value>
   </data>
+  <data name="AppBarButton_Bottom" xml:space="preserve">
+    <value>bottom</value>
+  </data>
+  <data name="AppBarButton_Emotion" xml:space="preserve">
+    <value>emotion</value>
+  </data>
+  <data name="AppBarButton_Message" xml:space="preserve">
+    <value>message</value>
+  </data>
+  <data name="AppBarButton_MyProfile" xml:space="preserve">
+    <value>me</value>
+  </data>
+  <data name="AppBarButton_Refresh" xml:space="preserve">
+    <value>refresh</value>
+  </data>
+  <data name="AppBarButton_Save" xml:space="preserve">
+    <value>save</value>
+  </data>
+  <data name="AppBarButton_Search" xml:space="preserve">
+    <value>search</value>
+  </data>
+  <data name="AppBarButton_Send" xml:space="preserve">
+    <value>send</value>
+  </data>
+  <data name="AppBarButton_Settings" xml:space="preserve">
+    <value>settings</value>
+  </data>
+  <data name="AppBarButton_Text" xml:space="preserve">
+    <value>text</value>
+  </data>
+  <data name="AppBarButton_Top" xml:space="preserve">
+    <value>top</value>
+  </data>
+  <data name="AppBarButton_Tweet" xml:space="preserve">
+    <value>tweet</value>
+  </data>
 </root>
