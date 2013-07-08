@@ -23,7 +23,7 @@
             <!--general settings-->
             <controls:PivotItem
                 DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding [SettingsPage_General_Header]}">
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_General_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -40,20 +40,26 @@
                                         <Setter Property="Margin" Value="12,4" />
                                     </Style>
                                 </StackPanel.Resources>
-                                <TextBlock Text="API" />
-                                <TextBlock Text="Type" />
-                                <TextBlock Text="{Binding APISettings.Type}" />
-                                <TextBlock Text="Url" />
+                                <TextBlock
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_APIInfo]}" />
+                                <TextBlock
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}" />
+                                <TextBlock Text="{Binding APISettings.Name}" />
+                                <TextBlock
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
                                 <TextBlock TextWrapping="Wrap"
-                                               Text="{Binding APISettings.Url}" />
-                                <Button Content="Edit API"
-                                            Command="{Binding EditAPISettingsCommand}" />
-                                <Button Content="Clear Cache"
-                                        Command="{Binding ClearCacheCommand}" />
-                                <ctrls:ListPicker Header="Language"
-                                                  ItemTemplate="{StaticResource ListPickerItemTemplate}"
-                                                  ItemsSource="{Binding DefaultLanguages}"
-                                                  SelectedItem="{Binding Language,Mode=TwoWay}">
+                                           Text="{Binding APISettings.Url}" />
+                                <Button
+                                    Content="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_EditAPI]}"
+                                    Command="{Binding EditAPISettingsCommand}" />
+                                <Button
+                                    Content="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_ClearCache]}"
+                                    Command="{Binding ClearCacheCommand}" />
+                                <ctrls:ListPicker
+                                    Header="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_Language]}"
+                                    ItemTemplate="{StaticResource ListPickerItemTemplate}"
+                                    ItemsSource="{Binding DefaultLanguages}"
+                                    SelectedItem="{Binding Language,Mode=TwoWay}">
                                 </ctrls:ListPicker>
                             </StackPanel>
                         </ScrollViewer.Content>
@@ -65,7 +71,7 @@
             <!--about-->
             <controls:PivotItem
                 DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding [SettingsPage_About_Header]}">
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_About_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -112,5 +118,4 @@
             </controls:PivotItem>
         </controls:Pivot>
     </Grid>
-
 </v:PivotPageBase>

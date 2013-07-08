@@ -295,11 +295,47 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 API信息: 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_APIInfo {
+            get {
+                return ResourceManager.GetString("SettingsPage_APIInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 清空缓存 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_ClearCache {
+            get {
+                return ResourceManager.GetString("SettingsPage_ClearCache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 设置API 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_EditAPI {
+            get {
+                return ResourceManager.GetString("SettingsPage_EditAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 常规 的本地化字符串。
         /// </summary>
         public static string SettingsPage_General_Header {
             get {
                 return ResourceManager.GetString("SettingsPage_General_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 语言: 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_Language {
+            get {
+                return ResourceManager.GetString("SettingsPage_Language", resourceCulture);
             }
         }
         

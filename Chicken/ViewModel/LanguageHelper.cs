@@ -8,11 +8,9 @@ namespace Chicken.ViewModel
 {
     public class LanguageHelper : NotificationObject
     {
-        private static Helper helper;
-
         public void InitLanguage()
         {
-            helper = null;
+            Helper.InitLanguage();
             RaisePropertyChanged("Item[]");
         }
 
@@ -20,22 +18,35 @@ namespace Chicken.ViewModel
         {
             get
             {
-                if (helper == null)
-                    helper = new Helper();
-                return helper[key];
+                return Helper.GetString(key);
             }
         }
 
         public static string GetString(string key, params string[] parameters)
         {
-            if (helper == null)
-                helper = new Helper();
-            return string.Format(helper[key], parameters);
+            return string.Format(Helper.GetString(key), parameters);
         }
 
         private class Helper
         {
-            public Helper()
+            #region property
+            private static bool isInit;
+            #endregion
+
+            public static void InitLanguage()
+            {
+                isInit = false;
+            }
+
+            public static string GetString(string key)
+            {
+                if (!isInit)
+                    InitCurrentCulture();
+                return AppResources.ResourceManager.GetString(key);
+            }
+
+            #region private method
+            private static void InitCurrentCulture()
             {
                 var ci = CultureInfo.CurrentUICulture;
                 if (App.Settings != null && App.Settings.CurrentLanguage != null)
@@ -51,15 +62,9 @@ namespace Chicken.ViewModel
                 }
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
+                isInit = true;
             }
-
-            public string this[string key]
-            {
-                get
-                {
-                    return AppResources.ResourceManager.GetString(key);
-                }
-            }
+            #endregion
         }
     }
 }

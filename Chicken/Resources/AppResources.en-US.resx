@@ -195,8 +195,20 @@
   <data name="SettingsPage_About_Header" xml:space="preserve">
     <value>About</value>
   </data>
+  <data name="SettingsPage_APIInfo" xml:space="preserve">
+    <value>API Info:</value>
+  </data>
+  <data name="SettingsPage_ClearCache" xml:space="preserve">
+    <value>Clear Cache</value>
+  </data>
+  <data name="SettingsPage_EditAPI" xml:space="preserve">
+    <value>Edit API</value>
+  </data>
   <data name="SettingsPage_General_Header" xml:space="preserve">
     <value>General</value>
+  </data>
+  <data name="SettingsPage_Language" xml:space="preserve">
+    <value>Language:</value>
   </data>
   <data name="StatusPage_Detail_Header" xml:space="preserve">
     <value>Detail</value>

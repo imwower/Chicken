@@ -24,7 +24,8 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <!--title-->
-        <TextBlock Grid.Row="0" Margin="4" Text="{Binding [EditMyProfilePage_Header]}" />
+        <TextBlock Grid.Row="0" Margin="4"
+                   Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Header]}" />
         <!--content-->
         <ScrollViewer Grid.Row="1" Margin="8,4"
                       VerticalAlignment="Top"
@@ -37,7 +38,8 @@
                     </Style>
                 </StackPanel.Resources>
                 <!--name-->
-                <TextBlock Text="{Binding [EditMyProfilePage_Name]}" />
+                <TextBlock
+                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Name]}" />
                 <TextBox Text="{Binding Path=MyProfile.Name}"
                          TextChanged="Name_TextChanged" />
                 <!--location-->
@@ -45,14 +47,18 @@
                 <TextBox Text="{Binding Path=MyProfile.Location}"
                          TextChanged="Location_TextChanged" />
                 <!--link-->
-                <TextBlock Text="{Binding [EditMyProfilePage_Link]}" />
-                <TextBox Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
-                         TextChanged="Url_TextChanged" />
+                <TextBlock
+                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Link]}" />
+                <TextBox
+                    Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                    TextChanged="Url_TextChanged" />
                 <!--description-->
-                <TextBlock Text="{Binding [EditMyProfilePage_Description]}" />
-                <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"
-                         TextChanged="Description_TextChanged"
-                         TextWrapping="Wrap" AcceptsReturn="True" Height="240" MaxLength="160" />
+                <TextBlock
+                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Description]}" />
+                <TextBox 
+                    Text="{Binding Path=MyProfile.ExpandedDescription}"
+                    TextChanged="Description_TextChanged"
+                    TextWrapping="Wrap" AcceptsReturn="True" Height="240" MaxLength="160" />
             </StackPanel>
         </ScrollViewer>
         <!--progress bar-->
