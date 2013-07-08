@@ -57,7 +57,6 @@ namespace Chicken.ViewModel.Settings
 
         public APISettingsViewModel()
         {
-            Header = "Edit API";
             RefreshHandler = this.RefreshAction;
         }
 

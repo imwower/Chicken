@@ -20,7 +20,6 @@ namespace Chicken.ViewModel.Home.VM
 
         public DMsPivotViewModel()
         {
-            Header = "Messages";
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
             TweetList = new ObservableCollection<TweetViewModel>();

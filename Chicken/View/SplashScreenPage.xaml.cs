@@ -3,7 +3,7 @@ using Chicken.Common;
 using Chicken.Service;
 using Microsoft.Phone.Controls;
 
-namespace Chicken
+namespace Chicken.View
 {
     public partial class SplashScreenPage : PhoneApplicationPage
     {

@@ -22,8 +22,8 @@
         <controls:Pivot x:Name="MainPivot">
             <!--status detail-->
             <controls:PivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding Path=Header}">
+                DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding [StatusPage_Detail_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
@@ -260,9 +260,9 @@
             </controls:PivotItem>
             <!--retweets-->
             <ctrls:HomePivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding Path=Header}"
-                ListBoxItems="{Binding Path=UserList}"
+                DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding [StatusPage_Retweets_Header]}"
+                ListBoxItems="{Binding UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
         </controls:Pivot>
     </Grid>

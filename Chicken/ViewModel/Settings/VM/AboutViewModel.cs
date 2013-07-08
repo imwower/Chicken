@@ -43,7 +43,6 @@ namespace Chicken.ViewModel.Settings.VM
 
         public AboutViewModel()
         {
-            Header = "About";
             RefreshHandler = this.RefreshAction;
         }
 

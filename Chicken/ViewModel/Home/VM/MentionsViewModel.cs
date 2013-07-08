@@ -9,7 +9,6 @@ namespace Chicken.ViewModel.Home.VM
     {
         public MentionsViewModel()
         {
-            Header = "Mentions";
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;

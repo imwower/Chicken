@@ -61,11 +61,38 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 API类型: 的本地化字符串。
+        /// </summary>
+        public static string APISettingsPage_APIType {
+            get {
+                return ResourceManager.GetString("APISettingsPage_APIType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 链接: 的本地化字符串。
+        /// </summary>
+        public static string APISettingsPage_APIUrl {
+            get {
+                return ResourceManager.GetString("APISettingsPage_APIUrl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 API设置 的本地化字符串。
         /// </summary>
         public static string APISettingsPage_Header {
             get {
                 return ResourceManager.GetString("APISettingsPage_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 简介: 的本地化字符串。
+        /// </summary>
+        public static string EditMyProfilePage_Description {
+            get {
+                return ResourceManager.GetString("EditMyProfilePage_Description", resourceCulture);
             }
         }
         
@@ -79,11 +106,65 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 链接: 的本地化字符串。
+        /// </summary>
+        public static string EditMyProfilePage_Link {
+            get {
+                return ResourceManager.GetString("EditMyProfilePage_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 位置: 的本地化字符串。
+        /// </summary>
+        public static string EditMyProfilePage_Location {
+            get {
+                return ResourceManager.GetString("EditMyProfilePage_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 名字: 的本地化字符串。
+        /// </summary>
+        public static string EditMyProfilePage_Name {
+            get {
+                return ResourceManager.GetString("EditMyProfilePage_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 你好世界 的本地化字符串。
         /// </summary>
         public static string HelloWorld {
             get {
                 return ResourceManager.GetString("HelloWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 首页 的本地化字符串。
+        /// </summary>
+        public static string HomePage_Home_Header {
+            get {
+                return ResourceManager.GetString("HomePage_Home_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提及 的本地化字符串。
+        /// </summary>
+        public static string HomePage_Mention_Header {
+            get {
+                return ResourceManager.GetString("HomePage_Mention_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 私信 的本地化字符串。
+        /// </summary>
+        public static string HomePage_Message_Header {
+            get {
+                return ResourceManager.GetString("HomePage_Message_Header", resourceCulture);
             }
         }
         
@@ -156,6 +237,87 @@ namespace Chicken.Resources {
         public static string NewTweetPage_Header_WhatsHappening {
             get {
                 return ResourceManager.GetString("NewTweetPage_Header_WhatsHappening", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 收藏 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_Favorites_Header {
+            get {
+                return ResourceManager.GetString("ProfilePage_Favorites_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关注者 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_Followers_Header {
+            get {
+                return ResourceManager.GetString("ProfilePage_Followers_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 正在关注 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_Following_Header {
+            get {
+                return ResourceManager.GetString("ProfilePage_Following_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 资料 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_ProfileDetail_Header {
+            get {
+                return ResourceManager.GetString("ProfilePage_ProfileDetail_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 推文 的本地化字符串。
+        /// </summary>
+        public static string ProfilePage_Tweets_Header {
+            get {
+                return ResourceManager.GetString("ProfilePage_Tweets_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关于 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_About_Header {
+            get {
+                return ResourceManager.GetString("SettingsPage_About_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 常规 的本地化字符串。
+        /// </summary>
+        public static string SettingsPage_General_Header {
+            get {
+                return ResourceManager.GetString("SettingsPage_General_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 详情 的本地化字符串。
+        /// </summary>
+        public static string StatusPage_Detail_Header {
+            get {
+                return ResourceManager.GetString("StatusPage_Detail_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 转推 的本地化字符串。
+        /// </summary>
+        public static string StatusPage_Retweets_Header {
+            get {
+                return ResourceManager.GetString("StatusPage_Retweets_Header", resourceCulture);
             }
         }
     }

@@ -25,7 +25,6 @@ namespace Chicken.ViewModel.Profile.VM
 
         public ProfileDetailViewModel()
         {
-            Header = "Profile";
             RefreshHandler = this.RefreshAction;
         }
 

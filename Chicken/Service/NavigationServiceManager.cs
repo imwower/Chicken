@@ -15,12 +15,13 @@ namespace Chicken.Service
         public static void NavigateTo(PageNameEnum pageName, object parameter = null)
         {
             if (parameter != null)
-            {
                 IsolatedStorageService.CreateObject(pageName, parameter);
-            }
             string random = "?random=" + DateTime.Now.Ticks.ToString("x");
             switch (pageName)
             {
+                case PageNameEnum.SplashScreenPage:
+                    frame.Navigate(new Uri(Const.SplashScreenPage + random, UriKind.Relative));
+                    break;
                 case PageNameEnum.HomePage:
                     frame.Navigate(new Uri(Const.HomePage + random, UriKind.Relative));
                     break;

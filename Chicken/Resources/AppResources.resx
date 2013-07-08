@@ -117,14 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="APISettingsPage_APIType" xml:space="preserve">
+    <value>API类型:</value>
+  </data>
+  <data name="APISettingsPage_APIUrl" xml:space="preserve">
+    <value>链接:</value>
+  </data>
   <data name="APISettingsPage_Header" xml:space="preserve">
     <value>API设置</value>
+  </data>
+  <data name="EditMyProfilePage_Description" xml:space="preserve">
+    <value>简介:</value>
   </data>
   <data name="EditMyProfilePage_Header" xml:space="preserve">
     <value>编辑个人资料</value>
   </data>
+  <data name="EditMyProfilePage_Link" xml:space="preserve">
+    <value>链接:</value>
+  </data>
+  <data name="EditMyProfilePage_Location" xml:space="preserve">
+    <value>位置:</value>
+  </data>
+  <data name="EditMyProfilePage_Name" xml:space="preserve">
+    <value>名字:</value>
+  </data>
   <data name="HelloWorld" xml:space="preserve">
     <value>你好世界</value>
+  </data>
+  <data name="HomePage_Home_Header" xml:space="preserve">
+    <value>首页</value>
+  </data>
+  <data name="HomePage_Mention_Header" xml:space="preserve">
+    <value>提及</value>
+  </data>
+  <data name="HomePage_Message_Header" xml:space="preserve">
+    <value>私信</value>
   </data>
   <data name="NewMessagePage_Header" xml:space="preserve">
     <value>对话</value>
@@ -149,5 +176,32 @@
   </data>
   <data name="NewTweetPage_Header_WhatsHappening" xml:space="preserve">
     <value>怎么啦?</value>
+  </data>
+  <data name="ProfilePage_Favorites_Header" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="ProfilePage_Followers_Header" xml:space="preserve">
+    <value>关注者</value>
+  </data>
+  <data name="ProfilePage_Following_Header" xml:space="preserve">
+    <value>正在关注</value>
+  </data>
+  <data name="ProfilePage_ProfileDetail_Header" xml:space="preserve">
+    <value>资料</value>
+  </data>
+  <data name="ProfilePage_Tweets_Header" xml:space="preserve">
+    <value>推文</value>
+  </data>
+  <data name="SettingsPage_About_Header" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="SettingsPage_General_Header" xml:space="preserve">
+    <value>常规</value>
+  </data>
+  <data name="StatusPage_Detail_Header" xml:space="preserve">
+    <value>详情</value>
+  </data>
+  <data name="StatusPage_Retweets_Header" xml:space="preserve">
+    <value>转推</value>
   </data>
 </root>

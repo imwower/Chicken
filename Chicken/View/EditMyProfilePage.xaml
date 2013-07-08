@@ -37,19 +37,19 @@
                     </Style>
                 </StackPanel.Resources>
                 <!--name-->
-                <TextBlock Text="Name" />
+                <TextBlock Text="{Binding [EditMyProfilePage_Name]}" />
                 <TextBox Text="{Binding Path=MyProfile.Name}"
                          TextChanged="Name_TextChanged" />
                 <!--location-->
-                <TextBlock Text="Loacation" />
+                <TextBlock Text="{Binding EditMyProfilePage_Location}" />
                 <TextBox Text="{Binding Path=MyProfile.Location}"
                          TextChanged="Location_TextChanged" />
                 <!--link-->
-                <TextBlock Text="Link" />
+                <TextBlock Text="{Binding [EditMyProfilePage_Link]}" />
                 <TextBox Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
                          TextChanged="Url_TextChanged" />
                 <!--description-->
-                <TextBlock Text="Description" />
+                <TextBlock Text="{Binding [EditMyProfilePage_Description]}" />
                 <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"
                          TextChanged="Description_TextChanged"
                          TextWrapping="Wrap" AcceptsReturn="True" Height="240" MaxLength="160" />

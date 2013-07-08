@@ -43,7 +43,6 @@ namespace Chicken.ViewModel
         {
             App.InitLanguage(language);
             isInit = false;
-            RaisePropertyChanged("Item[]");
         }
         #endregion
 

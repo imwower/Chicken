@@ -18,19 +18,6 @@ namespace Chicken.ViewModel
         #endregion
 
         #region properties
-        private string header;
-        public string Header
-        {
-            get
-            {
-                return header;
-            }
-            set
-            {
-                header = value;
-                RaisePropertyChanged("Header");
-            }
-        }
         private bool isLoading;
         public bool IsLoading
         {

@@ -41,7 +41,6 @@ namespace Chicken.ViewModel.Profile
 
         public MyProfileViewModel()
         {
-            Header = "Edit";
             RefreshHandler = this.RefreshAction;
         }
 

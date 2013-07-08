@@ -10,13 +10,13 @@ namespace Chicken.ViewModel.Profile.VM
     {
         public UserFavoritesViewModel()
         {
-            Header = "Favorites";
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
             ItemClickHandler = this.ItemClickAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
             if (!CheckIfFollowingPrivate())
@@ -116,5 +116,6 @@ namespace Chicken.ViewModel.Profile.VM
             IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
         }
+        #endregion
     }
 }

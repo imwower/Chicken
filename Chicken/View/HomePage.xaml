@@ -22,21 +22,21 @@
         <controls:Pivot x:Name="MainPivot" Grid.Row="0">
             <!--Home-->
             <ctrls:HomePivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding Path=Header}"
-                ListBoxItems="{Binding Path=TweetList}"
+                DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding [HomePage_Home_Header]}"
+                ListBoxItems="{Binding TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--Mentions-->
             <ctrls:HomePivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding Path=Header}"
-                ListBoxItems="{Binding Path=TweetList}"
+                DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding [HomePage_Mention_Header]}"
+                ListBoxItems="{Binding TweetList}"
                 ListBoxItemTemplate="{StaticResource TweetTemplate}" />
             <!--DMs-->
             <ctrls:HomePivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[2],ElementName=MainPivot}"
-                Header="{Binding Path=Header}"
-                ListBoxItems="{Binding Path=TweetList}"
+                DataContext="{Binding DataContext.PivotItems[2],ElementName=MainPivot}"
+                Header="{Binding [HomePage_Message_Header]}"
+                ListBoxItems="{Binding TweetList}"
                 ListBoxItemTemplate="{StaticResource DirectMessageTemplate}" />
 
             <i:Interaction.Triggers>

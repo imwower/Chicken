@@ -9,7 +9,6 @@ namespace Chicken.ViewModel.Profile.VM
     {
         public UserFollowersViewModel()
         {
-            Header = "Followers";
             UserList = new ObservableCollection<UserProfileViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;

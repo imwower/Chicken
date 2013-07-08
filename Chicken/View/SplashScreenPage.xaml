@@ -1,5 +1,5 @@
 ﻿<phone:PhoneApplicationPage 
-    x:Class="Chicken.SplashScreenPage"
+    x:Class="Chicken.View.SplashScreenPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
@@ -17,6 +17,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Image Grid.Row="0"
-               Source="Images/SplashScreenImage.jpg" Stretch="Fill" />
+               Source="/Images/SplashScreenImage.jpg" Stretch="Fill" />
     </Grid>
 </phone:PhoneApplicationPage>

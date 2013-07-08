@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 
@@ -66,7 +67,6 @@ namespace Chicken.ViewModel.Settings.VM
 
         public GeneralSettingsViewModel()
         {
-            Header = "General";
             RefreshHandler = this.RefreshAction;
         }
 
@@ -92,6 +92,7 @@ namespace Chicken.ViewModel.Settings.VM
         private void LanguageChangedAction()
         {
             this.SetLanguage(Language);
+            NavigationServiceManager.NavigateTo(PageNameEnum.SplashScreenPage);
         }
         #endregion
     }

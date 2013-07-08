@@ -24,7 +24,6 @@ namespace Chicken.ViewModel.Status.VM
 
         public StatusDetailViewModel()
         {
-            Header = "Detail";
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
         }

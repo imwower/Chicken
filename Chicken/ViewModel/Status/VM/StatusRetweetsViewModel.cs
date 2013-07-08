@@ -9,7 +9,6 @@ namespace Chicken.ViewModel.Status.VM
     {
         public StatusRetweetsViewModel()
         {
-            Header = "Retweets";
             UserList = new ObservableCollection<UserProfileViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = LoadAction;

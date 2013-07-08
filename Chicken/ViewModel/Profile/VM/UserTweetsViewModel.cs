@@ -10,7 +10,6 @@ namespace Chicken.ViewModel.Profile.VM
     {
         public UserTweetsViewModel()
         {
-            Header = "Tweets";
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;

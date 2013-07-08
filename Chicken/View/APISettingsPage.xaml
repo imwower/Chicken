@@ -34,12 +34,12 @@
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
                 <!--type-->
-                <ctrls:ListPicker Header="Type"
+                <ctrls:ListPicker Header="{Binding [APISettingsPage_APIType]}"
                                   ItemTemplate="{StaticResource ListPickerItemTemplate}"
                                   ItemsSource="{Binding DefaultAPIs}"
                                   SelectedItem="{Binding APISettings}" />
                 <!--url-->
-                <TextBlock Text="Url" Margin="12,4" />
+                <TextBlock Text="{Binding [APISettingsPage_APIUrl]}" Margin="12,4" />
                 <TextBox TextWrapping="Wrap"
                          Text="{Binding Path=APISettings.Url, Mode=TwoWay}"
                          TextChanged="Url_TextChanged"

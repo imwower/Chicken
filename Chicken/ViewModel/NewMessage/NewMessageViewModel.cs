@@ -105,7 +105,7 @@ namespace Chicken.ViewModel.NewMessage
                 Title = this["NewMessagePage_Header_NotAValidUserName"];
                 App.HandleMessage(new ToastMessage
                 {
-                    Message = Header
+                    Message = Title
                 });
                 return;
             }
@@ -408,7 +408,7 @@ namespace Chicken.ViewModel.NewMessage
                             Title = FormatString("NewMessagePage_Header_UserNotFollowYou", User.DisplayName);
                             App.HandleMessage(new ToastMessage
                             {
-                                Message = Header
+                                Message = Title
                             });
                             return;
                         }

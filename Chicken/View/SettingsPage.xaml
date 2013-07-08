@@ -22,8 +22,8 @@
         <controls:Pivot x:Name="MainPivot">
             <!--general settings-->
             <controls:PivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"
-                Header="{Binding Path=Header}">
+                DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding [SettingsPage_General_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>
@@ -64,8 +64,8 @@
             </controls:PivotItem>
             <!--about-->
             <controls:PivotItem
-                DataContext="{Binding Path=DataContext.PivotItems[1],ElementName=MainPivot}"
-                Header="{Binding Path=Header}">
+                DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding [SettingsPage_About_Header]}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*"/>

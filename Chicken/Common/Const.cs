@@ -102,6 +102,7 @@
         #endregion
 
         #region page name
+        public const string SplashScreenPage = "/View/SplashScreenPage.xaml";
         public const string HomePage = "/View/HomePage.xaml";
         public const string ProfilePage = "/View/ProfilePage.xaml";
         public const string StatusPage = "/View/StatusPage.xaml";
@@ -117,6 +118,7 @@
     #region page name enum
     public enum PageNameEnum
     {
+        SplashScreenPage = -1,
         HomePage = 0,
         ProfilePage = 1,
         StatusPage = 2,

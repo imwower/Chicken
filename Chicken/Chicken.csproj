@@ -177,9 +177,6 @@
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />
     <Compile Include="Service\Implementation\MockedService.cs" />
-    <Compile Include="SplashScreenPage.xaml.cs">
-      <DependentUpon>SplashScreenPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModel\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Base\TweetDetailViewModel.cs" />
     <Compile Include="ViewModel\Base\UserViewModel.cs" />
@@ -226,6 +223,9 @@
     <Compile Include="ViewModel\PivotItemViewModelBase.cs" />
     <Compile Include="View\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SplashScreenPage.xaml.cs">
+      <DependentUpon>SplashScreenPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\StatusPage.xaml.cs">
       <DependentUpon>StatusPage.xaml</DependentUpon>
@@ -329,7 +329,9 @@
     <Content Include="Images\dark\verified.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\SplashScreenImage.jpg" />
+    <Content Include="Images\SplashScreenImage.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\About.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -401,10 +403,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SplashScreenPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\APISettingsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -430,6 +428,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SplashScreenPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
