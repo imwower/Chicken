@@ -78,7 +78,7 @@ namespace Chicken.ViewModel.NewMessage
 
         public NewMessageViewModel()
         {
-            Title = this["NewMessagePage_Header"];
+            Title = App.Lang["NewMessagePage_Header"];
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
             Messages = new ObservableCollection<DirectMessageViewModel>();
@@ -102,7 +102,7 @@ namespace Chicken.ViewModel.NewMessage
                 HasError = true;
             if (HasError)
             {
-                Title = this["NewMessagePage_Header_NotAValidUserName"];
+                Title = App.Lang["NewMessagePage_Header_NotAValidUserName"];
                 App.HandleMessage(new ToastMessage
                 {
                     Message = Title
@@ -128,7 +128,7 @@ namespace Chicken.ViewModel.NewMessage
             latestMessages = IsolatedStorageService.GetLatestMessages();
             if (latestMessages == null)
                 latestMessages = new LatestMessagesModel();
-            Title = FormatString("NewMessagePage_Header_ChatWithUser", User.DisplayName);
+            Title = App.Lang.FormatString("NewMessagePage_Header_ChatWithUser", User.DisplayName);
             RefreshReceivedMessages();
         }
 
@@ -405,7 +405,7 @@ namespace Chicken.ViewModel.NewMessage
                         if (!connections.Contains(Const.FOLLOWED_BY))
                         {
                             HasError = true;
-                            Title = FormatString("NewMessagePage_Header_UserNotFollowYou", User.DisplayName);
+                            Title = App.Lang.FormatString("NewMessagePage_Header_UserNotFollowYou", User.DisplayName);
                             App.HandleMessage(new ToastMessage
                             {
                                 Message = Title

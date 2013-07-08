@@ -91,8 +91,7 @@ namespace Chicken.ViewModel.Settings.VM
 
         private void LanguageChangedAction()
         {
-            this.SetLanguage(Language);
-            NavigationServiceManager.NavigateTo(PageNameEnum.SplashScreenPage);
+            App.InitLanguage(Language);
         }
         #endregion
     }

@@ -4,6 +4,7 @@ using System.Windows.Navigation;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.View;
+using Chicken.ViewModel;
 using MemoryDiagnostics;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -38,6 +39,16 @@ namespace Chicken
                 return settings;
             }
         }
+        private static LanguageHelper lang;
+        public static LanguageHelper Lang
+        {
+            get
+            {
+                if (lang == null)
+                    lang = new LanguageHelper();
+                return lang;
+            }
+        }
         #endregion
 
         public App()
@@ -50,7 +61,7 @@ namespace Chicken
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
                 MemoryDiagnosticsHelper.Start(TimeSpan.FromMilliseconds(500), true);
 #if RELEASE
-                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled; 
+                PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
 #endif
             }
         }
@@ -79,6 +90,7 @@ namespace Chicken
                 settings = new GeneralSettings();
             settings.CurrentLanguage = language;
             IsolatedStorageService.CreateAppSettings(settings);
+            Lang.InitLanguage();
         }
 
         public static void HandleMessage(ToastMessage message)

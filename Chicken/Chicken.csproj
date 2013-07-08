@@ -181,6 +181,7 @@
     <Compile Include="ViewModel\Base\TweetDetailViewModel.cs" />
     <Compile Include="ViewModel\Base\UserViewModel.cs" />
     <Compile Include="ViewModel\Home\VM\DMsPivotViewModel.cs" />
+    <Compile Include="ViewModel\LanguageHelper.cs" />
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />

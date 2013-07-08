@@ -89,7 +89,7 @@ namespace Chicken.ViewModel.NewTweet
 
         public NewTweetViewModel()
         {
-            Title = this["NewTweetPage_Header_WhatsHappening"];
+            Title = App.Lang["NewTweetPage_Header_WhatsHappening"];
             TweetModel = new NewTweetModel();
         }
 
