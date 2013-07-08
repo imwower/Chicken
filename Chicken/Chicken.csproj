@@ -114,6 +114,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <!--condition compile-->
+    <Folder Include="SampleData"
+            Condition="'$(ConfigurationName)'=='Debug'" />
+    <Content Include="SampleData\*"
+             Condition="'$(ConfigurationName)'=='Debug'" />
+    <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs"
+             Condition="'$(ConfigurationName)'!='Release'" />
+    <!--condition compile-->
+
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -136,7 +145,6 @@
     <Compile Include="Controls\ToastPrompt.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
-    <Compile Include="MemoryDiagnosticsHelper.cs" />
     <Compile Include="Model\AboutModel.cs" />
     <Compile Include="Model\GenenalSettings.cs" />
     <Compile Include="Model\LatestMessagesModel.cs" />
@@ -176,7 +184,6 @@
     <Compile Include="Service\IsolatedStorageService.cs" />
     <Compile Include="Service\NavigationServiceManager.cs" />
     <Compile Include="Service\Interface\INavigationService.cs" />
-    <Compile Include="Service\Implementation\MockedService.cs" />
     <Compile Include="ViewModel\Base\DirectMessageViewModel.cs" />
     <Compile Include="ViewModel\Base\TweetDetailViewModel.cs" />
     <Compile Include="ViewModel\Base\UserViewModel.cs" />
@@ -346,12 +353,6 @@
     <None Include="libs\ImageTools.IO.Png.dll" />
     <None Include="libs\ImageTools.Utils.dll" />
     <None Include="libs\PhoneCodeContractsAssemblies.dll" />
-    <Content Include="SampleData\errors.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\userProfile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Service\Interface\ITweetService.cs" />
     <Compile Include="Service\Implementation\TweetService.cs" />
     <Compile Include="Service\TweetServiceManger.cs" />
@@ -365,31 +366,6 @@
     <Compile Include="ViewModel\Base\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
-    <Content Include="SampleData\user_timeline.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\direct_messages_sent_by_me.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\direct_message_post_new_message.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\not_following_you.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\myprofile.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\configuration.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="SampleData\Rate_limit_exceeded.json" />
-    <Content Include="SampleData\userProfile_follow.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\userProfile_unfollow.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -447,39 +423,6 @@
     </Content>
     <None Include="Properties\AppManifest.xml" />
     <None Include="Properties\WMAppManifest.xml" />
-    <Content Include="SampleData\hometimeline.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\mentions.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\newtweets.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\direct_messages.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\friends_list.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\followers.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\tweet.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\user_favourites.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\followingIds.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\lookup.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SampleData\friendships.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApplicationIcon.png">
@@ -489,9 +432,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="libs\Newtonsoft.Json.dll" />
-    <Content Include="SampleData\profileimage.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\AppResources.en-US.resx">
