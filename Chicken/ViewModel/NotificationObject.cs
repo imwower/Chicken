@@ -34,6 +34,11 @@ namespace Chicken.ViewModel
             }
         }
 
+        public string FormatString(string key, params string[] parameters)
+        {
+            return string.Format(this[key], parameters);
+        }
+
         public void SetLanguage(Language language)
         {
             App.InitLanguage(language);

@@ -8,7 +8,6 @@ namespace Chicken.ViewModel.Settings
     {
         public SettingsViewModel()
         {
-            Title = "Settings";
             var baseViewModelList = new List<PivotItemViewModelBase>
             {
                 new GeneralSettingsViewModel(),

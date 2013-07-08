@@ -17,7 +17,7 @@
     mc:Ignorable="d" d:DesignHeight="768" d:DesignWidth="480"    
     shell:SystemTray.IsVisible="True">
 
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -35,11 +35,12 @@
                 </Style>
             </Grid.Resources>
             <!--title-->
-            <TextBlock Grid.Row="0" Text="{Binding Path=Title}" />
+            <TextBlock Grid.Row="0" Text="{Binding Title}" />
             <!--text-->
-            <ScrollViewer Grid.Row="1"
-                      Margin="8,4" VerticalAlignment="Stretch"
-                      VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled">
+            <ScrollViewer Grid.Row="1" Margin="8,4"
+                          VerticalAlignment="Stretch"
+                          VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Disabled">
                 <TextBox x:Name="TextContent"
                              Style="{StaticResource TextBoxContent}"
                              TextAlignment="Left" AcceptsReturn="True"

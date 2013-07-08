@@ -19,7 +19,7 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
-        <controls:Pivot x:Name="MainPivot" Title="{Binding Path=Title}">
+        <controls:Pivot x:Name="MainPivot">
             <!--general settings-->
             <controls:PivotItem
                 DataContext="{Binding Path=DataContext.PivotItems[0],ElementName=MainPivot}"

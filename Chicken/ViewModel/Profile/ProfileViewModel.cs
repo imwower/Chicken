@@ -13,7 +13,19 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        public UserProfileDetailViewModel User { get; set; }
+        private UserProfileDetailViewModel user;
+        public UserProfileDetailViewModel User
+        {
+            get
+            {
+                return user;
+            }
+            set
+            {
+                user = value;
+                RaisePropertyChanged("User");
+            }
+        }
         private string followButtonText;
         public string FollowButtonText
         {

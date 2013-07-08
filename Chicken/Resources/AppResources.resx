@@ -120,7 +120,34 @@
   <data name="APISettingsPage_Header" xml:space="preserve">
     <value>API设置</value>
   </data>
+  <data name="EditMyProfilePage_Header" xml:space="preserve">
+    <value>编辑个人资料</value>
+  </data>
   <data name="HelloWorld" xml:space="preserve">
     <value>你好世界</value>
+  </data>
+  <data name="NewMessagePage_Header" xml:space="preserve">
+    <value>对话</value>
+  </data>
+  <data name="NewMessagePage_Header_ChatWithUser" xml:space="preserve">
+    <value>与{0}的对话</value>
+  </data>
+  <data name="NewMessagePage_Header_NotAValidUserName" xml:space="preserve">
+    <value>用户名格式不正确</value>
+  </data>
+  <data name="NewMessagePage_Header_UserNotFollowYou" xml:space="preserve">
+    <value>{0}没有关注你</value>
+  </data>
+  <data name="NewTweetPage_Header_Mention" xml:space="preserve">
+    <value>提到: {0}</value>
+  </data>
+  <data name="NewTweetPage_Header_Quote" xml:space="preserve">
+    <value>引用:</value>
+  </data>
+  <data name="NewTweetPage_Header_ReplyTo" xml:space="preserve">
+    <value>回复: {0}</value>
+  </data>
+  <data name="NewTweetPage_Header_WhatsHappening" xml:space="preserve">
+    <value>怎么啦?</value>
   </data>
 </root>

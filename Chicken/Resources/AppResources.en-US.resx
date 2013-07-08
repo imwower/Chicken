@@ -120,7 +120,34 @@
   <data name="APISettingsPage_Header" xml:space="preserve">
     <value>Edit API</value>
   </data>
+  <data name="EditMyProfilePage_Header" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
   <data name="HelloWorld" xml:space="preserve">
     <value>Hello World</value>
+  </data>
+  <data name="NewMessagePage_Header" xml:space="preserve">
+    <value>Chat</value>
+  </data>
+  <data name="NewMessagePage_Header_ChatWithUser" xml:space="preserve">
+    <value>Chat with {0}</value>
+  </data>
+  <data name="NewMessagePage_Header_NotAValidUserName" xml:space="preserve">
+    <value>not a valid user name</value>
+  </data>
+  <data name="NewMessagePage_Header_UserNotFollowYou" xml:space="preserve">
+    <value>{0} did not follow you</value>
+  </data>
+  <data name="NewTweetPage_Header_Mention" xml:space="preserve">
+    <value>Mention: {0}</value>
+  </data>
+  <data name="NewTweetPage_Header_Quote" xml:space="preserve">
+    <value>Quote:</value>
+  </data>
+  <data name="NewTweetPage_Header_ReplyTo" xml:space="preserve">
+    <value>Reply To: {0}</value>
+  </data>
+  <data name="NewTweetPage_Header_WhatsHappening" xml:space="preserve">
+    <value>What's happening?</value>
   </data>
 </root>

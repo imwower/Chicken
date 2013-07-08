@@ -14,7 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d" d:DesignHeight="728" d:DesignWidth="480"    
+    mc:Ignorable="d" d:DesignHeight="696" d:DesignWidth="480"    
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -24,13 +24,18 @@
             <RowDefinition Height="10" />
         </Grid.RowDefinitions>
         <!--title-->
-        <TextBlock Grid.Row="0" Margin="4" Text="{Binding Path=Header}" />
+        <TextBlock Grid.Row="0" Margin="4" Text="{Binding [EditMyProfilePage_Header]}" />
         <!--content-->
         <ScrollViewer Grid.Row="1" Margin="8,4"
                       VerticalAlignment="Top"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
-            <StackPanel Orientation="Vertical">
+            <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="12,4" />
+                    </Style>
+                </StackPanel.Resources>
                 <!--name-->
                 <TextBlock Text="Name" />
                 <TextBox Text="{Binding Path=MyProfile.Name}"

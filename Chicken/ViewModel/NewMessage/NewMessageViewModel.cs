@@ -78,7 +78,7 @@ namespace Chicken.ViewModel.NewMessage
 
         public NewMessageViewModel()
         {
-            Header = "Chat";
+            Title = this["NewMessagePage_Header"];
             list = new List<DirectMessage>();
             dict = new Dictionary<string, Conversation>();
             Messages = new ObservableCollection<DirectMessageViewModel>();
@@ -102,7 +102,7 @@ namespace Chicken.ViewModel.NewMessage
                 HasError = true;
             if (HasError)
             {
-                Header = "not a validate user name";
+                Title = this["NewMessagePage_Header_NotAValidUserName"];
                 App.HandleMessage(new ToastMessage
                 {
                     Message = Header
@@ -128,7 +128,7 @@ namespace Chicken.ViewModel.NewMessage
             latestMessages = IsolatedStorageService.GetLatestMessages();
             if (latestMessages == null)
                 latestMessages = new LatestMessagesModel();
-            Header = User.DisplayName;
+            Title = FormatString("NewMessagePage_Header_ChatWithUser", User.DisplayName);
             RefreshReceivedMessages();
         }
 
@@ -405,7 +405,7 @@ namespace Chicken.ViewModel.NewMessage
                         if (!connections.Contains(Const.FOLLOWED_BY))
                         {
                             HasError = true;
-                            Header = User.DisplayName + " did not follow you";
+                            Title = FormatString("NewMessagePage_Header_UserNotFollowYou", User.DisplayName);
                             App.HandleMessage(new ToastMessage
                             {
                                 Message = Header

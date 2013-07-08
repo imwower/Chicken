@@ -165,12 +165,12 @@
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <ContentControl
-                            Content="{TemplateBinding Header}"
-                            ContentTemplate="{TemplateBinding HeaderTemplate}"
-                            Foreground="{StaticResource PhoneSubtleBrush}"
-                            FontSize="{StaticResource PhoneFontSizeNormal}"
-                            HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            Margin="0 0 0 8"/>
+                                Content="{TemplateBinding Header}"
+                                ContentTemplate="{TemplateBinding HeaderTemplate}"
+                                Foreground="{StaticResource PhoneForegroundBrush}"
+                                FontSize="{StaticResource PhoneFontSizeNormal}"
+                                HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="0 0 0 8"/>
                             <Grid>
                                 <Border
                                 x:Name="Border"

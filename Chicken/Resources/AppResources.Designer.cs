@@ -70,11 +70,92 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 编辑个人资料 的本地化字符串。
+        /// </summary>
+        public static string EditMyProfilePage_Header {
+            get {
+                return ResourceManager.GetString("EditMyProfilePage_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 你好世界 的本地化字符串。
         /// </summary>
         public static string HelloWorld {
             get {
                 return ResourceManager.GetString("HelloWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 对话 的本地化字符串。
+        /// </summary>
+        public static string NewMessagePage_Header {
+            get {
+                return ResourceManager.GetString("NewMessagePage_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 与{0}的对话 的本地化字符串。
+        /// </summary>
+        public static string NewMessagePage_Header_ChatWithUser {
+            get {
+                return ResourceManager.GetString("NewMessagePage_Header_ChatWithUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户名格式不正确 的本地化字符串。
+        /// </summary>
+        public static string NewMessagePage_Header_NotAValidUserName {
+            get {
+                return ResourceManager.GetString("NewMessagePage_Header_NotAValidUserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 {0}没有关注你 的本地化字符串。
+        /// </summary>
+        public static string NewMessagePage_Header_UserNotFollowYou {
+            get {
+                return ResourceManager.GetString("NewMessagePage_Header_UserNotFollowYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提到: {0} 的本地化字符串。
+        /// </summary>
+        public static string NewTweetPage_Header_Mention {
+            get {
+                return ResourceManager.GetString("NewTweetPage_Header_Mention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 引用: 的本地化字符串。
+        /// </summary>
+        public static string NewTweetPage_Header_Quote {
+            get {
+                return ResourceManager.GetString("NewTweetPage_Header_Quote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 回复: {0} 的本地化字符串。
+        /// </summary>
+        public static string NewTweetPage_Header_ReplyTo {
+            get {
+                return ResourceManager.GetString("NewTweetPage_Header_ReplyTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 怎么啦? 的本地化字符串。
+        /// </summary>
+        public static string NewTweetPage_Header_WhatsHappening {
+            get {
+                return ResourceManager.GetString("NewTweetPage_Header_WhatsHappening", resourceCulture);
             }
         }
     }

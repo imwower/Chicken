@@ -8,19 +8,6 @@ namespace Chicken.ViewModel
     public class PivotViewModelBase : ViewModelBase
     {
         #region properties
-        private string title;
-        public string Title
-        {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-                RaisePropertyChanged("Title");
-            }
-        }
         private int selectedIndex;
         public int SelectedIndex
         {
