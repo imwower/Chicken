@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using System.ComponentModel;
 
 namespace Chicken.Model
 {

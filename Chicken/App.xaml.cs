@@ -6,7 +6,7 @@ using Chicken.Service;
 using Chicken.View;
 using Chicken.ViewModel;
 #if !RELEASE
-using MemoryDiagnostics; 
+using MemoryDiagnostics;
 #endif
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
@@ -52,7 +52,7 @@ namespace Chicken
             {
                 Application.Current.Host.Settings.EnableFrameRateCounter = true;
 #if !RELEASE
-                MemoryDiagnosticsHelper.Start(TimeSpan.FromMilliseconds(500), true); 
+                MemoryDiagnosticsHelper.Start(TimeSpan.FromMilliseconds(500), true);
 #endif
 #if RELEASE
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
@@ -60,6 +60,7 @@ namespace Chicken
             }
         }
 
+        #region public method
         public static void InitAuthenticatedUser()
         {
             authenticatedUser = IsolatedStorageService.GetAuthenticatedUser();
@@ -92,7 +93,9 @@ namespace Chicken
         {
             PageBase.HandleMessage(message);
         }
+        #endregion
 
+        #region Application
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
         }
@@ -124,6 +127,7 @@ namespace Chicken
                 System.Diagnostics.Debugger.Break();
             }
         }
+        #endregion
 
         #region
         private bool phoneApplicationInitialized = false;
