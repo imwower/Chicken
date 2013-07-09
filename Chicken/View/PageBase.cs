@@ -42,19 +42,20 @@ namespace Chicken.View
     public class PivotPageBase : PageBase, INavigationService
     {
         #region property
-        protected virtual Pivot Pivot { get; private set; }
-        protected virtual PivotViewModelBase PivotViewModelBase { get; private set; }
+        protected Pivot Pivot { get; set; }
+        protected PivotViewModelBase PivotViewModelBase { get; set; }
         #endregion
 
         protected virtual void Init()
         {
-            if (Pivot != null)
-                Pivot.LoadedPivotItem += MainPivot_LoadedPivotItem;
+            //if (Pivot != null)
+            Pivot.LoadedPivotItem += MainPivot_LoadedPivotItem;
+            this.DataContext = PivotViewModelBase;
         }
 
         protected virtual void MainPivot_LoadedPivotItem(object sender, PivotItemEventArgs e)
         {
-            if (PivotViewModelBase != null)
+            //if (PivotViewModelBase != null)
             {
                 PivotViewModelBase.SelectedIndex = (sender as Pivot).SelectedIndex;
                 PivotViewModelBase.MainPivot_LoadedPivotItem();
@@ -63,14 +64,14 @@ namespace Chicken.View
 
         public virtual void ChangeSelectedIndex(int selectedIndex)
         {
-            if (Pivot != null)
-                Pivot.SelectedIndex = selectedIndex;
+            //if (Pivot != null)
+            Pivot.SelectedIndex = selectedIndex;
         }
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            if (Pivot != null)
-                Pivot.LoadedPivotItem -= MainPivot_LoadedPivotItem;
+            //if (Pivot != null)
+            Pivot.LoadedPivotItem -= MainPivot_LoadedPivotItem;
             base.OnNavigatedFrom(e);
         }
     }

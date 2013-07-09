@@ -115,14 +115,9 @@
   </ItemGroup>
   <ItemGroup>
     <!--condition compile-->
-    <Folder Include="SampleData"
-            Condition="'$(ConfigurationName)'=='LOCAL'" />
-    <Content Include="SampleData\*"
-             Condition="'$(ConfigurationName)'=='LOCAL'" />
-    <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs"
-             Condition="'$(ConfigurationName)'!='Release'" />
+    <Content Include="SampleData\*" Condition="'$(ConfigurationName)'=='LOCAL'" />
+    <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs" Condition="'$(ConfigurationName)'!='Release'" />
     <!--condition compile-->
-
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -207,7 +202,6 @@
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetsViewModel.cs" />
-    <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="View\APISettingsPage.xaml.cs">
       <DependentUpon>APISettingsPage.xaml</DependentUpon>
     </Compile>

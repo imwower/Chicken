@@ -1,32 +1,14 @@
-﻿using Chicken.ViewModel;
-using Chicken.ViewModel.Settings;
-using Microsoft.Phone.Controls;
+﻿using Chicken.ViewModel.Settings;
 
 namespace Chicken.View
 {
     public partial class SettingsPage : PivotPageBase
     {
-        protected override Pivot Pivot
-        {
-            get
-            {
-                return this.MainPivot;
-            }
-        }
-        private SettingsViewModel settingsViewModel;
-        protected override PivotViewModelBase PivotViewModelBase
-        {
-            get
-            {
-                return this.settingsViewModel;
-            }
-        }
-
         public SettingsPage()
         {
             InitializeComponent();
-            settingsViewModel = new SettingsViewModel();
-            this.DataContext = settingsViewModel;
+            Pivot = this.MainPivot;
+            PivotViewModelBase = new SettingsViewModel();
             base.Init();
         }
     }

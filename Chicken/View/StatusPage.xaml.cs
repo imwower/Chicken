@@ -1,32 +1,14 @@
-﻿using Chicken.ViewModel;
-using Chicken.ViewModel.Status;
-using Microsoft.Phone.Controls;
+﻿using Chicken.ViewModel.Status;
 
 namespace Chicken.View
 {
     public partial class StatusPage : PivotPageBase
     {
-        protected override Pivot Pivot
-        {
-            get
-            {
-                return this.MainPivot;
-            }
-        }
-        private StatusViewModel statusViewModel;
-        protected override PivotViewModelBase PivotViewModelBase
-        {
-            get
-            {
-                return this.statusViewModel;
-            }
-        }
-
         public StatusPage()
         {
             InitializeComponent();
-            statusViewModel = new StatusViewModel();
-            this.DataContext = statusViewModel;
+            Pivot = this.MainPivot;
+            PivotViewModelBase = new StatusViewModel();
             base.Init();
         }
     }

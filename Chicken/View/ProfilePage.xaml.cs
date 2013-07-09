@@ -1,32 +1,14 @@
-﻿using Chicken.ViewModel;
-using Chicken.ViewModel.Profile;
-using Microsoft.Phone.Controls;
+﻿using Chicken.ViewModel.Profile;
 
 namespace Chicken.View
 {
     public partial class ProfilePage : PivotPageBase
     {
-        protected override Pivot Pivot
-        {
-            get
-            {
-                return this.MainPivot;
-            }
-        }
-        private ProfileViewModel profileViewModel;
-        protected override PivotViewModelBase PivotViewModelBase
-        {
-            get
-            {
-                return this.profileViewModel;
-            }
-        }
-
         public ProfilePage()
         {
             InitializeComponent();
-            profileViewModel = new ProfileViewModel();
-            this.DataContext = profileViewModel;
+            Pivot = this.MainPivot;
+            PivotViewModelBase = new ProfileViewModel();
             base.Init();
         }
     }

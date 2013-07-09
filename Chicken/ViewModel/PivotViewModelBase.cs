@@ -5,7 +5,7 @@ using Chicken.Service;
 
 namespace Chicken.ViewModel
 {
-    public class PivotViewModelBase : ViewModelBase
+    public class PivotViewModelBase : NotificationObject
     {
         #region properties
         public int SelectedIndex { get; set; }
@@ -27,6 +27,30 @@ namespace Chicken.ViewModel
         #endregion
 
         #region binding
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new DelegateCommand(RefreshAction);
+            }
+        }
+
+        public ICommand TopCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToTopAction);
+            }
+        }
+
+        public ICommand BottomCommand
+        {
+            get
+            {
+                return new DelegateCommand(ScrollToBottomAction);
+            }
+        }
+
         public ICommand SettingsCommand
         {
             get
@@ -38,9 +62,6 @@ namespace Chicken.ViewModel
 
         public PivotViewModelBase()
         {
-            RefreshHandler = this.RefreshAction;
-            ScrollToTopHandler = this.ScrollToTopAction;
-            ScrollToBottomHandler = this.ScrollToBottomAction;
         }
 
         #region public method
@@ -48,7 +69,7 @@ namespace Chicken.ViewModel
         {
             if (!PivotItems[SelectedIndex].IsInited)
             {
-                Refresh();
+                RefreshAction();
             }
         }
         #endregion
@@ -71,6 +92,7 @@ namespace Chicken.ViewModel
 
         private void SettingsAction()
         {
+            PivotItems[SelectedIndex].IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
         }
         #endregion
