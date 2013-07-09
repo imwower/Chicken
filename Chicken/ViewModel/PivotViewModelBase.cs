@@ -8,18 +8,7 @@ namespace Chicken.ViewModel
     public class PivotViewModelBase : ViewModelBase
     {
         #region properties
-        private int selectedIndex;
-        public int SelectedIndex
-        {
-            get
-            {
-                return selectedIndex;
-            }
-            set
-            {
-                selectedIndex = value;
-            }
-        }
+        public int SelectedIndex { get; set; }
         private AppBarState state;
         public AppBarState State
         {
@@ -55,10 +44,9 @@ namespace Chicken.ViewModel
         }
 
         #region public method
-        public virtual void MainPivot_LoadedPivotItem(int selectedIndex)
+        public virtual void MainPivot_LoadedPivotItem()
         {
-            SelectedIndex = selectedIndex;
-            if (!PivotItems[selectedIndex].IsInited)
+            if (!PivotItems[SelectedIndex].IsInited)
             {
                 Refresh();
             }

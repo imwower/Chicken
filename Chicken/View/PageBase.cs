@@ -41,8 +41,10 @@ namespace Chicken.View
 
     public class PivotPageBase : PageBase, INavigationService
     {
+        #region property
         protected virtual Pivot Pivot { get; private set; }
         protected virtual PivotViewModelBase PivotViewModelBase { get; private set; }
+        #endregion
 
         protected virtual void Init()
         {
@@ -54,8 +56,8 @@ namespace Chicken.View
         {
             if (PivotViewModelBase != null)
             {
-                int selectedIndex = (sender as Pivot).SelectedIndex;
-                PivotViewModelBase.MainPivot_LoadedPivotItem(selectedIndex);
+                PivotViewModelBase.SelectedIndex = (sender as Pivot).SelectedIndex;
+                PivotViewModelBase.MainPivot_LoadedPivotItem();
             }
         }
 
@@ -67,9 +69,9 @@ namespace Chicken.View
 
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
-            base.OnNavigatedFrom(e);
             if (Pivot != null)
                 Pivot.LoadedPivotItem -= MainPivot_LoadedPivotItem;
+            base.OnNavigatedFrom(e);
         }
     }
 }

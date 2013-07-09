@@ -71,27 +71,27 @@ namespace Chicken.ViewModel.Status
             PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
-        public override void MainPivot_LoadedPivotItem(int selectedIndex)
+        public override void MainPivot_LoadedPivotItem()
         {
             if (IsInit)
             {
-                SwitchAppBar(selectedIndex);
+                SwitchAppBar();
                 return;
             }
-            PivotItems[selectedIndex].IsLoading = true;
+            PivotItems[SelectedIndex].IsLoading = true;
             string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
             TweetService.GetStatusDetail(statusId,
                 data =>
                 {
                     if (data.HasError)
                     {
-                        PivotItems[selectedIndex].IsLoading = false;
+                        PivotItems[SelectedIndex].IsLoading = false;
                         return;
                     }
                     if (data.User.Id == App.AuthenticatedUser.Id)
                         data.IsSentByMe = true;
                     this.tweet = new TweetDetailViewModel(data);
-                    SwitchAppBar(selectedIndex);
+                    SwitchAppBar();
                     IsInit = true;
                 });
         }
@@ -124,14 +124,14 @@ namespace Chicken.ViewModel.Status
         #endregion
 
         #region private
-        private void SwitchAppBar(int selectedIndex)
+        private void SwitchAppBar()
         {
             if (tweet.IsSentByMe)
                 State = AppBarState.StatusPageWithDelete;
             else
                 State = AppBarState.StatusPageDefault;
-            (PivotItems[selectedIndex] as StatusViewModelBase).Tweet = tweet;
-            base.MainPivot_LoadedPivotItem(selectedIndex);
+            (PivotItems[SelectedIndex] as StatusViewModelBase).Tweet = tweet;
+            base.MainPivot_LoadedPivotItem();
         }
         #endregion
     }
