@@ -627,10 +627,6 @@
             </Button>
         </DataTemplate>
 
-        <DataTemplate x:Key="ListPickerItemTemplate">
-            <TextBlock Text="{Binding DisplayName}" />
-        </DataTemplate>
-
         <!--Pivot Item-->
         <!--Home Pivot Item Style-->
         <Style TargetType="ctrls:HomePivotItem">

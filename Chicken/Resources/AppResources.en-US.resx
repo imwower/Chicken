@@ -354,4 +354,13 @@
   <data name="Toast_Msg_UpdateMyProfileSuccessfully" xml:space="preserve">
     <value>update successfully</value>
   </data>
+  <data name="Default_API_TWIP4" xml:space="preserve">
+    <value>TWIP4(O mode)</value>
+  </data>
+  <data name="Default_Language_EN_US" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Default_Language_ZH_CN" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
 </root>

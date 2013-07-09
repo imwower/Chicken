@@ -8,7 +8,7 @@ namespace Chicken.ViewModel.Settings.VM
     {
         #region properties
         private APIProxy setting;
-        public APIProxy APISettings
+        public APIProxy APISetting
         {
             get
             {
@@ -17,7 +17,7 @@ namespace Chicken.ViewModel.Settings.VM
             set
             {
                 setting = value;
-                RaisePropertyChanged("APISettings");
+                RaisePropertyChanged("APISetting");
             }
         }
         private Language language = App.Settings.CurrentLanguage;
@@ -29,12 +29,22 @@ namespace Chicken.ViewModel.Settings.VM
             }
             set
             {
-                if (language != value)
-                {
-                    language = value;
-                    LanguageChangedAction();
-                    RaisePropertyChanged("Language");
-                }
+                language = value;
+                RaisePropertyChanged("Language");
+            }
+        }
+        private int selectedIndex;
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+                LanguageChangedAction();
+                RaisePropertyChanged("SelectedIndex");
             }
         }
         public Language[] DefaultLanguages
@@ -73,7 +83,7 @@ namespace Chicken.ViewModel.Settings.VM
         private void RefreshAction()
         {
             if (App.Settings != null && App.Settings.APISettings != null)
-                APISettings = App.Settings.APISettings;
+                APISetting = App.Settings.APISettings;
             base.Refreshed();
         }
 
@@ -90,7 +100,8 @@ namespace Chicken.ViewModel.Settings.VM
 
         private void LanguageChangedAction()
         {
-            App.InitLanguage(Language);
+            if (IsInited)
+                App.InitLanguage(DefaultLanguages[selectedIndex]);
         }
         #endregion
     }

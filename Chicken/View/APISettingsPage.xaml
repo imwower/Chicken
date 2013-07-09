@@ -33,13 +33,13 @@
                       VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
-                <!--type-->
+                <!--api type-->
                 <ctrls:ListPicker
                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}"
                     SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}">
                     <ctrls:ListPickerItem>
                         <TextBlock
-                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[HelloWorld]}" />
+                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[Default_API_TWIP4]}" />
                     </ctrls:ListPickerItem>
                 </ctrls:ListPicker>
                 <!--url-->

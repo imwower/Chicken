@@ -44,11 +44,11 @@
                                     Text="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_APIInfo]}" />
                                 <TextBlock
                                     Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}" />
-                                <TextBlock Text="{Binding APISettings.Name}" />
+                                <TextBlock Text="{Binding APISetting.Name}" />
                                 <TextBlock
                                     Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
                                 <TextBlock TextWrapping="Wrap"
-                                           Text="{Binding APISettings.Url}" />
+                                           Text="{Binding APISetting.Url}" />
                                 <Button
                                     Content="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_EditAPI]}"
                                     Command="{Binding EditAPISettingsCommand}" />
@@ -57,9 +57,15 @@
                                     Command="{Binding ClearCacheCommand}" />
                                 <ctrls:ListPicker
                                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_Language]}"
-                                    ItemTemplate="{StaticResource ListPickerItemTemplate}"
-                                    ItemsSource="{Binding DefaultLanguages}"
-                                    SelectedItem="{Binding Language,Mode=TwoWay}">
+                                    SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}">
+                                    <ctrls:ListPickerItem>
+                                        <TextBlock
+                                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[Default_Language_ZH_CN]}" />
+                                    </ctrls:ListPickerItem>
+                                    <ctrls:ListPickerItem>
+                                        <TextBlock
+                                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[Default_Language_EN_US]}" />
+                                    </ctrls:ListPickerItem>
                                 </ctrls:ListPicker>
                             </StackPanel>
                         </ScrollViewer.Content>

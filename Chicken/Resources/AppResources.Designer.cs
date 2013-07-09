@@ -277,6 +277,33 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 TWIP 4(O模式) 的本地化字符串。
+        /// </summary>
+        public static string Default_API_TWIP4 {
+            get {
+                return ResourceManager.GetString("Default_API_TWIP4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 English 的本地化字符串。
+        /// </summary>
+        public static string Default_Language_EN_US {
+            get {
+                return ResourceManager.GetString("Default_Language_EN_US", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 简体中文 的本地化字符串。
+        /// </summary>
+        public static string Default_Language_ZH_CN {
+            get {
+                return ResourceManager.GetString("Default_Language_ZH_CN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 简介: 的本地化字符串。
         /// </summary>
         public static string EditMyProfilePage_Description {
