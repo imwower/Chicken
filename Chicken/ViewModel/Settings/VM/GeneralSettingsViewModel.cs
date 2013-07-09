@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Linq;
+using System.Windows.Input;
 using Chicken.Model;
 using Chicken.Service;
 
@@ -84,6 +85,7 @@ namespace Chicken.ViewModel.Settings.VM
         {
             if (App.Settings != null && App.Settings.APISettings != null)
                 APISetting = App.Settings.APISettings;
+            SelectedIndex = DefaultLanguages.ToList().IndexOf(App.Settings.CurrentLanguage);
             base.Refreshed();
         }
 
