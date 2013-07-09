@@ -36,14 +36,17 @@
                 <!--type-->
                 <ctrls:ListPicker
                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}"
-                    ItemTemplate="{StaticResource ListPickerItemTemplate}"
-                    ItemsSource="{Binding DefaultAPIs}"
-                    SelectedItem="{Binding APISettings}" />
+                    SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}">
+                    <ctrls:ListPickerItem>
+                        <TextBlock
+                            Text="{Binding Source={StaticResource LanguageHelper}, Path=[HelloWorld]}" />
+                    </ctrls:ListPickerItem>
+                </ctrls:ListPicker>
                 <!--url-->
                 <TextBlock Margin="12,4"
-                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
+                           Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
                 <TextBox TextWrapping="Wrap"
-                         Text="{Binding Path=APISettings.Url, Mode=TwoWay}"
+                         Text="{Binding Path=APISetting.Url, Mode=TwoWay}"
                          TextChanged="Url_TextChanged"
                          Height="240" MaxHeight="400" />
             </StackPanel>

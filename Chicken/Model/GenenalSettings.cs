@@ -1,7 +1,4 @@
-﻿using System;
-using Newtonsoft.Json;
-
-namespace Chicken.Model
+﻿namespace Chicken.Model
 {
     public class GeneralSettings
     {

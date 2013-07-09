@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
@@ -11,7 +12,7 @@ namespace Chicken.ViewModel.Settings
     {
         #region properties
         private APIProxy setting;
-        public APIProxy APISettings
+        public APIProxy APISetting
         {
             get
             {
@@ -20,7 +21,21 @@ namespace Chicken.ViewModel.Settings
             set
             {
                 setting = value;
-                RaisePropertyChanged("APISettings");
+                RaisePropertyChanged("APISetting");
+            }
+        }
+        private int selectedIndex;
+        public int SelectedIndex
+        {
+            get
+            {
+                return selectedIndex;
+            }
+            set
+            {
+                selectedIndex = value;
+                APITypeChangedAction();
+                RaisePropertyChanged("SelectedIndex");
             }
         }
         public APIProxy[] DefaultAPIs
@@ -63,10 +78,13 @@ namespace Chicken.ViewModel.Settings
         private void RefreshAction()
         {
             if (App.Settings != null && App.Settings.APISettings != null)
-                APISettings = App.Settings.APISettings;
+            {
+                APISetting = App.Settings.APISettings;
+                SelectedIndex = DefaultAPIs.ToList().IndexOf(App.Settings.APISettings);
+            }
             else
             {
-                APISettings = new APIProxy
+                APISetting = new APIProxy
                 {
                     Name = APIProxy.DefaultAPIs[0].Name,
                     DisplayName = APIProxy.DefaultAPIs[0].DisplayName,
@@ -79,18 +97,18 @@ namespace Chicken.ViewModel.Settings
         private void SaveAction()
         {
             if (IsLoading
-                || string.IsNullOrEmpty(APISettings.Url))
+                || string.IsNullOrEmpty(APISetting.Url))
                 return;
             IsLoading = true;
-            APISettings.Url = APISettings.Url.TrimEnd('/', '\r', '\n', ' ') + "/";
-            TweetService.TestAPIUrl(APISettings.Url,
+            APISetting.Url = APISetting.Url.TrimEnd('/', '\r', '\n', ' ') + "/";
+            TweetService.TestAPIUrl(APISetting.Url,
                 userProfileDetail =>
                 {
                     IsLoading = false;
                     List<ErrorMessage> errors = userProfileDetail.Errors;
                     if (userProfileDetail.HasError)
                         return;
-                    App.InitAPISettings(APISettings);
+                    App.InitAPISettings(APISetting);
                     IsolatedStorageService.CreateAuthenticatedUser(userProfileDetail);
                     App.InitAuthenticatedUser();
                     var message = new ToastMessage();
@@ -104,6 +122,14 @@ namespace Chicken.ViewModel.Settings
         {
             IsLoading = false;
             NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
+        }
+
+        private void APITypeChangedAction()
+        {
+            if (IsInited)
+            {
+                APISetting = DefaultAPIs[selectedIndex];
+            }
         }
         #endregion
     }
