@@ -43,7 +43,7 @@
                 <TextBox Text="{Binding Path=MyProfile.Name}"
                          TextChanged="Name_TextChanged" />
                 <!--location-->
-                <TextBlock Text="{Binding EditMyProfilePage_Location}" />
+                <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Location]}" />
                 <TextBox Text="{Binding Path=MyProfile.Location}"
                          TextChanged="Location_TextChanged" />
                 <!--link-->
