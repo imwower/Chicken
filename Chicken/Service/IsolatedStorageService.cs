@@ -256,21 +256,11 @@ namespace Chicken.Service
         #endregion
 
         #region public method
-        public static void CreateObject(PageNameEnum pageName, object value)
-        {
-            CreateObject(pageName.ToString(), value);
-        }
-
         public static void CreateObject(string key, object value)
         {
             if (!isInit)
                 InitState();
             state[key] = value;
-        }
-
-        public static T GetObject<T>(PageNameEnum pageName)
-        {
-            return GetObject<T>(pageName.ToString());
         }
 
         public static T GetObject<T>(string key)
@@ -280,11 +270,6 @@ namespace Chicken.Service
             if (state.ContainsKey(key))
                 return (T)state[key];
             return default(T);
-        }
-
-        public static T GetAndDeleteObject<T>(PageNameEnum pageName)
-        {
-            return GetAndDeleteObject<T>(pageName.ToString());
         }
 
         public static T GetAndDeleteObject<T>(string key)

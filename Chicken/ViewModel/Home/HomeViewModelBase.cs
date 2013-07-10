@@ -27,21 +27,21 @@ namespace Chicken.ViewModel.Home
         public virtual void NewTweet()
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage);
+            NavigationServiceManager.NavigateTo(Const.NewTweetPage);
         }
 
         public virtual void NewMessage()
         {
             IsLoading = false;
-            IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(PageNameEnum.NewMessagePage);
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewMessagePage);
+            IsolatedStorageService.GetAndDeleteObject<NewMessageModel>(Const.NewMessagePage);
+            NavigationServiceManager.NavigateTo(Const.NewMessagePage);
         }
 
         public virtual void MyProfile()
         {
             IsLoading = false;
-            IsolatedStorageService.GetAndDeleteObject<User>(PageNameEnum.ProfilePage);
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage);
+            IsolatedStorageService.GetAndDeleteObject<User>(Const.ProfilePage);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage);
         }
         #endregion
 
@@ -49,13 +49,13 @@ namespace Chicken.ViewModel.Home
         private void ClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
     }

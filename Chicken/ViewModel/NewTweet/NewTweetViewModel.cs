@@ -112,7 +112,7 @@ namespace Chicken.ViewModel.NewTweet
                     App.HandleMessage(new ToastMessage
                     {
                         Message = LanguageHelper.GetString("Toast_Msg_TweetSentSuccessfully"),
-                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
+                        Complete = () => NavigationServiceManager.NavigateTo(Const.HomePage)
                     });
                 });
         }

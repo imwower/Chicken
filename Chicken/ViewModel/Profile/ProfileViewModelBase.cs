@@ -86,13 +86,13 @@ namespace Chicken.ViewModel.Profile
                 InReplyToUserScreenName = UserProfile.DisplayName,
                 Text = UserProfile.DisplayName + " ",
             };
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
+            NavigationServiceManager.NavigateTo(Const.NewTweetPage, newTweet);
         }
 
         public virtual void EditMyProfile()
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.EditMyProfilePage);
+            NavigationServiceManager.NavigateTo(Const.EditMyProfilePage);
         }
         #endregion
 
@@ -104,7 +104,7 @@ namespace Chicken.ViewModel.Profile
             if (UserProfile.Id == user.Id)
                 NavigationServiceManager.ChangeSelectedIndex((int)ProfilePageEnum.ProfileDetail);
             else
-                NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
+                NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
         }
         #endregion
 

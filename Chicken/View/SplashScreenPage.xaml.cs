@@ -17,9 +17,9 @@ namespace Chicken.View
         {
             if (App.Settings == null
                 || App.Settings.APISettings == null)
-                NavigationServiceManager.NavigateTo(PageNameEnum.APISettingsPage);
+                NavigationServiceManager.NavigateTo(Const.APISettingsPage);
             else
-                NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                NavigationServiceManager.NavigateTo(Const.HomePage);
         }
     }
 }

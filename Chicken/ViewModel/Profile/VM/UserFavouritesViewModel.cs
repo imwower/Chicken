@@ -114,7 +114,7 @@ namespace Chicken.ViewModel.Profile.VM
         private void ItemClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
     }

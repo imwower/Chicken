@@ -78,7 +78,7 @@ namespace Chicken.ViewModel.Profile
                         Message = LanguageHelper.GetString("Toast_Msg_UpdateMyProfileSuccessfully"),
                         Complete =
                         () =>
-                            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user)
+                            NavigationServiceManager.NavigateTo(Const.ProfilePage, user)
                     });
                 }, parameters);
         }

@@ -103,7 +103,7 @@ namespace Chicken.ViewModel.Profile
             else
             {
                 PivotItems[SelectedIndex].IsLoading = true;
-                var file = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
+                var file = IsolatedStorageService.GetObject<User>(Const.ProfilePage);
                 #region if null, use authenticated user
                 if (file == null)
                 {

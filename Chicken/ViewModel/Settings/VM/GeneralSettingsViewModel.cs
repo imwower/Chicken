@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Input;
+using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 
@@ -97,7 +98,7 @@ namespace Chicken.ViewModel.Settings.VM
         private void EditAPISettingsAction()
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(Common.PageNameEnum.APISettingsPage);
+            NavigationServiceManager.NavigateTo(Const.APISettingsPage);
         }
 
         private void LanguageChangedAction()

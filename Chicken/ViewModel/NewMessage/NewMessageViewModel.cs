@@ -115,7 +115,7 @@ namespace Chicken.ViewModel.NewMessage
         #region actions
         private void RefreshAction()
         {
-            var file = IsolatedStorageService.GetObject<NewMessageModel>(PageNameEnum.NewMessagePage);
+            var file = IsolatedStorageService.GetObject<NewMessageModel>(Const.NewMessagePage);
             if (file == null)
             {
                 IsNew = true;
@@ -148,7 +148,7 @@ namespace Chicken.ViewModel.NewMessage
         private void ClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
         }
 
         protected override void SendAction()
@@ -177,7 +177,7 @@ namespace Chicken.ViewModel.NewMessage
                     newMessage.User = message.Receiver;
                     IsNew = false;
                     Text = string.Empty;
-                    IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
+                    IsolatedStorageService.CreateObject(Const.NewMessagePage, newMessage);
                     App.HandleMessage(new ToastMessage
                     {
                         Message = LanguageHelper.GetString("Toast_Msg_MessageSentSuccessfully"),
@@ -413,7 +413,7 @@ namespace Chicken.ViewModel.NewMessage
                             return;
                         }
                         HasError = false;
-                        IsolatedStorageService.CreateObject(PageNameEnum.NewMessagePage, newMessage);
+                        IsolatedStorageService.CreateObject(Const.NewMessagePage, newMessage);
                         RefreshAction();
                     }
                 });

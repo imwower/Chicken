@@ -79,7 +79,7 @@ namespace Chicken.ViewModel.Status
                 return;
             }
             PivotItems[SelectedIndex].IsLoading = true;
-            string statusId = IsolatedStorageService.GetObject<string>(PageNameEnum.StatusPage);
+            string statusId = IsolatedStorageService.GetObject<string>(Const.StatusPage);
             TweetService.GetStatusDetail(statusId,
                 data =>
                 {

@@ -115,21 +115,6 @@
         #endregion
     }
 
-    #region page name enum
-    public enum PageNameEnum
-    {
-        SplashScreenPage = -1,
-        HomePage = 0,
-        ProfilePage = 1,
-        StatusPage = 2,
-        NewTweetPage = 3,
-        NewMessagePage = 4,
-        EditMyProfilePage = 5,
-        SettingsPage = 6,
-        APISettingsPage = 7,
-    }
-    #endregion
-
     #region page index enum
     public enum ProfilePageEnum
     {

@@ -138,7 +138,7 @@ namespace Chicken.ViewModel.Status
                     App.HandleMessage(new ToastMessage
                     {
                         Message = LanguageHelper.GetString("Toast_Msg_DeleteSuccessfully"),
-                        Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage)
+                        Complete = () => NavigationServiceManager.NavigateTo(Const.HomePage)
                     });
                     #endregion
                 });
@@ -149,13 +149,13 @@ namespace Chicken.ViewModel.Status
         private void ClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
         }
 
         private void ItemClickAction(object parameter)
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.StatusPage, parameter);
+            NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
 
@@ -218,7 +218,7 @@ namespace Chicken.ViewModel.Status
                 default:
                     break;
             }
-            NavigationServiceManager.NavigateTo(PageNameEnum.NewTweetPage, newTweet);
+            NavigationServiceManager.NavigateTo(Const.NewTweetPage, newTweet);
         }
         #endregion
     }

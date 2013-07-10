@@ -93,7 +93,7 @@ namespace Chicken.ViewModel
         private void SettingsAction()
         {
             PivotItems[SelectedIndex].IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
+            NavigationServiceManager.NavigateTo(Const.SettingsPage);
         }
         #endregion
     }

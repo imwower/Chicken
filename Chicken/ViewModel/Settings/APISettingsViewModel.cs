@@ -113,7 +113,7 @@ namespace Chicken.ViewModel.Settings
                     App.InitAuthenticatedUser();
                     var message = new ToastMessage();
                     message.Message = LanguageHelper.GetString("Toast_Msg_HelloUser", App.AuthenticatedUser.DisplayName);
-                    message.Complete = () => NavigationServiceManager.NavigateTo(PageNameEnum.HomePage);
+                    message.Complete = () => NavigationServiceManager.NavigateTo(Const.HomePage);
                     App.HandleMessage(message);
                 });
         }
@@ -121,7 +121,7 @@ namespace Chicken.ViewModel.Settings
         private void SettingsAction()
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.SettingsPage);
+            NavigationServiceManager.NavigateTo(Const.SettingsPage);
         }
 
         private void APITypeChangedAction()

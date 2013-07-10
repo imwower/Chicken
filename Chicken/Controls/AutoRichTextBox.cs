@@ -175,7 +175,7 @@ namespace Chicken.Controls
                         Id = mention.Id,
                         ScreenName = mention.DisplayName,
                     };
-                    NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, user);
+                    NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
                     break;
                 case EntityType.HashTag:
                     //TODO: to search page
