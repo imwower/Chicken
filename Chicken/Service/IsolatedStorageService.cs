@@ -24,10 +24,15 @@ namespace Chicken.Service
           {
               NullValueHandling = NullValueHandling.Ignore
           };
+        private static Dictionary<string, object> state;
+        private static bool isInit;
         #endregion
 
         #region const
         private const string SAVED_DATA_FOLDER_PATH = "Data";
+
+        private const string STATE_FILE_NAME = "State.json";
+
         private const string EMOTIONS_FILE_NAME = "Emotions.json";
 
         private const string LATEST_MESSAGES_FILE_NAME = "LatestDirectMessages.json";
@@ -248,40 +253,82 @@ namespace Chicken.Service
             string filepath = SAVED_DATA_FOLDER_PATH + "\\" + TWEET_CONFIGURATION_FILE_NAME;
             return DeserializeObject<TweetConfiguration>(filepath, FileOption.OnlyRead);
         }
-
         #endregion
 
         #region public method
-        public static bool CreateObject(PageNameEnum pageName, object value)
+        public static void CreateObject(PageNameEnum pageName, object value)
         {
-            string folderName = pageName.ToString();
-            if (!fileSystem.DirectoryExists(folderName))
-            {
-                fileSystem.CreateDirectory(folderName);
-            }
-            return SerializeObject(folderName + "\\" + folderName, value);
+            CreateObject(pageName.ToString(), value);
+        }
+
+        public static void CreateObject(string key, object value)
+        {
+            if (!isInit)
+                InitState();
+            state[key] = value;
         }
 
         public static T GetObject<T>(PageNameEnum pageName)
         {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + folderName);
+            return GetObject<T>(pageName.ToString());
+        }
+
+        public static T GetObject<T>(string key)
+        {
+            if (!isInit)
+                InitState();
+            if (state.ContainsKey(key))
+                return (T)state[key];
+            return default(T);
         }
 
         public static T GetAndDeleteObject<T>(PageNameEnum pageName)
         {
-            string folderName = pageName.ToString();
-            return DeserializeObject<T>(folderName + "\\" + folderName, FileOption.DeleteAfterRead);
+            return GetAndDeleteObject<T>(pageName.ToString());
+        }
+
+        public static T GetAndDeleteObject<T>(string key)
+        {
+            if (!isInit)
+                InitState();
+            if (state.ContainsKey(key))
+            {
+                object value = state[key];
+                state.Remove(key);
+                return (T)value;
+            }
+            return default(T);
+        }
+
+        /// <summary>
+        /// when app is deactived,
+        /// serialize state object to file
+        /// </summary>
+        public static void SerializeState()
+        {
+            if (state != null && state.Count != 0)
+                CheckDataFolderPathAndSerializeOjbect(STATE_FILE_NAME, state);
         }
         #endregion
 
         #region private method
+        private static void InitState()
+        {
+            state = new Dictionary<string, object>();
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + STATE_FILE_NAME;
+            var file = DeserializeObject<Dictionary<string, object>>(filepath, FileOption.OnlyRead);
+            if (file != null)
+            {
+                foreach (var kvp in file)
+                    state[kvp.Key] = kvp.Value;
+            }
+            isInit = true;
+        }
+
         private static void CheckDataFolderPath()
         {
             if (!fileSystem.DirectoryExists(SAVED_DATA_FOLDER_PATH))
-            {
                 fileSystem.CreateDirectory(SAVED_DATA_FOLDER_PATH);
-            }
         }
 
         private static void CheckDataFolderPathAndSerializeOjbect(string filename, object data)
@@ -294,9 +341,7 @@ namespace Chicken.Service
         private static bool SerializeObject(string fileName, object value)
         {
             if (fileSystem.FileExists(fileName))
-            {
                 fileSystem.DeleteFile(fileName);
-            }
             using (IsolatedStorageFileStream fileStream = fileSystem.OpenFile(fileName, FileMode.Create))
             {
                 using (TextWriter writer = new StreamWriter(fileStream))
