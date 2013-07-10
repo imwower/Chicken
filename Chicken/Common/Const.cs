@@ -112,6 +112,9 @@
         public const string SettingsPage = "/View/SettingsPage.xaml";
         public const string APISettingsPage = "/View/APISettingsPage.xaml";
 
+        #region page parameter
+        public const string ProfilePage_UserProfileDetail = "ProfilePage_UserProfileDetail";
+        #endregion
         #endregion
     }
 

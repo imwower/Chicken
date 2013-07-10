@@ -100,27 +100,20 @@ namespace Chicken.ViewModel.Profile
                 SwitchAppBar();
                 return;
             }
-            else
+            PivotItems[SelectedIndex].IsLoading = true;
+            var file = IsolatedStorageService.GetObject<User>(Const.ProfilePage);
+            #region if null, use authenticated user
+            if (file == null)
             {
-                PivotItems[SelectedIndex].IsLoading = true;
-                var file = IsolatedStorageService.GetObject<User>(Const.ProfilePage);
-                #region if null, use authenticated user
-                if (file == null)
-                {
-                    User = new UserProfileDetailViewModel(App.AuthenticatedUser);
-                    User.IsMyself = true;
-                    SwitchAppBar();
-                }
-                #endregion
-                #region get user
-                else
-                {
-                    GetUserProfileDetail(file);
-                }
-                #endregion
+                User = new UserProfileDetailViewModel(App.AuthenticatedUser);
+                User.IsMyself = true;
+                IsInit = true;
+                IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
+                SwitchAppBar();
+                return;
             }
-            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
-            base.MainPivot_LoadedPivotItem();
+            #endregion
+            GetUserProfileDetail(file);
         }
 
         #region actions
@@ -188,43 +181,41 @@ namespace Chicken.ViewModel.Profile
         {
             //sometimes, user is from profile description,
             //should get user detail from service
-            if (!isLoading)
-            {
-                isLoading = true;
-                TweetService.GetUserProfileDetail(user,
-                   profile =>
+            if (isLoading)
+                return;
+            isLoading = true;
+            TweetService.GetUserProfileDetail(user,
+               profile =>
+               {
+                   isLoading = false;
+                   if (profile.HasError)
                    {
-                       isLoading = false;
-                       if (profile.HasError)
-                       {
-                           PivotItems[SelectedIndex].IsLoading = false;
-                           return;
-                       }
-                       User = new UserProfileDetailViewModel(profile);
-                       ChangeFollowButtonText();
-                       SwitchAppBar();
-                   });
-            }
+                       PivotItems[SelectedIndex].IsLoading = false;
+                       return;
+                   }
+                   User = new UserProfileDetailViewModel(profile);
+                   IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
+                   IsInit = true;
+                   ChangeFollowButtonText();
+                   SwitchAppBar();
+               });
         }
 
         private void SwitchAppBar()
         {
             #region switch appbar
             if (User.IsMyself)
-            {
                 if (SelectedIndex == 0)
                     State = AppBarState.MyProfileDefault;
                 else
                     State = AppBarState.MyProfileWithEdit;
-            }
             else
-            {
                 if (SelectedIndex == 0)
                     State = AppBarState.ProfileDefault;
                 else
                     State = AppBarState.ProfileWithRefresh;
-            }
             #endregion
+            base.MainPivot_LoadedPivotItem();
         }
 
         private void ChangeFollowButtonText()
