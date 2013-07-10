@@ -187,7 +187,7 @@
     <Compile Include="ViewModel\NewMessage\NewMessageViewModel.cs" />
     <Compile Include="ViewModel\NewTweet\NewTweetViewModel.cs" />
     <Compile Include="ViewModel\PivotViewModelBase.cs" />
-    <Compile Include="ViewModel\Profile\MyProfileViewModel.cs" />
+    <Compile Include="ViewModel\Profile\EditMyProfileViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\ProfileDetailViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFavouritesViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />

@@ -40,7 +40,8 @@ namespace Chicken.ViewModel.Home
         public virtual void MyProfile()
         {
             IsLoading = false;
-            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage, App.AuthenticatedUser);
+            IsolatedStorageService.GetAndDeleteObject<User>(PageNameEnum.ProfilePage);
+            NavigationServiceManager.NavigateTo(PageNameEnum.ProfilePage);
         }
         #endregion
 

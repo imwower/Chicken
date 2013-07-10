@@ -39,6 +39,7 @@ namespace Chicken.ViewModel.Profile
                 RaisePropertyChanged("FollowButtonText");
             }
         }
+        private bool isLoading;
         #endregion
 
         #region binding
@@ -99,23 +100,27 @@ namespace Chicken.ViewModel.Profile
                 SwitchAppBar();
                 return;
             }
-            PivotItems[SelectedIndex].IsLoading = true;
-            var selectedUser = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
-            TweetService.GetUserProfileDetail(selectedUser,
-                profile =>
+            else
+            {
+                PivotItems[SelectedIndex].IsLoading = true;
+                var file = IsolatedStorageService.GetObject<User>(PageNameEnum.ProfilePage);
+                #region if null, use authenticated user
+                if (file == null)
                 {
-                    if (profile.HasError)
-                    {
-                        PivotItems[SelectedIndex].IsLoading = false;
-                        return;
-                    }
-                    this.User = new UserProfileDetailViewModel(profile);
-                    if (User.Id == App.AuthenticatedUser.Id)
-                        User.IsMyself = true;
+                    User = new UserProfileDetailViewModel(App.AuthenticatedUser);
+                    User.IsMyself = true;
                     SwitchAppBar();
-                    ChangeFollowButtonText();
-                    IsInit = true;
-                });
+                }
+                #endregion
+                #region get user
+                else
+                {
+                    GetUserProfileDetail(file);
+                }
+                #endregion
+            }
+            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
+            base.MainPivot_LoadedPivotItem();
         }
 
         #region actions
@@ -179,6 +184,29 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region private
+        private void GetUserProfileDetail(User user)
+        {
+            //sometimes, user is from profile description,
+            //should get user detail from service
+            if (!isLoading)
+            {
+                isLoading = true;
+                TweetService.GetUserProfileDetail(user,
+                   profile =>
+                   {
+                       isLoading = false;
+                       if (profile.HasError)
+                       {
+                           PivotItems[SelectedIndex].IsLoading = false;
+                           return;
+                       }
+                       User = new UserProfileDetailViewModel(profile);
+                       ChangeFollowButtonText();
+                       SwitchAppBar();
+                   });
+            }
+        }
+
         private void SwitchAppBar()
         {
             #region switch appbar
@@ -197,8 +225,6 @@ namespace Chicken.ViewModel.Profile
                     State = AppBarState.ProfileWithRefresh;
             }
             #endregion
-            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
-            base.MainPivot_LoadedPivotItem();
         }
 
         private void ChangeFollowButtonText()

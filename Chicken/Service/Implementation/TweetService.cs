@@ -336,9 +336,9 @@ namespace Chicken.Service.Implementation
                     }
                     #endregion
                 }
-                catch
+                catch (Exception exception)
                 {
-                    data.Result = GetErrorMessage<T>(webException.Message);
+                    data.Result = GetErrorMessage<T>(exception.Message);
                     Debug.WriteLine(webException.Message);
                 }
             }

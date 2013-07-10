@@ -7,7 +7,7 @@ using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile
 {
-    public class MyProfileViewModel : PivotItemViewModelBase
+    public class EditMyProfileViewModel : PivotItemViewModelBase
     {
         #region properties
         private UserProfileDetailViewModel myProfile;
@@ -39,7 +39,7 @@ namespace Chicken.ViewModel.Profile
         public ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
-        public MyProfileViewModel()
+        public EditMyProfileViewModel()
         {
             RefreshHandler = this.RefreshAction;
         }

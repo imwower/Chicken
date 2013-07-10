@@ -6,12 +6,12 @@ namespace Chicken.View
 {
     public partial class EditMyProfilePage : PageBase
     {
-        private MyProfileViewModel myProfileViewModel;
+        private EditMyProfileViewModel myProfileViewModel;
 
         public EditMyProfilePage()
         {
             InitializeComponent();
-            myProfileViewModel = new MyProfileViewModel();
+            myProfileViewModel = new EditMyProfileViewModel();
             this.Loaded += EditMyProfilePage_Loaded;
             this.DataContext = myProfileViewModel;
         }
