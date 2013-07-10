@@ -2,6 +2,7 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile.VM
 {
@@ -31,16 +32,21 @@ namespace Chicken.ViewModel.Profile.VM
         #region actions
         private void RefreshAction()
         {
+            var profile = IsolatedStorageService.GetObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
+            if (profile == null)
+            {
+                IsLoading = false;
+                return;
+            }
+            UserProfile = new UserProfileDetailViewModel(profile);
             if (UserProfile.IsMyself)
             {
-                IsolatedStorageService.CreateAuthenticatedUser(UserProfile.UserProfileDetail);
+                IsolatedStorageService.CreateAuthenticatedUser(profile);
                 App.InitAuthenticatedUser();
+                base.Refreshed();
+                return;
             }
-            else
-            {
-                GetFollowedByState();
-            }
-            base.Refreshed();
+            GetFollowedByState();
         }
         #endregion
 
@@ -78,6 +84,7 @@ namespace Chicken.ViewModel.Profile.VM
                         if (connections.Contains(Const.FOLLOWED_BY))
                             FollowedBy = true;
                     }
+                    base.Refreshed();
                 });
         }
         #endregion

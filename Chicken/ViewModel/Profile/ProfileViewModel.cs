@@ -5,7 +5,6 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Base;
 using Chicken.ViewModel.Profile.VM;
 
 namespace Chicken.ViewModel.Profile
@@ -13,8 +12,8 @@ namespace Chicken.ViewModel.Profile
     public class ProfileViewModel : PivotViewModelBase
     {
         #region properties
-        private UserProfileDetailViewModel user;
-        public UserProfileDetailViewModel User
+        private UserProfileDetail user;
+        public UserProfileDetail User
         {
             get
             {
@@ -101,18 +100,11 @@ namespace Chicken.ViewModel.Profile
                 return;
             }
             PivotItems[SelectedIndex].IsLoading = true;
+            IsolatedStorageService.GetAndDeleteObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
             var file = IsolatedStorageService.GetObject<User>(Const.ProfilePage);
-            #region if null, use authenticated user
+            // if null, use authenticated user
             if (file == null)
-            {
-                User = new UserProfileDetailViewModel(App.AuthenticatedUser);
-                User.IsMyself = true;
-                IsInit = true;
-                IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
-                SwitchAppBar();
-                return;
-            }
-            #endregion
+                file = App.AuthenticatedUser;
             GetUserProfileDetail(file);
         }
 
@@ -161,9 +153,9 @@ namespace Chicken.ViewModel.Profile
                         {
                             if (profileDetail.HasError)
                                 return;
-                            this.User = new UserProfileDetailViewModel(profileDetail);
+                            User = profileDetail;
+                            IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
                             ChangeFollowButtonText();
-                            (PivotItems[SelectedIndex] as ProfileViewModelBase).UserProfile = User;
                             PivotItems[SelectedIndex].Refresh();
                         });
                     #endregion
@@ -181,6 +173,7 @@ namespace Chicken.ViewModel.Profile
         {
             //sometimes, user is from profile description,
             //should get user detail from service
+            //only load once
             if (isLoading)
                 return;
             isLoading = true;
@@ -193,10 +186,13 @@ namespace Chicken.ViewModel.Profile
                        PivotItems[SelectedIndex].IsLoading = false;
                        return;
                    }
-                   User = new UserProfileDetailViewModel(profile);
+                   User = profile;
+                   if (User.Id == App.AuthenticatedUser.Id)
+                       User.IsMyself = true;
+                   else
+                       ChangeFollowButtonText();
                    IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
                    IsInit = true;
-                   ChangeFollowButtonText();
                    SwitchAppBar();
                });
         }

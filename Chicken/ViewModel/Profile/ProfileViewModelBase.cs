@@ -112,12 +112,17 @@ namespace Chicken.ViewModel.Profile
 
         protected bool CheckIfFollowingPrivate()
         {
-            if (this.UserProfile.IsPrivate &&
-                !this.UserProfile.IsFollowing)
+            var profile = IsolatedStorageService.GetObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
+            if (profile == null)
+                return false;
+            UserProfile = new UserProfileDetailViewModel(profile);
+            if (!profile.IsMyself &&
+                UserProfile.IsPrivate &&
+                !UserProfile.IsFollowing)
             {
                 App.HandleMessage(new ToastMessage
                 {
-                    Message = LanguageHelper.GetString("Toast_Msg_NotFollowPrivateUser", this.UserProfile.DisplayName),
+                    Message = LanguageHelper.GetString("Toast_Msg_NotFollowPrivateUser", UserProfile.DisplayName),
                 });
                 return false;
             }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows;
-using Chicken.Common;
 using Chicken.Model;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

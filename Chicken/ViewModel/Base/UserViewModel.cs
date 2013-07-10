@@ -127,7 +127,13 @@ namespace Chicken.ViewModel.Base
         /// for profile page,
         /// only
         /// </summary>
-        public bool IsMyself { get; set; }
+        public bool IsMyself
+        {
+            get
+            {
+                return user.IsMyself;
+            }
+        }
 
         public byte[] ProfileImageSource
         {
