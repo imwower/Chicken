@@ -799,6 +799,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 喔呦, 有不明原因的错误入侵 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_UnknowError {
+            get {
+                return ResourceManager.GetString("Toast_Msg_UnknowError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 更新成功了哟 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_UpdateMyProfileSuccessfully {

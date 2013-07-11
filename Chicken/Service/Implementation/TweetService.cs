@@ -7,6 +7,7 @@ using System.Windows;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service.Interface;
+using Chicken.ViewModel;
 using Newtonsoft.Json;
 
 namespace Chicken.Service.Implementation
@@ -324,25 +325,34 @@ namespace Chicken.Service.Implementation
             {
                 try
                 {
+                    Debug.WriteLine(webException.Message);
                     #region api error
-                    using (var streamReader = new StreamReader(webException.Response.GetResponseStream()))
+                    using (var stream = webException.Response.GetResponseStream())
                     {
-                        using (var reader = new JsonTextReader(streamReader))
+                        if (stream.Length != 0)
                         {
-                            data.Result = jsonSerializer.Deserialize<T>(reader);
+                            using (var streamReader = new StreamReader(stream))
+                            {
+                                using (var reader = new JsonTextReader(streamReader))
+                                {
+                                    data.Result = jsonSerializer.Deserialize<T>(reader);
+                                }
+                            }
                         }
+                        else
+                            data.Result = GetErrorMessage<T>();
                     }
                     #endregion
                 }
-                catch (Exception exception)
+                catch (Exception e)
                 {
-                    data.Result = GetErrorMessage<T>(exception.Message);
-                    Debug.WriteLine(webException.Message);
+                    data.Result = GetErrorMessage<T>();
+                    Debug.WriteLine(e.Message);
                 }
             }
             catch (Exception e)
             {
-                data.Result = GetErrorMessage<T>(e.Message);
+                data.Result = GetErrorMessage<T>();
                 Debug.WriteLine(e.Message);
             }
             #endregion
@@ -386,7 +396,7 @@ namespace Chicken.Service.Implementation
             return parameters;
         }
 
-        private static T GetErrorMessage<T>(string message)
+        private static T GetErrorMessage<T>()
             where T : ModelBase, new()
         {
             return new T
@@ -396,7 +406,7 @@ namespace Chicken.Service.Implementation
                 {
                     new ErrorMessage
                     {
-                        Message = message
+                        Message = LanguageHelper.GetString("Toast_Msg_UnknowError")
                     }
                 }
             };

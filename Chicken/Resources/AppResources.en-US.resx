@@ -366,4 +366,7 @@
   <data name="StatusPage_StatusDetail_Favorites" xml:space="preserve">
     <value>FAVORITES</value>
   </data>
+  <data name="Toast_Msg_UnknowError" xml:space="preserve">
+    <value>aw, some unknown error happened</value>
+  </data>
 </root>
