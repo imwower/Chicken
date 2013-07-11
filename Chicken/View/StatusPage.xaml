@@ -188,7 +188,8 @@
                                         <TextBlock>
                                             <Run Text="{Binding Tweet.RetweetCount}" />
                                             <LineBreak />
-                                            <Run Text="RETWEETS" />
+                                            <Run
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_StatusDetail_Retweets]}"/>
                                         </TextBlock>
                                     </Border>
                                     <Border
@@ -203,7 +204,7 @@
                                             <Run Text="{Binding Tweet.FavoriteCount}" />
                                             <LineBreak />
                                             <Run
-                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_StatusDetail_Retweets]}" />
+                                                Text="{Binding Source={StaticResource LanguageHelper}, Path=[StatusPage_StatusDetail_Favorites]}" />
                                         </TextBlock>
                                     </Border>
                                     <Border

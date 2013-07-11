@@ -126,7 +126,7 @@ namespace Chicken.ViewModel.Profile
         private void FollowAction()
         {
             PivotItems[SelectedIndex].IsLoading = true;
-            TweetService.FollowOrUnFollow(User.User,
+            TweetService.FollowOrUnFollow(User,
                 profile =>
                 {
                     #region handle error
@@ -148,11 +148,14 @@ namespace Chicken.ViewModel.Profile
                     {
                         Message = message
                     });
-                    TweetService.GetUserProfileDetail(User.User,
+                    TweetService.GetUserProfileDetail(User,
                         profileDetail =>
                         {
                             if (profileDetail.HasError)
+                            {
+                                isLoading = false;
                                 return;
+                            }
                             User = profileDetail;
                             IsolatedStorageService.CreateObject(Const.ProfilePage_UserProfileDetail, User);
                             ChangeFollowButtonText();

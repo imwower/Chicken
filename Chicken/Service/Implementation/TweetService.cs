@@ -73,8 +73,6 @@ namespace Chicken.Service.Implementation
 
         public void FollowOrUnFollow(User user, Action<User> callBack)
         {
-            if (user == null)
-                return;
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.USER_ID, user.Id);
             string action = user.IsFollowing ? Const.FRIENDSHIPS_DESTROY : Const.FRIENDSHIPS_CREATE;
@@ -356,7 +354,16 @@ namespace Chicken.Service.Implementation
                     Deployment.Current.Dispatcher.BeginInvoke(
                         () =>
                         {
-                            data.CallBack(data.Result);
+                            if (data.Result.HasError)
+                            {
+                                App.HandleMessage(new ToastMessage
+                                {
+                                    Message = data.Result.Errors[0].Message,
+                                    Complete = () => data.CallBack(data.Result)
+                                });
+                            }
+                            else
+                                data.CallBack(data.Result);
                         });
                 }
             }
@@ -382,12 +389,6 @@ namespace Chicken.Service.Implementation
         private static T GetErrorMessage<T>(string message)
             where T : ModelBase, new()
         {
-            Deployment.Current.Dispatcher.BeginInvoke(
-                () =>
-                    App.HandleMessage(new ToastMessage
-                    {
-                        Message = message
-                    }));
             return new T
             {
                 HasError = true,

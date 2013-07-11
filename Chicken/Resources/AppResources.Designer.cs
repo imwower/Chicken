@@ -610,6 +610,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 收藏 的本地化字符串。
+        /// </summary>
+        public static string StatusPage_StatusDetail_Favorites {
+            get {
+                return ResourceManager.GetString("StatusPage_StatusDetail_Favorites", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 位置 的本地化字符串。
         /// </summary>
         public static string StatusPage_StatusDetail_Location {
