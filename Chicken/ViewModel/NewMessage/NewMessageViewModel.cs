@@ -275,6 +275,7 @@ namespace Chicken.ViewModel.NewMessage
                     }
                 }
             }
+            ScrollTo = ScrollTo.Bottom;
             base.Refreshed();
             list.Clear();
             dict.Clear();
@@ -374,6 +375,7 @@ namespace Chicken.ViewModel.NewMessage
                     }
                 }
             }
+            ScrollTo = ScrollTo.Top;
             base.Loaded();
             list.Clear();
             dict.Clear();
