@@ -4,8 +4,11 @@ namespace Chicken.Model
 {
     public class UserProfile : User
     {
+        /// <summary>
+        /// description
+        /// </summary>
         [JsonProperty("description")]
-        public override string Text { get; set; }
+        public string Text { get; set; }
     }
 
     public class UserProfileList : ModelBaseList<UserProfile>

@@ -2,12 +2,16 @@
 
 namespace Chicken.Model
 {
-    public class User : Tweet
+    public class User : ModelBase
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
+
+        public string CreatedDate { get; set; }
 
         /// <summary>
         /// with @

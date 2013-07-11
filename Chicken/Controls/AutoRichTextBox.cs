@@ -15,15 +15,14 @@ namespace Chicken.Controls
 {
     public class AutoRichTextBox : RichTextBox
     {
-        //TODO: object
         public static DependencyProperty TweetDataProperty =
-            DependencyProperty.Register("TweetData", typeof(TweetBase), typeof(AutoRichTextBox), new PropertyMetadata(TweetDataPropertyChanged));
+            DependencyProperty.Register("TweetData", typeof(ModelBase), typeof(AutoRichTextBox), new PropertyMetadata(TweetDataPropertyChanged));
 
-        public TweetBase TweetData
+        public ModelBase TweetData
         {
             get
             {
-                return (TweetBase)GetValue(TweetDataProperty);
+                return (ModelBase)GetValue(TweetDataProperty);
             }
             set
             {
@@ -35,18 +34,17 @@ namespace Chicken.Controls
         {
             #region init
             var textBox = sender as AutoRichTextBox;
-            var tweet = e.NewValue as TweetBase;
-            if (textBox == null || tweet == null)
-            {
+            if (textBox == null || e.NewValue == null)
                 return;
-            }
             textBox.Blocks.Clear();
-            string text = tweet.Text;
+            string text = string.Empty;
             var paragraph = new Paragraph();
             var entities = new List<EntityBase>();
             #region tweet
-            if (tweet.Entities != null)
+            if (e.NewValue is TweetBase)
             {
+                var tweet = e.NewValue as TweetBase;
+                text = tweet.Text;
                 #region add entity
                 if (tweet.Entities.UserMentions != null && tweet.Entities.UserMentions.Count != 0)
                 {
@@ -71,6 +69,7 @@ namespace Chicken.Controls
             else if (e.NewValue is UserProfileDetail)
             {
                 var profile = e.NewValue as UserProfileDetail;
+                text = profile.Text;
                 var mentions = TwitterHelper.ParseUserMentions(profile.Text);
                 entities.AddRange(mentions);
                 var hashtags = TwitterHelper.ParseHashTags(profile.Text);

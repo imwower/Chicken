@@ -24,6 +24,11 @@ namespace Chicken.ViewModel.Base
             }
         }
 
+        /// <summary>
+        /// convert user to profile
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         private static UserProfileViewModel Copy(User user)
         {
             var profile = new UserProfile
