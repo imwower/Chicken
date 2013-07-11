@@ -85,25 +85,11 @@
       <HintPath>libs\AppBarUtils.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="ICSharpCode.SharpZLib.Phone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ImageTools">
-      <HintPath>libs\ImageTools.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.Controls">
-      <HintPath>libs\ImageTools.Controls.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.Filtering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ImageTools.IO.Bmp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ImageTools.IO.Gif">
-      <HintPath>libs\ImageTools.IO.Gif.dll</HintPath>
-    </Reference>
-    <Reference Include="ImageTools.IO.Png, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="ImageTools.Utils, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls" />
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
-    <Reference Include="PhoneCodeContractsAssemblies, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="NGif.WindowsPhone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
@@ -112,9 +98,14 @@
     <Reference Include="mscorlib.extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="WriteableBitmapExWinPhone, Version=0.9.8.6, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="WriteableBitmapExWinPhoneXnaDependant, Version=0.9.8.6, Culture=neutral, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <!--condition compile-->
+    <Content Include="libs\NGif.WindowsPhone.dll" />
+    <Content Include="libs\WriteableBitmapExWinPhone.dll" />
+    <Content Include="libs\WriteableBitmapExWinPhoneXnaDependant.dll" />
     <Content Include="SampleData\*" Condition="'$(ConfigurationName)'=='LOCAL'" />
     <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs" Condition="'$(ConfigurationName)'!='Release'" />
     <!--condition compile-->
@@ -338,15 +329,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="libs\AppBarUtils.dll" />
-    <None Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
-    <None Include="libs\ImageTools.Controls.dll" />
-    <None Include="libs\ImageTools.dll" />
-    <None Include="libs\ImageTools.Filtering.dll" />
-    <None Include="libs\ImageTools.IO.Bmp.dll" />
-    <None Include="libs\ImageTools.IO.Gif.dll" />
-    <None Include="libs\ImageTools.IO.Png.dll" />
-    <None Include="libs\ImageTools.Utils.dll" />
-    <None Include="libs\PhoneCodeContractsAssemblies.dll" />
     <Compile Include="Service\Interface\ITweetService.cs" />
     <Compile Include="Service\Implementation\TweetService.cs" />
     <Compile Include="Service\TweetServiceManger.cs" />

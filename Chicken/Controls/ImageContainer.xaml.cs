@@ -4,11 +4,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
-using ImageTools;
-using ImageTools.IO;
-using ImageTools.IO.Bmp;
-using ImageTools.IO.Gif;
-using ImageTools.IO.Png;
+using System.Windows.Threading;
+using NGif;
 
 namespace Chicken.Controls
 {
@@ -29,12 +26,15 @@ namespace Chicken.Controls
             }
         }
 
+        private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
+
+        private GifDecoder decoder;
+        private DispatcherTimer timer;
+        private int index;
+
         public ImageContainer()
         {
             InitializeComponent();
-            Decoders.AddDecoder<BmpDecoder>();
-            Decoders.AddDecoder<PngDecoder>();
-            Decoders.AddDecoder<GifDecoder>();
         }
 
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -44,18 +44,17 @@ namespace Chicken.Controls
 
         private void SetImageSource(byte[] data)
         {
-            Dispatcher.BeginInvoke(
+            Deployment.Current.Dispatcher.BeginInvoke(
                 () =>
                 {
+                    ClearImage();
                     #region clear
                     if (data == null)
                     {
-                        ClearImage();
                         this.PngImage.Source = defaultImage;
                         return;
                     }
                     #endregion
-                    ClearImage();
                     #region set image source
                     try
                     {
@@ -65,25 +64,20 @@ namespace Chicken.Controls
                         var bitmapImage = new BitmapImage();
                         bitmapImage.SetSource(png);
                         this.PngImage.Source = bitmapImage;
-                        if (this.GifImage.Source != null)
-                        {
-                            this.GifImage.Stop();
-                            this.GifImage.Source = null;
-                        }
                     }
                     catch
                     {
                         Debug.WriteLine("set gif image. length: {0}", data.Length);
-                        var gif = new MemoryStream(data);
-                        gif.Position = 0;
-                        var gifImage = new ExtendedImage();
-                        gifImage.SetSource(gif);
-                        this.GifImage.Source = gifImage;
-                        this.PngImage.Source = null;
-                    }
-                    finally
-                    {
-                        Debug.WriteLine("remove place hold.");
+                        using (var memStream = new MemoryStream(data))
+                        {
+                            memStream.Position = 0;
+                            decoder = new NGif.GifDecoder();
+                            decoder.Read(memStream);
+                            if (decoder.FrameCount == 1)
+                                this.PngImage.Source = decoder.GetImage();
+                            else
+                                DisplayGifImage();
+                        }
                     }
                     #endregion
                 });
@@ -91,16 +85,42 @@ namespace Chicken.Controls
 
         private void ClearImage()
         {
-            if (this.PngImage.Source != null)
-                this.PngImage.Source = null;
-            if (this.GifImage.Source != null)
+            if (timer != null)
             {
-                this.GifImage.Stop();
-                this.GifImage.Source = null;
+                timer.Stop();
+                timer.Tick -= DisplayGifImage;
+                timer = null;
             }
+            this.PngImage.Source = null;
+            decoder = null;
             Debug.WriteLine("clear image.");
         }
 
-        private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
+        private void DisplayGifImage()
+        {
+            timer = new DispatcherTimer();
+            timer.Tick += DisplayGifImage;
+            UpdateInterval();
+            timer.Start();
+        }
+
+        private void UpdateInterval()
+        {
+            var interval = decoder.GetDelay(index);
+            interval = interval == 0 ? 100 : interval;
+            timer.Interval = TimeSpan.FromMilliseconds(interval);
+        }
+
+        private void DisplayGifImage(object sender, EventArgs e)
+        {
+            if (index < decoder.FrameCount)
+            {
+                this.PngImage.Source = decoder.GetFrame(index);
+                index++;
+                if (index > decoder.FrameCount - 1)
+                    index = 0;
+                UpdateInterval();
+            }
+        }
     }
 }
