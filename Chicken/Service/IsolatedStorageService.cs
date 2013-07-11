@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows;
 using Chicken.Model;
+using Microsoft.Phone.Shell;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -20,11 +21,10 @@ namespace Chicken.Service
         #region private static
         private static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
         private static JsonSerializer jsonSerializer = new JsonSerializer
-          {
-              NullValueHandling = NullValueHandling.Ignore
-          };
-        private static Dictionary<string, object> state;
-        private static bool isInit;
+        {
+            NullValueHandling = NullValueHandling.Ignore
+        };
+        private static IDictionary<string, object> state = PhoneApplicationService.Current.State;
         #endregion
 
         #region const
@@ -257,15 +257,11 @@ namespace Chicken.Service
         #region public method
         public static void CreateObject(string key, object value)
         {
-            if (!isInit)
-                InitState();
             state[key] = value;
         }
 
         public static T GetObject<T>(string key)
         {
-            if (!isInit)
-                InitState();
             if (state.ContainsKey(key))
                 return (T)state[key];
             return default(T);
@@ -273,8 +269,6 @@ namespace Chicken.Service
 
         public static T GetAndDeleteObject<T>(string key)
         {
-            if (!isInit)
-                InitState();
             if (state.ContainsKey(key))
             {
                 object value = state[key];
@@ -283,32 +277,9 @@ namespace Chicken.Service
             }
             return default(T);
         }
-
-        /// <summary>
-        /// when app is deactived,
-        /// serialize state object to file
-        /// </summary>
-        public static void SerializeState()
-        {
-            if (state != null && state.Count != 0)
-                CheckDataFolderPathAndSerializeOjbect(STATE_FILE_NAME, state);
-        }
         #endregion
 
         #region private method
-        private static void InitState()
-        {
-            state = new Dictionary<string, object>();
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + STATE_FILE_NAME;
-            var file = DeserializeObject<Dictionary<string, object>>(filepath, FileOption.OnlyRead);
-            if (file != null)
-            {
-                foreach (var kvp in file)
-                    state[kvp.Key] = kvp.Value;
-            }
-            isInit = true;
-        }
-
         private static void CheckDataFolderPath()
         {
             if (!fileSystem.DirectoryExists(SAVED_DATA_FOLDER_PATH))

@@ -10,6 +10,7 @@ using MemoryDiagnostics;
 #endif
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using System.Windows.Media;
 
 namespace Chicken
 {
@@ -98,10 +99,12 @@ namespace Chicken
         #region Application
         private void Application_Launching(object sender, LaunchingEventArgs e)
         {
+            var brush = App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
         }
 
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            var brush = App.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
         }
 
         private void Application_Deactivated(object sender, DeactivatedEventArgs e)
