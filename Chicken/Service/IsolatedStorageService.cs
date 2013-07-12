@@ -44,6 +44,9 @@ namespace Chicken.Service
         private const string ABOUT_FILE_NAME = "About.json";
 
         private const string TWEET_CONFIGURATION_FILE_NAME = "TweetConfiguration.json";
+
+        private const string HOME_TWEETS = "HomeTweets.json";
+        private const string HOME_MENTIONS = "HomeMentions.json";
         #endregion
 
         #region method for pages
@@ -251,6 +254,28 @@ namespace Chicken.Service
         {
             string filepath = SAVED_DATA_FOLDER_PATH + "\\" + TWEET_CONFIGURATION_FILE_NAME;
             return DeserializeObject<TweetConfiguration>(filepath, FileOption.OnlyRead);
+        }
+
+        public static TweetList GetHomeTweets()
+        {
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + HOME_TWEETS;
+            return DeserializeObject<TweetList>(filepath);
+        }
+
+        public static void AddHomeTweets(TweetList tweets)
+        {
+            CheckDataFolderPathAndSerializeOjbect(HOME_TWEETS, tweets);
+        }
+
+        public static TweetList GetMentions()
+        {
+            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + HOME_MENTIONS;
+            return DeserializeObject<TweetList>(filepath);
+        }
+
+        public static void AddMentions(TweetList tweets)
+        {
+            CheckDataFolderPathAndSerializeOjbect(HOME_MENTIONS, tweets);
         }
         #endregion
 
