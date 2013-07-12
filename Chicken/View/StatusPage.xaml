@@ -161,9 +161,10 @@
                             <!--content-->
                             <Grid Grid.Row="1" Margin="4">
                                 <!--text-->
-                                <ctrls:AutoRichTextBox TweetData="{Binding Path=Tweet.Tweet}"
-                                                       HorizontalAlignment="Stretch" TextAlignment="Left"
-                                                       Style="{StaticResource TextContent}">
+                                <ctrls:AutoRichTextBox
+                                    TweetData="{Binding Path=Tweet.Tweet}"
+                                    HorizontalAlignment="Stretch" TextAlignment="Left"
+                                    Style="{StaticResource TextContent}">
                                 </ctrls:AutoRichTextBox>
                             </Grid>
                             <!--via-->
@@ -173,10 +174,9 @@
                                              NavigateUri="{Binding Path=Tweet.SourceUrl}"
                                              Style="{StaticResource HyperLinkSmall}" />
                             <!--retweet count, favorite count, location-->
-                            <!--please don't use fallbackvalue-->
                             <Border Grid.Row="3" BorderThickness="0,1,0,0"
                                     Style="{StaticResource RetweetCountBorder}"
-                                    Visibility="{Binding Tweet.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    Visibility="{Binding Tweet.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                                     <StackPanel.Resources>
                                         <Style TargetType="TextBlock">

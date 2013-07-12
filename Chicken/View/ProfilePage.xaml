@@ -132,7 +132,9 @@
                                                      TargetName="_blank" Style="{StaticResource HyperLinkNoUnderlineCenter}">
                                     </HyperlinkButton>
                                     <!--Tweets, Following, Followers, Favorites-->
-                                    <Border Grid.Row="5" Style="{StaticResource RetweetCountBorder}"
+                                    <!--please don't use fallbackvalue here-->
+                                    <Border Grid.Row="5"
+                                            Style="{StaticResource RetweetCountBorder}"
                                             BorderThickness="0,1,0,1">
                                         <Grid>
                                             <Grid.ColumnDefinitions>

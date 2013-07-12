@@ -89,8 +89,9 @@
                                                     <Rectangle Opacity="0.2" Fill="{StaticResource PhoneForegroundBrush}">
                                                     </Rectangle>
                                                     <!--text-->
-                                                    <ctrls:AutoRichTextBox Margin="2" TweetData="{Binding Path=Tweet}"
-                                                                           Style="{StaticResource TextContent}" TextAlignment="Left">
+                                                    <ctrls:AutoRichTextBox Margin="2" TextAlignment="Left"
+                                                                           TweetData="{Binding Path=Tweet}"
+                                                                           Style="{StaticResource TextContent}">
                                                     </ctrls:AutoRichTextBox>
                                                 </Grid>
                                                 <TextBlock Opacity="0.6" Text="{Binding CreatedDate}" />
@@ -118,8 +119,8 @@
                                                     <Rectangle Opacity="0.2" Fill="{StaticResource PhoneForegroundBrush}">
                                                     </Rectangle>
                                                     <!--text-->
-                                                    <ctrls:AutoRichTextBox Margin="0,4"
-                                                                           TweetData="{Binding Path=Tweet}" TextAlignment="Left">
+                                                    <ctrls:AutoRichTextBox Margin="0,4" TextAlignment="Left"
+                                                                           TweetData="{Binding Path=Tweet}">
                                                     </ctrls:AutoRichTextBox>
                                                 </Grid>
                                                 <!--date-->
