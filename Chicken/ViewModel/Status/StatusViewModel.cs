@@ -90,7 +90,7 @@ namespace Chicken.ViewModel.Status
                     }
                     if (data.User.Id == App.AuthenticatedUser.Id)
                         data.IsSentByMe = true;
-                    this.tweet = new TweetDetailViewModel(data);
+                    this.tweet = new TweetDetailViewModel(data, true);
                     SwitchAppBar();
                     IsInit = true;
                 });

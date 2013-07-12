@@ -77,7 +77,7 @@ namespace Chicken.ViewModel.Status
                    {
                        Message = message
                    });
-                   Tweet = new TweetDetailViewModel(data);
+                   Tweet = new TweetDetailViewModel(data, true);
                    Refresh();
                });
         }
@@ -104,7 +104,7 @@ namespace Chicken.ViewModel.Status
                        {
                            Message = LanguageHelper.GetString("Toast_Msg_RetweetSuccessfully"),
                        });
-                       Tweet = new TweetDetailViewModel(data);
+                       Tweet = new TweetDetailViewModel(data, true);
                        Refresh();
                    });
             }
@@ -169,7 +169,7 @@ namespace Chicken.ViewModel.Status
                     if (!userProfiles.HasError)
                     {
                         for (int i = userProfiles.Count - 1; i >= 0; i--)
-                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
+                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i], true));
                     }
                     base.Refreshed();
                 });
@@ -183,7 +183,7 @@ namespace Chicken.ViewModel.Status
                     if (!userProfiles.HasError)
                     {
                         foreach (var userProfile in userProfiles)
-                            UserList.Add(new UserProfileViewModel(userProfile));
+                            UserList.Add(new UserProfileViewModel(userProfile, true));
                     }
                     base.Loaded();
                 });

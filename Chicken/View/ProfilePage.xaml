@@ -65,7 +65,8 @@
                                     <!--Profile Image-->
                                     <ctrls:ImageContainer Grid.Row="0"
                                                           Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageSource="{Binding UserProfile.ProfileImageSource}">
+                                                          ImageUrl="{Binding UserProfile.ProfileImage}"
+                                                          IsVisible="{Binding UserProfile.IsVisible}">
                                         <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                         </ctrls:ImageContainer.Clip>

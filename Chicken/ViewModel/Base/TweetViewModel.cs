@@ -1,19 +1,16 @@
 ﻿using System;
 using Chicken.Common;
-using Chicken.Controls;
 using Chicken.Model;
 using Chicken.Model.Entity;
 
 namespace Chicken.ViewModel.Base
 {
-    public class TweetViewModel : NotificationObject, ILazyDataItem
+    public class TweetViewModel : VisibleObject
     {
         #region private
         private TweetBase tweet;
         protected UserViewModel user;
         private TweetViewModel originalTweet;
-        private bool isPaused;
-        private LazyDataLoadState currentState;
         #endregion
 
         public TweetViewModel(Tweet data)
@@ -31,6 +28,38 @@ namespace Chicken.ViewModel.Base
             }
             #endregion
             this.user = new UserViewModel(this.tweet.User);
+        }
+
+        public TweetViewModel(Tweet data, bool isVisible)
+        {
+            #region tweet
+            if (data.RetweetStatus != null)
+            {
+                this.tweet = data.RetweetStatus;
+                data.RetweetStatus = null;
+                this.originalTweet = new TweetViewModel(data);
+            }
+            else
+            {
+                this.tweet = data;
+            }
+            #endregion
+            this.user = new UserViewModel(this.tweet.User);
+            IsVisible = isVisible;
+        }
+
+        public override bool IsVisible
+        {
+            get
+            {
+                return base.IsVisible;
+            }
+            set
+            {
+                if (User != null)
+                    User.IsVisible = value;
+                base.IsVisible = value;
+            }
         }
 
         public TweetBase Tweet
@@ -207,56 +236,5 @@ namespace Chicken.ViewModel.Base
                     IncludeCoordinates;
             }
         }
-
-        public void GoToState(LazyDataLoadState state)
-        {
-            currentState = state;
-            switch (state)
-            {
-                case LazyDataLoadState.Minimum:
-                case LazyDataLoadState.Cached:
-                case LazyDataLoadState.Reloading:
-                case LazyDataLoadState.Loading:
-                    if (User != null)
-                        User.IsVisible = true;
-                    break;
-                case LazyDataLoadState.Unloaded:
-                    if (User != null)
-                        User.IsVisible = false;
-                    break;
-                case LazyDataLoadState.Loaded:
-                    break;
-            }
-        }
-
-        public void Pause()
-        {
-            isPaused = true;
-        }
-
-        public void Unpause()
-        {
-            isPaused = false;
-        }
-
-        public bool IsPaused
-        {
-            get
-            {
-                return isPaused;
-            }
-        }
-
-        public LazyDataLoadState CurrentState
-        {
-            get
-            {
-                return currentState;
-            }
-        }
-
-        public event EventHandler<LazyDataItemStateChangedEventArgs> CurrentStateChanged;
-
-        public event EventHandler<LazyDataItemPausedStateChangedEventArgs> PauseStateChanged;
     }
 }

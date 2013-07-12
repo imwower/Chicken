@@ -38,7 +38,7 @@ namespace Chicken.ViewModel.Profile.VM
                 IsLoading = false;
                 return;
             }
-            UserProfile = new UserProfileDetailViewModel(profile);
+            UserProfile = new UserProfileDetailViewModel(profile, true);
             if (UserProfile.IsMyself)
             {
                 IsolatedStorageService.CreateAuthenticatedUser(profile);
