@@ -12,6 +12,15 @@ namespace Chicken.Controls
 {
     public partial class ImageContainer : UserControl
     {
+        #region private properties
+        private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
+
+        private GifDecoder decoder;
+        private DispatcherTimer timer;
+        private int index;
+        #endregion
+
+        #region properties
         public static readonly DependencyProperty ImageSourceProperty =
             DependencyProperty.Register("ImageSource", typeof(byte[]), typeof(ImageContainer), new PropertyMetadata(OnSourceChanged));
 
@@ -27,6 +36,8 @@ namespace Chicken.Controls
             }
         }
 
+        public bool UseDefaultImage { get; set; }
+
         public Stretch Stretch
         {
             get
@@ -38,18 +49,28 @@ namespace Chicken.Controls
                 this.PngImage.Stretch = value;
             }
         }
-
-        private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
-
-        private GifDecoder decoder;
-        private DispatcherTimer timer;
-        private int index;
+        #endregion
 
         public ImageContainer()
         {
             InitializeComponent();
+            UseDefaultImage = true;
+            Loaded += new RoutedEventHandler(ImageContainer_Loaded);
+            Unloaded += ImageContainer_Unloaded;
         }
 
+        void ImageContainer_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetImageSource(ImageSource);
+        }
+
+        private void ImageContainer_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ClearImage();
+            Unloaded -= ImageContainer_Unloaded;
+        }
+
+        #region private method
         private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             (d as ImageContainer).SetImageSource(e.NewValue as byte[]);
@@ -64,7 +85,8 @@ namespace Chicken.Controls
                     #region clear
                     if (data == null)
                     {
-                        this.PngImage.Source = defaultImage;
+                        if (UseDefaultImage)
+                            this.PngImage.Source = defaultImage;
                         return;
                     }
                     #endregion
@@ -100,8 +122,8 @@ namespace Chicken.Controls
         {
             if (timer != null)
             {
-                timer.Stop();
                 timer.Tick -= DisplayGifImage;
+                timer.Stop();
                 timer = null;
             }
             this.PngImage.Source = null;
@@ -135,5 +157,6 @@ namespace Chicken.Controls
                 UpdateInterval();
             }
         }
+        #endregion
     }
 }

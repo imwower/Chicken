@@ -90,7 +90,8 @@
                                                     <TextBlock Text="{Binding Tweet.CreatedDate}" Grid.Row="0" />
                                                     <!--media retweet count etc-->
                                                     <StackPanel Grid.Row="0"
-                                                                HorizontalAlignment="Right" Orientation="Horizontal">
+                                                                HorizontalAlignment="Right" Orientation="Horizontal"
+                                                                Visibility="{Binding IsInited,Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
                                                         <StackPanel.Resources>
                                                             <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
                                                                 <Setter Property="Fill" Value="{StaticResource PhoneAccentBrush}" />
@@ -171,6 +172,7 @@
                                              NavigateUri="{Binding Path=Tweet.SourceUrl}"
                                              Style="{StaticResource HyperLinkSmall}" />
                             <!--retweet count, favorite count, location-->
+                            <!--please don't use fallbackvalue-->
                             <Border Grid.Row="3" BorderThickness="0,1,0,0"
                                     Style="{StaticResource RetweetCountBorder}"
                                     Visibility="{Binding Tweet.NeedShowRetweetIcons,Converter={StaticResource BooleanToVisibilityConverter}}">
@@ -221,7 +223,7 @@
                             <!--media-->
                             <StackPanel  Grid.Row="4" Margin="4"
                                          HorizontalAlignment="Stretch"
-                                         Visibility="{Binding Tweet.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                         Visibility="{Binding Tweet.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
                                 <Image Stretch="Uniform"
                                        Source="{Binding Tweet.Entities.Medias[0].MediaUrlSmall}" />
                             </StackPanel>
@@ -240,7 +242,8 @@
                                         <Setter Property="Stroke" Value="Silver" />
                                     </Style>
                                 </Grid.Resources>
-                                <Rectangle Grid.Row="0" />
+                                <Rectangle Grid.Row="0"
+                                           Visibility="{Binding Tweet.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter},FallbackValue=Collapsed}" />
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" Margin="4,0,0,0">
                                     <ctrls:LazyListBox x:Name="AutoListBox"
                                                        VerticalAlignment="Top"

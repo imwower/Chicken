@@ -34,7 +34,19 @@ namespace Chicken.ViewModel
                 }
             }
         }
-        public bool IsInited { get; set; }
+        private bool isInited;
+        public bool IsInited
+        {
+            get
+            {
+                return isInited;
+            }
+            set
+            {
+                isInited = value;
+                RaisePropertyChanged("IsInited");
+            }
+        }
         private ScrollTo scrollTo;
         public ScrollTo ScrollTo
         {

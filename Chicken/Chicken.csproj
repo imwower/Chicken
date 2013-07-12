@@ -114,7 +114,6 @@
     </Compile>
     <Compile Include="Common\Const.cs" />
     <Compile Include="Common\TwitterHelper.cs" />
-    <Compile Include="Controls\AutoGrid.cs" />
     <Compile Include="Controls\AutoRichTextBox.cs" />
     <Compile Include="Controls\EmotionPanel.xaml.cs">
       <DependentUpon>EmotionPanel.xaml</DependentUpon>

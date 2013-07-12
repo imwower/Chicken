@@ -72,7 +72,8 @@
                                     </ctrls:ImageContainer>
                                     <!--is private, is verified, etc-->
                                     <StackPanel Grid.Row="1" Margin="0,-10,0,0" Opacity="0.6"
-                                                Orientation="Horizontal" HorizontalAlignment="Center">
+                                                Orientation="Horizontal" HorizontalAlignment="Center"
+                                                Visibility="{Binding IsInited, Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
                                         <StackPanel.Resources>
                                             <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
                                                 <Setter Property="Fill" Value="{StaticResource PhoneForegroundBrush}" />
