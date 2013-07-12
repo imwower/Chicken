@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
 using NGif;
@@ -23,6 +24,18 @@ namespace Chicken.Controls
             set
             {
                 SetValue(ImageSourceProperty, value);
+            }
+        }
+
+        public Stretch Stretch
+        {
+            get
+            {
+                return this.PngImage.Stretch;
+            }
+            set
+            {
+                this.PngImage.Stretch = value;
             }
         }
 
