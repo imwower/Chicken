@@ -318,6 +318,7 @@ namespace Chicken.Service.Implementation
                         data.Result = jsonSerializer.Deserialize<T>(reader);
                     }
                 }
+                response.Close();
             }
             #endregion
             #region exception

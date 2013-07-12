@@ -16,7 +16,9 @@ namespace Chicken.Service
         private static bool isInit;
         private static bool isStop;
         private static List<PendingWork> pendingWorkList = new List<PendingWork>();
-        private static Dictionary<string, byte[]> imageCacheDic = new Dictionary<string, byte[]>();
+        private const int MAX_CACHE_ITEM = 50;
+        private static int cache_index = 0;
+        private static Dictionary<string, WeakData> imageCacheDic = new Dictionary<string, WeakData>(MAX_CACHE_ITEM);
         private static Random random = new Random();
         private static readonly object pendingWorkLocker = new object();
         private static readonly object cacheLocker = new object();
@@ -28,10 +30,11 @@ namespace Chicken.Service
         public static void SetImageStream(string imageUrl, Action<byte[]> callBack)
         {
             #region if cached
-            if (imageCacheDic.ContainsKey(imageUrl))
+            if (imageCacheDic.ContainsKey(imageUrl)
+                && imageCacheDic[imageUrl].Data != null)
             {
                 Debug.WriteLine("CACHED. " + imageUrl);
-                callBack(imageCacheDic[imageUrl]);
+                callBack((byte[])imageCacheDic[imageUrl].Data);
                 return;
             }
             #endregion
@@ -58,8 +61,9 @@ namespace Chicken.Service
             {
                 var worker = new BackgroundWorker
                 {
-                    WorkerSupportsCancellation = true
+                    WorkerSupportsCancellation = true,
                 };
+                worker.RunWorkerCompleted += DownloadImageComplete;
                 workers.Add(worker);
             }
             doWorker.DoWork += DoWork;
@@ -121,50 +125,101 @@ namespace Chicken.Service
         {
             Thread.Sleep(random.Next(1000));
             if (e.Cancel)
-            {
                 return;
-            }
             var pendingwork = e.Argument as PendingWork;
-            HttpWebRequest request = WebRequest.CreateHttp(pendingwork.ImageUrl + "?random=" + DateTime.Now.Ticks.ToString("x"));
-            request.BeginGetResponse(
-                result =>
-                {
-                    try
-                    {
-                        HttpWebRequest r = result.AsyncState as HttpWebRequest;
-                        HttpWebResponse response = (HttpWebResponse)r.EndGetResponse(result);
-                        Stream stream = response.GetResponseStream();
-                        AddImageCache(pendingwork.ImageUrl, stream);
-                        pendingwork.CallBack(imageCacheDic[pendingwork.ImageUrl]);
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex.ToString());
-                    }
-                    finally
-                    {
-                        (sender as BackgroundWorker).DoWork -= DownloadImage;
-                    }
-                }, request);
+            pendingwork.Request = WebRequest.CreateHttp(pendingwork.ImageUrl + "?random=" + DateTime.Now.Ticks.ToString("x"));
+            pendingwork.Request.BeginGetResponse(DownloadImage, pendingwork);
         }
 
-        private static void AddImageCache(string imageUrl, Stream stream)
+        private static void DownloadImage(IAsyncResult result)
+        {
+            var pendingwork = (PendingWork)result.AsyncState;
+            try
+            {
+                var response = pendingwork.Request.EndGetResponse(result);
+                using (Stream stream = response.GetResponseStream())
+                {
+                    var memoryStream = new MemoryStream();
+                    stream.CopyTo(memoryStream);
+                    var data = memoryStream.ToArray();
+                    AddImageCache(pendingwork.ImageUrl, data);
+                }
+                response.Close();
+                pendingwork.CallBack((byte[])imageCacheDic[pendingwork.ImageUrl].Data);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+                pendingwork.Request.Abort();
+                if (pendingwork.RetryCount <= MAX_WORKER_COUNT)
+                {
+                    pendingwork.RetryCount += 1;
+                    AddWork(pendingwork);
+                }
+            }
+        }
+
+        private static void DownloadImageComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            (sender as BackgroundWorker).DoWork -= DownloadImage;
+        }
+
+        private static void AddImageCache(string imageUrl, byte[] data)
         {
             lock (cacheLocker)
             {
-                var memoryStream = new MemoryStream();
-                stream.CopyTo(memoryStream);
-                imageCacheDic[imageUrl] = memoryStream.ToArray();
-                Debug.WriteLine("add cache. url: {0}; length: {1} ", imageUrl, imageCacheDic[imageUrl].Length);
+                cache_index += 1;
+                imageCacheDic[imageUrl] = new WeakData(cache_index, data);
+                Debug.WriteLine("add cache. url: {0}", imageUrl);
+                if (imageCacheDic.Count > MAX_CACHE_ITEM)
+                {
+                    var items = imageCacheDic.OrderBy(d => d.Value.Index).Take(20).ToList();
+                    foreach (var item in items)
+                        imageCacheDic.Remove(item.Key);
+                }
             }
         }
         #endregion
 
         private class PendingWork
         {
+            public HttpWebRequest Request { get; set; }
+
+            public int RetryCount { get; set; }
+
             public string ImageUrl { get; set; }
 
             public Action<byte[]> CallBack { get; set; }
+        }
+
+        private class WeakData
+        {
+            private int index;
+            private WeakReference data;
+
+            public WeakData(int index, byte[] data)
+            {
+                this.index = index;
+                this.data = new WeakReference(data);
+            }
+
+            public int Index
+            {
+                get
+                {
+                    return index;
+                }
+            }
+
+            public byte[] Data
+            {
+                get
+                {
+                    if (data.IsAlive)
+                        return (byte[])data.Target;
+                    return null;
+                }
+            }
         }
     }
 }
