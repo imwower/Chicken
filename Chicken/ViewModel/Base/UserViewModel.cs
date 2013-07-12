@@ -6,7 +6,6 @@ namespace Chicken.ViewModel.Base
     {
         #region private
         private User user;
-        private byte[] profileImageSource;
         #endregion
 
         public UserViewModel(User user)
@@ -120,19 +119,6 @@ namespace Chicken.ViewModel.Base
             get
             {
                 return user.IsMyself;
-            }
-        }
-
-        public byte[] ProfileImageSource
-        {
-            get
-            {
-                return profileImageSource;
-            }
-            set
-            {
-                profileImageSource = value;
-                RaisePropertyChanged("ProfileImageSource");
             }
         }
     }

@@ -23,8 +23,7 @@ namespace Chicken.ViewModel.Base
             }
             set
             {
-                if (OriginalTweet != null)
-                    OriginalTweet.User.IsVisible = value;
+                UserProfile.IsVisible = value;
                 base.IsVisible = value;
             }
         }

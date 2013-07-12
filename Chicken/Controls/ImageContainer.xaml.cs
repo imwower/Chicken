@@ -51,22 +51,20 @@ namespace Chicken.Controls
             }
         }
 
-        public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(byte[]), typeof(ImageContainer), new PropertyMetadata(OnSourceChanged));
+        public static readonly DependencyProperty UseDefaultImageProperty =
+            DependencyProperty.Register("UseDefaultImage", typeof(bool), typeof(ImageContainer), new PropertyMetadata(true));
 
-        public byte[] ImageSource
+        public bool UseDefaultImage
         {
             get
             {
-                return (byte[])GetValue(ImageSourceProperty);
+                return (bool)GetValue(UseDefaultImageProperty);
             }
             set
             {
-                SetValue(ImageSourceProperty, value);
+                SetValue(UseDefaultImageProperty, value);
             }
         }
-
-        public bool UseDefaultImage { get; set; }
 
         public Stretch Stretch
         {

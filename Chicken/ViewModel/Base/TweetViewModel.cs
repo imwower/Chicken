@@ -56,7 +56,9 @@ namespace Chicken.ViewModel.Base
             }
             set
             {
-                if (User != null)
+                if (OriginalTweet != null)
+                    OriginalTweet.User.IsVisible = value;
+                else if (User != null)
                     User.IsVisible = value;
                 base.IsVisible = value;
             }
