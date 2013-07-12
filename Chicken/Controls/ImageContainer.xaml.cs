@@ -55,11 +55,11 @@ namespace Chicken.Controls
         {
             InitializeComponent();
             UseDefaultImage = true;
-            Loaded += new RoutedEventHandler(ImageContainer_Loaded);
+            Loaded += ImageContainer_Loaded;
             Unloaded += ImageContainer_Unloaded;
         }
 
-        void ImageContainer_Loaded(object sender, RoutedEventArgs e)
+        private void ImageContainer_Loaded(object sender, RoutedEventArgs e)
         {
             SetImageSource(ImageSource);
         }
@@ -67,7 +67,6 @@ namespace Chicken.Controls
         private void ImageContainer_Unloaded(object sender, RoutedEventArgs e)
         {
             ClearImage();
-            Unloaded -= ImageContainer_Unloaded;
         }
 
         #region private method
@@ -131,6 +130,7 @@ namespace Chicken.Controls
             Debug.WriteLine("clear image.");
         }
 
+        #region use timer to display gif image
         private void DisplayGifImage()
         {
             timer = new DispatcherTimer();
@@ -157,6 +157,7 @@ namespace Chicken.Controls
                 UpdateInterval();
             }
         }
+        #endregion
         #endregion
     }
 }
