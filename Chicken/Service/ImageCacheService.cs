@@ -195,12 +195,14 @@ namespace Chicken.Service
         private class WeakData
         {
             private int index;
-            private WeakReference data;
+            //private WeakReference data;
+            private byte[] data;
 
             public WeakData(int index, byte[] data)
             {
                 this.index = index;
-                this.data = new WeakReference(data);
+                //this.data = new WeakReference(data);
+                this.data = data;
             }
 
             public int Index
@@ -215,9 +217,10 @@ namespace Chicken.Service
             {
                 get
                 {
-                    if (data.IsAlive)
-                        return (byte[])data.Target;
-                    return null;
+                    //if (data.IsAlive)
+                    //return (byte[])data.Target;
+                    //return null;
+                    return data;
                 }
             }
         }

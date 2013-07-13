@@ -109,11 +109,6 @@ namespace Chicken.Controls
             Debug.WriteLine("clear image.");
         }
 
-        //private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        //{
-        //    (d as ImageContainer).SetImageSource(e.NewValue as byte[]);
-        //}
-
         private void SetImageSource(byte[] data)
         {
             Deployment.Current.Dispatcher.BeginInvoke(
