@@ -160,6 +160,18 @@ namespace Chicken.ViewModel.Status
         #endregion
 
         #region protected methods
+        protected bool CheckIfLoaded()
+        {
+            var tweet = IsolatedStorageService.GetObject<Tweet>(Const.StatusPage_StatusDetail);
+            if (tweet == null)
+            {
+                base.Refreshed();
+                return false;
+            }
+            Tweet = new TweetDetailViewModel(tweet);
+            return true;
+        }
+
         #region for retweets and favorites pivot
         protected void RefreshUserProfiles(string userIds)
         {

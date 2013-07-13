@@ -21,7 +21,6 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (!CheckIfFollowingPrivate())
             {
-                base.Refreshed();
                 return;
             }
             #region parameter

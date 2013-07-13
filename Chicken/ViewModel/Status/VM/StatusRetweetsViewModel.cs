@@ -16,6 +16,8 @@ namespace Chicken.ViewModel.Status.VM
 
         private void RefreshAction()
         {
+            if (!CheckIfLoaded())
+                return;
             if (previousCursor == "0")
             {
                 base.Refreshed();

@@ -114,7 +114,10 @@ namespace Chicken.ViewModel.Profile
         {
             var profile = IsolatedStorageService.GetObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
             if (profile == null)
+            {
+                base.Refreshed();
                 return false;
+            }
             UserProfile = new UserProfileDetailViewModel(profile);
             if (!profile.IsMyself &&
                 UserProfile.IsPrivate &&

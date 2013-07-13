@@ -183,6 +183,7 @@
     <Compile Include="ViewModel\Profile\VM\UserFollowersViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
+    <Compile Include="ViewModel\Search\SearchViewModel.cs" />
     <Compile Include="ViewModel\Settings\APISettingsViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModelBase.cs" />

@@ -2,9 +2,9 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
-using Chicken.ViewModel.Base;
 using Chicken.ViewModel.Status.VM;
 
 namespace Chicken.ViewModel.Status
@@ -12,7 +12,7 @@ namespace Chicken.ViewModel.Status
     public class StatusViewModel : PivotViewModelBase
     {
         #region properites
-        private TweetDetailViewModel tweet;
+        private Tweet tweet;
         #endregion
 
         #region binding
@@ -90,7 +90,8 @@ namespace Chicken.ViewModel.Status
                     }
                     if (data.User.Id == App.AuthenticatedUser.Id)
                         data.IsSentByMe = true;
-                    this.tweet = new TweetDetailViewModel(data);
+                    this.tweet = data;
+                    IsolatedStorageService.CreateObject(Const.StatusPage_StatusDetail, tweet);
                     SwitchAppBar();
                     IsInit = true;
                 });
@@ -130,7 +131,6 @@ namespace Chicken.ViewModel.Status
                 State = AppBarState.StatusPageWithDelete;
             else
                 State = AppBarState.StatusPageDefault;
-            (PivotItems[SelectedIndex] as StatusViewModelBase).Tweet = tweet;
             base.MainPivot_LoadedPivotItem();
         }
         #endregion

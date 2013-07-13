@@ -7,19 +7,7 @@ namespace Chicken.ViewModel.Status.VM
     public class StatusDetailViewModel : StatusViewModelBase
     {
         #region properties
-        private ObservableCollection<TweetViewModel> conversationList;
-        public ObservableCollection<TweetViewModel> ConversationList
-        {
-            get
-            {
-                return conversationList;
-            }
-            set
-            {
-                conversationList = value;
-                RaisePropertyChanged("ConversationList");
-            }
-        }
+        public ObservableCollection<TweetViewModel> ConversationList { get; set; }
         #endregion
 
         public StatusDetailViewModel()
@@ -31,6 +19,8 @@ namespace Chicken.ViewModel.Status.VM
         #region actions
         private void RefreshAction()
         {
+            if (!CheckIfLoaded())
+                return;
             if (ConversationList != null)
                 ConversationList.Clear();
             LoadConversation(Tweet.InReplyToTweetId);

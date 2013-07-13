@@ -18,7 +18,6 @@ namespace Chicken.ViewModel.Profile.VM
         {
             if (!CheckIfFollowingPrivate())
             {
-                base.Refreshed();
                 return;
             }
             if (previousCursor == "0")

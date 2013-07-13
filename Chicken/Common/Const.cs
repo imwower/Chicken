@@ -114,6 +114,7 @@
 
         #region page parameter
         public const string ProfilePage_UserProfileDetail = "ProfilePage_UserProfileDetail";
+        public const string StatusPage_StatusDetail = "StatusPage_StatusDetail";
         #endregion
         #endregion
     }
