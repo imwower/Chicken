@@ -50,16 +50,15 @@ namespace Chicken.ViewModel.Profile.VM
                         #region add
                         else
                         {
-#if !LOCAL
-                            if (string.Compare(sinceId, tweets[0].Id) == -1)
-                                TweetList.Clear();
-#endif
                             for (int i = tweets.Count - 1; i >= 0; i--)
                             {
 #if !LOCAL
-                                if (sinceId != tweets[i].Id)
+                                if (sinceId == tweets[i].Id)
+                                    continue;
 #endif
-                                TweetList.Insert(0, new TweetViewModel(tweets[i]));
+                                TweetList.Insert(0, new TweetViewModel(tweets[i], true));
+                                if (TweetList.Count >= Const.DEFAULT_COUNT_VALUE)
+                                    TweetList.RemoveAt(TweetList.Count - 1);
                             }
                         }
                         #endregion
@@ -102,7 +101,7 @@ namespace Chicken.ViewModel.Profile.VM
 #if !LOCAL
                                 if (maxId != tweet.Id)
 #endif
-                                TweetList.Add(new TweetViewModel(tweet));
+                                    TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
                         #endregion

@@ -9,8 +9,8 @@
         //chicken4wp
         //public static string testAPI = "https://blog-lonzhu.rhcloud.com/weixin/o/391VC9/1.1/";
         //public static string API_IMAGE = "https://blog-lonzhu.rhcloud.com/weixin/i/P26B6O/";
-        public static string DEFAULT_COUNT_VALUE = "20";
-        public static string DEFAULT_COUNT_VALUE_PLUS_ONE = "21";
+        public static int DEFAULT_COUNT_VALUE = 20;
+        public static int DEFAULT_COUNT_VALUE_PLUS_ONE = DEFAULT_COUNT_VALUE + 1;
         public static string QUOTECHARACTER = "RT";
 
         #region defalut value

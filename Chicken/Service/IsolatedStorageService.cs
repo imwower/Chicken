@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.IsolatedStorage;
 using System.Windows;
+using Chicken.Common;
 using Chicken.Model;
 using Microsoft.Phone.Shell;
 using Newtonsoft.Json;
@@ -262,9 +263,22 @@ namespace Chicken.Service
             return DeserializeObject<TweetList>(filepath);
         }
 
+        /// <summary>
+        /// let me do the hard work
+        /// </summary>
+        /// <param name="tweets"></param>
         public static void AddHomeTweets(TweetList tweets)
         {
-            CheckDataFolderPathAndSerializeOjbect(HOME_TWEETS, tweets);
+            var list = GetHomeTweets();
+            if (list == null || list.Count == 0)
+                list = new TweetList();
+            for (int i = tweets.Count - 1; i >= 0; i--)
+            {
+                list.Add(tweets[i]);
+                if (list.Count >= Const.DEFAULT_COUNT_VALUE)
+                    list.RemoveAt(list.Count - 1);
+            }
+            CheckDataFolderPathAndSerializeOjbect(HOME_TWEETS, list);
         }
 
         public static TweetList GetMentions()
@@ -273,9 +287,22 @@ namespace Chicken.Service
             return DeserializeObject<TweetList>(filepath);
         }
 
+        /// <summary>
+        /// let me do the hard work
+        /// </summary>
+        /// <param name="tweets"></param>
         public static void AddMentions(TweetList tweets)
         {
-            CheckDataFolderPathAndSerializeOjbect(HOME_MENTIONS, tweets);
+            var list = GetMentions();
+            if (list == null || list.Count == 0)
+                list = new TweetList();
+            for (int i = tweets.Count - 1; i >= 0; i--)
+            {
+                list.Add(tweets[i]);
+                if (list.Count >= Const.DEFAULT_COUNT_VALUE)
+                    list.RemoveAt(list.Count - 1);
+            }
+            CheckDataFolderPathAndSerializeOjbect(HOME_MENTIONS, list);
         }
         #endregion
 
