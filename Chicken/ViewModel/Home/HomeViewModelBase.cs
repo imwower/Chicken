@@ -37,6 +37,12 @@ namespace Chicken.ViewModel.Home
             NavigationServiceManager.NavigateTo(Const.NewMessagePage);
         }
 
+        public virtual void Search()
+        {
+            IsLoading = false;
+            NavigationServiceManager.NavigateTo(Const.SearchPage);
+        }
+
         public virtual void MyProfile()
         {
             IsLoading = false;

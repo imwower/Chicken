@@ -103,6 +103,10 @@
   </ItemGroup>
   <ItemGroup>
     <!--condition compile-->
+    <Compile Include="View\StatusPage.xaml.cs">
+      <DependentUpon>StatusPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Content Include="libs\NGif.WindowsPhone.dll" />
     <Content Include="libs\WriteableBitmapExWinPhone.dll" />
     <Content Include="libs\WriteableBitmapExWinPhoneXnaDependant.dll" />
@@ -227,9 +231,6 @@
     </Compile>
     <Compile Include="View\SplashScreenPage.xaml.cs">
       <DependentUpon>SplashScreenPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\StatusPage.xaml.cs">
-      <DependentUpon>StatusPage.xaml</DependentUpon>
     </Compile>
     <Content Include="Images\dark\appbar.bottom.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

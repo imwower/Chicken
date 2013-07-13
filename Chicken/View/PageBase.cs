@@ -17,6 +17,10 @@ namespace Chicken.View
         private static ToastMessage toastmessage;
         #endregion
 
+        public PageBase()
+        { 
+        }
+
         public static void HandleMessage(ToastMessage message)
         {
             toastmessage = message;
@@ -58,6 +62,10 @@ namespace Chicken.View
         protected Pivot Pivot { get; set; }
         protected PivotViewModelBase PivotViewModelBase { get; set; }
         #endregion
+
+        public PivotPageBase()
+        { 
+        }
 
         protected virtual void Init()
         {

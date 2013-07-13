@@ -1,4 +1,4 @@
-﻿namespace Chicken.View
+﻿﻿namespace Chicken.View
 {
     public partial class SearchPage : PivotPageBase
     {

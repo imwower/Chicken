@@ -205,12 +205,10 @@
                                             FontSize="{StaticResource PhoneFontSizeMedium}"
                                             HorizontalAlignment="Left"
                                             Margin="24 12 0 0"/>
-                                            <ListBox
-                                            x:Name="FullModeSelector"
-                                            Grid.Row="1"
-                                            ItemTemplate="{TemplateBinding ActualFullModeItemTemplate}"
-                                            FontSize="{TemplateBinding FontSize}"
-                                            Margin="{StaticResource PhoneMargin}">
+                                            <ListBox x:Name="FullModeSelector" Grid.Row="1"
+                                                     Margin="{StaticResource PhoneMargin}"
+                                                     ItemTemplate="{TemplateBinding FullModeItemTemplate}"
+                                                     FontSize="{TemplateBinding FontSize}">
                                                 <ListBox.ItemsPanel>
                                                     <ItemsPanelTemplate>
                                                         <StackPanel/>
