@@ -21,6 +21,15 @@ namespace Chicken.ViewModel.Search
                 return new DelegateCommand(SearchAction);
             }
         }
+
+        public ICommand NewTweetCommand
+        {
+            get
+            {
+                return new DelegateCommand(NewTweetAction);
+            }
+        }
+
         #endregion
 
         public SearchViewModel()
@@ -34,6 +43,11 @@ namespace Chicken.ViewModel.Search
         }
 
         #region actions
+        private void NewTweetAction()
+        {
+            (PivotItems[SelectedIndex] as SearchViewModelBase).NewTweet();
+        }
+
         private void SearchAction()
         {
             if (string.IsNullOrEmpty(SearchQuery))

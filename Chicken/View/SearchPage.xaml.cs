@@ -1,4 +1,5 @@
-﻿using Chicken.ViewModel.Search;
+﻿using System.Windows.Controls;
+using Chicken.ViewModel.Search;
 
 namespace Chicken.View
 {
@@ -10,6 +11,13 @@ namespace Chicken.View
             Pivot = this.MainPivot;
             PivotViewModelBase = new SearchViewModel();
             base.Init();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = (TextBox)sender;
+            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
         }
     }
 }
