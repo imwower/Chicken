@@ -61,7 +61,6 @@
                                             <!--profile image-->
                                             <ctrls:ImageContainer Grid.Column="0"
                                                                   ImageUrl="{Binding Tweet.UserProfile.ProfileImage}"
-                                                                  IsVisible="{Binding Tweet.UserProfile.IsVisible}"
                                                                   Style="{StaticResource ProfileImageBigger}" />
                                             <!--name, screen name-->
                                             <Grid Grid.Column="1">
@@ -199,7 +198,6 @@
                                         Visibility="{Binding Tweet.IncludeRetweet,Converter={StaticResource BooleanToVisibilityConverter}}">
                                         <ctrls:ImageContainer
                                             ImageUrl="{Binding Tweet.OriginalTweet.User.ProfileImage}"
-                                            IsVisible="{Binding Tweet.OriginalTweet.User.IsVisible}"
                                             Style="{StaticResource ProfileImageIcon}" />
                                     </Border>
                                     <Border

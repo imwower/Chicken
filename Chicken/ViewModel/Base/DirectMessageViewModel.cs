@@ -7,7 +7,6 @@ namespace Chicken.ViewModel.Base
         public DirectMessageViewModel(DirectMessage directMessage)
             : base(directMessage)
         {
-            User.IsVisible = true;
         }
     }
 }

@@ -8,24 +8,10 @@ namespace Chicken.ViewModel.Base
         private UserProfileViewModel profile;
         #endregion
 
-        public TweetDetailViewModel(Tweet data, bool isVisible)
+        public TweetDetailViewModel(Tweet data)
             : base(data)
         {
             this.profile = Copy(this.Tweet.User);
-            IsVisible = isVisible;
-        }
-
-        public override bool IsVisible
-        {
-            get
-            {
-                return base.IsVisible;
-            }
-            set
-            {
-                UserProfile.IsVisible = value;
-                base.IsVisible = value;
-            }
         }
 
         public UserProfileViewModel UserProfile
@@ -55,7 +41,7 @@ namespace Chicken.ViewModel.Base
                 IsPrivate = user.IsPrivate,
                 IsTranslator = user.IsTranslator,
             };
-            return new UserProfileViewModel(profile, true);
+            return new UserProfileViewModel(profile);
         }
     }
 }

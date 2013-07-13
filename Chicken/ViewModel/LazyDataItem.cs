@@ -3,30 +3,12 @@ using Chicken.Controls;
 
 namespace Chicken.ViewModel
 {
-    public class VisibleObject : NotificationObject, ILazyDataItem
+    public class LazyDataItem : NotificationObject, ILazyDataItem
     {
         #region private
-        private bool isVisible;
         private bool isPaused;
         private LazyDataLoadState currentState;
         #endregion
-
-        /// <summary>
-        /// should manually change value,
-        /// to raise property changed event
-        /// </summary>
-        public virtual bool IsVisible
-        {
-            get
-            {
-                return isVisible;
-            }
-            set
-            {
-                isVisible = value;
-                RaisePropertyChanged("IsVisible");
-            }
-        }
 
         #region ILazyDataItem
         public void GoToState(LazyDataLoadState state)
@@ -38,11 +20,7 @@ namespace Chicken.ViewModel
                 case LazyDataLoadState.Cached:
                 case LazyDataLoadState.Reloading:
                 case LazyDataLoadState.Loading:
-                    IsVisible = true;
-                    break;
                 case LazyDataLoadState.Unloaded:
-                    IsVisible = false;
-                    break;
                 case LazyDataLoadState.Loaded:
                     break;
             }

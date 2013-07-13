@@ -52,7 +52,7 @@
                                 <!--profile banner-->
                                 <ctrls:ImageContainer Grid.Row="1" Margin="0,0,0,6" Opacity="0.6"
                                                       ImageUrl="{Binding UserProfile.UserProfileBannerImageWeb}"
-                                                      IsVisible="True"
+                                                      UseDefaultImage="False"
                                                       Visibility="{Binding IsInited, Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}" />
                                 <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <Grid.RowDefinitions>
@@ -63,15 +63,10 @@
                                         <RowDefinition Height="Auto" />
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
-                                    <Grid.Background>
-                                        <ImageBrush Stretch="Fill" Opacity="0.6"
-                                                    ImageSource="{Binding UserProfile.UserProfileBannerImageWeb}" />
-                                    </Grid.Background>
                                     <!--Profile Image-->
                                     <ctrls:ImageContainer Grid.Row="0"
                                                           Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageUrl="{Binding UserProfile.ProfileImage}"
-                                                          IsVisible="{Binding UserProfile.IsVisible}">
+                                                          ImageUrl="{Binding UserProfile.ProfileImage}">
                                         <ctrls:ImageContainer.Clip>
                                             <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                         </ctrls:ImageContainer.Clip>

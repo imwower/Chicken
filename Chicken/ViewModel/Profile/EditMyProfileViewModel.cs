@@ -51,7 +51,7 @@ namespace Chicken.ViewModel.Profile
                 profile =>
                 {
                     if (!profile.HasError)
-                        MyProfile = new UserProfileDetailViewModel(profile, true);
+                        MyProfile = new UserProfileDetailViewModel(profile);
                     base.Refreshed();
                 });
         }

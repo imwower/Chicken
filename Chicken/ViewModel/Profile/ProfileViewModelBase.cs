@@ -115,7 +115,7 @@ namespace Chicken.ViewModel.Profile
             var profile = IsolatedStorageService.GetObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
             if (profile == null)
                 return false;
-            UserProfile = new UserProfileDetailViewModel(profile, true);
+            UserProfile = new UserProfileDetailViewModel(profile);
             if (!profile.IsMyself &&
                 UserProfile.IsPrivate &&
                 !UserProfile.IsFollowing)
@@ -138,7 +138,7 @@ namespace Chicken.ViewModel.Profile
                     if (!userProfiles.HasError)
                     {
                         for (int i = userProfiles.Count - 1; i >= 0; i--)
-                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i], true));
+                            UserList.Insert(0, new UserProfileViewModel(userProfiles[i]));
                     }
                     base.Refreshed();
                 });
@@ -152,7 +152,7 @@ namespace Chicken.ViewModel.Profile
                     if (!userProfiles.HasError)
                     {
                         foreach (var userProfile in userProfiles)
-                            UserList.Add(new UserProfileViewModel(userProfile, true));
+                            UserList.Add(new UserProfileViewModel(userProfile));
                     }
                     base.Loaded();
                 });

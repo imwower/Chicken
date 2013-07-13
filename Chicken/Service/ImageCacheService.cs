@@ -123,7 +123,7 @@ namespace Chicken.Service
 
         private static void DownloadImage(object sender, DoWorkEventArgs e)
         {
-            Thread.Sleep(random.Next(1000));
+            Thread.Sleep(random.Next(500));
             if (e.Cancel)
                 return;
             var pendingwork = e.Argument as PendingWork;

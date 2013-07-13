@@ -446,7 +446,6 @@
                         <ControlTemplate>
                             <ctrls:ImageContainer
                                 ImageUrl="{Binding User.ProfileImage}"
-                                IsVisible="{Binding User.IsVisible}"
                                 Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
@@ -557,7 +556,6 @@
                         <ControlTemplate>
                             <ctrls:ImageContainer
                                 ImageUrl="{Binding User.ProfileImage}"
-                                IsVisible="{Binding User.IsVisible}"
                                 Style="{StaticResource ProfileImageSmall}" />
                         </ControlTemplate>
                     </Button.Template>
@@ -607,7 +605,6 @@
                             </Grid.ColumnDefinitions>
                             <ctrls:ImageContainer Grid.Column="0"
                                                   ImageUrl="{Binding ProfileImage}"
-                                                  IsVisible="{Binding IsVisible}"
                                                   Style="{StaticResource ProfileImageBigger}" />
                             <Grid Grid.Column="1">
                                 <Grid.RowDefinitions>

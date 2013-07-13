@@ -66,7 +66,6 @@
                                                 <ControlTemplate>
                                                     <ctrls:ImageContainer Margin="0"
                                                                           ImageUrl="{Binding User.ProfileImage}"
-                                                                          IsVisible="{Binding User.IsVisible}"
                                                                           Style="{StaticResource ProfileImageSmall}" />
                                                 </ControlTemplate>
                                             </Button.Template>

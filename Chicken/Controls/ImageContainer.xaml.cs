@@ -22,7 +22,7 @@ namespace Chicken.Controls
 
         #region properties
         public static readonly DependencyProperty ImageUrlProperty =
-            DependencyProperty.Register("ImageUrl", typeof(string), typeof(ImageContainer), null);
+            DependencyProperty.Register("ImageUrl", typeof(string), typeof(ImageContainer), new PropertyMetadata(OnImageSourceChanged));
 
         public string ImageUrl
         {
@@ -33,21 +33,6 @@ namespace Chicken.Controls
             set
             {
                 SetValue(ImageUrlProperty, value);
-            }
-        }
-
-        public static readonly DependencyProperty IsVisibleProperty =
-            DependencyProperty.Register("IsVisible", typeof(bool), typeof(ImageContainer), new PropertyMetadata(false, OnIsVisibleChanged));
-
-        public bool IsVisible
-        {
-            get
-            {
-                return (bool)GetValue(IsVisibleProperty);
-            }
-            set
-            {
-                SetValue(IsVisibleProperty, value);
             }
         }
 
@@ -82,42 +67,31 @@ namespace Chicken.Controls
         public ImageContainer()
         {
             InitializeComponent();
-            UseDefaultImage = true;
             Loaded += ImageContainer_Loaded;
             Unloaded += ImageContainer_Unloaded;
         }
 
         private void ImageContainer_Loaded(object sender, RoutedEventArgs e)
         {
-            //directly change visibility
-            //do not use property changed event
             ShowImage();
         }
 
         private void ImageContainer_Unloaded(object sender, RoutedEventArgs e)
         {
-            IsVisible = false;
+            ClearImage();
         }
 
         #region private method
-        private static void OnIsVisibleChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnImageSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var container = (ImageContainer)d;
-            bool isVisible = (bool)e.NewValue;
-            if (isVisible)
-                container.ShowImage();
-            else
-                container.ClearImage();
+            (d as ImageContainer).ShowImage();
         }
 
         private void ShowImage()
         {
-            if (string.IsNullOrEmpty(ImageUrl))
-            {
-                if (UseDefaultImage)
-                    this.PngImage.Source = defaultImage;
-            }
-            else
+            if (!UseDefaultImage)
+                this.PngImage.Source = null;
+            if (!string.IsNullOrEmpty(ImageUrl))
                 ImageCacheService.SetImageStream(ImageUrl, SetImageSource);
         }
 
@@ -131,13 +105,14 @@ namespace Chicken.Controls
             }
             this.PngImage.Source = null;
             decoder = null;
+            this.PngImage.Source = defaultImage;
             Debug.WriteLine("clear image.");
         }
 
-        private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            (d as ImageContainer).SetImageSource(e.NewValue as byte[]);
-        }
+        //private static void OnSourceChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        //{
+        //    (d as ImageContainer).SetImageSource(e.NewValue as byte[]);
+        //}
 
         private void SetImageSource(byte[] data)
         {

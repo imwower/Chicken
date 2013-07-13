@@ -55,7 +55,7 @@ namespace Chicken.ViewModel.Home.VM
                                 if (sinceId == tweets[i].Id)
                                     continue;
 #endif
-                                TweetList.Insert(0, new TweetViewModel(tweets[i], true));
+                                TweetList.Insert(0, new TweetViewModel(tweets[i]));
                                 if (TweetList.Count >= Const.DEFAULT_COUNT_VALUE)
                                     TweetList.RemoveAt(TweetList.Count - 1);
                             }

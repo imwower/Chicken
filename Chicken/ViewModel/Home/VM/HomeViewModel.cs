@@ -55,7 +55,7 @@ namespace Chicken.ViewModel.Home.VM
                                 if (sinceId == list[i].Id)
                                     continue;
 #endif
-                                TweetList.Insert(0, new TweetViewModel(list[i], true));
+                                TweetList.Insert(0, new TweetViewModel(list[i]));
                                 if (TweetList.Count >= Const.DEFAULT_COUNT_VALUE)
                                     TweetList.RemoveAt(TweetList.Count - 1);
                             }
@@ -102,7 +102,7 @@ namespace Chicken.ViewModel.Home.VM
 #if !LOCAL
                                 if (maxId != tweet.Id)
 #endif
-                                    TweetList.Add(new TweetViewModel(tweet));
+                                TweetList.Add(new TweetViewModel(tweet));
                             }
                         }
                         #endregion

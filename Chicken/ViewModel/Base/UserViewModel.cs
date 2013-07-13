@@ -2,7 +2,7 @@
 
 namespace Chicken.ViewModel.Base
 {
-    public class UserViewModel : VisibleObject
+    public class UserViewModel : LazyDataItem
     {
         #region private
         private User user;
@@ -11,12 +11,6 @@ namespace Chicken.ViewModel.Base
         public UserViewModel(User user)
         {
             this.user = user;
-        }
-
-        public UserViewModel(User user, bool isVisible)
-        {
-            this.user = user;
-            IsVisible = isVisible;
         }
 
         public User User
@@ -133,13 +127,6 @@ namespace Chicken.ViewModel.Base
             this.profile = profile;
         }
 
-        public UserProfileViewModel(UserProfile profile, bool isVisible)
-            : base(profile)
-        {
-            this.profile = profile;
-            IsVisible = isVisible;
-        }
-
         public UserProfile UserProfile
         {
             get
@@ -173,11 +160,11 @@ namespace Chicken.ViewModel.Base
     {
         private UserProfileDetail profile;
 
-        public UserProfileDetailViewModel(UserProfileDetail profile, bool isVisible)
+        public UserProfileDetailViewModel(UserProfileDetail profile)
             : base(profile)
         {
             this.profile = profile;
-            IsVisible = isVisible;
+            //RaisePropertyChanged("ProfileImage");
         }
 
         public UserProfileDetail UserProfileDetail

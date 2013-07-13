@@ -5,7 +5,7 @@ using Chicken.Model.Entity;
 
 namespace Chicken.ViewModel.Base
 {
-    public class TweetViewModel : VisibleObject
+    public class TweetViewModel : LazyDataItem
     {
         #region private
         private TweetBase tweet;
@@ -28,40 +28,6 @@ namespace Chicken.ViewModel.Base
             }
             #endregion
             this.user = new UserViewModel(this.tweet.User);
-        }
-
-        public TweetViewModel(Tweet data, bool isVisible)
-        {
-            #region tweet
-            if (data.RetweetStatus != null)
-            {
-                this.tweet = data.RetweetStatus;
-                data.RetweetStatus = null;
-                this.originalTweet = new TweetViewModel(data);
-            }
-            else
-            {
-                this.tweet = data;
-            }
-            #endregion
-            this.user = new UserViewModel(this.tweet.User);
-            IsVisible = isVisible;
-        }
-
-        public override bool IsVisible
-        {
-            get
-            {
-                return base.IsVisible;
-            }
-            set
-            {
-                if (OriginalTweet != null)
-                    OriginalTweet.User.IsVisible = value;
-                else if (User != null)
-                    User.IsVisible = value;
-                base.IsVisible = value;
-            }
         }
 
         public TweetBase Tweet

@@ -192,7 +192,7 @@
     <Compile Include="ViewModel\Status\StatusViewModelBase.cs" />
     <Compile Include="ViewModel\Status\VM\StatusDetailViewModel.cs" />
     <Compile Include="ViewModel\Status\VM\StatusRetweetsViewModel.cs" />
-    <Compile Include="ViewModel\VisibleObject.cs" />
+    <Compile Include="ViewModel\LazyDataItem.cs" />
     <Compile Include="View\APISettingsPage.xaml.cs">
       <DependentUpon>APISettingsPage.xaml</DependentUpon>
     </Compile>
