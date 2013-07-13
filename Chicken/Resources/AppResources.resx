@@ -369,4 +369,7 @@
   <data name="Toast_Msg_UnknowError" xml:space="preserve">
     <value>喔呦, 有不明原因的错误入侵</value>
   </data>
+  <data name="Msg_ConfirmToExit" xml:space="preserve">
+    <value>确定退出嘛?</value>
+  </data>
 </root>

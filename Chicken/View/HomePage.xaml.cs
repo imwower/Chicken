@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Navigation;
+using Chicken.ViewModel;
 using Chicken.ViewModel.Home;
 
 namespace Chicken.View
@@ -23,12 +24,10 @@ namespace Chicken.View
             if (count > 0)
             {
                 for (int i = 0; i < count; i++)
-                {
                     NavigationService.RemoveBackEntry();
-                }
             }
 
-            if (MessageBox.Show("Are you sure to exit?", "", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            if (MessageBox.Show(LanguageHelper.GetString("Msg_ConfirmToExit"), "", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
             {
                 e.Cancel = true;
             }

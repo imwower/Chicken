@@ -385,6 +385,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 确定退出嘛? 的本地化字符串。
+        /// </summary>
+        public static string Msg_ConfirmToExit {
+            get {
+                return ResourceManager.GetString("Msg_ConfirmToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 对话 的本地化字符串。
         /// </summary>
         public static string NewMessagePage_Header {

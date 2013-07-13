@@ -369,4 +369,7 @@
   <data name="Toast_Msg_UnknowError" xml:space="preserve">
     <value>aw, some unknown error happened</value>
   </data>
+  <data name="Msg_ConfirmToExit" xml:space="preserve">
+    <value>are you sure to exit?</value>
+  </data>
 </root>
