@@ -15,8 +15,7 @@ namespace Chicken.View
 
         private void SplashScreenPage_Loaded(object sender, RoutedEventArgs e)
         {
-            if (App.Settings == null
-                || App.Settings.APISettings == null)
+            if (App.Settings == null || App.Settings.APISettings == null)
                 NavigationServiceManager.NavigateTo(Const.APISettingsPage);
             else
                 NavigationServiceManager.NavigateTo(Const.HomePage);

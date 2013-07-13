@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Navigation;
 using Chicken.Controls;
 using Chicken.Model;
@@ -11,19 +13,16 @@ namespace Chicken.View
     public class PageBase : PhoneApplicationPage
     {
         #region static property
-        private static ToastPrompt prompt;
-        private static Action promptComplete;
+        private static ToastPrompt prompt = new ToastPrompt();
+        private static ToastMessage toastmessage;
         #endregion
 
-        #region message handler
         public static void HandleMessage(ToastMessage message)
         {
-            if (prompt == null)
-                prompt = new ToastPrompt();
-            prompt.Message = message.Message;
+            toastmessage = message;
+            prompt.Message = toastmessage.Message;
             if (message.Complete != null)
             {
-                promptComplete = message.Complete;
                 prompt.Completed += prompt_Completed;
             }
             prompt.Show();
@@ -31,12 +30,26 @@ namespace Chicken.View
 
         private static void prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            if (promptComplete == null)
-                return;
-            promptComplete();
-            promptComplete = null;
+            toastmessage.Complete();
+            toastmessage.Complete = null;
+            toastmessage = null;
+            prompt.Completed -= prompt_Completed;
         }
-        #endregion
+
+        protected virtual void Page_OnBackKeyPress(object sender, CancelEventArgs e)
+        {
+            int count = NavigationService.BackStack.Count();
+            if (count > 0)
+            {
+                for (int i = 0; i < count; i++)
+                    NavigationService.RemoveBackEntry();
+            }
+
+            if (MessageBox.Show(LanguageHelper.GetString("Msg_ConfirmToExit"), "", MessageBoxButton.OKCancel) == MessageBoxResult.Cancel)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 
     public class PivotPageBase : PageBase, INavigationService
