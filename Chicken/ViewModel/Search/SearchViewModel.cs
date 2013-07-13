@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using Chicken.ViewModel.Search.VM;
 using System.Windows.Input;
-using Chicken.Service;
 using Chicken.Common;
+using Chicken.Service;
+using Chicken.ViewModel.Search.VM;
 
 namespace Chicken.ViewModel.Search
 {
@@ -14,7 +14,7 @@ namespace Chicken.ViewModel.Search
         #endregion
 
         #region binding
-        public ICommand RefreshCommand
+        public ICommand SearchCommand
         {
             get
             {
