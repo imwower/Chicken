@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 
 namespace Chicken.Model
@@ -72,7 +73,7 @@ namespace Chicken.Model
             return list.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return list.GetEnumerator();
         }

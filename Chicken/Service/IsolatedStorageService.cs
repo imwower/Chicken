@@ -274,7 +274,7 @@ namespace Chicken.Service
                 list = new TweetList();
             for (int i = tweets.Count - 1; i >= 0; i--)
             {
-                list.Add(tweets[i]);
+                list.Insert(0, tweets[i]);
                 if (list.Count >= Const.DEFAULT_COUNT_VALUE)
                     list.RemoveAt(list.Count - 1);
             }
@@ -298,7 +298,7 @@ namespace Chicken.Service
                 list = new TweetList();
             for (int i = tweets.Count - 1; i >= 0; i--)
             {
-                list.Add(tweets[i]);
+                list.Insert(0, tweets[i]);
                 if (list.Count >= Const.DEFAULT_COUNT_VALUE)
                     list.RemoveAt(list.Count - 1);
             }
