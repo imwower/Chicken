@@ -25,7 +25,9 @@
         </Grid.RowDefinitions>
         <TextBox x:Name="SearchBox" Grid.Row="0"
                  Text="{Binding SearchQuery,Mode=TwoWay}"
-                 TextChanged="SearchBox_TextChanged" MaxLength="1000" />
+                 TextChanged="SearchBox_TextChanged"
+                 KeyDown="SearchBox_KeyDown"
+                 MaxLength="1000" />
         <controls:Pivot x:Name="MainPivot" Grid.Row="1">
             <!--search for tweets-->
             <ctrls:HomePivotItem

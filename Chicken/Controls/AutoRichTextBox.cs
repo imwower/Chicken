@@ -177,7 +177,7 @@ namespace Chicken.Controls
                     NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
                     break;
                 case EntityType.HashTag:
-                    //TODO: to search page
+                    NavigationServiceManager.NavigateTo(Const.SearchPage, entity.Text);
                     break;
             }
         }

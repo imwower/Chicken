@@ -14,14 +14,6 @@ namespace Chicken.ViewModel.Search
         #endregion
 
         #region binding
-        public ICommand SearchCommand
-        {
-            get
-            {
-                return new DelegateCommand(SearchAction);
-            }
-        }
-
         public ICommand NewTweetCommand
         {
             get
@@ -42,19 +34,23 @@ namespace Chicken.ViewModel.Search
             PivotItems = new ObservableCollection<PivotItemViewModelBase>(baseViewModelList);
         }
 
-        #region actions
-        private void NewTweetAction()
-        {
-            (PivotItems[SelectedIndex] as SearchViewModelBase).NewTweet();
-        }
-
-        private void SearchAction()
+        #region public method
+        public void Search()
         {
             if (string.IsNullOrEmpty(SearchQuery))
                 return;
             IsolatedStorageService.CreateObject(Const.SearchPage, SearchQuery);
             (PivotItems[SelectedIndex] as SearchViewModelBase).Search();
         }
+        #endregion
+
+        #region actions
+        private void NewTweetAction()
+        {
+            (PivotItems[SelectedIndex] as SearchViewModelBase).NewTweet();
+        }
+
+
         #endregion
     }
 }
