@@ -51,6 +51,13 @@
         public const string URL = "url";
         public const string LOCATION = "location";
         public const string DESCRIPTION = "description";
+        //search page
+        public const string SEARCH_QUERY = "q";
+        /// <summary>
+        /// why tweet use rpp as param
+        /// instead of count?
+        /// </summary>
+        public const string RESULT_PER_PAGE = "rpp";
         #endregion
 
         #region home page
@@ -95,6 +102,10 @@
         public const string PROFILE_UPDATE_MYPROFILE = "account/update_profile.json";
         #endregion
 
+        #region search page
+        public const string SEARCH_FOR_TWEETS = "search/tweets.json";
+        #endregion
+
         #region api settings
         public const string TWEET_CONFIGURATION = "help/configuration.json";
         #endregion
@@ -111,6 +122,7 @@
         public const string EditMyProfilePage = "/View/EditMyProfilePage.xaml";
         public const string SettingsPage = "/View/SettingsPage.xaml";
         public const string APISettingsPage = "/View/APISettingsPage.xaml";
+        public const string SearchPage = "/View/SearchPage.xaml";
 
         #region page parameter
         public const string ProfilePage_UserProfileDetail = "ProfilePage_UserProfileDetail";

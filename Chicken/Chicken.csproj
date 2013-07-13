@@ -145,6 +145,7 @@
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\NewMessageModel.cs" />
     <Compile Include="Model\NewTweetModel.cs" />
+    <Compile Include="Model\SearchTweetList.cs" />
     <Compile Include="Model\StringToBooleanConverter.cs" />
     <Compile Include="Model\ToastMessage.cs" />
     <Compile Include="Model\TweetConfiguration.cs" />
@@ -184,6 +185,9 @@
     <Compile Include="ViewModel\Profile\VM\UserFollowingViewModel.cs" />
     <Compile Include="ViewModel\Profile\VM\UserTweetsViewModel.cs" />
     <Compile Include="ViewModel\Search\SearchViewModel.cs" />
+    <Compile Include="ViewModel\Search\SearchViewModelBase.cs" />
+    <Compile Include="ViewModel\Search\VM\SearchTweetViewModel.cs" />
+    <Compile Include="ViewModel\Search\VM\SearchUserViewModel.cs" />
     <Compile Include="ViewModel\Settings\APISettingsViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModel.cs" />
     <Compile Include="ViewModel\Settings\SettingsViewModelBase.cs" />
@@ -343,6 +347,7 @@
     <Compile Include="ViewModel\Base\TweetViewModel.cs" />
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
+    <Content Include="SampleData\search_tweets.json" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -421,6 +426,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

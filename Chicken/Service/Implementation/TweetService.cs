@@ -268,6 +268,20 @@ namespace Chicken.Service.Implementation
         }
         #endregion
 
+        #region search page
+        public void SearchForTweets(string searchQuery, Action<SearchTweetList> callBack, IDictionary<string, object> parameters)
+        {
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.SEARCH_QUERY, searchQuery);
+            if (parameters.ContainsKey(Const.SINCE_ID) || parameters.ContainsKey(Const.MAX_ID))
+                parameters.Add(Const.RESULT_PER_PAGE, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
+            else
+                parameters.Add(Const.RESULT_PER_PAGE, Const.DEFAULT_COUNT_VALUE);
+            string url = TwitterHelper.GenerateUrlParams(Const.SEARCH_FOR_TWEETS, parameters);
+            HandleWebRequest<SearchTweetList>(url, callBack);
+        }
+        #endregion
+
         #region edit api settings
         public void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack)
         {
@@ -385,15 +399,10 @@ namespace Chicken.Service.Implementation
         private static IDictionary<string, object> CheckSinceIdAndMaxId(IDictionary<string, object> parameters)
         {
             parameters = TwitterHelper.GetDictionary(parameters);
-            if (parameters.ContainsKey(Const.SINCE_ID) ||
-                parameters.ContainsKey(Const.MAX_ID))
-            {
+            if (parameters.ContainsKey(Const.SINCE_ID) || parameters.ContainsKey(Const.MAX_ID))
                 parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
-            }
             else
-            {
                 parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
-            }
             return parameters;
         }
 
@@ -414,6 +423,16 @@ namespace Chicken.Service.Implementation
         }
         #endregion
         #endregion
+
+        private class RequestDataObject<T>
+            where T : ModelBase
+        {
+            public HttpWebRequest Request { get; set; }
+
+            public Action<T> CallBack { get; set; }
+
+            public T Result { get; set; }
+        }
     }
 }
 

@@ -28,36 +28,12 @@ namespace Chicken.ViewModel.Profile
         }
 
         #region for tweets and favorites pivot item
-        private ObservableCollection<TweetViewModel> tweetList;
-        public ObservableCollection<TweetViewModel> TweetList
-        {
-            get
-            {
-                return tweetList;
-            }
-            set
-            {
-                tweetList = value;
-                RaisePropertyChanged("TweetList");
-            }
-        }
+        public ObservableCollection<TweetViewModel> TweetList { get; set; }
         #endregion
         #region for following and followers pivot item
         protected string nextCursor = "-1";
         protected string previousCursor;
-        private ObservableCollection<UserProfileViewModel> userList;
-        public ObservableCollection<UserProfileViewModel> UserList
-        {
-            get
-            {
-                return userList;
-            }
-            set
-            {
-                userList = value;
-                RaisePropertyChanged("UserList");
-            }
-        }
+        public ObservableCollection<UserProfileViewModel> UserList { get; set; }
         #endregion
         #endregion
 

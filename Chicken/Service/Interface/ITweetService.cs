@@ -65,20 +65,14 @@ namespace Chicken.Service.Interface
         void UpdateMyProfile(Action<User> callBack, IDictionary<string, object> parameters);
         #endregion
 
+        #region search page
+        void SearchForTweets(string searchQuery, Action<SearchTweetList> callBack, IDictionary<string, object> parameters);
+        #endregion
+
         #region edit api settings page
         void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack);
 
         void GetTweetConfiguration(Action<TweetConfiguration> callBack);
         #endregion
-    }
-
-    internal class RequestDataObject<T>
-        where T : ModelBase
-    {
-        public HttpWebRequest Request { get; set; }
-
-        public Action<T> CallBack { get; set; }
-
-        public T Result { get; set; }
     }
 }

@@ -1,0 +1,1757 @@
+﻿{
+    "statuses": [
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "de"
+            }, 
+            "created_at": "Sat Jul 13 13:52:11 +0000 2013", 
+            "id": 356048412560461800, 
+            "id_str": "356048412560461825", 
+            "text": "Adam Lambert Ditches His Record Label: Pressparty http://t.co/2fCfGdAhAV via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 1166901164, 
+                "id_str": "1166901164", 
+                "name": "Saulibert Forever", 
+                "screen_name": "AdamSauli4Ever", 
+                "location": "Saulibert Land", 
+                "description": "This is a Twitter page dedicated to ADAM LAMBERT AND SAULI KOSKINEN This acct. tweets photos, news, videos & RTs. Follow if you love SAULIBERT. I follow back.", 
+                "url": "http://t.co/5xSiRQXqeS", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/5xSiRQXqeS", 
+                                "expanded_url": "http://www.facebook.com/adamsauliforever", 
+                                "display_url": "facebook.com/adamsauliforev…", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 303, 
+                "friends_count": 421, 
+                "listed_count": 0, 
+                "created_at": "Sun Feb 10 20:12:14 +0000 2013", 
+                "favourites_count": 9, 
+                "utc_offset": -36000, 
+                "time_zone": "Hawaii", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 3293, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/832082360/4ea132fa7a85981be56edce374bf5831.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/832082360/4ea132fa7a85981be56edce374bf5831.png", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000025715989/c7bd71cdc2f94ca58920dde1691cd1fa_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000025715989/c7bd71cdc2f94ca58920dde1691cd1fa_normal.png", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/1166901164/1371834663", 
+                "profile_link_color": "0C4752", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/2fCfGdAhAV", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": true, 
+            "lang": "de"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:50:33 +0000 2013", 
+            "id": 356048000834998300, 
+            "id_str": "356048000834998272", 
+            "text": ":)) Adam Lambert ditches his record label: Pressparty http://t.co/0K2BJpapZu via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 39750808, 
+                "id_str": "39750808", 
+                "name": "Chande  happy Bert..", 
+                "screen_name": "Chande87", 
+                "location": "Florida  ", 
+                "description": "All Is Love AdamLambert Once In A Life Time Someone Comes Along (Iconic)The whole reason I am on Twitter To Support him!!! :) don't do drama!! #TeamHappyBert", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 646, 
+                "friends_count": 760, 
+                "listed_count": 29, 
+                "created_at": "Wed May 13 13:35:13 +0000 2009", 
+                "favourites_count": 446, 
+                "utc_offset": -18000, 
+                "time_zone": "Eastern Time (US & Canada)", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 17008, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "642D8B", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/164947857/2_rose_woman_70d9ad260c44fb0ead1196dec9.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/164947857/2_rose_woman_70d9ad260c44fb0ead1196dec9.jpg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000049405564/ca21be2c19f38f0bdeb9ebdac756de9a_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000049405564/ca21be2c19f38f0bdeb9ebdac756de9a_normal.png", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/39750808/1364680755", 
+                "profile_link_color": "FF0000", 
+                "profile_sidebar_border_color": "65B0DA", 
+                "profile_sidebar_fill_color": "7AC3EE", 
+                "profile_text_color": "3D1957", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/0K2BJpapZu", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            54, 
+                            76
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            81, 
+                            92
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "pt"
+            }, 
+            "created_at": "Sat Jul 13 13:50:25 +0000 2013", 
+            "id": 356047968329138200, 
+            "id_str": "356047968329138176", 
+            "text": "http://t.co/G5GJwmz6Om, por Maurício Ricardo http://t.co/n2TWOdJgiQ via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 181779113, 
+                "id_str": "181779113", 
+                "name": "URUTU GO 17", 
+                "screen_name": "urutu_go_17", 
+                "location": "Brasil", 
+                "description": "Sou acadêmico de Direito pretendo ser Juiz Federal para combter a corrupção e Cientista Política um dos my sonhos vr a população brasileira Políticamente Ativa", 
+                "url": "http://t.co/8npfz3vmtV", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/8npfz3vmtV", 
+                                "expanded_url": "http://www.facebook.com/profile.php?id=100002152187628", 
+                                "display_url": "facebook.com/profile.php?id…", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 351, 
+                "friends_count": 2002, 
+                "listed_count": 2, 
+                "created_at": "Mon Aug 23 01:22:55 +0000 2010", 
+                "favourites_count": 0, 
+                "utc_offset": -10800, 
+                "time_zone": "Brasilia", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 2747, 
+                "lang": "pt", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/141000859/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/141000859/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64.jpg", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/1109311799/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64_normal.jpg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/1109311799/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64_normal.jpg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/181779113/1355638470", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "C0DEED", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/G5GJwmz6Om", 
+                        "expanded_url": "http://Charges.com.br", 
+                        "display_url": "Charges.com.br", 
+                        "indices": [
+                            0, 
+                            22
+                        ]
+                    }, 
+                    {
+                        "url": "http://t.co/n2TWOdJgiQ", 
+                        "expanded_url": "http://charges.uol.com.br/2013/07/13/tobby-entrevista-superman/", 
+                        "display_url": "charges.uol.com.br/2013/07/13/tob…", 
+                        "indices": [
+                            45, 
+                            67
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            72, 
+                            83
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": true, 
+            "lang": "pt"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:50:22 +0000 2013", 
+            "id": 356047958216671200, 
+            "id_str": "356047958216671232", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/95lwT6rXrh via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 94152892, 
+                "id_str": "94152892", 
+                "name": "GlamTemptation", 
+                "screen_name": "IvaaLambert", 
+                "location": "Poland", 
+                "description": "Cuckoo Iva,who loves @adamlambert so much  Proudly Glambert .Pervy Queen. EVERYDAY I'M LAMBERTIN !", 
+                "url": "http://t.co/SuZlejZl8T", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/SuZlejZl8T", 
+                                "expanded_url": "http://instagram.com/ivaalambert", 
+                                "display_url": "instagram.com/ivaalambert", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 1378, 
+                "friends_count": 1395, 
+                "listed_count": 19, 
+                "created_at": "Wed Dec 02 19:04:59 +0000 2009", 
+                "favourites_count": 293, 
+                "utc_offset": 3600, 
+                "time_zone": "Warsaw", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 81309, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "24BF3B", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/378800000007692246/e8c36cfc95d58ef13c641476dff0d302.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/378800000007692246/e8c36cfc95d58ef13c641476dff0d302.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000006474024/d69bc7f5baf7c62df306fa1552497cc6_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000006474024/d69bc7f5baf7c62df306fa1552497cc6_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/94152892/1370727095", 
+                "profile_link_color": "12C1E0", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "F2EAF0", 
+                "profile_text_color": "394040", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/95lwT6rXrh", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "pt"
+            }, 
+            "created_at": "Sat Jul 13 13:50:06 +0000 2013", 
+            "id": 356047889383952400, 
+            "id_str": "356047889383952385", 
+            "text": "Cotidiano - O Congresso reage ≈ http://t.co/G5GJwmz6Om, por Maurício Ricardo http://t.co/cIBKTVBCgJ via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 181779113, 
+                "id_str": "181779113", 
+                "name": "URUTU GO 17", 
+                "screen_name": "urutu_go_17", 
+                "location": "Brasil", 
+                "description": "Sou acadêmico de Direito pretendo ser Juiz Federal para combter a corrupção e Cientista Política um dos my sonhos vr a população brasileira Políticamente Ativa", 
+                "url": "http://t.co/8npfz3vmtV", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/8npfz3vmtV", 
+                                "expanded_url": "http://www.facebook.com/profile.php?id=100002152187628", 
+                                "display_url": "facebook.com/profile.php?id…", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 351, 
+                "friends_count": 2002, 
+                "listed_count": 2, 
+                "created_at": "Mon Aug 23 01:22:55 +0000 2010", 
+                "favourites_count": 0, 
+                "utc_offset": -10800, 
+                "time_zone": "Brasilia", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 2747, 
+                "lang": "pt", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/141000859/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/141000859/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64.jpg", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/1109311799/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64_normal.jpg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/1109311799/OgAAANPN3XYKm9XylAPm_2NPpjX_li8Zfdzgob9lV7QkBI1Nkpb5RdUzMvAjscRgddqmk2va5JvzlqjKa_pZ4vmcMJMAm1T1UATO87ev9ByBjLk6vIaDCCyE3s64_normal.jpg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/181779113/1355638470", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "C0DEED", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/G5GJwmz6Om", 
+                        "expanded_url": "http://Charges.com.br", 
+                        "display_url": "Charges.com.br", 
+                        "indices": [
+                            32, 
+                            54
+                        ]
+                    }, 
+                    {
+                        "url": "http://t.co/cIBKTVBCgJ", 
+                        "expanded_url": "http://charges.uol.com.br/2013/07/12/cotidiano-o-congresso-reage/", 
+                        "display_url": "charges.uol.com.br/2013/07/12/cot…", 
+                        "indices": [
+                            77, 
+                            99
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            104, 
+                            115
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": true, 
+            "lang": "pt"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "tl"
+            }, 
+            "created_at": "Sat Jul 13 13:49:57 +0000 2013", 
+            "id": 356047851412918300, 
+            "id_str": "356047851412918272", 
+            "text": "RT @lemmejoin: Adam Lambert ditches his record label: Pressparty http://t.co/9PadtcQJfG с помощью @twitterapi", 
+            "source": "<a href=\"https://mobile.twitter.com\" rel=\"nofollow\">Mobile Web (M2)</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 439850091, 
+                "id_str": "439850091", 
+                "name": "LAMBERT'S HAIRSTYLE", 
+                "screen_name": "katya_glambert_", 
+                "location": "Glamland/Tver,Russia", 
+                "description": "IG: katya_glambert
+Russian Glambert/tweets on Russian&English languages/ #LGBT,#NOH8/@adamlambert 's concert in Moscow 16.03.13-*FOREVER IN MY HEART!*", 
+                "url": "http://t.co/djhmhWVwmi", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/djhmhWVwmi", 
+                                "expanded_url": "http://vk.com/ekaterina_glambert", 
+                                "display_url": "vk.com/ekaterina_glam…", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 1212, 
+                "friends_count": 2000, 
+                "listed_count": 6, 
+                "created_at": "Sun Dec 18 08:14:22 +0000 2011", 
+                "favourites_count": 3906, 
+                "utc_offset": 14400, 
+                "time_zone": "Moscow", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 12392, 
+                "lang": "ru", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "FFF04D", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/885453727/5c3c72e3a385f82a29b13fa41ffc7bd1.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/885453727/5c3c72e3a385f82a29b13fa41ffc7bd1.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3749181638/78c8304c806d213b22b7bd9274899c01_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3749181638/78c8304c806d213b22b7bd9274899c01_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/439850091/1372410575", 
+                "profile_link_color": "0099CC", 
+                "profile_sidebar_border_color": "000000", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweeted_status": {
+                "metadata": {
+                    "result_type": "recent", 
+                    "iso_language_code": "tl"
+                }, 
+                "created_at": "Sat Jul 13 13:49:18 +0000 2013", 
+                "id": 356047686283173900, 
+                "id_str": "356047686283173889", 
+                "text": "Adam Lambert ditches his record label: Pressparty http://t.co/9PadtcQJfG с помощью @twitterapi", 
+                "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+                "truncated": false, 
+                "in_reply_to_status_id": null, 
+                "in_reply_to_status_id_str": null, 
+                "in_reply_to_user_id": null, 
+                "in_reply_to_user_id_str": null, 
+                "in_reply_to_screen_name": null, 
+                "user": {
+                    "id": 282627078, 
+                    "id_str": "282627078", 
+                    "name": "Liz[]", 
+                    "screen_name": "lemmejoin", 
+                    "location": "Ukraine", 
+                    "description": "18.03.2013", 
+                    "url": null, 
+                    "entities": {
+                        "description": {
+                            "urls": [ ]
+                        }
+                    }, 
+                    "protected": false, 
+                    "followers_count": 515, 
+                    "friends_count": 513, 
+                    "listed_count": 4, 
+                    "created_at": "Fri Apr 15 15:40:02 +0000 2011", 
+                    "favourites_count": 3281, 
+                    "utc_offset": -36000, 
+                    "time_zone": "Hawaii", 
+                    "geo_enabled": true, 
+                    "verified": false, 
+                    "statuses_count": 16452, 
+                    "lang": "ru", 
+                    "contributors_enabled": false, 
+                    "is_translator": false, 
+                    "profile_background_color": "EBEBEB", 
+                    "profile_background_image_url": "http://a0.twimg.com/profile_background_images/864113135/61d9b5008753ed051b3f60a1d4e47ebb.jpeg", 
+                    "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/864113135/61d9b5008753ed051b3f60a1d4e47ebb.jpeg", 
+                    "profile_background_tile": true, 
+                    "profile_image_url": "http://a0.twimg.com/profile_images/3739162815/aa7d0dd0e410c8f4ee80ee8c7a5bd580_normal.jpeg", 
+                    "profile_image_url_https": "https://si0.twimg.com/profile_images/3739162815/aa7d0dd0e410c8f4ee80ee8c7a5bd580_normal.jpeg", 
+                    "profile_banner_url": "https://pbs.twimg.com/profile_banners/282627078/1373180158", 
+                    "profile_link_color": "990000", 
+                    "profile_sidebar_border_color": "FFFFFF", 
+                    "profile_sidebar_fill_color": "DDEEF6", 
+                    "profile_text_color": "333333", 
+                    "profile_use_background_image": true, 
+                    "default_profile": false, 
+                    "default_profile_image": false, 
+                    "following": false, 
+                    "follow_request_sent": false, 
+                    "notifications": false
+                }, 
+                "geo": null, 
+                "coordinates": null, 
+                "place": null, 
+                "contributors": null, 
+                "retweet_count": 1, 
+                "favorite_count": 0, 
+                "entities": {
+                    "hashtags": [ ], 
+                    "symbols": [ ], 
+                    "urls": [
+                        {
+                            "url": "http://t.co/9PadtcQJfG", 
+                            "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                            "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                            "indices": [
+                                50, 
+                                72
+                            ]
+                        }
+                    ], 
+                    "user_mentions": [
+                        {
+                            "screen_name": "twitterapi", 
+                            "name": "Twitter API", 
+                            "id": 6253282, 
+                            "id_str": "6253282", 
+                            "indices": [
+                                83, 
+                                94
+                            ]
+                        }
+                    ]
+                }, 
+                "favorited": false, 
+                "retweeted": false, 
+                "possibly_sensitive": false, 
+                "lang": "tl"
+            }, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/9PadtcQJfG", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            65, 
+                            87
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "lemmejoin", 
+                        "name": "Liz[]", 
+                        "id": 282627078, 
+                        "id_str": "282627078", 
+                        "indices": [
+                            3, 
+                            13
+                        ]
+                    }, 
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            98, 
+                            109
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "tl"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "tl"
+            }, 
+            "created_at": "Sat Jul 13 13:49:18 +0000 2013", 
+            "id": 356047686283173900, 
+            "id_str": "356047686283173889", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/9PadtcQJfG с помощью @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 282627078, 
+                "id_str": "282627078", 
+                "name": "Liz[]", 
+                "screen_name": "lemmejoin", 
+                "location": "Ukraine", 
+                "description": "18.03.2013", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 515, 
+                "friends_count": 513, 
+                "listed_count": 4, 
+                "created_at": "Fri Apr 15 15:40:02 +0000 2011", 
+                "favourites_count": 3281, 
+                "utc_offset": -36000, 
+                "time_zone": "Hawaii", 
+                "geo_enabled": true, 
+                "verified": false, 
+                "statuses_count": 16452, 
+                "lang": "ru", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "EBEBEB", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/864113135/61d9b5008753ed051b3f60a1d4e47ebb.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/864113135/61d9b5008753ed051b3f60a1d4e47ebb.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3739162815/aa7d0dd0e410c8f4ee80ee8c7a5bd580_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3739162815/aa7d0dd0e410c8f4ee80ee8c7a5bd580_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/282627078/1373180158", 
+                "profile_link_color": "990000", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/9PadtcQJfG", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            83, 
+                            94
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "tl"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:49:01 +0000 2013", 
+            "id": 356047615151976450, 
+            "id_str": "356047615151976448", 
+            "text": "Pat McCrory says he will sign House abortion bill #NCGov #GOPwaronwomen http://t.co/Eqs9rQ4l8X via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 48151078, 
+                "id_str": "48151078", 
+                "name": "StateHouseRock", 
+                "screen_name": "StateHouseRock", 
+                "location": "Washington DC", 
+                "description": "Following the 2009-2010 Gubernatorial Races", 
+                "url": "http://t.co/E6WmRxXWR7", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/E6WmRxXWR7", 
+                                "expanded_url": "http://StateHouseRock.com", 
+                                "display_url": "StateHouseRock.com", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 343, 
+                "friends_count": 209, 
+                "listed_count": 13, 
+                "created_at": "Wed Jun 17 22:55:18 +0000 2009", 
+                "favourites_count": 2271, 
+                "utc_offset": -18000, 
+                "time_zone": "Eastern Time (US & Canada)", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 5008, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "642D8B", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/347982681/colorado-state-capitol.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/347982681/colorado-state-capitol.jpg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/267938851/statehouse004_normal.jpg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/267938851/statehouse004_normal.jpg", 
+                "profile_link_color": "991616", 
+                "profile_sidebar_border_color": "65B0DA", 
+                "profile_sidebar_fill_color": "7AC3EE", 
+                "profile_text_color": "8542B8", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [
+                    {
+                        "text": "NCGov", 
+                        "indices": [
+                            50, 
+                            56
+                        ]
+                    }, 
+                    {
+                        "text": "GOPwaronwomen", 
+                        "indices": [
+                            57, 
+                            71
+                        ]
+                    }
+                ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/Eqs9rQ4l8X", 
+                        "expanded_url": "http://www.newsobserver.com/2013/07/12/3025869/mccrory-will-sign-house-abortion.html#emlnl=Politics", 
+                        "display_url": "newsobserver.com/2013/07/12/302…", 
+                        "indices": [
+                            72, 
+                            94
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            99, 
+                            110
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:47:22 +0000 2013", 
+            "id": 356047200129777660, 
+            "id_str": "356047200129777666", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/IAstPTUBcE via @twitterapi", 
+            "source": "<a href=\"http://www.echofon.com/\" rel=\"nofollow\">Echofon</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 204242108, 
+                "id_str": "204242108", 
+                "name": "precious", 
+                "screen_name": "gugugagah129", 
+                "location": "ph", 
+                "description": "My sweet sexy dork is my life!!:)", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 997, 
+                "friends_count": 996, 
+                "listed_count": 12, 
+                "created_at": "Mon Oct 18 07:59:55 +0000 2010", 
+                "favourites_count": 1187, 
+                "utc_offset": 28800, 
+                "time_zone": "Hong Kong", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 30820, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "B89AA7", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/730010903/f2b8ba1f9bb869351226449ce09637d7.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/730010903/f2b8ba1f9bb869351226449ce09637d7.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/2163902369/adam_logo_normal.jpg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/2163902369/adam_logo_normal.jpg", 
+                "profile_link_color": "852255", 
+                "profile_sidebar_border_color": "000000", 
+                "profile_sidebar_fill_color": "14070E", 
+                "profile_text_color": "8F787E", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/IAstPTUBcE", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:47:02 +0000 2013", 
+            "id": 356047118475075600, 
+            "id_str": "356047118475075585", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/VsZkKP6rTT via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 109624436, 
+                "id_str": "109624436", 
+                "name": "jonina sig", 
+                "screen_name": "jona5555", 
+                "location": "Iceland", 
+                "description": "I've been on twitter since 2009 to support Adam Lambert - He colors and lights up the life (I cannot help but love him) ♥♥♥♥♥ (ツ)", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 680, 
+                "friends_count": 844, 
+                "listed_count": 30, 
+                "created_at": "Fri Jan 29 18:05:42 +0000 2010", 
+                "favourites_count": 229, 
+                "utc_offset": 0, 
+                "time_zone": "London", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 27737, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/335523915/bak_a_twitt.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/335523915/bak_a_twitt.jpg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/2737023567/4795baad9dbfe54b88dcf8b4e021a4af_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/2737023567/4795baad9dbfe54b88dcf8b4e021a4af_normal.jpeg", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "C0DEED", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/VsZkKP6rTT", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": true, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:45:43 +0000 2013", 
+            "id": 356046786282012700, 
+            "id_str": "356046786282012675", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/3gDv1ZdUo8 via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 48688255, 
+                "id_str": "48688255", 
+                "name": "Adamisalamb", 
+                "screen_name": "adamisalamb", 
+                "location": "South Carolina", 
+                "description": "Down the rabbit hole following amazing, sexy Adam F Lambert. I try to be positive, tend to be naughty, sometimes I curse. Hardcore Berting zone-get into it!", 
+                "url": "http://t.co/eeqXZ6i1qm", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/eeqXZ6i1qm", 
+                                "expanded_url": "http://ht.ly/2sE1z", 
+                                "display_url": "ht.ly/2sE1z", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 890, 
+                "friends_count": 625, 
+                "listed_count": 50, 
+                "created_at": "Fri Jun 19 12:10:32 +0000 2009", 
+                "favourites_count": 184, 
+                "utc_offset": -18000, 
+                "time_zone": "Eastern Time (US & Canada)", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 53402, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "642D8B", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/348345455/advocate.jpg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/348345455/advocate.jpg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000049365388/bad3fccf32c85f944ca56996dc176805_normal.png", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000049365388/bad3fccf32c85f944ca56996dc176805_normal.png", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/48688255/1369441477", 
+                "profile_link_color": "FF0000", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "7AC3EE", 
+                "profile_text_color": "3D1957", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/3gDv1ZdUo8", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:45:32 +0000 2013", 
+            "id": 356046742023712800, 
+            "id_str": "356046742023712769", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/fUQ5D0CZSK via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 448807164, 
+                "id_str": "448807164", 
+                "name": "Crystal Day", 
+                "screen_name": "got2btrue2u", 
+                "location": "", 
+                "description": "Adam Lambert Lover! I am only on Twitter because of Adam Lambert! I love Adam Lambert pictures! 
+I love posting new pics of Adam! I love all my followers!", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 909, 
+                "friends_count": 861, 
+                "listed_count": 19, 
+                "created_at": "Wed Dec 28 11:45:27 +0000 2011", 
+                "favourites_count": 979, 
+                "utc_offset": -14400, 
+                "time_zone": "Atlantic Time (Canada)", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 28947, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/664543757/058ef4c45a3962a43f466555aca1c969.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/664543757/058ef4c45a3962a43f466555aca1c969.jpeg", 
+                "profile_background_tile": true, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000100736522/fa0b11f5d49da5da98eff413aa2a29d6_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000100736522/fa0b11f5d49da5da98eff413aa2a29d6_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/448807164/1348144751", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "FFFFFF", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 1, 
+            "favorite_count": 1, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/fUQ5D0CZSK", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:44:24 +0000 2013", 
+            "id": 356046456844595200, 
+            "id_str": "356046456844595200", 
+            "text": "Adam Lambert ditches his record label: Pressparty http://t.co/zyVhiTqG5E via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 90594452, 
+                "id_str": "90594452", 
+                "name": "Gelly ", 
+                "screen_name": "14gelly", 
+                "location": "Thessaloniki,GREECE", 
+                "description": "Can't live without music.I love Adam Lambert.
+I'm a shaman on a ship to the moon. Turn it up and let the liberation burn!", 
+                "url": null, 
+                "entities": {
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 1552, 
+                "friends_count": 345, 
+                "listed_count": 38, 
+                "created_at": "Tue Nov 17 09:10:10 +0000 2009", 
+                "favourites_count": 3391, 
+                "utc_offset": 7200, 
+                "time_zone": "Athens", 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 82157, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "0099B9", 
+                "profile_background_image_url": "http://a0.twimg.com/profile_background_images/576719426/ydybw5rvob1y961asv2i.jpeg", 
+                "profile_background_image_url_https": "https://si0.twimg.com/profile_background_images/576719426/ydybw5rvob1y961asv2i.jpeg", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/3453331093/b904a98a20a73bed5d6f42d5cbebcf76_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/3453331093/b904a98a20a73bed5d6f42d5cbebcf76_normal.jpeg", 
+                "profile_banner_url": "https://pbs.twimg.com/profile_banners/90594452/1355333298", 
+                "profile_link_color": "0099B9", 
+                "profile_sidebar_border_color": "5ED4DC", 
+                "profile_sidebar_fill_color": "95E8EC", 
+                "profile_text_color": "3C3940", 
+                "profile_use_background_image": true, 
+                "default_profile": false, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/zyVhiTqG5E", 
+                        "expanded_url": "http://www.pressparty.com/pg/newsdesk/adamlambert/view/81281/", 
+                        "display_url": "pressparty.com/pg/newsdesk/ad…", 
+                        "indices": [
+                            50, 
+                            72
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            77, 
+                            88
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:43:49 +0000 2013", 
+            "id": 356046307758055400, 
+            "id_str": "356046307758055426", 
+            "text": "Woman rescued after her boat flips on Mississippi River | Metro-east news | News Democrat http://t.co/oWrxUclUSA via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 1548696648, 
+                "id_str": "1548696648", 
+                "name": "MetroEastLife", 
+                "screen_name": "MetroEastLife", 
+                "location": "", 
+                "description": "Life on the EAST SIDE of the Mississippi: Columbia | Belleville | Collinsville | Edwardsville | Alton and Everywhere In-Between", 
+                "url": "http://t.co/MX9kOU4SbU", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/MX9kOU4SbU", 
+                                "expanded_url": "http://www.metroeastlife.com", 
+                                "display_url": "metroeastlife.com", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 18, 
+                "friends_count": 143, 
+                "listed_count": 0, 
+                "created_at": "Wed Jun 26 17:38:01 +0000 2013", 
+                "favourites_count": 3, 
+                "utc_offset": null, 
+                "time_zone": null, 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 223, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000049773276/37ee8760bec063d8c7eb04c5b5219aa9_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000049773276/37ee8760bec063d8c7eb04c5b5219aa9_normal.jpeg", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "C0DEED", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": true, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/oWrxUclUSA", 
+                        "expanded_url": "http://www.bnd.com/2013/07/12/2691433/off-the-beat-woman-rescued-after.html", 
+                        "display_url": "bnd.com/2013/07/12/269…", 
+                        "indices": [
+                            90, 
+                            112
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            117, 
+                            128
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }, 
+        {
+            "metadata": {
+                "result_type": "recent", 
+                "iso_language_code": "en"
+            }, 
+            "created_at": "Sat Jul 13 13:43:24 +0000 2013", 
+            "id": 356046203101790200, 
+            "id_str": "356046203101790208", 
+            "text": "Gas prices jump 40 cents; more to come? | Metro-east news | News Democrat http://t.co/T3ggKoRQLT via @twitterapi", 
+            "source": "<a href=\"http://twitter.com/tweetbutton\" rel=\"nofollow\">Tweet Button</a>", 
+            "truncated": false, 
+            "in_reply_to_status_id": null, 
+            "in_reply_to_status_id_str": null, 
+            "in_reply_to_user_id": null, 
+            "in_reply_to_user_id_str": null, 
+            "in_reply_to_screen_name": null, 
+            "user": {
+                "id": 1548696648, 
+                "id_str": "1548696648", 
+                "name": "MetroEastLife", 
+                "screen_name": "MetroEastLife", 
+                "location": "", 
+                "description": "Life on the EAST SIDE of the Mississippi: Columbia | Belleville | Collinsville | Edwardsville | Alton and Everywhere In-Between", 
+                "url": "http://t.co/MX9kOU4SbU", 
+                "entities": {
+                    "url": {
+                        "urls": [
+                            {
+                                "url": "http://t.co/MX9kOU4SbU", 
+                                "expanded_url": "http://www.metroeastlife.com", 
+                                "display_url": "metroeastlife.com", 
+                                "indices": [
+                                    0, 
+                                    22
+                                ]
+                            }
+                        ]
+                    }, 
+                    "description": {
+                        "urls": [ ]
+                    }
+                }, 
+                "protected": false, 
+                "followers_count": 18, 
+                "friends_count": 143, 
+                "listed_count": 0, 
+                "created_at": "Wed Jun 26 17:38:01 +0000 2013", 
+                "favourites_count": 3, 
+                "utc_offset": null, 
+                "time_zone": null, 
+                "geo_enabled": false, 
+                "verified": false, 
+                "statuses_count": 223, 
+                "lang": "en", 
+                "contributors_enabled": false, 
+                "is_translator": false, 
+                "profile_background_color": "C0DEED", 
+                "profile_background_image_url": "http://a0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_image_url_https": "https://si0.twimg.com/images/themes/theme1/bg.png", 
+                "profile_background_tile": false, 
+                "profile_image_url": "http://a0.twimg.com/profile_images/378800000049773276/37ee8760bec063d8c7eb04c5b5219aa9_normal.jpeg", 
+                "profile_image_url_https": "https://si0.twimg.com/profile_images/378800000049773276/37ee8760bec063d8c7eb04c5b5219aa9_normal.jpeg", 
+                "profile_link_color": "0084B4", 
+                "profile_sidebar_border_color": "C0DEED", 
+                "profile_sidebar_fill_color": "DDEEF6", 
+                "profile_text_color": "333333", 
+                "profile_use_background_image": true, 
+                "default_profile": true, 
+                "default_profile_image": false, 
+                "following": false, 
+                "follow_request_sent": false, 
+                "notifications": false
+            }, 
+            "geo": null, 
+            "coordinates": null, 
+            "place": null, 
+            "contributors": null, 
+            "retweet_count": 0, 
+            "favorite_count": 0, 
+            "entities": {
+                "hashtags": [ ], 
+                "symbols": [ ], 
+                "urls": [
+                    {
+                        "url": "http://t.co/T3ggKoRQLT", 
+                        "expanded_url": "http://www.bnd.com/2013/07/12/2691456/gas-priced-jump-40-cents-in-the.html", 
+                        "display_url": "bnd.com/2013/07/12/269…", 
+                        "indices": [
+                            74, 
+                            96
+                        ]
+                    }
+                ], 
+                "user_mentions": [
+                    {
+                        "screen_name": "twitterapi", 
+                        "name": "Twitter API", 
+                        "id": 6253282, 
+                        "id_str": "6253282", 
+                        "indices": [
+                            101, 
+                            112
+                        ]
+                    }
+                ]
+            }, 
+            "favorited": false, 
+            "retweeted": false, 
+            "possibly_sensitive": false, 
+            "lang": "en"
+        }
+    ], 
+    "search_metadata": {
+        "completed_in": 0.018, 
+        "max_id": 356048412560461800, 
+        "max_id_str": "356048412560461825", 
+        "next_results": "?max_id=356046203101790207&q=%40twitterapi&include_entities=1", 
+        "query": "%40twitterapi", 
+        "refresh_url": "?since_id=356048412560461825&q=%40twitterapi&include_entities=1", 
+        "count": 15, 
+        "since_id": 0, 
+        "since_id_str": "0"
+    }
+}

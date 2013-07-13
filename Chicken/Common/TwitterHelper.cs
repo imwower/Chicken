@@ -176,14 +176,10 @@ namespace Chicken.Common
         {
             StringBuilder sb = new StringBuilder(App.Settings.APISettings.Url).Append(action);
             if (parameters == null || parameters.Count == 0)
-            {
                 return sb.ToString();
-            }
             sb.Append("?");
             foreach (var item in parameters)
-            {
                 sb.Append(item.Key).Append("=").Append(HttpUtility.UrlEncode(item.Value.ToString())).Append("&");
-            }
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
@@ -214,9 +210,7 @@ namespace Chicken.Common
         public static IDictionary<string, object> GetDictionary(IDictionary<string, object> parameters = null)
         {
             if (parameters == null || parameters.Count == 0)
-            {
                 parameters = new Dictionary<string, object>();
-            }
             return parameters;
         }
 
