@@ -547,6 +547,24 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 推文 的本地化字符串。
+        /// </summary>
+        public static string SearchPage_SearchForTweets_Header {
+            get {
+                return ResourceManager.GetString("SearchPage_SearchForTweets_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户 的本地化字符串。
+        /// </summary>
+        public static string SearchPage_SearchForUsers_Header {
+            get {
+                return ResourceManager.GetString("SearchPage_SearchForUsers_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 关于 的本地化字符串。
         /// </summary>
         public static string SettingsPage_About_Header {
@@ -741,6 +759,15 @@ namespace Chicken.Resources {
         public static string Toast_Msg_NoNewTweets {
             get {
                 return ResourceManager.GetString("Toast_Msg_NoNewTweets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有推文搜索结果 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_NoSearchTweetResults {
+            get {
+                return ResourceManager.GetString("Toast_Msg_NoSearchTweetResults", resourceCulture);
             }
         }
         

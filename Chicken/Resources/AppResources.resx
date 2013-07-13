@@ -372,4 +372,13 @@
   <data name="Msg_ConfirmToExit" xml:space="preserve">
     <value>确定退出嘛?</value>
   </data>
+  <data name="SearchPage_SearchForTweets_Header" xml:space="preserve">
+    <value>推文</value>
+  </data>
+  <data name="Toast_Msg_NoSearchTweetResults" xml:space="preserve">
+    <value>没有推文搜索结果</value>
+  </data>
+  <data name="SearchPage_SearchForUsers_Header" xml:space="preserve">
+    <value>用户</value>
+  </data>
 </root>

@@ -372,4 +372,13 @@
   <data name="Msg_ConfirmToExit" xml:space="preserve">
     <value>are you sure to exit?</value>
   </data>
+  <data name="SearchPage_SearchForTweets_Header" xml:space="preserve">
+    <value>Tweets</value>
+  </data>
+  <data name="Toast_Msg_NoSearchTweetResults" xml:space="preserve">
+    <value>no search results</value>
+  </data>
+  <data name="SearchPage_SearchForUsers_Header" xml:space="preserve">
+    <value>Users</value>
+  </data>
 </root>

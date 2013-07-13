@@ -24,9 +24,20 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <controls:Pivot x:Name="MainPivot" Grid.Row="0">
-
+            <!--search for tweets-->
+            <ctrls:HomePivotItem
+                DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[SearchPage_SearchForTweets_Header]}"
+                ListBoxItems="{Binding TweetList}"
+                ListBoxItemTemplate="{StaticResource TweetTemplate}" />
+            <!--search for users-->
+            <ctrls:HomePivotItem
+                DataContext="{Binding DataContext.PivotItems[1],ElementName=MainPivot}"
+                Header="{Binding Source={StaticResource LanguageHelper}, Path=[SearchPage_SearchForUsers_Header]}"
+                ListBoxItems="{Binding UserList}"
+                ListBoxItemTemplate="{StaticResource FriendTemplate}" />
+            <TextBox x:Name="SearchBox" Grid.Row="1" />
         </controls:Pivot>
-        <TextBox x:Name="SearchBox" Grid.Row="1" />
     </Grid>
 
 </v:PivotPageBase>
