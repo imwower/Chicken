@@ -24,10 +24,8 @@ namespace Chicken.ViewModel
 
         public bool CanExecute(object parameter)
         {
-            if (this.CanExecuteFunc == null)
-            {
-                return true;
-            }
+            if (this.CanExecuteFunc == null)            
+                return true;            
             return this.CanExecuteFunc(parameter);
         }
 
@@ -35,10 +33,8 @@ namespace Chicken.ViewModel
 
         public void Execute(object parameter)
         {
-            if (this.ExecuteAction == null)
-            {
-                return;
-            }
+            if (this.ExecuteAction == null)            
+                return;            
             this.ExecuteAction(parameter);
         }
     }

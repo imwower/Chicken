@@ -65,7 +65,7 @@ namespace Chicken.ViewModel.Home
 
         private void SearchAction()
         {
-            //TODO: search
+            (PivotItems[SelectedIndex] as HomeViewModelBase).Search();
         }
 
         private void MyProfileAction()
