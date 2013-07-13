@@ -49,7 +49,12 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                 </Grid.RowDefinitions>
-                                <Grid Grid.Row="1" VerticalAlignment="Top">
+                                <!--profile banner-->
+                                <ctrls:ImageContainer Grid.Row="1" Margin="0,0,0,6" Opacity="0.6"
+                                                      ImageUrl="{Binding UserProfile.UserProfileBannerImageWeb}"
+                                                      IsVisible="True"
+                                                      Visibility="{Binding IsInited, Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}" />
+                                <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="124" />
                                         <RowDefinition Height="Auto" />
