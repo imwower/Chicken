@@ -22,9 +22,7 @@ namespace Chicken.View
             toastmessage = message;
             prompt.Message = toastmessage.Message;
             if (message.Complete != null)
-            {
                 prompt.Completed += prompt_Completed;
-            }
             prompt.Show();
         }
 
@@ -33,7 +31,6 @@ namespace Chicken.View
             toastmessage.Complete();
             toastmessage.Complete = null;
             toastmessage = null;
-            prompt.Completed -= prompt_Completed;
         }
 
         protected virtual void Page_OnBackKeyPress(object sender, CancelEventArgs e)

@@ -1,4 +1,4 @@
-﻿ ﻿<v:PivotPageBase
+﻿<v:PivotPageBase
     x:Class="Chicken.View.SearchPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -20,10 +20,13 @@
 
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:Pivot x:Name="MainPivot" Grid.Row="0">
+        <TextBox x:Name="SearchBox" Grid.Row="0"
+                 Text="{Binding SearchQuery,Mode=TwoWay}"
+                 TextChanged="SearchBox_TextChanged" MaxLength="1000" />
+        <controls:Pivot x:Name="MainPivot" Grid.Row="1">
             <!--search for tweets-->
             <ctrls:HomePivotItem
                 DataContext="{Binding DataContext.PivotItems[0],ElementName=MainPivot}"
@@ -36,9 +39,6 @@
                 Header="{Binding Source={StaticResource LanguageHelper}, Path=[SearchPage_SearchForUsers_Header]}"
                 ListBoxItems="{Binding UserList}"
                 ListBoxItemTemplate="{StaticResource FriendTemplate}" />
-            <TextBox x:Name="SearchBox" Grid.Row="1"
-                     Text="{Binding SearchQuery,Mode=TwoWay}"
-                     TextChanged="SearchBox_TextChanged" MaxLength="1000" />
         </controls:Pivot>
     </Grid>
 
