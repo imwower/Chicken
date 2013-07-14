@@ -88,12 +88,18 @@ namespace Chicken.View
         private void KeyboardAction()
         {
             this.Emotions.Visibility = Visibility.Collapsed;
-            this.UpdateLayout();
             this.TextContent.Focus();
         }
         #endregion
 
         #region user name
+        private void UserName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
+            binding.UpdateSource();
+        }
+
         private void UserName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -101,13 +107,6 @@ namespace Chicken.View
                 this.TextContent.Focus();
                 newMessageViewModel.ValidateUser();
             }
-        }
-
-        private void UserName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
-            binding.UpdateSource();
         }
         #endregion
     }

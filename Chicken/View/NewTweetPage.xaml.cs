@@ -5,8 +5,8 @@ using System.Windows.Navigation;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.ViewModel.NewTweet;
 using Chicken.ViewModel;
+using Chicken.ViewModel.NewTweet;
 
 namespace Chicken.View
 {
@@ -163,7 +163,6 @@ namespace Chicken.View
         private void KeyboardAction()
         {
             this.Emotions.Visibility = Visibility.Collapsed;
-            this.UpdateLayout();
             this.TextContent.Focus();
         }
         #endregion

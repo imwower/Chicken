@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using Chicken.Service;
 
@@ -6,6 +7,7 @@ namespace Chicken.Controls
 {
     public partial class EmotionPanel : UserControl
     {
+        #region properties
         private bool isInit;
         public bool IsInit
         {
@@ -14,8 +16,8 @@ namespace Chicken.Controls
                 return isInit;
             }
         }
-        public delegate void AddEmotionEventHandler(string emotion);
-        public AddEmotionEventHandler AddEmotion;
+        public Action<string> AddEmotion;
+        #endregion
 
         public EmotionPanel()
         {
@@ -25,17 +27,14 @@ namespace Chicken.Controls
         public void Init()
         {
             if (isInit)
-            {
                 return;
-            }
             var emotions = IsolatedStorageService.GetEmotions();
             foreach (var emotion in emotions)
             {
-                Button button = new Button { Content = emotion };
-                button.Click += new RoutedEventHandler(EmotionButton_Click);
+                var button = new Button { Content = emotion };
+                button.Click += EmotionButton_Click;
                 this.LayoutRoot.Children.Add(button);
             }
-            this.UpdateLayout();
             isInit = true;
         }
 
