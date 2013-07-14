@@ -45,7 +45,7 @@
     </Grid>
 
     <i:Interaction.Triggers>
-        <abu:StateChangedTrigger State="0">
+        <abu:StateChangedTrigger State="{Binding State}">
             <abu:SwitchAppBarAction>
                 <!--default-->
                 <abu:AppBar Id="0" Mode="Minimized">

@@ -53,11 +53,6 @@
         public const string DESCRIPTION = "description";
         //search page
         public const string SEARCH_QUERY = "q";
-        /// <summary>
-        /// why tweet use rpp as param
-        /// instead of count?
-        /// </summary>
-        public const string RESULT_PER_PAGE = "rpp";
         public const string PAGE = "page";
         #endregion
 

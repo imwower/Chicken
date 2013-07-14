@@ -32,7 +32,7 @@ namespace Chicken.ViewModel.Search.VM
         private void RefreshAction()
         {
             #region check
-            if (!CheckAndGetSearchQuery() || page != 1)
+            if (!CheckAndGetSearchQuery())
                 return;
             #endregion
             #region request

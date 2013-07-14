@@ -93,32 +93,36 @@ namespace Chicken.ViewModel.Search.VM
             TweetService.SearchForTweets(SearchQuery,
                 result =>
                 {
-                    if (!result.HasError)
+                    #region handle error
+                    if (result.HasError)
                     {
-                        #region no search result
-                        if (result.Statuses == null || result.Statuses.Count == 0)
-                        {
-                            App.HandleMessage(new ToastMessage
-                            {
-                                Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchTweetResults", SearchQuery),
-                            });
-                        }
-                        #endregion
-                        #region add
-                        else
-                        {
-#if !LOCAL
-                            if (maxId == result.Statuses[0].Id)
-                                result.Statuses.RemoveAt(0);
-#endif
-                            for (int i = result.Statuses.Count - 1; i >= 0; i--)
-                            {
-                                TweetList.Add(new TweetViewModel(result.Statuses[i]));
-                            }
-                        }
-                        #endregion
+                        base.Loaded();
+                        return;
                     }
-                    base.Refreshed();
+                    #endregion
+                    #region add
+                    if (result.Statuses != null && result.Statuses.Count != 0)
+                    {
+#if !LOCAL
+                        if (maxId == result.Statuses[0].Id)
+                            result.Statuses.RemoveAt(0);
+#endif
+                        if (result.Statuses.Count != 0)
+                        {
+                            for (int i = result.Statuses.Count - 1; i >= 0; i--)
+                                TweetList.Add(new TweetViewModel(result.Statuses[i]));
+                            base.Loaded();
+                            return;
+                        }
+                    }
+                    #endregion
+                    #region no more results
+                    App.HandleMessage(new ToastMessage
+                    {
+                        Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchTweetResults", SearchQuery)
+                    });
+                    base.Loaded();
+                    #endregion
                 }, parameters);
             #endregion
         }

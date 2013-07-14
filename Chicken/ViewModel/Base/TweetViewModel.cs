@@ -19,6 +19,7 @@ namespace Chicken.ViewModel.Base
             if (data.RetweetStatus != null)
             {
                 this.tweet = data.RetweetStatus;
+                this.tweet.Id = data.Id;
                 data.RetweetStatus = null;
                 this.originalTweet = new TweetViewModel(data);
             }

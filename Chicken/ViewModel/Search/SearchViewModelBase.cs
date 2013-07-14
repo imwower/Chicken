@@ -28,6 +28,13 @@ namespace Chicken.ViewModel.Search
                 base.Refreshed();
                 return false;
             }
+            if (SearchQuery != query)
+            {
+                if (TweetList != null)
+                    TweetList.Clear();
+                if (UserList != null)
+                    UserList.Clear();
+            }
             SearchQuery = query;
             return true;
         }
