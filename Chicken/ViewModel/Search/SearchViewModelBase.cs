@@ -22,12 +22,13 @@ namespace Chicken.ViewModel.Search
         #region protect method
         protected bool CheckAndGetSearchQuery()
         {
-            var searchQuery = IsolatedStorageService.GetObject<string>(Const.SearchPage);
-            if (string.IsNullOrEmpty(searchQuery) || searchQuery == SearchQuery)
+            var query = IsolatedStorageService.GetObject<string>(Const.SearchPage);
+            if (string.IsNullOrEmpty(query))
             {
                 base.Refreshed();
                 return false;
             }
+            SearchQuery = query;
             if (TweetList != null)
                 TweetList.Clear();
             return true;

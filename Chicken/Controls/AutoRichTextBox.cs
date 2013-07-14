@@ -123,7 +123,7 @@ namespace Chicken.Controls
                         case EntityType.UserMention:
                         case EntityType.HashTag:
                             hyperlink.CommandParameter = entity;
-                            hyperlink.Click += Hyperlink_Click;
+                            hyperlink.Click += textBox.Hyperlink_Click;
                             hyperlink.Inlines.Add(entity.Text);
                             break;
                         #endregion
@@ -161,11 +161,10 @@ namespace Chicken.Controls
             #endregion
         }
 
-        private static void Hyperlink_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             var hyperlink = sender as Hyperlink;
             var entity = hyperlink.CommandParameter as EntityBase;
-            hyperlink.Click -= Hyperlink_Click;
             switch (entity.EntityType)
             {
                 case EntityType.UserMention:
@@ -178,7 +177,9 @@ namespace Chicken.Controls
                     NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
                     break;
                 case EntityType.HashTag:
-                    NavigationServiceManager.NavigateTo(Const.SearchPage, entity.Text);
+                    var query = IsolatedStorageService.GetObject<string>(Const.SearchPage);
+                    if (entity.Text != query)
+                        NavigationServiceManager.NavigateTo(Const.SearchPage, entity.Text);
                     break;
             }
         }

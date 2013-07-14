@@ -39,6 +39,9 @@ namespace Chicken.ViewModel.Search
         {
             if (string.IsNullOrEmpty(SearchQuery))
                 return;
+            var query = IsolatedStorageService.GetObject<string>(Const.SearchPage);
+            if (SearchQuery == query)
+                return;
             IsolatedStorageService.CreateObject(Const.SearchPage, SearchQuery);
             (PivotItems[SelectedIndex] as SearchViewModelBase).Search();
         }

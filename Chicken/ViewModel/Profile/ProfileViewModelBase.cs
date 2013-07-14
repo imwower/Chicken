@@ -92,9 +92,7 @@ namespace Chicken.ViewModel.Profile
                 return false;
             }
             UserProfile = new UserProfileDetailViewModel(profile);
-            if (!profile.IsMyself &&
-                UserProfile.IsPrivate &&
-                !UserProfile.IsFollowing)
+            if (!profile.IsMyself && UserProfile.IsPrivate && !UserProfile.IsFollowing)
             {
                 App.HandleMessage(new ToastMessage
                 {

@@ -49,12 +49,12 @@ namespace Chicken.ViewModel.Home.VM
                         #region add
                         else
                         {
+#if !LOCAL
+                            if (sinceId == list[list.Count - 1].Id)
+                                list.RemoveAt(list.Count - 1);
+#endif
                             for (int i = list.Count - 1; i >= 0; i--)
                             {
-#if !LOCAL
-                                if (sinceId == list[i].Id)
-                                    continue;
-#endif
                                 TweetList.Insert(0, new TweetViewModel(list[i]));
                                 if (TweetList.Count >= Const.DEFAULT_COUNT_VALUE)
                                     TweetList.RemoveAt(TweetList.Count - 1);
@@ -97,11 +97,12 @@ namespace Chicken.ViewModel.Home.VM
                         #region add
                         else
                         {
+#if !LOCAL
+                            if (maxId == list[0].Id)
+                                list.RemoveAt(0);
+#endif
                             foreach (var tweet in list)
                             {
-#if !LOCAL
-                                if (maxId != tweet.Id)
-#endif
                                 TweetList.Add(new TweetViewModel(tweet));
                             }
                         }

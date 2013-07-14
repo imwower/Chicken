@@ -14,6 +14,7 @@ namespace Chicken.ViewModel.Status.VM
             LoadHandler = LoadAction;
         }
 
+        #region actions
         private void RefreshAction()
         {
             if (!CheckIfLoaded())
@@ -93,5 +94,6 @@ namespace Chicken.ViewModel.Status.VM
                     LoadUserProfiles(ids);
                 }, parameters);
         }
+        #endregion
     }
 }
