@@ -29,8 +29,6 @@ namespace Chicken.ViewModel.Search
                 return false;
             }
             SearchQuery = query;
-            if (TweetList != null)
-                TweetList.Clear();
             return true;
         }
         #endregion

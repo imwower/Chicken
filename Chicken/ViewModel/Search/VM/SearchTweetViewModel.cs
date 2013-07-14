@@ -17,6 +17,9 @@ namespace Chicken.ViewModel.Search.VM
         #region override
         public override void Search()
         {
+            if (IsLoading)
+                return;
+            IsLoading = true;
             RefreshAction();
         }
         #endregion

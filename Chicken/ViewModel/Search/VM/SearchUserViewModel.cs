@@ -21,6 +21,9 @@ namespace Chicken.ViewModel.Search.VM
         #region override
         public override void Search()
         {
+            if (IsLoading)
+                return;
+            IsLoading = true;
             RefreshAction();
         }
         #endregion
@@ -29,7 +32,7 @@ namespace Chicken.ViewModel.Search.VM
         private void RefreshAction()
         {
             #region check
-            if (!CheckAndGetSearchQuery())
+            if (!CheckAndGetSearchQuery() || page != 1)
                 return;
             #endregion
             #region request
@@ -53,6 +56,7 @@ namespace Chicken.ViewModel.Search.VM
                             UserList.Clear();
                             for (int i = userProfileList.Count - 1; i >= 0; i--)
                                 UserList.Insert(0, new UserProfileViewModel(userProfileList[i]));
+                            page += 1;
                         }
                         #endregion
                     }
@@ -87,8 +91,8 @@ namespace Chicken.ViewModel.Search.VM
                             });
                         }
                         #endregion
-                        else
                         #region add
+                        else
                         {
                             foreach (var profile in userProfileList)
                                 UserList.Add(new UserProfileViewModel(profile));
