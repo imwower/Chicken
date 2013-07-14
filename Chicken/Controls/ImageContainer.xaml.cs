@@ -122,11 +122,14 @@ namespace Chicken.Controls
                     try
                     {
                         Debug.WriteLine("set png image. length: {0}", data.Length);
-                        var png = new MemoryStream(data);
-                        png.Position = 0;
-                        var bitmapImage = new BitmapImage();
-                        bitmapImage.SetSource(png);
-                        this.PngImage.Source = bitmapImage;
+                        using (var memStream = new MemoryStream(data))
+                        {
+                            memStream.Position = 0;
+                            var bitmapImage = new BitmapImage();
+                            bitmapImage.SetSource(memStream);
+                            this.PngImage.Source = bitmapImage;
+                        }
+                        DownloadCompleted = true;
                     }
                     catch
                     {
@@ -141,9 +144,6 @@ namespace Chicken.Controls
                             else
                                 DisplayGifImage();
                         }
-                    }
-                    finally
-                    {
                         DownloadCompleted = true;
                     }
                     #endregion

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+
 namespace Chicken.Model.Entity
 {
     public class HashTag : EntityBase

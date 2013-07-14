@@ -165,6 +165,7 @@ namespace Chicken.Controls
         {
             var hyperlink = sender as Hyperlink;
             var entity = hyperlink.CommandParameter as EntityBase;
+            hyperlink.Click -= Hyperlink_Click;
             switch (entity.EntityType)
             {
                 case EntityType.UserMention:

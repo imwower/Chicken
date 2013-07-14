@@ -11,6 +11,7 @@ namespace Chicken.ViewModel.Search.VM
         {
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
+            LoadHandler = this.LoadAction;
         }
 
         #region override
@@ -70,6 +71,11 @@ namespace Chicken.ViewModel.Search.VM
                     base.Refreshed();
                 }, parameters);
             #endregion
+        }
+
+        private void LoadAction()
+        {
+
         }
         #endregion
     }

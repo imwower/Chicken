@@ -62,7 +62,7 @@ namespace Chicken.ViewModel
         }
         #endregion
 
-        #region services
+        #region service
         protected ITweetService TweetService = TweetServiceManager.TweetService;
         #endregion
 
