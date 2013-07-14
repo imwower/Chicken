@@ -1,8 +1,7 @@
-﻿using Chicken.Service;
-using Chicken.Service.Interface;
-using Chicken.ViewModel.Base;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using Chicken.Common;
+using Chicken.Model;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Search.VM
 {
@@ -39,19 +38,23 @@ namespace Chicken.ViewModel.Search.VM
                 {
                     if (!userProfileList.HasError)
                     {
+                        #region no search result
                         if (userProfileList.Count == 0)
                         {
-                            App.HandleMessage(new Model.ToastMessage
+                            App.HandleMessage(new ToastMessage
                             {
                                 Message = LanguageHelper.GetString("Toast_Msg_NoSearchUserResults", SearchQuery)
                             });
                         }
+                        #endregion
+                        #region add
                         else
                         {
                             UserList.Clear();
-                            foreach (var profile in userProfileList)
-                                UserList.Insert(0, new UserProfileViewModel(profile));
+                            for (int i = userProfileList.Count - 1; i >= 0; i--)
+                                UserList.Insert(0, new UserProfileViewModel(userProfileList[i]));
                         }
+                        #endregion
                     }
                     base.Refreshed();
                 });
@@ -60,9 +63,41 @@ namespace Chicken.ViewModel.Search.VM
 
         private void LoadAction()
         {
+            if (UserList.Count == 0)
+            {
+                base.Loaded();
+                return;
+            }
             #region parameters
             var parameters = TwitterHelper.GetDictionary();
             parameters.Add(Const.PAGE, page);
+            #endregion
+            #region request
+            TweetService.SearchForUsers(SearchQuery,
+                userProfileList =>
+                {
+                    if (!userProfileList.HasError)
+                    {
+                        #region no search results
+                        if (userProfileList.Count == 0)
+                        {
+                            App.HandleMessage(new ToastMessage
+                            {
+                                Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchUserResults", SearchQuery)
+                            });
+                        }
+                        #endregion
+                        else
+                        #region add
+                        {
+                            foreach (var profile in userProfileList)
+                                UserList.Add(new UserProfileViewModel(profile));
+                            page += 1;
+                        }
+                        #endregion
+                    }
+                    base.Loaded();
+                }, parameters);
             #endregion
         }
         #endregion

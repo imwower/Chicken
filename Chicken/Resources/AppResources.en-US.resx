@@ -384,4 +384,10 @@
   <data name="Toast_Msg_NoSearchUserResults" xml:space="preserve">
     <value>no user results for {0}</value>
   </data>
+  <data name="Toast_Msg_NoMoreSearchTweetResults" xml:space="preserve">
+    <value>no more tweet results for {0}</value>
+  </data>
+  <data name="Toast_Msg_NoMoreSearchUserResults" xml:space="preserve">
+    <value>no more user results for {0}</value>
+  </data>
 </root>

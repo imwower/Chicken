@@ -97,7 +97,7 @@ namespace Chicken.ViewModel.Search.VM
                         {
                             App.HandleMessage(new ToastMessage
                             {
-                                Message = LanguageHelper.GetString("Toast_Msg_NoSearchTweetResults"),
+                                Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchTweetResults", SearchQuery),
                             });
                         }
                         #endregion

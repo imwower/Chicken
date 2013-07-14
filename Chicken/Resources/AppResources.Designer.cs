@@ -727,6 +727,24 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 没有更多关于推文{0}的搜索结果了 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_NoMoreSearchTweetResults {
+            get {
+                return ResourceManager.GetString("Toast_Msg_NoMoreSearchTweetResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有更多关于用户(0}的搜索结果了 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_NoMoreSearchUserResults {
+            get {
+                return ResourceManager.GetString("Toast_Msg_NoMoreSearchUserResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 没有更多的推文了 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoMoreTweets {
@@ -763,7 +781,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 没有关于推文{0}的搜索结果 的本地化字符串。
+        ///   查找类似 还没有关于推文{0}的搜索结果呢 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoSearchTweetResults {
             get {
@@ -772,7 +790,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 没有关于用户{0}的搜索结果 的本地化字符串。
+        ///   查找类似 还没有没有关于用户{0}的搜索结果呢 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoSearchUserResults {
             get {

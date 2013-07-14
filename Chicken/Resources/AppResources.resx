@@ -376,12 +376,18 @@
     <value>推文</value>
   </data>
   <data name="Toast_Msg_NoSearchTweetResults" xml:space="preserve">
-    <value>没有关于推文{0}的搜索结果</value>
+    <value>还没有关于推文{0}的搜索结果呢</value>
   </data>
   <data name="SearchPage_SearchForUsers_Header" xml:space="preserve">
     <value>用户</value>
   </data>
   <data name="Toast_Msg_NoSearchUserResults" xml:space="preserve">
-    <value>没有关于用户{0}的搜索结果</value>
+    <value>还没有没有关于用户{0}的搜索结果呢</value>
+  </data>
+  <data name="Toast_Msg_NoMoreSearchTweetResults" xml:space="preserve">
+    <value>没有更多关于推文{0}的搜索结果了</value>
+  </data>
+  <data name="Toast_Msg_NoMoreSearchUserResults" xml:space="preserve">
+    <value>没有更多关于用户(0}的搜索结果了</value>
   </data>
 </root>
