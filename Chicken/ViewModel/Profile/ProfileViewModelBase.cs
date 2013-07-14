@@ -37,10 +37,6 @@ namespace Chicken.ViewModel.Profile
         #endregion
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public ProfileViewModelBase()
         {
             ClickHandler = this.ClickAction;

@@ -72,10 +72,6 @@ namespace Chicken.ViewModel.NewMessage
         }
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public NewMessageViewModel()
         {
             Title = LanguageHelper.GetString("NewMessagePage_Header");

@@ -3,6 +3,8 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Service;
+using Chicken.Service.Interface;
 
 namespace Chicken.ViewModel
 {
@@ -62,6 +64,10 @@ namespace Chicken.ViewModel
         }
         #endregion
 
+        #region services
+        protected ITweetService TweetService = TweetServiceManager.TweetService;
+        #endregion
+
         #region private
         BackgroundWorker worker = new BackgroundWorker();
         #endregion
@@ -80,22 +86,6 @@ namespace Chicken.ViewModel
             get
             {
                 return new DelegateCommand(Load);
-            }
-        }
-
-        public ICommand TopCommand
-        {
-            get
-            {
-                return new DelegateCommand(ScrollToTop);
-            }
-        }
-
-        public ICommand BottomCommand
-        {
-            get
-            {
-                return new DelegateCommand(ScrollToBottom);
             }
         }
 
@@ -124,8 +114,7 @@ namespace Chicken.ViewModel
         #region public method
         public void Load()
         {
-            if (LoadHandler == null
-                || worker.IsBusy)
+            if (LoadHandler == null || worker.IsBusy)
                 return;
             if (!isLoading)
                 IsLoading = true;
@@ -136,8 +125,7 @@ namespace Chicken.ViewModel
 
         public void Refresh()
         {
-            if (RefreshHandler == null
-                || worker.IsBusy)
+            if (RefreshHandler == null || worker.IsBusy)
                 return;
             if (!isLoading)
                 IsLoading = true;
@@ -162,24 +150,38 @@ namespace Chicken.ViewModel
             ScrollTo = ScrollTo.Bottom;
         }
 
+        /// <summary>
+        /// click action defalut is avatar click,
+        /// and navigate to profile page
+        /// </summary>
+        /// <param name="parameter"></param>
         public void Click(object parameter)
         {
-            if (ClickHandler == null)
-                return;
             if (worker.IsBusy)
                 worker.CancelAsync();
             IsLoading = false;
-            ClickHandler(parameter);
+            if (ClickHandler != null)
+                ClickHandler(parameter);
+            else
+                NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
         }
 
+        /// <summary>
+        /// item click action default is tweet click,
+        /// and navigate to status detail page.
+        /// in following/followers page,
+        /// should navigate to profile page.
+        /// </summary>
+        /// <param name="parameter"></param>
         public void ItemClick(object parameter)
         {
-            if (ItemClickHandler == null)
-                return;
             if (worker.IsBusy)
                 worker.CancelAsync();
             IsLoading = false;
-            ItemClickHandler(parameter);
+            if (ItemClickHandler != null)
+                ItemClickHandler(parameter);
+            else
+                NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
 

@@ -35,10 +35,6 @@ namespace Chicken.ViewModel.Profile
         }
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public EditMyProfileViewModel()
         {
             RefreshHandler = this.RefreshAction;

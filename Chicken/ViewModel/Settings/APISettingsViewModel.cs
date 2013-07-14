@@ -65,10 +65,6 @@ namespace Chicken.ViewModel.Settings
         }
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public APISettingsViewModel()
         {
             RefreshHandler = this.RefreshAction;

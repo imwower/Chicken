@@ -14,12 +14,6 @@ namespace Chicken.ViewModel.Search
         #endregion
 
         #region public method
-        public virtual void NewTweet()
-        {
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.NewTweetPage);
-        }
-
         public virtual void Search()
         {
         }

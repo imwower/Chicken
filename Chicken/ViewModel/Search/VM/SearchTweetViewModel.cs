@@ -9,10 +9,6 @@ namespace Chicken.ViewModel.Search.VM
 {
     public class SearchTweetViewModel : SearchViewModelBase
     {
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public SearchTweetViewModel()
         {
             TweetList = new ObservableCollection<TweetViewModel>();

@@ -43,10 +43,6 @@ namespace Chicken.ViewModel.Status
         }
         #endregion
 
-        #region services
-        public ITweetService TweetService = TweetServiceManager.TweetService;
-        #endregion
-
         public StatusViewModelBase()
         {
             ClickHandler = this.ClickAction;
