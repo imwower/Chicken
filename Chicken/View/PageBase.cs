@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Navigation;
@@ -13,26 +14,37 @@ namespace Chicken.View
     public class PageBase : PhoneApplicationPage
     {
         #region static property
-        private static ToastPrompt prompt = new ToastPrompt();
-        private static ToastMessage toastmessage;
+        private static ToastPrompt prompt;
+        private static Action promptComplete;
         #endregion
 
         public static void HandleMessage(ToastMessage message)
         {
-            toastmessage = message;
-            prompt.Message = toastmessage.Message;
+            if (prompt == null)
+                prompt = new ToastPrompt();
+            prompt.Message = message.Message;
             if (message.Complete != null)
+            {
+                promptComplete = message.Complete;
                 prompt.Completed += prompt_Completed;
+            }
             prompt.Show();
         }
 
+        #region private method
         private static void prompt_Completed(object sender, PopUpEventArgs<string, PopUpResult> e)
         {
-            toastmessage.Complete();
-            toastmessage.Complete = null;
-            toastmessage = null;
+            if (promptComplete != null)
+                promptComplete();
+            promptComplete = null;
+            prompt.Completed -= prompt_Completed;
         }
 
+        /// <summary>
+        /// for home page and api setting page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected virtual void Page_OnBackKeyPress(object sender, CancelEventArgs e)
         {
             int count = NavigationService.BackStack.Count();
@@ -47,6 +59,7 @@ namespace Chicken.View
                 e.Cancel = true;
             }
         }
+        #endregion
     }
 
     public class PivotPageBase : PageBase, INavigationService
