@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
@@ -12,10 +13,8 @@ namespace Chicken.ViewModel
     public class PivotItemViewModelBase : NotificationObject
     {
         #region event handler
-        protected delegate void LoadEventHandler();
-        protected delegate void ClickEventHandler(object parameter);
-        protected LoadEventHandler RefreshHandler;
-        protected LoadEventHandler LoadHandler;
+        protected Action RefreshHandler;
+        protected Action LoadHandler;
         #endregion
 
         #region properties

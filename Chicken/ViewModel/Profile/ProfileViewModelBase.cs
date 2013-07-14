@@ -83,7 +83,6 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region protected methods
-
         protected bool CheckIfFollowingPrivate()
         {
             var profile = IsolatedStorageService.GetObject<UserProfileDetail>(Const.ProfilePage_UserProfileDetail);
