@@ -271,12 +271,8 @@ namespace Chicken.Service.Implementation
         #region search page
         public void SearchForTweets(string searchQuery, Action<SearchTweetList> callBack, IDictionary<string, object> parameters)
         {
-            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters = CheckSinceIdAndMaxId(parameters);
             parameters.Add(Const.SEARCH_QUERY, searchQuery);
-            if (parameters.ContainsKey(Const.SINCE_ID) || parameters.ContainsKey(Const.MAX_ID))
-                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE_PLUS_ONE);
-            else
-                parameters.Add(Const.COUNT, Const.DEFAULT_COUNT_VALUE);
             string url = TwitterHelper.GenerateUrlParams(Const.SEARCH_FOR_TWEETS, parameters);
             HandleWebRequest<SearchTweetList>(url, callBack);
         }

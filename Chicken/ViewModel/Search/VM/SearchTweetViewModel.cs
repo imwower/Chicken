@@ -109,8 +109,8 @@ namespace Chicken.ViewModel.Search.VM
 #endif
                         if (result.Statuses.Count != 0)
                         {
-                            for (int i = result.Statuses.Count - 1; i >= 0; i--)
-                                TweetList.Add(new TweetViewModel(result.Statuses[i]));
+                            foreach (var tweet in result.Statuses)
+                                TweetList.Add(new TweetViewModel(tweet));
                             base.Loaded();
                             return;
                         }

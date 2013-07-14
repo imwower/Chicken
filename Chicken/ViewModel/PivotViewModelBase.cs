@@ -139,6 +139,7 @@ namespace Chicken.ViewModel
         private void SearchAction()
         {
             PivotItems[SelectedIndex].IsLoading = false;
+            IsolatedStorageService.GetAndDeleteObject<string>(Const.SearchPage);
             NavigationServiceManager.NavigateTo(Const.SearchPage);
         }
 
