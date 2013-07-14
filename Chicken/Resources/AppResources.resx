@@ -331,10 +331,10 @@
     <value>还没有新的转推呢</value>
   </data>
   <data name="Toast_Msg_NotFollowPrivateUser" xml:space="preserve">
-    <value>只有经过用户 {0} 确认的关注者才能查看其推文</value>
+    <value>只有经过用户{0}确认的关注者才能查看其推文</value>
   </data>
   <data name="Toast_Msg_NotFollowYou" xml:space="preserve">
-    <value>不能向没有关注你的用户 {0} 发送私信哟</value>
+    <value>不能向没有关注你的{0}发送私信哟</value>
   </data>
   <data name="Toast_Msg_RemoveFavoriteSuccessfully" xml:space="preserve">
     <value>成功取消收藏</value>
@@ -376,18 +376,18 @@
     <value>推文</value>
   </data>
   <data name="Toast_Msg_NoSearchTweetResults" xml:space="preserve">
-    <value>还没有关于推文 {0} 的搜索结果呢</value>
+    <value>还没有推文{0}的搜索结果呢</value>
   </data>
   <data name="SearchPage_SearchForUsers_Header" xml:space="preserve">
     <value>用户</value>
   </data>
   <data name="Toast_Msg_NoSearchUserResults" xml:space="preserve">
-    <value>还没有没有关于用户 {0} 的搜索结果呢</value>
+    <value>还没有用户{0}的搜索结果呢</value>
   </data>
   <data name="Toast_Msg_NoMoreSearchTweetResults" xml:space="preserve">
-    <value>没有更多关于推文 {0} 的搜索结果了</value>
+    <value>没有更多有关推文{0}的搜索结果了</value>
   </data>
   <data name="Toast_Msg_NoMoreSearchUserResults" xml:space="preserve">
-    <value>没有更多关于用户 (0} 的搜索结果了</value>
+    <value>没有更多有关用户(0}的搜索结果了</value>
   </data>
 </root>

@@ -727,7 +727,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 没有更多关于推文 {0} 的搜索结果了 的本地化字符串。
+        ///   查找类似 没有更多有关推文{0}的搜索结果了 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoMoreSearchTweetResults {
             get {
@@ -736,7 +736,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 没有更多关于用户 (0} 的搜索结果了 的本地化字符串。
+        ///   查找类似 没有更多有关用户(0}的搜索结果了 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoMoreSearchUserResults {
             get {
@@ -781,7 +781,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 还没有关于推文 {0} 的搜索结果呢 的本地化字符串。
+        ///   查找类似 还没有推文{0}的搜索结果呢 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoSearchTweetResults {
             get {
@@ -790,7 +790,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 还没有没有关于用户 {0} 的搜索结果呢 的本地化字符串。
+        ///   查找类似 还没有用户{0}的搜索结果呢 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoSearchUserResults {
             get {
@@ -799,7 +799,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 只有经过用户 {0} 确认的关注者才能查看其推文 的本地化字符串。
+        ///   查找类似 只有经过用户{0}确认的关注者才能查看其推文 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NotFollowPrivateUser {
             get {
@@ -808,7 +808,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 不能向没有关注你的用户 {0} 发送私信哟 的本地化字符串。
+        ///   查找类似 不能向没有关注你的{0}发送私信哟 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NotFollowYou {
             get {
