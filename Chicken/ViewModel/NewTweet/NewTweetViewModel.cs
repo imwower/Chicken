@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -8,10 +9,9 @@ namespace Chicken.ViewModel.NewTweet
     public class NewTweetViewModel : PivotItemViewModelBase
     {
         #region event handler
-        public delegate void AddEmotionEventHandler();
-        public AddEmotionEventHandler BeforeSendHandler;
-        public AddEmotionEventHandler AddEmotionHandler;
-        public AddEmotionEventHandler KeyboardHandler;
+        public Action BeforeSendHandler;
+        public Action AddEmotionHandler;
+        public Action KeyboardHandler;
         #endregion
 
         #region properties
