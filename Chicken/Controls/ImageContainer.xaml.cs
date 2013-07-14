@@ -36,18 +36,18 @@ namespace Chicken.Controls
             }
         }
 
-        public static readonly DependencyProperty UseDefaultImageProperty =
-            DependencyProperty.Register("UseDefaultImage", typeof(bool), typeof(ImageContainer), new PropertyMetadata(true));
+        public static readonly DependencyProperty DownloadCompletedProperty =
+            DependencyProperty.Register("DownloadCompleted", typeof(bool), typeof(ImageContainer), null);
 
-        public bool UseDefaultImage
+        public bool DownloadCompleted
         {
             get
             {
-                return (bool)GetValue(UseDefaultImageProperty);
+                return (bool)GetValue(DownloadCompletedProperty);
             }
             set
             {
-                SetValue(UseDefaultImageProperty, value);
+                SetValue(DownloadCompletedProperty, value);
             }
         }
 
@@ -89,8 +89,6 @@ namespace Chicken.Controls
 
         private void ShowImage()
         {
-            if (!UseDefaultImage)
-                this.PngImage.Source = null;
             if (!string.IsNullOrEmpty(ImageUrl))
                 ImageCacheService.SetImageStream(ImageUrl, SetImageSource);
         }
@@ -106,6 +104,7 @@ namespace Chicken.Controls
             this.PngImage.Source = null;
             decoder = null;
             this.PngImage.Source = defaultImage;
+            DownloadCompleted = false;
             Debug.WriteLine("clear image.");
         }
 
@@ -117,11 +116,7 @@ namespace Chicken.Controls
                     ClearImage();
                     #region clear
                     if (data == null)
-                    {
-                        //if (UseDefaultImage)
-                        //    this.PngImage.Source = defaultImage;
                         return;
-                    }
                     #endregion
                     #region set image source
                     try
@@ -146,6 +141,10 @@ namespace Chicken.Controls
                             else
                                 DisplayGifImage();
                         }
+                    }
+                    finally
+                    {
+                        DownloadCompleted = true;
                     }
                     #endregion
                 });
