@@ -56,7 +56,7 @@ namespace Chicken.ViewModel.Search.VM
                             UserList.Clear();
                             for (int i = userProfileList.Count - 1; i >= 0; i--)
                                 UserList.Insert(0, new UserProfileViewModel(userProfileList[i]));
-                            page += 1;
+                            page = 2;
                         }
                         #endregion
                     }
@@ -80,27 +80,35 @@ namespace Chicken.ViewModel.Search.VM
             TweetService.SearchForUsers(SearchQuery,
                 userProfileList =>
                 {
+                    #region handle error
                     if (!userProfileList.HasError)
                     {
-                        #region no search results
-                        if (userProfileList.Count == 0)
-                        {
-                            App.HandleMessage(new ToastMessage
-                            {
-                                Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchUserResults", SearchQuery)
-                            });
-                        }
-                        #endregion
-                        #region add
-                        else
+                        base.Loaded();
+                        return;
+                    }
+                    #endregion
+                    #region add
+                    if (userProfileList.Count != 0)
+                    {
+                        if (UserList[UserList.Count - 1].Id == userProfileList[0].Id)
+                            userProfileList.RemoveAt(0);
+                        if (userProfileList.Count != 0)
                         {
                             foreach (var profile in userProfileList)
                                 UserList.Add(new UserProfileViewModel(profile));
                             page += 1;
+                            base.Loaded();
+                            return;
                         }
-                        #endregion
                     }
+                    #endregion
+                    #region no more search results
+                    App.HandleMessage(new ToastMessage
+                    {
+                        Message = LanguageHelper.GetString("Toast_Msg_NoMoreSearchUserResults", SearchQuery)
+                    });
                     base.Loaded();
+                    #endregion
                 }, parameters);
             #endregion
         }

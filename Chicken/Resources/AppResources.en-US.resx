@@ -319,7 +319,7 @@
     <value>follow successfully</value>
   </data>
   <data name="Toast_Msg_HelloUser" xml:space="preserve">
-    <value>hello, {0}~</value>
+    <value>hi, {0}~</value>
   </data>
   <data name="Toast_Msg_MessageSentSuccessfully" xml:space="preserve">
     <value>message sent successfully</value>
@@ -331,7 +331,7 @@
     <value>no new retweets yet</value>
   </data>
   <data name="Toast_Msg_NotFollowPrivateUser" xml:space="preserve">
-    <value>only confirmed followers have access to {0}'s Tweets</value>
+    <value>only confirmed followers have access to user {0}'s tweets</value>
   </data>
   <data name="Toast_Msg_NotFollowYou" xml:space="preserve">
     <value>can't send message to {0} who not follow you</value>
