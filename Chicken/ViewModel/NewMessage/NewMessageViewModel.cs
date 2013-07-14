@@ -80,7 +80,6 @@ namespace Chicken.ViewModel.NewMessage
             newMessage = new NewMessageModel { User = new User() };
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
-            ClickHandler = this.ClickAction;
         }
 
         public void ValidateUser()
@@ -138,12 +137,6 @@ namespace Chicken.ViewModel.NewMessage
                 LoadHandler = null;
                 base.Loaded();
             }
-        }
-
-        private void ClickAction(object parameter)
-        {
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
         }
 
         protected override void SendAction()

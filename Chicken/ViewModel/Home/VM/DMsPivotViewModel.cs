@@ -25,7 +25,6 @@ namespace Chicken.ViewModel.Home.VM
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
-            ItemClickHandler = this.ItemClickAction;
         }
 
         #region action
@@ -52,14 +51,13 @@ namespace Chicken.ViewModel.Home.VM
             }
         }
 
-        private void ItemClickAction(object user)
+        public override void ItemClick(object parameter)
         {
-            IsLoading = false;
             var newMessage = new NewMessageModel
             {
-                User = user as User,
+                User = parameter as User,
             };
-            NavigationServiceManager.NavigateTo(Const.NewMessagePage, newMessage);
+            base.ItemClick(newMessage);
         }
         #endregion
 

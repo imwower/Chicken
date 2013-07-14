@@ -3,6 +3,7 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using Chicken.Common;
+using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Interface;
 
@@ -15,8 +16,6 @@ namespace Chicken.ViewModel
         protected delegate void ClickEventHandler(object parameter);
         protected LoadEventHandler RefreshHandler;
         protected LoadEventHandler LoadHandler;
-        protected ClickEventHandler ClickHandler;
-        protected ClickEventHandler ItemClickHandler;
         #endregion
 
         #region properties
@@ -152,34 +151,33 @@ namespace Chicken.ViewModel
 
         /// <summary>
         /// click action defalut is avatar click,
-        /// and navigate to profile page
+        /// and navigate to profile page. 
+        /// in profile page,
+        /// should do some other work
         /// </summary>
-        /// <param name="parameter"></param>
-        public void Click(object parameter)
+        /// <param name="user"></param>
+        public virtual void Click(object user)
         {
             if (worker.IsBusy)
                 worker.CancelAsync();
             IsLoading = false;
-            if (ClickHandler != null)
-                ClickHandler(parameter);
-            else
-                NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
+            NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
         }
 
         /// <summary>
         /// item click action default is tweet click,
         /// and navigate to status detail page.
-        /// in following/followers page,
-        /// should navigate to profile page.
+        /// in DMs pivot,
+        /// should navagate to new message page.
         /// </summary>
         /// <param name="parameter"></param>
-        public void ItemClick(object parameter)
+        public virtual void ItemClick(object parameter)
         {
             if (worker.IsBusy)
                 worker.CancelAsync();
             IsLoading = false;
-            if (ItemClickHandler != null)
-                ItemClickHandler(parameter);
+            if (parameter is NewMessageModel)
+                NavigationServiceManager.NavigateTo(Const.NewMessagePage, parameter);
             else
                 NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }

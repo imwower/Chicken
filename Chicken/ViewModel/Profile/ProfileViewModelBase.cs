@@ -38,7 +38,6 @@ namespace Chicken.ViewModel.Profile
 
         public ProfileViewModelBase()
         {
-            ClickHandler = this.ClickAction;
         }
 
         #region public method
@@ -68,14 +67,18 @@ namespace Chicken.ViewModel.Profile
         #endregion
 
         #region actions
-        private void ClickAction(object parameter)
+        /// <summary>
+        /// whether selected user is current user
+        /// </summary>
+        /// <param name="parameter"></param>
+        public override void Click(object user)
         {
             IsLoading = false;
-            var user = parameter as User;
-            if (UserProfile.Id == user.Id)
+            var selectedUser = (User)user;
+            if (UserProfile.Id == selectedUser.Id)
                 NavigationServiceManager.ChangeSelectedIndex((int)ProfilePageEnum.ProfileDetail);
             else
-                NavigationServiceManager.NavigateTo(Const.ProfilePage, user);
+                base.Click(selectedUser);
         }
         #endregion
 

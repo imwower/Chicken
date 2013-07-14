@@ -32,8 +32,6 @@ namespace Chicken.ViewModel.Status
 
         public StatusViewModelBase()
         {
-            ClickHandler = this.ClickAction;
-            ItemClickHandler = this.ItemClickAction;
         }
 
         #region public methods
@@ -125,20 +123,6 @@ namespace Chicken.ViewModel.Status
                     });
                     #endregion
                 });
-        }
-        #endregion
-
-        #region actions
-        private void ClickAction(object parameter)
-        {
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.ProfilePage, parameter);
-        }
-
-        private void ItemClickAction(object parameter)
-        {
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
 

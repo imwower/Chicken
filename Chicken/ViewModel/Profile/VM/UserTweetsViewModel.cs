@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Chicken.Common;
 using Chicken.Model;
-using Chicken.Service;
 using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Profile.VM
@@ -13,7 +12,6 @@ namespace Chicken.ViewModel.Profile.VM
             TweetList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
-            ItemClickHandler = this.ItemClickAction;
         }
 
         #region actions
@@ -108,12 +106,6 @@ namespace Chicken.ViewModel.Profile.VM
                     base.Loaded();
                 }, parameters);
 
-        }
-
-        private void ItemClickAction(object parameter)
-        {
-            IsLoading = false;
-            NavigationServiceManager.NavigateTo(Const.StatusPage, parameter);
         }
         #endregion
     }

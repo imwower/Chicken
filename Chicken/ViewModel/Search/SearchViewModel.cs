@@ -9,7 +9,19 @@ namespace Chicken.ViewModel.Search
     public class SearchViewModel : PivotViewModelBase
     {
         #region properties
-        public string SearchQuery { get; set; }
+        private string searchQuery;
+        public string SearchQuery
+        {
+            get
+            {
+                return searchQuery;
+            }
+            set
+            {
+                searchQuery = value;
+                RaisePropertyChanged("SearchQuery");
+            }
+        }
         #endregion
 
         public SearchViewModel()
@@ -29,6 +41,18 @@ namespace Chicken.ViewModel.Search
                 return;
             IsolatedStorageService.CreateObject(Const.SearchPage, SearchQuery);
             (PivotItems[SelectedIndex] as SearchViewModelBase).Search();
+        }
+        #endregion
+
+        #region override
+        public override void MainPivot_LoadedPivotItem()
+        {
+            if (!IsInit)
+            {
+                SearchQuery = IsolatedStorageService.GetObject<string>(Const.SearchPage);
+                IsInit = true;
+            }
+            base.MainPivot_LoadedPivotItem();
         }
         #endregion
     }
