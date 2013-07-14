@@ -376,9 +376,12 @@
     <value>Tweets</value>
   </data>
   <data name="Toast_Msg_NoSearchTweetResults" xml:space="preserve">
-    <value>no search results</value>
+    <value>no tweet results for {0}</value>
   </data>
   <data name="SearchPage_SearchForUsers_Header" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="Toast_Msg_NoSearchUserResults" xml:space="preserve">
+    <value>no user results for {0}</value>
   </data>
 </root>

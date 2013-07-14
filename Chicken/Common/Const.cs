@@ -58,6 +58,7 @@
         /// instead of count?
         /// </summary>
         public const string RESULT_PER_PAGE = "rpp";
+        public const string PAGE = "page";
         #endregion
 
         #region home page
@@ -104,6 +105,7 @@
 
         #region search page
         public const string SEARCH_FOR_TWEETS = "search/tweets.json";
+        public const string SEARCH_FOR_USERS = "users/search.json";
         #endregion
 
         #region api settings

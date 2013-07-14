@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using Chicken.Common;
 using Chicken.Model;
 
@@ -66,7 +65,9 @@ namespace Chicken.Service.Interface
         #endregion
 
         #region search page
-        void SearchForTweets(string searchQuery, Action<SearchTweetList> callBack, IDictionary<string, object> parameters);
+        void SearchForTweets(string searchQuery, Action<SearchTweetList> callBack, IDictionary<string, object> parameters = null);
+
+        void SearchForUsers(string searchQuery, Action<UserProfileList> callBack, IDictionary<string, object> parameters = null);
         #endregion
 
         #region edit api settings page

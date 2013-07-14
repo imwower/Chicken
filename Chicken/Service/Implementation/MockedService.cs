@@ -172,6 +172,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/search_tweets.json";
             HandleWebRequest(url, callBack);
         }
+
+        public void SearchForUsers(string searchQuery, Action<UserProfileList> callBack, IDictionary<string, object> parameters)
+        {
+            string url = "SampleData/search_users.json";
+            HandleWebRequest<UserProfileList>(url, callBack);
+        }
         #endregion
 
         #region edit api settings

@@ -351,6 +351,7 @@
     <Compile Include="ViewModel\Home\HomeViewModelBase.cs" />
     <Compile Include="Controls\VisibilityConverter.cs" />
     <Content Include="SampleData\search_tweets.json" />
+    <Content Include="SampleData\search_users.json" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">

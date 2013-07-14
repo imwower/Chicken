@@ -280,6 +280,15 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.SEARCH_FOR_TWEETS, parameters);
             HandleWebRequest<SearchTweetList>(url, callBack);
         }
+
+        public void SearchForUsers(string searchQuery, Action<UserProfileList> callBack, IDictionary<string, object> parameters)
+        {
+            parameters = TwitterHelper.GetDictionary(parameters);
+            parameters.Add(Const.SEARCH_QUERY, searchQuery);
+            parameters.Add(Const.INCLUDE_ENTITIES, Const.DEFAULT_VALUE_FALSE);
+            string url = TwitterHelper.GenerateUrlParams(Const.SEARCH_FOR_USERS, parameters);
+            HandleWebRequest<UserProfileList>(url, callBack);
+        }
         #endregion
 
         #region edit api settings

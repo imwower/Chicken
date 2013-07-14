@@ -763,11 +763,20 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 没有推文搜索结果 的本地化字符串。
+        ///   查找类似 没有关于推文{0}的搜索结果 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_NoSearchTweetResults {
             get {
                 return ResourceManager.GetString("Toast_Msg_NoSearchTweetResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有关于用户{0}的搜索结果 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_NoSearchUserResults {
+            get {
+                return ResourceManager.GetString("Toast_Msg_NoSearchUserResults", resourceCulture);
             }
         }
         
