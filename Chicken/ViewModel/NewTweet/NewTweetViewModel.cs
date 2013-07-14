@@ -2,7 +2,6 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.Service.Interface;
 
 namespace Chicken.ViewModel.NewTweet
 {

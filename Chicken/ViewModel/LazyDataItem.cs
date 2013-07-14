@@ -3,7 +3,7 @@ using Chicken.Controls;
 
 namespace Chicken.ViewModel
 {
-    public class LazyDataItem : NotificationObject, ILazyDataItem
+    public class LazyDataItem : NotificationObject //, ILazyDataItem
     {
         #region private
         private bool isPaused;

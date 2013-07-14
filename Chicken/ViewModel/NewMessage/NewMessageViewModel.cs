@@ -5,7 +5,6 @@ using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.Service.Implementation;
-using Chicken.Service.Interface;
 using Chicken.ViewModel.Base;
 using Chicken.ViewModel.NewTweet;
 

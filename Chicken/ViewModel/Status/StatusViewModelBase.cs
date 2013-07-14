@@ -2,7 +2,6 @@
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
-using Chicken.Service.Interface;
 using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Status
@@ -28,19 +27,7 @@ namespace Chicken.ViewModel.Status
         }
         protected string nextCursor = "-1";
         protected string previousCursor = string.Empty;
-        private ObservableCollection<UserProfileViewModel> userList;
-        public ObservableCollection<UserProfileViewModel> UserList
-        {
-            get
-            {
-                return userList;
-            }
-            set
-            {
-                userList = value;
-                RaisePropertyChanged("UserList");
-            }
-        }
+        public ObservableCollection<UserProfileViewModel> UserList { get; set; }
         #endregion
 
         public StatusViewModelBase()
