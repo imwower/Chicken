@@ -391,9 +391,9 @@
     <value>no more user results for {0}</value>
   </data>
   <data name="SettingsPage_About_Description" xml:space="preserve">
-    <value>Chicken is a Twitter client for Windows Phone. Show what's happening around friends, and post new tweet.</value>
+    <value>Chicken is a Twitter Client for Windows Phone. Show what's happening around friends, and post new tweet.</value>
   </data>
   <data name="Settings_Page_About_Famous" xml:space="preserve">
-    <value>feeling lucky</value>
+    <value>Feeling Lucky</value>
   </data>
 </root>
