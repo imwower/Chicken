@@ -199,7 +199,7 @@
     <value>API信息:</value>
   </data>
   <data name="SettingsPage_ClearCache" xml:space="preserve">
-    <value>清空缓存</value>
+    <value>清除缓存</value>
   </data>
   <data name="SettingsPage_EditAPI" xml:space="preserve">
     <value>设置API</value>
@@ -223,7 +223,7 @@
     <value>关注者</value>
   </data>
   <data name="ProfilePage_ProfileDetail_Following" xml:space="preserve">
-    <value>正在关注</value>
+    <value>关注</value>
   </data>
   <data name="ProfilePage_ProfileDetail_Tweets" xml:space="preserve">
     <value>推文</value>
@@ -395,5 +395,8 @@
   </data>
   <data name="Settings_Page_About_Famous" xml:space="preserve">
     <value>手气不错</value>
+  </data>
+  <data name="Toast_Msg_ClearCacheSuccessfully" xml:space="preserve">
+    <value>清除成功</value>
   </data>
 </root>

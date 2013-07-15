@@ -68,7 +68,7 @@ namespace Chicken.ViewModel.Settings.VM
 
         private void FamousAction()
         {
-            if (App.Settings == null || App.Settings.APISettings == null)
+            if (App.Settings == null || App.Settings.APISettings == null || IsLoading)
                 return;
             IsLoading = true;
             TweetService.GetFamous(

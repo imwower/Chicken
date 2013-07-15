@@ -13,12 +13,6 @@ namespace Chicken.Service
 {
     public class IsolatedStorageService
     {
-        enum FileOption
-        {
-            OnlyRead,
-            DeleteAfterRead,
-        }
-
         #region private static
         private static IsolatedStorageFile fileSystem = IsolatedStorageFile.GetUserStoreForApplication();
         private static JsonSerializer jsonSerializer = new JsonSerializer
@@ -31,18 +25,14 @@ namespace Chicken.Service
         #region const
         private const string SAVED_DATA_FOLDER_PATH = "Data";
 
-        private const string STATE_FILE_NAME = "State.json";
-
         private const string EMOTIONS_FILE_NAME = "Emotions.json";
 
-        private const string LATEST_MESSAGES_FILE_NAME = "LatestDirectMessages.json";
         private const string DIRECT_MESSAGES_FOLDERPATH = "DirectMessages";
+        private const string LATEST_MESSAGES_FILE_NAME = "LatestDirectMessages.json";
 
         private const string AUTHENTICATED_USER_FILE_NAME = "AuthenticatedUser.json";
 
         private const string GENERALSETTINGS_FILE_NAME = "GeneralSettings.json";
-
-        private const string ABOUT_FILE_NAME = "About.json";
 
         private const string TWEET_CONFIGURATION_FILE_NAME = "TweetConfiguration.json";
 
@@ -55,7 +45,7 @@ namespace Chicken.Service
         {
             List<string> result = new List<string>();
             CheckDataFolderPath();
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + EMOTIONS_FILE_NAME;
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, EMOTIONS_FILE_NAME);
             using (var fileStream = fileSystem.OpenFile(filepath, FileMode.OpenOrCreate))
             {
                 if (fileStream == null || fileStream.Length == 0)
@@ -102,7 +92,7 @@ namespace Chicken.Service
             if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
                 fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
             #endregion
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + con.User.Id + ".json";
+            string filepath = Path.Combine(DIRECT_MESSAGES_FOLDERPATH, con.User.Id + ".json");
             #region directly serialize
             if (!fileSystem.FileExists(filepath))
             {
@@ -121,7 +111,7 @@ namespace Chicken.Service
             {
                 #region serialize object
                 JObject jobject = null;
-                string tempfilepath = filepath + "____";
+                string tempfilepath = Path.Combine(filepath, "____");
                 using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
                 {
                     using (var streamReader = new StreamReader(fileStream))
@@ -157,8 +147,8 @@ namespace Chicken.Service
 
         public static Conversation GetMessages(string userId)
         {
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + userId + ".json";
-            return DeserializeObject<Conversation>(filepath, FileOption.OnlyRead);
+            string filepath = Path.Combine(DIRECT_MESSAGES_FOLDERPATH, userId + ".json");
+            return DeserializeObject<Conversation>(filepath);
         }
 
         public static void AddLatestMessages(LatestMessagesModel latestMessages)
@@ -188,14 +178,14 @@ namespace Chicken.Service
             if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
                 fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
             #endregion
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILE_NAME;
+            string filepath = Path.Combine(DIRECT_MESSAGES_FOLDERPATH, LATEST_MESSAGES_FILE_NAME);
             SerializeObject(filepath, latestmsgs);
         }
 
         public static LatestMessagesModel GetLatestMessages()
         {
-            string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILE_NAME;
-            return DeserializeObject<LatestMessagesModel>(filepath, FileOption.OnlyRead);
+            string filepath = Path.Combine(DIRECT_MESSAGES_FOLDERPATH, LATEST_MESSAGES_FILE_NAME);
+            return DeserializeObject<LatestMessagesModel>(filepath);
         }
 
         public static void CreateAuthenticatedUser(UserProfileDetail authenticatedUser)
@@ -205,8 +195,8 @@ namespace Chicken.Service
 
         public static UserProfileDetail GetAuthenticatedUser()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + AUTHENTICATED_USER_FILE_NAME;
-            return DeserializeObject<UserProfileDetail>(filepath, FileOption.OnlyRead);
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, AUTHENTICATED_USER_FILE_NAME);
+            return DeserializeObject<UserProfileDetail>(filepath);
         }
 
         public static void CreateAppSettings(GeneralSettings settings)
@@ -216,10 +206,10 @@ namespace Chicken.Service
 
         public static GeneralSettings GetAppSettings()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + GENERALSETTINGS_FILE_NAME;
-            return DeserializeObject<GeneralSettings>(filepath, FileOption.OnlyRead);
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, GENERALSETTINGS_FILE_NAME);
+            return DeserializeObject<GeneralSettings>(filepath);
         }
-        
+
         public static void CreateTweetConfiguration(TweetConfiguration configuration)
         {
             CheckDataFolderPathAndSerializeOjbect(TWEET_CONFIGURATION_FILE_NAME, configuration);
@@ -227,13 +217,13 @@ namespace Chicken.Service
 
         public static TweetConfiguration GetTweetConfiguration()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + TWEET_CONFIGURATION_FILE_NAME;
-            return DeserializeObject<TweetConfiguration>(filepath, FileOption.OnlyRead);
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, TWEET_CONFIGURATION_FILE_NAME);
+            return DeserializeObject<TweetConfiguration>(filepath);
         }
 
         public static TweetList GetHomeTweets()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + HOME_TWEETS;
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, HOME_TWEETS);
             return DeserializeObject<TweetList>(filepath);
         }
 
@@ -257,7 +247,7 @@ namespace Chicken.Service
 
         public static TweetList GetMentions()
         {
-            string filepath = SAVED_DATA_FOLDER_PATH + "\\" + HOME_MENTIONS;
+            string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, HOME_MENTIONS);
             return DeserializeObject<TweetList>(filepath);
         }
 
@@ -277,6 +267,32 @@ namespace Chicken.Service
                     list.RemoveAt(list.Count - 1);
             }
             CheckDataFolderPathAndSerializeOjbect(HOME_MENTIONS, list);
+        }
+
+        public static void ClearCache()
+        {
+            #region delete direct messages:
+            if (fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
+            {
+                var filenames = fileSystem.GetFileNames(DIRECT_MESSAGES_FOLDERPATH + "\\*");
+                if (filenames.Length > 0)
+                {
+                    foreach (var filename in filenames)
+                        fileSystem.DeleteFile(Path.Combine(DIRECT_MESSAGES_FOLDERPATH, filename));
+                }
+            }
+            #endregion
+            #region home tweets and mentions
+            if (fileSystem.DirectoryExists(SAVED_DATA_FOLDER_PATH))
+            {
+                string filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, HOME_TWEETS);
+                if (fileSystem.FileExists(filepath))
+                    fileSystem.DeleteFile(filepath);
+                filepath = Path.Combine(SAVED_DATA_FOLDER_PATH, HOME_MENTIONS);
+                if (fileSystem.FileExists(filepath))
+                    fileSystem.DeleteFile(filepath);
+            }
+            #endregion
         }
         #endregion
 
@@ -334,7 +350,7 @@ namespace Chicken.Service
             return true;
         }
 
-        private static T DeserializeObject<T>(string fileName, FileOption option = FileOption.OnlyRead)
+        private static T DeserializeObject<T>(string fileName)
         {
             var result = default(T);
             if (fileSystem.FileExists(fileName))
@@ -345,10 +361,6 @@ namespace Chicken.Service
                     {
                         result = jsonSerializer.Deserialize<T>(reader);
                     }
-                }
-                if (option == FileOption.DeleteAfterRead)
-                {
-                    fileSystem.DeleteFile(fileName);
                 }
             }
             return result;

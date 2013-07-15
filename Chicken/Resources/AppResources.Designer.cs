@@ -511,7 +511,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 正在关注 的本地化字符串。
+        ///   查找类似 关注 的本地化字符串。
         /// </summary>
         public static string ProfilePage_ProfileDetail_Following {
             get {
@@ -601,7 +601,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 清空缓存 的本地化字符串。
+        ///   查找类似 清除缓存 的本地化字符串。
         /// </summary>
         public static string SettingsPage_ClearCache {
             get {
@@ -687,6 +687,15 @@ namespace Chicken.Resources {
         public static string Toast_Msg_AddFavoriteSuccessfully {
             get {
                 return ResourceManager.GetString("Toast_Msg_AddFavoriteSuccessfully", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 清除成功 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_ClearCacheSuccessfully {
+            get {
+                return ResourceManager.GetString("Toast_Msg_ClearCacheSuccessfully", resourceCulture);
             }
         }
         

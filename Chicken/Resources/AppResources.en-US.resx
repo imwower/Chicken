@@ -396,4 +396,7 @@
   <data name="Settings_Page_About_Famous" xml:space="preserve">
     <value>Feeling Lucky</value>
   </data>
+  <data name="Toast_Msg_ClearCacheSuccessfully" xml:space="preserve">
+    <value>clear successfully</value>
+  </data>
 </root>

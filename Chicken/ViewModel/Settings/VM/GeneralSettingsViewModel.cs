@@ -92,7 +92,15 @@ namespace Chicken.ViewModel.Settings.VM
 
         private void ClearCacheAction()
         {
-            //TODO:clear cache
+            if (IsLoading)
+                return;
+            IsLoading = true;
+            IsolatedStorageService.ClearCache();
+            App.HandleMessage(new ToastMessage
+            {
+                Message = LanguageHelper.GetString("Toast_Msg_ClearCacheSuccessfully"),
+                Complete = () => IsLoading = false
+            });
         }
 
         private void EditAPISettingsAction()
