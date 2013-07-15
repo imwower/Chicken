@@ -8,9 +8,9 @@ namespace Chicken.ViewModel.Base
     public class TweetViewModel : LazyDataItem
     {
         #region private
-        private TweetBase tweet;
+        protected TweetBase tweet;
         protected UserViewModel user;
-        private TweetViewModel originalTweet;
+        protected TweetViewModel originalTweet;
         #endregion
 
         public TweetViewModel(Tweet data)
@@ -18,9 +18,11 @@ namespace Chicken.ViewModel.Base
             #region tweet
             if (data.RetweetStatus != null)
             {
+                string id = data.RetweetStatus.Id;
                 this.tweet = data.RetweetStatus;
                 this.tweet.Id = data.Id;
                 data.RetweetStatus = null;
+                data.Id = id;
                 this.originalTweet = new TweetViewModel(data);
             }
             else

@@ -11,6 +11,14 @@ namespace Chicken.ViewModel.Base
         public TweetDetailViewModel(Tweet data)
             : base(data)
         {
+            //for retweet,
+            //should get the real Id
+            if (this.originalTweet != null)
+            {
+                string id = this.originalTweet.Id;
+                this.originalTweet.Tweet.Id = this.tweet.Id;
+                this.tweet.Id = id;
+            }
             this.profile = Copy(this.Tweet.User);
         }
 
