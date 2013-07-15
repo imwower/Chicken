@@ -111,7 +111,7 @@ namespace Chicken.Service
             {
                 #region serialize object
                 JObject jobject = null;
-                string tempfilepath = Path.Combine(filepath, "____");
+                string tempfilepath = filepath + "____";
                 using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Open))
                 {
                     using (var streamReader = new StreamReader(fileStream))

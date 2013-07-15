@@ -302,8 +302,8 @@
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
-        <!--textbox content-->
-        <Style x:Name="TextBoxContent" TargetType="TextBox">
+        <!--TextBox Content-->
+        <Style x:Name="AutoTextBoxContent" TargetType="ctrls:AutoTextBox">
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>

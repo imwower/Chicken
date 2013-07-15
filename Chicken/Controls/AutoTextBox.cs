@@ -48,18 +48,21 @@ namespace Chicken.Controls
 
         private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            int remaining = this.MaxLength - this.Text.Length;
-            if (AssociatedTextBlock != null)
-                AssociatedTextBlock.Text = remaining.ToString();
-            if (remaining < 0)
+            if (this.MaxLength != 0)
             {
+                int remaining = this.MaxLength - this.Text.Length;
                 if (AssociatedTextBlock != null)
-                    AssociatedTextBlock.Foreground = ErrorBrush;
-                if (!AllowOverFlow)
-                    return;
+                    AssociatedTextBlock.Text = remaining.ToString();
+                if (remaining < 0)
+                {
+                    if (AssociatedTextBlock != null)
+                        AssociatedTextBlock.Foreground = ErrorBrush;
+                    if (!AllowOverFlow)
+                        return;
+                }
+                if (remaining >= 0 && AssociatedTextBlock != null)
+                    AssociatedTextBlock.Foreground = ForegroundBrush;
             }
-            if (remaining >= 0 && AssociatedTextBlock != null)
-                AssociatedTextBlock.Foreground = ForegroundBrush;
             var binding = GetBindingExpression(TextBox.TextProperty);
             if (binding != null)
                 binding.UpdateSource();

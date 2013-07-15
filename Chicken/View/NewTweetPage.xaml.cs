@@ -90,7 +90,7 @@ namespace Chicken.View
 
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter, true);
+            //UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter, true);
         }
         #endregion
 
@@ -142,11 +142,11 @@ namespace Chicken.View
 
         private void AddEmotion(string emotion)
         {
-            if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
-                return;
-            int start = this.TextContent.SelectionStart;
-            this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
-            this.TextContent.SelectionStart = start + emotion.Length;
+            //if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
+            //    return;
+            //int start = this.TextContent.SelectionStart;
+            //this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
+            //this.TextContent.SelectionStart = start + emotion.Length;
         }
 
         private void KeyboardAction()

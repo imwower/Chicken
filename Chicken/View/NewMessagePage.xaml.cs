@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Chicken.Common;
 using Chicken.ViewModel.NewMessage;
@@ -23,13 +22,11 @@ namespace Chicken.View
             this.Loaded += NewMessagePage_Loaded;
         }
 
-        #region navigate to
+        #region load
         private void NewMessagePage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!newMessageViewModel.IsInited)
-            {
                 newMessageViewModel.Refresh();
-            }
         }
         #endregion
 
@@ -52,7 +49,7 @@ namespace Chicken.View
 
         private void AddEmotion(string emotion)
         {
-            if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
+            if (this.TextContent.Text.Length + emotion.Length > this.TextContent.MaxLength)
                 return;
             int start = this.TextContent.SelectionStart;
             this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
@@ -72,21 +69,9 @@ namespace Chicken.View
             this.Emotions.Visibility = Visibility.Collapsed;
             this.newMessageViewModel.State = AppBarState.Default;
         }
-
-        private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter);
-        }
         #endregion
 
         #region user name
-        private void UserName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            var binding = textbox.GetBindingExpression(TextBox.TextProperty);
-            binding.UpdateSource();
-        }
-
         private void UserName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
