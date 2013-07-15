@@ -565,6 +565,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 手气不错 的本地化字符串。
+        /// </summary>
+        public static string Settings_Page_About_Famous {
+            get {
+                return ResourceManager.GetString("Settings_Page_About_Famous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Chicken for Windows Phone，是一个社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。 的本地化字符串。
         /// </summary>
         public static string SettingsPage_About_Description {

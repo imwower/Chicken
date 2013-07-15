@@ -3,6 +3,7 @@ using System.Xml.Linq;
 using Chicken.Model;
 using Chicken.Service;
 using Chicken.ViewModel.Base;
+using System;
 
 namespace Chicken.ViewModel.Settings.VM
 {
@@ -38,11 +39,11 @@ namespace Chicken.ViewModel.Settings.VM
         #endregion
 
         #region binding
-        public ICommand UpdateDescriptionCommand
+        public ICommand FamousCommand
         {
             get
             {
-                return new DelegateCommand(UpdateDescriptionAction);
+                return new DelegateCommand(FamousAction);
             }
         }
         #endregion
@@ -67,8 +68,39 @@ namespace Chicken.ViewModel.Settings.VM
             base.Refreshed();
         }
 
-        private void UpdateDescriptionAction()
-        { }
+        private void FamousAction()
+        {
+            IsLoading = true;
+            TweetService.GetFamous(
+                profileList =>
+                {
+                    #region handle error
+                    if (profileList.HasError || profileList.Count == 0)
+                    {
+                        IsLoading = false;
+                        return;
+                    }
+                    #endregion
+                    int index = new Random().Next(profileList.Count);
+                    var user = profileList[index];
+                    GetUserProfileDetail(user);
+                });
+        }
+        #endregion
+
+        #region private method
+        private void GetUserProfileDetail(User user)
+        {
+            TweetService.GetUserProfileDetail(user,
+                userProfileDetail =>
+                {
+                    IsLoading = false;
+                    if (userProfileDetail.HasError)
+                        return;
+                    UserProfile = new UserProfileDetailViewModel(userProfileDetail);
+                    IsChicken = false;
+                });
+        }
         #endregion
     }
 }

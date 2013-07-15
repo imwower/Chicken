@@ -134,25 +134,27 @@
                                 <!--description-->
                                 <Grid Grid.Row="3">
                                     <TextBlock
-                                                       Text="{Binding Source={StaticResource LanguageHelper},Path=[SettingsPage_About_Description]}"
-                                                       HorizontalAlignment="Stretch"
-                                                       VerticalAlignment="Center" TextAlignment="Center"
-                                                       Style="{StaticResource TextContentCenter}"
-                                                       Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        Text="{Binding Source={StaticResource LanguageHelper},Path=[SettingsPage_About_Description]}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Center" TextAlignment="Center"
+                                        Style="{StaticResource TextContentCenter}"
+                                        Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
                                     </TextBlock>
                                     <ctrls:AutoRichTextBox
-                                                                    TweetData="{Binding Path=UserProfile.UserProfileDetail}"
-                                                                    HorizontalAlignment="Stretch"
-                                                                    VerticalAlignment="Center" TextAlignment="Center"
-                                                                    Style="{StaticResource TextContent}">
+                                        TweetData="{Binding Path=UserProfile.UserProfileDetail}"
+                                        HorizontalAlignment="Stretch"
+                                        VerticalAlignment="Center" TextAlignment="Center"
+                                        Style="{StaticResource TextContent}">
                                     </ctrls:AutoRichTextBox>
                                 </Grid>
                             </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>
                     <!--update-->
-                    <Button Grid.Row="1" Content="Check for Update" VerticalAlignment="Bottom"
-                            Command="{Binding Path=UpdateDescriptionCommand}" />
+                    <Button Grid.Row="1" 
+                            Content="{Binding Source={StaticResource LanguageHelper},Path=[Settings_Page_About_Famous]}"
+                            VerticalAlignment="Bottom"
+                            Command="{Binding Path=FamousCommand}" />
                     <ProgressBar Grid.Row="2" IsIndeterminate="True"
                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>

@@ -192,6 +192,12 @@ namespace Chicken.Service.Implementation
             string url = "SampleData/configuration.json";
             HandleWebRequest(url, callBack);
         }
+
+        public void GetFamous(Action<UserProfileList> callBack)
+        {
+            string url = "SampleData/search_users.json";
+            HandleWebRequest<UserProfileList>(url, callBack);
+        }
         #endregion
 
         #region private method

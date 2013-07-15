@@ -74,6 +74,8 @@ namespace Chicken.Service.Interface
         void TestAPIUrl(string apiUrl, Action<UserProfileDetail> callBack);
 
         void GetTweetConfiguration(Action<TweetConfiguration> callBack);
+
+        void GetFamous(Action<UserProfileList> callBack);
         #endregion
     }
 }

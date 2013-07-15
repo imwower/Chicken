@@ -302,6 +302,11 @@ namespace Chicken.Service.Implementation
             string url = TwitterHelper.GenerateUrlParams(Const.TWEET_CONFIGURATION);
             HandleWebRequest(url, callBack);
         }
+
+        public void GetFamous(Action<UserProfileList> callBack)
+        {
+            HandleWebRequest<UserProfileList>(Const.CHICKEN_FAMOUS, callBack);
+        }
         #endregion
 
         #region private method

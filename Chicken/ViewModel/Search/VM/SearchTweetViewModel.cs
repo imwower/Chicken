@@ -64,7 +64,6 @@ namespace Chicken.ViewModel.Search.VM
 #endif
                             for (int i = result.Statuses.Count - 1; i >= 0; i--)
                             {
-                                var tweet = result.Statuses[i];
                                 TweetList.Insert(0, new TweetViewModel(result.Statuses[i]));
                                 if (TweetList.Count >= Const.DEFAULT_COUNT_VALUE)
                                     TweetList.RemoveAt(TweetList.Count - 1);
