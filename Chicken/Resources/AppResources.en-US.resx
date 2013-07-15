@@ -390,4 +390,7 @@
   <data name="Toast_Msg_NoMoreSearchUserResults" xml:space="preserve">
     <value>no more user results for {0}</value>
   </data>
+  <data name="SettingsPage_About_Description" xml:space="preserve">
+    <value>Chicken for Windows Phone, is a Twitter Client.\r\ncan see what's happening around friends, and post new tweet.</value>
+  </data>
 </root>
