@@ -391,7 +391,7 @@
     <value>没有更多有关用户(0}的搜索结果了</value>
   </data>
   <data name="SettingsPage_About_Description" xml:space="preserve">
-    <value>Chicken for Windows Phone，是一个社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。</value>
+    <value>Chicken是一个Windows Phone平台的社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。</value>
   </data>
   <data name="Settings_Page_About_Famous" xml:space="preserve">
     <value>手气不错</value>

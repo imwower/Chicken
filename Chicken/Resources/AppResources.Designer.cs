@@ -574,7 +574,7 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Chicken for Windows Phone，是一个社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。 的本地化字符串。
+        ///   查找类似 Chicken是一个Windows Phone平台的社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。 的本地化字符串。
         /// </summary>
         public static string SettingsPage_About_Description {
             get {
