@@ -9,6 +9,7 @@ namespace Chicken.ViewModel.NewTweet
     public class NewTweetViewModel : PivotItemViewModelBase
     {
         #region event handler
+        public Action InitHandler;
         public Action BeforeSendHandler;
         public Action AddEmotionHandler;
         public Action KeyboardHandler;
@@ -84,11 +85,37 @@ namespace Chicken.ViewModel.NewTweet
 
         public NewTweetViewModel()
         {
-            Title = LanguageHelper.GetString("NewTweetPage_Header_WhatsHappening");
-            TweetModel = new NewTweetModel();
+            RefreshHandler = this.RefreshAction;
         }
 
         #region actions
+        private void RefreshAction()
+        {
+            TweetModel = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.NewTweetPage);
+            if (TweetModel == null)
+                TweetModel = new NewTweetModel();
+            switch (TweetModel.Type)
+            {
+                case NewTweetActionType.Quote:
+                    Title = LanguageHelper.GetString("NewTweetPage_Header_Quote");
+                    break;
+                case NewTweetActionType.Reply:
+                    Title = LanguageHelper.GetString("NewTweetPage_Header_ReplyTo", TweetModel.InReplyToUserScreenName);
+                    break;
+                case NewTweetActionType.Mention:
+                    Title = LanguageHelper.GetString("NewTweetPage_Header_Mention", TweetModel.InReplyToUserScreenName);
+                    break;
+                case NewTweetActionType.PostNew:
+                case NewTweetActionType.None:
+                default:
+                    Title = LanguageHelper.GetString("NewTweetPage_Header_WhatsHappening");
+                    break;
+            }
+            if (InitHandler != null)
+                InitHandler();
+            base.Refreshed();
+        }
+
         protected virtual void SendAction()
         {
             if (IsLoading || string.IsNullOrEmpty(TweetModel.Text))

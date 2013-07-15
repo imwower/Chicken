@@ -20,6 +20,7 @@ namespace Chicken.View
             InitializeComponent();
             newTweetViewModel = new NewTweetViewModel()
             {
+                InitHandler = this.InitAction,
                 BeforeSendHandler = this.BeforeSendAction,
                 AddEmotionHandler = this.AddEmotionAction,
                 KeyboardHandler = this.KeyboardAction
@@ -32,41 +33,28 @@ namespace Chicken.View
         private void NewTweetPage_Loaded(object sender, RoutedEventArgs e)
         {
             this.TextContent.Focus();
+            if (!newTweetViewModel.IsInited)
+                newTweetViewModel.Refresh();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void InitAction()
         {
-            base.OnNavigatedTo(e);
-            var tweet = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.NewTweetPage);
-            if (tweet != null)
+            switch (newTweetViewModel.TweetModel.Type)
             {
-                newTweetViewModel.TweetModel.Type = tweet.Type;
-                switch (tweet.Type)
-                {
-                    case NewTweetActionType.Quote:
-                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_Quote");
-                        this.TextContent.Text = tweet.Text;
-                        newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
-                        this.TextContent.Select(0, 0);
-                        break;
-                    case NewTweetActionType.Reply:
-                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_ReplyTo", tweet.InReplyToUserScreenName);
-                        this.TextContent.Text = tweet.Text;
-                        newTweetViewModel.TweetModel.InReplyToStatusId = tweet.InReplyToStatusId;
-                        this.TextContent.Select(this.TextContent.Text.Length, 0);
-                        break;
-                    case NewTweetActionType.Mention:
-                        newTweetViewModel.Title = LanguageHelper.GetString("NewTweetPage_Header_Mention", tweet.InReplyToUserScreenName);
-                        this.TextContent.Text = tweet.Text;
-                        this.TextContent.Select(this.TextContent.Text.Length, 0);
-                        break;
-                    case NewTweetActionType.PostNew:
-                    case NewTweetActionType.None:
-                    default:
-                        this.TextContent.Text = tweet.Text;
-                        this.TextContent.Select(this.TextContent.Text.Length, 0);
-                        break;
-                }
+                case NewTweetActionType.Quote:
+                    this.TextContent.Select(0, 0);
+                    break;
+                case NewTweetActionType.Reply:
+                    this.TextContent.Select(this.TextContent.Text.Length, 0);
+                    break;
+                case NewTweetActionType.Mention:
+                    this.TextContent.Select(this.TextContent.Text.Length, 0);
+                    break;
+                case NewTweetActionType.PostNew:
+                case NewTweetActionType.None:
+                default:
+                    this.TextContent.Select(this.TextContent.Text.Length, 0);
+                    break;
             }
         }
 
