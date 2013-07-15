@@ -85,15 +85,19 @@ namespace Chicken.ViewModel.NewTweet
 
         public NewTweetViewModel()
         {
+            TweetModel = new NewTweetModel();
             RefreshHandler = this.RefreshAction;
         }
 
         #region actions
         private void RefreshAction()
         {
-            TweetModel = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.NewTweetPage);
-            if (TweetModel == null)
-                TweetModel = new NewTweetModel();
+            var file = IsolatedStorageService.GetAndDeleteObject<NewTweetModel>(Const.NewTweetPage);
+            if (file != null)
+            {
+                TweetModel = file;
+                RaisePropertyChanged("Text");
+            }
             switch (TweetModel.Type)
             {
                 case NewTweetActionType.Quote:

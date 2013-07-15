@@ -116,8 +116,7 @@ namespace Chicken.ViewModel.NewMessage
                 base.Refreshed();
                 return;
             }
-            newMessage = file;
-            User = newMessage.User;
+            User = file.User;
             IsNew = false;
             latestMessages = IsolatedStorageService.GetLatestMessages();
             if (latestMessages == null)

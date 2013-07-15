@@ -1,10 +1,7 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 using Chicken.Common;
-using Chicken.Model;
 using Chicken.Service;
-using Chicken.ViewModel;
 using Chicken.ViewModel.NewTweet;
 
 namespace Chicken.View
@@ -62,9 +59,7 @@ namespace Chicken.View
         {
             base.OnNavigatingFrom(e);
             if (!string.IsNullOrEmpty(newTweetViewModel.TweetModel.Text))
-            {
                 IsolatedStorageService.CreateObject(Const.NewTweetPage, newTweetViewModel.TweetModel);
-            }
         }
         #endregion
 
@@ -74,11 +69,6 @@ namespace Chicken.View
             (App.Current as App).RootFrame.RenderTransform = null;
             this.Emotions.Visibility = Visibility.Collapsed;
             this.newTweetViewModel.State = AppBarState.Default;
-        }
-
-        private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter, true);
         }
         #endregion
 
@@ -130,11 +120,11 @@ namespace Chicken.View
 
         private void AddEmotion(string emotion)
         {
-            //if (this.TextContent.Text.Length + emotion.Length > Const.MaxCharLength)
-            //    return;
-            //int start = this.TextContent.SelectionStart;
-            //this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
-            //this.TextContent.SelectionStart = start + emotion.Length;
+            if (this.TextContent.Text.Length + emotion.Length > this.TextContent.MaxLength)
+                return;
+            int start = this.TextContent.SelectionStart;
+            this.TextContent.Text = this.TextContent.Text.Insert(start, emotion);
+            this.TextContent.SelectionStart = start + emotion.Length;
         }
 
         private void KeyboardAction()

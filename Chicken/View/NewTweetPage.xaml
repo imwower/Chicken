@@ -43,11 +43,12 @@
                           VerticalScrollBarVisibility="Visible"
                           HorizontalScrollBarVisibility="Disabled">
                 <ctrls:AutoTextBox x:Name="TextContent"
-                             Style="{StaticResource TextBoxContent}"
-                             TextAlignment="Left" AcceptsReturn="True"
-                             GotFocus="TextContent_GotFocus"
-                             TextChanged="TextContent_TextChanged"
-                             MaxHeight="400" MaxLength="140" />
+                                   Style="{StaticResource AutoTextBoxContent}"
+                                   TextAlignment="Left" MaxHeight="400" AcceptsReturn="True"
+                                   Text="{Binding Path=Text,Mode=TwoWay}"
+                                   MaxLength="140" AllowOverFlow="True"
+                                   AssociatedTextBlock="{Binding ElementName=TextCounter}"
+                                   GotFocus="TextContent_GotFocus" />
             </ScrollViewer>
             <!--menu-->
             <StackPanel x:Name="MenuPanel" Grid.Row="2"
