@@ -130,7 +130,6 @@
     <Compile Include="Controls\ToastPrompt.cs" />
     <Compile Include="Controls\Utils.cs" />
     <Compile Include="Controls\WrapPanel.cs" />
-    <Compile Include="Model\AboutModel.cs" />
     <Compile Include="Model\GenenalSettings.cs" />
     <Compile Include="Model\LatestMessagesModel.cs" />
     <Compile Include="Model\Cursor.cs" />

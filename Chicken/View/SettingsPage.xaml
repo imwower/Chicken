@@ -102,7 +102,9 @@
                                         <Setter Property="Margin" Value="2" />
                                     </Style>
                                 </Grid.Resources>
-                                <Button Grid.Row="0">
+                                <Button Grid.Row="0"
+                                        Command="{Binding Path=ClickCommand}"
+                                        CommandParameter="{Binding UserProfile.UserProfileDetail}">
                                     <Button.Template>
                                         <ControlTemplate>
                                             <!--logo-->
