@@ -54,8 +54,7 @@
                                                       ImageUrl="{Binding UserProfile.UserProfileBannerImageWeb}"
                                                       Visibility="{Binding RelativeSource={RelativeSource Self}, Path=DownloadCompleted,
                                                       Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}" />
-                                <Grid x:Name="ProfileContainer" Grid.Row="1"
-                                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                <Grid Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="104" />
                                         <RowDefinition Height="Auto" />
@@ -65,13 +64,19 @@
                                         <RowDefinition Height="Auto" />
                                     </Grid.RowDefinitions>
                                     <!--Profile Image-->
-                                    <ctrls:ImageContainer Grid.Row="0"
-                                                          Width="124" Height="124" Margin="0,-40,0,0"
-                                                          ImageUrl="{Binding UserProfile.ProfileImage}">
-                                        <ctrls:ImageContainer.Clip>
-                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                                        </ctrls:ImageContainer.Clip>
-                                    </ctrls:ImageContainer>
+                                    <HyperlinkButton Grid.Row="0"
+                                                     NavigateUri="{Binding UserProfile.ProfileImage}" TargetName="_blank">
+                                        <HyperlinkButton.Template>
+                                            <ControlTemplate>
+                                                <ctrls:ImageContainer Width="124" Height="124" Margin="0,-40,0,0"
+                                                                      ImageUrl="{Binding UserProfile.ProfileImage}">
+                                                    <ctrls:ImageContainer.Clip>
+                                                        <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                                    </ctrls:ImageContainer.Clip>
+                                                </ctrls:ImageContainer>
+                                            </ControlTemplate>
+                                        </HyperlinkButton.Template>
+                                    </HyperlinkButton>
                                     <!--is private, is verified, etc-->
                                     <StackPanel Grid.Row="1" Margin="0,10,0,0" Opacity="0.6"
                                                 Orientation="Horizontal" HorizontalAlignment="Center"
@@ -179,7 +184,7 @@
                                     </Border>
                                 </Grid>
                                 <!--description-->
-                                <ctrls:AutoRichTextBox  Grid.Row="2"
+                                <ctrls:AutoRichTextBox  Grid.Row="2" Margin="0,6,0,0"
                                                         TweetData="{Binding Path=UserProfile.UserProfileDetail}"
                                                         HorizontalAlignment="Stretch"
                                                         VerticalAlignment="Center" TextAlignment="Center"
