@@ -322,7 +322,7 @@
     <value>关注成功了哟</value>
   </data>
   <data name="Toast_Msg_HelloUser" xml:space="preserve">
-    <value>嗨, {0}~</value>
+    <value>嗨，{0}~</value>
   </data>
   <data name="Toast_Msg_NoMoreRetweets" xml:space="preserve">
     <value>没有更多的转推了</value>
@@ -367,7 +367,7 @@
     <value>收藏</value>
   </data>
   <data name="Toast_Msg_UnknowError" xml:space="preserve">
-    <value>喔呦, 有不明原因的错误入侵</value>
+    <value>喔呦，有不明原因的错误入侵</value>
   </data>
   <data name="Msg_ConfirmToExit" xml:space="preserve">
     <value>确定退出嘛?</value>
@@ -391,6 +391,6 @@
     <value>没有更多有关用户(0}的搜索结果了</value>
   </data>
   <data name="SettingsPage_About_Description" xml:space="preserve">
-    <value>Chicken for Windows Phone, 是一个社交网络客户端.\r\n可以用来查看朋友们的状态, 发布新的动态等.</value>
+    <value>Chicken for Windows Phone，是一个社交网络客户端。可以用来查看朋友们的状态，发布新的动态等。</value>
   </data>
 </root>
