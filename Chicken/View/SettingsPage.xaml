@@ -91,10 +91,10 @@
                         <ScrollViewer.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
-                                    <RowDefinition />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.Resources>
@@ -130,8 +130,8 @@
                                     </Button.Template>
                                 </Button>
                                 <!--is private, is verified, etc-->
-                                <StackPanel Grid.Row="1" Opacity="0.6"
-                                            Orientation="Horizontal" HorizontalAlignment="Center"
+                                <StackPanel Grid.Row="1" Opacity="0.6" Margin="0,10,0,0"
+                                            Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center"
                                             Visibility="{Binding IsInited, Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
                                     <StackPanel.Resources>
                                         <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
@@ -168,17 +168,10 @@
                                             <ImageBrush ImageSource="/Images/dark/following.png" />
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
-                                    <!--followedby-->
-                                    <Rectangle
-                                        Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
-                                        <Rectangle.OpacityMask>
-                                            <ImageBrush ImageSource="/Images/dark/followedby.png" />
-                                        </Rectangle.OpacityMask>
-                                    </Rectangle>
                                 </StackPanel>
                                 <!--Name-->
-                                <TextBlock Grid.Row="2" Text="{Binding UserProfile.Name}" />
-                                <TextBlock Grid.Row="3" Text="{Binding UserProfile.ScreenName}" />
+                                <TextBlock Grid.Row="2" Text="{Binding UserProfile.DisplayName}" />
+                                <TextBlock Grid.Row="3" Text="{Binding UserProfile.Name}" />
                                 <!--description-->
                                 <Grid Grid.Row="4">
                                     <TextBlock
