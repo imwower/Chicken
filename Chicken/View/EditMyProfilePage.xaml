@@ -40,8 +40,8 @@
                 <!--name-->
                 <TextBlock
                     Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Name]}" />
-                <TextBox Text="{Binding Path=MyProfile.Name}"
-                         TextChanged="Name_TextChanged" />
+                <TextBox Text="{Binding Path=MyProfile.Name,Mode=TwoWay}"
+                         MaxLength="20" TextChanged="Name_TextChanged" />
                 <!--location-->
                 <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Location]}" />
                 <TextBox Text="{Binding Path=MyProfile.Location}"

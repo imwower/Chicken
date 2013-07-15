@@ -26,7 +26,9 @@ namespace Chicken.View
 
         private void Name_TextChanged(object sender, TextChangedEventArgs e)
         {
+            var textbox = (TextBox)sender;
             myProfileViewModel.MyProfile.UserProfileDetail.Name = (sender as TextBox).Text;
+            var maxlength = textbox.MaxLength;
         }
 
         private void Location_TextChanged(object sender, TextChangedEventArgs e)

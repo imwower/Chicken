@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Common;
 using Chicken.Model;
@@ -34,7 +33,6 @@ namespace Chicken.View
         {
             this.TextContent.Focus();
         }
-        #endregion
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -80,28 +78,30 @@ namespace Chicken.View
                 IsolatedStorageService.CreateObject(Const.NewTweetPage, newTweetViewModel.TweetModel);
             }
         }
+        #endregion
 
         #region text content
+        private void TextContent_GotFocus(object sender, RoutedEventArgs e)
+        {
+            (App.Current as App).RootFrame.RenderTransform = null;
+            this.Emotions.Visibility = Visibility.Collapsed;
+            this.newTweetViewModel.State = AppBarState.Default;
+        }
+
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //counter:
-            int remain = Const.MaxCharLength - this.TextContent.Text.Length;
+            //text counter:
+            var textbox = (TextBox)sender;
+            int remain = textbox.MaxLength - this.TextContent.Text.Length;
             if (remain < 0)
             {
-                this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
+                this.TextCounter.Foreground = Const.ErrorBrush;
             }
             else
             {
                 this.newTweetViewModel.TweetModel.Text = this.TextContent.Text;
             }
             this.TextCounter.Text = remain.ToString();
-        }
-
-        private void TextContent_GotFocus(object sender, RoutedEventArgs e)
-        {
-            (App.Current as App).RootFrame.RenderTransform = null;
-            this.Emotions.Visibility = Visibility.Collapsed;
-            this.newTweetViewModel.State = AppBarState.Default;
         }
         #endregion
 

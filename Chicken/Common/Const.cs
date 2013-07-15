@@ -1,4 +1,5 @@
-﻿namespace Chicken.Common
+﻿using System.Windows.Media;
+namespace Chicken.Common
 {
     public class Const
     {
@@ -19,6 +20,7 @@
         public const string DEFAULTSOURCE = "web";
         public const string DEFAULTSOURCEURL = "https://github.com/";
 
+        public static readonly Brush ErrorBrush = new SolidColorBrush(Colors.Red);
         public const int MaxCharLength = 140;
         #endregion
 

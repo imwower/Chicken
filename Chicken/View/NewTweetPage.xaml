@@ -47,7 +47,7 @@
                              TextAlignment="Left" AcceptsReturn="True"
                              GotFocus="TextContent_GotFocus"
                              TextChanged="TextContent_TextChanged"
-                             MaxHeight="400" MaxLength="400" />
+                             MaxHeight="400" MaxLength="140" />
             </ScrollViewer>
             <!--menu-->
             <StackPanel x:Name="MenuPanel" Grid.Row="2"
