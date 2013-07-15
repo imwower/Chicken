@@ -2,31 +2,37 @@
 using System.Xml.Linq;
 using Chicken.Model;
 using Chicken.Service;
+using Chicken.ViewModel.Base;
 
 namespace Chicken.ViewModel.Settings.VM
 {
     public class AboutViewModel : SettingsViewModelBase
     {
         #region properties
-        private string currentVersion = GetVersionNumber();
-        public string CurrentVersion
+        private bool isChicken;
+        public bool IsChicken
         {
             get
             {
-                return currentVersion;
-            }
-        }
-        private AboutModel aboutModel;
-        public AboutModel AboutModel
-        {
-            get
-            {
-                return aboutModel;
+                return isChicken;
             }
             set
             {
-                aboutModel = value;
-                RaisePropertyChanged("AboutModel");
+                isChicken = value;
+                RaisePropertyChanged("IsChicken");
+            }
+        }
+        private UserProfileDetailViewModel userProfile;
+        public UserProfileDetailViewModel UserProfile
+        {
+            get
+            {
+                return userProfile;
+            }
+            set
+            {
+                userProfile = value;
+                RaisePropertyChanged("UserProfile");
             }
         }
         #endregion
@@ -49,19 +55,20 @@ namespace Chicken.ViewModel.Settings.VM
         #region actions
         private void RefreshAction()
         {
-            AboutModel = IsolatedStorageService.GetAbout();
+            var profile = new UserProfileDetail
+            {
+                Id = "1519684519",
+                ScreenName = "Chicken4WP",
+                Name = "Chicken for Windows Phone",
+                ProfileImage = "",
+            };
+            UserProfile = new UserProfileDetailViewModel(profile);
+            IsChicken = true;
             base.Refreshed();
         }
 
         private void UpdateDescriptionAction()
         { }
-        #endregion
-
-        #region private
-        private static string GetVersionNumber()
-        {
-            return XDocument.Load("WMAppManifest.xml").Root.Element("App").Attribute("Version").Value;
-        }
         #endregion
     }
 }

@@ -93,25 +93,58 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
-                                <!--logo-->
-                                <StackPanel Grid.Row="0">
-                                    <Image Source="/Background.png"
-                                           Width="124" Height="124">
-                                        <Image.Clip>
-                                            <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
-                                        </Image.Clip>
-                                    </Image>
-                                </StackPanel>
-                                <!--version-->
-                                <TextBlock Grid.Row="1" HorizontalAlignment="Center">
-                                    <Run Text="{Binding Path=CurrentVersion}" />
-                                </TextBlock>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource ProfileScreenName}">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="Margin" Value="2" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Button Grid.Row="0">
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <!--logo-->
+                                            <Grid>
+                                                <Image Width="124" Height="124" Source="/Background.png"
+                                                                       Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <Image.Clip>
+                                                        <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                                    </Image.Clip>
+                                                </Image>
+                                                <!--Profile Image-->
+                                                <ctrls:ImageContainer  Width="124" Height="124"                                                                      
+                                                                      ImageUrl="{Binding UserProfile.ProfileImage}"
+                                                                      Visibility="{Binding RelativeSource={RelativeSource Self},Path=DownloadCompleted,
+                                                                      Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                    <ctrls:ImageContainer.Clip>
+                                                        <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
+                                                    </ctrls:ImageContainer.Clip>
+                                                </ctrls:ImageContainer>
+                                            </Grid>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <!--Name-->
+                                <TextBlock Grid.Row="1" Text="{Binding UserProfile.Name}" />
+                                <TextBlock Grid.Row="2" Text="{Binding UserProfile.ScreenName}" />
                                 <!--description-->
-                                <TextBlock Grid.Row="2" VerticalAlignment="Center"
-                                           Text="{Binding Path=AboutModel.Description}"
-                                           Style="{StaticResource TextContentCenter}" />
+                                <Grid Grid.Row="3">
+                                    <TextBlock
+                                                       Text="{Binding Source={StaticResource LanguageHelper},Path=[SettingsPage_About_Description]}"
+                                                       HorizontalAlignment="Stretch"
+                                                       VerticalAlignment="Center" TextAlignment="Center"
+                                                       Style="{StaticResource TextContentCenter}"
+                                                       Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                    </TextBlock>
+                                    <ctrls:AutoRichTextBox
+                                                                    TweetData="{Binding Path=UserProfile.UserProfileDetail}"
+                                                                    HorizontalAlignment="Stretch"
+                                                                    VerticalAlignment="Center" TextAlignment="Center"
+                                                                    Style="{StaticResource TextContent}">
+                                    </ctrls:AutoRichTextBox>
+                                </Grid>
                             </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>

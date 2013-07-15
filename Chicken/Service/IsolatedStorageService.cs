@@ -55,12 +55,12 @@ namespace Chicken.Service
         {
             List<string> result = new List<string>();
             CheckDataFolderPath();
-            string emotionsfilepath = SAVED_DATA_FOLDER_PATH + "/" + EMOTIONS_FILE_NAME;
-            using (var fileStream = fileSystem.OpenFile(emotionsfilepath, FileMode.OpenOrCreate))
+            string filepath = SAVED_DATA_FOLDER_PATH + "/" + EMOTIONS_FILE_NAME;
+            using (var fileStream = fileSystem.OpenFile(filepath, FileMode.OpenOrCreate))
             {
                 if (fileStream == null || fileStream.Length == 0)
                 {
-                    var resource = Application.GetResourceStream(new Uri(emotionsfilepath, UriKind.Relative));
+                    var resource = Application.GetResourceStream(new Uri(filepath, UriKind.Relative));
                     resource.Stream.CopyTo(fileStream);
                 }
                 using (var streamReader = new StreamReader(fileStream))
@@ -100,14 +100,12 @@ namespace Chicken.Service
             #endregion
             #region create folder
             if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
-            {
                 fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
-            }
             #endregion
             string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + con.User.Id + ".json";
+            #region directly serialize
             if (!fileSystem.FileExists(filepath))
             {
-                #region directly serialize
                 using (var fileStream = fileSystem.OpenFile(filepath, FileMode.Create))
                 {
                     {
@@ -117,8 +115,8 @@ namespace Chicken.Service
                         }
                     }
                 }
-                #endregion
             }
+            #endregion
             else
             {
                 #region serialize object
@@ -155,7 +153,6 @@ namespace Chicken.Service
                 fileSystem.MoveFile(tempfilepath, filepath);
                 #endregion
             }
-            con = null;
         }
 
         public static Conversation GetMessages(string userId)
@@ -189,9 +186,7 @@ namespace Chicken.Service
             #endregion
             #region create folder
             if (!fileSystem.DirectoryExists(DIRECT_MESSAGES_FOLDERPATH))
-            {
                 fileSystem.CreateDirectory(DIRECT_MESSAGES_FOLDERPATH);
-            }
             #endregion
             string filepath = DIRECT_MESSAGES_FOLDERPATH + "\\" + LATEST_MESSAGES_FILE_NAME;
             SerializeObject(filepath, latestmsgs);
@@ -224,28 +219,7 @@ namespace Chicken.Service
             string filepath = SAVED_DATA_FOLDER_PATH + "\\" + GENERALSETTINGS_FILE_NAME;
             return DeserializeObject<GeneralSettings>(filepath, FileOption.OnlyRead);
         }
-
-        public static void CreateAbout(AboutModel about)
-        {
-            CheckDataFolderPathAndSerializeOjbect(ABOUT_FILE_NAME, about);
-        }
-
-        public static AboutModel GetAbout()
-        {
-            CheckDataFolderPath();
-            string filepath = SAVED_DATA_FOLDER_PATH + "/" + ABOUT_FILE_NAME;
-            using (var fileStream = fileSystem.OpenFile(filepath, FileMode.OpenOrCreate))
-            {
-                if (fileStream == null || fileStream.Length == 0)
-                {
-                    var resource = Application.GetResourceStream(new Uri(filepath, UriKind.Relative));
-                    resource.Stream.CopyTo(fileStream);
-                    fileStream.Flush();
-                }
-            }
-            return DeserializeObject<AboutModel>(filepath);
-        }
-
+        
         public static void CreateTweetConfiguration(TweetConfiguration configuration)
         {
             CheckDataFolderPathAndSerializeOjbect(TWEET_CONFIGURATION_FILE_NAME, configuration);

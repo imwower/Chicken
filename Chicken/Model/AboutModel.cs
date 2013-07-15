@@ -1,9 +1,7 @@
-﻿namespace Chicken.Model
-{
-    public class AboutModel
-    {
-        public string LatestVersion { get; set; }
-
-        public string Description { get; set; }
-    }
-}
+﻿//namespace Chicken.Model
+//{
+//    public class AboutModel : UserProfileDetail
+//    {
+//        public string Description { get; set; }
+//    }
+//}
