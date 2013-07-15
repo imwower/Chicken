@@ -90,7 +90,7 @@ namespace Chicken.View
 
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            UpdateBindingAndSetRemainingCount(this.TextContent, this.TextCounter, true);
+            UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter, true);
         }
         #endregion
 

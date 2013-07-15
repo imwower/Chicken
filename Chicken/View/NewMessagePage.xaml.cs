@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using Chicken.Common;
 using Chicken.ViewModel.NewMessage;
 
@@ -31,31 +30,6 @@ namespace Chicken.View
             {
                 newMessageViewModel.Refresh();
             }
-        }
-        #endregion
-
-        #region text content
-        private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            //counter:
-            int remain = Const.MaxCharLength - this.TextContent.Text.Length;
-            if (remain < 0)
-            {
-                this.TextCounter.Foreground = new SolidColorBrush(Colors.Red);
-            }
-            else
-            {
-                var textbox = sender as TextBox;
-                var binding = textbox.GetBindingExpression(TextBox.TextProperty);
-                binding.UpdateSource();
-            }
-            this.TextCounter.Text = remain.ToString();
-        }
-
-        private void TextContent_GotFocus(object sender, RoutedEventArgs e)
-        {
-            this.Emotions.Visibility = Visibility.Collapsed;
-            this.newMessageViewModel.State = AppBarState.Default;
         }
         #endregion
 
@@ -89,6 +63,19 @@ namespace Chicken.View
         {
             this.Emotions.Visibility = Visibility.Collapsed;
             this.TextContent.Focus();
+        }
+        #endregion
+
+        #region text content
+        private void TextContent_GotFocus(object sender, RoutedEventArgs e)
+        {
+            this.Emotions.Visibility = Visibility.Collapsed;
+            this.newMessageViewModel.State = AppBarState.Default;
+        }
+
+        private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateSourceAndSetRemainingCount(this.TextContent, this.TextCounter);
         }
         #endregion
 

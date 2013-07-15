@@ -42,7 +42,7 @@
                           VerticalAlignment="Stretch"
                           VerticalScrollBarVisibility="Visible"
                           HorizontalScrollBarVisibility="Disabled">
-                <TextBox x:Name="TextContent"
+                <ctrls:AutoTextBox x:Name="TextContent"
                              Style="{StaticResource TextBoxContent}"
                              TextAlignment="Left" AcceptsReturn="True"
                              GotFocus="TextContent_GotFocus"

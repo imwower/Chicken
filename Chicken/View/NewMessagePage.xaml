@@ -162,7 +162,7 @@
                      Text="{Binding Path=Text,Mode=TwoWay}"
                      TextChanged="TextContent_TextChanged"
                      GotFocus="TextContent_GotFocus"
-                     MaxHeight="400" />
+                     MaxHeight="400" MaxLength="140" />
         </Grid>
         <!--emotion panel-->
         <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="4" Visibility="Collapsed" />
