@@ -1,9 +1,7 @@
-﻿using System.Windows.Input;
-using System.Xml.Linq;
+﻿using System;
+using System.Windows.Input;
 using Chicken.Model;
-using Chicken.Service;
 using Chicken.ViewModel.Base;
-using System;
 
 namespace Chicken.ViewModel.Settings.VM
 {

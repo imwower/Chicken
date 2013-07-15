@@ -91,9 +91,10 @@
                         <ScrollViewer.Content>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <Grid.Resources>
@@ -107,19 +108,19 @@
                                         CommandParameter="{Binding UserProfile.UserProfileDetail}">
                                     <Button.Template>
                                         <ControlTemplate>
-                                            <!--logo-->
                                             <Grid>
+                                                <!--logo-->
                                                 <Image Width="124" Height="124" Source="/Background.png"
-                                                                       Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                       Visibility="{Binding IsChicken,Converter={StaticResource BooleanToVisibilityConverter}}">
                                                     <Image.Clip>
                                                         <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                                     </Image.Clip>
                                                 </Image>
                                                 <!--Profile Image-->
-                                                <ctrls:ImageContainer  Width="124" Height="124"                                                                      
-                                                                      ImageUrl="{Binding UserProfile.ProfileImage}"
-                                                                      Visibility="{Binding RelativeSource={RelativeSource Self},Path=DownloadCompleted,
-                                                                      Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                <ctrls:ImageContainer  Width="124" Height="124"
+                                                                       ImageUrl="{Binding UserProfile.ProfileImage}"
+                                                                       Visibility="{Binding RelativeSource={RelativeSource Self},Path=DownloadCompleted,
+                                                                       Converter={StaticResource BooleanToVisibilityConverter}}">
                                                     <ctrls:ImageContainer.Clip>
                                                         <RectangleGeometry Rect="0,0,124,124" RadiusX="6" RadiusY="6" />
                                                     </ctrls:ImageContainer.Clip>
@@ -128,11 +129,58 @@
                                         </ControlTemplate>
                                     </Button.Template>
                                 </Button>
+                                <!--is private, is verified, etc-->
+                                <StackPanel Grid.Row="1" Opacity="0.6"
+                                            Orientation="Horizontal" HorizontalAlignment="Center"
+                                            Visibility="{Binding IsInited, Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
+                                    <StackPanel.Resources>
+                                        <Style TargetType="Rectangle" BasedOn="{StaticResource RetweetRectangleSmall}">
+                                            <Setter Property="Fill" Value="{StaticResource PhoneForegroundBrush}" />
+                                            <Setter Property="Margin" Value="2,0" />
+                                            <Setter Property="VerticalAlignment" Value="Bottom" />
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <!--private-->
+                                    <Rectangle
+                                        Visibility="{Binding UserProfile.IsPrivate,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="/Images/dark/private.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <!--Is Translator-->
+                                    <Rectangle
+                                        Visibility="{Binding UserProfile.IsTranslator,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="/Images/dark/global.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <!--Is Verified-->
+                                    <Rectangle
+                                        Visibility="{Binding UserProfile.IsVerified,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="/Images/dark/verified.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <!--following-->
+                                    <Rectangle
+                                        Visibility="{Binding UserProfile.IsFollowing,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="/Images/dark/following.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                    <!--followedby-->
+                                    <Rectangle
+                                        Visibility="{Binding Path=FollowedBy,Converter={StaticResource BooleanToVisibilityConverter}}">
+                                        <Rectangle.OpacityMask>
+                                            <ImageBrush ImageSource="/Images/dark/followedby.png" />
+                                        </Rectangle.OpacityMask>
+                                    </Rectangle>
+                                </StackPanel>
                                 <!--Name-->
-                                <TextBlock Grid.Row="1" Text="{Binding UserProfile.Name}" />
-                                <TextBlock Grid.Row="2" Text="{Binding UserProfile.ScreenName}" />
+                                <TextBlock Grid.Row="2" Text="{Binding UserProfile.Name}" />
+                                <TextBlock Grid.Row="3" Text="{Binding UserProfile.ScreenName}" />
                                 <!--description-->
-                                <Grid Grid.Row="3">
+                                <Grid Grid.Row="4">
                                     <TextBlock
                                         Text="{Binding Source={StaticResource LanguageHelper},Path=[SettingsPage_About_Description]}"
                                         HorizontalAlignment="Stretch"
