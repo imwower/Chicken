@@ -91,8 +91,7 @@ namespace Chicken.ViewModel.NewTweet
         #region actions
         protected virtual void SendAction()
         {
-            if (IsLoading
-                || string.IsNullOrEmpty(TweetModel.Text))
+            if (IsLoading || string.IsNullOrEmpty(TweetModel.Text))
                 return;
             IsLoading = true;
             if (BeforeSendHandler != null)

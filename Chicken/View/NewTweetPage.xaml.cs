@@ -90,18 +90,7 @@ namespace Chicken.View
 
         private void TextContent_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //text counter:
-            var textbox = (TextBox)sender;
-            int remain = textbox.MaxLength - this.TextContent.Text.Length;
-            if (remain < 0)
-            {
-                this.TextCounter.Foreground = Const.ErrorBrush;
-            }
-            else
-            {
-                this.newTweetViewModel.TweetModel.Text = this.TextContent.Text;
-            }
-            this.TextCounter.Text = remain.ToString();
+            UpdateBindingAndSetRemainingCount(this.TextContent, this.TextCounter, true);
         }
         #endregion
 

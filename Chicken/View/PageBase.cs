@@ -2,6 +2,8 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 using Chicken.Controls;
 using Chicken.Model;
@@ -16,6 +18,8 @@ namespace Chicken.View
         #region static property
         private static ToastPrompt prompt;
         private static Action promptComplete;
+        public static readonly Brush ErrorBrush = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
+        public static readonly Brush ForegroundBrush = Application.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush;
         #endregion
 
         public static void HandleMessage(ToastMessage message)
@@ -29,6 +33,24 @@ namespace Chicken.View
                 prompt.Completed += prompt_Completed;
             }
             prompt.Show();
+        }
+
+        public static int UpdateBindingAndSetRemainingCount(TextBox master, TextBlock slave, bool allowOverFlow = false)
+        {
+            int remaining = master.MaxLength - master.Text.Length;
+            slave.Text = remaining.ToString();
+            if (remaining < 0)
+            {
+                slave.Foreground = ErrorBrush;
+                if (!allowOverFlow)
+                    return remaining;
+            }
+            if (remaining >= 0)
+                slave.Foreground = ForegroundBrush;
+            var binding = master.GetBindingExpression(TextBox.TextProperty);
+            if (binding != null)
+                binding.UpdateSource();
+            return remaining;
         }
 
         #region private method
