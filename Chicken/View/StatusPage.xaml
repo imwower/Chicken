@@ -221,11 +221,19 @@
                                 </StackPanel>
                             </Border>
                             <!--media-->
-                            <StackPanel  Grid.Row="4" Margin="4"
-                                         HorizontalAlignment="Stretch"
+                            <StackPanel  Grid.Row="4" Margin="4" HorizontalAlignment="Stretch"
                                          Visibility="{Binding Tweet.IncludeMedia,Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}">
-                                <Image Stretch="Uniform"
-                                       Source="{Binding Tweet.Entities.Medias[0].MediaUrlSmall}" />
+                                <HyperlinkButton TargetName="_blank"
+                                                 NavigateUri="{Binding Tweet.Entities.Medias[0].MediaUrl}">
+                                    <HyperlinkButton.Template>
+                                        <ControlTemplate>
+                                            <ctrls:ImageContainer Stretch="Uniform"
+                                                      ImageUrl="{Binding Tweet.Entities.Medias[0].MediaUrlSmall}"                                                      
+                                                      Visibility="{Binding RelativeSource={RelativeSource Self}, Path=DownloadCompleted,
+                                                      Converter={StaticResource BooleanToVisibilityConverter},FallbackValue=Collapsed}" />
+                                        </ControlTemplate>
+                                    </HyperlinkButton.Template>
+                                </HyperlinkButton>
                             </StackPanel>
                             <!--conversation-->
                             <Grid Grid.Row="5" Margin="4"
