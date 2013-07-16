@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Chicken.Common;
@@ -9,6 +10,10 @@ namespace Chicken.ViewModel.Settings
 {
     public class APISettingsViewModel : PivotItemViewModelBase
     {
+        #region event handler
+        public Action BeforeSaveHandler;
+        #endregion
+
         #region properties
         private APIProxy setting;
         public APIProxy APISetting
@@ -91,11 +96,14 @@ namespace Chicken.ViewModel.Settings
 
         private void SaveAction()
         {
-            if (IsLoading
-                || string.IsNullOrEmpty(APISetting.Url))
+            if (IsLoading || string.IsNullOrEmpty(APISetting.Url))
+                return;
+            APISetting.Url = APISetting.Url.Trim('/', '\r', '\n', ' ') + "/";
+            if (string.IsNullOrEmpty(APISetting.Url))
                 return;
             IsLoading = true;
-            APISetting.Url = APISetting.Url.TrimEnd('/', '\r', '\n', ' ') + "/";
+            if (BeforeSaveHandler != null)
+                BeforeSaveHandler();
             TweetService.TestAPIUrl(APISetting.Url,
                 userProfileDetail =>
                 {

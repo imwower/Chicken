@@ -13,7 +13,10 @@ namespace Chicken.View
         public APISettingsPage()
         {
             InitializeComponent();
-            apiSettingsViewModel = new APISettingsViewModel();
+            apiSettingsViewModel = new APISettingsViewModel
+            {
+                BeforeSaveHandler = this.BeforeSaveAction
+            };
             this.DataContext = apiSettingsViewModel;
             this.Loaded += APISettingsPage_Loaded;
             this.BackKeyPress += APISettingsPage_BackKeyPress;
@@ -31,6 +34,13 @@ namespace Chicken.View
             if (App.Settings == null || App.Settings.APISettings == null)
                 //close app:
                 base.Page_OnBackKeyPress(sender, e);
+        }
+        #endregion
+
+        #region actions
+        private void BeforeSaveAction()
+        {
+            this.Focus();
         }
         #endregion
     }
