@@ -6,16 +6,22 @@ namespace Chicken.View
 {
     public partial class EditMyProfilePage : PageBase
     {
+        #region properties
         private EditMyProfileViewModel myProfileViewModel;
+        #endregion
 
         public EditMyProfilePage()
         {
             InitializeComponent();
-            myProfileViewModel = new EditMyProfileViewModel();
+            myProfileViewModel = new EditMyProfileViewModel
+            {
+                BeforeSaveHandler = this.BeforeSaveAction
+            };
             this.Loaded += EditMyProfilePage_Loaded;
             this.DataContext = myProfileViewModel;
         }
 
+        #region loaded
         void EditMyProfilePage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!myProfileViewModel.IsInited)
@@ -23,27 +29,29 @@ namespace Chicken.View
                 myProfileViewModel.Refresh();
             }
         }
+        #endregion
 
-        private void Name_TextChanged(object sender, TextChangedEventArgs e)
+        #region actions
+        private void BeforeSaveAction()
         {
-            var textbox = (TextBox)sender;
-            myProfileViewModel.MyProfile.UserProfileDetail.Name = (sender as TextBox).Text;
-            var maxlength = textbox.MaxLength;
+            this.Focus();
         }
+        #endregion
 
-        private void Location_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            myProfileViewModel.MyProfile.UserProfileDetail.Location = (sender as TextBox).Text;
-        }
-
+        #region text changed
         private void Url_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.UserProfileDetail.Url = (sender as TextBox).Text;
+            var textbox = (TextBox)sender;
+            if (textbox.Text.Length <= textbox.MaxLength)
+                myProfileViewModel.MyProfile.UserProfileDetail.Url = textbox.Text;
         }
 
         private void Description_TextChanged(object sender, TextChangedEventArgs e)
         {
-            myProfileViewModel.MyProfile.UserProfileDetail.Text = (sender as TextBox).Text;
+            var textbox = (TextBox)sender;
+            if (textbox.Text.Length <= textbox.MaxLength)
+                myProfileViewModel.MyProfile.UserProfileDetail.Text = textbox.Text;
         }
+        #endregion
     }
 }

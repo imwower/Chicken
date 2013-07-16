@@ -36,27 +36,21 @@
                     <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockTitle}" />
                 </StackPanel.Resources>
                 <!--name-->
-                <TextBlock
-                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Name]}" />
-                <TextBox Text="{Binding Path=MyProfile.Name,Mode=TwoWay}"
-                         MaxLength="20" TextChanged="Name_TextChanged" />
+                <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Name]}" />
+                <ctrls:AutoTextBox Text="{Binding Path=MyProfile.UserProfileDetail.Name,Mode=TwoWay}" MaxLength="20" />
                 <!--location-->
                 <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Location]}" />
-                <TextBox Text="{Binding Path=MyProfile.Location}"
-                         TextChanged="Location_TextChanged" />
+                <ctrls:AutoTextBox Text="{Binding Path=MyProfile.UserProfileDetail.Location,Mode=TwoWay}" MaxLength="30" />
                 <!--link-->
-                <TextBlock
-                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Link]}" />
-                <TextBox
-                    Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
-                    TextChanged="Url_TextChanged" />
+                <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Link]}" />
+                <!--just user normal textbox, because url should be expanded-->
+                <TextBox Text="{Binding Path=MyProfile.UserProfileEntities.UserProfileUrlEntities.Urls[0].ExpandedUrl}"
+                    TextChanged="Url_TextChanged" MaxLength="100" />
                 <!--description-->
-                <TextBlock
-                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Description]}" />
-                <TextBox 
-                    Text="{Binding Path=MyProfile.ExpandedDescription}"
-                    TextChanged="Description_TextChanged"
-                    TextWrapping="Wrap" AcceptsReturn="True" Height="240" MaxLength="160" />
+                <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Description]}" />
+                <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"
+                         TextWrapping="Wrap" AcceptsReturn="True" MaxLength="160"
+                         TextChanged="Description_TextChanged" Height="240" MaxHeight="400" />
             </StackPanel>
         </ScrollViewer>
         <!--progress bar-->

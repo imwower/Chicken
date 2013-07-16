@@ -258,10 +258,6 @@ namespace Chicken.Service.Implementation
 
         public void UpdateMyProfile(Action<User> callBack, IDictionary<string, object> parameters)
         {
-            if (parameters == null || parameters.Count == 0)
-            {
-                return;
-            }
             parameters.Add(Const.SKIP_STATUS, Const.DEFAULT_VALUE_TRUE);
             string url = TwitterHelper.GenerateUrlParams(Const.PROFILE_UPDATE_MYPROFILE, parameters);
             HandleWebRequest(url, callBack, Const.HTTPPOST);

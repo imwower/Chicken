@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Chicken.Common;
 using Chicken.Model;
 using Chicken.Service;
@@ -8,6 +9,10 @@ namespace Chicken.ViewModel.Profile
 {
     public class EditMyProfileViewModel : PivotItemViewModelBase
     {
+        #region event handler
+        public Action BeforeSaveHandler;
+        #endregion
+
         #region properties
         private UserProfileDetailViewModel myProfile;
         public UserProfileDetailViewModel MyProfile
@@ -53,15 +58,22 @@ namespace Chicken.ViewModel.Profile
 
         private void SaveAction()
         {
-            IsLoading = true;
+            #region parameter
             var parameters = TwitterHelper.GetDictionary();
-            if (MyProfile.Name != App.AuthenticatedUser.Name)
+            if (!string.IsNullOrEmpty(MyProfile.Name))
                 parameters.Add(Const.USER_NAME, MyProfile.Name);
-            if (MyProfile.Location != App.AuthenticatedUser.Location)
+            if (!string.IsNullOrEmpty(MyProfile.Location))
                 parameters.Add(Const.LOCATION, MyProfile.Location);
-            if (MyProfile.Url != App.AuthenticatedUser.Url)
+            if (!string.IsNullOrEmpty(MyProfile.Url))
                 parameters.Add(Const.URL, MyProfile.Url);
-            parameters.Add(Const.DESCRIPTION, MyProfile.ExpandedDescription);
+            if (!string.IsNullOrEmpty(MyProfile.ExpandedDescription))
+                parameters.Add(Const.DESCRIPTION, MyProfile.ExpandedDescription);
+            #endregion
+            if (parameters.Count == 0)
+                return;
+            IsLoading = true;
+            if (BeforeSaveHandler != null)
+                BeforeSaveHandler();
             TweetService.UpdateMyProfile(
                 user =>
                 {
