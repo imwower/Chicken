@@ -163,8 +163,8 @@
         <!--emotion panel-->
         <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="4" Visibility="Collapsed" />
         <!--progress bar-->
-        <ProgressBar Grid.Row="5" IsIndeterminate="True"
-                     Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+        <ctrls:PerformanceProgressBar Grid.Row="5" IsIndeterminate="True"
+                                      Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
     </Grid>
 
     <i:Interaction.Triggers>

@@ -108,6 +108,7 @@
     <Content Include="libs\WriteableBitmapExWinPhoneXnaDependant.dll" />
     <Content Include="SampleData\*" Condition="'$(ConfigurationName)'=='LOCAL'" />
     <Compile Include="Controls\AutoTextBox.cs" />
+    <Compile Include="Controls\PerformanceProgressBar.cs" />
     <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs" Condition="'$(ConfigurationName)'!='Release'" />
     <!--condition compile-->
     <Compile Include="App.xaml.cs">

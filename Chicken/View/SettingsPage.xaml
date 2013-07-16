@@ -70,8 +70,8 @@
                             </StackPanel>
                         </ScrollViewer.Content>
                     </ScrollViewer>
-                    <ProgressBar Grid.Row="1" IsIndeterminate="True"
-                                 Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <ctrls:PerformanceProgressBar Grid.Row="1" IsIndeterminate="True"
+                                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
             <!--about-->
@@ -196,8 +196,8 @@
                             Content="{Binding Source={StaticResource LanguageHelper},Path=[Settings_Page_About_Famous]}"
                             VerticalAlignment="Bottom"
                             Command="{Binding Path=FamousCommand}" />
-                    <ProgressBar Grid.Row="2" IsIndeterminate="True"
-                                 Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <ctrls:PerformanceProgressBar Grid.Row="2" IsIndeterminate="True"
+                                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
         </controls:Pivot>

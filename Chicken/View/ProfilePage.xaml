@@ -193,8 +193,8 @@
                             </Grid>
                         </ScrollViewer.Content>
                     </ScrollViewer>
-                    <ProgressBar Grid.Row="1" IsIndeterminate="True"
-                                 Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <ctrls:PerformanceProgressBar Grid.Row="1" IsIndeterminate="True"
+                                                  Visibility="{Binding IsLoading,Converter={StaticResource BooleanToVisibilityConverter}}" />
                 </Grid>
             </controls:PivotItem>
             <!--user tweets-->
