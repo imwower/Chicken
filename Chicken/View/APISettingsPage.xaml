@@ -33,6 +33,9 @@
                       VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockTitle}" />
+                </StackPanel.Resources>
                 <!--api type-->
                 <ctrls:ListPicker
                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}"
@@ -43,12 +46,10 @@
                     </ctrls:ListPickerItem>
                 </ctrls:ListPicker>
                 <!--url-->
-                <TextBlock Margin="12,4"
-                           Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
-                <TextBox TextWrapping="Wrap"
-                         Text="{Binding Path=APISetting.Url, Mode=TwoWay}"
-                         TextChanged="Url_TextChanged"
-                         Height="240" MaxHeight="400" />
+                <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
+                <ctrls:AutoTextBox TextWrapping="Wrap" InputScope="Url"
+                                   Text="{Binding Path=APISetting.Url, Mode=TwoWay}"
+                                   Height="240" MaxHeight="400" />
             </StackPanel>
         </ScrollViewer>
         <!--progress bar-->

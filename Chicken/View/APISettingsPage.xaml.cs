@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Windows;
-using System.Windows.Controls;
 using Chicken.ViewModel.Settings;
 
 namespace Chicken.View
@@ -20,6 +19,7 @@ namespace Chicken.View
             this.BackKeyPress += APISettingsPage_BackKeyPress;
         }
 
+        #region loaded
         private void APISettingsPage_Loaded(object sender, RoutedEventArgs e)
         {
             if (!apiSettingsViewModel.IsInited)
@@ -31,13 +31,6 @@ namespace Chicken.View
             if (App.Settings == null || App.Settings.APISettings == null)
                 //close app:
                 base.Page_OnBackKeyPress(sender, e);
-        }
-
-        #region url text changed
-        private void Url_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var binding = (sender as TextBox).GetBindingExpression(TextBox.TextProperty);
-            binding.UpdateSource();
         }
         #endregion
     }

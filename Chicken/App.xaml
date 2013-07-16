@@ -384,6 +384,11 @@
             </Setter>
         </Style>
 
+        <!--text block title-->
+        <Style x:Name="TextBlockTitle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="12,4" />
+        </Style>
+
         <!--media and retweet icon-->
         <Style x:Name="RetweetRectangleSmall" TargetType="Rectangle">
             <Setter Property="Stretch" Value="Fill" />

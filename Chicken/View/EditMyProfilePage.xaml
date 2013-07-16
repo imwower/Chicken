@@ -33,9 +33,7 @@
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
                 <StackPanel.Resources>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Margin" Value="12,4" />
-                    </Style>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockTitle}" />
                 </StackPanel.Resources>
                 <!--name-->
                 <TextBlock

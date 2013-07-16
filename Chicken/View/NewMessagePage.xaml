@@ -41,8 +41,7 @@
                  InputScope="NameOrPhoneNumber"
                  KeyDown="UserName_KeyDown" />
         <!--conversation list-->
-        <Grid Grid.Row="2" Margin="4"
-              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Grid.Row="2" Margin="4" HorizontalAlignment="Stretch" VerticalAlignment="Top">
             <!--conversation-->
             <ctrls:LazyListBox x:Name="AutoListBox" Margin="4"
                                ItemsSource="{Binding Path=Messages}">
@@ -151,7 +150,8 @@
             </Grid.ColumnDefinitions>
             <!--char counter-->
             <TextBlock x:Name="TextCounter" Grid.Column="0"
-                       TextAlignment="Center" Opacity="0.6" Text="140" />
+                       Margin="12,4,0,4" Opacity="0.6" Text="140"
+                       VerticalAlignment="Center" HorizontalAlignment="Center" />
             <!--text box-->
             <ctrls:AutoTextBox x:Name="TextContent" Grid.Column="1"
                                Style="{StaticResource AutoTextBoxContent}"
