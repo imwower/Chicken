@@ -229,7 +229,7 @@
                             </StackPanel>
                             <!--conversation-->
                             <Grid Grid.Row="5" Margin="4"
-                                  Visibility="{Binding Tweet.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter},FallbackValue=Collapsed}">
+                                  Visibility="{Binding Tweet.InReplyToTweetId,Converter={StaticResource StringToVisibilityConverter}}">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1" />
                                     <RowDefinition />

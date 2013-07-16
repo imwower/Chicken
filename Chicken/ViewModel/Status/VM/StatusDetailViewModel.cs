@@ -12,6 +12,7 @@ namespace Chicken.ViewModel.Status.VM
 
         public StatusDetailViewModel()
         {
+            ConversationList = new ObservableCollection<TweetViewModel>();
             RefreshHandler = this.RefreshAction;
             LoadHandler = this.LoadAction;
         }
@@ -21,8 +22,7 @@ namespace Chicken.ViewModel.Status.VM
         {
             if (!CheckIfLoaded())
                 return;
-            if (ConversationList != null)
-                ConversationList.Clear();
+            ConversationList.Clear();
             LoadConversation(Tweet.InReplyToTweetId);
             IsInited = true;
         }
@@ -30,7 +30,7 @@ namespace Chicken.ViewModel.Status.VM
         private void LoadAction()
         {
             string statusId = string.Empty;
-            if (ConversationList != null && ConversationList.Count != 0)
+            if (ConversationList.Count != 0)
                 statusId = ConversationList[ConversationList.Count - 1].InReplyToTweetId;
             LoadConversation(statusId);
         }
@@ -45,8 +45,6 @@ namespace Chicken.ViewModel.Status.VM
                 base.Loaded();
                 return;
             }
-            if (ConversationList == null)
-                ConversationList = new ObservableCollection<TweetViewModel>();
             TweetService.GetStatusDetail(statusId,
                 tweet =>
                 {
