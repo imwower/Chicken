@@ -103,6 +103,14 @@
                                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Message]}"
                                               Command="{Binding Path=NewMessageCommand}" />
                             <abu:AppBar.MenuItems>
+                                <!--search-->
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Search]}"
+                                    Command="{Binding Path=SearchCommand}" />
+                                <!--my profile-->
+                                <abu:AppBarMenuItem
+                                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_MyProfile]}"
+                                    Command="{Binding Path=MyProfileCommand}" />
                                 <!--settings-->
                                 <abu:AppBarMenuItem
                                     Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
