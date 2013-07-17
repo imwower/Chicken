@@ -28,7 +28,7 @@
                    Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Header]}" />
         <!--content-->
         <ScrollViewer Grid.Row="1" Margin="8,4"
-                      VerticalAlignment="Top"
+                      VerticalAlignment="Stretch"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Disabled">
             <StackPanel>
@@ -65,7 +65,7 @@
     </v:PageBase.ApplicationBar>
     <i:Interaction.Behaviors>
         <abu:AppBarItemCommand Type="Button" Id="save"
-                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Settings]}"
+                               Text="{Binding Source={StaticResource LanguageHelper}, Path=[AppBarButton_Save]}"
                                Command="{Binding SaveCommand}" />
     </i:Interaction.Behaviors>
 </v:PageBase>
