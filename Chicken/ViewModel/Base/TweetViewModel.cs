@@ -15,9 +15,12 @@ namespace Chicken.ViewModel.Base
 
         public TweetViewModel(Tweet data)
         {
-            #region tweet
+            #region retweet
             if (data.RetweetStatus != null)
             {
+                //for retweet,
+                //get the real Id for max_id/since_id
+                //while loading/refreshing
                 string id = data.RetweetStatus.Id;
                 this.tweet = data.RetweetStatus;
                 this.tweet.Id = data.Id;

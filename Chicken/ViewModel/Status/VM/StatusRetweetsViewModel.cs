@@ -29,7 +29,9 @@ namespace Chicken.ViewModel.Status.VM
             if (!string.IsNullOrEmpty(previousCursor))
                 parameters.Add(Const.CURSOR, previousCursor);
             #endregion
-            TweetService.GetStatusRetweetIds(Tweet.Id,
+            //get the original tweet id
+            string statusId = Tweet.OriginalTweet == null ? Tweet.Id : Tweet.OriginalTweet.Id;
+            TweetService.GetStatusRetweetIds(statusId,
                 userIdList =>
                 {
                     #region handle error

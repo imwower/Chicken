@@ -67,11 +67,21 @@ namespace Chicken.ViewModel.Status
         {
             if (IsLoading)
                 return;
+            if (Tweet.User.IsPrivate)
+            {
+                App.HandleMessage(new ToastMessage
+                {
+                    Message = LanguageHelper.GetString("Toast_Msg_CannotRetweetPrivateTweet"),
+                });
+                return;
+            }
             if (!Tweet.IsRetweeted)
             {
                 IsLoading = true;
                 var action = RetweetActionType.Create;
-                TweetService.Retweet(Tweet.Id, action,
+                //get the original tweet id
+                string statusId = Tweet.OriginalTweet == null ? Tweet.Id : Tweet.OriginalTweet.Id;
+                TweetService.Retweet(statusId, action,
                    data =>
                    {
                        #region handle error
@@ -85,7 +95,7 @@ namespace Chicken.ViewModel.Status
                        {
                            Message = LanguageHelper.GetString("Toast_Msg_RetweetSuccessfully"),
                        });
-                       Tweet = new TweetDetailViewModel(data);
+                       IsolatedStorageService.CreateObject(Const.StatusPage_StatusDetail, data);
                        Refresh();
                    });
             }

@@ -691,6 +691,15 @@ namespace Chicken.Resources {
         }
         
         /// <summary>
+        ///   查找类似 不能转推隐私保护用户的推文哟 的本地化字符串。
+        /// </summary>
+        public static string Toast_Msg_CannotRetweetPrivateTweet {
+            get {
+                return ResourceManager.GetString("Toast_Msg_CannotRetweetPrivateTweet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 清除成功 的本地化字符串。
         /// </summary>
         public static string Toast_Msg_ClearCacheSuccessfully {

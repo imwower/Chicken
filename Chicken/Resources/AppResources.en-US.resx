@@ -399,4 +399,7 @@
   <data name="Toast_Msg_ClearCacheSuccessfully" xml:space="preserve">
     <value>clear successfully</value>
   </data>
+  <data name="Toast_Msg_CannotRetweetPrivateTweet" xml:space="preserve">
+    <value>can not retweet private user's tweet</value>
+  </data>
 </root>
