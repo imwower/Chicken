@@ -14,6 +14,7 @@ namespace Chicken.View
             InitializeComponent();
             newMessageViewModel = new NewMessageViewModel()
             {
+                InitHandler = this.InitAction,
                 BeforeSendHandler = this.BeforeSendAction,
                 AddEmotionHandler = this.AddEmotionAction,
                 KeyboardHandler = this.KeyboardAction
@@ -31,6 +32,12 @@ namespace Chicken.View
         #endregion
 
         #region actions
+        private void InitAction()
+        {
+            if (newMessageViewModel.IsNew)
+                this.UserName.Focus();
+        }
+
         private void BeforeSendAction()
         {
             this.Focus();
@@ -59,6 +66,7 @@ namespace Chicken.View
         private void KeyboardAction()
         {
             this.Emotions.Visibility = Visibility.Collapsed;
+            this.UpdateLayout();
             this.TextContent.Focus();
         }
         #endregion

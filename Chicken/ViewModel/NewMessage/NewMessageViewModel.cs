@@ -113,6 +113,8 @@ namespace Chicken.ViewModel.NewMessage
             if (file == null)
             {
                 IsNew = true;
+                if (InitHandler != null)
+                    InitHandler();
                 base.Refreshed();
                 return;
             }
