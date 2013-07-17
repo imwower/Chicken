@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 using Chicken.Service;
 using ImageTools;
 using ImageTools.IO;
@@ -20,10 +18,6 @@ namespace Chicken.Controls
     {
         #region private static properties
         private static BitmapImage defaultImage = new BitmapImage(new Uri("/Images/dark/cat.png", UriKind.Relative));
-        private bool isAnimating;
-        private DispatcherTimer timer;
-        private int index;
-        private IList<KeyValuePair<ImageBase, ImageSource>> frames;
         #endregion
 
         #region properties
@@ -70,6 +64,11 @@ namespace Chicken.Controls
         }
         #endregion
 
+        /// <summary>
+        /// just display first frame of gif image,
+        /// in case of memory leak,
+        /// and performance issue.
+        /// </summary>
         public ImageContainer()
         {
             InitializeComponent();
@@ -105,9 +104,9 @@ namespace Chicken.Controls
 
         private void ClearImage()
         {
-            isAnimating = false;
-            if (timer == null)
-                DisplayGifImage(null, null);
+            this.PngImage.Source = null;
+            DownloadCompleted = false;
+            Debug.WriteLine("clear image.");
         }
 
         private void SetImageSource(byte[] data)
@@ -151,79 +150,12 @@ namespace Chicken.Controls
                 () =>
                 {
                     var gifImage = sender as ExtendedImage;
-                    if (!gifImage.IsAnimated || gifImage.Frames.Count == 1)
-                        this.PngImage.Source = gifImage.ToBitmap();
-                    else
-                    {
-                        frames = new List<KeyValuePair<ImageBase, ImageSource>>();
-                        frames.Add(new KeyValuePair<ImageBase, ImageSource>(gifImage, gifImage.ToBitmap()));
-                        foreach (var frame in gifImage.Frames)
-                        {
-                            if (frame != null && frame.IsFilled)
-                                frames.Add(new KeyValuePair<ImageBase, ImageSource>(frame, frame.ToBitmap()));
-                        }
-                        DisplayGifImage();
-                    }
+                    this.PngImage.Source = gifImage.ToBitmap();
                     gifImage.LoadingCompleted -= ExtendedImageLoadCompleted;
                     gifImage = null;
                     DownloadCompleted = true;
                 });
         }
-
-        #region use timer to display gif image
-        private void DisplayGifImage()
-        {
-            timer = new DispatcherTimer();
-            timer.Tick += DisplayGifImage;
-            isAnimating = true;
-            UpdateInterval();
-            timer.Start();
-        }
-
-        private void UpdateInterval()
-        {
-            var interval = frames[index].Key.DelayTime;
-            interval = interval == 0 ? 20 : interval;
-            timer.Interval = TimeSpan.FromMilliseconds(interval * 20);
-        }
-
-        private void DisplayGifImage(object sender, EventArgs e)
-        {
-            #region display
-            if (isAnimating)
-            {
-                if (index < frames.Count)
-                {
-                    this.PngImage.Source = frames[index].Value;
-                    index++;
-                    if (index > frames.Count - 1)
-                        index = 0;
-                    UpdateInterval();
-                }
-            }
-            #endregion
-            #region clear image
-            else
-            {
-                var timer = sender as DispatcherTimer;
-                if (timer != null)
-                {
-                    timer.Stop();
-                    timer.Tick -= DisplayGifImage;
-                    timer = null;
-                }
-                if (frames != null)
-                {
-                    frames.Clear();
-                    frames = null;
-                }
-                this.PngImage.Source = null;
-                DownloadCompleted = false;
-                Debug.WriteLine("clear image.");
-            }
-            #endregion
-        }
-        #endregion
         #endregion
     }
 }
