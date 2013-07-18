@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Chicken.Controls
 {
@@ -33,6 +34,21 @@ namespace Chicken.Controls
             set
             {
                 SetValue(AllowOverFlowProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(AutoTextBox), null);
+
+        public ImageSource Icon
+        {
+            get
+            {
+                return (ImageSource)GetValue(IconProperty);
+            }
+            set
+            {
+                SetValue(IconProperty, value);
             }
         }
         #endregion
