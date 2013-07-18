@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+﻿using System;
 using Chicken.ViewModel.Search;
 
 namespace Chicken.View
@@ -19,13 +19,10 @@ namespace Chicken.View
         }
 
         #region search textbox
-        private void SearchBox_KeyDown(object sender, KeyEventArgs e)
+        private void SearchBox_EnterKeyDown(object sender, EventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                this.Focus();
-                searchViewModel.Search();
-            }
+            this.Focus();
+            searchViewModel.Search();
         }
         #endregion
     }

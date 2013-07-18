@@ -1,11 +1,18 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace Chicken.Controls
 {
     public class AutoTextBox : TextBox
     {
+        #region private
+        private const string IconBorderName = "IconBorder";
+        private Border iconBorder;
+        #endregion
+
         #region properties
         public static readonly DependencyProperty AssociatedTextBlockProperty =
             DependencyProperty.Register("AssociatedTextBlock", typeof(TextBlock), typeof(AutoTextBox), null);
@@ -53,11 +60,29 @@ namespace Chicken.Controls
         }
         #endregion
 
+        #region event handler
+        public event EventHandler EnterKeyDown;
+        #endregion
+
         public AutoTextBox()
         {
             this.TextChanged += AutoTextBox_TextChanged;
+            this.KeyDown += AutoTextBox_KeyDown;
         }
 
+        #region loaded
+        public override void OnApplyTemplate()
+        {
+            base.OnApplyTemplate();
+            if (iconBorder != null)
+                iconBorder.MouseLeftButtonDown -= Icon_Clicked;
+            iconBorder = GetTemplateChild(IconBorderName) as Border;
+            if (iconBorder != null)
+                iconBorder.MouseLeftButtonDown += Icon_Clicked;
+        }
+        #endregion
+
+        #region private method
         private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.MaxLength != 0)
@@ -79,5 +104,24 @@ namespace Chicken.Controls
             if (binding != null)
                 binding.UpdateSource();
         }
+
+        private void AutoTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (EnterKeyDown != null)
+                    EnterKeyDown(this, e);
+            }
+        }
+
+        private void Icon_Clicked(object sender, MouseButtonEventArgs e)
+        {
+            var rootFrame = (Frame)Application.Current.RootVisual;
+            rootFrame.Focus();
+
+            if (EnterKeyDown != null)
+                EnterKeyDown(this, e);
+        }
+        #endregion
     }
 }

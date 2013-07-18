@@ -540,7 +540,7 @@
                                          Text="{TemplateBinding Text}"
                                          Template="{StaticResource PhoneDisabledTextBoxTemplate}"/>
                             </Border>
-                            <Border HorizontalAlignment="Right" Margin="12" Width="46" Height="46">
+                            <Border x:Name="IconBorder" HorizontalAlignment="Right" Margin="12" Width="46" Height="46">
                                 <Image Margin="6" Source="{TemplateBinding Icon}" />
                             </Border>
                         </Grid>
