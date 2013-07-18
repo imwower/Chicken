@@ -18,8 +18,8 @@ namespace Chicken
     {
         #region properites
         public PhoneApplicationFrame RootFrame { get; private set; }
-        private static SolidColorBrush accentBrush;
-        public static SolidColorBrush PhoneAccentBrush
+        private static Brush accentBrush;
+        public static Brush PhoneAccentBrush
         {
             get
             {
@@ -28,6 +28,17 @@ namespace Chicken
                 return accentBrush;
             }
         }
+        private static Brush foregroundBrush;
+        public static Brush ForegroundBrush
+        {
+            get
+            {
+                if (foregroundBrush == null)
+                    foregroundBrush = Application.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush;
+                return accentBrush;
+            }
+        }
+
         private static FontFamily fontFamily;
         public static FontFamily FontFamily
         {

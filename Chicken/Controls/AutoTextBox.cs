@@ -1,15 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Chicken.Controls
 {
     public class AutoTextBox : TextBox
     {
         #region properties
-        public static readonly Brush ErrorBrush = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
-        public static readonly Brush ForegroundBrush = Application.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush;
-
         public static readonly DependencyProperty AssociatedTextBlockProperty =
             DependencyProperty.Register("AssociatedTextBlock", typeof(TextBlock), typeof(AutoTextBox), null);
 
@@ -56,12 +52,12 @@ namespace Chicken.Controls
                 if (remaining < 0)
                 {
                     if (AssociatedTextBlock != null)
-                        AssociatedTextBlock.Foreground = ErrorBrush;
+                        AssociatedTextBlock.Foreground = App.PhoneAccentBrush;
                     if (!AllowOverFlow)
                         return;
                 }
                 if (remaining >= 0 && AssociatedTextBlock != null)
-                    AssociatedTextBlock.Foreground = ForegroundBrush;
+                    AssociatedTextBlock.Foreground = App.ForegroundBrush;
             }
             var binding = GetBindingExpression(TextBox.TextProperty);
             if (binding != null)
