@@ -6,9 +6,21 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
+    xmlns:v="clr-namespace:Chicken.View"
     xmlns:vm="clr-namespace:Chicken.ViewModel">
 
     <Application.Resources>
+
+        <FontFamily x:Key="FontFamily">
+            /FontTest;component/Fonts/Fonts.zip#Ebrima,
+            /FontTest;component/Fonts/Fonts.zip#Gadugi,
+            /FontTest;component/Fonts/Fonts.zip#Khmer UI,
+            /FontTest;component/Fonts/Fonts.zip#Nirmala UI,
+            /FontTest;component/Fonts/Fonts.zip#Segoe WP
+        </FontFamily>
+        <Style TargetType="v:PageBase">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        </Style>
 
         <vm:LanguageHelper x:Key="LanguageHelper" />
 
@@ -542,6 +554,7 @@
         </Style>
         <!--emotion button-->
         <Style x:Name="EmotionButton" TargetType="Button">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
