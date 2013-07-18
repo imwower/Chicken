@@ -30,12 +30,6 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="10" />
                     </Grid.RowDefinitions>
-                    <Grid.Resources>
-                        <Style TargetType="TextBlock" BasedOn="{StaticResource ProfileScreenName}">
-                            <Setter Property="TextAlignment" Value="Center" />
-                            <Setter Property="Margin" Value="2" />
-                        </Style>
-                    </Grid.Resources>
                     <!--Description-->
                     <ScrollViewer Grid.Row="0"
                                   VerticalContentAlignment="Stretch"
@@ -49,6 +43,12 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock" BasedOn="{StaticResource ProfileScreenName}">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="Margin" Value="2" />
+                                    </Style>
+                                </Grid.Resources>
                                 <!--profile banner-->
                                 <ctrls:ImageContainer Grid.Row="1" Opacity="0.6" Stretch="Fill"
                                                       ImageUrl="{Binding UserProfile.UserProfileBannerImageWeb}"

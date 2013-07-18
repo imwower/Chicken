@@ -18,6 +18,26 @@ namespace Chicken
     {
         #region properites
         public PhoneApplicationFrame RootFrame { get; private set; }
+        private static SolidColorBrush accentBrush;
+        public static SolidColorBrush PhoneAccentBrush
+        {
+            get
+            {
+                if (accentBrush == null)
+                    accentBrush = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
+                return accentBrush;
+            }
+        }
+        private static FontFamily fontFamily;
+        public static FontFamily FontFamily
+        {
+            get
+            {
+                if (fontFamily == null)
+                    fontFamily = Application.Current.Resources["FontFamily"] as FontFamily;
+                return fontFamily;
+            }
+        }
         private static UserProfileDetail authenticatedUser;
         public static UserProfileDetail AuthenticatedUser
         {

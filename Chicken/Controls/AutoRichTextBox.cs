@@ -36,14 +36,19 @@ namespace Chicken.Controls
             var textBox = sender as AutoRichTextBox;
             if (textBox == null || e.NewValue == null)
                 return;
-            textBox.Blocks.Clear();
+            textBox.AddTweetData(e.NewValue);
+        }
+
+        private void AddTweetData(object data)
+        {
+            this.Blocks.Clear();
             string text = string.Empty;
             var paragraph = new Paragraph();
             var entities = new List<EntityBase>();
             #region tweet
-            if (e.NewValue is TweetBase)
+            if (data is TweetBase)
             {
-                var tweet = e.NewValue as TweetBase;
+                var tweet = data as TweetBase;
                 text = tweet.Text;
                 #region add entity
                 if (tweet.Entities.UserMentions != null && tweet.Entities.UserMentions.Count != 0)
@@ -66,9 +71,9 @@ namespace Chicken.Controls
             }
             #endregion
             #region profile
-            else if (e.NewValue is UserProfileDetail)
+            else if (data is UserProfileDetail)
             {
-                var profile = e.NewValue as UserProfileDetail;
+                var profile = data as UserProfileDetail;
                 text = profile.Text;
                 var mentions = TwitterHelper.ParseUserMentions(profile.Text);
                 entities.AddRange(mentions);
@@ -93,7 +98,7 @@ namespace Chicken.Controls
                 {
                     Text = HttpUtility.HtmlDecode(text)
                 });
-                textBox.Blocks.Add(paragraph);
+                this.Blocks.Add(paragraph);
             }
             #endregion
             #region add
@@ -108,14 +113,14 @@ namespace Chicken.Controls
                     {
                         paragraph.Inlines.Add(new Run
                         {
-                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index - index))
+                            Text = HttpUtility.HtmlDecode(text.Substring(index, entity.Index - index)),
                         });
                         index = entity.Index;
                     }
                     #endregion
                     var hyperlink = new Hyperlink();
                     hyperlink.TextDecorations = null;
-                    hyperlink.Foreground = Application.Current.Resources["PhoneAccentBrush"] as SolidColorBrush;
+                    hyperlink.Foreground = App.PhoneAccentBrush;
                     #region entity
                     switch (entity.EntityType)
                     {
@@ -123,7 +128,7 @@ namespace Chicken.Controls
                         case EntityType.UserMention:
                         case EntityType.HashTag:
                             hyperlink.CommandParameter = entity;
-                            hyperlink.Click += textBox.Hyperlink_Click;
+                            hyperlink.Click += this.Hyperlink_Click;
                             hyperlink.Inlines.Add(entity.Text);
                             break;
                         #endregion
@@ -156,7 +161,7 @@ namespace Chicken.Controls
                 }
                 #endregion
                 #endregion
-                textBox.Blocks.Add(paragraph);
+                this.Blocks.Add(paragraph);
             }
             #endregion
         }

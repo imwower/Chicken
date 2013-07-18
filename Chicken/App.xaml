@@ -6,19 +6,28 @@
     xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
     xmlns:ctrls ="clr-namespace:Chicken.Controls"
-    xmlns:v="clr-namespace:Chicken.View"
     xmlns:vm="clr-namespace:Chicken.ViewModel">
 
     <Application.Resources>
 
         <FontFamily x:Key="FontFamily">
-            /FontTest;component/Fonts/Fonts.zip#Ebrima,
-            /FontTest;component/Fonts/Fonts.zip#Gadugi,
-            /FontTest;component/Fonts/Fonts.zip#Khmer UI,
-            /FontTest;component/Fonts/Fonts.zip#Nirmala UI,
-            /FontTest;component/Fonts/Fonts.zip#Segoe WP
+            /Chicken;component/Fonts/Fonts.zip#Segoe WP,
+            /Chicken;component/Fonts/Fonts.zip#Nirmala UI,
+            /Chicken;component/Fonts/Fonts.zip#Ebrima,
+            /Chicken;component/Fonts/Fonts.zip#Gadugi,            
+            /Chicken;component/Fonts/Fonts.zip#Khmer UI
         </FontFamily>
-        <Style TargetType="v:PageBase">
+
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        </Style>
+        <Style TargetType="ctrls:AutoTextBox">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
+        </Style>
+        <Style TargetType="ctrls:AutoRichTextBox">
             <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
         </Style>
 
@@ -423,26 +432,29 @@
 
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
             <Setter Property="Foreground" Value="Silver" />
         </Style>
         <Style x:Name="TextNormal" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
         <Style x:Name="TextMedium" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
 
         <Style x:Name="TweetScreenName" TargetType="TextBlock" BasedOn="{StaticResource TextSmall}">
-            <Setter Property="FontFamily" Value="Segoe WP Semibold" />
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="Opacity" Value="0.6" />
         </Style>
 
         <Style x:Name="ProfileScreenName" TargetType="TextBlock">
-            <Setter Property="FontFamily" Value="Segoe WP Semibold" />
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="TextTrimming" Value="WordEllipsis" />
         </Style>
@@ -455,21 +467,25 @@
 
         <!--Content default is Medium-->
         <Style x:Name="TextContent" TargetType="ctrls:AutoRichTextBox">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <!--TextBox Content-->
         <Style x:Name="AutoTextBoxContent" TargetType="ctrls:AutoTextBox">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <!--Content Normal-->
         <Style x:Name="TextContentNormal" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeNormal}" />
             <Setter Property="TextWrapping" Value="Wrap" />
         </Style>
         <!--Content Normal Center-->
         <Style x:Name="TextContentCenter" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="TextWrapping" Value="Wrap" />
             <Setter Property="TextAlignment" Value="Center" />
@@ -477,6 +493,7 @@
 
         <!--HyperLink Text without underline-->
         <Style x:Name="HyperLinkTextNoUnderlineCenter" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMedium}" />
             <Setter Property="Foreground" Value="#F9F9F9" />
             <Setter Property="TextAlignment" Value="Center" />
@@ -488,6 +505,7 @@
         </Style>
         <!--HyperLink Text small-->
         <Style x:Name="HyperLinkTextSmall" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />
             <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeSmall}" />
             <Setter Property="Foreground" Value="Gray" />
             <Setter Property="TextAlignment" Value="Right" />
