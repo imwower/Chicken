@@ -427,12 +427,6 @@
             </Setter>
         </Style>
 
-        <ControlTemplate x:Key="PhoneDisabledTextBoxTemplate" TargetType="TextBox">
-            <ContentControl x:Name="ContentElement" BorderThickness="0"
-                            HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
-                            Margin="{StaticResource PhoneTextBoxInnerMargin}" Padding="0,0,46,0" />
-        </ControlTemplate>
-
         <!--styles-->
         <Style x:Name="TextSmall" TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource FontFamily}" />

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Shapes;
 
 namespace Chicken.Controls
 {
@@ -175,9 +169,11 @@ namespace Chicken.Controls
         public event EventHandler EnterKeyDown;
         #endregion
 
+
         public AutoTextBox()
         {
             InitializeComponent();
+            this.Loaded += AutoTextBox_Loaded;
         }
 
         public void Select(int start, int length)
@@ -185,6 +181,16 @@ namespace Chicken.Controls
             this.ContentTextBox.Select(start, length);
         }
 
+        #region loaded
+        private void AutoTextBox_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.IconImage.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
+            this.ContentTextBox.TextChanged += AutoTextBox_TextChanged;
+            this.ContentTextBox.KeyDown += AutoTextBox_KeyDown;
+        }
+        #endregion
+
+        #region private method
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, VisualStateFocused, false);
@@ -196,5 +202,44 @@ namespace Chicken.Controls
             VisualStateManager.GoToState(this, VisualStateUnfocused, false);
             base.OnLostFocus(e);
         }
+
+        private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (this.MaxLength != 0)
+            {
+                int remaining = this.MaxLength - this.Text.Length;
+                if (AssociatedTextBlock != null)
+                    AssociatedTextBlock.Text = remaining.ToString();
+                if (remaining < 0)
+                {
+                    //if (AssociatedTextBlock != null)
+                    //    AssociatedTextBlock.Foreground = App.PhoneAccentBrush;
+                    if (!AllowOverFlow)
+                        return;
+                }
+                //if (remaining >= 0 && AssociatedTextBlock != null)
+                //    AssociatedTextBlock.Foreground = App.ForegroundBrush;
+            }
+            Text = this.ContentTextBox.Text;
+            var binding = GetBindingExpression(AutoTextBox.TextProperty);
+            if (binding != null)
+                binding.UpdateSource();
+        }
+
+        private void AutoTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (EnterKeyDown != null)
+                    EnterKeyDown(this, e);
+            }
+        }
+
+        private void IconBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (EnterKeyDown != null)
+                EnterKeyDown(this, e);
+        }
+        #endregion
     }
 }
