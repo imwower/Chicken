@@ -15,7 +15,7 @@ namespace Chicken.Controls
 
         #region properties
         public static readonly DependencyProperty TextProperty =
-            DependencyProperty.Register("Text", typeof(string), typeof(AutoTextBox), null);
+            DependencyProperty.Register("Text", typeof(string), typeof(AutoTextBox), new PropertyMetadata(string.Empty));
 
         public string Text
         {
@@ -30,7 +30,7 @@ namespace Chicken.Controls
         }
 
         public static readonly DependencyProperty MaxLengthProperty =
-            DependencyProperty.Register("MaxLength", typeof(int), typeof(AutoTextBox), null);
+            DependencyProperty.Register("MaxLength", typeof(int), typeof(AutoTextBox), new PropertyMetadata(0));
 
         public int MaxLength
         {
@@ -210,7 +210,9 @@ namespace Chicken.Controls
         {
             if (this.MaxLength != 0)
             {
-                int remaining = this.MaxLength - this.Text.Length;
+                int remaining = this.MaxLength;
+                if (!string.IsNullOrEmpty(this.ContentTextBox.Text))
+                    remaining -= this.ContentTextBox.Text.Length;
                 if (AssociatedTextBlock != null)
                     AssociatedTextBlock.Text = remaining.ToString();
                 if (remaining < 0)
