@@ -58,6 +58,9 @@
                                 <ctrls:ListPicker
                                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[SettingsPage_Language]}"
                                     SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}">
+                                    <ctrls:ListPicker.Resources>
+                                        <Style TargetType="TextBlock" />
+                                    </ctrls:ListPicker.Resources>
                                     <ctrls:ListPickerItem>
                                         <TextBlock
                                             Text="{Binding Source={StaticResource LanguageHelper}, Path=[Default_Language_ZH_CN]}" />

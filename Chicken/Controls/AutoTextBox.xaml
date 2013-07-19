@@ -42,7 +42,7 @@
                             <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxBrush}"/>
                         </ObjectAnimationUsingKeyFrames>
                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="Foreground" Storyboard.TargetName="ContentTextBox">
-                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxReadOnlyBrush}"/>
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PhoneTextBoxForegroundBrush}"/>
                         </ObjectAnimationUsingKeyFrames>
                     </Storyboard>
                 </VisualState>
@@ -51,6 +51,8 @@
 
         <Border x:Name="ContentBorder"
                 Margin="{StaticResource PhoneTouchTargetOverhang}"
+                BorderThickness="{StaticResource PhoneBorderThickness}"
+                BorderBrush="{StaticResource PhoneTextBoxForegroundBrush}"
                 Background="{StaticResource PhoneTextBoxBrush}">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -68,18 +70,19 @@
                          TextAlignment="{Binding ElementName=LayoutRoot,Path=TextAlignment}"
                          AcceptsReturn="{Binding ElementName=LayoutRoot,Path=AcceptsReturn}"
                          InputScope="{Binding ElementName=LayoutRoot,Path=InputScope}"
+                         VerticalAlignment="{Binding ElementName=LayoutRoot,Path=VerticalAlignment}"
                          HorizontalAlignment="Stretch">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
-                            <ContentControl x:Name="ContentElement"                                            
+                            <ContentControl x:Name="ContentElement"
                                             HorizontalContentAlignment="Stretch"
                                             VerticalContentAlignment="Stretch" />
                         </ControlTemplate>
                     </TextBox.Template>
                 </TextBox>
                 <Image x:Name="IconImage"
-                       Grid.Column="1"
-                       Width="46" Height="46"
+                       Grid.Column="1" Stretch="Fill"
+                       Width="46" Height="46" Margin="4"
                        Source="{Binding ElementName=LayoutRoot,Path=Icon}"
                        HorizontalAlignment="Right" />
             </Grid>

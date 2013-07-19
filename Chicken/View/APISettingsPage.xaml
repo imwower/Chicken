@@ -40,6 +40,9 @@
                 <ctrls:ListPicker
                     Header="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIType]}"
                     SelectedIndex="{Binding SelectedIndex,Mode=TwoWay}">
+                    <ctrls:ListPicker.Resources>
+                        <Style TargetType="TextBlock" />
+                    </ctrls:ListPicker.Resources>
                     <ctrls:ListPickerItem>
                         <TextBlock
                             Text="{Binding Source={StaticResource LanguageHelper}, Path=[Default_API_TWIP4]}" />
