@@ -212,13 +212,13 @@ namespace Chicken.Controls
                     AssociatedTextBlock.Text = remaining.ToString();
                 if (remaining < 0)
                 {
-                    //if (AssociatedTextBlock != null)
-                    //    AssociatedTextBlock.Foreground = App.PhoneAccentBrush;
+                    if (AssociatedTextBlock != null)
+                        AssociatedTextBlock.Foreground = App.PhoneAccentBrush;
                     if (!AllowOverFlow)
                         return;
                 }
-                //if (remaining >= 0 && AssociatedTextBlock != null)
-                //    AssociatedTextBlock.Foreground = App.ForegroundBrush;
+                if (remaining >= 0 && AssociatedTextBlock != null)
+                    AssociatedTextBlock.Foreground = App.ForegroundBrush;
             }
             Text = this.ContentTextBox.Text;
             var binding = GetBindingExpression(AutoTextBox.TextProperty);

@@ -50,7 +50,6 @@ namespace Chicken.View
                 case NewTweetActionType.PostNew:
                 case NewTweetActionType.None:
                 default:
-                    this.TextContent.Select(this.TextContent.Text.Length, 0);
                     break;
             }
         }
