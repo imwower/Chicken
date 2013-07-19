@@ -1,20 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using System.Windows.Shapes;
 
 namespace Chicken.Controls
 {
-    public class AutoTextBox : Control
+    public partial class AutoTextBox : UserControl
     {
         #region private
         private const string VisualStateFocused = "Focused";
         private const string VisualStateUnfocused = "Unfocused";
-        private const string ContentTextBoxName = "ContentTextBox";
-        private TextBox contentTextBox;
-        private const string IconBorderName = "IconBorder";
-        private Border iconBorder;
         #endregion
 
         #region properties
@@ -175,52 +177,14 @@ namespace Chicken.Controls
 
         public AutoTextBox()
         {
-            DefaultStyleKey = typeof(AutoTextBox);
+            InitializeComponent();
         }
 
         public void Select(int start, int length)
         {
-            contentTextBox.Select(start, length);
+            this.ContentTextBox.Select(start, length);
         }
 
-        #region loaded
-        public override void OnApplyTemplate()
-        {
-            base.OnApplyTemplate();
-            #region remove event handler
-            if (contentTextBox != null)
-            {
-                contentTextBox.TextChanged -= AutoTextBox_TextChanged;
-                contentTextBox.KeyDown -= AutoTextBox_KeyDown;
-            }
-            if (iconBorder != null)
-                iconBorder.MouseLeftButtonDown -= IconBorder_MouseLeftButtonDown;
-            #endregion
-            #region textbox
-            contentTextBox = GetTemplateChild(ContentTextBoxName) as TextBox;
-            if (contentTextBox != null)
-            {
-                #region text box properties
-                contentTextBox.TextWrapping = TextWrapping;
-                #endregion
-                contentTextBox.TextChanged += AutoTextBox_TextChanged;
-                contentTextBox.KeyDown += AutoTextBox_KeyDown;
-            }
-            #endregion
-            #region icon
-            iconBorder = GetTemplateChild(IconBorderName) as Border;
-            if (iconBorder != null)
-            {
-                if (Icon == null)
-                    iconBorder.Visibility = Visibility.Collapsed;
-                else
-                    iconBorder.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
-            }
-            #endregion
-        }
-        #endregion
-
-        #region private method
         protected override void OnGotFocus(RoutedEventArgs e)
         {
             VisualStateManager.GoToState(this, VisualStateFocused, false);
@@ -232,43 +196,5 @@ namespace Chicken.Controls
             VisualStateManager.GoToState(this, VisualStateUnfocused, false);
             base.OnLostFocus(e);
         }
-
-        private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (this.MaxLength != 0)
-            {
-                int remaining = this.MaxLength - this.Text.Length;
-                if (AssociatedTextBlock != null)
-                    AssociatedTextBlock.Text = remaining.ToString();
-                if (remaining < 0)
-                {
-                    if (AssociatedTextBlock != null)
-                        AssociatedTextBlock.Foreground = App.PhoneAccentBrush;
-                    if (!AllowOverFlow)
-                        return;
-                }
-                if (remaining >= 0 && AssociatedTextBlock != null)
-                    AssociatedTextBlock.Foreground = App.ForegroundBrush;
-            }
-            var binding = GetBindingExpression(AutoTextBox.TextProperty);
-            if (binding != null)
-                binding.UpdateSource();
-        }
-
-        private void AutoTextBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (EnterKeyDown != null)
-                    EnterKeyDown(this, e);
-            }
-        }
-
-        private void IconBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (EnterKeyDown != null)
-                EnterKeyDown(this, e);
-        }
-        #endregion
     }
 }

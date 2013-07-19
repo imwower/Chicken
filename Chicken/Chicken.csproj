@@ -119,7 +119,9 @@
     <Content Include="libs\ImageTools.Utils.dll" />
     <Content Include="libs\PhoneCodeContractsAssemblies.dll" />
     <Content Include="SampleData\*" Condition="'$(ConfigurationName)'=='LOCAL'" />
-    <Compile Include="Controls\AutoTextBox.cs" />
+    <Compile Include="Controls\AutoTextBox.xaml.cs">
+      <DependentUpon>AutoTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PerformanceProgressBar.cs" />
     <Compile Include="MemoryDiagnosticsHelper.cs;Service\Implementation\MockedService.cs" Condition="'$(ConfigurationName)'!='Release'" />
     <!--condition compile-->
@@ -388,6 +390,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Page Include="Controls\AutoTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\EmotionPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
