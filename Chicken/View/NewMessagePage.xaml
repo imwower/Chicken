@@ -40,7 +40,7 @@
                                Icon="/Images/dark/cat.png" VerticalAlignment="Center"
                                Text="{Binding Path=User.ScreenName,Mode=TwoWay}"
                                InputScope="NameOrPhoneNumber"
-                               KeyDown="UserName_KeyDown" />
+                               EnterKeyDown="UserName_KeyDown" />
         </StackPanel>
         <!--conversation list-->
         <ScrollViewer Grid.Row="1" Margin="4"

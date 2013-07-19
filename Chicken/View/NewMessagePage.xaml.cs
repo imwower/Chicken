@@ -1,5 +1,5 @@
-﻿using System.Windows;
-using System.Windows.Input;
+﻿using System;
+using System.Windows;
 using Chicken.Common;
 using Chicken.ViewModel.NewMessage;
 
@@ -80,7 +80,7 @@ namespace Chicken.View
         #endregion
 
         #region user name
-        private void UserName_KeyDown(object sender, KeyEventArgs e)
+        private void UserName_KeyDown(object sender, EventArgs e)
         {
             this.TextContent.Focus();
             newMessageViewModel.ValidateUser();
