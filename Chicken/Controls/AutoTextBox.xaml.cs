@@ -45,7 +45,7 @@ namespace Chicken.Controls
         }
 
         public static readonly DependencyProperty AllowOverFlowProperty =
-            DependencyProperty.Register("AllowOverFlow", typeof(bool), typeof(AutoTextBox), null);
+            DependencyProperty.Register("AllowOverFlow", typeof(bool), typeof(AutoTextBox), new PropertyMetadata(true));
 
         public bool AllowOverFlow
         {
@@ -90,7 +90,7 @@ namespace Chicken.Controls
         }
 
         public static readonly DependencyProperty TextWrappingProperty =
-            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(AutoTextBox), null);
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(AutoTextBox), new PropertyMetadata(TextWrapping.NoWrap));
 
         public TextWrapping TextWrapping
         {
@@ -120,7 +120,7 @@ namespace Chicken.Controls
         }
 
         public static readonly DependencyProperty TextAlignmentProperty =
-            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(AutoTextBox), null);
+            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(AutoTextBox), new PropertyMetadata(TextAlignment.Left));
 
         public TextAlignment TextAlignment
         {
@@ -135,7 +135,7 @@ namespace Chicken.Controls
         }
 
         public static readonly DependencyProperty AcceptsReturnProperty =
-            DependencyProperty.Register("AcceptsReturn", typeof(bool), typeof(AutoTextBox), null);
+            DependencyProperty.Register("AcceptsReturn", typeof(bool), typeof(AutoTextBox), new PropertyMetadata(false));
 
         public bool AcceptsReturn
         {

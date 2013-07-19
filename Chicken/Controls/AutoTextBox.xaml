@@ -60,15 +60,15 @@
                 <TextBox x:Name="ContentTextBox"
                          Grid.Column="0"
                          Margin="{StaticResource PhoneTextBoxInnerMargin}"
+                         FontFamily="{StaticResource FontFamily}"
                          Text="{Binding ElementName=LayoutRoot,Path=Text}"
                          MaxLength="{Binding ElementName=LayoutRoot,Path=MaxLength}"
-                         TextWrapping="{Binding ElementName=LayoutRoot,Path=TextWrapping,FallbackValue=NoWrap}"
+                         TextWrapping="{Binding ElementName=LayoutRoot,Path=TextWrapping}"
                          SelectionStart="{Binding ElementName=LayoutRoot,Path=SelectionStart,Mode=TwoWay}"
-                         TextAlignment="{Binding ElementName=LayoutRoot,Path=TextAlignment,FallbackValue=Left}"
-                         AcceptsReturn="{Binding ElementName=LayoutRoot,Path=AcceptsReturn,FallbackValue=False}"
+                         TextAlignment="{Binding ElementName=LayoutRoot,Path=TextAlignment}"
+                         AcceptsReturn="{Binding ElementName=LayoutRoot,Path=AcceptsReturn}"
                          InputScope="{Binding ElementName=LayoutRoot,Path=InputScope}"
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Top">
+                         HorizontalAlignment="Stretch">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <ContentControl x:Name="ContentElement"                                            
