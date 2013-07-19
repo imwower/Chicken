@@ -61,7 +61,8 @@
                          Grid.Column="0"
                          Text="{Binding ElementName=LayoutRoot,Path=Text}"
                          TextWrapping="{Binding ElementName=LayoutRoot,Path=TextWrapping,FallbackValue=NoWrap}"
-                         HorizontalAlignment="Stretch">
+                         HorizontalAlignment="Stretch"
+                         VerticalAlignment="Top">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <ContentControl x:Name="ContentElement"
