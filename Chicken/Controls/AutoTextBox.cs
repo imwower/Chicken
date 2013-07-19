@@ -6,26 +6,45 @@ using System.Windows.Media;
 
 namespace Chicken.Controls
 {
-    public class AutoTextBox : TextBox
+    public class AutoTextBox : Control
     {
         #region private
+        private const string VisualStateFocused = "Focused";
+        private const string VisualStateUnfocused = "Unfocused";
+        private const string ContentTextBoxName = "ContentTextBox";
+        private TextBox contentTextBox;
         private const string IconBorderName = "IconBorder";
         private Border iconBorder;
         #endregion
 
         #region properties
-        public static readonly DependencyProperty AssociatedTextBlockProperty =
-            DependencyProperty.Register("AssociatedTextBlock", typeof(TextBlock), typeof(AutoTextBox), null);
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(AutoTextBox), null);
 
-        public TextBlock AssociatedTextBlock
+        public string Text
         {
             get
             {
-                return (TextBlock)GetValue(AssociatedTextBlockProperty);
+                return (string)GetValue(TextProperty);
             }
             set
             {
-                SetValue(AssociatedTextBlockProperty, value);
+                SetValue(TextProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty MaxLengthProperty =
+            DependencyProperty.Register("MaxLength", typeof(int), typeof(AutoTextBox), null);
+
+        public int MaxLength
+        {
+            get
+            {
+                return (int)GetValue(MaxLengthProperty);
+            }
+            set
+            {
+                SetValue(MaxLengthProperty, value);
             }
         }
 
@@ -44,6 +63,21 @@ namespace Chicken.Controls
             }
         }
 
+        public static readonly DependencyProperty AssociatedTextBlockProperty =
+            DependencyProperty.Register("AssociatedTextBlock", typeof(TextBlock), typeof(AutoTextBox), null);
+
+        public TextBlock AssociatedTextBlock
+        {
+            get
+            {
+                return (TextBlock)GetValue(AssociatedTextBlockProperty);
+            }
+            set
+            {
+                SetValue(AssociatedTextBlockProperty, value);
+            }
+        }
+
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(ImageSource), typeof(AutoTextBox), null);
 
@@ -58,6 +92,81 @@ namespace Chicken.Controls
                 SetValue(IconProperty, value);
             }
         }
+
+        public static readonly DependencyProperty TextWrappingProperty =
+            DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(AutoTextBox), null);
+
+        public TextWrapping TextWrapping
+        {
+            get
+            {
+                return (TextWrapping)GetValue(TextWrappingProperty);
+            }
+            set
+            {
+                SetValue(TextWrappingProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty SelectionStartProperty =
+            DependencyProperty.Register("SelectionStart", typeof(int), typeof(AutoTextBox), null);
+
+        public int SelectionStart
+        {
+            get
+            {
+                return (int)GetValue(SelectionStartProperty);
+            }
+            set
+            {
+                SetValue(SelectionStartProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty TextAlignmentProperty =
+            DependencyProperty.Register("TextAlignment", typeof(TextAlignment), typeof(AutoTextBox), null);
+
+        public TextAlignment TextAlignment
+        {
+            get
+            {
+                return (TextAlignment)GetValue(TextAlignmentProperty);
+            }
+            set
+            {
+                SetValue(TextAlignmentProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty AcceptsReturnProperty =
+            DependencyProperty.Register("AcceptsReturn", typeof(bool), typeof(AutoTextBox), null);
+
+        public bool AcceptsReturn
+        {
+            get
+            {
+                return (bool)GetValue(AcceptsReturnProperty);
+            }
+            set
+            {
+                SetValue(AcceptsReturnProperty, value);
+            }
+        }
+
+        public static readonly DependencyProperty InputScopeProperty =
+            DependencyProperty.Register("InputScope", typeof(InputScope), typeof(AutoTextBox), null);
+
+        public InputScope InputScope
+        {
+            get
+            {
+                return (InputScope)GetValue(InputScopeProperty);
+            }
+            set
+            {
+                SetValue(InputScopeProperty, value);
+            }
+        }
         #endregion
 
         #region event handler
@@ -66,23 +175,64 @@ namespace Chicken.Controls
 
         public AutoTextBox()
         {
-            this.TextChanged += AutoTextBox_TextChanged;
-            this.KeyDown += AutoTextBox_KeyDown;
+            DefaultStyleKey = typeof(AutoTextBox);
+        }
+
+        public void Select(int start, int length)
+        {
+            contentTextBox.Select(start, length);
         }
 
         #region loaded
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
+            #region remove event handler
+            if (contentTextBox != null)
+            {
+                contentTextBox.TextChanged -= AutoTextBox_TextChanged;
+                contentTextBox.KeyDown -= AutoTextBox_KeyDown;
+            }
             if (iconBorder != null)
-                iconBorder.MouseLeftButtonDown -= Icon_Clicked;
+                iconBorder.MouseLeftButtonDown -= IconBorder_MouseLeftButtonDown;
+            #endregion
+            #region textbox
+            contentTextBox = GetTemplateChild(ContentTextBoxName) as TextBox;
+            if (contentTextBox != null)
+            {
+                #region text box properties
+                contentTextBox.TextWrapping = TextWrapping;
+                #endregion
+                contentTextBox.TextChanged += AutoTextBox_TextChanged;
+                contentTextBox.KeyDown += AutoTextBox_KeyDown;
+            }
+            #endregion
+            #region icon
             iconBorder = GetTemplateChild(IconBorderName) as Border;
             if (iconBorder != null)
-                iconBorder.MouseLeftButtonDown += Icon_Clicked;
+            {
+                if (Icon == null)
+                    iconBorder.Visibility = Visibility.Collapsed;
+                else
+                    iconBorder.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
+            }
+            #endregion
         }
         #endregion
 
         #region private method
+        protected override void OnGotFocus(RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(this, VisualStateFocused, false);
+            base.OnGotFocus(e);
+        }
+
+        protected override void OnLostFocus(RoutedEventArgs e)
+        {
+            VisualStateManager.GoToState(this, VisualStateUnfocused, false);
+            base.OnLostFocus(e);
+        }
+
         private void AutoTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (this.MaxLength != 0)
@@ -100,7 +250,7 @@ namespace Chicken.Controls
                 if (remaining >= 0 && AssociatedTextBlock != null)
                     AssociatedTextBlock.Foreground = App.ForegroundBrush;
             }
-            var binding = GetBindingExpression(TextBox.TextProperty);
+            var binding = GetBindingExpression(AutoTextBox.TextProperty);
             if (binding != null)
                 binding.UpdateSource();
         }
@@ -114,11 +264,8 @@ namespace Chicken.Controls
             }
         }
 
-        private void Icon_Clicked(object sender, MouseButtonEventArgs e)
+        private void IconBorder_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var rootFrame = (Frame)Application.Current.RootVisual;
-            rootFrame.Focus();
-
             if (EnterKeyDown != null)
                 EnterKeyDown(this, e);
         }
