@@ -77,9 +77,10 @@ namespace Chicken.ViewModel.Settings
         #region actions
         private void RefreshAction()
         {
-            if (App.Settings != null && App.Settings.APISettings != null)
+            var settings = IsolatedStorageService.GetAppSettings();
+            if (settings != null && settings.APISettings != null)
             {
-                APISetting = App.Settings.APISettings;
+                APISetting = settings.APISettings;
                 SelectedIndex = DefaultAPIs.ToList().IndexOf(App.Settings.APISettings);
             }
             else

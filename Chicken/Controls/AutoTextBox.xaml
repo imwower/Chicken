@@ -59,14 +59,19 @@
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="ContentTextBox"
                          Grid.Column="0"
+                         Margin="{StaticResource PhoneTextBoxInnerMargin}"
                          Text="{Binding ElementName=LayoutRoot,Path=Text}"
+                         MaxLength="{Binding ElementName=LayoutRoot,Path=MaxLength}"
                          TextWrapping="{Binding ElementName=LayoutRoot,Path=TextWrapping,FallbackValue=NoWrap}"
+                         SelectionStart="{Binding ElementName=LayoutRoot,Path=SelectionStart,Mode=TwoWay}"
+                         TextAlignment="{Binding ElementName=LayoutRoot,Path=TextAlignment,FallbackValue=Left}"
+                         AcceptsReturn="{Binding ElementName=LayoutRoot,Path=AcceptsReturn,FallbackValue=False}"
+                         InputScope="{Binding ElementName=LayoutRoot,Path=InputScope}"
                          HorizontalAlignment="Stretch"
                          VerticalAlignment="Top">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
-                            <ContentControl x:Name="ContentElement"
-                                            Margin="{StaticResource PhoneTextBoxInnerMargin}"
+                            <ContentControl x:Name="ContentElement"                                            
                                             HorizontalContentAlignment="Stretch"
                                             VerticalContentAlignment="Stretch" />
                         </ControlTemplate>

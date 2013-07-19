@@ -184,9 +184,12 @@ namespace Chicken.Controls
         #region loaded
         private void AutoTextBox_Loaded(object sender, RoutedEventArgs e)
         {
-            this.IconImage.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
             this.ContentTextBox.TextChanged += AutoTextBox_TextChanged;
             this.ContentTextBox.KeyDown += AutoTextBox_KeyDown;
+            if (Icon == null)
+                this.IconImage.Visibility = Visibility.Collapsed;
+            else
+                this.IconImage.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
         }
         #endregion
 
