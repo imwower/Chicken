@@ -82,11 +82,8 @@ namespace Chicken.View
         #region user name
         private void UserName_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Enter)
-            {
-                this.TextContent.Focus();
-                newMessageViewModel.ValidateUser();
-            }
+            this.TextContent.Focus();
+            newMessageViewModel.ValidateUser();
         }
         #endregion
     }
