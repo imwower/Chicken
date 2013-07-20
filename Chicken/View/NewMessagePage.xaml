@@ -37,7 +37,7 @@
             <!--whom to send to-->
             <ctrls:AutoTextBox x:Name="UserName"
                                Visibility="{Binding Path=IsNew,Converter={StaticResource BooleanToVisibilityConverter}}"
-                               Icon="/Images/dark/cat.png" VerticalAlignment="Center"
+                               Icon="/Images/dark/search.png" VerticalAlignment="Center"
                                Text="{Binding Path=User.ScreenName,Mode=TwoWay}"
                                InputScope="NameOrPhoneNumber"
                                EnterKeyDown="UserName_KeyDown" />

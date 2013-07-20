@@ -109,6 +109,8 @@
   </ItemGroup>
   <ItemGroup>
     <!--condition compile-->
+    <Content Include="Images\dark\calendar.png" />
+    <Content Include="Images\dark\search.png" />
     <Content Include="libs\ICSharpCode.SharpZLib.Phone.dll" />
     <Content Include="libs\ImageTools.Controls.dll" />
     <Content Include="libs\ImageTools.dll" />
