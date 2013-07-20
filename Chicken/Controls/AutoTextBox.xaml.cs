@@ -226,6 +226,7 @@ namespace Chicken.Controls
             var binding = GetBindingExpression(AutoTextBox.TextProperty);
             if (binding != null)
                 binding.UpdateSource();
+            SelectionStart = this.ContentTextBox.SelectionStart;
         }
 
         private void AutoTextBox_KeyDown(object sender, KeyEventArgs e)
