@@ -83,7 +83,7 @@
                            Visibility="{Binding ElementName=LayoutRoot,Path=Icon,
                            Converter={StaticResource ObjectToVisibilityConverter},FallbackValue=Collapsed}"
                            Fill="{StaticResource PhoneAccentBrush}"
-                           Width="26" Height="26" Margin="4">
+                           Width="26" Height="26" Margin="4,4,8,4">
                     <Rectangle.OpacityMask>
                         <ImageBrush Stretch="Fill"
                                     ImageSource="{Binding ElementName=LayoutRoot,Path=Icon}" />
