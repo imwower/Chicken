@@ -52,7 +52,13 @@
                 <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[APISettingsPage_APIUrl]}" />
                 <ctrls:AutoTextBox TextWrapping="Wrap" InputScope="Url"
                                    Text="{Binding Path=APISetting.Url, Mode=TwoWay}"
-                                   Height="240" MaxHeight="400" />
+                                   Height="240" MaxHeight="400">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="EnterKeyDown">
+                            <i:InvokeCommandAction Command="{Binding SaveCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </ctrls:AutoTextBox>
             </StackPanel>
         </ScrollViewer>
         <!--progress bar-->
