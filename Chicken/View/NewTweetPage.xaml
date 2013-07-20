@@ -43,7 +43,7 @@
                                    Text="{Binding Path=Text,Mode=TwoWay}"
                                    MaxLength="140" AllowOverFlow="True"
                                    AssociatedTextBlock="{Binding ElementName=TextCounter}"
-                                   GotFocus="TextContent_GotFocus" InputScope="Chat" />
+                                   GotFocus="TextContent_GotFocus" InputScope="Chat" FontFamily="/Chicken;component/Fonts/Fonts.zip#DengXian" />
             </ScrollViewer>
             <!--menu-->
             <StackPanel x:Name="MenuPanel" Grid.Row="2" Orientation="Horizontal" Opacity="0.6">

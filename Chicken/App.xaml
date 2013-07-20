@@ -10,8 +10,18 @@
 
     <Application.Resources>
 
+        <!--default font is Segoe WP/UI-->
+        <!--DengXian/YaHei/MHei is for Chinese-->
+        <!--Yu Gothic/NeoGothic is for Japanese/Korean-->
+        <!--Nirmala UI is for Hindi/Thai only on WP8-->
+        <!--Code2000 for special characters-->
+        <!--find the default font list here:-->
+        <!--http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/hh202920(v=vs.105).aspx-->
         <FontFamily x:Key="FontFamily">
-            /Chicken;component/Fonts/Fonts.zip#Segoe WP,
+            Segoe WP,Segoe UI,
+            DengXian,Microsoft YaHei,Microsoft Mhei,
+            Yu Gothic,Microsoft NeoGothic,
+            Nirmala UI,Leelawadee,
             /Chicken;component/Fonts/Fonts.zip#Code2000
         </FontFamily>
 
