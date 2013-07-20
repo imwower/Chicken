@@ -19,7 +19,7 @@
         <!--http://msdn.microsoft.com/zh-cn/library/windowsphone/develop/hh202920(v=vs.105).aspx-->
         <FontFamily x:Key="FontFamily">
             Segoe WP,Segoe UI,
-            DengXian,Microsoft YaHei,Microsoft Mhei,
+            Microsoft YaHei,DengXian Bold,Microsoft Mhei,
             Yu Gothic,Microsoft NeoGothic,
             Nirmala UI,Leelawadee,
             /Chicken;component/Fonts/Fonts.zip#Code2000
