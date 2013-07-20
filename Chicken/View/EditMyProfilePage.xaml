@@ -52,7 +52,7 @@
                 <!--description-->
                 <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Description]}" />
                 <TextBox Text="{Binding Path=MyProfile.ExpandedDescription}"
-                         TextWrapping="Wrap" AcceptsReturn="True" MaxLength="160"
+                         TextWrapping="Wrap" AcceptsReturn="True" MaxLength="160" InputScope="Chat"
                          TextChanged="Description_TextChanged" Height="240" MaxHeight="400" />
             </StackPanel>
         </ScrollViewer>

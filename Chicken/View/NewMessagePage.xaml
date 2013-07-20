@@ -165,7 +165,7 @@
                                TextAlignment="Left" MaxHeight="400" AllowOverFlow="False"
                                Text="{Binding Path=Text,Mode=TwoWay}" MaxLength="140"
                                AssociatedTextBlock="{Binding ElementName=TextCounter}"
-                               GotFocus="TextContent_GotFocus" />
+                               GotFocus="TextContent_GotFocus" InputScope="Chat" />
         </Grid>
         <!--emotion panel-->
         <ctrls:EmotionPanel x:Name="Emotions" Grid.Row="3" Visibility="Collapsed" />
