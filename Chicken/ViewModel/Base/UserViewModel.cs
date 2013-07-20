@@ -29,7 +29,7 @@ namespace Chicken.ViewModel.Base
             }
         }
 
-        protected string createdDate
+        public string CreatedDate
         {
             get
             {

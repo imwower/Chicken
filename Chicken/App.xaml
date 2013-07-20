@@ -12,10 +12,7 @@
 
         <FontFamily x:Key="FontFamily">
             /Chicken;component/Fonts/Fonts.zip#Segoe WP,
-            /Chicken;component/Fonts/Fonts.zip#Nirmala UI,
-            /Chicken;component/Fonts/Fonts.zip#Ebrima,
-            /Chicken;component/Fonts/Fonts.zip#Gadugi,            
-            /Chicken;component/Fonts/Fonts.zip#Khmer UI
+            /Chicken;component/Fonts/Fonts.zip#Code2000
         </FontFamily>
 
         <Style TargetType="TextBox">

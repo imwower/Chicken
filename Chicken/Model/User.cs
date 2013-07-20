@@ -11,6 +11,7 @@ namespace Chicken.Model
         [JsonProperty("screen_name")]
         public string ScreenName { get; set; }
 
+        [JsonProperty("created_at")]
         public string CreatedDate { get; set; }
 
         /// <summary>

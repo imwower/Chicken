@@ -370,6 +370,10 @@
       <All>True</All>
       <AutoFill>True</AutoFill>
     </BlendEmbeddedFont>
+    <BlendEmbeddedFont Include="Fonts\code2000____.ttf">
+      <All>True</All>
+      <AutoFill>True</AutoFill>
+    </BlendEmbeddedFont>
     <None Include="libs\AppBarUtils.dll" />
     <Compile Include="Service\Interface\ITweetService.cs" />
     <Compile Include="Service\Implementation\TweetService.cs" />

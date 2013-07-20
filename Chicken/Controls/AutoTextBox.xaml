@@ -9,7 +9,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     d:DesignHeight="480" d:DesignWidth="480"
-    x:Name="LayoutRoot">
+    x:Name="AutoTextControl">
 
     <Grid Background="Transparent">
         <VisualStateManager.VisualStateGroups>
@@ -62,14 +62,14 @@
                 <TextBox x:Name="ContentTextBox" Grid.Column="0"
                          Margin="{StaticResource PhoneTextBoxInnerMargin}"                         
                          FontFamily="{StaticResource FontFamily}"
-                         Text="{Binding ElementName=LayoutRoot,Path=Text}"
-                         MaxLength="{Binding ElementName=LayoutRoot,Path=MaxLength}"
-                         TextWrapping="{Binding ElementName=LayoutRoot,Path=TextWrapping}"
-                         SelectionStart="{Binding ElementName=LayoutRoot,Path=SelectionStart,Mode=TwoWay}"
-                         TextAlignment="{Binding ElementName=LayoutRoot,Path=TextAlignment}"
-                         AcceptsReturn="{Binding ElementName=LayoutRoot,Path=AcceptsReturn}"
-                         InputScope="{Binding ElementName=LayoutRoot,Path=InputScope}"
-                         VerticalAlignment="{Binding ElementName=LayoutRoot,Path=VerticalAlignment}"
+                         Text="{Binding ElementName=AutoTextControl,Path=Text}"
+                         MaxLength="{Binding ElementName=AutoTextControl,Path=MaxLength}"
+                         TextWrapping="{Binding ElementName=AutoTextControl,Path=TextWrapping}"
+                         SelectionStart="{Binding ElementName=AutoTextControl,Path=SelectionStart,Mode=TwoWay}"
+                         TextAlignment="{Binding ElementName=AutoTextControl,Path=TextAlignment}"
+                         AcceptsReturn="{Binding ElementName=AutoTextControl,Path=AcceptsReturn}"
+                         InputScope="{Binding ElementName=AutoTextControl,Path=InputScope}"
+                         VerticalAlignment="{Binding ElementName=AutoTextControl,Path=VerticalAlignment}"
                          HorizontalAlignment="Stretch">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
@@ -80,13 +80,13 @@
                     </TextBox.Template>
                 </TextBox>
                 <Rectangle x:Name="IconImage" Grid.Column="1"
-                           Visibility="{Binding ElementName=LayoutRoot,Path=Icon,
+                           Visibility="{Binding ElementName=AutoTextControl,Path=Icon,
                            Converter={StaticResource ObjectToVisibilityConverter},FallbackValue=Collapsed}"
                            Fill="{StaticResource PhoneAccentBrush}"
                            Width="26" Height="26" Margin="4,4,8,4">
                     <Rectangle.OpacityMask>
                         <ImageBrush Stretch="Fill"
-                                    ImageSource="{Binding ElementName=LayoutRoot,Path=Icon}" />
+                                    ImageSource="{Binding ElementName=AutoTextControl,Path=Icon}" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
             </Grid>
