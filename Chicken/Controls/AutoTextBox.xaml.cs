@@ -185,9 +185,7 @@ namespace Chicken.Controls
         {
             this.ContentTextBox.TextChanged += AutoTextBox_TextChanged;
             this.ContentTextBox.KeyDown += AutoTextBox_KeyDown;
-            if (Icon == null)
-                this.IconImage.Visibility = Visibility.Collapsed;
-            else
+            if (Icon != null)
                 this.IconImage.MouseLeftButtonDown += IconBorder_MouseLeftButtonDown;
         }
         #endregion

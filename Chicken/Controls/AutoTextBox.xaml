@@ -79,11 +79,16 @@
                         </ControlTemplate>
                     </TextBox.Template>
                 </TextBox>
-                <Image x:Name="IconImage"
-                       Grid.Column="1" Stretch="Fill"
-                       Width="32" Height="32" Margin="4"
-                       Source="{Binding ElementName=LayoutRoot,Path=Icon}"
-                       HorizontalAlignment="Right" />
+                <Rectangle x:Name="IconImage" Grid.Column="1"
+                           Visibility="{Binding ElementName=LayoutRoot,Path=Icon,
+                           Converter={StaticResource ObjectToVisibilityConverter},FallbackValue=Collapsed}"
+                           Fill="{StaticResource PhoneAccentBrush}"
+                           Width="26" Height="26" Margin="4">
+                    <Rectangle.OpacityMask>
+                        <ImageBrush Stretch="Fill"
+                                    ImageSource="{Binding ElementName=LayoutRoot,Path=Icon}" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
             </Grid>
         </Border>
     </Grid>

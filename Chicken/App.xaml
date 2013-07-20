@@ -33,6 +33,7 @@
         <ctrls:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <ctrls:InvertBooleanToVisibilityConverter x:Key="InvertBooleanToVisibilityConverter" />
         <ctrls:StringToVisibilityConverter x:Key="StringToVisibilityConverter" />
+        <ctrls:ObjectToVisibilityConverter x:Key="ObjectToVisibilityConverter" />
         <ctrls:BooleanToFillConverter x:Key="BooleanToFillConverter" />
 
         <!--templates-->

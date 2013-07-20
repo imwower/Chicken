@@ -8,7 +8,7 @@ namespace Chicken.Controls
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {
-        private static BooleanConverter converter = new BooleanConverter();
+        protected static BooleanConverter converter = new BooleanConverter();
 
         public virtual object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -20,17 +20,12 @@ namespace Chicken.Controls
             return converter.ConvertBoolean(value, true);
         }
 
-        protected object ConvertString(object value)
-        {
-            return converter.ConvertString(value);
-        }
-
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
 
-        private class BooleanConverter
+        protected class BooleanConverter
         {
             public object ConvertBoolean(object value, bool invert = false)
             {
@@ -51,6 +46,22 @@ namespace Chicken.Controls
                 else
                     return Visibility.Visible;
             }
+
+            public object ConvertObject(object value, bool invert = false)
+            {
+                if (value == null)
+                    return Visibility.Collapsed;
+                return Visibility.Visible;
+            }
+
+            public object ConvertFill(object value)
+            {
+                if (value == null)
+                    return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
+                return (bool)value ?
+                (Brush)Application.Current.Resources["PhoneAccentBrush"]
+                : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
+            }
         }
     }
 
@@ -66,29 +77,23 @@ namespace Chicken.Controls
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return base.ConvertString(value);
+            return converter.ConvertString(value);
+        }
+    }
+
+    public class ObjectToVisibilityConverter : BooleanToVisibilityConverter
+    {
+        public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return converter.ConvertObject(value);
         }
     }
 
     public class BooleanToFillConverter : BooleanToVisibilityConverter
     {
-        private static FillConverter converter = new FillConverter();
-
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return converter.Convert(value);
-        }
-
-        private class FillConverter
-        {
-            public object Convert(object value)
-            {
-                if (value == null)
-                    return (Brush)Application.Current.Resources["PhoneForegroundBrush"];
-                return (bool)value ?
-                (Brush)Application.Current.Resources["PhoneAccentBrush"]
-                : (Brush)Application.Current.Resources["PhoneForegroundBrush"];
-            }
+            return converter.ConvertFill(value);
         }
     }
 }
