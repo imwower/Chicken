@@ -1,4 +1,5 @@
-﻿using Chicken.Model;
+﻿using Chicken.Common;
+using Chicken.Model;
 
 namespace Chicken.ViewModel.Base
 {
@@ -33,7 +34,7 @@ namespace Chicken.ViewModel.Base
         {
             get
             {
-                return user.CreatedDate;
+                return TwitterHelper.ParseToDateTime(user.CreatedDate);
             }
         }
 

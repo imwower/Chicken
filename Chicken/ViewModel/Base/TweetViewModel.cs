@@ -60,19 +60,11 @@ namespace Chicken.ViewModel.Base
             }
         }
 
-        protected virtual string createdDate
-        {
-            get
-            {
-                return TwitterHelper.ParseToDateTime(tweet.CreatedDate);
-            }
-        }
-
         public string CreatedDate
         {
             get
             {
-                return createdDate;
+                return TwitterHelper.ParseToDateTime(tweet.CreatedDate);
             }
         }
 
