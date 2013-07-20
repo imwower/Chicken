@@ -34,6 +34,9 @@
             <StackPanel>
                 <StackPanel.Resources>
                     <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockTitle}" />
+                    <Style TargetType="ctrls:AutoTextBox">
+                        <Setter Property="VerticalAlignment" Value="Stretch" />
+                    </Style>
                 </StackPanel.Resources>
                 <!--name-->
                 <TextBlock Text="{Binding Source={StaticResource LanguageHelper}, Path=[EditMyProfilePage_Name]}" />

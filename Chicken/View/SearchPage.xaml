@@ -24,7 +24,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <ctrls:AutoTextBox x:Name="SearchBox" Grid.Row="0"
-                           Icon="/Images/dark/cat.png" VerticalAlignment="Center"
+                           Icon="/Images/dark/cat.png" VerticalAlignment="Stretch"
                            Text="{Binding SearchQuery,Mode=TwoWay}" MaxLength="100"
                            AllowOverFlow="False" EnterKeyDown="SearchBox_EnterKeyDown" />
         <controls:Pivot x:Name="MainPivot" Grid.Row="1">
