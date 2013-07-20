@@ -35,7 +35,7 @@ namespace Chicken
             {
                 if (foregroundBrush == null)
                     foregroundBrush = Application.Current.Resources["PhoneForegroundBrush"] as SolidColorBrush;
-                return accentBrush;
+                return foregroundBrush;
             }
         }
 

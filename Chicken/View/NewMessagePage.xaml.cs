@@ -56,6 +56,12 @@ namespace Chicken.View
 
         private void AddEmotion(string emotion)
         {
+            if (string.IsNullOrEmpty(this.TextContent.Text))
+            {
+                this.TextContent.Text = emotion;
+                this.TextContent.SelectionStart = emotion.Length;
+                return;
+            }
             if (this.TextContent.Text.Length + emotion.Length > this.TextContent.MaxLength)
                 return;
             int start = this.TextContent.SelectionStart;

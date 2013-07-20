@@ -169,7 +169,6 @@ namespace Chicken.Controls
         public event EventHandler EnterKeyDown;
         #endregion
 
-
         public AutoTextBox()
         {
             InitializeComponent();
