@@ -133,7 +133,8 @@
                                                Text="{Binding UserProfile.CreatedDate}" />
                                     <!--Location-->
                                     <TextBlock Grid.Row="4"
-                                               Text="{Binding UserProfile.Location}" />
+                                               Text="{Binding UserProfile.Location}"
+                                               Visibility="{Binding UserProfile.Location,Converter={StaticResource StringToVisibilityConverter}}" />
                                     <!--Url-->
                                     <HyperlinkButton Grid.Row="5"
                                                      Visibility="{Binding Path=UserProfile.Url,Converter={StaticResource StringToVisibilityConverter}}"
