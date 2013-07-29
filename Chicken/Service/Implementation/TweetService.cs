@@ -309,18 +309,36 @@ namespace Chicken.Service.Implementation
         private void HandleWebRequest<T>(string url, Action<T> callBack, string method = Const.HTTPGET)
             where T : ModelBase, new()
         {
-            HttpWebRequest request = WebRequest.CreateHttp(url);
-            request.Method = method;
-            RequestDataObject<T> data = new RequestDataObject<T>
+            var data = new RequestDataObject<T>
             {
-                Request = request,
                 CallBack = callBack,
             };
-            request.BeginGetResponse(
-                result =>
-                {
-                    HandleResponse<T>(result);
-                }, data);
+            try
+            {
+                HttpWebRequest request = WebRequest.CreateHttp(url);
+                request.Method = method;
+                data.Request = request;
+
+                request.BeginGetResponse(
+                    result =>
+                    {
+                        HandleResponse<T>(result);
+                    }, data);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                data.Result = GetErrorMessage<T>();
+                Deployment.Current.Dispatcher.BeginInvoke(
+                    () =>
+                    {
+                        App.HandleMessage(new ToastMessage
+                        {
+                            Message = data.Result.Errors[0].Message,
+                            Complete = () => data.CallBack(data.Result)
+                        });
+                    });
+            }
         }
 
         private void HandleResponse<T>(IAsyncResult result)

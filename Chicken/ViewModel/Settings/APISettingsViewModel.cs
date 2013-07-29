@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Input;
 using Chicken.Common;
@@ -104,7 +103,7 @@ namespace Chicken.ViewModel.Settings
                 return;
             IsLoading = true;
             if (!APISetting.Url.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
-                || !APISetting.Url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                && !APISetting.Url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
                 APISetting.Url = APISetting.Url.Insert(0, "http://");
             if (BeforeSaveHandler != null)
                 BeforeSaveHandler();
@@ -112,7 +111,6 @@ namespace Chicken.ViewModel.Settings
                 userProfileDetail =>
                 {
                     IsLoading = false;
-                    List<ErrorMessage> errors = userProfileDetail.Errors;
                     if (userProfileDetail.HasError)
                         return;
                     App.InitAPISettings(APISetting);
