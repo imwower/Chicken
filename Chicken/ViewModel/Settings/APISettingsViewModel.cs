@@ -103,6 +103,9 @@ namespace Chicken.ViewModel.Settings
             if (string.IsNullOrEmpty(APISetting.Url))
                 return;
             IsLoading = true;
+            if (!APISetting.Url.StartsWith("http://", StringComparison.OrdinalIgnoreCase)
+                || !APISetting.Url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+                APISetting.Url = APISetting.Url.Insert(0, "http://");
             if (BeforeSaveHandler != null)
                 BeforeSaveHandler();
             TweetService.TestAPIUrl(APISetting.Url,
